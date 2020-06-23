@@ -1,0 +1,22 @@
+{
+  "name": "us-checkout-builder",
+  "version": "1.0.0",
+  "description": "Variations of Checkout Vertical or Horizontal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch ./src -o ./build",
+    "scss-build": "node-sass ./src -o ./build",
+    "js": "@powershell copy './src/checkout6-custom.js' './build'",
+    "build": "npm run js & npm run scss-build"
+  },
+  "author": "Lucas Vyskubenko <lucas.vysk@vtex.com> (https://github.com/lucvysk)",
+  "license": "VTEX",
+  "dependencies": {
+    "git": "^0.1.5"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4"
+  }
+}

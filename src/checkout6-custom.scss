@@ -1,22 +1,22 @@
-body {
+body { 
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  color: #000;
+  color: #000;  
   overflow-x: hidden
 }
-
-.header-link .link { 
+ 
+.header-link .link {
   display: none;
-}
+}  
 
 .body-cart .buy-more-link {
   display: block;
 }
 
-.body-order-form .back-cart-link {
-  display: block;
+.body-order-form .back-cart-link { 
+  display: block;  
 }
-
+ 
 .logo {
   width: 338px;
   height: 38px;
@@ -2542,22 +2542,21 @@ body .mr-shipping-container {
 .item-unavailable .top-arrow,
 .item-unavailable .icon-warning-sign {
 	display: none;
-}
+}  
 
 .item-unavailable td {
 	text-align: left;
 	padding: 0 0 1rem 10.5rem;
 }
 
-.unavailable .item-link-remove {
+.unavailable .item-link-remove { 
 	color: initial;
 }
 
 .link-logout{
-  display: none;
+  display: none; 
 }
 
 .link-logout-container{
-  display: none;
+  display: none; 
 }
-
