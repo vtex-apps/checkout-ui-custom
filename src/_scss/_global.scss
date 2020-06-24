@@ -1,0 +1,19 @@
+// _global.scss
+
+
+body {
+  font-family:$font-family;
+  min-width: initial !important;
+  padding: 0;
+  background: $base;
+}
+
+
+
+.step, .cart, .totalizers {
+	border-radius:$border-radius;
+}
+
+.container-main {
+    padding: 30px 0;
+}

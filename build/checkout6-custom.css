@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+  min-width: initial !important;
+  padding: 0;
+  background: #f8f8f8; }
+
+.step, .cart, .totalizers {
+  border-radius: 2px; }
+
+.container-main {
+  padding: 30px 0; }
+
+.main-header {
+  padding: 30px 0;
+  text-align: center; }
+  .main-header, .main-header > container {
+    display: flex;
+    justify-content: center;
+    background: #FFF;
+    width: 100%; }
+  .main-header > .container {
+    position: initial; }
+  .main-header .header-link {
+    position: absolute;
+    left: 10px;
+    display: none; }
+    .main-header .header-link a {
+      color: #083763; }
+    .main-header .header-link .back-cart-link {
+      display: none; }
+  .main-header .logo,
+  .main-header .logo img {
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 24px;
+    border: none;
+    line-height: 39px; }
+
+.orderform-template .row-fluid > div {
+  width: 100% !important; }
