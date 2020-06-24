@@ -2,18 +2,60 @@
 
 
 .btn {
+
+	transition: all ease 0.2s;
+	text-shadow: none;
+	border-radius:$border-radius;
+	outline: initial;
+	text-align: center;
+
 	&-success {
 		background: $success;
 		border:1px solid $success;
-		text-align:center;
-
-		transition: all ease 0.2s;
-		text-shadow: none;
-		border-radius:$border-radius;
+		font-size:13px;
 
 		&:hover {
 			background:darken($success,5%); 
 			border:1px solid darken($success,5%); 
+		}
+	}
+
+	&-primary {
+		background: $action-primary;
+		border:1px solid $action-primary;
+		color:$action-secondary;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background:darken($action-primary,5%);; 
+			border:1px solid darken($action-primary,5%); 
+		}
+	}  
+
+	&-secondary {
+		background: $action-secondary;
+		border:1px solid $action-secondary;
+		color:$action-primary;
+	
+		&:hover,
+		&:focus,
+		&:active {
+			background:darken($action-secondary,5%);; 
+			border:1px solid darken($action-secondary,5%); 
+		}
+	}
+
+	&-outlined {
+		background: transparent;
+		border:1px solid $success;
+		color:$success;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background:transparent; 
+			border:1px solid lighten($success,5%); 
 		}
 	}
 

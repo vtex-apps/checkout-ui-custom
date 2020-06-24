@@ -1,0 +1,17 @@
+
+//input
+
+%input-style {
+	height: 40px !important;
+	line-height:40px !important;
+	max-height:initial;
+	display:inline-block;
+	padding:0px 10px !important;
+	border-radius:$border-radius;
+  border:1px solid $muted-3;
+	outline: initial;
+	
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}

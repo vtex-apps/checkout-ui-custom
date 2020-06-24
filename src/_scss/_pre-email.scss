@@ -1,0 +1,49 @@
+// pre email step
+
+
+.client-pre-email {
+  background: $base;
+  width: 100%;
+  
+
+  fieldset.pre-email {
+    padding: 0 10%;
+    box-sizing: border-box;
+  }
+
+
+  h3.client-pre-email-h {
+      margin-bottom:30px;
+  }
+
+  a#orderform-to-cart {
+      color:$action-primary;
+  }
+
+  .client-email.input.text {
+    display:flex;
+
+    input[type="email"] {
+      width: 100% !important;
+      box-sizing: border-box;
+      margin-right: 10px;
+    }
+    .btn-success {
+      width: 20%;
+      margin: 0 !important;
+      min-width: 90px;
+      position: relative;
+    }
+  }
+
+  span.help.error {
+      position: absolute;
+      top: 100%;
+  }
+
+
+  
+  .emailInfo {
+    margin-top:20px;
+  }
+}

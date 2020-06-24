@@ -19,9 +19,18 @@ body {
 }
 
 
+
 //titles
 
 .cart-more-options h2,
-.container-cart h1 {
-	font-size: 28px !important;
+.container-cart h1,
+h1#orderform-title {
+	font-size: 22px !important;
+  font-weight: 400 !important;
+  color: $muted-1 !important;
+  margin:0;
+}
+
+@media(max-width: 490px) {
+  h1#orderform-title {display:none !important;}
 }

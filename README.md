@@ -5,6 +5,11 @@ This repo allows you to generate an style to your checkout based in basic config
 A combination of conditions and variables will adapt your checkout according your preferences. 
 
 
+### Running npm
+
+`npm run dev` to watch and build the sass file
+`npm run build` to build the sass file and copy the js
+
 ### Expected HTML in the header
 
 ```
