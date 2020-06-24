@@ -17,7 +17,8 @@
   .header-link {
     position:absolute;
     left:10px; 
-    display: none;
+    top: 50%;
+    transform: translateY(-50%);
     a {color:$action-primary;}
     .back-cart-link {display:none;}
   } 

@@ -1,0 +1,154 @@
+.cart {
+    border:none;
+    padding:0;
+}
+
+
+.container-cart.container {
+    width:calc(100% - 40px);
+    max-width:980px;
+}
+
+
+
+.table.cart-items {
+
+  thead,
+  td.shipping-date,
+  td.product-price {
+      display:none;
+  }
+
+  tbody td {
+    border-bottom: 1px solid $muted-3;
+  }
+
+  td.product-image { 
+    padding:20px 0;
+
+    a {margin-right:20px;}
+    a,
+    img {
+        width:100px;
+        display:block;
+        max-width: initial;
+        height: auto;
+    }
+  }
+
+  td.product-name {
+    a,
+    a:hover {
+        color:#333;
+        font-weight:bold;
+        text-decoration:none; 
+    }
+  }
+
+  td.quantity {
+    min-width: 110px; 
+    > .item-quantity-change,
+    > input.tel {display: inline-block !important;}
+    input {
+        border-radius:$border-radius;
+        padding:5px;
+        width: 25px !important;
+    }
+    .item-quantity-change {
+       position:initial;
+       left:initial;
+       top:initial;
+       bottom:initial;
+       height: initial;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+  }
+
+}
+
+
+.summary-template-holder {
+  background: #FFF;
+  padding: 20px;
+  text-align: left;
+  border: 2px solid $muted-3;
+
+
+  .cart-active .summary-coupon {
+    text-align: center;
+    margin: 0;
+    display:none;
+  }
+
+  span.link-choose-more-products-wrapper {display: none;}
+
+  .cart-links-bottom {
+    float:none;
+    margin: 10px 0 0 0;
+
+    .btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .summary-totalizers {
+    .table td.space,
+    .table td.empty {
+        display: none;
+    }
+  }
+
+}
+
+
+// split cart in 2 columns
+
+.body-cart-vertical {
+
+  .cart-template-holder {
+    width:62%;
+    @media(max-width:590px) {
+      width:100%;
+    }
+  }
+
+  .summary-template-holder {
+    width: 20%;
+    @media(max-width:590px) {
+      width:100%;
+    }
+  }
+
+  .cart-template.full-cart.span12.active {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .extensions-checkout-buttons-container.row-fluid {
+      width: auto !important;
+    }
+
+    .totalizers.summary-totalizers.cart-totalizers {
+      width: 100%;
+      padding:0;
+      margin:0;
+    }
+  }
+}
+
+
+// end split cart in 2 columns
+
+
+
+    
+
+
+
+    
+
+
