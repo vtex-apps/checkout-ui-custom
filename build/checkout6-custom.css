@@ -71,7 +71,6 @@ body {
 .container-main {
   padding: 30px 0; }
 
-.container.container-main.container-order-form,
 .container-cart.container {
   width: calc(100% - 40px);
   max-width: 980px;
@@ -369,143 +368,136 @@ body .main-header {
   padding: 7px 0 !important;
   color: #999999; }
 
-.orderform-template-holder .row-fluid > div#client-profile-data, .orderform-template-holder .row-fluid > div#shipping-data, .orderform-template-holder .row-fluid > div#payment-data {
-  width: 100% !important;
-  margin-left: 0; }
-  .orderform-template-holder .row-fluid > div#client-profile-data .step, .orderform-template-holder .row-fluid > div#shipping-data .step, .orderform-template-holder .row-fluid > div#payment-data .step {
-    border: none;
-    width: 62%;
-    padding: 0;
-    background: none; }
-    @media (max-width: 768px) {
-      .orderform-template-holder .row-fluid > div#client-profile-data .step, .orderform-template-holder .row-fluid > div#shipping-data .step, .orderform-template-holder .row-fluid > div#payment-data .step {
-        width: 100%; } }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-toggle > i, .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-toggle > i, .orderform-template-holder .row-fluid > div#payment-data .step .accordion-toggle > i {
-      display: none; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-toggle .link-box-edit, .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-toggle .link-box-edit, .orderform-template-holder .row-fluid > div#payment-data .step .accordion-toggle .link-box-edit {
-      background: none;
-      box-shadow: none;
+.orderform-template-holder {
+  width: 60%; }
+  .orderform-template-holder .row-fluid > div#client-profile-data, .orderform-template-holder .row-fluid > div#shipping-data, .orderform-template-holder .row-fluid > div#payment-data {
+    width: 100% !important;
+    margin-left: 0; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step, .orderform-template-holder .row-fluid > div#shipping-data .step, .orderform-template-holder .row-fluid > div#payment-data .step {
       border: none;
-      top: 4px;
-      right: -5px;
-      color: #1a73e8;
-      outline: none; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-toggle,
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-inner, .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-toggle,
-    .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-inner, .orderform-template-holder .row-fluid > div#payment-data .step .accordion-toggle,
-    .orderform-template-holder .row-fluid > div#payment-data .step .accordion-inner {
-      padding: 0; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step input[type=text],
-    .orderform-template-holder .row-fluid > div#client-profile-data .step input[type=tel],
-    .orderform-template-holder .row-fluid > div#client-profile-data .step input[type=email], .orderform-template-holder .row-fluid > div#shipping-data .step input[type=text],
-    .orderform-template-holder .row-fluid > div#shipping-data .step input[type=tel],
-    .orderform-template-holder .row-fluid > div#shipping-data .step input[type=email], .orderform-template-holder .row-fluid > div#payment-data .step input[type=text],
-    .orderform-template-holder .row-fluid > div#payment-data .step input[type=tel],
-    .orderform-template-holder .row-fluid > div#payment-data .step input[type=email] {
-      width: 100%; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p {
-      position: relative; }
-      .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p.client-last-name, .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p.client-first-name, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p.client-last-name, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p.client-first-name, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p.client-last-name, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p.client-first-name {
-        width: calc(50% - 5px);
+      width: 85%;
+      padding: 0;
+      background: none; }
+      @media (max-width: 768px) {
+        .orderform-template-holder .row-fluid > div#client-profile-data .step, .orderform-template-holder .row-fluid > div#shipping-data .step, .orderform-template-holder .row-fluid > div#payment-data .step {
+          width: 100%; } }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-toggle > i, .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-toggle > i, .orderform-template-holder .row-fluid > div#payment-data .step .accordion-toggle > i {
+        display: none; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-toggle .link-box-edit, .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-toggle .link-box-edit, .orderform-template-holder .row-fluid > div#payment-data .step .accordion-toggle .link-box-edit {
+        background: none;
+        box-shadow: none;
+        border: none;
+        top: 4px;
+        right: -5px;
+        color: #1a73e8;
+        outline: none; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-toggle,
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-inner, .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-toggle,
+      .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-inner, .orderform-template-holder .row-fluid > div#payment-data .step .accordion-toggle,
+      .orderform-template-holder .row-fluid > div#payment-data .step .accordion-inner {
+        padding: 0; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step input[type=text],
+      .orderform-template-holder .row-fluid > div#client-profile-data .step input[type=tel],
+      .orderform-template-holder .row-fluid > div#client-profile-data .step input[type=email], .orderform-template-holder .row-fluid > div#shipping-data .step input[type=text],
+      .orderform-template-holder .row-fluid > div#shipping-data .step input[type=tel],
+      .orderform-template-holder .row-fluid > div#shipping-data .step input[type=email], .orderform-template-holder .row-fluid > div#payment-data .step input[type=text],
+      .orderform-template-holder .row-fluid > div#payment-data .step input[type=tel],
+      .orderform-template-holder .row-fluid > div#payment-data .step input[type=email] {
+        width: 100%; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p {
         position: relative; }
-      .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p span.help.error, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p span.help.error, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p span.help.error {
-        position: absolute;
-        font-size: 11px; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset.box-client-info-pj, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset.box-client-info-pj, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset.box-client-info-pj {
-      padding-top: 15px; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step #is-corporate-client, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step #is-corporate-client, .orderform-template-holder .row-fluid > div#payment-data .step .form-step #is-corporate-client {
-      color: #1a73e8; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .box-step.box-info,
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step.box-info, .orderform-template-holder .row-fluid > div#shipping-data .step .box-step.box-info,
-    .orderform-template-holder .row-fluid > div#shipping-data .step .form-step.box-info, .orderform-template-holder .row-fluid > div#payment-data .step .box-step.box-info,
-    .orderform-template-holder .row-fluid > div#payment-data .step .form-step.box-info {
-      padding-bottom: 20px;
-      color: #323232; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step .input.text label, .orderform-template-holder .row-fluid > div#shipping-data .step .input.text label, .orderform-template-holder .row-fluid > div#payment-data .step .input.text label {
-      margin: 10px 0 5px 0; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step.client-profile-data .client-notice.notice, .orderform-template-holder .row-fluid > div#shipping-data .step.client-profile-data .client-notice.notice, .orderform-template-holder .row-fluid > div#payment-data .step.client-profile-data .client-notice.notice {
-      margin: 0 0 10px 0; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper,
-    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper,
-    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper,
-    .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle {
-      border-radius: 2px; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange {
-      background: #eef3f7;
-      border-color: #eef3f7;
-      color: #1a73e8; }
-
-.orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card,
-.orderform-template-holder .row-fluid > div#payment-data .payment-group-item {
-  box-sizing: border-box !important;
-  margin: 0 0 10px 0 !important;
-  border: 1px solid !important;
-  border-radius: 2px !important;
-  background: #FFF !important;
-  border: 1px solid #cbcbcb !important;
-  opacity: 1;
-  text-decoration: none;
-  color: #323232; }
-  .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card span:before,
-  .orderform-template-holder .row-fluid > div#payment-data .payment-group-item span:before {
-    content: "";
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    border: 1px solid #1a73e8;
-    border-radius: 100%;
-    vertical-align: middle;
-    margin: -3px 10px 0 0; }
-  .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card.active span:before,
-  .orderform-template-holder .row-fluid > div#payment-data .payment-group-item.active span:before {
-    background: #1a73e8;
-    box-shadow: inset 0 0 0 3px  #FFF; }
-  .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card.active, .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card:hover,
-  .orderform-template-holder .row-fluid > div#payment-data .payment-group-item.active,
-  .orderform-template-holder .row-fluid > div#payment-data .payment-group-item:hover {
-    box-shadow: 0 0 6px #ddd;
-    border: 1px solid #1a73e8 !important; }
-
-.orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card,
-.orderform-template-holder .row-fluid > div#payment-data fieldset.payment-group {
-  width: 100%;
-  left: 0;
-  display: block;
-  background: none;
-  position: relative;
-  margin: 0; }
-
-.orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card a {
-  padding: 10px 10px;
-  display: block; }
-
-.orderform-template-holder .row-fluid > div#payment-data .payment-group-list-btn {
-  width: 100%; }
-
-.orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card *,
-.orderform-template-holder .row-fluid > div#payment-data .payment-group-item * {
-  font-size: 12px !important;
-  font-weight: bold; }
-
-.orderform-template-holder .row-fluid > div#payment-data .gift-card-section.form-step.box-default {
-  padding: 0;
-  margin: 0;
-  width: 100%; }
-  .orderform-template-holder .row-fluid > div#payment-data .gift-card-section.form-step.box-default label {
-    font-weight: bold;
-    color: #000;
-    font-size: 12px; }
-
-.orderform-template-holder .row-fluid > div#payment-data p.payment-discounts-options.text.input.form-inline {
-  display: flex;
-  align-items: center; }
-
-.orderform-template-holder .row-fluid > div#payment-data input#payment-discounts-code {
-  width: 67% !important;
-  margin: 0 10px; }
-
-.orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card {
-  line-height: 30px; }
+        .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p.client-last-name, .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p.client-first-name, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p.client-last-name, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p.client-first-name, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p.client-last-name, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p.client-first-name {
+          width: calc(50% - 5px);
+          position: relative; }
+        .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset p span.help.error, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset p span.help.error, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset p span.help.error {
+          position: absolute;
+          font-size: 11px; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step fieldset.box-client-info-pj, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step fieldset.box-client-info-pj, .orderform-template-holder .row-fluid > div#payment-data .step .form-step fieldset.box-client-info-pj {
+        padding-top: 15px; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step #is-corporate-client, .orderform-template-holder .row-fluid > div#shipping-data .step .form-step #is-corporate-client, .orderform-template-holder .row-fluid > div#payment-data .step .form-step #is-corporate-client {
+        color: #1a73e8; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .box-step.box-info,
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step.box-info, .orderform-template-holder .row-fluid > div#shipping-data .step .box-step.box-info,
+      .orderform-template-holder .row-fluid > div#shipping-data .step .form-step.box-info, .orderform-template-holder .row-fluid > div#payment-data .step .box-step.box-info,
+      .orderform-template-holder .row-fluid > div#payment-data .step .form-step.box-info {
+        padding-bottom: 20px;
+        color: #323232; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step .input.text label, .orderform-template-holder .row-fluid > div#shipping-data .step .input.text label, .orderform-template-holder .row-fluid > div#payment-data .step .input.text label {
+        margin: 10px 0 5px 0; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step.client-profile-data .client-notice.notice, .orderform-template-holder .row-fluid > div#shipping-data .step.client-profile-data .client-notice.notice, .orderform-template-holder .row-fluid > div#payment-data .step.client-profile-data .client-notice.notice {
+        margin: 0 0 10px 0; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper,
+      .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper,
+      .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper,
+      .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle {
+        border-radius: 2px; }
+      .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange {
+        background: #eef3f7;
+        border-color: #eef3f7;
+        color: #1a73e8; }
+  .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card,
+  .orderform-template-holder .row-fluid > div#payment-data .payment-group-item {
+    box-sizing: border-box !important;
+    margin: 0 0 10px 0 !important;
+    border: 1px solid !important;
+    border-radius: 2px !important;
+    background: #FFF !important;
+    border: 1px solid #cbcbcb !important;
+    opacity: 1;
+    text-decoration: none;
+    color: #323232; }
+    .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card span:before,
+    .orderform-template-holder .row-fluid > div#payment-data .payment-group-item span:before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      border: 1px solid #1a73e8;
+      border-radius: 100%;
+      vertical-align: middle;
+      margin: -3px 10px 0 0; }
+    .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card.active span:before,
+    .orderform-template-holder .row-fluid > div#payment-data .payment-group-item.active span:before {
+      background: #1a73e8;
+      box-shadow: inset 0 0 0 3px  #FFF; }
+    .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card.active, .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card:hover,
+    .orderform-template-holder .row-fluid > div#payment-data .payment-group-item.active,
+    .orderform-template-holder .row-fluid > div#payment-data .payment-group-item:hover {
+      box-shadow: 0 0 6px #ddd;
+      border: 1px solid #1a73e8 !important; }
+  .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card,
+  .orderform-template-holder .row-fluid > div#payment-data fieldset.payment-group {
+    width: 100%;
+    left: 0;
+    display: block;
+    background: none;
+    position: relative;
+    margin: 0; }
+  .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card a {
+    padding: 10px 10px;
+    display: block; }
+  .orderform-template-holder .row-fluid > div#payment-data .payment-group-list-btn {
+    width: 100%; }
+  .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card *,
+  .orderform-template-holder .row-fluid > div#payment-data .payment-group-item * {
+    font-size: 12px !important;
+    font-weight: bold; }
+  .orderform-template-holder .row-fluid > div#payment-data .gift-card-section.form-step.box-default {
+    padding: 0;
+    margin: 0;
+    width: 100%; }
+    .orderform-template-holder .row-fluid > div#payment-data .gift-card-section.form-step.box-default label {
+      font-weight: bold;
+      color: #000;
+      font-size: 12px; }
+  .orderform-template-holder .row-fluid > div#payment-data p.payment-discounts-options.text.input.form-inline {
+    display: flex;
+    align-items: center; }
+  .orderform-template-holder .row-fluid > div#payment-data input#payment-discounts-code {
+    width: 67% !important;
+    margin: 0 10px; }
+  .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card {
+    line-height: 30px; }
 
 .orderform-template .cart-template.mini-cart h2 {
   text-align: left;
