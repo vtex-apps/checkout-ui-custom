@@ -15,6 +15,12 @@
   color:$muted-3;
 }
 
+.container.container-main.container-order-form {
+  @media(max-width: 768px) {
+  	width: calc(100% - 40px);
+  	padding-top:30px !important;
+  }
+}
 
 .orderform-template-holder{
 	width: 60%;
@@ -32,7 +38,7 @@
     		padding:0;
     		background: none;
 
-    		@media(max-width:768px) {
+    		@media(max-width:868px) {
 		      width:100%;
 		    }
 
@@ -207,6 +213,11 @@
 			#btn-add-gift-card {
 				@extend .btn-secondary;
 				line-height: 30px;
+			}
+
+			.steps-view {
+			  width: 100% !important;
+			  padding: 0;
 			}
 		}
 	}

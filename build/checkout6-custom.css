@@ -368,6 +368,11 @@ body .main-header {
   padding: 7px 0 !important;
   color: #999999; }
 
+@media (max-width: 768px) {
+  .container.container-main.container-order-form {
+    width: calc(100% - 40px);
+    padding-top: 30px !important; } }
+
 .orderform-template-holder {
   width: 60%; }
   .orderform-template-holder .row-fluid > div#client-profile-data, .orderform-template-holder .row-fluid > div#shipping-data, .orderform-template-holder .row-fluid > div#payment-data {
@@ -378,7 +383,7 @@ body .main-header {
       width: 85%;
       padding: 0;
       background: none; }
-      @media (max-width: 768px) {
+      @media (max-width: 868px) {
         .orderform-template-holder .row-fluid > div#client-profile-data .step, .orderform-template-holder .row-fluid > div#shipping-data .step, .orderform-template-holder .row-fluid > div#payment-data .step {
           width: 100%; } }
       .orderform-template-holder .row-fluid > div#client-profile-data .step .accordion-toggle > i, .orderform-template-holder .row-fluid > div#shipping-data .step .accordion-toggle > i, .orderform-template-holder .row-fluid > div#payment-data .step .accordion-toggle > i {
@@ -498,6 +503,9 @@ body .main-header {
     margin: 0 10px; }
   .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card {
     line-height: 30px; }
+  .orderform-template-holder .row-fluid > div#payment-data .steps-view {
+    width: 100% !important;
+    padding: 0; }
 
 .orderform-template .cart-template.mini-cart h2 {
   text-align: left;
