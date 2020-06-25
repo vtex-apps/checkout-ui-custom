@@ -4,11 +4,7 @@
 }
 
 
-.container-cart.container {
-  width:calc(100% - 40px);
-  max-width:980px;
-  padding-top: 30px !important;
-}
+
 
 
 .table.cart-items {
@@ -20,7 +16,7 @@
   }
 
   tbody td {
-    border-bottom: 1px solid $muted-4;
+    border-bottom: 1px solid $muted-5;
     @media(max-width: 490px) {
       border:none;
     }
@@ -117,7 +113,7 @@
   background: #FFF;
   padding: 20px;
   text-align: left;
-  border: 2px solid $muted-3;
+  border: 2px solid $muted-5;
   box-sizing: border-box;
 
   .summary-coupon {
@@ -202,9 +198,9 @@
   tbody {
     border-top:1px solid $muted-4;
     border-bottom:1px solid $muted-4;
-    tr:first-child td {padding-top:10px !important;}
+    tr:first-child td {padding-top:15px !important;}
     tr:last-child td,
-    tr.srp-summary-result {padding-bottom:10px !important;}
+    tr.srp-summary-result {padding-bottom:15px !important;}
     td {
       display: inline-block;
       text-align: left !important;

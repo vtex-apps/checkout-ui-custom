@@ -4,7 +4,8 @@
 body .main-header {
   padding:30px 0;
   text-align: center;
-  
+  border-bottom: 1px solid $muted-4;
+
   &, > container { 
     display:flex;
     justify-content: center; 

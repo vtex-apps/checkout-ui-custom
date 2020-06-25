@@ -2,23 +2,30 @@
 
 
 
-$base: #f7f7f7;
-$base--inverted: #21364f;
-$action-primary: #1a73e8; //links
+$base: #f7f7f7; // body bg...
+$base--inverted: #21364f; // general
+
+$action-primary: #1a73e8; //links, buttons borders, backgrounds
 $action-secondary: #eef3f7;
+
+
 $emphasis: #000000;
 $disabled: #999999;
-$success: #8bc34a;
+
+$success: #2fba2d; // success button, cta, usually the "checkout", "login", "pay"
 $success--faded: #eafce3;
+
 $danger: #ff4c4c;
 $danger--faded: #ffe6e6;
+
 $warning: #ffb100;
 $warning--faded: #fff6e0;
-$muted-1: #616161; //titles
-$muted-2: #000000;
-$muted-3: #cacbcc; //borders
-$muted-4: #e3e4e6;
-$muted-5: #ddddd;
+
+$muted-1: #323232; //titles & borders
+$muted-2: #676767; //borders
+$muted-3: #999999; //borders
+$muted-4: #cbcbcb; //borders
+$muted-5: #dddddd; //borders
 
 
 $border-radius:2px;
@@ -27,11 +34,7 @@ $border-radius:2px;
 // CHECKOUT VARS
 
 
-//buttons
-
-
 //font
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 $font-family: 'Roboto', sans-serif;

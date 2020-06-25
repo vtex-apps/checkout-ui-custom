@@ -1,4 +1,5 @@
-@import '_configs/style.scss';
+@import '_configs/_font.scss';
+@import '_configs/_style.scss';
 @import '_scss/_input.scss'; 
 @import '_scss/_buttons.scss';
 
@@ -7,9 +8,9 @@
 @import '_scss/_global.scss'; 
 @import '_scss/_header.scss'; 
 
-@import '_scss/_steps.scss'; 
 @import '_scss/_cart.scss'; 
 @import '_scss/_pre-email.scss'; 
+@import '_scss/_payment.scss'; 
   
 
  

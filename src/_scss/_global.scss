@@ -19,6 +19,14 @@ body {
 }
 
 
+// containers
+
+.container.container-main.container-order-form,
+.container-cart.container {
+  width:calc(100% - 40px);
+  max-width:980px;
+  padding-top: 30px !important;
+}
 
 //titles
 
@@ -28,7 +36,6 @@ h1#orderform-title {
 	font-size: 22px !important;
   font-weight: 400 !important;
   color: $muted-1 !important;
-  margin:0;
 }
 
 @media(max-width: 490px) {

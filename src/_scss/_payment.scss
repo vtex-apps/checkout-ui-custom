@@ -1,0 +1,354 @@
+// _steps.scss
+
+
+
+
+// -- vertical checkout
+
+%steps-title {
+	font-size: 14px;
+  text-transform: uppercase;
+  border-bottom: 1px solid $muted-5;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding:7px 0 !important;
+  color:$muted-3;
+}
+
+
+.orderform-template-holder{
+
+	.row-fluid > div {
+		&#client-profile-data,
+		&#shipping-data,
+		&#payment-data {
+    	width:100% !important;
+    	margin-left: 0;
+
+    	.step {
+
+    		border:none;
+    		width: 62%;
+    		padding:0;
+    		background: none;
+
+    		@media(max-width:768px) {
+		      width:100%;
+		    }
+
+		    .accordion-toggle {
+		    	@extend %steps-title;
+		    	> i {display: none;}
+
+		    	.link-box-edit {
+				    background: none;
+				    box-shadow: none;
+				    border: none;
+				    top: 4px;
+				    right: -5px;
+				    color: $action-primary;
+				    outline: none;
+					}
+		    }
+
+
+		    .accordion-toggle,
+		    .accordion-inner {
+		    	padding: 0;
+		    }
+
+		    input[type=text],
+		    input[type=tel],
+		    input[type=email]  {
+		    	@extend %input-style;
+		    	width: 100%;
+		    }
+
+		    .form-step {
+		    	fieldset {
+		    		p { 
+			    		position:relative;
+
+			    		&.client-last-name,
+							&.client-first-name {
+							    width: calc(50% - 5px);
+							    position: relative;
+							}
+			    		span.help.error {
+						    position:absolute;
+						    font-size:11px;
+							}
+
+			    	}
+
+			    	&.box-client-info-pj {padding-top:15px;}
+		    	}
+
+		    	
+					#is-corporate-client {color:$action-primary;}
+
+		    }
+
+		    .box-step,
+		    .form-step {
+		    	&.box-info {padding-bottom: 20px;color:$muted-1;} 
+		    }
+
+		    .input.text {
+		    	label {margin:10px 0 5px 0;}
+		    }
+
+		    &.client-profile-data {
+		    	.client-notice.notice {margin: 0 0 10px 0;}
+		    }
+
+		    &.shipping-data {
+		    	.vtex-omnishipping-1-x-deliveryChannelsWrapper,
+		    	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $border-radius;}
+		    	.vtex-omnishipping-1-x-summaryChange {
+				    background:$action-secondary;
+				    border-color:$action-secondary;
+				    color:$action-primary;
+					}
+		    }
+
+    	}
+		}
+
+		&#payment-data {
+			p.link.link-gift-card,
+			.payment-group-item {
+			  box-sizing: border-box !important;
+			  margin: 0 0 10px 0 !important;
+			  border: 1px solid !important;
+			  border-radius: 2px !important;
+			  background:#FFF !important;
+			  border:1px solid $muted-4 !important;
+			  opacity: 1;
+			  text-decoration: none;
+			  color: $muted-1;
+
+			  span:before {
+				  content:"";
+				  width:20px;
+				  height:20px;
+				  display:inline-block;
+				  border:1px solid $action-primary;
+				  border-radius:100%;
+				  vertical-align: middle;
+				  margin: -3px 10px 0 0;
+				}
+
+				&.active {
+					span {
+						
+						&:before {
+						  background: $action-primary;
+						  box-shadow:inset 0 0 0 3px  #FFF;
+						}
+					}
+				}
+
+				&.active,
+				&:hover {
+					box-shadow:0 0 6px #ddd;
+					border:1px solid $action-primary !important;
+				}
+			}
+
+			p.link.link-gift-card,
+			fieldset.payment-group {
+			  width: 100%;
+			  left: 0;
+			  display:block;
+			  background: none;
+			  position: relative;
+			  margin:0;
+			}
+
+			p.link.link-gift-card {
+			  a{
+			  	padding: 10px 10px;
+			  	display: block;
+			  }
+			}
+
+			.payment-group-list-btn {
+			  width: 100%;
+			}
+
+			p.link.link-gift-card *,
+			.payment-group-item * {
+				font-size:12px !important;
+				font-weight:bold;
+			}
+
+			.gift-card-section.form-step.box-default {
+				padding: 0;
+				margin: 0;
+  			width: 100%;
+				label {
+				  font-weight:bold;
+				  color:#000;
+				  font-size:12px;
+				}
+			}
+
+			p.payment-discounts-options.text.input.form-inline {
+			  display:flex;
+			  align-items: center;
+			}
+
+			input#payment-discounts-code {
+			  width:67% !important;
+			  margin:0 10px;
+			}
+
+			#btn-add-gift-card {
+				@extend .btn-secondary;
+				line-height: 30px;
+			}
+		}
+	}
+
+
+}
+
+.orderform-template {
+	.cart-template.mini-cart {
+		h2 {
+			@extend %steps-title;
+			text-align: left;
+			border-top:none;
+		}
+
+
+		.quantity {
+			width: 10px;
+	    height: 10px;
+	    display: inline-block;
+	    background:$action-secondary;
+	    color:$action-primary;
+		}
+
+		.summary-template-holder {
+			width:100%;
+			background: none;
+			border: none;
+			padding: 0;
+
+			.accordion-inner {margin-top: 10px;}
+		}
+
+		.item {
+	    padding: 10px 0;
+	    margin: 0;
+	    border: none;
+	    border-bottom: 1px solid $muted-5;
+	    &:last-child {border:none;}
+		}
+
+		.summary-totalizers {
+	    margin-bottom: 0;
+		}
+
+		#go-to-cart-button {
+	    position: absolute;
+	    top: 3px;
+	    right: 0;
+	    color:$action-primary;
+		}
+
+		.summary-totalizers {
+			 tbody {
+		    border-top:1px solid $muted-4;
+		    border-bottom:1px solid $muted-4;
+		    tr:first-child td {padding-top:15px !important;}
+		    tr:last-child td,
+		    tr.srp-summary-result {padding-bottom:15px !important;}
+		    td {
+		      display: inline-block;
+		      text-align: left !important;
+		      width: auto;
+		      color:#666;
+		      font-size:13px;
+		      padding: 0 0 3px 0 !important;
+		      &.monetary {
+		        text-align: right !important;
+		        margin-left: auto;
+		        float: right;
+		      }
+		    }
+		  }
+		  tfoot {
+		    tr td {
+		      padding:14px 0 !important;
+		      color:#000;
+		      font-size:14px;
+		      font-weight:bold;
+		      &.monetary {
+		        text-align: right !important;
+		        margin-left: auto;
+		        float: right;
+		      }
+		    }
+		  }
+		}
+
+	}
+
+}
+
+//iframe
+
+#app-container {
+	input[type=text],
+	input[type=tel],
+	input[type=email],
+	select {
+		@extend %input-style;
+		width: 100%;
+	}
+
+	.CardForm {
+		> div {position: relative;clear: both;}
+		span.error {
+			margin:0 !important;
+		}
+	}
+	.FormFieldLabel {
+		line-height: 30px;
+	}
+
+	.PaymentCardFlags {
+	  position: absolute;
+	  top: 38px;
+	  right: 3px;
+	  .card-flag-label input {
+	    display:none;
+		}
+		.card-flag-label {width:auto;}
+		span.card-flag {display:none;}
+		input:checked + span.card-flag {display:block;}
+	}
+
+	input#creditCardpayment-card-0Code {
+	  width: 100px !important;
+	}
+
+	.PaymentCardValue {
+		.add-on {
+			height: 30px;
+  		line-height: 30px;
+		}
+	}
+
+
+	label.FormFieldLabel {
+	  display: block;
+	  clear: both;
+	  width: auto;
+  	margin-right: 10px;
+	}
+
+}
