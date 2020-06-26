@@ -2,6 +2,11 @@ class checkoutCustom {
   constructor() {
     this.type = "vertical"; // vertical or horizontal
   }
+
+
+  general() {
+  	$(".cart-template.mini-cart .cart-fixed > *").wrapAll('<div class="custom-cart-template-wrap">')
+  }
   
   builder() {
   	let _this = this;
@@ -26,6 +31,7 @@ class checkoutCustom {
 
   init() {
   	let _this = this;
+  	_this.general();
   	_this.builder();
   }
 }

@@ -10,6 +10,7 @@ A combination of conditions and variables will adapt your checkout according you
 `npm run dev` to watch and build the sass file
 `npm run build` to build the sass file and copy the js
 
+
 ### Expected HTML in the header
 
 ```
@@ -26,3 +27,13 @@ A combination of conditions and variables will adapt your checkout according you
 
 ```
 
+### Expected HTML in the Footer
+
+```
+<footer class="main-footer">
+  <div class="container">
+	  VTEX © 2020
+  </div>
+</footer>
+
+```

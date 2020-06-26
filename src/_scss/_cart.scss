@@ -9,16 +9,98 @@
 
 .table.cart-items {
 
+  display: block;
+
+  tr {
+    &.item-attachments-head {
+      border:none !important;
+      justify-content: center;
+      .help-arrow {display: none;}
+    }
+    &.item-attachments-content {
+      input,
+      select {
+        @extend %input-style;
+      }
+    }
+  }
+
   thead,
-  td.shipping-date,
-  td.product-price {
+  td.shipping-date {
       display:none;
   }
 
-  tbody td {
-    border-bottom: 1px solid $muted-5;
-    @media(max-width: 490px) {
-      border:none;
+  tbody {
+    display:flex;
+    flex-wrap:wrap;
+    width: 100%;
+    tr {
+      width:100%;
+      display: flex;
+      align-items: center;
+      border-bottom:1px solid  $muted-5;
+      @media(max-width: 490px) {
+        border:none;
+      }
+
+      > td {
+        width: auto;
+        border:none;
+
+        &.product-name {
+
+          .clone-item.btn,
+          .add-item-attachment-container {
+            margin:10px 0;
+            + p {display: none;}
+          }
+
+          .clone-item.btn,
+          .add-item-attachment-container a{
+            @extend .btn-secondary;
+          }
+          
+          @media(min-width: 768px) {
+            width: calc(100% - 355px) !important;
+          }
+        }
+
+        &.product-price,
+        &.quantity-price {
+          width: 70px !important;
+          white-space: nowrap;
+
+          .new-product-price-label,
+          .old-product-price-label {
+            display: none;
+          }
+          .best-price {font-weight: bold;}
+        }
+
+        &.item-remove {
+          margin-left: auto;
+        }
+
+        p.clone-item-container,
+        hr.clone-item-sep {
+          display: none;
+        }
+
+        &.product-image {order:1;}
+        &.product-name {order:2;}
+        &.shipping-date {order:3;}
+        &.quantity {order:4;}
+        &.product-price,
+        &.quantity-price {order:5;}
+        &.item-remove {order:10;}
+
+        @if $showCartQuantityPrice {
+          &.product-price {display: none !important;}
+        } @else {
+          &.quantity-price {display: none !important;}
+        }
+        
+      }
     }
   }
 
@@ -115,6 +197,7 @@
   text-align: left;
   border: 2px solid $muted-5;
   box-sizing: border-box;
+  border-radius:$border-radius;
 
   .summary-coupon {
     text-align: center;
@@ -193,19 +276,24 @@
     display: flex !important;
     justify-content: space-between;
     border:none !important;
+
+    &.CustomTax:not(.CustomTax--total) {
+      display:none !important;
+    }
   }
+
 
   tbody {
     border-top:1px solid $muted-4;
     border-bottom:1px solid $muted-4;
-    tr:first-child td {padding-top:15px !important;}
-    tr:last-child td,
-    tr.srp-summary-result {padding-bottom:15px !important;}
+    padding:15px 0;
+    display: block;
+
     td {
       display: inline-block;
       text-align: left !important;
       width: auto;
-      color:#666;
+      color:$muted-2;
       font-size:13px;
       padding: 0 0 3px 0 !important;
       &.monetary {
@@ -218,13 +306,15 @@
   tfoot {
     tr td {
       padding:14px 0 !important;
-      color:#000;
+      color:$muted-1;
       font-size:14px;
       font-weight:bold;
       &.monetary {
         text-align: right !important;
         margin-left: auto;
         float: right;
+        color:$action-primary;
+
       }
     }
   }
@@ -246,8 +336,22 @@
       }
     }
 
+    .srp-delivery-info {
+      label {
+        background:#FFF;
+        border-radius:$border-radius;
+      }
+    }
+
     input[type=text] {
       @extend %input-style;
+    }
+  }
+
+  .vtex-shipping-preview-0-x-alert {
+    .shp-alert-content.vtex-shipping-preview-0-x-content {
+      display: flex;
+      align-items:center;
     }
   }
 
@@ -272,15 +376,15 @@
 .body-cart-vertical {
 
   .cart-template-holder {
-    width:63%;
-    @media(max-width:590px) {
+    width:65%;
+    @media(max-width:768px) {
       width:100%;
     }
   }
 
   .summary-template-holder {
     width: 26%;
-    @media(max-width:590px) {
+    @media(max-width:768px) {
       width:100%;
     }
   }
