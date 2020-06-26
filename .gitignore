@@ -4,4 +4,4 @@
 # App specific
 node_modules/
 npm-debug.log
-.build/
+build/

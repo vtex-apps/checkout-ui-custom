@@ -1,13 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 .table.cart-items tr.item-attachments-content input,
 .table.cart-items tr.item-attachments-content select, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input[type=text],
-.summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit], .cart-more-options .srp-container input[type=text], .orderform-template-holder .row-fluid > div#client-profile-data input[type=text],
-.orderform-template-holder .row-fluid > div#client-profile-data input[type=tel],
-.orderform-template-holder .row-fluid > div#client-profile-data input[type=email], .orderform-template-holder .row-fluid > div#shipping-data input[type=text],
-.orderform-template-holder .row-fluid > div#shipping-data input[type=tel],
-.orderform-template-holder .row-fluid > div#shipping-data input[type=email], .orderform-template-holder .row-fluid > div#payment-data input[type=text],
-.orderform-template-holder .row-fluid > div#payment-data input[type=tel],
-.orderform-template-holder .row-fluid > div#payment-data input[type=email], #app-container input[type=text],
+.summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span, .cart-more-options .srp-container select,
+.cart-more-options .srp-container input[type=text]:not(.pac-target-input), .orderform-template-holder .row-fluid > div#client-profile-data input[type=text]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#client-profile-data input[type=tel]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#client-profile-data input[type=email]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#client-profile-data select:not(.pac-target-input), .orderform-template-holder .row-fluid > div#shipping-data input[type=text]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#shipping-data input[type=tel]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#shipping-data input[type=email]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#shipping-data select:not(.pac-target-input), .orderform-template-holder .row-fluid > div#payment-data input[type=text]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#payment-data input[type=tel]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#payment-data input[type=email]:not(.pac-target-input),
+.orderform-template-holder .row-fluid > div#payment-data select:not(.pac-target-input), #app-container input[type=text],
 #app-container input[type=tel],
 #app-container input[type=email],
 #app-container select {
@@ -39,21 +43,21 @@
   .btn-primary {
     background: #1a73e8;
     border: 1px solid #1a73e8;
-    color: #eef3f7; }
+    color: #f9f9f9; }
     .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
       background: #1567d3;
       border: 1px solid #1567d3; }
   .btn-secondary, .table.cart-items tbody tr > td.product-name .clone-item.btn,
-  .table.cart-items tbody tr > td.product-name .add-item-attachment-container a, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card {
-    background: #eef3f7;
-    border: 1px solid #eef3f7;
+  .table.cart-items tbody tr > td.product-name .add-item-attachment-container a, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card {
+    background: #f9f9f9;
+    border: 1px solid #f9f9f9;
     color: #1a73e8; }
     .btn-secondary:hover, .table.cart-items tbody tr > td.product-name .clone-item.btn:hover,
-    .table.cart-items tbody tr > td.product-name .add-item-attachment-container a:hover, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card:hover, .btn-secondary:focus, .table.cart-items tbody tr > td.product-name .clone-item.btn:focus,
-    .table.cart-items tbody tr > td.product-name .add-item-attachment-container a:focus, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr > td.product-name .clone-item.btn:active,
-    .table.cart-items tbody tr > td.product-name .add-item-attachment-container a:active, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card:active {
-      background: #dde7ef;
-      border: 1px solid #dde7ef; }
+    .table.cart-items tbody tr > td.product-name .add-item-attachment-container a:hover, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:hover, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card:hover, .btn-secondary:focus, .table.cart-items tbody tr > td.product-name .clone-item.btn:focus,
+    .table.cart-items tbody tr > td.product-name .add-item-attachment-container a:focus, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:focus, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr > td.product-name .clone-item.btn:active,
+    .table.cart-items tbody tr > td.product-name .add-item-attachment-container a:active, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:active, .orderform-template-holder .row-fluid > div#payment-data #btn-add-gift-card:active {
+      background: #ececec;
+      border: 1px solid #ececec; }
   .btn-outlined,
   .summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit] {
     background: transparent;
@@ -62,6 +66,41 @@
     .btn-outlined:hover, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:hover[type=submit], .btn-outlined:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .btn-outlined:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:active[type=submit] {
       background: transparent;
       border: 1px solid #35ce33; }
+
+.orderform-template-holder .row-fluid > div#client-profile-data .accordion-toggle, .orderform-template-holder .row-fluid > div#shipping-data .accordion-toggle, .orderform-template-holder .row-fluid > div#payment-data .accordion-toggle, .orderform-template .cart-template.mini-cart h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #dddddd;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 7px 0 !important;
+  color: #999999;
+  color: #323232;
+  border: none;
+  font-size: 20px;
+  text-transform: initial; }
+
+.client-profile-data .accordion-toggle > span:before,
+.shipping-data .accordion-toggle:before,
+.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
+  background: #1a73e8;
+  color: #FFF;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  margin-right: 10px;
+  border-radius: 100%;
+  display: inline-block; }
+
+.client-profile-data .accordion-toggle > span:before {
+  content: "1"; }
+
+.shipping-data .accordion-toggle:before {
+  content: "2"; }
+
+.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
+  content: "3"; }
 
 body {
   font-family: "Roboto", sans-serif;
@@ -283,15 +322,27 @@ body .main-header {
     margin: 0 auto !important; }
     .summary-template-holder .summary-coupon fieldset.coupon-fieldset > div {
       display: block !important; }
+    .summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit] {
+      width: 50px; }
     .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data {
       display: none !important; }
     .summary-template-holder .summary-coupon p.coupon-fields span {
       display: flex;
       width: 100%;
       position: relative; }
+      .summary-template-holder .summary-coupon p.coupon-fields span.info {
+        align-items: center; }
+        .summary-template-holder .summary-coupon p.coupon-fields span.info > span {
+          background: #dddddd;
+          text-align: left;
+          margin-right: 10px; }
       .summary-template-holder .summary-coupon p.coupon-fields span input {
         width: 100%;
         margin-right: 10px; }
+    .summary-template-holder .summary-coupon p.coupon-fields .delete {
+      width: 50px; }
+      .summary-template-holder .summary-coupon p.coupon-fields .delete #cart-coupon-remove {
+        color: #ff4c4c; }
     .summary-template-holder .summary-coupon i.icon-spin.loading-coupon {
       border: 1px solid #666;
       border-top: none;
@@ -355,24 +406,39 @@ body .main-header {
 .cart-more-options {
   width: 100% !important;
   margin: 20px 0 50px 0 !important; }
+  .cart-more-options .vtex-shipping-preview-0-x-alert .shp-alert-content.vtex-shipping-preview-0-x-content {
+    display: flex;
+    align-items: center; }
   .cart-more-options .srp-container {
     max-width: 100% !important; }
     .cart-more-options .srp-container .srp-toggle__wrapper label {
       background: #FFF;
-      padding: 10px 0; }
+      padding: 10px 0;
+      border-radius: 4px; }
     .cart-more-options .srp-container .srp-delivery-info label {
       background: #FFF;
       border-radius: 4px; }
-  .cart-more-options .vtex-shipping-preview-0-x-alert .shp-alert-content.vtex-shipping-preview-0-x-content {
-    display: flex;
-    align-items: center; }
-  .cart-more-options .onda-v1 .blue {
-    color: #1a73e8; }
-  .cart-more-options .onda-v1 .b--blue {
-    border-color: #1a73e8; }
-  .cart-more-options .onda-v1 .bg-blue {
-    background: #1a73e8;
-    outline: initial; }
+    .cart-more-options .srp-container select,
+    .cart-more-options .srp-container input[type=text]:not(.pac-target-input) {
+      outline: initial; }
+    .cart-more-options .srp-container form.srp-postal-code__form.dib.relative {
+      width: 100%; }
+    .cart-more-options .srp-container button.shp-open-options {
+      border-color: #e0e0e0; }
+    .cart-more-options .srp-container .onda-v1 .blue {
+      color: #1a73e8;
+      outline: none; }
+    .cart-more-options .srp-container .onda-v1 .b--blue {
+      border-color: #1a73e8;
+      outline: none; }
+    .cart-more-options .srp-container .onda-v1 .bg-blue {
+      background: #1a73e8;
+      outline: initial; }
+    .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .ship-country {
+      width: 98%; }
+    .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn {
+      height: 40px;
+      outline: initial; }
 
 .body-cart-vertical .cart-template-holder {
   width: 65%; }
@@ -425,15 +491,6 @@ body .main-header {
   .client-pre-email .emailInfo {
     margin-top: 20px; }
 
-.orderform-template-holder .row-fluid > div#client-profile-data .accordion-toggle, .orderform-template-holder .row-fluid > div#shipping-data .accordion-toggle, .orderform-template-holder .row-fluid > div#payment-data .accordion-toggle, .orderform-template .cart-template.mini-cart h2 {
-  font-size: 14px;
-  text-transform: uppercase;
-  border-bottom: 1px solid #dddddd;
-  font-weight: bold;
-  margin-bottom: 15px;
-  padding: 7px 0 !important;
-  color: #999999; }
-
 @media (max-width: 768px) {
   .container.container-main.container-order-form {
     width: calc(100% - 40px);
@@ -467,15 +524,19 @@ body .main-header {
   .orderform-template-holder .row-fluid > div#shipping-data .accordion-inner, .orderform-template-holder .row-fluid > div#payment-data .accordion-toggle,
   .orderform-template-holder .row-fluid > div#payment-data .accordion-inner {
     padding: 0; }
-  .orderform-template-holder .row-fluid > div#client-profile-data input[type=text],
-  .orderform-template-holder .row-fluid > div#client-profile-data input[type=tel],
-  .orderform-template-holder .row-fluid > div#client-profile-data input[type=email], .orderform-template-holder .row-fluid > div#shipping-data input[type=text],
-  .orderform-template-holder .row-fluid > div#shipping-data input[type=tel],
-  .orderform-template-holder .row-fluid > div#shipping-data input[type=email], .orderform-template-holder .row-fluid > div#payment-data input[type=text],
-  .orderform-template-holder .row-fluid > div#payment-data input[type=tel],
-  .orderform-template-holder .row-fluid > div#payment-data input[type=email] {
+  .orderform-template-holder .row-fluid > div#client-profile-data input[type=text]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#client-profile-data input[type=tel]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#client-profile-data input[type=email]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#client-profile-data select:not(.pac-target-input), .orderform-template-holder .row-fluid > div#shipping-data input[type=text]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#shipping-data input[type=tel]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#shipping-data input[type=email]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#shipping-data select:not(.pac-target-input), .orderform-template-holder .row-fluid > div#payment-data input[type=text]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#payment-data input[type=tel]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#payment-data input[type=email]:not(.pac-target-input),
+  .orderform-template-holder .row-fluid > div#payment-data select:not(.pac-target-input) {
     width: 100%;
-    max-width: 100%; }
+    max-width: 100%;
+    outline: initial; }
   .orderform-template-holder .row-fluid > div#client-profile-data .step, .orderform-template-holder .row-fluid > div#shipping-data .step, .orderform-template-holder .row-fluid > div#payment-data .step {
     border: none;
     padding: 0;
@@ -499,12 +560,26 @@ body .main-header {
     .orderform-template-holder .row-fluid > div#client-profile-data .step .form-step.box-info, .orderform-template-holder .row-fluid > div#shipping-data .step .box-step.box-info,
     .orderform-template-holder .row-fluid > div#shipping-data .step .form-step.box-info, .orderform-template-holder .row-fluid > div#payment-data .step .box-step.box-info,
     .orderform-template-holder .row-fluid > div#payment-data .step .form-step.box-info {
-      padding-bottom: 20px;
       color: #323232; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step .input.text label, .orderform-template-holder .row-fluid > div#shipping-data .step .input.text label, .orderform-template-holder .row-fluid > div#payment-data .step .input.text label {
       margin: 10px 0 5px 0; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step.client-profile-data .client-notice.notice, .orderform-template-holder .row-fluid > div#shipping-data .step.client-profile-data .client-notice.notice, .orderform-template-holder .row-fluid > div#payment-data .step.client-profile-data .client-notice.notice {
       margin: 0 0 10px 0; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-content, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-content, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-content {
+      align-items: center; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption {
+      background: #FFF; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive, .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
+    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+    .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
+    .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
+      background: #1a73e8;
+      border-color: #1a73e8; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .shipping-method-toggle, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .shipping-method-toggle, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .shipping-method-toggle {
+      border-color: #1a73e8; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-alert, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-alert, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-alert {
       border-color: #ffb100;
       display: flex;
@@ -515,7 +590,7 @@ body .main-header {
     .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle {
       border-radius: 4px; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-summaryChange {
-      background: #eef3f7;
+      background: #f9f9f9;
       border-color: #dddddd;
       color: #1a73e8; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-option:hover,
@@ -526,6 +601,15 @@ body .main-header {
     .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-leanShippingOptionActive,
     .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-leanShippingOption {
       background: #FFF !important; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-modalDetailsBackLnk svg path,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-modalDetailsBackLnk, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-modalDetailsBackLnk svg path,
+    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-modalDetailsBackLnk, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-modalDetailsBackLnk svg path,
+    .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-modalDetailsBackLnk {
+      color: #676767;
+      fill: #676767; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-primary, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-primary, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-primary {
+      outline: none;
+      background: #1a73e8; }
 
 .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card,
 .orderform-template-holder .row-fluid > div#payment-data .payment-group-item {
@@ -632,7 +716,7 @@ body .main-header {
       width: 10px;
       height: 10px;
       display: inline-block;
-      background: #eef3f7;
+      background: #f9f9f9;
       color: #1a73e8; }
     .orderform-template .cart-template.mini-cart .summary-template-holder {
       width: 100%;
@@ -682,6 +766,8 @@ body .main-header {
           text-align: right !important;
           margin-left: auto;
           float: right; }
+      .orderform-template .cart-template.mini-cart .summary-totalizers tbody + tbody {
+        border-top: none; }
     .orderform-template .cart-template.mini-cart .summary-totalizers tfoot tr td {
       padding: 14px 0 !important;
       color: #000;
@@ -703,8 +789,24 @@ body .main-header {
     border: 2px solid #dddddd;
     box-sizing: border-box;
     border-radius: 4px; }
+    .orderform-template .custom-cart-template-wrap .payment-confirmation-wrap {
+      border: none !important; }
     .orderform-template .custom-cart-template-wrap .summary-note {
       display: none !important; }
+
+.orderform-template-holder .row-fluid .accordion-toggle .link-box-edit {
+  top: 0px !important;
+  position: relative; }
+
+.box-step {
+  background: #FFF;
+  border-radius: 4px;
+  padding: 15px;
+  border: 1px solid #dddddd; }
+
+.App.iframe-credit-card-payment-group {
+  background: #f3f5f7;
+  background: #FFF; }
 
 #app-container input[type=text],
 #app-container input[type=tel],

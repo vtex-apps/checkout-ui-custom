@@ -37,3 +37,19 @@ A combination of conditions and variables will adapt your checkout according you
 </footer>
 
 ```
+
+
+
+### Variables
+
+
+`// CHECKOUT VARS`
+
+Show all variables to customize the checkout according your own preferences
+
+```
+$inputHeight:40px;
+$showCartQuantityPrice:false; // if shows the total price per product ot just the single price
+$countingSteps:true; // if shows the number of each step "1,2,3..."
+```
+

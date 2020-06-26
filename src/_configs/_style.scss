@@ -6,7 +6,7 @@ $base: #f3f5f7; // body bg...
 $base--inverted: #21364f; // general
 
 $action-primary: #1a73e8; //links, buttons borders, backgrounds
-$action-secondary: #eef3f7;
+$action-secondary: #f9f9f9;
 
 
 $emphasis: #000000;
@@ -33,9 +33,9 @@ $border-radius:4px;
 
 // CHECKOUT VARS
 
-
+$inputHeight:40px;
 $showCartQuantityPrice:false;
-
+$countingSteps:true;
 
 //font
 

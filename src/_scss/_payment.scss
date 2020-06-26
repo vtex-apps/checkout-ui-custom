@@ -1,16 +1,8 @@
 
 
+
 // -- vertical checkout
 
-%steps-title {
-	font-size: 14px;
-  text-transform: uppercase;
-  border-bottom: 1px solid $muted-5;
-  font-weight: bold;
-  margin-bottom: 15px;
-  padding:7px 0 !important;
-  color:$muted-3;
-}
 
 .container.container-main.container-order-form {
   @media(max-width: 768px) {
@@ -61,10 +53,14 @@
 
 	    input[type=text],
 	    input[type=tel],
-	    input[type=email]  {
-	    	@extend %input-style;
-	    	width: 100%;
-	    	max-width: 100%;
+	    input[type=email],
+	    select  {
+	    	&:not(.pac-target-input) {
+		    	@extend %input-style;
+		    	width: 100%;
+		    	max-width: 100%;
+		    	outline: initial;
+	    	}
 	    }
 
     	.step {
@@ -106,7 +102,7 @@
 
 		    .box-step,
 		    .form-step {
-		    	&.box-info {padding-bottom: 20px;color:$muted-1;} 
+		    	&.box-info {color:$muted-1;} 
 		    }
 
 		    .input.text {
@@ -118,12 +114,29 @@
 		    }
 
 		    &.shipping-data {
+		    	.vtex-omnishipping-1-x-content {align-items: center;}
+		    	.vtex-omnishipping-1-x-deliveryChannelsOption {
+					    background:#FFF;
+					}
+					.vtex-pickup-points-modal-3-x-pickupViewOptionActive, .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+					.vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
+					.vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
+					    background:$action-primary;
+					    border-color:$action-primary;
+					}
+
+					.shipping-method-toggle {
+					    border-color:$action-primary;
+					}
+
 
 		    	.vtex-omnishipping-1-x-alert {
 		    		border-color:$warning;
 		    		display: flex;
       			align-items:center;
 		    	}
+
+
 		    	.vtex-omnishipping-1-x-deliveryChannelsWrapper,
 		    	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $border-radius;}
 		    	.vtex-omnishipping-1-x-summaryChange {
@@ -136,6 +149,17 @@
 					.vtex-omnishipping-1-x-leanShippingOptionActive,
 					.vtex-omnishipping-1-x-leanShippingOption {
 						background:#FFF !important;
+					}
+
+					.vtex-pickup-points-modal-3-x-modalDetailsBackLnk svg path,
+					.vtex-pickup-points-modal-3-x-modalDetailsBackLnk {
+					    color: $muted-2;
+					    fill:$muted-2;
+					}
+
+					.vtex-pickup-points-modal-3-x-primary {
+					  outline:none;
+					  background:$action-primary;
 					}
 		    }
 
@@ -356,6 +380,10 @@
 		        float: right;
 		      }
 		    }
+
+		    & + tbody {
+			    border-top: none;
+				}
 		  }
 		  tfoot {
 		    tr td {
@@ -389,13 +417,40 @@
 	  box-sizing: border-box;
 	  border-radius:$border-radius;
 
+	  .payment-confirmation-wrap {border:none !important;}
+
 	  .summary-note {display: none !important;}
 	}
 
 }
 
+// counting steps
+
+	.orderform-template-holder .row-fluid .accordion-toggle .link-box-edit {
+	  @if $countingSteps {
+	    top: 0px !important;
+	    position: relative;
+	  }
+	}
+	.box-step {
+		@if $countingSteps {
+			background:#FFF;
+			border-radius:$border-radius;
+			padding:15px;
+			border:1px solid $muted-5;
+		}
+	}
+
+
 
 //iframe
+
+.App.iframe-credit-card-payment-group {
+    background: $base;
+    @if $countingSteps {
+    	background:#FFF;
+    }
+}
 
 #app-container {
 	input[type=text],

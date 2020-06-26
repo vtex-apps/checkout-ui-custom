@@ -2,8 +2,8 @@
 //input
 
 %input-style {
-	height: 40px !important;
-	line-height:40px !important;
+	height: $inputHeight !important;
+	line-height:$inputHeight !important;
 	max-height:initial;
 	display:inline-block;
 	padding:0px 10px !important;

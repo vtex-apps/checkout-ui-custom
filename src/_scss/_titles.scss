@@ -1,0 +1,40 @@
+
+//titles in third step checkout
+
+%steps-title {
+	font-size: 14px;
+  text-transform: uppercase;
+  border-bottom: 1px solid $muted-5;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding:7px 0 !important;
+  color:$muted-3;
+
+  @if $countingSteps {
+  	color: $muted-1;
+	  border: none;
+	  font-size: 20px;
+	  text-transform: initial;
+  }
+  
+}
+
+@if $countingSteps {
+	.client-profile-data .accordion-toggle > span:before,
+	.shipping-data .accordion-toggle:before,
+	.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
+		background: $action-primary;
+		color:#FFF;
+		width:26px;
+		height: 26px;
+		text-align: center;
+		line-height: 26px;
+		margin-right:10px;
+		border-radius: 100%;
+		display: inline-block;
+	}
+
+  .client-profile-data .accordion-toggle > span:before { content: "1" }
+  .shipping-data .accordion-toggle:before { content: "2" }
+  .payment-data .accordion-toggle > span:not(.payment-edit-link):before { content: "3" }
+}

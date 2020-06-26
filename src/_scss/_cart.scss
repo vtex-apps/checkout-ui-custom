@@ -213,6 +213,7 @@
       }
       button[type=submit] {
         @extend .btn-outlined;
+        width: 50px;
       }
 
       .coupon-data {display: none !important;}
@@ -223,9 +224,24 @@
         display:flex;
         width:100%;
         position:relative;
+        &.info {
+          align-items: center;
+          >span {
+            @extend %input-style;
+            background:$muted-5;
+            text-align: left;
+            margin-right: 10px;
+          }
+        }
         input {
           width:100%;
           margin-right:10px;
+        }
+      }
+      .delete {
+        width: 50px;
+        #cart-coupon-remove {
+          color:$danger;
         }
       }
     }
@@ -326,13 +342,23 @@
     width:100% !important;
     margin:20px 0 50px 0 !important;
 
+
+  .vtex-shipping-preview-0-x-alert {
+    .shp-alert-content.vtex-shipping-preview-0-x-content {
+      display: flex;
+      align-items:center;
+    }
+  }
+
   .srp-container {
+
     max-width:100% !important;
 
     .srp-toggle__wrapper {
       label {
         background:#FFF;
         padding:10px 0;
+        border-radius:$border-radius;
       }
     }
 
@@ -342,29 +368,38 @@
         border-radius:$border-radius;
       }
     }
-
-    input[type=text] {
+    select,
+    input[type=text]:not(.pac-target-input) {
       @extend %input-style;
+      outline: initial;
     }
-  }
 
-  .vtex-shipping-preview-0-x-alert {
-    .shp-alert-content.vtex-shipping-preview-0-x-content {
-      display: flex;
-      align-items:center;
+    form.srp-postal-code__form.dib.relative {
+      width: 100%;
     }
-  }
+    button.shp-open-options {border-color:darken($action-secondary,10%);}
+    .onda-v1 .blue {
+      color:$action-primary;
+      outline: none;
+    }
+    .onda-v1 .b--blue {
+      border-color:$action-primary;
+      outline: none;
+      
+    }
 
-  .onda-v1 .blue {
-    color:$action-primary;
-  }
-  .onda-v1 .b--blue {
-    border-color:$action-primary;
-  }
+    .onda-v1 .bg-blue {
+      background:$action-primary;
+      outline: initial;
+      
+    }
 
-  .onda-v1 .bg-blue {
-    background:$action-primary;
-    outline: initial;
+    .vtex-shipping-preview-0-x-pc .ship-country {width:98%;}
+    .vtex-shipping-preview-0-x-pc .btn {
+      @extend .btn-secondary;
+      height: $inputHeight;
+      outline: initial;
+    }
   }
 
 }

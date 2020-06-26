@@ -5,7 +5,7 @@ class checkoutCustom {
 
 
   general() {
-  	$(".cart-template.mini-cart .cart-fixed > *").wrapAll('<div class="custom-cart-template-wrap">')
+    if(!$(".custom-cart-template-wrap").length) $(".cart-template.mini-cart .cart-fixed > *").wrapAll('<div class="custom-cart-template-wrap">')
   }
   
   builder() {
@@ -20,9 +20,11 @@ class checkoutCustom {
   }
 
   buildVertical() {
+
   	$("body").addClass("body-cart-vertical")
   	$(".cart-template .cart-more-options:eq(0), .cart-template .extensions-checkout-buttons-container").appendTo(".cart-template-holder")
   	$(".cart-template .cart-links-bottom:eq(0)").appendTo(".summary-template-holder")
+
   }
 
   buildHorizontal() {
@@ -38,6 +40,6 @@ class checkoutCustom {
 
 let fnsCheckout = new checkoutCustom();
 
-window.onload = function(){
+$(window).load(function() {
 	fnsCheckout.init()
-}
+})
