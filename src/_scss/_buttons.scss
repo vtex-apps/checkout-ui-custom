@@ -8,6 +8,15 @@
 	border-radius:$btn-border-radius;
 	outline: none !important;
 	text-align: center;
+	font-size: $font-size;
+
+	&-link {
+		color:$action-primary;
+		&:hover,
+		&:focus {
+			color:darken($action-primary, 15%);
+		}
+	}
 
 	&-success {
 		background: $success;
@@ -17,6 +26,10 @@
 		&:hover {
 			background:darken($success,5%); 
 			border:1px solid darken($success,5%); 
+		}
+
+		&[disabled] {
+			background: $success;
 		}
 	}
 
@@ -59,4 +72,12 @@
 		}
 	}
 
+	&#cart-to-orderform {
+		font-size:0;
+	  &:before {
+	    content:"Proceed to Payment";
+	    font-size:$font-size;
+	    vertical-align: middle;
+		}
+	}
 }

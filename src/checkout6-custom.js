@@ -43,26 +43,60 @@ class checkoutCustom {
     }
   }
 
+  addStepsHeader() {
+
+    if($(".checkout-steps").length>0) return false
+
+    let addStepsHeaderHtml = `
+      <div class="checkout-steps container-cart container">
+        <div class="checkout-steps-wrap">
+          <span class="checkout-steps_bar">
+            <span class="checkout-steps_bar_inner"></span>
+            <span class="checkout-steps_bar_inner-active"></span>
+          </span>
+          <div class="checkout-steps_items">
+            <span class="checkout-steps_item checkout-steps_item_cart">
+              <span class="text">Cart</span>
+            </span>
+            <span class="checkout-steps_item checkout-steps_item_identification">
+              <span class="text">Login</span>
+            </span>
+            <span class="checkout-steps_item checkout-steps_item_payment">
+              <span class="text">Payment</span>
+            </span>
+            <span class="checkout-steps_item checkout-steps_item_confirmation">
+              <span class="text">Confirmation</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    `;
+    $("body .main-header").after(addStepsHeaderHtml)
+  }
+
   update(orderForm) {
-    console.log(orderForm);
     this.checkEmpty(orderForm.items)
   }
 
   updateStep() {
-    console.log(window.location.hash)
-    $("body").removeClass("v-custom-step-email v-custom-step-cart v-custom-step-profile v-custom-step-shipping")
-    if(window.location.hash=="#/email") {
-      $("body").addClass("v-custom-step-email")
+
+    let prefixClass = "v-custom-step-";
+    let bClassStep = [
+      "cart",
+      "email",
+      "profile",
+      "shipping",
+      "payment"
+    ];
+
+    $("body").removeClass(bClassStep.map(step => { return prefixClass+step }).join(" "))
+    if(window.location.hash) {
+      let hashstep = window.location.hash.split("/")[1];
+      if(typeof bClassStep.find(st => { return st==hashstep })) {
+        $("body").addClass(prefixClass+hashstep)
+      }
     }
-    if(window.location.hash=="#/cart") {
-      $("body").addClass("v-custom-step-cart")
-    }
-    if(window.location.hash=="#/profile") {
-      $("body").addClass("v-custom-step-profile")
-    }
-    if(window.location.hash=="#/shipping") {
-      $("body").addClass("v-custom-step-shipping")
-    }
+    
   }
 
   init() {
@@ -70,6 +104,7 @@ class checkoutCustom {
     _this.general();
     _this.builder();
     _this.updateStep();
+    _this.addStepsHeader();
   }
 }
 
@@ -82,6 +117,7 @@ $(document).ajaxComplete(function() {
 $(window).load(function() {
   fnsCheckout.builder()
 })
+
 $(window).on('hashchange', function() {
   fnsCheckout.updateStep();
 });

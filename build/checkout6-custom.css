@@ -35,7 +35,12 @@ input, select, button {
   text-shadow: none;
   border-radius: 4px;
   outline: none !important;
-  text-align: center; }
+  text-align: center;
+  font-size: 12px; }
+  .btn-link {
+    color: #1a73e8; }
+    .btn-link:hover, .btn-link:focus {
+      color: #1151a5; }
   .btn-success {
     background: #2fba2d;
     border: 1px solid #2fba2d;
@@ -43,6 +48,8 @@ input, select, button {
     .btn-success:hover {
       background: #2aa528;
       border: 1px solid #2aa528; }
+    .btn-success[disabled] {
+      background: #2fba2d; }
   .btn-primary {
     background: #1a73e8;
     border: 1px solid #1a73e8;
@@ -69,6 +76,12 @@ input, select, button {
     .btn-outlined:hover, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:hover[type=submit], .btn-outlined:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .btn-outlined:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:active[type=submit] {
       background: transparent;
       border: 1px solid #35ce33; }
+  .btn#cart-to-orderform {
+    font-size: 0; }
+    .btn#cart-to-orderform:before {
+      content: "Proceed to Payment";
+      font-size: 12px;
+      vertical-align: middle; }
 
 .orderform-template-holder .row-fluid > div#client-profile-data .accordion-toggle, .orderform-template-holder .row-fluid > div#shipping-data .accordion-toggle, .orderform-template-holder .row-fluid > div#payment-data .accordion-toggle, .orderform-template .cart-template.mini-cart h2 {
   font-size: 14px;
@@ -112,7 +125,12 @@ body {
   background: #f3f5f7;
   padding-bottom: 40px !important;
   min-height: 93vh;
-  position: relative; }
+  position: relative;
+  font-size: 12px; }
+  body a {
+    color: #1a73e8; }
+    body a:hover {
+      color: #1151a5; }
 
 .onda-v1 .br-pill,
 .step, .cart, .totalizers {
@@ -131,6 +149,116 @@ h1#orderform-title {
 
 h1#orderform-title {
   display: none !important; }
+
+@media (max-width: 490px) {
+  body:before {
+    width: 0;
+    height: 4px;
+    background: #1a73e8;
+    display: block;
+    content: "";
+    position: fixed;
+    top: 0;
+    transition: all ease 0.3s; }
+  body.v-custom-step-email:before {
+    width: 23%; }
+  body.v-custom-step-profile:before {
+    width: 46%; }
+  body.v-custom-step-shipping:before {
+    width: 69%; }
+  body.v-custom-step-payment:before {
+    width: 92%; } }
+
+body.v-custom-step-cart .checkout-steps_item_cart .text {
+  color: #323232;
+  font-weight: bold; }
+
+body.v-custom-step-cart .checkout-steps_item_cart:before {
+  background: #1a73e8;
+  border-color: #1a73e8; }
+
+body.v-custom-step-email .checkout-steps_bar_inner-active {
+  width: 25%; }
+
+body.v-custom-step-email .checkout-steps_item_cart .text,
+body.v-custom-step-email .checkout-steps_item_identification .text {
+  color: #323232;
+  font-weight: bold; }
+
+body.v-custom-step-email .checkout-steps_item_cart:before,
+body.v-custom-step-email .checkout-steps_item_identification:before {
+  background: #1a73e8;
+  border-color: #1a73e8; }
+
+body.v-custom-step-payment .checkout-steps_bar_inner-active, body.v-custom-step-profile .checkout-steps_bar_inner-active, body.v-custom-step-shipping .checkout-steps_bar_inner-active {
+  width: 50%; }
+
+body.v-custom-step-payment .checkout-steps_item_cart .text,
+body.v-custom-step-payment .checkout-steps_item_identification .text,
+body.v-custom-step-payment .checkout-steps_item_payment .text, body.v-custom-step-profile .checkout-steps_item_cart .text,
+body.v-custom-step-profile .checkout-steps_item_identification .text,
+body.v-custom-step-profile .checkout-steps_item_payment .text, body.v-custom-step-shipping .checkout-steps_item_cart .text,
+body.v-custom-step-shipping .checkout-steps_item_identification .text,
+body.v-custom-step-shipping .checkout-steps_item_payment .text {
+  color: #323232;
+  font-weight: bold; }
+
+body.v-custom-step-payment .checkout-steps_item_cart:before,
+body.v-custom-step-payment .checkout-steps_item_identification:before,
+body.v-custom-step-payment .checkout-steps_item_payment:before, body.v-custom-step-profile .checkout-steps_item_cart:before,
+body.v-custom-step-profile .checkout-steps_item_identification:before,
+body.v-custom-step-profile .checkout-steps_item_payment:before, body.v-custom-step-shipping .checkout-steps_item_cart:before,
+body.v-custom-step-shipping .checkout-steps_item_identification:before,
+body.v-custom-step-shipping .checkout-steps_item_payment:before {
+  background: #1a73e8;
+  border-color: #1a73e8; }
+
+.checkout-steps {
+  display: none;
+  display: block; }
+  @media (max-width: 490px) {
+    .checkout-steps {
+      display: none !important; } }
+  .checkout-steps-wrap {
+    padding: 20px 0;
+    margin-bottom: -20px; }
+  .checkout-steps_bar_inner, .checkout-steps_bar_inner-active {
+    width: calc(100% - 25%);
+    height: 3px;
+    background: #a5c8f6;
+    display: block;
+    /* margin: 0 0 0 10px; */
+    margin: 0 auto;
+    position: absolute;
+    left: 12.5%;
+    top: 27px;
+    transition: all ease 0.3s; }
+  .checkout-steps_bar_inner-active {
+    width: 0;
+    background: #1a73e8; }
+  .checkout-steps_items {
+    display: flex;
+    justify-content: space-between; }
+  .checkout-steps_item {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 25%; }
+    .checkout-steps_item:before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #a5c8f6;
+      border: 2px solid #a5c8f6;
+      display: inline-block;
+      border-radius: 100%;
+      margin: 0 auto;
+      transition: all ease 0.3s; }
+    .checkout-steps_item .text {
+      clear: both;
+      display: block;
+      color: #999999;
+      font-weight: 500; }
 
 body .main-header {
   padding: 12px 0;
@@ -261,6 +389,16 @@ body.cart-empty .summary-template-holder {
             display: none; }
           .table.cart-items tbody tr > td.product-price .best-price, .table.cart-items tbody tr > td.quantity-price .best-price {
             font-weight: bold; }
+            @media (max-width: 490px) {
+              .table.cart-items tbody tr > td.product-price .best-price, .table.cart-items tbody tr > td.quantity-price .best-price {
+                display: flex;
+                justify-content: flex-end; }
+                .table.cart-items tbody tr > td.product-price .best-price .discount, .table.cart-items tbody tr > td.quantity-price .best-price .discount {
+                  margin-left: 5px;
+                  display: block; } }
+        .table.cart-items tbody tr > td .field-help {
+          background: #1a73e8;
+          border-color: #1a73e8; }
         .table.cart-items tbody tr > td.item-remove {
           margin-left: auto; }
         .table.cart-items tbody tr > td p.clone-item-container,
@@ -269,7 +407,8 @@ body.cart-empty .summary-template-holder {
         .table.cart-items tbody tr > td.product-image {
           order: 1; }
         .table.cart-items tbody tr > td.product-name {
-          order: 2; }
+          order: 2;
+          width: 60%; }
         .table.cart-items tbody tr > td.shipping-date {
           order: 3; }
         .table.cart-items tbody tr > td.quantity {
@@ -348,6 +487,8 @@ body.cart-empty .summary-template-holder {
   border: 2px solid #dddddd;
   box-sizing: border-box;
   border-radius: 4px; }
+  .summary-template-holder .summary-coupon-wrap {
+    width: 100%; }
   .summary-template-holder .cart-more-options {
     display: none; }
   .summary-template-holder .summary-coupon {
@@ -553,6 +694,15 @@ form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
 .v-custom-step-email .cart-template.mini-cart {
   display: none; }
 
+svg.pickup-marker-blue,
+svg.pickup-marker-blue path,
+svg.pkpmodal-pickup-point-marker-image,
+svg.pkpmodal-pickup-point-marker-image path,
+svg.vtex-omnishipping-1-x-svg,
+svg.vtex-omnishipping-1-x-svg path,
+svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
+  fill: #1a73e8; }
+
 @media (max-width: 768px) {
   .container.container-main.container-order-form {
     width: calc(100% - 40px);
@@ -643,14 +793,26 @@ form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
       align-items: center; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption {
       background: #FFF; }
-    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive, .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
     .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
-    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive,
+    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover,
+    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active,
+    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
     .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
-    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+    .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive,
+    .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover,
+    .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active,
+    .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
     .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
     .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
       background: #1a73e8;
+      border-color: #1a73e8; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionInctive, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionInctive, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
+      color: #1a73e8;
       border-color: #1a73e8; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .shipping-method-toggle, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .shipping-method-toggle, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .shipping-method-toggle {
       border-color: #1a73e8; }
@@ -683,7 +845,10 @@ form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
       fill: #676767; }
     .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-pickup-points-modal-3-x-primary, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-pickup-points-modal-3-x-primary, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-pickup-points-modal-3-x-primary {
       outline: none;
-      background: #1a73e8; }
+      background: #1a73e8;
+      border-color: #1a73e8; }
+    .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-pickupPointChange, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-pickupPointChange, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-pickupPointChange {
+      border-color: #1a73e8; }
 
 .orderform-template-holder .row-fluid > div#payment-data p.link.link-gift-card,
 .orderform-template-holder .row-fluid > div#payment-data .payment-group-item {
@@ -761,6 +926,13 @@ form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
   width: 100% !important;
   padding: 0; }
 
+.orderform-template-holder .row-fluid > div#payment-data p.notification {
+  padding: 10px 0;
+  font-weight: bold; }
+  .orderform-template-holder .row-fluid > div#payment-data p.notification:not([style="display: none;"]) + .box-step {
+    padding: 0;
+    border: none; }
+
 .orderform-template {
   display: flex !important;
   flex-wrap: wrap;
@@ -779,7 +951,7 @@ form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
     @media (max-width: 768px) {
       .orderform-template .cart-template.mini-cart {
         width: 100%;
-        margin-top: 20px; } }
+        margin-top: 10px; } }
     .orderform-template .cart-template.mini-cart .cart-fixed {
       height: auto !important; }
       @media (min-width: 768px) {
@@ -832,6 +1004,9 @@ form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
       right: 7px;
       color: #1a73e8;
       text-decoration: underline; }
+      @media (max-width: 490px) {
+        .orderform-template .cart-template.mini-cart #go-to-cart-button {
+          display: none; } }
     .orderform-template .cart-template.mini-cart .summary-totalizers tbody {
       border-top: 1px solid #cbcbcb;
       border-bottom: 1px solid #cbcbcb;
@@ -900,6 +1075,7 @@ form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
   padding: 15px;
   border: 1px solid #dddddd; }
 
+.steps-view, .gift-card-section,
 .App.iframe-credit-card-payment-group {
   background: #f3f5f7;
   background: #FFF; }

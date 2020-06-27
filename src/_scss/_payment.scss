@@ -1,5 +1,17 @@
 
+// set svgs
 
+
+
+	svg.pickup-marker-blue,
+	svg.pickup-marker-blue path,
+	svg.pkpmodal-pickup-point-marker-image,
+	svg.pkpmodal-pickup-point-marker-image path,
+	svg.vtex-omnishipping-1-x-svg,
+	svg.vtex-omnishipping-1-x-svg path,
+	svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
+	  fill: $action-primary;
+	}
 
 // -- vertical checkout
 
@@ -126,17 +138,25 @@
 		    &.shipping-data {
 		    	.vtex-omnishipping-1-x-content {align-items: center;}
 		    	.vtex-omnishipping-1-x-deliveryChannelsOption {
-					    background:#FFF;
+				    background:#FFF;
 					}
-					.vtex-pickup-points-modal-3-x-pickupViewOptionActive, .vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, .vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+					.vtex-pickup-points-modal-3-x-pickupViewOptionActive, 
+					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, 
+					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, 
+					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
 					.vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
 					.vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
-					    background:$action-primary;
-					    border-color:$action-primary;
+				    background:$action-primary;
+				    border-color:$action-primary;
+					}
+
+					.vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
+						color:$action-primary;
+						border-color:$action-primary;
 					}
 
 					.shipping-method-toggle {
-					    border-color:$action-primary;
+				    border-color:$action-primary;
 					}
 
 
@@ -170,6 +190,11 @@
 					.vtex-pickup-points-modal-3-x-primary {
 					  outline:none;
 					  background:$action-primary;
+					  border-color:$action-primary;
+					}
+
+					.vtex-omnishipping-1-x-pickupPointChange {
+						border-color:$action-primary;
 					}
 		    }
 
@@ -216,6 +241,7 @@
 					border:1px solid $action-primary !important;
 				}
 			}
+
 
 			p.link.link-gift-card,
 			fieldset.payment-group {
@@ -274,6 +300,15 @@
 			  width: 100% !important;
 			  padding: 0;
 			}
+
+			p.notification {
+		    padding:10px 0;
+		    font-weight:bold;
+		    &:not([style="display: none;"]) + .box-step {
+			    padding:0;
+			    border:none;
+				}
+			}
 		}
 	}
 
@@ -299,12 +334,12 @@
 
   	@media(max-width: 768px) {
   		width:100%;
-  		margin-top: 20px;
+  		margin-top: 10px;
   	}
 
   	.cart-fixed {
   		height: auto !important;
-  		
+
   		@media(min-width: 768px) {
   			max-width: 255px;
   			&.affix {
@@ -372,6 +407,9 @@
 	    right: 7px;
 	    color:$action-primary;
 	    text-decoration: underline;
+	    @media (max-width: 490px) {
+	    	display: none;
+	    }
 		}
 
 
@@ -481,6 +519,7 @@
 
 //iframe
 
+.steps-view, .gift-card-section,
 .App.iframe-credit-card-payment-group {
     background: $base;
     @if $countingSteps {

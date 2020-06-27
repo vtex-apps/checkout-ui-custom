@@ -86,7 +86,19 @@ body.cart-empty {
           .old-product-price-label {
             display: none;
           }
-          .best-price {font-weight: bold;}
+          .best-price {
+            font-weight: bold;
+            @media (max-width: 490px) {
+              display: flex;
+              justify-content: flex-end;
+              .discount {margin-left: 5px;display: block;}
+            }
+          }
+        }
+
+        .field-help {
+          background:$action-primary;
+          border-color:$action-primary;
         }
 
         &.item-remove {
@@ -99,7 +111,7 @@ body.cart-empty {
         }
 
         &.product-image {order:1;}
-        &.product-name {order:2;}
+        &.product-name {order:2;width: 60%;}
         &.shipping-date {order:3;}
         &.quantity {order:4;}
         &.product-price,
@@ -212,6 +224,9 @@ body.cart-empty {
   border-radius:$border-radius;
 
 
+  .summary-coupon-wrap {
+    width: 100%;
+  }
 
   .cart-more-options {
     display:none;
