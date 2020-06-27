@@ -4,7 +4,8 @@
 .client-pre-email {
   background: $base;
   width: 100%;
-  
+  margin-top:-7px;
+  border-top:none;
 
   fieldset.pre-email {
     padding: 0 10%;
@@ -32,6 +33,8 @@
       width: 20%;
       margin: 0 !important;
       min-width: 90px;
+      height: $inputHeight;
+      top:0;
       position: relative;
     }
   }
@@ -45,5 +48,21 @@
   
   .emailInfo {
     margin-top:20px;
+  }
+
+  @media(max-width: 490px) {
+    .link-cart { display: none !important;}
+  }
+}
+
+form.client-pre-email[style*="display: block;"] {}
+form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
+    display:none;
+}
+
+
+.v-custom-step-email {
+  .cart-template.mini-cart {
+    display: none;
   }
 }

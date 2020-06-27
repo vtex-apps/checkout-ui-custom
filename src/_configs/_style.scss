@@ -28,10 +28,13 @@ $muted-4: #cbcbcb; //borders
 $muted-5: #dddddd; //borders
 
 
-$border-radius:4px;
+
 
 
 // CHECKOUT VARS
+
+$border-radius:4px;
+$btn-border-radius:$border-radius;
 
 $inputHeight:40px;
 $showCartQuantityPrice:false;

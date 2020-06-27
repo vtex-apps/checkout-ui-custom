@@ -5,8 +5,8 @@
 
 	transition: all ease 0.2s;
 	text-shadow: none;
-	border-radius:$border-radius;
-	outline: initial;
+	border-radius:$btn-border-radius;
+	outline: none !important;
 	text-align: center;
 
 	&-success {

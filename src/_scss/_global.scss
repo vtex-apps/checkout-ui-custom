@@ -6,6 +6,10 @@ body {
   min-width: initial !important;
   padding: 0;
   background: $base;
+  padding-bottom:40px !important;
+
+  min-height: 93vh;
+  position: relative;
 }
 
 
@@ -15,7 +19,6 @@ body {
 }
 
 .container-main {
-  padding: 30px 0;
 }
 
 
@@ -24,7 +27,6 @@ body {
 .container-cart.container {
   width:calc(100% - 40px);
   max-width:980px;
-  padding-top: 30px !important;
 }
 
 //titles
@@ -37,6 +39,4 @@ h1#orderform-title {
   color: $muted-1 !important;
 }
 
-@media(max-width: 490px) {
-  h1#orderform-title {display:none !important;}
-}
+h1#orderform-title {display:none !important;}

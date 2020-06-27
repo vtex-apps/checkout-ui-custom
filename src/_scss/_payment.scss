@@ -7,7 +7,7 @@
 .container.container-main.container-order-form {
   @media(max-width: 768px) {
   	width: calc(100% - 40px);
-  	padding-top:30px !important;
+  	padding-top:7px !important;
   }
 }
 
@@ -77,17 +77,27 @@
 
 		    .form-step {
 		    	fieldset {
+		    		width: 100%;
+		    		float:none;
 		    		p { 
 			    		position:relative;
+			    		@media(max-width: 490px) {
+			    			float:none !important;
+			    		}	
 
 			    		&.client-last-name,
 							&.client-first-name {
 							    width: calc(50% - 5px);
 							    position: relative;
+							    @media(max-width: 490px) {
+							    	width: 100%;
+							    	input[type="text"] {width: 100% !important;}
+							    }
 							}
 			    		span.help.error {
 						    position:absolute;
 						    font-size:11px;
+						    margin-top: 0;
 							}
 
 			    	}
@@ -272,9 +282,14 @@
 .orderform-template {
 	display: flex !important;
 	flex-wrap:wrap;
+	padding-top: 30px;
+	min-height: 400px !important;
+
+	&.inactive {display: none !important;}
 
 	@media(max-width: 768px) {
   	width:100%;
+  	padding-top:0px;
   }
 
 	.cart-template.mini-cart {
@@ -284,12 +299,19 @@
 
   	@media(max-width: 768px) {
   		width:100%;
+  		margin-top: 20px;
   	}
 
   	.cart-fixed {
+  		height: auto !important;
+  		
   		@media(min-width: 768px) {
   			max-width: 255px;
-  			&.affix {position:fixed !important;}
+  			&.affix {
+  				@media (max-width: 979px) {
+  					position:fixed !important;
+  				}
+  			}
   			&.affix-top {position: relative !important;}
   		}
   	}
@@ -408,6 +430,23 @@
 
 	}
 
+	.payment-confirmation-wrap {
+		@media(max-width: 768px) {
+			border:none !important;
+			z-index: 9999;
+	    position: fixed;
+	    bottom: 0;
+	    padding: 0;
+	    background:#FFF;
+	    margin: 0 !important;
+	    button {
+		    border-radius:0 !important;
+			}
+			.payment-submit-wrap, button { margin:0 !important; }
+		}
+	}
+	.summary-note {display: none !important;}
+
 	.custom-cart-template-wrap {
 		position: relative;
 		background: #FFF;
@@ -416,10 +455,7 @@
 	  border: 2px solid $muted-5;
 	  box-sizing: border-box;
 	  border-radius:$border-radius;
-
-	  .payment-confirmation-wrap {border:none !important;}
-
-	  .summary-note {display: none !important;}
+	  margin-top: 7px;
 	}
 
 }
