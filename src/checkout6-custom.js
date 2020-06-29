@@ -71,11 +71,66 @@ class checkoutCustom {
         </div>
       </div>
     `;
-    $("body .main-header").after(addStepsHeaderHtml)
+    $(".container.container-main").before(addStepsHeaderHtml)
+  }
+
+  addAssemblies(orderForm) {
+    try {
+      if(orderForm.items) {
+        $.each(orderForm.items, function(i) {
+          let _item = this;
+
+          if(_item.assemblies.length>0) {
+            let _assembliesHtml = `<div class="v-custom-assemblies">`
+            $.each(_item.assemblies, function(w) {
+              let _assemblies = this;
+
+              let inptValues = _assemblies.inputValues;
+              _assembliesHtml += `<p>${_assemblies.id}</p>`;
+              _assembliesHtml += `<ul class="v-custom-assemblies__values">`;
+                Object.entries(inptValues).forEach(([key, val]) => {
+                  _assembliesHtml += `<li class="v-custom-assemblies__values__item">
+                                        <strong>${key}</strong>
+                                        <span>${val.trim()}</span>
+                                      </li>`;
+                });
+              _assembliesHtml += `</ul>`;
+            })
+            _assembliesHtml += `</div>`;
+            $(`.table.cart-items tbody tr.product-item:eq(${i}) .v-custom-assemblies`).remove();
+            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-assemblies-in").find("td.product-name").append(_assembliesHtml);
+          }
+
+        })
+      }
+    } catch(e) {
+
+    }
+    
+  }
+
+  bundleItems(orderForm) {
+    try {
+      if(orderForm.items) {
+        $.each(orderForm.items, function(i) {
+          if(this.bundleItems.length>0) {
+            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-bundles-in").find("td.product-name");
+          } else {
+            $(`.table.cart-items tbody tr.product-item:eq(${i})`).removeClass("v-custom-bundles-in");
+          }
+        });
+        $(".table.cart-items tbody tr.item-service").each(function(w) {
+          if($(this).find(".v-custom-trservice-wrap").length > 0) return false
+          $(this).find("> *").wrapAll(`<div class="v-custom-trservice-wrap">`)
+        })
+      }
+    } catch(e) {}
   }
 
   update(orderForm) {
     this.checkEmpty(orderForm.items)
+    this.addAssemblies(orderForm)
+    this.bundleItems(orderForm)
   }
 
   updateStep() {
@@ -105,6 +160,8 @@ class checkoutCustom {
     _this.builder();
     _this.updateStep();
     _this.addStepsHeader();
+    _this.addAssemblies(vtexjs.checkout.orderForm);
+    _this.bundleItems(vtexjs.checkout.orderForm);
   }
 }
 
@@ -112,16 +169,20 @@ let fnsCheckout = new checkoutCustom();
 
 $(document).ajaxComplete(function() {
   fnsCheckout.init()
+  console.log(">> init")
 })
 
 $(window).load(function() {
   fnsCheckout.builder()
+  console.log(">> load")
 })
 
 $(window).on('hashchange', function() {
   fnsCheckout.updateStep();
+  console.log(">> hash")
 });
 
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
   fnsCheckout.update(orderForm);
+  console.log(">> updatedx")
 })

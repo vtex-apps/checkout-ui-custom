@@ -161,3 +161,43 @@ h1#orderform-title {display:none !important;}
   }
 
 //end steps
+
+// assemblies custom vtex
+  .table.cart-items tbody tr {
+    &.v-custom-assemblies-in {
+      padding-bottom:70px;
+    }
+  }
+  .v-custom-assemblies {
+    position: absolute;
+    bottom: 0;
+    left: 125px;
+    margin: 20px 0;
+    width: calc(100% - 125px);
+
+    @media(max-width: 490px) {
+      width: 100%;
+      left:0;
+      margin-bottom: 2px;
+    }
+
+    p {display: none;}
+    &__values {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      display:flex;
+      box-shadow: -1px 0 0 0px $muted-4;
+      &__item {
+        box-shadow: 1px 0 0 0px $muted-4;
+        padding: 0 10px;
+        flex-grow: 1;
+        strong {
+          line-height: 14px;
+        }
+        span, strong {display: block;}
+      }
+    }
+    
+  }

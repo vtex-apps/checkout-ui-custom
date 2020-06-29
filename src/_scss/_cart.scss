@@ -51,8 +51,16 @@ body.cart-empty {
       display: flex;
       align-items: center;
       border-bottom:1px solid  $muted-5;
+      position:relative;
+
+      &.item-attachments-head,
+      &.item-attachments-content {display: none;}
+
       @media(max-width: 490px) {
-        border:none;
+        border-top:none !important;
+        border-bottom:1px solid  $muted-5;
+        padding-bottom: 20px !important;
+      
       }
 
       > td {
@@ -94,21 +102,19 @@ body.cart-empty {
               .discount {margin-left: 5px;display: block;}
             }
           }
-        }
 
-        .field-help {
-          background:$action-primary;
-          border-color:$action-primary;
+          .new-product-real-price-per-unit {display: inline-block;}
         }
 
         &.item-remove {
           margin-left: auto;
+          width: 20px !important;
+          @media (max-width: 490px) {
+            top:0 !important;
+          }
         }
 
-        p.clone-item-container,
-        hr.clone-item-sep {
-          display: none;
-        }
+        
 
         &.product-image {order:1;}
         &.product-name {order:2;width: 60%;}
@@ -123,7 +129,96 @@ body.cart-empty {
         } @else {
           &.quantity-price {display: none !important;}
         }
+
+        .field-help {
+          background:$action-primary;
+          border-color:$action-primary;
+        }
+
+        .add-item-attachment-container,
+        .clone-item,
+        p.clone-item-container {
+          display: none !important;
+        }
+
+        hr.clone-item-sep {
+          margin:0;
+          clear: both;
+          border:none;
+        }
+
+        .product-service {
+          margin-top: 10px;
+          p {display: flex;}
+          select {
+            @extend %input-style;
+            background:#FFF;
+            width: 100%;
+            margin-right: 10px;
+          }
+          input[type=submit] {
+            @extend .btn-secondary;
+          }
+        }
         
+      }
+
+      .v-custom-assemblies {
+        clear: both;
+      }
+
+      &.v-custom-bundles-in {
+        border:none !important;
+        .product-service {display: none;}
+      }
+
+      &.item-service {
+        
+
+        .v-custom-trservice-wrap {
+          background:$action-secondary;
+          border:1px dashed $muted-4;
+          border-radius:$border-radius;
+          margin-bottom: 20px;
+          margin-top: 10px;
+
+          width: 100%;
+          display: flex;
+          align-items: center;
+
+          box-sizing: border-box;
+          padding: 5px 10px;
+        }
+
+
+        td.quantity-price {display: block !important;}
+
+        .item-remove {
+          margin-left: auto;
+          position: initial;
+          width: auto;
+          i.icon.icon-remove.item-remove-ico:before {
+            content: "-";
+            background: $danger;
+            color: #FFF;
+            line-height: 9px;
+            border-radius: 100%;
+            width: 16px;
+            height: 16px;
+            font-size: 27px;
+          }
+        }
+
+        @media(max-width: 490px) {
+          border-top:none !important;
+          padding: 0 !important;
+          .product-price,
+          .quantity {
+            margin:auto !important;
+            width:auto !important;
+            min-width:initial !important;
+          }
+        }
       }
     }
   }
@@ -235,6 +330,7 @@ body.cart-empty {
   .summary-coupon {
     text-align: center;
     margin: 0 auto !important;
+    min-width: initial;
   
     fieldset.coupon-fieldset {
       > div {
@@ -246,7 +342,6 @@ body.cart-empty {
       }
       button[type=submit] {
         @extend .btn-outlined;
-        width: 50px;
       }
 
       .coupon-data {display: none !important;}
@@ -296,7 +391,11 @@ body.cart-empty {
     }
 
 
-  } // .summary-coupon
+  } 
+
+  // .summary-coupon
+
+
 
   span.link-choose-more-products-wrapper {display: none;}
 
@@ -381,6 +480,11 @@ body.cart-empty {
 
 }
 
+.summary-coupon {width: 100% !important;}
+
+.cart-select-gift-placeholder {
+  width: auto !important;
+}
 
 .cart-more-options {
   width:100% !important;
@@ -437,7 +541,9 @@ body.cart-empty {
       outline: initial;
       
     }
-
+    .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input {
+      @extend %input-style;
+    }
     .vtex-shipping-preview-0-x-pc .ship-country {width:98%;}
     .vtex-shipping-preview-0-x-pc .btn {
       @extend .btn-secondary;
