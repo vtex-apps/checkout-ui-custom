@@ -27,8 +27,12 @@
 	
 
 	@media(min-width: 768px) {
-  	width: 55% !important;
+
+		@if $countingSteps {
+			width: 55% !important;
+		}
 		padding-top: 7px;
+		padding-right:20px;
 		max-width: calc(100% - 270px);
   }
 
@@ -40,6 +44,16 @@
     	margin-left: 0;
     	padding:0;
     	margin:0;
+
+    	@if $countingSteps {
+				
+			} @else {
+				background:#FFF;
+				border-radius:$border-radius;
+				padding:5px 15px !important;
+				border:2px solid $muted-5;
+				margin-bottom:20px !important;
+			}
 
 			.accordion-toggle {
 				padding:0;
@@ -299,6 +313,7 @@
 			.steps-view {
 			  width: 100% !important;
 			  padding: 0;
+			  min-height: initial;
 			}
 
 			p.notification {
@@ -494,6 +509,8 @@
 	  box-sizing: border-box;
 	  border-radius:$border-radius;
 	  margin-top: 7px;
+
+	  .summary-template-holder {margin-top: 0;}
 	}
 
 }
@@ -521,10 +538,7 @@
 
 .steps-view, .gift-card-section,
 .App.iframe-credit-card-payment-group {
-    background: $base;
-    @if $countingSteps {
-    	background:#FFF;
-    }
+  background:#FFF;
 }
 
 #app-container {

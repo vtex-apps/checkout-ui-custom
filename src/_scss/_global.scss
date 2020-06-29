@@ -58,14 +58,15 @@ h1#orderform-title {display:none !important;}
     body {
       &:before {
         width: 0;
-        height: 4px;
-        background:$action-primary;
+        height: 4px; 
+        background:$action-primary; 
         display: block;
         content:"";
         position: fixed;
         top: 0;
         transition: all ease 0.3s;
-      }
+        z-index: 999;
+      } 
       &.v-custom-step-email:before {width: 23%;}
       &.v-custom-step-profile:before {width: 46%;}
       &.v-custom-step-shipping:before {width: 69%;}

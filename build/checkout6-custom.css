@@ -159,7 +159,8 @@ h1#orderform-title {
     content: "";
     position: fixed;
     top: 0;
-    transition: all ease 0.3s; }
+    transition: all ease 0.3s;
+    z-index: 999; }
   body.v-custom-step-email:before {
     width: 23%; }
   body.v-custom-step-profile:before {
@@ -712,6 +713,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder {
     width: 55% !important;
     padding-top: 7px;
+    padding-right: 20px;
     max-width: calc(100% - 270px); } }
 
 .orderform-template-holder .row-fluid > div#client-profile-data, .orderform-template-holder .row-fluid > div#shipping-data, .orderform-template-holder .row-fluid > div#payment-data {
@@ -924,7 +926,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 
 .orderform-template-holder .row-fluid > div#payment-data .steps-view {
   width: 100% !important;
-  padding: 0; }
+  padding: 0;
+  min-height: initial; }
 
 .orderform-template-holder .row-fluid > div#payment-data p.notification {
   padding: 10px 0;
@@ -1064,6 +1067,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     box-sizing: border-box;
     border-radius: 4px;
     margin-top: 7px; }
+    .orderform-template .custom-cart-template-wrap .summary-template-holder {
+      margin-top: 0; }
 
 .orderform-template-holder .row-fluid .accordion-toggle .link-box-edit {
   top: 0px !important;
@@ -1077,7 +1082,6 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 
 .steps-view, .gift-card-section,
 .App.iframe-credit-card-payment-group {
-  background: #f3f5f7;
   background: #FFF; }
 
 #app-container input[type=text],
