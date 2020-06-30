@@ -2,27 +2,70 @@
 
 
 .client-pre-email {
-  background: $base;
+  background: none;
   width: 100%;
-  margin-top:-7px;
   border-top:none;
+  position:relative;
+  text-align: left;
 
   fieldset.pre-email {
-    padding: 0 10%;
     box-sizing: border-box;
+
   }
 
+  label {
+    margin: 0;
+    line-height: 20px;
+
+    small {
+      font-size: $font-size;
+      padding: 0;
+      margin: 0;
+      color: $muted-1;
+      font-weight: 400;
+      margin: 0;
+      vertical-align: top;
+      display: block;
+      margin-bottom: 13px;
+
+      @if $countingSteps {
+        margin-top: 20px;
+      }
+    }
+  }
+  
+  .link-cart {display: none;}  
 
   h3.client-pre-email-h {
-      margin-bottom:30px;
+    margin: 0;
+    span {
+      padding:7px 0 !important;
+      display: block;
+      position:relative;
+
+      font-size: 0;
+
+      &:after {
+        content: "Email";
+        @extend %steps-title;
+        vertical-align: middle;
+        display: inline-block;
+        margin: 0;
+        padding: 0 !important;
+      }
+    }
+
+    .link-box-edit {display: none;}
   }
 
   a#orderform-to-cart {
-      color:$action-primary;
+    color:$action-primary;
   }
 
   .client-email.input.text {
-    display:flex;
+    margin: 0;
+    width: 100%;
+    position:initial !important;
 
     input[type="email"] {
       width: 100% !important;
@@ -34,35 +77,80 @@
       margin: 0 !important;
       min-width: 90px;
       height: $inputHeight;
-      top:0;
-      position: relative;
+      position: absolute;
+      top: initial;
+      bottom:15px;
+      right: initial;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
   span.help.error {
-      position: absolute;
-      top: 100%;
   }
 
 
   
   .emailInfo {
     margin-top:20px;
+    width: 80%;
+    .icon-ok, 
+    h3 {
+      color:$action-primary;
+    }
   }
+
 
   @media(max-width: 490px) {
     .link-cart { display: none !important;}
   }
-}
 
-form.client-pre-email[style*="display: block;"] {}
-form.client-pre-email[style*="display: block;"] + .client-profile-data.active {
-    display:none;
-}
+  & + .client-profile-data { 
+    .accordion-body:before {
+      content:"Waiting for more information";
+      display:block;
+    }
+    .accordion-body .accordion-inner {display:none;}
 
+    &.filled {
+      .accordion-body:before {
+        display: none;
+      }
+    }
+  }
 
-.v-custom-step-email {
-  .cart-template.mini-cart {
-    display: none;
+  &[style*="display: none"] {
+    padding-bottom:20px !important;
+
+    .link-box-edit {display: block !important;}
+    label {
+      small {display: none !important;}
+    }
+
+    input#client-pre-email {
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      font-size: 12px;
+      font-weight: 400;
+      pointer-events: none;
+      cursor: text;
+      background: none !important;
+      color:$muted-2;
+    }
+
+    .emailInfo,
+    #btn-client-pre-email {
+        display:none;
+    }
+
+    & + .client-profile-data {
+      .accordion-body:before {
+        display: none;
+      }
+      .accordion-inner {display:block;}
+    }
   }
 }
+
+

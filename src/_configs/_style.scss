@@ -2,7 +2,7 @@
 
 
 
-$base: #f3f5f7; // body bg...
+$base: #f4f2f2; // body bg...
 $base--inverted: #21364f; // general
 
 $action-primary: #1a73e8; //links, buttons borders, backgrounds
@@ -13,7 +13,7 @@ $emphasis: #000000;
 $disabled: #999999;
 
 $success: #2fba2d; // success button, cta, usually the "checkout", "login", "pay"
-$success--faded: #eafce3;
+$success--faded: #beffa5;
 
 $danger: #ff4c4c;
 $danger--faded: #ffe6e6;
@@ -41,6 +41,9 @@ $inputHeight:40px;
 $showCartQuantityPrice:false;
 $countingSteps:true;
 $showCheckoutSteps:true;
+$bordersContainers:false;
+
+$buttonShadow:false;
 
 //font
 

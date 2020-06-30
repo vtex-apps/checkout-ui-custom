@@ -5,7 +5,8 @@ const $fn = {
 
 class checkoutCustom {
   constructor() {
-    this.type = "vertical"; // vertical or horizontal
+    this.type = "vertical"; // ["vertical"]
+    this.orderId = ""; // 
   }
 
 
@@ -37,10 +38,20 @@ class checkoutCustom {
 
   checkEmpty(items) {
     if(items.length==0) {
-      $("body").addClass("cart-empty")
+      $("body").addClass("v-custom-cart-empty")
     } else {
-      $("body").removeClass("cart-empty")
+      $("body").removeClass("v-custom-cart-empty")
     }
+  }
+
+  addEditButtoninLogin() {
+    $("#v-custom-edit-login-data").remove();
+    $(".client-pre-email h3.client-pre-email-h span").append(`
+      <a id="v-custom-edit-login-data" class="link-box-edit btn btn-small" style="" title="Edit">
+        <i class="icon-edit"></i>
+        <i class="icon-spinner icon-spin icon-3x"></i>
+      </a>
+    `);
   }
 
   addStepsHeader() {
@@ -154,18 +165,55 @@ class checkoutCustom {
     
   }
 
+  bind() {
+    let _this = this;
+    $("body").on("click", "#v-custom-edit-login-data", function(e) {
+
+      e.preventDefault();
+
+      $(this).addClass("active");
+
+      var data = null;
+      var xhr = new XMLHttpRequest();
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === this.DONE) { 
+          location.reload(); 
+          setTimeout(function() {
+            $("#v-custom-edit-login-data").removeClass("active");
+          },1000)
+        }
+      });
+
+      xhr.open("GET",`/checkout/changeToAnonymousUser/${_this.orderId}`);
+      xhr.setRequestHeader("content-type", "application/json");
+      xhr.setRequestHeader("accept", "application/json");
+
+      xhr.send(data);
+
+
+    })
+  }
+
   init() {
     let _this = this;
+    
+    _this.orderId = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm.orderFormId : "";
+
     _this.general();
     _this.builder();
     _this.updateStep();
     _this.addStepsHeader();
     _this.addAssemblies(vtexjs.checkout.orderForm);
     _this.bundleItems(vtexjs.checkout.orderForm);
+    _this.addEditButtoninLogin();
   }
 }
 
 let fnsCheckout = new checkoutCustom();
+
+$(document).ready(function() {
+  fnsCheckout.bind();
+});
 
 $(document).ajaxComplete(function() {
   fnsCheckout.init()

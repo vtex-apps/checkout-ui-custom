@@ -29,196 +29,123 @@
 	@media(min-width: 768px) {
 
 		@if $countingSteps {
-			width: 55% !important;
+			width: 61% !important;
 		}
 		padding-top: 7px;
 		padding-right:20px;
 		max-width: calc(100% - 270px);
   }
 
-	.row-fluid > div {
-		&#client-profile-data,
-		&#shipping-data,
-		&#payment-data {
-    	width:100% !important;
-    	margin-left: 0;
-    	padding:0;
-    	margin:0;
+	
+	#client-profile-data {width: 100%;}
+	#client-profile-data form.client-pre-email,
+	#client-profile-data .step.client-profile-data,
+	#shipping-data,
+	#payment-data {
+  	width:100% !important;
+  	padding:0;
+  	margin:0;
+  	box-sizing: border-box;
 
-    	@if $countingSteps {
-				
-			} @else {
-				background:#FFF;
-				border-radius:$border-radius;
-				padding:5px 15px !important;
-				border:2px solid $muted-5;
-				margin-bottom:20px !important;
-			}
+  	background:#FFF;
+		border-radius:$border-radius;
+		
+		margin-bottom:20px !important;
+		z-index: initial;
 
-			.accordion-toggle {
-				padding:0;
-	    	@extend %steps-title;
-	    	> i {display: none;}
-
-	    	.link-box-edit {
-			    background: none;
-			    box-shadow: none;
-			    border: none;
-			    top: 4px;
-			    right: -5px;
-			    color: $action-primary;
-			    outline: none;
-				}
-	    }
-
-
-	    .accordion-toggle,
-	    .accordion-inner {
-	    	padding: 0;
-	    }
-
-	    input[type=text],
-	    input[type=tel],
-	    input[type=email],
-	    select  {
-	    	&:not(.pac-target-input) {
-		    	@extend %input-style;
-		    	width: 100%;
-		    	max-width: 100%;
-		    	outline: initial;
-	    	}
-	    }
-
-    	.step {
-
-    		border:none;
-    		padding:0;
-    		background: none;
-
-    		@media(max-width:868px) {
-		      width:100%;
-		    }
-
-		    
-
-		    .form-step {
-		    	fieldset {
-		    		width: 100%;
-		    		float:none;
-		    		p { 
-			    		position:relative;
-			    		@media(max-width: 490px) {
-			    			float:none !important;
-			    		}	
-
-			    		&.client-last-name,
-							&.client-first-name {
-							    width: calc(50% - 5px);
-							    position: relative;
-							    @media(max-width: 490px) {
-							    	width: 100%;
-							    	input[type="text"] {width: 100% !important;}
-							    }
-							}
-			    		span.help.error {
-						    position:absolute;
-						    font-size:11px;
-						    margin-top: 0;
-							}
-
-			    	}
-
-			    	&.box-client-info-pj {padding-top:15px;}
-		    	}
-
-		    	
-					#is-corporate-client {color:$action-primary;}
-
-		    }
-
-		    .box-step,
-		    .form-step {
-		    	&.box-info {color:$muted-1;} 
-		    }
-
-		    .input.text {
-		    	label {margin:10px 0 5px 0;}
-		    }
-
-		    &.client-profile-data {
-		    	.client-notice.notice {margin: 0 0 10px 0;}
-		    }
-
-		    &.shipping-data {
-		    	.vtex-omnishipping-1-x-content {align-items: center;}
-		    	.vtex-omnishipping-1-x-deliveryChannelsOption {
-				    background:#FFF;
-					}
-					.vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input {
-						@extend %input-style;
-					}
-					.vtex-pickup-points-modal-3-x-pickupViewOptionActive, 
-					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, 
-					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, 
-					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
-					.vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
-					.vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
-				    background:$action-primary;
-				    border-color:$action-primary;
-					}
-
-					.vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
-						color:$action-primary;
-						border-color:$action-primary;
-					}
-
-					.shipping-method-toggle {
-				    border-color:$action-primary;
-					}
-
-
-		    	.vtex-omnishipping-1-x-alert {
-		    		border-color:$warning;
-		    		display: flex;
-      			align-items:center;
-		    	}
-
-
-		    	.vtex-omnishipping-1-x-deliveryChannelsWrapper,
-		    	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $border-radius;}
-		    	.vtex-omnishipping-1-x-summaryChange {
-				    background:$action-secondary;
-				    border-color:$muted-5;
-				    color:$action-primary;
-					}
-
-					.vtex-omnishipping-1-x-option:hover, 
-					.vtex-omnishipping-1-x-leanShippingOptionActive,
-					.vtex-omnishipping-1-x-leanShippingOption {
-						background:#FFF !important;
-					}
-
-					.vtex-pickup-points-modal-3-x-modalDetailsBackLnk svg path,
-					.vtex-pickup-points-modal-3-x-modalDetailsBackLnk {
-					    color: $muted-2;
-					    fill:$muted-2;
-					}
-
-					.vtex-pickup-points-modal-3-x-primary {
-					  outline:none;
-					  background:$action-primary;
-					  border-color:$action-primary;
-					}
-
-					.vtex-omnishipping-1-x-pickupPointChange {
-						border-color:$action-primary;
-					}
-		    }
-
-    	}
+		@if $bordersContainers {
+			border:2px solid $muted-5;
 		}
 
-		&#payment-data {
+  	@if $countingSteps {
+			padding:30px;
+		} @else {
+			padding:4px 15px 15px 10px;
+		}
+
+		&.client-pre-email {display:block !important;padding-bottom: $inputHeight + 30px;}
+
+		.link-box-edit {
+	    background: none;
+	    box-shadow: none;
+	    border: none;
+	    top: 4px;
+	    right: -5px;
+	    color: $action-primary;
+	    outline: none;
+
+	    position: absolute;
+	    right: 0;
+	    top: 50%;
+	    padding: 1px;
+	    font-size: 14px;
+	    transform: translateY(-50%);
+	    opacity: 0.7;
+
+	    transition: all ease 0.2s;
+
+
+	    &:hover {
+	    	opacity: 1;
+	    }
+
+	    i.icon-spinner {
+		    font-size: 17px;
+		    position: absolute;
+		    right: 0;
+		    display: none;
+		    top: -7px;
+			}
+
+			&.active {
+				i.icon-edit {display: none;}
+				i.icon-spinner { display: block; }
+			}
+		}
+
+		.accordion-toggle {
+			padding:0;
+    	@extend %steps-title;
+    	> i {display: none;}
+    	> span {
+    		line-height: 20px;
+    		display: block;
+    		vertical-align: middle;
+    		@if $countingSteps {
+    			line-height: initial;
+    		}
+    	}
+    }
+
+
+    .accordion-toggle,
+    .accordion-inner {
+    	padding: 0;
+    }
+
+
+    input[type=text],
+    input[type=tel],
+    input[type=email],
+    select  {
+    	&:not(.pac-target-input) {
+	    	@extend %input-style;
+	    	width: 100%;
+	    	max-width: 100%;
+	    	outline: initial;
+    	}
+    }
+
+    &.active {
+			
+	    @if $countingSteps {
+	    	
+	    }
+    }
+
+  }
+
+	#payment-data {
 			p.link.link-gift-card,
 			.payment-group-item {
 			  box-sizing: border-box !important;
@@ -320,15 +247,145 @@
 			}
 
 			p.notification {
-		    padding:10px 0;
-		    font-weight:bold;
+		    font-weight: bold;
+		    font-weight: 400;
+		    color:$muted-1;
 		    &:not([style="display: none;"]) + .box-step {
 			    padding:0;
 			    border:none;
 				}
 			}
-		}
 	}
+
+	.step {
+
+		border:none;
+		padding:0;
+		background: none;
+		margin-bottom: 0;
+
+		@media(max-width:868px) {
+      width:100%;
+    }
+
+	  .box-info {
+			color:$muted-1;
+		}
+	    
+    .form-step {
+    	fieldset {
+    		width: 100%;
+    		float:none;
+    		p { 
+	    		position:relative;
+	    		@media(max-width: 490px) {
+	    			float:none !important;
+	    		}	
+
+	    		&.client-last-name,
+					&.client-first-name {
+					    width: calc(50% - 5px);
+					    position: relative;
+					    @media(max-width: 490px) {
+					    	width: 100%;
+					    	input[type="text"] {width: 100% !important;}
+					    }
+					}
+	    		span.help.error {
+				    position:absolute;
+				    font-size:11px;
+				    margin-top: 0;
+					}
+
+	    	}
+
+	    	&.box-client-info-pj {padding-top:15px;}
+    	}
+
+    	
+			#is-corporate-client {color:$action-primary;}
+
+	  }
+
+    .input.text {
+    	label {margin:10px 0 5px 0;}
+    }
+
+    &.client-profile-data {
+    	.client-notice.notice {margin: 0 0 10px 0;}
+    }
+
+    &.shipping-data {
+    	.vtex-omnishipping-1-x-content {align-items: center;}
+    	.vtex-omnishipping-1-x-deliveryChannelsOption {
+		    background:#FFF;
+			}
+			.vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input {
+				@extend %input-style;
+			}
+			.vtex-pickup-points-modal-3-x-pickupViewOptionActive, 
+			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, 
+			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, 
+			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
+			.vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
+			.vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
+		    background:$action-primary;
+		    border-color:$action-primary;
+			}
+
+			.vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
+				color:$action-primary;
+				border-color:$action-primary;
+			}
+
+			.shipping-method-toggle {
+		    border-color:$action-primary;
+			}
+
+
+    	.vtex-omnishipping-1-x-alert {
+    		border-color:$warning;
+    		display: flex;
+  			align-items:center;
+    	}
+
+
+    	.vtex-omnishipping-1-x-deliveryChannelsWrapper,
+    	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $border-radius;}
+    	.vtex-omnishipping-1-x-deliveryChannelsWrapper {border:1px solid $muted-4;}
+    	.vtex-omnishipping-1-x-summaryChange {
+		    background:$action-secondary;
+		    border-color:$muted-5;
+		    color:$action-primary;
+			}
+
+			.vtex-omnishipping-1-x-option:hover, 
+			.vtex-omnishipping-1-x-leanShippingOptionActive,
+			.vtex-omnishipping-1-x-leanShippingOption {
+				background:#FFF !important;
+			}
+
+			.vtex-pickup-points-modal-3-x-modalDetailsBackLnk svg path,
+			.vtex-pickup-points-modal-3-x-modalDetailsBackLnk {
+			    color: $muted-2;
+			    fill:$muted-2;
+			}
+
+			.vtex-pickup-points-modal-3-x-primary {
+			  outline:none;
+			  background:$action-primary;
+			  border-color:$action-primary;
+			}
+
+			.vtex-omnishipping-1-x-pickupPointChange {
+				border-color:$action-primary;
+			}
+    }
+
+
+
+  }
+	
 
 }
 
@@ -352,7 +409,7 @@
 
   	@media(max-width: 768px) {
   		width:100%;
-  		margin-top: 10px;
+  		margin-top: -23px;
   	}
 
   	.cart-fixed {
@@ -510,10 +567,13 @@
 		background: #FFF;
 	  padding: 7px 20px;
 	  text-align: left;
-	  border: 2px solid $muted-5;
 	  box-sizing: border-box;
 	  border-radius:$border-radius;
 	  margin-top: 7px;
+
+	  @if $bordersContainers {
+	  	border: 2px solid $muted-5;
+	  }
 
 	  .summary-template-holder {margin-top: 0;}
 	}
@@ -522,22 +582,23 @@
 
 // counting steps
 
-	.orderform-template-holder .row-fluid .accordion-toggle .link-box-edit {
-	  @if $countingSteps {
-	    top: 0px !important;
-	    position: relative;
-	  }
-	}
-	.box-step {
-		@if $countingSteps {
-			background:#FFF;
-			border-radius:$border-radius;
-			padding:15px;
-			border:1px solid $muted-5;
+	@if $countingSteps {
+
+		.step.client-profile-data.active .box-step .form-step[style*="display: block"],
+		.step.shipping-data.active .accordion-inner.shipping-container,
+		#payment-data .box-step form.form-step {
+	    padding-top: 20px !important;
+		}
+
+
+		.orderform-template-holder #shipping-data .shipping-summary-info,
+		.orderform-template-holder .step .accordion-body p.notification,
+		.client-pre-email + .client-profile-data .accordion-body:before {
+			display: none;
 		}
 	}
 
-
+// end counting steps
 
 //iframe
 
