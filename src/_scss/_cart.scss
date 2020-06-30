@@ -316,9 +316,13 @@ body.v-custom-cart-empty {
   background: #FFF;
   padding: 20px;
   text-align: left;
-  border: 2px solid $muted-5;
+  
   box-sizing: border-box;
   border-radius:$border-radius;
+
+  @if $bordersContainers {
+    border: 2px solid $muted-5;
+  }
 
 
   .summary-coupon-wrap {
@@ -513,7 +517,7 @@ body.v-custom-cart-empty {
     }
 
     .srp-delivery-info {
-      label {
+      .b--light-gray {
         background:#FFF;
         border-radius:$border-radius;
       }

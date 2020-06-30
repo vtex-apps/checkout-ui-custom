@@ -8,7 +8,7 @@
 	border-radius:$btn-border-radius;
 	outline: none !important;
 	text-align: center;
-	font-size: $font-size;
+	font-size: $font-size !important;
 
 	@if $buttonShadow {
 
@@ -30,8 +30,8 @@
 		font-size:13px;
 
 		&:hover {
-			background:darken($success,5%); 
-			border:1px solid darken($success,5%); 
+			background:darken($success,5%) !important; 
+			border:1px solid darken($success,5%) !important; 
 		}
 
 		&[disabled] {
@@ -79,10 +79,10 @@
 	}
 
 	&#cart-to-orderform {
-		font-size:0;
+		font-size:0 !important;
 	  &:before {
 	    content:"Proceed to Payment";
-	    font-size:$font-size;
+	    font-size:$font-size  !important;
 	    vertical-align: middle;
 		}
 	}

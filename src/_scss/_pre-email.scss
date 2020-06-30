@@ -39,7 +39,7 @@
   h3.client-pre-email-h {
     margin: 0;
     span {
-      padding:7px 0 !important;
+      
       display: block;
       position:relative;
 
@@ -50,8 +50,14 @@
         @extend %steps-title;
         vertical-align: middle;
         display: inline-block;
-        margin: 0;
-        padding: 0 !important;
+        margin: 0;        
+      }
+
+      @if $countingSteps {
+        padding:7px 0 !important;
+        &:after{padding: 0 !important;}
+      } @else {
+        &:after{width: 100%;}
       }
     }
 
@@ -83,6 +89,9 @@
       right: initial;
       left: 50%;
       transform: translateX(-50%);
+      @media(max-width: 490px) {
+        width: calc(100% - 60px);
+      }
     }
   }
 
@@ -94,9 +103,14 @@
   .emailInfo {
     margin-top:20px;
     width: 80%;
+    box-sizing:border-box;
     .icon-ok, 
     h3 {
       color:$action-primary;
+    }
+
+    @media(max-width: 490px) {
+      width: 100%;
     }
   }
 
