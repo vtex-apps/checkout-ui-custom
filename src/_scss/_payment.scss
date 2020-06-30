@@ -154,6 +154,9 @@
 		    	.vtex-omnishipping-1-x-deliveryChannelsOption {
 				    background:#FFF;
 					}
+					.vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input {
+						@extend %input-style;
+					}
 					.vtex-pickup-points-modal-3-x-pickupViewOptionActive, 
 					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, 
 					.vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, 
@@ -459,6 +462,8 @@
 		    & + tbody {
 			    border-top: none;
 				}
+
+				&.shipping-calculate {display: none !important;}
 		  }
 		  tfoot {
 		    tr td {

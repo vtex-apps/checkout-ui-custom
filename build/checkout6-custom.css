@@ -14,7 +14,7 @@ input, select, button {
 .orderform-template-holder .row-fluid > div#shipping-data select:not(.pac-target-input), .orderform-template-holder .row-fluid > div#payment-data input[type=text]:not(.pac-target-input),
 .orderform-template-holder .row-fluid > div#payment-data input[type=tel]:not(.pac-target-input),
 .orderform-template-holder .row-fluid > div#payment-data input[type=email]:not(.pac-target-input),
-.orderform-template-holder .row-fluid > div#payment-data select:not(.pac-target-input), #app-container input[type=text],
+.orderform-template-holder .row-fluid > div#payment-data select:not(.pac-target-input), .orderform-template-holder .row-fluid > div#client-profile-data .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input, .orderform-template-holder .row-fluid > div#shipping-data .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input, .orderform-template-holder .row-fluid > div#payment-data .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input, #app-container input[type=text],
 #app-container input[type=tel],
 #app-container input[type=email],
 #app-container select {
@@ -1132,6 +1132,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
           float: right; }
       .orderform-template .cart-template.mini-cart .summary-totalizers tbody + tbody {
         border-top: none; }
+      .orderform-template .cart-template.mini-cart .summary-totalizers tbody.shipping-calculate {
+        display: none !important; }
     .orderform-template .cart-template.mini-cart .summary-totalizers tfoot tr td {
       padding: 14px 0 !important;
       color: #000;
