@@ -7,7 +7,7 @@ body {
   padding: 0;
   background: $base;
   padding-bottom:40px !important;
-
+ 
   min-height: 93vh;
   position: relative;
   font-size: $font-size;
@@ -33,7 +33,10 @@ body {
 
 .container-main {
 }
-
+ 
+.loading.loading-bg {
+  background:$base; 
+}
 
 // containers
 
@@ -55,14 +58,14 @@ body {
 
 //titles
 
-.container-cart h1,
-h1#orderform-title {
-	font-size: 22px !important;
-  font-weight: 400 !important;
-  color: $muted-1 !important;
-}
+  .container-cart h1,
+  h1#orderform-title {
+  	font-size: 22px !important;
+    font-weight: 400 !important;
+    color: $muted-1 !important;
+  }
 
-h1#orderform-title {display:none !important;}
+  h1#orderform-title {display:none !important;}
 
 
 

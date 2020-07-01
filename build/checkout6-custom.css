@@ -128,6 +128,9 @@ body {
 .step, .cart, .totalizers {
   border-radius: 4px; }
 
+.loading.loading-bg {
+  background: #f4f2f2; }
+
 .container-cart.container,
 .container.container-main.container-order-form {
   max-width: 980px;
