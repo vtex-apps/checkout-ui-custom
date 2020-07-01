@@ -51,9 +51,8 @@
 		margin-bottom:20px !important;
 		z-index: initial;
 
-		@if $bordersContainers {
-			border:2px solid $muted-5;
-		}
+		border:$bordersContainers;
+		
 
   	@if $countingSteps {
 			padding:30px;
@@ -588,9 +587,8 @@
 	  box-sizing: border-box;
 	  border-radius:$border-radius;
 
-	  @if $bordersContainers {
-	  	border: 2px solid $muted-5;
-	  }
+	  border: $bordersContainers;
+	  
 
 	  .summary-cart-template-holder {
 	    height: auto !important;

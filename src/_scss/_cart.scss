@@ -373,9 +373,8 @@ body.v-custom-cart-empty {
   position: sticky;
   top: 20px;
 
-  @if $bordersContainers {
-    border: 2px solid $muted-5;
-  }
+  border: $bordersContainers;
+  
 
 
   .summary-coupon-wrap {
