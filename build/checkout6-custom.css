@@ -1380,7 +1380,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         float: right;
         color: #1a73e8; }
     .orderform-template .cart-template.mini-cart .cart {
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      max-height: calc(100vh - 285px); }
   @media (max-width: 768px) {
     .orderform-template .payment-confirmation-wrap {
       border: none !important;
@@ -1403,6 +1404,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     text-align: left;
     box-sizing: border-box;
     border-radius: 4px; }
+    .orderform-template .custom-cart-template-wrap .summary-cart-template-holder {
+      height: auto !important; }
     .orderform-template .custom-cart-template-wrap .summary-template-holder {
       margin-top: 0; }
 

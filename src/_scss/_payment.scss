@@ -558,6 +558,7 @@
 
 		.cart {
 			margin-bottom: 0;
+			max-height: calc(100vh - 285px);
 		}
 
 	}
@@ -591,6 +592,9 @@
 	  	border: 2px solid $muted-5;
 	  }
 
+	  .summary-cart-template-holder {
+	    height: auto !important;
+		}
 	  .summary-template-holder {margin-top: 0;}
 	}
 
