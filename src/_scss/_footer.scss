@@ -7,4 +7,10 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+
+	.container {position: initial;}
+
+	@media(max-width: 768px) {
+		position:relative;
+	}
 }

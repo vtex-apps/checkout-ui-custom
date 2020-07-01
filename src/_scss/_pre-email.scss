@@ -89,7 +89,7 @@
       right: initial;
       left: 50%;
       transform: translateX(-50%);
-      @media(max-width: 490px) {
+      @media(max-width: 768px) {
         width: calc(100% - 60px);
       }
     }

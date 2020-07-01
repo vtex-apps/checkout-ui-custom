@@ -2,6 +2,19 @@
   
   $numberStepSize:26px;
 
+
+  %countingStepsNormal {
+    background: #FFF;
+    border:1px solid $muted-1;
+    color:$muted-1;
+
+    width:$numberStepSize;
+    height: $numberStepSize;
+    line-height: $numberStepSize;
+    font-size: 15px;
+
+  }
+
   %countingStepsActive {
     background:$action-primary;
     border-color:$action-primary;
@@ -13,22 +26,23 @@
   }
 
 
+
+  //keep attention changing anything below
+  
   @if $countingSteps {
     .client-pre-email h3.client-pre-email-h span:before,
     .client-profile-data .accordion-toggle > span:before,
     .shipping-data .accordion-toggle:before,
     .payment-data .accordion-toggle > span:not(.payment-edit-link):before {
-      background: #FFF;
-      color:$muted-1;
-      width:$numberStepSize;
-      height: $numberStepSize;
+      
+      @extend %countingStepsNormal;
+      
       text-align: center;
-      line-height: $numberStepSize;
       margin-right:10px;
       border-radius: 100%;
-      border:1px solid $muted-1;
+      
       display: inline-block;
-      font-size: 15px;
+      
       font-weight:bold;
       vertical-align: middle;
       margin-top: -2px;

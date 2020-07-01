@@ -19,7 +19,6 @@
 .container.container-main.container-order-form {
   @media(max-width: 768px) {
   	width: calc(100% - 40px);
-  	padding-top:7px !important;
   }
 }
 
@@ -31,7 +30,6 @@
 		@if $countingSteps {
 			width: 61% !important;
 		}
-		padding-top: 7px;
 		padding-right:20px;
 		max-width: calc(100% - 270px);
   }
@@ -146,115 +144,119 @@
   }
 
 	#payment-data {
-			p.link.link-gift-card,
-			.payment-group-item {
-			  box-sizing: border-box !important;
-			  margin: 0 0 10px 0 !important;
-			  border: 1px solid !important;
-			  border-radius: 2px !important;
-			  background:#FFF !important;
-			  border:1px solid $muted-4 !important;
-			  opacity: 1;
-			  text-decoration: none;
-			  color: $muted-1;
+		p.link.link-gift-card,
+		.payment-group-item {
+		  box-sizing: border-box !important;
+		  margin: 0 0 10px 0 !important;
+		  border: 1px solid !important;
+		  border-radius: 2px !important;
+		  background:#FFF !important;
+		  border:1px solid $muted-4 !important;
+		  opacity: 1;
+		  text-decoration: none;
+		  color: $muted-1;
 
-			  span:before {
-				  content:"";
-				  width:20px;
-				  height:20px;
-				  display:inline-block;
-				  border:1px solid $action-primary;
-				  border-radius:100%;
-				  vertical-align: middle;
-				  margin: -3px 10px 0 0;
-				}
+		  span:before {
+			  content:"";
+			  width:20px;
+			  height:20px;
+			  display:inline-block;
+			  border:1px solid $action-primary;
+			  border-radius:100%;
+			  vertical-align: middle;
+			  margin: -3px 10px 0 0;
+			}
 
-				&.active {
-					span {
-						
-						&:before {
-						  background: $action-primary;
-						  box-shadow:inset 0 0 0 3px  #FFF;
-						}
+			&.active {
+				span {
+					
+					&:before {
+					  background: $action-primary;
+					  box-shadow:inset 0 0 0 3px  #FFF;
 					}
 				}
-
-				&.active,
-				&:hover {
-					box-shadow:0 0 6px #ddd;
-					border:1px solid $action-primary !important;
-				}
 			}
 
-
-			p.link.link-gift-card,
-			fieldset.payment-group {
-			  width: 100%;
-			  left: 0;
-			  display:block;
-			  background: none;
-			  position: relative;
-			  margin:0;
+			&.active,
+			&:hover {
+				box-shadow:0 0 6px #ddd;
+				border:1px solid $action-primary !important;
 			}
+		}
 
-			p.link.link-gift-card {
-			  a{
-			  	padding: 10px 10px;
-			  	display: block;
-			  }
-			}
 
-			.payment-group-list-btn {
-			  width: 100%;
-			}
+		p.link.link-gift-card,
+		fieldset.payment-group {
+		  width: 100%;
+		  left: 0;
+		  display:block;
+		  background: none;
+		  position: relative;
+		  margin:0;
+		}
 
-			p.link.link-gift-card *,
-			.payment-group-item * {
-				font-size:12px !important;
-				font-weight:bold;
-			}
+		p.link.link-gift-card {
+		  a{
+		  	padding: 10px 10px;
+		  	display: block;
+		  }
+		}
 
-			.gift-card-section.form-step.box-default {
-				padding: 0;
-				margin: 0;
-  			width: 100%;
-				label {
-				  font-weight:bold;
-				  color:#000;
-				  font-size:12px;
-				}
-			}
+		.payment-group-list-btn {
+		  width: 100%;
+		}
 
-			p.payment-discounts-options.text.input.form-inline {
-			  display:flex;
-			  align-items: center;
-			}
+		p.link.link-gift-card *,
+		.payment-group-item * {
+			font-size:12px !important;
+			font-weight:bold;
+		}
 
-			input#payment-discounts-code {
-			  width:67% !important;
-			  margin:0 10px;
+		.gift-card-section.form-step.box-default {
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			label {
+			  font-weight:bold;
+			  color:#000;
+			  font-size:12px;
 			}
+		}
 
-			#btn-add-gift-card {
-				@extend .btn-secondary;
-				line-height: 30px;
-			}
+		p.payment-discounts-options.text.input.form-inline {
+		  display:flex;
+		  align-items: center;
+		}
 
-			.steps-view {
-			  width: 100% !important;
-			  padding: 0;
-			  min-height: initial;
-			}
+		input#payment-discounts-code {
+		  width:67% !important;
+		  margin:0 10px;
+		}
 
-			p.notification {
-		    font-weight: bold;
-		    font-weight: 400;
-		    color:$muted-1;
-		    &:not([style="display: none;"]) + .box-step {
-			    padding:0;
-			    border:none;
-				}
+		#btn-add-gift-card {
+			@extend .btn-secondary;
+			line-height: 30px;
+		}
+
+		.steps-view {
+		  width: 100% !important;
+		  padding: 0;
+		  min-height: initial;
+		}
+
+		p.notification {
+	    font-weight: bold;
+	    font-weight: 400;
+	    color:$muted-1;
+	    &:not([style="display: none;"]) + .box-step {
+		    padding:0;
+		    border:none;
 			}
+		}
+
+		&:last-child {
+			margin-bottom:0px !important;
+		}
 	}
 
 	.step {
@@ -401,6 +403,7 @@
 	flex-wrap:wrap;
 	padding-top: 30px;
 	min-height: 400px !important;
+	align-items:flex-start;
 
 	&.inactive {display: none !important;}
 
@@ -410,23 +413,28 @@
   }
 
 	.cart-template.mini-cart {
-		width: 30%;
+		width: 39%;
   	min-width: 255px;
   	margin: 0 0 0 auto;
 
+  	position: sticky;
+    top: 20px;
+
   	@media(max-width: 768px) {
   		width:100%;
+  		position: relative;
+  		top:0;
   	}
 
   	.cart-fixed {
   		height: auto !important;
+  		position: relative !important;
+	    max-width: 100%;
+	    width: 100% !important;
+	    top:0;
 
   		@media(min-width: 768px) {
-  			max-width: 255px;
   			&.affix {
-  				@media (max-width: 979px) {
-  					position:fixed !important;
-  				}
   			}
   			&.affix-top {position: relative !important;}
   		}
@@ -437,7 +445,7 @@
 			text-align: left;
 			border-top:none;
 			background:none !important;
-			margin-bottom: 5px;
+			margin-bottom: 15px;
 		}
 
 
@@ -571,11 +579,10 @@
 	.custom-cart-template-wrap {
 		position: relative;
 		background: #FFF;
-	  padding: 7px 20px;
+	  padding: 17px 20px;
 	  text-align: left;
 	  box-sizing: border-box;
 	  border-radius:$border-radius;
-	  margin-top: 7px;
 
 	  @if $bordersContainers {
 	  	border: 2px solid $muted-5;
