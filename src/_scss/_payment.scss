@@ -255,12 +255,14 @@
 		}
 
 		&:last-child {
-			margin-bottom:0px !important;
+			@media (min-width: 769px) {
+				margin-bottom:0px !important;
+			}
 		}
 	}
 
 	.step {
-
+  
 		border:none;
 		padding:0;
 		background: none;
@@ -394,7 +396,7 @@
 		}
 
   }
-	
+	 
 
 }
 
@@ -414,10 +416,11 @@
 
 	.cart-template.mini-cart {
 		width: 39%;
-  	min-width: 255px;
+  	min-width: 255px; 
   	margin: 0 0 0 auto;
 
   	position: sticky;
+    bottom: 0px;
     top: 20px;
 
   	@media(max-width: 768px) {

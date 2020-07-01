@@ -1177,8 +1177,9 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     padding: 0;
     border: none; }
 
-.orderform-template-holder #payment-data:last-child {
-  margin-bottom: 0px !important; }
+@media (min-width: 769px) {
+  .orderform-template-holder #payment-data:last-child {
+    margin-bottom: 0px !important; } }
 
 .orderform-template-holder .step {
   border: none;
@@ -1285,6 +1286,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     min-width: 255px;
     margin: 0 0 0 auto;
     position: sticky;
+    bottom: 0px;
     top: 20px; }
     @media (max-width: 768px) {
       .orderform-template .cart-template.mini-cart {
