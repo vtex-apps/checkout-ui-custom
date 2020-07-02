@@ -43,7 +43,10 @@ input, select, button {
   outline: none !important;
   text-align: center;
   font-size: 12px !important;
+  background: white;
   box-shadow: none !important; }
+  .btn:hover, .btn:focus {
+    background: white; }
   .btn-link {
     color: #1a73e8; }
     .btn-link:hover, .btn-link:focus {
@@ -106,6 +109,42 @@ input, select, button {
   font-size: 20px;
   text-transform: initial;
   margin-bottom: 0px; }
+
+.default-modal {
+  border-radius: 4px; }
+
+.modal.guest-login-modal button.btn {
+  width: auto; }
+
+.modal.guest-login-modal,
+.modal.modal-email-template,
+.modal.modal-payment-template,
+.modal.modal-masked-info-template {
+  background: #2fba2d; }
+
+#vtexIdContainer a {
+  color: #1a73e8; }
+
+#vtexIdContainer .vtexIdUI .modal-footer {
+  background: none; }
+
+@media (max-width: 768px) {
+  #vtexIdContainer {
+    position: fixed !important; }
+    #vtexIdContainer .vtexIdUI {
+      overflow: auto;
+      border-radius: 0;
+      width: 100%;
+      left: 0;
+      margin: 0;
+      top: 0;
+      height: 100% !important;
+      border: none; }
+      #vtexIdContainer .vtexIdUI .modal-header .close {
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 4px 8px; } }
 
 body {
   font-family: "Roboto", sans-serif;
@@ -386,7 +425,8 @@ body .main-header {
 
 @media (max-width: 490px) {
   body:not(.body-cart) .main-header {
-    padding: 4px 0; }
+    padding: 4px 0;
+    margin-bottom: 10px; }
     body:not(.body-cart) .main-header, body:not(.body-cart) .main-header > .container {
       background: none;
       border: none; }
@@ -1155,16 +1195,22 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     color: #000;
     font-size: 12px; }
 
-.orderform-template-holder #payment-data p.payment-discounts-options.text.input.form-inline {
+.orderform-template-holder #payment-data p.payment-discounts-options,
+.orderform-template-holder #payment-data p.gift-card-provider-options {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  padding-bottom: 10px; }
+  .orderform-template-holder #payment-data p.payment-discounts-options input, .orderform-template-holder #payment-data p.payment-discounts-options select,
+  .orderform-template-holder #payment-data p.gift-card-provider-options input,
+  .orderform-template-holder #payment-data p.gift-card-provider-options select {
+    margin: 0 10px; }
+  .orderform-template-holder #payment-data p.payment-discounts-options label,
+  .orderform-template-holder #payment-data p.gift-card-provider-options label {
+    line-height: 12px;
+    margin: 0; }
 
 .orderform-template-holder #payment-data input#payment-discounts-code {
-  width: 67% !important;
-  margin: 0 10px; }
-
-.orderform-template-holder #payment-data #btn-add-gift-card {
-  line-height: 30px; }
+  width: 100% !important; }
 
 .orderform-template-holder #payment-data .steps-view {
   width: 100% !important;
@@ -1426,45 +1472,41 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 .App.iframe-credit-card-payment-group {
   background: #FFF; }
 
-#app-container input[type=text],
-#app-container input[type=tel],
-#app-container input[type=email],
-#app-container select {
-  width: 100%;
-  max-width: calc(100% - 2px); }
-
-#app-container .CardForm > div {
-  position: relative;
-  clear: both; }
-
-#app-container .CardForm span.error {
-  margin: 0 !important; }
-
-#app-container .FormFieldLabel {
-  line-height: 30px; }
-
-#app-container .PaymentCardFlags {
-  position: absolute;
-  top: 38px;
-  right: 3px; }
-  #app-container .PaymentCardFlags .card-flag-label input {
-    display: none; }
-  #app-container .PaymentCardFlags .card-flag-label {
-    width: auto; }
-  #app-container .PaymentCardFlags span.card-flag {
-    display: none; }
-  #app-container .PaymentCardFlags input:checked + span.card-flag {
-    display: block; }
-
-#app-container input#creditCardpayment-card-0Code {
-  width: 100px !important; }
-
-#app-container .PaymentCardValue .add-on {
-  height: 30px;
-  line-height: 30px; }
-
-#app-container label.FormFieldLabel {
-  display: block;
-  clear: both;
-  width: auto;
-  margin-right: 10px; }
+#app-container {
+  min-height: 100vh;
+  background: #FFF; }
+  #app-container input[type=text],
+  #app-container input[type=tel],
+  #app-container input[type=email],
+  #app-container select {
+    width: 100%;
+    max-width: calc(100% - 2px); }
+  #app-container .CardForm > div {
+    position: relative;
+    clear: both; }
+  #app-container .CardForm span.error {
+    margin: 0 !important; }
+  #app-container .FormFieldLabel {
+    line-height: 30px; }
+  #app-container .PaymentCardFlags {
+    position: absolute;
+    top: 38px;
+    right: 3px; }
+    #app-container .PaymentCardFlags .card-flag-label input {
+      display: none; }
+    #app-container .PaymentCardFlags .card-flag-label {
+      width: auto; }
+    #app-container .PaymentCardFlags span.card-flag {
+      display: none; }
+    #app-container .PaymentCardFlags input:checked + span.card-flag {
+      display: block; }
+  #app-container input#creditCardpayment-card-0Code {
+    width: 100px !important; }
+  #app-container .PaymentCardValue .add-on {
+    height: 30px;
+    line-height: 30px; }
+  #app-container label.FormFieldLabel {
+    display: block;
+    clear: both;
+    width: auto;
+    margin-right: 10px; }

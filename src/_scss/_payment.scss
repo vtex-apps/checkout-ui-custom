@@ -27,9 +27,8 @@
 
 	@media(min-width: 768px) {
 
-		@if $countingSteps {
-			width: 61% !important;
-		}
+		
+		width: 61% !important;
 		padding-right:20px;
 		max-width: calc(100% - 270px);
   }
@@ -222,19 +221,30 @@
 			}
 		}
 
-		p.payment-discounts-options.text.input.form-inline {
+		p.payment-discounts-options,
+		p.gift-card-provider-options {
 		  display:flex;
-		  align-items: center;
+			align-items: center;
+			padding-bottom: 10px;
+			input, select {margin:0 10px;}
+
+			label {
+				line-height: 12px;
+    		margin: 0;
+			}
 		}
+		
 
 		input#payment-discounts-code {
-		  width:67% !important;
-		  margin:0 10px;
+		  width:100% !important;
+		}
+
+		.gift-card-multiple-providers {
+			
 		}
 
 		#btn-add-gift-card {
 			@extend .btn-secondary;
-			line-height: 30px;
 		}
 
 		.steps-view {
@@ -626,6 +636,9 @@
 }
 
 #app-container {
+	min-height: 100vh;
+	background: #FFF;
+		
 	input[type=text],
 	input[type=tel],
 	input[type=email],

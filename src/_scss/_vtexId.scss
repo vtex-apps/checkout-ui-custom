@@ -1,0 +1,29 @@
+
+#vtexIdContainer {
+
+  a {color:$action-primary;}
+  .vtexIdUI {
+    .modal-footer {
+      background: none;
+    }
+  }
+  @media (max-width:768px) {
+    position: fixed !important;
+    .vtexIdUI {
+      overflow: auto;
+      border-radius: 0;
+      width: 100%;
+      left: 0;
+      margin: 0;
+      top: 0;
+      height: 100% !important;
+      border: none;
+      .modal-header .close {
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 4px 8px;
+      }
+    }
+  }
+}

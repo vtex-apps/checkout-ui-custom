@@ -60,6 +60,7 @@ body {
     .main-header {
       @media (max-width: 490px) {
         padding:4px 0;
+        margin-bottom: 10px;
         &, > .container { 
           background:none;
           border:none;
