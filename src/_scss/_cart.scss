@@ -193,7 +193,18 @@ body.v-custom-cart-empty {
         }
 
         .product-service {
+          height:$inputHeight + 10px;
           margin-top: 10px;
+          position: relative;
+
+          @media (min-width:490px) {
+            fieldset {
+              width: 100%;
+              position: absolute;
+              min-width: 250px;
+            }
+          }
+          
           p {display: flex;}
           select {
             @extend %input-style;
@@ -214,6 +225,7 @@ body.v-custom-cart-empty {
 
       &.v-custom-bundles-in {
         border:none !important;
+        
         .product-service {display: none;}
       }
 
@@ -268,6 +280,10 @@ body.v-custom-cart-empty {
 
       &:last-child {
         border:none;
+      }
+
+      &.v-custom-assemblies-in {
+        padding-bottom:70px !important;
       }
     }
   }
