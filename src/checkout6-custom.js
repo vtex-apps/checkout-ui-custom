@@ -140,16 +140,17 @@ class checkoutCustom {
     } catch (e) { }
   }
 
-  buildMiniCart() {
+  buildMiniCart(orderForm) {
     /* overode refresh from vtex */
+    let _this = this;
+    if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
     $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`)
   }
-
   removeMCLoader () { $(`.mini-cart .cart-items`).addClass("v-loaded"); }
   indexedInItems(orderForm) {
     let _this = this;
     try {
-      if (vtexjs.checkout.orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { _this.removeMCLoader(); return false;}
+      if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { _this.removeMCLoader(); return false;}
       if (orderForm.items && $(`.mini-cart .cart-items li`).length) {
         $.each(orderForm.items, function (i) {
           if (this.parentItemIndex!=null) {
@@ -171,7 +172,7 @@ class checkoutCustom {
     this.addAssemblies(orderForm);
     this.bundleItems(orderForm);
     
-    this.buildMiniCart();
+    this.buildMiniCart(orderForm);
     this.indexedInItems(orderForm);
     
   }
@@ -258,7 +259,7 @@ $(document).ajaxComplete(function() {
 
 $(window).on('hashchange', function() {
   fnsCheckout.updateStep();
-  fnsCheckout.buildMiniCart();
+  fnsCheckout.buildMiniCart(vtexjs.checkout.orderForm);
   fnsCheckout.indexedInItems(vtexjs.checkout.orderForm);
   console.log(">> hashx")
 });

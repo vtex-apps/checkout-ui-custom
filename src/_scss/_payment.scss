@@ -505,6 +505,13 @@
 	    border-bottom: 1px solid $muted-5;
 			&:last-child {border:none;}
 			
+			ul.service-list.unstyled {
+				margin: 0;
+				float: none;
+				width: 100%;
+				background: none;
+			}
+			.service-item,
 			&.v-custom-indexed-item {
 				background:$action-secondary;
 				border:1px dashed $muted-4;

@@ -1428,7 +1428,12 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       border-bottom: 1px solid #dddddd; }
       .orderform-template .cart-template.mini-cart .item:last-child {
         border: none; }
-      .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item {
+      .orderform-template .cart-template.mini-cart .item ul.service-list.unstyled {
+        margin: 0;
+        float: none;
+        width: 100%;
+        background: none; }
+      .orderform-template .cart-template.mini-cart .item .service-item, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item {
         background: #f9f9f9;
         border: 1px dashed #cbcbcb;
         border-radius: 4px;
@@ -1439,16 +1444,19 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         box-sizing: border-box;
         padding: 5px 10px;
         margin: 10px 0 0 0; }
-        .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .description {
+        .orderform-template .cart-template.mini-cart .item .service-item .description, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .description {
           margin-top: 0; }
-        .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item > a,
+        .orderform-template .cart-template.mini-cart .item .service-item > a,
+        .orderform-template .cart-template.mini-cart .item .service-item .quantity,
+        .orderform-template .cart-template.mini-cart .item .service-item .shipping-date,
+        .orderform-template .cart-template.mini-cart .item .service-item .item-subscription, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item > a,
         .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .quantity,
         .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .shipping-date,
         .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .item-subscription {
           display: none; }
-        .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .price {
+        .orderform-template .cart-template.mini-cart .item .service-item .price, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .price {
           margin: 0; }
-        .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item:last-child {
+        .orderform-template .cart-template.mini-cart .item .service-item:last-child, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item:last-child {
           margin-bottom: 0; }
       .orderform-template .cart-template.mini-cart .item .fn {
         width: calc(82% - 20px); }
