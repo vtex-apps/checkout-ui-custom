@@ -6,7 +6,8 @@ const $fn = {
 class checkoutCustom {
   constructor() {
     this.type = "vertical"; // ["vertical"]
-    this.orderId = ""; // 
+    this.orderForm = ""; 
+    this.orderId = this.orderForm ? this.orderForm.orderFormId : "";;
   }
 
 
@@ -184,7 +185,7 @@ class checkoutCustom {
         }
       });
 
-      xhr.open("GET",`/checkout/changeToAnonymousUser/${_this.orderId}`);
+      xhr.open("GET", `/checkout/changeToAnonymousUser/${_this.orderForm.orderFormId}`);
       xhr.setRequestHeader("content-type", "application/json");
       xhr.setRequestHeader("accept", "application/json");
 
@@ -197,14 +198,14 @@ class checkoutCustom {
   init() {
     let _this = this;
     
-    _this.orderId = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm.orderFormId : "";
+    _this.orderForm = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm : "";
 
     _this.general();
-    _this.builder();
     _this.updateStep();
     _this.addStepsHeader();
-    _this.addAssemblies(vtexjs.checkout.orderForm);
-    _this.bundleItems(vtexjs.checkout.orderForm);
+    _this.builder();
+    _this.addAssemblies(_this.orderForm);
+    _this.bundleItems(_this.orderForm);
     _this.addEditButtoninLogin();
   }
 }
@@ -213,24 +214,26 @@ let fnsCheckout = new checkoutCustom();
 
 $(document).ready(function() {
   fnsCheckout.bind();
+  
 });
 
 $(document).ajaxComplete(function() {
   fnsCheckout.init()
-  console.log(">> init")
+  
+  console.log(">> initx")
 })
 
-$(window).load(function() {
-  fnsCheckout.builder()
-  console.log(">> load")
-})
 
 $(window).on('hashchange', function() {
   fnsCheckout.updateStep();
-  console.log(">> hash")
+  console.log(">> hashx")
 });
 
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
   fnsCheckout.update(orderForm);
   console.log(">> updatedx")
+})
+
+$(window).load(function() {
+  fnsCheckout.builder();
 })
