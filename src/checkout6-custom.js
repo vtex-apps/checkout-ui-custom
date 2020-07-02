@@ -1,18 +1,19 @@
-const $fn = {
-
-}
-
-
 class checkoutCustom {
   constructor() {
     this.type = "vertical"; // ["vertical"]
     this.orderForm = ""; 
-    this.orderId = this.orderForm ? this.orderForm.orderFormId : "";;
+    this.orderId = this.orderForm ? this.orderForm.orderFormId : "";
+
   }
 
 
   general() {
     if(!$(".custom-cart-template-wrap").length) $(".cart-template.mini-cart .cart-fixed > *").wrapAll('<div class="custom-cart-template-wrap">');
+  
+    $(".table.cart-items tbody tr.product-item").each(function (w) {
+      if ($(this).find(".v-custom-product-item-wrap").length > 0) return false
+      $(this).find("> *").wrapAll(`<div class="v-custom-product-item-wrap">`)
+    })
   }
   
   builder() {
@@ -123,26 +124,56 @@ class checkoutCustom {
 
   bundleItems(orderForm) {
     try {
-      if(orderForm.items) {
-        $.each(orderForm.items, function(i) {
-          if(this.bundleItems.length>0) {
+      if (orderForm.items) {
+        $.each(orderForm.items, function (i) {
+          if (this.bundleItems.length > 0) {
             $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-bundles-in").find("td.product-name");
           } else {
             $(`.table.cart-items tbody tr.product-item:eq(${i})`).removeClass("v-custom-bundles-in");
           }
         });
-        $(".table.cart-items tbody tr.item-service").each(function(w) {
-          if($(this).find(".v-custom-trservice-wrap").length > 0) return false
+        $(".table.cart-items tbody tr.item-service").each(function (w) {
+          if ($(this).find(".v-custom-trservice-wrap").length > 0) return false
           $(this).find("> *").wrapAll(`<div class="v-custom-trservice-wrap">`)
         })
       }
-    } catch(e) {}
+    } catch (e) { }
+  }
+
+  buildMiniCart() {
+    /* overode refresh from vtex */
+    $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`)
+  }
+
+  removeMCLoader () { $(`.mini-cart .cart-items`).addClass("v-loaded"); }
+  indexedInItems(orderForm) {
+    let _this = this;
+    try {
+      if (vtexjs.checkout.orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { _this.removeMCLoader(); return false;}
+      if (orderForm.items && $(`.mini-cart .cart-items li`).length) {
+        $.each(orderForm.items, function (i) {
+          if (this.parentItemIndex!=null) {
+            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-indexed-item").appendTo(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`);
+            $(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in");
+            
+            $(`.mini-cart .cart-items li:eq(${i})`).addClass("v-custom-indexed-item").appendTo(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`);
+            $(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in");
+          }
+        });
+        _this.removeMCLoader();
+      }
+      
+    } catch (e) { _this.removeMCLoader(); }
   }
 
   update(orderForm) {
-    this.checkEmpty(orderForm.items)
-    this.addAssemblies(orderForm)
-    this.bundleItems(orderForm)
+    this.checkEmpty(orderForm.items);
+    this.addAssemblies(orderForm);
+    this.bundleItems(orderForm);
+    
+    this.buildMiniCart();
+    this.indexedInItems(orderForm);
+    
   }
 
   updateStep() {
@@ -205,6 +236,7 @@ class checkoutCustom {
     _this.addStepsHeader();
     _this.builder();
     _this.addAssemblies(_this.orderForm);
+    _this.indexedInItems(_this.orderForm);
     _this.bundleItems(_this.orderForm);
     _this.addEditButtoninLogin();
   }
@@ -212,28 +244,26 @@ class checkoutCustom {
 
 let fnsCheckout = new checkoutCustom();
 
-$(document).ready(function() {
+
+$(function() {
   fnsCheckout.bind();
   
 });
 
 $(document).ajaxComplete(function() {
   fnsCheckout.init()
-  
   console.log(">> initx")
 })
 
 
 $(window).on('hashchange', function() {
   fnsCheckout.updateStep();
+  fnsCheckout.buildMiniCart();
+  fnsCheckout.indexedInItems(vtexjs.checkout.orderForm);
   console.log(">> hashx")
 });
 
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
   fnsCheckout.update(orderForm);
   console.log(">> updatedx")
-})
-
-$(window).load(function() {
-  fnsCheckout.builder();
 })

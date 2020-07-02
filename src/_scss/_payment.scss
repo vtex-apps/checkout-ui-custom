@@ -1,7 +1,27 @@
+// loadin shhimer
 
+
+@keyframes placeHolderShimmer{
+	0%{
+		background-position: -468px 0
+	}
+	100%{
+		background-position: 468px 0
+	}
+}
+
+%loading-shimmer {
+	animation-duration: 1.25s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: placeHolderShimmer;
+	animation-timing-function: linear;
+	background: darkgray;
+	background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+	background-size: 800px 104px;
+		
+}
 // set svgs
-
-
 
 	svg.pickup-marker-blue,
 	svg.pickup-marker-blue path,
@@ -483,7 +503,32 @@
 	    margin: 0;
 	    border: none;
 	    border-bottom: 1px solid $muted-5;
-	    &:last-child {border:none;}
+			&:last-child {border:none;}
+			
+			&.v-custom-indexed-item {
+				background:$action-secondary;
+				border:1px dashed $muted-4;
+				border-radius:$border-radius;
+
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				box-sizing: border-box;
+				padding: 5px 10px;
+				margin:10px 0 0 0;
+
+				.description {margin-top:0;}
+				> a,
+				.quantity,
+				.shipping-date,
+				.item-subscription {display:none;}
+
+				.price {margin:0;}
+
+				&:last-child {margin-bottom:0;}
+			}
 
 	    .fn { width: calc(82% - 20px); }
 
@@ -496,6 +541,8 @@
 			span.shipping-date {
 			  white-space: nowrap;
 			}
+
+			
 		}
 
 		.summary-totalizers {
@@ -568,6 +615,28 @@
 		.cart {
 			margin-bottom: 0;
 			max-height: calc(100vh - 285px);
+
+			.cart-items:not(.v-loaded) {
+				max-height: 100px;
+				overflow: hidden;
+				li.item {
+					overflow:hidden;
+					position:relative;
+					border: none !important;
+					> * {opacity:0;}
+
+					&:after {
+						content:"";
+						width:100%;
+						height:100%;
+						display:block;
+						top:0px;
+						left:0;
+						position:absolute;
+						@extend %loading-shimmer;
+					}
+				}
+			}
 		}
 
 	}

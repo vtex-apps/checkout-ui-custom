@@ -90,21 +90,33 @@ body.v-custom-cart-empty {
     tr {
       width:100%;
       display: flex;
-      align-items: center;
+      flex-wrap:wrap;
       border-bottom:1px solid  $muted-5;
-      position:relative;
+
+      @media(max-width: 490px) {
+        padding: 0px !important;
+        margin-top:0 !important;
+        border-top:none !important;
+        border-bottom:1px solid  $muted-5;
+      }
 
       &.item-attachments-head,
       &.item-attachments-content {display: none;}
 
-      @media(max-width: 490px) {
-        border-top:none !important;
-        border-bottom:1px solid  $muted-5;
-        padding-bottom: 20px !important;
       
+
+      .v-custom-product-item-wrap {
+        width:100%;
+        display: flex;
+        align-items: center;
+        position:relative;
+        padding:20px 0;
+        @media(max-width: 490px) {
+          display: block;
+        }
       }
 
-      > td {
+      td {
         width: auto;
         border:none;
 
@@ -229,15 +241,16 @@ body.v-custom-cart-empty {
         .product-service {display: none;}
       }
 
+      
+      &.v-custom-indexed-item,
       &.item-service {
-        
+        margin:0 0 10px 0;
 
+        .v-custom-product-item-wrap,
         .v-custom-trservice-wrap {
           background:$action-secondary;
           border:1px dashed $muted-4;
           border-radius:$border-radius;
-          margin-bottom: 20px;
-          margin-top: 10px;
 
           width: 100%;
           display: flex;
@@ -247,7 +260,13 @@ body.v-custom-cart-empty {
           padding: 5px 10px;
         }
 
+        .v-custom-trservice-wrap {
+          margin-bottom: 20px;
+          margin-top: 10px;
+        }
 
+
+        td.product-price {display: none !important;}
         td.quantity-price {display: block !important;}
 
         .item-remove {
@@ -278,6 +297,21 @@ body.v-custom-cart-empty {
         }
       }
 
+      &.v-custom-indexed-item {
+        border:none !important;
+        &:last-child {
+          margin-bottom: 20px;
+        }
+        td.product-image {display:none;}
+        td.quantity {
+          @media (max-width:490px) {
+            display:none;
+          }
+        }
+        td.product-name {margin-left:0 !important;padding: 0 !important;width: 100% !important;}
+        p {margin:0;padding:0;}
+      }
+
       &:last-child {
         border:none;
       }
@@ -289,7 +323,6 @@ body.v-custom-cart-empty {
   }
 
   td.product-image { 
-    padding:20px 0;
 
     a {margin-right:20px;}
     a,
