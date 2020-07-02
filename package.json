@@ -1,6 +1,6 @@
 {
   "name": "us-checkout-builder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Variations of Checkout Vertical or Horizontal",
   "main": "index.js",
   "watches": {
