@@ -687,8 +687,12 @@ body.v-custom-cart-empty .cart-template-holder {
           padding: 0; }
       .table.cart-items tbody tr:last-child {
         border: none; }
-      .table.cart-items tbody tr.v-custom-assemblies-in {
+      .table.cart-items tbody tr.v-custom-assemblies-in:not(.v-custom-indexed-item),
+      .table.cart-items tbody tr.v-custom-assemblies-in.v-custom-indexed-item .v-custom-product-item-wrap {
         padding-bottom: 70px !important; }
+      .table.cart-items tbody tr.v-custom-assemblies-in.v-custom-indexed-item .v-custom-product-item-wrap .v-custom-assemblies {
+        width: calc(100% - 20px);
+        left: 10px; }
   .table.cart-items td.product-image a {
     margin-right: 20px; }
   .table.cart-items td.product-image a,

@@ -316,9 +316,16 @@ body.v-custom-cart-empty {
         border:none;
       }
 
-      &.v-custom-assemblies-in {
+      &.v-custom-assemblies-in:not(.v-custom-indexed-item),
+      &.v-custom-assemblies-in.v-custom-indexed-item .v-custom-product-item-wrap {
         padding-bottom:70px !important;
       }
+        &.v-custom-assemblies-in.v-custom-indexed-item .v-custom-product-item-wrap {
+          .v-custom-assemblies {
+            width:calc(100% - 20px);
+            left:10px;
+          }
+        }
     }
   }
 
