@@ -626,6 +626,16 @@ body.v-custom-cart-empty .cart-template-holder {
         border: none !important; }
         .table.cart-items tbody tr.v-custom-bundles-in .product-service {
           display: none; }
+      .table.cart-items tbody tr.item-unavailable {
+        margin: 10px;
+        border-radius: 10px;
+        border: none !important; }
+      .table.cart-items tbody tr.v-custom-indexedItems-in {
+        border: none !important; }
+        .table.cart-items tbody tr.v-custom-indexedItems-in + tr.item-unavailable {
+          display: none; }
+      .table.cart-items tbody tr.v-custom-indexed-item {
+        padding-bottom: 30px; }
       .table.cart-items tbody tr.v-custom-indexed-item, .table.cart-items tbody tr.item-service {
         margin: 0 0 10px 0; }
         .table.cart-items tbody tr.v-custom-indexed-item .v-custom-product-item-wrap,
@@ -669,26 +679,23 @@ body.v-custom-cart-empty .cart-template-holder {
               margin: auto !important;
               width: auto !important;
               min-width: initial !important; } }
-      .table.cart-items tbody tr.v-custom-indexed-item {
-        border: none !important; }
-        .table.cart-items tbody tr.v-custom-indexed-item:last-child {
-          margin-bottom: 20px; }
-        .table.cart-items tbody tr.v-custom-indexed-item td.product-image {
-          display: none; }
-        @media (max-width: 490px) {
-          .table.cart-items tbody tr.v-custom-indexed-item td.quantity {
-            display: none; } }
-        .table.cart-items tbody tr.v-custom-indexed-item td.product-name {
-          margin-left: 0 !important;
-          padding: 0 !important;
-          width: 100% !important; }
-        .table.cart-items tbody tr.v-custom-indexed-item p {
-          margin: 0;
-          padding: 0; }
+      .table.cart-items tbody tr.v-custom-indexed-item:last-child {
+        margin-bottom: 20px; }
+      .table.cart-items tbody tr.v-custom-indexed-item td.product-image {
+        display: none; }
+      @media (max-width: 490px) {
+        .table.cart-items tbody tr.v-custom-indexed-item td.quantity {
+          display: none; } }
+      .table.cart-items tbody tr.v-custom-indexed-item td.product-name {
+        margin-left: 0 !important;
+        padding: 0 !important;
+        width: 100% !important; }
+      .table.cart-items tbody tr.v-custom-indexed-item p {
+        margin: 0;
+        padding: 0; }
       .table.cart-items tbody tr:last-child {
         border: none; }
-      .table.cart-items tbody tr.v-custom-assemblies-in:not(.v-custom-indexed-item),
-      .table.cart-items tbody tr.v-custom-assemblies-in.v-custom-indexed-item .v-custom-product-item-wrap {
+      .table.cart-items tbody tr.v-custom-assemblies-in .v-custom-product-item-wrap {
         padding-bottom: 70px !important; }
       .table.cart-items tbody tr.v-custom-assemblies-in.v-custom-indexed-item .v-custom-product-item-wrap .v-custom-assemblies {
         width: calc(100% - 20px);
@@ -1462,6 +1469,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
           margin: 0; }
         .orderform-template .cart-template.mini-cart .item .service-item:last-child, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item:last-child {
           margin-bottom: 0; }
+      .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item .item-unavailable {
+        display: none; }
       .orderform-template .cart-template.mini-cart .item .fn {
         width: calc(82% - 20px); }
       .orderform-template .cart-template.mini-cart .item .description {
@@ -1501,7 +1510,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
           float: right; }
       .orderform-template .cart-template.mini-cart .summary-totalizers tbody + tbody {
         border-top: none; }
-      .orderform-template .cart-template.mini-cart .summary-totalizers tbody.shipping-calculate {
+      .orderform-template .cart-template.mini-cart .summary-totalizers tbody.shipping-reset, .orderform-template .cart-template.mini-cart .summary-totalizers tbody.shipping-calculate {
         display: none !important; }
     .orderform-template .cart-template.mini-cart .summary-totalizers tfoot tr td {
       padding: 14px 0 !important;

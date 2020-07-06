@@ -143,22 +143,35 @@ class checkoutCustom {
   buildMiniCart(orderForm) {
     /* overode refresh from vtex */
     let _this = this;
-    if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
-    $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`)
+    if (orderForm.items) {
+      if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
+      if ($(`.mini-cart .cart-items`).text().trim()!="") {
+        $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`);
+        $.each(orderForm.items, function (i) {
+          if (this.availability == "available") {
+            $(`.mini-cart .cart-items li:eq(${i})`).find(".item-unavailable").remove()
+          }
+        });
+      }
+    }
+   
+
   }
   removeMCLoader () { $(`.mini-cart .cart-items`).addClass("v-loaded"); }
   indexedInItems(orderForm) {
     let _this = this;
     try {
       if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { _this.removeMCLoader(); return false;}
-      if (orderForm.items && $(`.mini-cart .cart-items li`).length) {
+      if (orderForm.items) {
         $.each(orderForm.items, function (i) {
           if (this.parentItemIndex!=null) {
-            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-indexed-item").appendTo(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`);
-            $(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in");
+            $(`.table.cart-items tbody tr.product-item:eq(${i}), .mini-cart .cart-items li:eq(${i}) `).addClass("v-custom-indexed-item")
+            //$(`.table.cart-items tbody tr.product-item:eq(${i})`).appendTo(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`);
+            $(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex}), .mini-cart .cart-items li:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in");
             
-            $(`.mini-cart .cart-items li:eq(${i})`).addClass("v-custom-indexed-item").appendTo(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`);
-            $(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in");
+            if ($(`.mini-cart .cart-items li`).length>0) {
+              $(`.mini-cart .cart-items li:eq(${i})`).appendTo(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`);
+            }
           }
         });
         _this.removeMCLoader();
@@ -231,12 +244,12 @@ class checkoutCustom {
     let _this = this;
     
     _this.orderForm = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm : "";
-
     _this.general();
     _this.updateStep();
     _this.addStepsHeader();
     _this.builder();
     _this.addAssemblies(_this.orderForm);
+    _this.buildMiniCart(_this.orderForm);
     _this.indexedInItems(_this.orderForm);
     _this.bundleItems(_this.orderForm);
     _this.addEditButtoninLogin();
@@ -267,4 +280,8 @@ $(window).on('hashchange', function() {
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
   fnsCheckout.update(orderForm);
   console.log(">> updatedx")
+})
+ 
+$(window).load(function() {
+  fnsCheckout.init()
 })

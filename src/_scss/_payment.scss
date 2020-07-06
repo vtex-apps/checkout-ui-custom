@@ -537,6 +537,10 @@
 				&:last-child {margin-bottom:0;}
 			}
 
+			&.v-custom-indexed-item {
+				.item-unavailable {display:none;}
+			}
+
 	    .fn { width: calc(82% - 20px); }
 
 	    .description {
@@ -599,7 +603,7 @@
 		    & + tbody {
 			    border-top: none;
 				}
-
+				&.shipping-reset,
 				&.shipping-calculate {display: none !important;}
 		  }
 		  tfoot {
