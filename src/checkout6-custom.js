@@ -102,7 +102,7 @@ class checkoutCustom {
               _assembliesHtml += `<p>${_assemblies.id}</p>`;
               _assembliesHtml += `<ul class="v-custom-assemblies__values">`;
                 Object.entries(inptValues).forEach(([key, val]) => {
-                  _assembliesHtml += `<li class="v-custom-assemblies__values__item">
+                  _assembliesHtml += `<li class="v-custom-assemblies__values__item assembly-${key.toLowerCase().replace(/ /g, "-")}">
                                         <strong>${key}</strong>
                                         <span>${val.trim()}</span>
                                       </li>`;

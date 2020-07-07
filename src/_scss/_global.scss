@@ -73,12 +73,10 @@ body {
 // assemblies custom vtex
 
   .v-custom-assemblies {
-    position: absolute;
-    bottom: 0;
-    left: 125px;
-    margin: 20px 0;
-    width: calc(100% - 125px);
-
+    margin: 10px 0 3px 0;
+    overflow: hidden;
+    border-top: 1px solid $muted-4;
+    padding-top: 7px;
     @media(max-width: 490px) {
       width: 100%;
       left:0;
@@ -88,20 +86,15 @@ body {
     p {display: none;}
     &__values {
       list-style: none;
-      text-align: center;
       padding: 0;
       margin: 0;
-      display:flex;
-      box-shadow: -1px 0 0 0px $muted-4;
+      
       &__item {
-        box-shadow: 1px 0 0 0px $muted-4;
-        padding: 0 10px;
-        flex-grow: 1;
         strong {
-          line-height: 14px;
+          &:after {content:":";}
         }
-        span, strong {display: block;}
+        span, strong {line-height: 14px;}
       }
-    }
-    
+    } 
+     
   }
