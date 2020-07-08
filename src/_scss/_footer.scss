@@ -1,7 +1,7 @@
 .main-footer {
 	clear: both;
 	text-align: center;
-	padding: 10px 0;
+	padding: 2px 0;
 	border-top:1px solid $muted-5;
 
 	position: absolute;
@@ -12,5 +12,23 @@
 
 	@media(max-width: 768px) {
 		position:relative;
+	}
+
+	a.credits-vtex {
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+	}	
+}
+
+
+// temp brass bell
+footer.footer {
+	@extend .main-footer;
+	> div,
+	.credits-avanti {display:none;}
+	> div.footer-bottom {
+		display:block;
+		img {width:90px;}
 	}
 }
