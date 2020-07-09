@@ -463,7 +463,9 @@ body .main-header {
       display: none; }
     body:not(.body-cart) .main-header a.back-cart-link {
       display: block !important;
-      font-size: 0; } }
+      font-size: 0; }
+      body:not(.body-cart) .main-header a.back-cart-link:before {
+        background: #323232; } }
 
 .main-footer {
   clear: both;

@@ -90,7 +90,13 @@ body {
         }
 
         a.buy-more-link {display:none;}
-        a.back-cart-link {display:block !important;font-size: 0;}
+        a.back-cart-link {
+          display:block !important;
+          font-size: 0;
+          &:before {
+            background: $muted-1;
+          }
+        }
       }
     }
   }
