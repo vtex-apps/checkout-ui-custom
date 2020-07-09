@@ -35,6 +35,29 @@ input, select, button {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box; }
+  .table.cart-items tr.item-attachments-content input.error,
+  .table.cart-items tr.item-attachments-content select.error, .table.cart-items tbody tr td .product-service select.error, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input.error[type=text],
+  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button.error[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span.error, .cart-more-options .srp-container select.error,
+  .cart-more-options .srp-container input.error[type=text]:not(.pac-target-input), .cart-more-options .srp-container .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input.error, .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=text]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=email]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data form.client-pre-email select.error:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data input.error[type=text]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data input.error[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data input.error[type=email]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data select.error:not(.pac-target-input),
+  .orderform-template-holder #shipping-data input.error[type=text]:not(.pac-target-input),
+  .orderform-template-holder #shipping-data input.error[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #shipping-data input.error[type=email]:not(.pac-target-input),
+  .orderform-template-holder #shipping-data select.error:not(.pac-target-input),
+  .orderform-template-holder #payment-data input.error[type=text]:not(.pac-target-input),
+  .orderform-template-holder #payment-data input.error[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #payment-data input.error[type=email]:not(.pac-target-input),
+  .orderform-template-holder #payment-data select.error:not(.pac-target-input), .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input.error, #app-container input.error[type=text],
+  #app-container input.error[type=tel],
+  #app-container input.error[type=email],
+  #app-container select.error {
+    border-color: #ff4c4c; }
 
 .btn {
   transition: all ease 0.2s;
@@ -48,9 +71,9 @@ input, select, button {
   .btn:hover, .btn:focus {
     background: white; }
   .btn-link {
-    color: #171c60; }
+    color: #1a73e8; }
     .btn-link:hover, .btn-link:focus {
-      color: #080a22; }
+      color: #1151a5; }
   .btn-success {
     background: #2fba2d !important;
     border: 1px solid #2fba2d !important;
@@ -61,17 +84,17 @@ input, select, button {
     .btn-success[disabled] {
       background: #2fba2d; }
   .btn-primary {
-    background: #171c60;
-    border: 1px solid #171c60;
+    background: #1a73e8;
+    border: 1px solid #1a73e8;
     color: #f9f9f9; }
     .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-      background: #12164b;
-      border: 1px solid #12164b; }
+      background: #1567d3;
+      border: 1px solid #1567d3; }
   .btn-secondary, .table.cart-items tbody tr td.product-name .clone-item.btn,
   .table.cart-items tbody tr td.product-name .add-item-attachment-container a, .table.cart-items tbody tr td .product-service input[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn, .orderform-template-holder #payment-data #btn-add-gift-card {
     background: #f9f9f9;
     border: 1px solid #f9f9f9;
-    color: #171c60; }
+    color: #1a73e8; }
     .btn-secondary:hover, .table.cart-items tbody tr td.product-name .clone-item.btn:hover,
     .table.cart-items tbody tr td.product-name .add-item-attachment-container a:hover, .table.cart-items tbody tr td .product-service input:hover[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:hover, .orderform-template-holder #payment-data #btn-add-gift-card:hover, .btn-secondary:focus, .table.cart-items tbody tr td.product-name .clone-item.btn:focus,
     .table.cart-items tbody tr td.product-name .add-item-attachment-container a:focus, .table.cart-items tbody tr td .product-service input:focus[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:focus, .orderform-template-holder #payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr td.product-name .clone-item.btn:active,
@@ -123,7 +146,7 @@ input, select, button {
   background: #2fba2d; }
 
 #vtexIdContainer a {
-  color: #171c60; }
+  color: #1a73e8; }
 
 #vtexIdContainer .vtexIdUI .modal-footer {
   background: none; }
@@ -156,10 +179,10 @@ body {
   position: relative;
   font-size: 12px; }
   body a {
-    color: #171c60; }
+    color: #1a73e8; }
     body a:hover {
-      color: #080a22; }
-  @media (max-width: 968px) {
+      color: #1151a5; }
+  @media (max-width: 768px) {
     body {
       padding-bottom: 0px !important; } }
 
@@ -229,8 +252,8 @@ body.v-custom-step-profile .client-pre-email h3.client-pre-email-h span:before, 
 body.v-custom-step-shipping .client-profile-data .accordion-toggle > span:before, body.v-custom-step-payment .client-pre-email h3.client-pre-email-h span:before,
 body.v-custom-step-payment .client-profile-data .accordion-toggle > span:before,
 body.v-custom-step-payment .shipping-data .accordion-toggle:before, body.v-custom-step-email .client-pre-email h3.client-pre-email-h span:before, body.v-custom-step-profile .client-profile-data .accordion-toggle > span:before, body.v-custom-step-shipping .shipping-data .accordion-toggle:before, body.v-custom-step-payment .payment-data .accordion-toggle > span:not(.payment-edit-link):before {
-  background: #171c60;
-  border-color: #171c60;
+  background: #1a73e8;
+  border-color: #1a73e8;
   color: #FFF; }
 
 .client-pre-email h3.client-pre-email-h span:before,
@@ -261,7 +284,7 @@ body.v-custom-step-payment .shipping-data .accordion-toggle:before, body.v-custo
   body:before {
     width: 0;
     height: 4px;
-    background: #171c60;
+    background: #1a73e8;
     display: block;
     content: "";
     position: fixed;
@@ -282,8 +305,8 @@ body.v-custom-step-cart .checkout-steps_item_cart .text {
   font-weight: bold; }
 
 body.v-custom-step-cart .checkout-steps_item_cart:before {
-  background: #171c60;
-  border-color: #171c60; }
+  background: #1a73e8;
+  border-color: #1a73e8; }
 
 body.v-custom-step-email .checkout-steps_bar_inner-active {
   width: 25%; }
@@ -295,8 +318,8 @@ body.v-custom-step-email .checkout-steps_item_identification .text {
 
 body.v-custom-step-email .checkout-steps_item_cart:before,
 body.v-custom-step-email .checkout-steps_item_identification:before {
-  background: #171c60;
-  border-color: #171c60; }
+  background: #1a73e8;
+  border-color: #1a73e8; }
 
 body.v-custom-step-payment .checkout-steps_bar_inner-active, body.v-custom-step-profile .checkout-steps_bar_inner-active, body.v-custom-step-shipping .checkout-steps_bar_inner-active {
   width: 50%; }
@@ -318,8 +341,8 @@ body.v-custom-step-profile .checkout-steps_item_identification:before,
 body.v-custom-step-profile .checkout-steps_item_payment:before, body.v-custom-step-shipping .checkout-steps_item_cart:before,
 body.v-custom-step-shipping .checkout-steps_item_identification:before,
 body.v-custom-step-shipping .checkout-steps_item_payment:before {
-  background: #171c60;
-  border-color: #171c60; }
+  background: #1a73e8;
+  border-color: #1a73e8; }
 
 .checkout-steps {
   display: none;
@@ -336,7 +359,7 @@ body.v-custom-step-shipping .checkout-steps_item_payment:before {
   .checkout-steps_bar_inner, .checkout-steps_bar_inner-active {
     width: calc(100% - 25%);
     height: 3px;
-    background: #3f49d1;
+    background: #a5c8f6;
     display: block;
     /* margin: 0 0 0 10px; */
     margin: 0 auto;
@@ -346,7 +369,7 @@ body.v-custom-step-shipping .checkout-steps_item_payment:before {
     transition: all ease 0.3s; }
   .checkout-steps_bar_inner-active {
     width: 0;
-    background: #171c60; }
+    background: #1a73e8; }
   .checkout-steps_items {
     display: flex;
     justify-content: space-between; }
@@ -359,8 +382,8 @@ body.v-custom-step-shipping .checkout-steps_item_payment:before {
       content: "";
       width: 7px;
       height: 7px;
-      background: #3f49d1;
-      border: 2px solid #3f49d1;
+      background: #a5c8f6;
+      border: 2px solid #a5c8f6;
       display: inline-block;
       border-radius: 100%;
       margin: 0 auto;
@@ -379,7 +402,7 @@ body .main-header {
   body .main-header, body .main-header > .container {
     display: flex;
     justify-content: center;
-    background: #171c60;
+    background: #1a73e8;
     width: 100%; }
   body .main-header > .container {
     position: initial; }
@@ -395,7 +418,7 @@ body .main-header {
       font-size: 10px;
       line-height: 10px;
       padding-left: 0px;
-      color: #f9f9f9 !important; }
+      color: #f9f9f9; }
       body .main-header .header-link a:before {
         display: block;
         float: left;
@@ -442,7 +465,7 @@ body .main-header {
       display: block !important;
       font-size: 0; } }
 
-.main-footer, footer.footer {
+.main-footer {
   clear: both;
   text-align: center;
   padding: 2px 0;
@@ -450,24 +473,18 @@ body .main-header {
   position: absolute;
   bottom: 0;
   width: 100%; }
-  .main-footer .container, footer.footer .container {
+  .main-footer .container {
     position: initial; }
   @media (max-width: 768px) {
-    .main-footer, footer.footer {
+    .main-footer {
       position: relative; } }
-  .main-footer a.credits-vtex, footer.footer a.credits-vtex {
+  .main-footer a.credits-vtex {
     width: 100px;
     display: block;
     margin: 0 auto; }
-
-footer.footer > div,
-footer.footer .credits-avanti {
-  display: none; }
-
-footer.footer > div.footer-bottom {
-  display: block; }
-  footer.footer > div.footer-bottom img {
-    width: 90px; }
+  .main-footer .vtex-logo {
+    display: block;
+    margin: 0 auto; }
 
 .cart {
   border: none;
@@ -605,8 +622,8 @@ body.v-custom-cart-empty .cart-template-holder {
         .table.cart-items tbody tr td.quantity-price {
           display: none !important; }
         .table.cart-items tbody tr td .field-help {
-          background: #171c60;
-          border-color: #171c60; }
+          background: #1a73e8;
+          border-color: #1a73e8; }
         .table.cart-items tbody tr td .add-item-attachment-container,
         .table.cart-items tbody tr td .clone-item,
         .table.cart-items tbody tr td p.clone-item-container {
@@ -872,7 +889,7 @@ body.v-custom-cart-empty .cart-template-holder {
       text-align: right !important;
       margin-left: auto;
       float: right;
-      color: #171c60; }
+      color: #1a73e8; }
 
 .summary-coupon {
   width: 100% !important; }
@@ -903,13 +920,13 @@ body.v-custom-cart-empty .cart-template-holder {
     .cart-more-options .srp-container button.shp-open-options {
       border-color: #e0e0e0; }
     .cart-more-options .srp-container .onda-v1 .blue {
-      color: #171c60;
+      color: #1a73e8;
       outline: none; }
     .cart-more-options .srp-container .onda-v1 .b--blue {
-      border-color: #171c60;
+      border-color: #1a73e8;
       outline: none; }
     .cart-more-options .srp-container .onda-v1 .bg-blue {
-      background: #171c60;
+      background: #1a73e8;
       outline: initial; }
     .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .ship-country {
       width: 98%; }
@@ -988,7 +1005,7 @@ body.v-custom-cart-empty .cart-template-holder {
     .client-pre-email h3.client-pre-email-h .link-box-edit {
       display: none; }
   .client-pre-email a#orderform-to-cart {
-    color: #171c60; }
+    color: #1a73e8; }
   .client-pre-email .client-email.input.text {
     margin: 0;
     width: 100%;
@@ -1017,7 +1034,7 @@ body.v-custom-cart-empty .cart-template-holder {
     box-sizing: border-box; }
     .client-pre-email .emailInfo .icon-ok,
     .client-pre-email .emailInfo h3 {
-      color: #171c60; }
+      color: #1a73e8; }
     @media (max-width: 490px) {
       .client-pre-email .emailInfo {
         width: 100%; } }
@@ -1078,7 +1095,7 @@ svg.pkpmodal-pickup-point-marker-image path,
 svg.vtex-omnishipping-1-x-svg,
 svg.vtex-omnishipping-1-x-svg path,
 svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
-  fill: #171c60; }
+  fill: #1a73e8; }
 
 @media (max-width: 768px) {
   .container.container-main.container-order-form {
@@ -1122,7 +1139,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     border: none;
     top: 4px;
     right: -5px;
-    color: #171c60;
+    color: #1a73e8;
     outline: none;
     position: absolute;
     right: 0;
@@ -1220,19 +1237,19 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     width: 20px;
     height: 20px;
     display: inline-block;
-    border: 1px solid #171c60;
+    border: 1px solid #1a73e8;
     border-radius: 100%;
     vertical-align: middle;
     margin: -3px 10px 0 0; }
   .orderform-template-holder #payment-data p.link.link-gift-card.active span:before,
   .orderform-template-holder #payment-data .payment-group-item.active span:before {
-    background: #171c60;
+    background: #1a73e8;
     box-shadow: inset 0 0 0 3px  #FFF; }
   .orderform-template-holder #payment-data p.link.link-gift-card.active, .orderform-template-holder #payment-data p.link.link-gift-card:hover,
   .orderform-template-holder #payment-data .payment-group-item.active,
   .orderform-template-holder #payment-data .payment-group-item:hover {
     box-shadow: 0 0 6px #ddd;
-    border: 1px solid #171c60 !important; }
+    border: 1px solid #1a73e8 !important; }
 
 .orderform-template-holder #payment-data p.link.link-gift-card,
 .orderform-template-holder #payment-data fieldset.payment-group {
@@ -1331,7 +1348,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     .orderform-template-holder .step .form-step fieldset.box-client-info-pj {
       padding-top: 15px; }
   .orderform-template-holder .step .form-step #is-corporate-client {
-    color: #171c60; }
+    color: #1a73e8; }
   .orderform-template-holder .step .input.text label {
     margin: 10px 0 5px 0; }
   .orderform-template-holder .step.client-profile-data .client-notice.notice {
@@ -1339,7 +1356,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder .step.client-profile-data .box-client-info {
     margin-bottom: 20px; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressSummaryActive .address-summary {
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='%23171c60' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='%23171c60' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='%231a73e8' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='%231a73e8' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
     background-position: 12px 9px;
     border: 1px solid #cbcbcb; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-content {
@@ -1353,13 +1370,13 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
-    background: #171c60;
-    border-color: #171c60; }
+    background: #1a73e8;
+    border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
-    color: #171c60;
-    border-color: #171c60; }
+    color: #1a73e8;
+    border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .shipping-method-toggle {
-    border-color: #171c60; }
+    border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-alert {
     border-color: #ffb100;
     display: flex;
@@ -1372,7 +1389,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-summaryChange {
     background: #f9f9f9;
     border-color: #dddddd;
-    color: #171c60; }
+    color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-option:hover,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-leanShippingOptionActive,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-leanShippingOption {
@@ -1383,10 +1400,10 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     fill: #676767; }
   .orderform-template-holder .step.shipping-data .vtex-pickup-points-modal-3-x-primary {
     outline: none;
-    background: #171c60;
-    border-color: #171c60; }
+    background: #1a73e8;
+    border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-pickupPointChange {
-    border-color: #171c60; }
+    border-color: #1a73e8; }
   .orderform-template-holder .step .submit.btn.btn-success {
     display: block;
     margin: 0 auto; }
@@ -1434,7 +1451,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       height: 10px;
       display: inline-block;
       background: #f9f9f9;
-      color: #171c60; }
+      color: #1a73e8; }
     .orderform-template .cart-template.mini-cart .summary-template-holder {
       width: 100%;
       background: none;
@@ -1495,7 +1512,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       position: absolute;
       top: 0px;
       right: 7px;
-      color: #171c60;
+      color: #1a73e8;
       text-decoration: underline; }
       @media (max-width: 490px) {
         .orderform-template .cart-template.mini-cart #go-to-cart-button {
@@ -1532,7 +1549,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         text-align: right !important;
         margin-left: auto;
         float: right;
-        color: #171c60; }
+        color: #1a73e8; }
     .orderform-template .cart-template.mini-cart .cart {
       margin-bottom: 0;
       max-height: calc(100vh - 285px); }

@@ -19,16 +19,8 @@
     display: block;
     margin: 0 auto;
 	}	
-}
-
-
-// temp brass bell
-footer.footer {
-	@extend .main-footer;
-	> div,
-	.credits-avanti {display:none;}
-	> div.footer-bottom {
-		display:block;
-		img {width:90px;}
+	.vtex-logo {
+		display: block;
+    margin: 0 auto;
 	}
 }

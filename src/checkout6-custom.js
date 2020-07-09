@@ -14,6 +14,8 @@ class checkoutCustom {
       if ($(this).find(".v-custom-product-item-wrap").length > 0) return false
       $(this).find("> *").wrapAll(`<div class="v-custom-product-item-wrap">`)
     })
+
+    $(".link-box-edit").attr("title", "Edit");
   }
   
   builder() {
