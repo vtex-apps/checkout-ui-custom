@@ -16,6 +16,8 @@ class checkoutCustom {
     })
 
     $(".link-box-edit").attr("title", "Edit");
+
+    $("body").addClass(`v-locale-${this.orderForm.storePreferencesData.countryCode}`)
   }
   
   builder() {
