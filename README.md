@@ -7,7 +7,7 @@ A combination of conditions and variables will adapt your checkout according you
 
 ### Running npm
 
-`npm run dev` to watch and build the sass file
+`npm run watch` to watch and build the sass file
 `npm run build` to build the sass file and copy the js
 
 

@@ -3,26 +3,28 @@
   "version": "1.0.2",
   "description": "Variations of Checkout Vertical or Horizontal",
   "main": "index.js",
-  "watches": {
-    "scss": "src/**",
-    "js": "src/**"
-  },
   "scripts": {
-    "js": "@powershell copy './src/checkout6-custom.js' './build'",
-    "scss": "node-sass --watch ./src -o ./build -r & npm run js",
-    "scss-build": "node-sass ./src -o ./build -r & npm run js",
-    "build": "npm run js & npm run scss-build",
-    "dev": "rerun-script"
+    "build": "cross-env NODE_ENV=production webpack",
+    "watch": "webpack --watch"
   },
   "author": "Lucas Vyskubenko <lucas.vysk@vtex.com> (https://github.com/lucvysk)",
   "license": "VTEX",
   "dependencies": {
-    "git": "^0.1.5",
-    "node-sass-json-importer": "^4.3.0"
+    "git": "^0.1.5"
   },
   "devDependencies": {
-    "node-sass": "^4.14.1",
-    "nodemon": "^2.0.4",
-    "rerun-script": "^0.6.0"
+    "@babel/core": "^7.0.0",
+    "@babel/runtime-corejs2": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "extract-loader": "^2.0.1",
+    "file-loader": "^2.0.0",
+    "node-sass": "^4.9.3",
+    "postcss-cli": "^6.0.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
   }
 }

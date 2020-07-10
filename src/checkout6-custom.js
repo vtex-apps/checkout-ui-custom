@@ -1,3 +1,5 @@
+const { _locale } = require("./_js/_locale-infos.js");
+
 class checkoutCustom {
   constructor() {
     this.type = "vertical"; // ["vertical"]
@@ -17,7 +19,6 @@ class checkoutCustom {
 
     $(".link-box-edit").attr("title", "Edit");
 
-    $("body").addClass(`v-locale-${this.orderForm.storePreferencesData.countryCode}`)
   }
   
   builder() {
@@ -257,14 +258,14 @@ class checkoutCustom {
     _this.indexedInItems(_this.orderForm);
     _this.bundleItems(_this.orderForm);
     _this.addEditButtoninLogin();
-  }
+  } 
 }
 
-let fnsCheckout = new checkoutCustom();
-
-
+let fnsCheckout = new checkoutCustom();  
+  
+ 
 $(function() {
-  fnsCheckout.bind();
+  fnsCheckout.bind(); 
   
 });
 
