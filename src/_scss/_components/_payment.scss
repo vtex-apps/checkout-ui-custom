@@ -265,6 +265,7 @@
 
 		#btn-add-gift-card {
 			@extend .btn-secondary;
+			height: $inputHeight ;
 		}
 
 		.steps-view {

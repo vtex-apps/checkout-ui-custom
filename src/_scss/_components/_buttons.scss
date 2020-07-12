@@ -52,21 +52,21 @@
 		&:hover,
 		&:focus,
 		&:active {
-			background:darken($action-primary,5%);; 
+			background:darken($action-primary,5%);
 			border:1px solid darken($action-primary,5%); 
 		}
 	}  
 
 	&-secondary {
 		background: $action-secondary;
-		border:1px solid $action-secondary;
+		border:1px solid lighten($action-primary,35%);
 		color:$action-primary;
 	
 		&:hover,
 		&:focus,
 		&:active {
-			background:darken($action-secondary,5%);; 
-			border:1px solid darken($action-secondary,5%); 
+			background:darken($action-secondary,5%);
+			border:1px solid lighten($action-primary,35%);
 		}
 	}
 

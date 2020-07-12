@@ -1,1 +1,133 @@
-!function(t){var e={};function i(s){if(e[s])return e[s].exports;var n=e[s]={i:s,l:!1,exports:{}};return t[s].call(n.exports,n,n.exports,i),n.l=!0,n.exports}i.m=t,i.c=e,i.d=function(t,e,s){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:s})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var s=Object.create(null);if(i.r(s),Object.defineProperty(s,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)i.d(s,n,function(e){return t[e]}.bind(null,n));return s},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=0)}([function(t,e,i){i(1),t.exports=i(3)},function(t,e,i){const{_locale:s}=i(2);let n=new class{constructor(){this.type="vertical",this.orderForm="",this.orderId=this.orderForm?this.orderForm.orderFormId:""}general(){$(".custom-cart-template-wrap").length||$(".cart-template.mini-cart .cart-fixed > *").wrapAll('<div class="custom-cart-template-wrap">'),$(".table.cart-items tbody tr.product-item").each((function(t){if($(this).find(".v-custom-product-item-wrap").length>0)return!1;$(this).find("> *").wrapAll('<div class="v-custom-product-item-wrap">')})),$(".link-box-edit").attr("title","Edit")}builder(){let t=this;"vertical"==this.type?t.buildVertical():"horizontal"==this.type?t.buildHorizontal():console.error("No `type` identified, check your code")}buildVertical(){$("body").addClass("body-cart-vertical"),$(".cart-template .cart-links-bottom:eq(0)").appendTo(".cart-template > .summary-template-holder"),$(".cart-template .cart-more-options:eq(0), .cart-template .extensions-checkout-buttons-container").appendTo(".cart-template-holder")}buildHorizontal(){}checkEmpty(t){0==t.length?$("body").addClass("v-custom-cart-empty"):$("body").removeClass("v-custom-cart-empty")}addEditButtoninLogin(){$("#v-custom-edit-login-data").remove(),$(".client-pre-email h3.client-pre-email-h span").append('\n      <a id="v-custom-edit-login-data" class="link-box-edit btn btn-small" style="" title="Edit">\n        <i class="icon-edit"></i>\n        <i class="icon-spinner icon-spin icon-3x"></i>\n      </a>\n    ')}addStepsHeader(){if($(".checkout-steps").length>0)return!1;$(".container.container-main").before('\n      <div class="checkout-steps container-cart container">\n        <div class="checkout-steps-wrap">\n          <span class="checkout-steps_bar">\n            <span class="checkout-steps_bar_inner"></span>\n            <span class="checkout-steps_bar_inner-active"></span>\n          </span>\n          <div class="checkout-steps_items">\n            <span class="checkout-steps_item checkout-steps_item_cart">\n              <span class="text">Cart</span>\n            </span>\n            <span class="checkout-steps_item checkout-steps_item_identification">\n              <span class="text">Login</span>\n            </span>\n            <span class="checkout-steps_item checkout-steps_item_payment">\n              <span class="text">Payment</span>\n            </span>\n            <span class="checkout-steps_item checkout-steps_item_confirmation">\n              <span class="text">Confirmation</span>\n            </span>\n          </div>\n        </div>\n      </div>\n    ')}addAssemblies(t){try{t.items&&$.each(t.items,(function(t){let e=this;if(e.assemblies.length>0){let i='<div class="v-custom-assemblies">';$.each(e.assemblies,(function(t){let e=this.inputValues;i+=`<p>${this.id}</p>`,i+='<ul class="v-custom-assemblies__values">',Object.entries(e).forEach(([t,e])=>{i+=`<li class="v-custom-assemblies__values__item assembly-${t.toLowerCase().replace(/ /g,"-")}">\n                                        <strong>${t}</strong>\n                                        <span>${e.trim()}</span>\n                                      </li>`}),i+="</ul>"})),i+="</div>",$(`.table.cart-items tbody tr.product-item:eq(${t}) .v-custom-assemblies`).remove(),$(`.table.cart-items tbody tr.product-item:eq(${t})`).addClass("v-custom-assemblies-in").find("td.product-name").append(i)}}))}catch(t){}}bundleItems(t){try{t.items&&($.each(t.items,(function(t){this.bundleItems.length>0?$(`.table.cart-items tbody tr.product-item:eq(${t})`).addClass("v-custom-bundles-in").find("td.product-name"):$(`.table.cart-items tbody tr.product-item:eq(${t})`).removeClass("v-custom-bundles-in")})),$(".table.cart-items tbody tr.item-service").each((function(t){if($(this).find(".v-custom-trservice-wrap").length>0)return!1;$(this).find("> *").wrapAll('<div class="v-custom-trservice-wrap">')})))}catch(t){}}buildMiniCart(t){if(t.items){if(0==t.items.filter(t=>null!=t.parentItemIndex).length)return!1;""!=$(".mini-cart .cart-items").text().trim()&&($(".mini-cart .cart-items").html(""+$(".mini-cart .cart-items").html()),$.each(t.items,(function(t){"available"==this.availability&&$(`.mini-cart .cart-items li:eq(${t})`).find(".item-unavailable").remove()})))}}removeMCLoader(){$(".mini-cart .cart-items").addClass("v-loaded")}indexedInItems(t){let e=this;try{if(0==t.items.filter(t=>null!=t.parentItemIndex).length)return e.removeMCLoader(),!1;t.items&&($.each(t.items,(function(t){null!=this.parentItemIndex&&($(`.table.cart-items tbody tr.product-item:eq(${t}), .mini-cart .cart-items li:eq(${t}) `).addClass("v-custom-indexed-item"),$(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex}), .mini-cart .cart-items li:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in"),$(".mini-cart .cart-items li").length>0&&$(`.mini-cart .cart-items li:eq(${t})`).appendTo(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`))})),e.removeMCLoader())}catch(t){e.removeMCLoader()}}update(t){this.checkEmpty(t.items),this.addAssemblies(t),this.bundleItems(t),this.buildMiniCart(t),this.indexedInItems(t)}updateStep(){let t=["cart","email","profile","shipping","payment"];if($("body").removeClass(t.map(t=>"v-custom-step-"+t).join(" ")),window.location.hash){let e=window.location.hash.split("/")[1];t.find(t=>t==e),$("body").addClass("v-custom-step-"+e)}}bind(){let t=this;$("body").on("click","#v-custom-edit-login-data",(function(e){e.preventDefault(),$(this).addClass("active");var i=new XMLHttpRequest;i.addEventListener("readystatechange",(function(){this.readyState===this.DONE&&(location.reload(),setTimeout((function(){$("#v-custom-edit-login-data").removeClass("active")}),1e3))})),i.open("GET","/checkout/changeToAnonymousUser/"+t.orderForm.orderFormId),i.setRequestHeader("content-type","application/json"),i.setRequestHeader("accept","application/json"),i.send(null)}))}init(){this.orderForm=vtexjs.checkout.orderForm?vtexjs.checkout.orderForm:"",this.general(),this.updateStep(),this.addStepsHeader(),this.builder(),this.addAssemblies(this.orderForm),this.buildMiniCart(this.orderForm),this.indexedInItems(this.orderForm),this.bundleItems(this.orderForm),this.addEditButtoninLogin()}};$((function(){n.bind()})),$(document).ajaxComplete((function(){n.init(),console.log(">> initx")})),$(window).on("hashchange",(function(){n.updateStep(),n.buildMiniCart(vtexjs.checkout.orderForm),n.indexedInItems(vtexjs.checkout.orderForm),console.log(">> hashx")})),$(window).on("orderFormUpdated.vtex",(function(t,e){n.update(e),console.log(">> updatedx")})),$(window).load((function(){n.init()}))},function(t,e){t.exports._locale=function(){console.log("@@@@@")}},function(t,e,i){t.exports=i.p+"checkout6-custom.css"}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/_js/_locale-infos.js":
+/*!**********************************!*\
+  !*** ./src/_js/_locale-infos.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports._locale = function() {\r\n  \r\n}\r\n \r\n\n\n//# sourceURL=webpack:///./src/_js/_locale-infos.js?");
+
+/***/ }),
+
+/***/ "./src/checkout6-custom.js":
+/*!*********************************!*\
+  !*** ./src/checkout6-custom.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const { _locale } = __webpack_require__(/*! ./_js/_locale-infos.js */ \"./src/_js/_locale-infos.js\");\r\n\r\nclass checkoutCustom {\r\n  constructor() {\r\n    this.type = \"vertical\"; // [\"vertical\"]\r\n    this.orderForm = \"\"; \r\n    this.orderId = this.orderForm ? this.orderForm.orderFormId : \"\";\r\n\r\n  }\r\n\r\n\r\n  general() {\r\n    if(!$(\".custom-cart-template-wrap\").length) $(\".cart-template.mini-cart .cart-fixed > *\").wrapAll('<div class=\"custom-cart-template-wrap\">');\r\n  \r\n    $(\".table.cart-items tbody tr.product-item\").each(function (w) {\r\n      if ($(this).find(\".v-custom-product-item-wrap\").length > 0) return false\r\n      $(this).find(\"> *\").wrapAll(`<div class=\"v-custom-product-item-wrap\">`)\r\n    })\r\n\r\n    $(\".link-box-edit\").attr(\"title\", \"Edit\");\r\n\r\n  }\r\n  \r\n  builder() {\r\n    let _this = this;\r\n    if(this.type==\"vertical\") {\r\n      _this.buildVertical()\r\n    } else if(this.type==\"horizontal\") {\r\n      _this.buildHorizontal()\r\n    } else {\r\n      console.error(\"No `type` identified, check your code\")\r\n    }\r\n  }\r\n\r\n  buildVertical() {\r\n    $(\"body\").addClass(\"body-cart-vertical\")\r\n    $(\".cart-template .cart-links-bottom:eq(0)\").appendTo(\".cart-template > .summary-template-holder\")\r\n    $(\".cart-template .cart-more-options:eq(0), .cart-template .extensions-checkout-buttons-container\").appendTo(\".cart-template-holder\")\r\n\r\n  }\r\n\r\n  buildHorizontal() {\r\n\r\n  }\r\n\r\n  checkEmpty(items) {\r\n    if(items.length==0) {\r\n      $(\"body\").addClass(\"v-custom-cart-empty\")\r\n    } else {\r\n      $(\"body\").removeClass(\"v-custom-cart-empty\")\r\n    }\r\n  }\r\n\r\n  addEditButtoninLogin() {\r\n    $(\"#v-custom-edit-login-data\").remove();\r\n    $(\".client-pre-email h3.client-pre-email-h span\").append(`\r\n      <a id=\"v-custom-edit-login-data\" class=\"link-box-edit btn btn-small\" style=\"\" title=\"Edit\">\r\n        <i class=\"icon-edit\"></i>\r\n        <i class=\"icon-spinner icon-spin icon-3x\"></i>\r\n      </a>\r\n    `);\r\n  }\r\n\r\n  addStepsHeader() {\r\n\r\n    if($(\".checkout-steps\").length>0) return false\r\n\r\n    let addStepsHeaderHtml = `\r\n      <div class=\"checkout-steps container-cart container\">\r\n        <div class=\"checkout-steps-wrap\">\r\n          <span class=\"checkout-steps_bar\">\r\n            <span class=\"checkout-steps_bar_inner\"></span>\r\n            <span class=\"checkout-steps_bar_inner-active\"></span>\r\n          </span>\r\n          <div class=\"checkout-steps_items\">\r\n            <span class=\"checkout-steps_item checkout-steps_item_cart\">\r\n              <span class=\"text\">Cart</span>\r\n            </span>\r\n            <span class=\"checkout-steps_item checkout-steps_item_identification\">\r\n              <span class=\"text\">Login</span>\r\n            </span>\r\n            <span class=\"checkout-steps_item checkout-steps_item_payment\">\r\n              <span class=\"text\">Payment</span>\r\n            </span>\r\n            <span class=\"checkout-steps_item checkout-steps_item_confirmation\">\r\n              <span class=\"text\">Confirmation</span>\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    `;\r\n    $(\".container.container-main\").before(addStepsHeaderHtml)\r\n  }\r\n\r\n  addAssemblies(orderForm) {\r\n    try {\r\n      if(orderForm.items) {\r\n        $.each(orderForm.items, function(i) {\r\n          let _item = this;\r\n\r\n          if(_item.assemblies.length>0) {\r\n            let _assembliesHtml = `<div class=\"v-custom-assemblies\">`\r\n            $.each(_item.assemblies, function(w) {\r\n              let _assemblies = this;\r\n\r\n              let inptValues = _assemblies.inputValues;\r\n              _assembliesHtml += `<p>${_assemblies.id}</p>`;\r\n              _assembliesHtml += `<ul class=\"v-custom-assemblies__values\">`;\r\n                Object.entries(inptValues).forEach(([key, val]) => {\r\n                  _assembliesHtml += `<li class=\"v-custom-assemblies__values__item assembly-${key.toLowerCase().replace(/ /g, \"-\")}\">\r\n                                        <strong>${key}</strong>\r\n                                        <span>${val.trim()}</span>\r\n                                      </li>`;\r\n                });\r\n              _assembliesHtml += `</ul>`;\r\n            })\r\n            _assembliesHtml += `</div>`;\r\n            $(`.table.cart-items tbody tr.product-item:eq(${i}) .v-custom-assemblies`).remove();\r\n            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass(\"v-custom-assemblies-in\").find(\"td.product-name\").append(_assembliesHtml);\r\n          }\r\n\r\n        })\r\n      }\r\n    } catch(e) {\r\n\r\n    }\r\n    \r\n  }\r\n\r\n  bundleItems(orderForm) {\r\n    try {\r\n      if (orderForm.items) {\r\n        $.each(orderForm.items, function (i) {\r\n          if (this.bundleItems.length > 0) {\r\n            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass(\"v-custom-bundles-in\").find(\"td.product-name\");\r\n          } else {\r\n            $(`.table.cart-items tbody tr.product-item:eq(${i})`).removeClass(\"v-custom-bundles-in\");\r\n          }\r\n        });\r\n        $(\".table.cart-items tbody tr.item-service\").each(function (w) {\r\n          if ($(this).find(\".v-custom-trservice-wrap\").length > 0) return false\r\n          $(this).find(\"> *\").wrapAll(`<div class=\"v-custom-trservice-wrap\">`)\r\n        })\r\n      }\r\n    } catch (e) { }\r\n  }\r\n\r\n  buildMiniCart(orderForm) {\r\n    /* overode refresh from vtex */\r\n    let _this = this;\r\n    if (orderForm.items) {\r\n      if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }\r\n      if ($(`.mini-cart .cart-items`).text().trim()!=\"\") {\r\n        $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`);\r\n        $.each(orderForm.items, function (i) {\r\n          if (this.availability == \"available\") {\r\n            $(`.mini-cart .cart-items li:eq(${i})`).find(\".item-unavailable\").remove()\r\n          }\r\n        });\r\n      }\r\n    }\r\n   \r\n\r\n  }\r\n  removeMCLoader () { $(`.mini-cart .cart-items`).addClass(\"v-loaded\"); }\r\n  indexedInItems(orderForm) {\r\n    let _this = this;\r\n    try {\r\n      if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { _this.removeMCLoader(); return false;}\r\n      if (orderForm.items) {\r\n        $.each(orderForm.items, function (i) {\r\n          if (this.parentItemIndex!=null) {\r\n            $(`.table.cart-items tbody tr.product-item:eq(${i}), .mini-cart .cart-items li:eq(${i}) `).addClass(\"v-custom-indexed-item\")\r\n            //$(`.table.cart-items tbody tr.product-item:eq(${i})`).appendTo(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`);\r\n            $(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex}), .mini-cart .cart-items li:eq(${this.parentItemIndex})`).addClass(\"v-custom-indexedItems-in\");\r\n            \r\n            if ($(`.mini-cart .cart-items li`).length>0) {\r\n              $(`.mini-cart .cart-items li:eq(${i})`).appendTo(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`);\r\n            }\r\n          }\r\n        });\r\n        _this.removeMCLoader();\r\n      }\r\n      \r\n    } catch (e) { _this.removeMCLoader(); }\r\n  }\r\n\r\n  update(orderForm) {\r\n    this.checkEmpty(orderForm.items);\r\n    this.addAssemblies(orderForm);\r\n    this.bundleItems(orderForm);\r\n    \r\n    this.buildMiniCart(orderForm);\r\n    this.indexedInItems(orderForm);\r\n    \r\n  }\r\n\r\n  updateStep() {\r\n\r\n    let prefixClass = \"v-custom-step-\";\r\n    let bClassStep = [\r\n      \"cart\",\r\n      \"email\",\r\n      \"profile\",\r\n      \"shipping\",\r\n      \"payment\"\r\n    ];\r\n\r\n    $(\"body\").removeClass(bClassStep.map(step => { return prefixClass+step }).join(\" \"))\r\n    if(window.location.hash) {\r\n      let hashstep = window.location.hash.split(\"/\")[1];\r\n      if(typeof bClassStep.find(st => { return st==hashstep })) {\r\n        $(\"body\").addClass(prefixClass+hashstep)\r\n      }\r\n    }\r\n    \r\n  }\r\n\r\n  bind() {\r\n    let _this = this;\r\n    $(\"body\").on(\"click\", \"#v-custom-edit-login-data\", function(e) {\r\n\r\n      e.preventDefault();\r\n\r\n      $(this).addClass(\"active\");\r\n\r\n      var data = null;\r\n      var xhr = new XMLHttpRequest();\r\n      xhr.addEventListener(\"readystatechange\", function () {\r\n        if (this.readyState === this.DONE) { \r\n          location.reload(); \r\n          setTimeout(function() {\r\n            $(\"#v-custom-edit-login-data\").removeClass(\"active\");\r\n          },1000)\r\n        }\r\n      });\r\n\r\n      xhr.open(\"GET\", `/checkout/changeToAnonymousUser/${_this.orderForm.orderFormId}`);\r\n      xhr.setRequestHeader(\"content-type\", \"application/json\");\r\n      xhr.setRequestHeader(\"accept\", \"application/json\");\r\n\r\n      xhr.send(data);\r\n\r\n\r\n    })\r\n  }\r\n\r\n  init() {\r\n    let _this = this;\r\n    \r\n    _this.orderForm = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm : \"\";\r\n    _this.general();\r\n    _this.updateStep();\r\n    _this.addStepsHeader();\r\n    _this.builder();\r\n    _this.addAssemblies(_this.orderForm);\r\n    _this.buildMiniCart(_this.orderForm);\r\n    _this.indexedInItems(_this.orderForm);\r\n    _this.bundleItems(_this.orderForm);\r\n    _this.addEditButtoninLogin();\r\n  } \r\n}\r\n\r\nlet fnsCheckout = new checkoutCustom();  \r\n  \r\n \r\n$(function() {\r\n  fnsCheckout.bind(); \r\n  \r\n});\r\n\r\n$(document).ajaxComplete(function() {\r\n  fnsCheckout.init()\r\n  console.log(\">> initx\")\r\n})\r\n\r\n\r\n$(window).on('hashchange', function() {\r\n  fnsCheckout.updateStep();\r\n  fnsCheckout.buildMiniCart(vtexjs.checkout.orderForm);\r\n  fnsCheckout.indexedInItems(vtexjs.checkout.orderForm);\r\n  console.log(\">> hashx\")\r\n});\r\n\r\n$(window).on('orderFormUpdated.vtex', function(evt, orderForm) {\r\n  fnsCheckout.update(orderForm);\r\n  console.log(\">> updatedx\")\r\n})\r\n \r\n$(window).load(function() {\r\n  fnsCheckout.init()\r\n})\n\n//# sourceURL=webpack:///./src/checkout6-custom.js?");
+
+/***/ }),
+
+/***/ "./src/checkout6-custom.scss":
+/*!***********************************!*\
+  !*** ./src/checkout6-custom.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"checkout6-custom.css\";\n\n//# sourceURL=webpack:///./src/checkout6-custom.scss?");
+
+/***/ }),
+
+/***/ 0:
+/*!*******************************************************************!*\
+  !*** multi ./src/checkout6-custom.js ./src/checkout6-custom.scss ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("__webpack_require__(/*! ./src/checkout6-custom.js */\"./src/checkout6-custom.js\");\nmodule.exports = __webpack_require__(/*! ./src/checkout6-custom.scss */\"./src/checkout6-custom.scss\");\n\n\n//# sourceURL=webpack:///multi_./src/checkout6-custom.js_./src/checkout6-custom.scss?");
+
+/***/ })
+
+/******/ });
