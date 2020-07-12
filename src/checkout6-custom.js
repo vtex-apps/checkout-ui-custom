@@ -5,6 +5,7 @@ class checkoutCustom {
     this.type = "vertical"; // ["vertical"]
     this.orderForm = ""; 
     this.orderId = this.orderForm ? this.orderForm.orderFormId : "";
+    this.lang = "";
 
   }
 
@@ -148,7 +149,7 @@ class checkoutCustom {
   buildMiniCart(orderForm) {
     /* overode refresh from vtex */
     let _this = this;
-    if (orderForm.items) {
+    if (orderForm && orderForm.items) {
       if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
       if ($(`.mini-cart .cart-items`).text().trim()!="") {
         $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`);
@@ -216,6 +217,20 @@ class checkoutCustom {
     
   }
 
+  updateLang(orderForm) {
+    this.lang = _locale[orderForm.storePreferencesData.countryCode];
+
+    if (!this.lang) return false;
+    const _lang = this.lang;
+    //paypal
+    if (_lang.paypalImg) {
+      $(".payment-paypal-title-short-logo").css("background-image", _lang.paypalImg);
+    } else {
+      $(".payment-paypal-title-short-logo").hide();
+    }
+    $(".payment-paypal-help-number").text(_lang.paypalPhone);
+  }
+
   bind() {
     let _this = this;
     $("body").on("click", "#v-custom-edit-login-data", function(e) {
@@ -248,45 +263,47 @@ class checkoutCustom {
   init() {
     let _this = this;
     
-    _this.orderForm = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm : "";
+    _this.orderForm = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm : false;
     _this.general();
     _this.updateStep();
     _this.addStepsHeader();
     _this.builder();
-    _this.addAssemblies(_this.orderForm);
-    _this.buildMiniCart(_this.orderForm);
-    _this.indexedInItems(_this.orderForm);
-    _this.bundleItems(_this.orderForm);
+    if (_this.orderForm) {
+      _this.updateLang(_this.orderForm)
+      _this.addAssemblies(_this.orderForm);
+      _this.buildMiniCart(_this.orderForm);
+      _this.indexedInItems(_this.orderForm);
+      _this.bundleItems(_this.orderForm);
+    }
     _this.addEditButtoninLogin();
   } 
 }
 
-let fnsCheckout = new checkoutCustom();  
+window.vcustomCheckout = new checkoutCustom();  
   
  
 $(function() {
-  fnsCheckout.bind(); 
-  
+  vcustomCheckout.bind(); 
 });
 
 $(document).ajaxComplete(function() {
-  fnsCheckout.init()
+  vcustomCheckout.init()
   console.log(">> initx")
 })
 
 
 $(window).on('hashchange', function() {
-  fnsCheckout.updateStep();
-  fnsCheckout.buildMiniCart(vtexjs.checkout.orderForm);
-  fnsCheckout.indexedInItems(vtexjs.checkout.orderForm);
+  vcustomCheckout.updateStep();
+  vcustomCheckout.buildMiniCart(vtexjs.checkout.orderForm);
+  vcustomCheckout.indexedInItems(vtexjs.checkout.orderForm);
   console.log(">> hashx")
 });
 
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
-  fnsCheckout.update(orderForm);
+  vcustomCheckout.update(orderForm);
   console.log(">> updatedx")
 })
  
 $(window).load(function() {
-  fnsCheckout.init()
+  vcustomCheckout.init()
 })
