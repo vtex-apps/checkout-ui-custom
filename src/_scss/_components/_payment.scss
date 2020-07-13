@@ -253,7 +253,28 @@
     		margin: 0;
 			}
 		}
-		
+
+		.payment-discounts-list {
+			margin-bottom: 20px;
+			table {
+				width: 100%;
+				tbody,
+				tr {
+						display:flex;
+						width: 100%;
+				}
+				td.code,
+				td.number {
+						margin-right:20px;
+						flex-grow: 1;
+				}
+				#remove-gift-card {
+					text-decoration:underline;
+					color:$danger;
+				}
+			}
+			
+		}
 
 		input#payment-discounts-code {
 		  width:100% !important;
@@ -265,7 +286,8 @@
 
 		#btn-add-gift-card {
 			@extend .btn-secondary;
-			height: $inputHeight ;
+			height: $inputHeight;
+			border-radius: $border-radius;
 		}
 
 		.steps-view {
