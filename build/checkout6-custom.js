@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports._locale = {\r\n\r\n  USA: {\r\n    editLabel:\"Edit\",\r\n    paypalImg: \"\",\r\n    paypalPhone: \"1 (888) 221-1161\",\r\n  }\r\n  \r\n}\r\n \r\n\n\n//# sourceURL=webpack:///./src/_js/_locale-infos.js?");
+eval("module.exports._locale = {\r\n\r\n  CAD: {\r\n    editLabel: \"Edit\",\r\n    paypalImg: \"\",\r\n    paypalPhone: \"1 (888) 221-1161\",\r\n  },\r\n  USA: {\r\n    editLabel: \"Edit\",\r\n    paypalImg: \"\",\r\n    paypalPhone: \"1 (888) 221-1161\",\r\n  },\r\n  \r\n  \r\n}\r\n \r\n\n\n//# sourceURL=webpack:///./src/_js/_locale-infos.js?");
 
 /***/ }),
 
