@@ -734,7 +734,6 @@
 	select {
 		@extend %input-style;
 		width: 100%;
-		max-width:calc(100% - 2px);
 	}
 
 	.CardForm {
