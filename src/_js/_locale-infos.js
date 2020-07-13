@@ -1,6 +1,6 @@
 module.exports._locale = {
 
-  CAD: {
+  CAN: {
     editLabel: "Edit",
     paypalImg: "",
     paypalPhone: "1 (888) 221-1161",

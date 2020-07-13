@@ -1641,7 +1641,6 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   #app-container input[type=tel],
   #app-container input[type=email],
   #app-container select {
-    width: 100%; }
   #app-container .CardForm > div {
     position: relative;
     clear: both; }
