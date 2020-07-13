@@ -18,7 +18,7 @@ class checkoutCustom {
       $(this).find("> *").wrapAll(`<div class="v-custom-product-item-wrap">`)
     })
 
-    $(".link-box-edit").attr("title", "Edit");
+    
 
   }
   
@@ -55,7 +55,7 @@ class checkoutCustom {
   addEditButtoninLogin() {
     $("#v-custom-edit-login-data").remove();
     $(".client-pre-email h3.client-pre-email-h span").append(`
-      <a id="v-custom-edit-login-data" class="link-box-edit btn btn-small" style="" title="Edit">
+      <a id="v-custom-edit-login-data" class="link-box-edit btn btn-small" style="" title="${this.lang ? this.lang.editLabel:true}">
         <i class="icon-edit"></i>
         <i class="icon-spinner icon-spin icon-3x"></i>
       </a>
@@ -95,33 +95,31 @@ class checkoutCustom {
 
   addAssemblies(orderForm) {
     try {
-      if(orderForm.items) {
-        $.each(orderForm.items, function(i) {
-          let _item = this;
+      $.each(orderForm.items, function(i) {
+        let _item = this;
 
-          if(_item.assemblies.length>0) {
-            let _assembliesHtml = `<div class="v-custom-assemblies">`
-            $.each(_item.assemblies, function(w) {
-              let _assemblies = this;
+        if(_item.assemblies.length>0) {
+          let _assembliesHtml = `<div class="v-custom-assemblies">`
+          $.each(_item.assemblies, function(w) {
+            let _assemblies = this;
 
-              let inptValues = _assemblies.inputValues;
-              _assembliesHtml += `<p>${_assemblies.id}</p>`;
-              _assembliesHtml += `<ul class="v-custom-assemblies__values">`;
-                Object.entries(inptValues).forEach(([key, val]) => {
-                  _assembliesHtml += `<li class="v-custom-assemblies__values__item assembly-${key.toLowerCase().replace(/ /g, "-")}">
-                                        <strong>${key}</strong>
-                                        <span>${val.trim()}</span>
-                                      </li>`;
-                });
-              _assembliesHtml += `</ul>`;
-            })
-            _assembliesHtml += `</div>`;
-            $(`.table.cart-items tbody tr.product-item:eq(${i}) .v-custom-assemblies`).remove();
-            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-assemblies-in").find("td.product-name").append(_assembliesHtml);
-          }
+            let inptValues = _assemblies.inputValues;
+            _assembliesHtml += `<p>${_assemblies.id}</p>`;
+            _assembliesHtml += `<ul class="v-custom-assemblies__values">`;
+              Object.entries(inptValues).forEach(([key, val]) => {
+                _assembliesHtml += `<li class="v-custom-assemblies__values__item assembly-${key.toLowerCase().replace(/ /g, "-")}">
+                                      <strong>${key}</strong>
+                                      <span>${val.trim()}</span>
+                                    </li>`;
+              });
+            _assembliesHtml += `</ul>`;
+          })
+          _assembliesHtml += `</div>`;
+          $(`.table.cart-items tbody tr.product-item:eq(${i}) .v-custom-assemblies`).remove();
+          $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-assemblies-in").find("td.product-name").append(_assembliesHtml);
+        }
 
-        })
-      }
+      })
     } catch(e) {
 
     }
@@ -130,39 +128,35 @@ class checkoutCustom {
 
   bundleItems(orderForm) {
     try {
-      if (orderForm.items) {
-        $.each(orderForm.items, function (i) {
-          if (this.bundleItems.length > 0) {
-            $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-bundles-in").find("td.product-name");
-          } else {
-            $(`.table.cart-items tbody tr.product-item:eq(${i})`).removeClass("v-custom-bundles-in");
-          }
-        });
-        $(".table.cart-items tbody tr.item-service").each(function (w) {
-          if ($(this).find(".v-custom-trservice-wrap").length > 0) return false
-          $(this).find("> *").wrapAll(`<div class="v-custom-trservice-wrap">`)
-        })
-      }
+      $.each(orderForm.items, function (i) {
+        if (this.bundleItems.length > 0) {
+          $(`.table.cart-items tbody tr.product-item:eq(${i})`).addClass("v-custom-bundles-in").find("td.product-name");
+        } else {
+          $(`.table.cart-items tbody tr.product-item:eq(${i})`).removeClass("v-custom-bundles-in");
+        }
+      });
+      $(".table.cart-items tbody tr.item-service").each(function (w) {
+        if ($(this).find(".v-custom-trservice-wrap").length > 0) return false
+        $(this).find("> *").wrapAll(`<div class="v-custom-trservice-wrap">`)
+      })
     } catch (e) { }
   }
 
   buildMiniCart(orderForm) {
     /* overode refresh from vtex */
     let _this = this;
-    if (orderForm && orderForm.items) {
-      if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
-      if ($(`.mini-cart .cart-items`).text().trim()!="") {
-        $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`);
-        $.each(orderForm.items, function (i) {
-          if (this.availability == "available") {
-            $(`.mini-cart .cart-items li:eq(${i})`).find(".item-unavailable").remove()
-          }
-        });
-      }
+    if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
+    if ($(`.mini-cart .cart-items`).text().trim()!="") {
+      $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`);
+      $.each(orderForm.items, function (i) {
+        if (this.availability == "available") {
+          $(`.mini-cart .cart-items li:eq(${i})`).find(".item-unavailable").remove()
+        }
+      });
     }
-   
 
   }
+  
   removeMCLoader () { $(`.mini-cart .cart-items`).addClass("v-loaded"); }
   indexedInItems(orderForm) {
     let _this = this;
@@ -222,10 +216,13 @@ class checkoutCustom {
 
     if (!this.lang) return false;
     const _lang = this.lang;
+
+    $(".link-box-edit").attr("title", _lang.editLabel);
+
     //paypal
     if (_lang.paypalImg) {
       $(".payment-paypal-title-short-logo").css("background-image", _lang.paypalImg);
-    } else {
+    } else if (_lang.paypalImg=="") {
       $(".payment-paypal-title-short-logo").hide();
     }
     $(".payment-paypal-help-number").text(_lang.paypalPhone);
