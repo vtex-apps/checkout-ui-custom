@@ -786,7 +786,7 @@
 		.PaymentValue {display:none;}
 
 		.SavedCardsList {
-			width: 100%;
+			width: calc(100% - 1px);
 		}
 		.SavedCard .link-delete {
 			right: 0;
@@ -821,6 +821,7 @@
 	}
 
 	.label-vertical-group {
+		padding: 9px;
 		&:hover {
 			color:$action-primary;
 		}
@@ -830,10 +831,28 @@
 		}
 		.card-flag {
 			position: absolute;
-			left: 2px;
-			top: 4px;
+			left: 5px;
+			top: 8px;
+		}
+		.icon-ok-circle, .icon-circle-blank {
+			top: 9px;
+		}
+		&.UseAnotherCard {
+			background-color: $muted-5;
+			padding:4px;
+			#use-another-card {
+				color:$muted-2;
+			}
+			&:hover {
+				#use-another-card {
+					text-decoration: underline;
+					color:darken($muted-2,15%);
+				}
+			}
 		}
 	}
+
+	
 
 
 	label.FormFieldLabel {
