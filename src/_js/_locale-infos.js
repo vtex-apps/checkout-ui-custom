@@ -4,11 +4,13 @@ module.exports._locale = {
     editLabel: "Edit",
     paypalImg: "",
     paypalPhone: "1 (888) 221-1161",
+    cartSubmitButton:"Prooced to Payment"
   },
   USA: {
     editLabel: "Edit",
     paypalImg: "",
     paypalPhone: "1 (888) 221-1161",
+    cartSubmitButton:"Prooced to Payment"
   },
   
   

@@ -452,7 +452,8 @@
 
     .submit.btn.btn-success {
 	    display:block;
-	    margin:0 auto;
+			margin:0 auto;
+			min-width:45%;
 		}
 
   }
@@ -526,7 +527,7 @@
 			border: none;
 			padding: 0;
 
-			.accordion-inner {margin-top: 10px;}
+			.accordion-inner {margin-top: 0px;}
 		}
 
 		.item {
@@ -584,6 +585,10 @@
 			  white-space: nowrap;
 			}
 
+			.url {
+				border-radius: $border-radius;
+    		overflow: hidden;
+			}
 			
 		}
 
@@ -680,10 +685,12 @@
 				}
 			}
 		}
+		
 
 	}
 
 	.payment-confirmation-wrap {
+		border:none;
 		@media(max-width: 768px) {
 			border:none !important;
 			z-index: 9999;
@@ -759,10 +766,25 @@
 		max-width:calc(100% - 1px);
 	}
 
+	span.help.error {
+		margin:0 !important;
+		display:none;
+	}
+
+	.SecurityEnvironmentIcon {
+		margin-bottom:20px;
+	}
+
 	.CardForm {
 		> div {position: relative;clear: both;}
-		span.error {
-			margin:0 !important;
+		.PaymentValue {display:none;}
+
+		.SavedCardsList {
+			width: 100%;
+		}
+		.SavedCard .link-delete {
+			right: 0;
+			top: -16px;
 		}
 	}
 	.FormFieldLabel {
@@ -789,6 +811,21 @@
 		.add-on {
 			height: 30px;
   		line-height: 30px;
+		}
+	}
+
+	.label-vertical-group {
+		&:hover {
+			color:$action-primary;
+		}
+		&.active {
+			color:$action-primary;
+			background:$action-secondary;
+		}
+		.card-flag {
+			position: absolute;
+			left: 2px;
+			top: 4px;
 		}
 	}
 

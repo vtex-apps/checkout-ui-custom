@@ -65,21 +65,24 @@
   outline: none !important;
   text-align: center;
   font-size: 12px !important;
+  padding: 5px 12px;
   background: white;
   box-shadow: none !important; }
   .btn:hover, .btn:focus {
     background: white; }
+  .btn-large {
+    padding: 11px 19px; }
   .btn-link {
     color: #1a73e8; }
     .btn-link:hover, .btn-link:focus {
       color: #1151a5; }
   .btn-success {
-    background: #2fba2d !important;
-    border: 1px solid #2fba2d !important;
+    background: #2fba2d;
+    border: 1px solid #2fba2d;
     font-size: 13px; }
-    .btn-success:hover {
-      background: #2aa528 !important;
-      border: 1px solid #2aa528 !important; }
+    .btn-success:hover, .btn-success:focus, .btn-success:active {
+      background: #2aa528;
+      border: 1px solid #2aa528; }
     .btn-success[disabled] {
       background: #2fba2d; }
   .btn-primary {
@@ -108,12 +111,10 @@
     .btn-outlined:hover, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:hover[type=submit], .btn-outlined:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .btn-outlined:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:active[type=submit] {
       background: transparent;
       border: 1px solid #35ce33; }
-  .btn#cart-to-orderform {
-    font-size: 0 !important; }
-    .btn#cart-to-orderform:before {
-      content: "Proceed to Payment";
-      font-size: 12px !important;
-      vertical-align: middle; }
+  .btn#payment-data-submit span {
+    font-size: 14px;
+    margin-left: 5px;
+    font-weight: bold; }
 
 .cart-more-options .srp-container .srp-main-title, .client-pre-email h3.client-pre-email-h span:after, .orderform-template-holder #client-profile-data form.client-pre-email .accordion-toggle,
 .orderform-template-holder #client-profile-data .step.client-profile-data .accordion-toggle,
@@ -195,8 +196,7 @@ body {
 .container-cart.container,
 .container.container-main.container-order-form {
   max-width: 980px;
-  width: calc(100% - 40px);
-  z-index: 2; }
+  width: calc(100% - 40px); }
 
 .checkout-container {
   overflow: initial !important; }
@@ -1428,7 +1428,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     border-color: #1a73e8; }
   .orderform-template-holder .step .submit.btn.btn-success {
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    min-width: 45%; }
 
 .orderform-template {
   display: flex !important;
@@ -1480,7 +1481,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       border: none;
       padding: 0; }
       .orderform-template .cart-template.mini-cart .summary-template-holder .accordion-inner {
-        margin-top: 10px; }
+        margin-top: 0px; }
     .orderform-template .cart-template.mini-cart .item {
       padding: 10px 0;
       margin: 0;
@@ -1528,6 +1529,9 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       .orderform-template .cart-template.mini-cart .item .price,
       .orderform-template .cart-template.mini-cart .item span.shipping-date {
         white-space: nowrap; }
+      .orderform-template .cart-template.mini-cart .item .url {
+        border-radius: 4px;
+        overflow: hidden; }
     .orderform-template .cart-template.mini-cart .summary-totalizers {
       margin-bottom: 0; }
     .orderform-template .cart-template.mini-cart #go-to-cart-button {
@@ -1592,19 +1596,21 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
             top: 0px;
             left: 0;
             position: absolute; }
-  @media (max-width: 768px) {
-    .orderform-template .payment-confirmation-wrap {
-      border: none !important;
-      z-index: 9999;
-      position: fixed;
-      bottom: 0;
-      padding: 0;
-      background: #FFF;
-      margin: 0 !important; }
-      .orderform-template .payment-confirmation-wrap button {
-        border-radius: 0 !important; }
-      .orderform-template .payment-confirmation-wrap .payment-submit-wrap, .orderform-template .payment-confirmation-wrap button {
-        margin: 0 !important; } }
+  .orderform-template .payment-confirmation-wrap {
+    border: none; }
+    @media (max-width: 768px) {
+      .orderform-template .payment-confirmation-wrap {
+        border: none !important;
+        z-index: 9999;
+        position: fixed;
+        bottom: 0;
+        padding: 0;
+        background: #FFF;
+        margin: 0 !important; }
+        .orderform-template .payment-confirmation-wrap button {
+          border-radius: 0 !important; }
+        .orderform-template .payment-confirmation-wrap .payment-submit-wrap, .orderform-template .payment-confirmation-wrap button {
+          margin: 0 !important; } }
   .orderform-template .summary-note {
     display: none !important; }
   .orderform-template .custom-cart-template-wrap {
@@ -1641,11 +1647,23 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   #app-container input[type=tel],
   #app-container input[type=email],
   #app-container select {
+    width: 100%;
+    max-width: calc(100% - 1px); }
+  #app-container span.help.error {
+    margin: 0 !important;
+    display: none; }
+  #app-container .SecurityEnvironmentIcon {
+    margin-bottom: 20px; }
   #app-container .CardForm > div {
     position: relative;
     clear: both; }
-  #app-container .CardForm span.error {
-    margin: 0 !important; }
+  #app-container .CardForm .PaymentValue {
+    display: none; }
+  #app-container .CardForm .SavedCardsList {
+    width: 100%; }
+  #app-container .CardForm .SavedCard .link-delete {
+    right: 0;
+    top: -16px; }
   #app-container .FormFieldLabel {
     line-height: 30px; }
   #app-container .PaymentCardFlags {
@@ -1665,6 +1683,15 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   #app-container .PaymentCardValue .add-on {
     height: 30px;
     line-height: 30px; }
+  #app-container .label-vertical-group:hover {
+    color: #1a73e8; }
+  #app-container .label-vertical-group.active {
+    color: #1a73e8;
+    background: #f9f9f9; }
+  #app-container .label-vertical-group .card-flag {
+    position: absolute;
+    left: 2px;
+    top: 4px; }
   #app-container label.FormFieldLabel {
     display: block;
     clear: both;

@@ -9,6 +9,7 @@
 	outline: none !important;
 	text-align: center;
 	font-size: $font-size !important;
+	padding: 5px 12px;
 
 	@if $buttonShadow {
 
@@ -21,6 +22,10 @@
 		}
 	}
 
+	&-large {
+		padding:11px 19px;
+	}
+
 	&-link {
 		color:$action-primary;
 		&:hover,
@@ -30,13 +35,15 @@
 	}
 
 	&-success {
-		background: $success !important;
-		border:1px solid $success !important;
+		background: $success;
+		border:1px solid $success;
 		font-size:13px;
 
-		&:hover {
-			background:darken($success,5%) !important; 
-			border:1px solid darken($success,5%) !important; 
+		&:hover,
+		&:focus,
+		&:active {
+			background:darken($success,5%); 
+			border:1px solid darken($success,5%); 
 		}
 
 		&[disabled] {
@@ -83,12 +90,11 @@
 		}
 	}
 
-	&#cart-to-orderform {
-		font-size:0 !important;
-	  &:before {
-	    content:"Proceed to Payment";
-	    font-size:$font-size  !important;
-	    vertical-align: middle;
+	&#payment-data-submit {
+		span {
+			font-size: 14px;
+			margin-left: 5px;
+			font-weight: bold;
 		}
 	}
 }

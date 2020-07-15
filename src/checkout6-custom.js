@@ -1,4 +1,7 @@
 const { _locale } = require("./_js/_locale-infos.js");
+const _customJs = require("./_js/_custom.js");
+const customJs = new _customJs();
+
 
 class checkoutCustom {
   constructor() {
@@ -219,6 +222,8 @@ class checkoutCustom {
 
     $(".link-box-edit").attr("title", _lang.editLabel);
 
+    $("#cart-to-orderform").text(_lang.cartSubmitButton)
+
     //paypal
     if (_lang.paypalImg) {
       $(".payment-paypal-title-short-logo").css("background-image", _lang.paypalImg);
@@ -281,11 +286,12 @@ window.vcustomCheckout = new checkoutCustom();
  
 $(function() {
   vcustomCheckout.bind(); 
+  customJs.init();
 });
 
 $(document).ajaxComplete(function() {
-  vcustomCheckout.init()
-  console.log(">> initx")
+  vcustomCheckout.init();
+  customJs.ccAjaxComplete();
 })
 
 
@@ -293,12 +299,11 @@ $(window).on('hashchange', function() {
   vcustomCheckout.updateStep();
   vcustomCheckout.buildMiniCart(vtexjs.checkout.orderForm);
   vcustomCheckout.indexedInItems(vtexjs.checkout.orderForm);
-  console.log(">> hashx")
 });
 
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
   vcustomCheckout.update(orderForm);
-  console.log(">> updatedx")
+  customJs.ccOrderFormUpdated(orderForm);
 })
  
 $(window).load(function() {
