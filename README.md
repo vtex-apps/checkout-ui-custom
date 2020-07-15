@@ -7,8 +7,8 @@ A combination of conditions and variables will adapt your checkout according you
 
 ### Running npm
 
-`npm run watch` to watch and build the sass file
-`npm run build` to build the sass file and copy the js
+`npm run watch` 
+`npm run build` 
 
 
 ### Expected HTML in the header
@@ -26,6 +26,14 @@ A combination of conditions and variables will adapt your checkout according you
 </header>
 
 ```
+
+If you wanna insert others info, make sure of include the class `.v-custom-mhide` to hide it at mobile resolutions, example:
+
+```
+<header class="main-header"> ... </header>
+<div class="promobar v-custom-mhide> ... </div>
+```
+
 
 ### Expected HTML in the Footer
 
@@ -47,7 +55,7 @@ A combination of conditions and variables will adapt your checkout according you
 
 `// CHECKOUT VARS`
 
-Show all variables to customize the checkout according your own preferences
+Holds all variables to customize the checkout according your own preferences
 
 ```
 $inputHeight:40px;

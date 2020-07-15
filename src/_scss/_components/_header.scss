@@ -67,6 +67,9 @@ body {
       @media (max-width: 490px) {
         padding:4px 0;
         margin-bottom: 10px;
+
+        .v-custom-mhide {display: none !important;}
+        
         &, > .container { 
           background:none;
           border:none;
