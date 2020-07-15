@@ -326,6 +326,7 @@
 
 	  .box-info {
 			color:$muted-1;
+			margin:10px 0;
 		}
 	    
     .form-step {
@@ -382,6 +383,8 @@
 					background-position: 12px 9px;
 					border:1px solid $muted-4;
 			}
+
+			.vtex-omnishipping-1-x-SummaryItemGroup {padding:0;}
 
     	.vtex-omnishipping-1-x-content {align-items: center;}
     	.vtex-omnishipping-1-x-deliveryChannelsOption {
@@ -450,6 +453,10 @@
 			}
 
 			.vtex-omnishipping-1-x-address p {clear:both;}
+
+			input#ship-addressQuery {
+				width: 100%;
+			}
     }
 
     .submit.btn.btn-success {
