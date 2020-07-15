@@ -542,6 +542,8 @@
 				float: none;
 				width: 100%;
 				background: none;
+				display: inline-block;
+				clear: both;
 			}
 			.service-item,
 			&.v-custom-indexed-item {

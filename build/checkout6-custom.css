@@ -64,7 +64,7 @@
   border-radius: 30px;
   outline: none !important;
   text-align: center;
-  font-size: 12px !important;
+  font-size: 12px;
   padding: 5px 12px;
   background: white;
   box-shadow: none !important; }
@@ -92,23 +92,28 @@
     .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
       background: #1567d3;
       border: 1px solid #1567d3; }
-  .btn-secondary, .table.cart-items tbody tr td.product-name .clone-item.btn,
-  .table.cart-items tbody tr td.product-name .add-item-attachment-container a, .table.cart-items tbody tr td .product-service input[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn, .orderform-template-holder #payment-data #btn-add-gift-card {
-    background: #f9f9f9;
-    border: 1px solid #bcd6f8;
+  .btn-secondary, .table.cart-items tbody tr td.product-name .add-service.btn,
+  .table.cart-items tbody tr td.product-name .clone-item.btn,
+  .table.cart-items tbody tr td.product-name .add-item-attachment-container a, .table.cart-items tbody tr td .product-service input[type=submit],
+  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn, .orderform-template-holder #payment-data #btn-add-gift-card {
+    background: transparent;
+    border: 1px solid #1a73e8;
     color: #1a73e8; }
-    .btn-secondary:hover, .table.cart-items tbody tr td.product-name .clone-item.btn:hover,
-    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:hover, .table.cart-items tbody tr td .product-service input:hover[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:hover, .orderform-template-holder #payment-data #btn-add-gift-card:hover, .btn-secondary:focus, .table.cart-items tbody tr td.product-name .clone-item.btn:focus,
-    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:focus, .table.cart-items tbody tr td .product-service input:focus[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:focus, .orderform-template-holder #payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr td.product-name .clone-item.btn:active,
-    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:active, .table.cart-items tbody tr td .product-service input:active[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:active, .orderform-template-holder #payment-data #btn-add-gift-card:active {
-      background: #ececec;
-      border: 1px solid #bcd6f8; }
-  .btn-outlined,
-  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit] {
+    .btn-secondary:hover, .table.cart-items tbody tr td.product-name .add-service.btn:hover,
+    .table.cart-items tbody tr td.product-name .clone-item.btn:hover,
+    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:hover, .table.cart-items tbody tr td .product-service input:hover[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:hover[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:hover, .orderform-template-holder #payment-data #btn-add-gift-card:hover, .btn-secondary:focus, .table.cart-items tbody tr td.product-name .add-service.btn:focus,
+    .table.cart-items tbody tr td.product-name .clone-item.btn:focus,
+    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:focus, .table.cart-items tbody tr td .product-service input:focus[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:focus, .orderform-template-holder #payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr td.product-name .add-service.btn:active,
+    .table.cart-items tbody tr td.product-name .clone-item.btn:active,
+    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:active, .table.cart-items tbody tr td .product-service input:active[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:active[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:active, .orderform-template-holder #payment-data #btn-add-gift-card:active {
+      background: #f9f9f9;
+      border: 1px solid #1151a5;
+      color: #1151a5; }
+  .btn-outlined {
     background: transparent;
     border: 1px solid #2fba2d;
     color: #2fba2d; }
-    .btn-outlined:hover, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:hover[type=submit], .btn-outlined:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .btn-outlined:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:active[type=submit] {
+    .btn-outlined:hover, .btn-outlined:focus, .btn-outlined:active {
       background: transparent;
       border: 1px solid #35ce33; }
   .btn#payment-data-submit span {
@@ -455,6 +460,8 @@ body .main-header {
   body:not(.body-cart) .main-header {
     padding: 4px 0;
     margin-bottom: 10px; }
+    body:not(.body-cart) .main-header .v-custom-mhide {
+      display: none !important; }
     body:not(.body-cart) .main-header, body:not(.body-cart) .main-header > .container {
       background: none;
       border: none; }
@@ -561,7 +568,6 @@ body.v-custom-cart-empty .cart-template-holder {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      border-bottom: 1px solid #eee;
       border-top: 1px solid #eee; }
       @media (max-width: 490px) {
         .table.cart-items tbody tr {
@@ -583,9 +589,11 @@ body.v-custom-cart-empty .cart-template-holder {
       .table.cart-items tbody tr td {
         width: auto;
         border: none; }
+        .table.cart-items tbody tr td.product-name .add-service-container,
         .table.cart-items tbody tr td.product-name .clone-item.btn,
         .table.cart-items tbody tr td.product-name .add-item-attachment-container {
           margin: 10px 0; }
+          .table.cart-items tbody tr td.product-name .add-service-container + p,
           .table.cart-items tbody tr td.product-name .clone-item.btn + p,
           .table.cart-items tbody tr td.product-name .add-item-attachment-container + p {
             display: none; }
@@ -662,10 +670,8 @@ body.v-custom-cart-empty .cart-template-holder {
             margin-right: 10px; }
       .table.cart-items tbody tr .v-custom-assemblies {
         clear: both; }
-      .table.cart-items tbody tr.v-custom-bundles-in {
-        border: none !important; }
-        .table.cart-items tbody tr.v-custom-bundles-in .product-service {
-          display: none; }
+      .table.cart-items tbody tr.v-custom-bundles-in .product-service {
+        display: none; }
       .table.cart-items tbody tr.item-unavailable {
         margin: 10px;
         border-radius: 10px;
@@ -677,7 +683,9 @@ body.v-custom-cart-empty .cart-template-holder {
       .table.cart-items tbody tr.v-custom-indexed-item {
         border: none; }
       .table.cart-items tbody tr.v-custom-indexed-item, .table.cart-items tbody tr.item-service {
-        margin: 0 0 10px 0; }
+        margin: 0 0 10px 0;
+        padding: 0;
+        border-top: none; }
         .table.cart-items tbody tr.v-custom-indexed-item .v-custom-product-item-wrap,
         .table.cart-items tbody tr.v-custom-indexed-item .v-custom-trservice-wrap, .table.cart-items tbody tr.item-service .v-custom-product-item-wrap,
         .table.cart-items tbody tr.item-service .v-custom-trservice-wrap {
@@ -690,7 +698,7 @@ body.v-custom-cart-empty .cart-template-holder {
           box-sizing: border-box;
           padding: 5px 10px; }
         .table.cart-items tbody tr.v-custom-indexed-item .v-custom-trservice-wrap, .table.cart-items tbody tr.item-service .v-custom-trservice-wrap {
-          margin-bottom: 20px;
+          margin-bottom: 10px;
           margin-top: 10px; }
         .table.cart-items tbody tr.v-custom-indexed-item td.product-price, .table.cart-items tbody tr.item-service td.product-price {
           display: none !important; }
@@ -734,8 +742,10 @@ body.v-custom-cart-empty .cart-template-holder {
         margin: 0;
         padding: 0; }
       .table.cart-items tbody tr:last-child {
-        border-bottom: none;
-        border-top: none; }
+        border-bottom: none; }
+  .table.cart-items td.product-image a {
+    overflow: hidden;
+    border-radius: 4px; }
   .table.cart-items td.product-image a {
     margin-right: 20px; }
   .table.cart-items td.product-image a,
@@ -857,6 +867,8 @@ body.v-custom-cart-empty .cart-template-holder {
     .summary-template-holder .cart-links-bottom .btn {
       width: 100%;
       box-sizing: border-box; }
+      .summary-template-holder .cart-links-bottom .btn-success {
+        font-weight: bold; }
     @media (max-width: 490px) {
       .summary-template-holder .cart-links-bottom {
         position: fixed;
@@ -919,6 +931,8 @@ body.v-custom-cart-empty .cart-template-holder {
     align-items: center; }
   .cart-more-options .srp-container {
     max-width: 100% !important; }
+    .cart-more-options .srp-container span.error {
+      display: none; }
     .cart-more-options .srp-container .srp-toggle__wrapper label {
       background: #FFF;
       padding: 10px 0;
@@ -1039,7 +1053,8 @@ body.v-custom-cart-empty .cart-template-holder {
       bottom: 15px;
       right: initial;
       left: 50%;
-      transform: translateX(-50%); }
+      transform: translateX(-50%);
+      min-width: 45%; }
       @media (max-width: 768px) {
         .client-pre-email .client-email.input.text .btn-success {
           width: calc(100% - 60px); } }
@@ -1506,7 +1521,9 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         margin: 0;
         float: none;
         width: 100%;
-        background: none; }
+        background: none;
+        display: inline-block;
+        clear: both; }
       .orderform-template .cart-template.mini-cart .item .service-item, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item {
         background: #f9f9f9;
         border: 1px dashed #cbcbcb;

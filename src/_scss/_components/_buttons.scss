@@ -8,7 +8,7 @@
 	border-radius:$btn-border-radius;
 	outline: none !important;
 	text-align: center;
-	font-size: $font-size !important;
+	font-size: $font-size;
 	padding: 5px 12px;
 
 	@if $buttonShadow {
