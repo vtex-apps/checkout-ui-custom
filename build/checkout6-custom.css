@@ -676,10 +676,8 @@ body.v-custom-cart-empty .cart-template-holder {
         margin: 10px;
         border-radius: 10px;
         border: none !important; }
-      .table.cart-items tbody tr.v-custom-indexedItems-in {
-        border: none !important; }
-        .table.cart-items tbody tr.v-custom-indexedItems-in + tr.item-unavailable {
-          display: none; }
+      .table.cart-items tbody tr.v-custom-indexedItems-in + tr.item-unavailable {
+        display: none; }
       .table.cart-items tbody tr.v-custom-indexed-item {
         border: none; }
       .table.cart-items tbody tr.v-custom-indexed-item, .table.cart-items tbody tr.item-service {
@@ -1400,7 +1398,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder .step .form-step #is-corporate-client {
     color: #1a73e8; }
   .orderform-template-holder .step .input.text label {
-    margin: 10px 0 5px 0; }
+    margin: 10px 0 5px 0;
+    display: block; }
   .orderform-template-holder .step.client-profile-data .client-notice.notice {
     margin: 0 0 10px 0; }
   .orderform-template-holder .step.client-profile-data .box-client-info {
@@ -1454,6 +1453,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-pickupPointChange {
     border-color: #1a73e8; }
+  .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-address p {
+    clear: both; }
   .orderform-template-holder .step .submit.btn.btn-success {
     display: block;
     margin: 0 auto;

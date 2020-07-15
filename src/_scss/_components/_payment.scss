@@ -364,7 +364,7 @@
 	  }
 
     .input.text {
-    	label {margin:10px 0 5px 0;}
+    	label {margin:10px 0 5px 0;display:block;}
     }
 
     &.client-profile-data {
@@ -448,6 +448,8 @@
 			.vtex-omnishipping-1-x-pickupPointChange {
 				border-color:$action-primary;
 			}
+
+			.vtex-omnishipping-1-x-address p {clear:both;}
     }
 
     .submit.btn.btn-success {

@@ -249,7 +249,6 @@ body.v-custom-cart-empty {
       }
 
       &.v-custom-indexedItems-in {
-        border:none !important;
         & + tr.item-unavailable { display:none }
       }
 
