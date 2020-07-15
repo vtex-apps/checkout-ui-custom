@@ -20,9 +20,6 @@ class checkoutCustom {
       if ($(this).find(".v-custom-product-item-wrap").length > 0) return false
       $(this).find("> *").wrapAll(`<div class="v-custom-product-item-wrap">`)
     })
-
-    
-
   }
   
   builder() {
@@ -81,7 +78,10 @@ class checkoutCustom {
               <span class="text">Cart</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_identification">
-              <span class="text">Login</span>
+              <span class="text">Identification</span>
+            </span>
+            <span class="checkout-steps_item checkout-steps_item_shipping">
+              <span class="text">Shipping</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_payment">
               <span class="text">Payment</span>
@@ -93,6 +93,7 @@ class checkoutCustom {
         </div>
       </div>
     `;
+    
     $(".container.container-main").before(addStepsHeaderHtml)
   }
 

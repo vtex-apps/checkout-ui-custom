@@ -82,9 +82,10 @@
       .text {color:$muted-1;font-weight: bold;}
       &:before {background: $action-primary;border-color: $action-primary;}
     }
-    &.v-custom-step-email {
+    &.v-custom-step-email,
+    &.v-custom-step-profile{
 
-      .checkout-steps_bar_inner-active {width: 25%;}
+      .checkout-steps_bar_inner-active {width: 20%;}
       .checkout-steps_item_cart,
       .checkout-steps_item_identification {
         .text {color:$muted-1;font-weight: bold;}
@@ -95,12 +96,22 @@
         @extend %countingStepsActive;
       }
     } 
-    &.v-custom-step-payment,
-    &.v-custom-step-profile,
+
     &.v-custom-step-shipping {
-      .checkout-steps_bar_inner-active {width: 50%;}
+      .checkout-steps_bar_inner-active {width: 40%;}
       .checkout-steps_item_cart,
       .checkout-steps_item_identification,
+      .checkout-steps_item_shipping {
+        .text {color:$muted-1;font-weight: bold;}
+        &:before {background: $action-primary;border-color: $action-primary;}
+      }
+    } 
+
+    &.v-custom-step-payment {
+      .checkout-steps_bar_inner-active {width: 60%;}
+      .checkout-steps_item_cart,
+      .checkout-steps_item_identification,
+      .checkout-steps_item_shipping,
       .checkout-steps_item_payment {
         .text {color:$muted-1;font-weight: bold;}
         &:before {background: $action-primary;border-color: $action-primary;}
@@ -138,6 +149,7 @@
     display: none;
     @if $showCheckoutSteps {
       display: block;
+      margin-top: 20px;
       @media(max-width: 768px) {
         margin-bottom: 20px;
       }
@@ -153,14 +165,14 @@
 
     &_bar_inner,
     &_bar_inner-active {
-      width: calc(100% - 25%);
+      width: calc(100% - 20%);
       height: 3px;
       background: lighten($action-primary, 30%);
       display: block;
       /* margin: 0 0 0 10px; */
       margin: 0 auto;
       position: absolute;
-      left: 12.5%;
+      left: 10%;
       top: 27px;
       transition: all ease 0.3s;
     }
