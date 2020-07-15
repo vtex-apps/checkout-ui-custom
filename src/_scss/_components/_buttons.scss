@@ -65,15 +65,16 @@
 	}  
 
 	&-secondary {
-		background: $action-secondary;
-		border:1px solid lighten($action-primary,35%);
+		background: transparent;
+		border:1px solid $action-primary;
 		color:$action-primary;
 	
 		&:hover,
 		&:focus,
 		&:active {
-			background:darken($action-secondary,5%);
-			border:1px solid lighten($action-primary,35%);
+			background:$action-secondary;
+			border:1px solid darken($action-primary,15%);
+			color:darken($action-primary,15%);
 		}
 	}
 

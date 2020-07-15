@@ -92,7 +92,6 @@ body.v-custom-cart-empty {
       width:100%;
       display: flex;
       flex-wrap:wrap;
-      border-bottom:1px solid  $muted-5;
       border-top:1px solid  $muted-5;
 
       @media(max-width: 490px) {
@@ -333,7 +332,6 @@ body.v-custom-cart-empty {
 
       &:last-child {
         border-bottom:none;
-        border-top:none;
       }
 
       &.v-custom-assemblies-in .v-custom-product-item-wrap {
@@ -473,7 +471,7 @@ body.v-custom-cart-empty {
         @extend %input-style;
       }
       button[type=submit] {
-        @extend .btn-outlined;
+        @extend .btn-secondary;
       }
 
       .coupon-data {display: none !important;}
@@ -638,6 +636,7 @@ body.v-custom-cart-empty {
       @extend %steps-title;
     }
 
+    span.error {display:none;}
     .srp-toggle__wrapper {
       label {
         background:#FFF;
