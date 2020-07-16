@@ -58,6 +58,10 @@
   #app-container select.error {
     border-color: #ff4c4c; }
 
+input#creditCardpayment-card-0Number,
+input#creditCardpayment-card-0Code {
+  font-size: 18px; }
+
 .btn {
   transition: all ease 0.2s;
   text-shadow: none;
@@ -1052,7 +1056,7 @@ body.v-custom-cart-empty .cart-template-holder {
       right: initial;
       left: 50%;
       transform: translateX(-50%);
-      min-width: 45%; }
+      min-width: 55%; }
       @media (max-width: 768px) {
         .client-pre-email .client-email.input.text .btn-success {
           width: calc(100% - 60px); } }
@@ -1250,15 +1254,15 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 
 .orderform-template-holder #payment-data p.link.link-gift-card,
 .orderform-template-holder #payment-data .payment-group-item {
-  box-sizing: border-box !important;
-  margin: 0 0 10px 0 !important;
-  border: 1px solid !important;
-  border-radius: 2px !important;
-  background: #FFF !important;
-  border: 1px solid #cbcbcb !important;
+  box-sizing: border-box;
+  margin: 0 0 10px 0;
+  border-radius: 2px;
+  background: #FFF;
+  border: 1px solid #cbcbcb;
   opacity: 1;
   text-decoration: none;
-  color: #323232; }
+  color: #323232;
+  transition: all ease 0.3s; }
   .orderform-template-holder #payment-data p.link.link-gift-card span:before,
   .orderform-template-holder #payment-data .payment-group-item span:before {
     content: "";
@@ -1277,7 +1281,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder #payment-data .payment-group-item.active,
   .orderform-template-holder #payment-data .payment-group-item:hover {
     box-shadow: 0 0 6px #ddd;
-    border: 1px solid #1a73e8 !important; }
+    border: 1px solid #1a73e8; }
 
 .orderform-template-holder #payment-data p.link.link-gift-card,
 .orderform-template-holder #payment-data fieldset.payment-group {
@@ -1288,9 +1292,11 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   position: relative;
   margin: 0; }
 
-.orderform-template-holder #payment-data p.link.link-gift-card a {
-  padding: 10px 10px;
-  display: block; }
+.orderform-template-holder #payment-data p.link.link-gift-card {
+  margin-bottom: 10px; }
+  .orderform-template-holder #payment-data p.link.link-gift-card a {
+    padding: 10px 10px;
+    display: block; }
 
 .orderform-template-holder #payment-data .payment-group-list-btn {
   width: 100%; }
@@ -1363,6 +1369,32 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder #payment-data:last-child {
     margin-bottom: 0px !important; } }
 
+.orderform-template-holder #payment-data .v-custom-payment-item-wrap {
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: #FFF;
+  border: 1px solid #cbcbcb;
+  color: #323232;
+  transition: all ease 0.3s;
+  overflow: hidden;
+  margin-bottom: 10px; }
+  .orderform-template-holder #payment-data .v-custom-payment-item-wrap:hover {
+    border-color: #1a73e8; }
+  .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item {
+    border: none;
+    box-shadow: none;
+    margin: 0; }
+    .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item.active {
+      background: #f9f9f9;
+      border-bottom: 1px solid #1a73e8; }
+  .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active {
+    border-color: #1a73e8; }
+    .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active > div {
+      padding: 20px;
+      overflow: hidden; }
+  .orderform-template-holder #payment-data .v-custom-payment-item-wrap .SecurityEnvironmentIcon {
+    display: none; }
+
 .orderform-template-holder .step {
   border: none;
   padding: 0;
@@ -1372,7 +1404,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     .orderform-template-holder .step {
       width: 100%; } }
   .orderform-template-holder .step .box-info {
-    color: #323232; }
+    color: #323232;
+    margin: 10px 0; }
   .orderform-template-holder .step .form-step fieldset {
     width: 100%;
     float: none; }
@@ -1395,6 +1428,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         margin-top: 0; }
     .orderform-template-holder .step .form-step fieldset.box-client-info-pj {
       padding-top: 15px; }
+    .orderform-template-holder .step .form-step fieldset.box-payment-option h3 {
+      display: none; }
   .orderform-template-holder .step .form-step #is-corporate-client {
     color: #1a73e8; }
   .orderform-template-holder .step .input.text label {
@@ -1408,6 +1443,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='%231a73e8' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='%231a73e8' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
     background-position: 12px 9px;
     border: 1px solid #cbcbcb; }
+  .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-SummaryItemGroup {
+    padding: 0; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-content {
     align-items: center; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption {
@@ -1455,10 +1492,18 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-address p {
     clear: both; }
+  .orderform-template-holder .step.shipping-data input#ship-addressQuery {
+    width: 100%; }
+  .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-container.shp-pickup-receiver {
+    display: block; }
+    .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-container.shp-pickup-receiver svg.person-blue path {
+      fill: #1a73e8; }
+    .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-container.shp-pickup-receiver .vtex-omnishipping-1-x-btn {
+      color: #1a73e8; }
   .orderform-template-holder .step .submit.btn.btn-success {
     display: block;
     margin: 0 auto;
-    min-width: 45%; }
+    min-width: 55%; }
 
 .orderform-template {
   display: flex !important;
@@ -1688,7 +1733,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     margin: 0 !important;
     display: none; }
   #app-container .SecurityEnvironmentIcon {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    display: none; }
   #app-container .CardForm > div {
     position: relative;
     clear: both; }

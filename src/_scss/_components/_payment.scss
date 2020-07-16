@@ -162,17 +162,19 @@
   }
 
 	#payment-data {
+
+		
 		p.link.link-gift-card,
 		.payment-group-item {
-		  box-sizing: border-box !important;
-		  margin: 0 0 10px 0 !important;
-		  border: 1px solid !important;
-		  border-radius: 2px !important;
-		  background:#FFF !important;
-		  border:1px solid $muted-4 !important;
+		  box-sizing: border-box;
+		  margin: 0 0 10px 0;
+		  border-radius: 2px;
+		  background:#FFF;
+		  border:1px solid $muted-4;
 		  opacity: 1;
 		  text-decoration: none;
-		  color: $muted-1;
+			color: $muted-1;
+			transition: all ease 0.3s;
 
 		  span:before {
 			  content:"";
@@ -198,11 +200,12 @@
 			&.active,
 			&:hover {
 				box-shadow:0 0 6px #ddd;
-				border:1px solid $action-primary !important;
+				border:1px solid $action-primary;
 			}
 		}
 
-
+		
+		
 		p.link.link-gift-card,
 		fieldset.payment-group {
 		  width: 100%;
@@ -214,6 +217,7 @@
 		}
 
 		p.link.link-gift-card {
+			margin-bottom: 10px;
 		  a{
 		  	padding: 10px 10px;
 		  	display: block;
@@ -311,6 +315,44 @@
 				margin-bottom:0px !important;
 			}
 		}
+
+		//custom (from js)
+
+		.v-custom-payment-item-wrap {
+			box-sizing: border-box;
+		  border-radius: 2px;
+		  background:#FFF;
+		  border:1px solid $muted-4;
+			color: $muted-1;
+			transition: all ease 0.3s;
+			overflow: hidden;
+			margin-bottom: 10px;
+
+			&:hover {
+				border-color:$action-primary;
+			}
+
+			.payment-group-item {
+				border:none ;
+				box-shadow:none;
+				margin:0;
+				&.active {
+					background: $action-secondary;
+					border-bottom:1px solid $action-primary;
+				}
+			}
+
+			&.active {
+				border-color:$action-primary;
+				> div {
+					padding:20px;
+					overflow: hidden;
+				}
+			}
+
+			.SecurityEnvironmentIcon {display: none;}
+			
+		}
 	}
 
 	.step {
@@ -332,7 +374,8 @@
     .form-step {
     	fieldset {
     		width: 100%;
-    		float:none;
+				float:none;
+				
     		p { 
 	    		position:relative;
 	    		@media(max-width: 490px) {
@@ -356,7 +399,11 @@
 
 	    	}
 
-	    	&.box-client-info-pj {padding-top:15px;}
+				&.box-client-info-pj {padding-top:15px;}
+				
+				&.box-payment-option {
+					h3 {display:none;}
+				}
     	}
 
     	
@@ -457,12 +504,18 @@
 			input#ship-addressQuery {
 				width: 100%;
 			}
+
+			.vtex-omnishipping-1-x-container.shp-pickup-receiver {
+				display: block;
+				svg.person-blue path {fill: $action-primary;}
+				.vtex-omnishipping-1-x-btn {color: $action-primary;}
+			}
     }
 
     .submit.btn.btn-success {
 	    display:block;
 			margin:0 auto;
-			min-width:45%;
+			min-width:55%;
 		}
 
   }
@@ -790,6 +843,7 @@
 
 	.SecurityEnvironmentIcon {
 		margin-bottom:20px;
+		display: none;
 	}
 
 	.CardForm {

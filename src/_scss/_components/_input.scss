@@ -22,3 +22,9 @@ input, select, button {
 		border-color:$danger;
 	}
 }
+
+
+input#creditCardpayment-card-0Number,
+input#creditCardpayment-card-0Code {
+	font-size:18px;
+}

@@ -10,6 +10,8 @@ class checkoutCustom {
     this.orderId = this.orderForm ? this.orderForm.orderFormId : "";
     this.lang = "";
 
+    this.accordionPayments = true;
+
   }
 
 
@@ -234,6 +236,22 @@ class checkoutCustom {
     $(".payment-paypal-help-number").text(_lang.paypalPhone);
   }
 
+  paymentBuilder() {
+    
+
+    if(this.accordionPayments) {
+      if ($(".payment-group-list-btn").find(".v-custom-payment-item-wrap").length > 0) return false
+
+      $(".payment-group-item").each(function(i) {
+        $(this).wrap(`<div class='v-custom-payment-item-wrap ${ $(this).hasClass("active") ? "active" : "" }'></div>`);
+      });
+
+      $(".payment-group-item").each(function(i) {
+        $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
+      });
+    }
+  }
+
   bind() {
     let _this = this;
     $("body").on("click", "#v-custom-edit-login-data", function(e) {
@@ -261,6 +279,12 @@ class checkoutCustom {
 
 
     })
+
+    $("body").on("click", ".v-custom-payment-item-wrap", function(e) {
+      $(".v-custom-payment-item-wrap").removeClass("active")
+      $(this).addClass("active")
+    });
+
   }
 
   init() {
@@ -271,6 +295,7 @@ class checkoutCustom {
     _this.updateStep();
     _this.addStepsHeader();
     _this.builder();
+    _this.paymentBuilder();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)
       _this.addAssemblies(_this.orderForm);
