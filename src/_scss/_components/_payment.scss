@@ -38,7 +38,7 @@
 
 .container.container-main.container-order-form {
   @media(max-width: 768px) {
-  	width: calc(100% - 40px);
+  	width: calc(100% - 20px);
   }
 }
 
@@ -75,6 +75,9 @@
 
   	@if $countingSteps {
 			padding:30px;
+			@media(max-width: 768px) {
+				padding:20px;
+			}
 		} @else {
 			padding:4px 15px 15px 10px;
 		}
