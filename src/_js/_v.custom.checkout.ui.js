@@ -257,17 +257,18 @@ class checkoutCustom {
     if (!this.lang) return false;
     const _lang = this.lang;
 
-    $(".link-box-edit").attr("title", _lang.editLabel);
-
-    $("#cart-to-orderform").text(_lang.cartSubmitButton)
+    if(_lang.editLabel)  $(".link-box-edit").attr("title", _lang.editLabel);
+    if(_lang.cartSubmitButton) $("#cart-to-orderform").text(_lang.cartSubmitButton)
 
     //paypal
+    if(_lang.paypalPhone) $(".payment-paypal-help-number").text(_lang.paypalPhone);
+
     if (_lang.paypalImg) {
       $(".payment-paypal-title-short-logo").css("background-image", _lang.paypalImg);
     } else if (_lang.paypalImg=="") {
       $(".payment-paypal-title-short-logo").hide();
     }
-    $(".payment-paypal-help-number").text(_lang.paypalPhone);
+    
   }
 
   paymentBuilder() {

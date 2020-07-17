@@ -2,7 +2,7 @@
 const checkoutCustom = require("./_js/_v.custom.checkout.ui.js");
 
 /*
-  Parameters following:
+  Parameters on following order:
     type ["vertical"]
     accordionPayments [boolean]
     deliveryDateFormat [boolean]
