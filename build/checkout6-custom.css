@@ -1265,7 +1265,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 .orderform-template-holder #payment-data .payment-group-item {
   box-sizing: border-box;
   margin: 0 0 10px 0;
-  border-radius: 2px;
+  border-radius: 4px;
   background: #FFF;
   border: 1px solid #cbcbcb;
   opacity: 1;
@@ -1380,15 +1380,16 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 
 .orderform-template-holder #payment-data .v-custom-payment-item-wrap {
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 4px;
   background: #FFF;
   border: 1px solid #cbcbcb;
   color: #323232;
   transition: all ease 0.3s;
   overflow: hidden;
   margin-bottom: 10px; }
-  .orderform-template-holder #payment-data .v-custom-payment-item-wrap:hover {
-    border-color: #1a73e8; }
+  .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active, .orderform-template-holder #payment-data .v-custom-payment-item-wrap:hover {
+    border-color: #1a73e8;
+    box-shadow: 0 0 6px #ddd; }
   .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item {
     border: none;
     box-shadow: none;
@@ -1396,11 +1397,9 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item.active {
       background: #f1f7ff;
       border-bottom: 1px solid #1a73e8; }
-  .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active {
-    border-color: #1a73e8; }
-    .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active > div {
-      padding: 20px;
-      overflow: hidden; }
+  .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active > div {
+    padding: 20px;
+    overflow: hidden; }
   .orderform-template-holder #payment-data .v-custom-payment-item-wrap .SecurityEnvironmentIcon {
     display: none; }
 
@@ -1470,6 +1469,9 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     color: #1a73e8;
     border-color: #1a73e8;
     border-radius: 4px; }
+  .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressItemOption:hover,
+  .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-active {
+    background-color: #f1f7ff; }
   .orderform-template-holder .step.shipping-data .shipping-method-toggle {
     border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-alert {

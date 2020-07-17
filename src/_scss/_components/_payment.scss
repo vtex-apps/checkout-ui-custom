@@ -171,7 +171,7 @@
 		.payment-group-item {
 		  box-sizing: border-box;
 		  margin: 0 0 10px 0;
-		  border-radius: 2px;
+		  border-radius: $border-radius;
 		  background:#FFF;
 		  border:1px solid $muted-4;
 		  opacity: 1;
@@ -323,7 +323,7 @@
 
 		.v-custom-payment-item-wrap {
 			box-sizing: border-box;
-		  border-radius: 2px;
+		  border-radius: $border-radius;
 		  background:#FFF;
 		  border:1px solid $muted-4;
 			color: $muted-1;
@@ -331,8 +331,10 @@
 			overflow: hidden;
 			margin-bottom: 10px;
 
+			&.active,
 			&:hover {
 				border-color:$action-primary;
+				box-shadow:0 0 6px #ddd;
 			}
 
 			.payment-group-item {
@@ -346,7 +348,6 @@
 			}
 
 			&.active {
-				border-color:$action-primary;
 				> div {
 					padding:20px;
 					overflow: hidden;
@@ -459,6 +460,11 @@
 				color:$action-primary;
 				border-color:$action-primary;
 				border-radius: $border-radius;
+			}
+ 
+			.vtex-omnishipping-1-x-addressItemOption:hover, 
+			.vtex-omnishipping-1-x-active {
+				background-color: $action-secondary;
 			}
 
 			.shipping-method-toggle {

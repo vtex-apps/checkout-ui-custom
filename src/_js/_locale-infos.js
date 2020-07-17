@@ -1,8 +1,9 @@
 module.exports._locale = {
-
+  
   BRA: {
     editLabel: "Editar",
-    deliveryDateText:"Entrega até"
+    deliveryDateText:"Entrega até",
+    dateFormat:"dd/mm/yyyy"
   },
   CAN: {
     editLabel: "Edit",
@@ -20,7 +21,6 @@ module.exports._locale = {
     deliveryDateText:"Arrives by",
     dateFormat:"mm/dd/yyyy"
   },
-  
-  
+
 }
  
