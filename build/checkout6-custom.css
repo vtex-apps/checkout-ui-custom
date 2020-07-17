@@ -1813,3 +1813,6 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 
 body.v-custom-paymentBuilder-accordion .steps-view {
   display: none; }
+
+body.v-custom-changeShippingTimeInfo .orderform-template .cart-template.mini-cart .item span.shipping-date {
+  display: none; }

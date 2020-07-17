@@ -198,14 +198,16 @@ class checkoutCustom {
   }
   changeShippingTimeInfo() {
     let _this = this;
-
-    let mainSTIelems = [
-      ".shp-summary-package-time > span", 
-      "p.vtex-omnishipping-1-x-sla.sla", 
-      ".vtex-omnishipping-1-x-leanShippingTextLabelSingle > span",
-      "span.shipping-date"
-    ];
+    
     if(_this.lang && _this.deliveryDateFormat) {
+      $("body").addClass("v-custom-changeShippingTimeInfo");
+      let mainSTIelems = [
+        ".shp-summary-package-time > span", 
+        "p.vtex-omnishipping-1-x-sla.sla", 
+        ".vtex-omnishipping-1-x-leanShippingTextLabelSingle > span",
+        "span.shipping-date",
+        ".shp-option-text-time"
+      ];
       try {
         $(`
           .vtex-omnishipping-1-x-summaryPackage.shp-summary-package:not(.v-changeShippingTimeInfo-active), 
