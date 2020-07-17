@@ -434,7 +434,7 @@
 					border:1px solid $muted-4;
 			}
 
-			.vtex-omnishipping-1-x-SummaryItemGroup {padding:0;}
+			.vtex-omnishipping-1-x-SummaryItemGroup {}
 
     	.vtex-omnishipping-1-x-content {align-items: center;}
     	.vtex-omnishipping-1-x-deliveryChannelsOption {
@@ -451,12 +451,14 @@
 			.vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
 			.vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
 		    background:$action-primary;
-		    border-color:$action-primary;
+				border-color:$action-primary;
+				border-radius: $border-radius;
 			}
 
 			.vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
 				color:$action-primary;
 				border-color:$action-primary;
+				border-radius: $border-radius;
 			}
 
 			.shipping-method-toggle {
@@ -729,6 +731,25 @@
 		.cart {
 			margin-bottom: 0;
 			max-height: calc(100vh - 285px);
+			overflow:auto;
+			
+			&::-webkit-scrollbar {
+				width: 6px
+			}
+
+			&::-webkit-scrollbar-track {
+				background: transparent;
+				border-radius: $border-radius
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: $muted-4;
+				border-radius: 30px
+			}
+
+			&:hover::-webkit-scrollbar-thumb {
+				background: $muted-5;
+			}
 
 			.cart-items:not(.v-loaded) {
 				max-height: 100px;
@@ -932,3 +953,6 @@
 
 }
 
+//js 
+
+body.v-custom-paymentBuilder-accordion .steps-view {display: none;}

@@ -1,16 +1,24 @@
 module.exports._locale = {
 
+  BRA: {
+    editLabel: "Editar",
+    deliveryDateText:"Entrega até"
+  },
   CAN: {
     editLabel: "Edit",
     paypalImg: "",
     paypalPhone: "1 (888) 221-1161",
-    cartSubmitButton:"Prooced to Payment"
+    cartSubmitButton:"Prooced to Payment",
+    deliveryDateText:"Arrives by",
+    dateFormat:"mm/dd/yyyy"
   },
   USA: {
     editLabel: "Edit",
     paypalImg: "",
     paypalPhone: "1 (888) 221-1161",
-    cartSubmitButton:"Prooced to Payment"
+    cartSubmitButton:"Prooced to Payment",
+    deliveryDateText:"Arrives by",
+    dateFormat:"mm/dd/yyyy"
   },
   
   

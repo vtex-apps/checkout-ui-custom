@@ -92,7 +92,7 @@ input#creditCardpayment-card-0Code {
   .btn-primary {
     background: #1a73e8;
     border: 1px solid #1a73e8;
-    color: #f9f9f9; }
+    color: #f1f7ff; }
     .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
       background: #1567d3;
       border: 1px solid #1567d3; }
@@ -110,7 +110,7 @@ input#creditCardpayment-card-0Code {
     .table.cart-items tbody tr td.product-name .add-item-attachment-container a:focus, .table.cart-items tbody tr td .product-service input:focus[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:focus, .orderform-template-holder #payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr td.product-name .add-service.btn:active,
     .table.cart-items tbody tr td.product-name .clone-item.btn:active,
     .table.cart-items tbody tr td.product-name .add-item-attachment-container a:active, .table.cart-items tbody tr td .product-service input:active[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:active[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:active, .orderform-template-holder #payment-data #btn-add-gift-card:active {
-      background: #f9f9f9;
+      background: #f1f7ff;
       border: 1px solid #1151a5;
       color: #1151a5; }
   .btn-outlined {
@@ -221,6 +221,9 @@ h1#orderform-title {
   color: #323232 !important; }
 
 h1#orderform-title {
+  display: none !important; }
+
+.cart-more-options {
   display: none !important; }
 
 .v-custom-assemblies {
@@ -438,7 +441,7 @@ body .main-header {
       font-size: 10px;
       line-height: 10px;
       padding-left: 0px;
-      color: #f9f9f9; }
+      color: #f1f7ff; }
       body .main-header .header-link a:before {
         display: block;
         float: left;
@@ -448,7 +451,7 @@ body .main-header {
         mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDQzLjUyIDQ0My41MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDQzLjUyIDQ0My41MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0xNDMuNDkyLDIyMS44NjNMMzM2LjIyNiwyOS4xMjljNi42NjMtNi42NjQsNi42NjMtMTcuNDY4LDAtMjQuMTMyYy02LjY2NS02LjY2Mi0xNy40NjgtNi42NjItMjQuMTMyLDBsLTIwNC44LDIwNC44DQoJCQljLTYuNjYyLDYuNjY0LTYuNjYyLDE3LjQ2OCwwLDI0LjEzMmwyMDQuOCwyMDQuOGM2Ljc4LDYuNTQ4LDE3LjU4NCw2LjM2LDI0LjEzMi0wLjQyYzYuMzg3LTYuNjE0LDYuMzg3LTE3LjA5OSwwLTIzLjcxMg0KCQkJTDE0My40OTIsMjIxLjg2M3oiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==) no-repeat 50% 50%;
         -webkit-mask-size: cover;
         mask-size: cover;
-        background-color: #f9f9f9;
+        background-color: #f1f7ff;
         content: ""; }
       body .main-header .header-link a.back-cart-link {
         display: none; }
@@ -691,7 +694,7 @@ body.v-custom-cart-empty .cart-template-holder {
         .table.cart-items tbody tr.v-custom-indexed-item .v-custom-product-item-wrap,
         .table.cart-items tbody tr.v-custom-indexed-item .v-custom-trservice-wrap, .table.cart-items tbody tr.item-service .v-custom-product-item-wrap,
         .table.cart-items tbody tr.item-service .v-custom-trservice-wrap {
-          background: #f9f9f9;
+          background: #f1f7ff;
           border: 1px dashed #cbcbcb;
           border-radius: 4px;
           width: 100%;
@@ -948,7 +951,7 @@ body.v-custom-cart-empty .cart-template-holder {
     .cart-more-options .srp-container form.srp-postal-code__form.dib.relative {
       width: 100%; }
     .cart-more-options .srp-container button.shp-open-options {
-      border-color: #e0e0e0; }
+      border-color: #bedaff; }
     .cart-more-options .srp-container .onda-v1 .blue {
       color: #1a73e8;
       outline: none; }
@@ -1131,7 +1134,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 
 @media (max-width: 768px) {
   .container.container-main.container-order-form {
-    width: calc(100% - 40px); } }
+    width: calc(100% - 20px); } }
 
 @media (min-width: 768px) {
   .orderform-template-holder {
@@ -1156,6 +1159,12 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   z-index: initial;
   border: none;
   padding: 30px; }
+  @media (max-width: 768px) {
+    .orderform-template-holder #client-profile-data form.client-pre-email,
+    .orderform-template-holder #client-profile-data .step.client-profile-data,
+    .orderform-template-holder #shipping-data,
+    .orderform-template-holder #payment-data {
+      padding: 20px; } }
   .orderform-template-holder #client-profile-data form.client-pre-email.client-pre-email,
   .orderform-template-holder #client-profile-data .step.client-profile-data.client-pre-email,
   .orderform-template-holder #shipping-data.client-pre-email,
@@ -1385,7 +1394,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     box-shadow: none;
     margin: 0; }
     .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item.active {
-      background: #f9f9f9;
+      background: #f1f7ff;
       border-bottom: 1px solid #1a73e8; }
   .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active {
     border-color: #1a73e8; }
@@ -1443,8 +1452,6 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='%231a73e8' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='%231a73e8' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
     background-position: 12px 9px;
     border: 1px solid #cbcbcb; }
-  .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-SummaryItemGroup {
-    padding: 0; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-content {
     align-items: center; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption {
@@ -1457,10 +1464,12 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
     background: #1a73e8;
-    border-color: #1a73e8; }
+    border-color: #1a73e8;
+    border-radius: 4px; }
   .orderform-template-holder .step.shipping-data .vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
     color: #1a73e8;
-    border-color: #1a73e8; }
+    border-color: #1a73e8;
+    border-radius: 4px; }
   .orderform-template-holder .step.shipping-data .shipping-method-toggle {
     border-color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-alert {
@@ -1473,7 +1482,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper {
     border: 1px solid #cbcbcb; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-summaryChange {
-    background: #f9f9f9;
+    background: #f1f7ff;
     border-color: #eee;
     color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-option:hover,
@@ -1547,7 +1556,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       width: 10px;
       height: 10px;
       display: inline-block;
-      background: #f9f9f9;
+      background: #f1f7ff;
       color: #1a73e8; }
     .orderform-template .cart-template.mini-cart .summary-template-holder {
       width: 100%;
@@ -1571,7 +1580,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         display: inline-block;
         clear: both; }
       .orderform-template .cart-template.mini-cart .item .service-item, .orderform-template .cart-template.mini-cart .item.v-custom-indexed-item {
-        background: #f9f9f9;
+        background: #f1f7ff;
         border: 1px dashed #cbcbcb;
         border-radius: 4px;
         width: 100%;
@@ -1654,7 +1663,18 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         color: #1a73e8; }
     .orderform-template .cart-template.mini-cart .cart {
       margin-bottom: 0;
-      max-height: calc(100vh - 285px); }
+      max-height: calc(100vh - 285px);
+      overflow: auto; }
+      .orderform-template .cart-template.mini-cart .cart::-webkit-scrollbar {
+        width: 6px; }
+      .orderform-template .cart-template.mini-cart .cart::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 4px; }
+      .orderform-template .cart-template.mini-cart .cart::-webkit-scrollbar-thumb {
+        background: #cbcbcb;
+        border-radius: 30px; }
+      .orderform-template .cart-template.mini-cart .cart:hover::-webkit-scrollbar-thumb {
+        background: #eee; }
       .orderform-template .cart-template.mini-cart .cart .cart-items:not(.v-loaded) {
         max-height: 100px;
         overflow: hidden; }
@@ -1770,7 +1790,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       color: #1a73e8; }
     #app-container .label-vertical-group.active {
       color: #1a73e8;
-      background: #f9f9f9; }
+      background: #f1f7ff; }
     #app-container .label-vertical-group .card-flag {
       position: absolute;
       left: 5px;
@@ -1790,3 +1810,6 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     clear: both;
     width: auto;
     margin-right: 10px; }
+
+body.v-custom-paymentBuilder-accordion .steps-view {
+  display: none; }

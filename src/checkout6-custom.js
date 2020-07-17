@@ -11,6 +11,7 @@ class checkoutCustom {
     this.lang = "";
 
     this.accordionPayments = true;
+    this.deliveryDateFormat = true;
 
   }
 
@@ -186,6 +187,40 @@ class checkoutCustom {
     } catch (e) { _this.removeMCLoader(); }
   }
 
+  
+  addBusinessDays(n, format) {
+    let d = new Date();
+    d = new Date(d.getTime());
+    let day = d.getDay();
+    d.setDate(d.getDate() + n + (day === 6 ? 2 : +!day) + (Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2));
+    
+    return format.replace("mm",('0' + (d.getMonth()+1)).slice(-2)).replace("dd",('0' + d.getDate()).slice(-2)).replace("yyyy",d.getFullYear())
+  }
+  changeShippingTimeInfo() {
+    let _this = this;
+
+    let mainSTIelems = [
+      ".shp-summary-package-time > span", 
+      "p.vtex-omnishipping-1-x-sla.sla", 
+      ".vtex-omnishipping-1-x-leanShippingTextLabelSingle > span",
+      "span.shipping-date"
+    ];
+    if(_this.lang && _this.deliveryDateFormat) {
+      try {
+        $(`
+          .vtex-omnishipping-1-x-summaryPackage.shp-summary-package:not(.v-changeShippingTimeInfo-active), 
+          .vtex-omnishipping-1-x-leanShippingOption, 
+          .vtex-omnishipping-1-x-packageItem:not(.v-changeShippingTimeInfo-active),
+          .orderform-template .cart-template.mini-cart .item
+        `).each(function(i) {
+          let days = parseInt($(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text().match(/\d+/));
+          if(days) $(this).find(mainSTIelems.join(", ")).text(`${_this.lang.deliveryDateText} ${_this.addBusinessDays(days, typeof _this.lang.dateFormat != "undefined" ? _this.lang.dateFormat : "dd/mm/yyyy" )}`).addClass("v-changeShippingTimeInfo-elem-active");
+          $(this).addClass("v-changeShippingTimeInfo-active");
+        });
+      } catch(e) {}
+    }
+  }
+
   update(orderForm) {
     this.checkEmpty(orderForm.items);
     this.addAssemblies(orderForm);
@@ -240,6 +275,8 @@ class checkoutCustom {
     
 
     if(this.accordionPayments) {
+      $("body").addClass("v-custom-paymentBuilder-accordion");
+      
       if ($(".payment-group-list-btn").find(".v-custom-payment-item-wrap").length > 0) return false
 
       $(".payment-group-item").each(function(i) {
@@ -296,6 +333,7 @@ class checkoutCustom {
     _this.addStepsHeader();
     _this.builder();
     _this.paymentBuilder();
+    _this.changeShippingTimeInfo();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)
       _this.addAssemblies(_this.orderForm);
@@ -323,8 +361,11 @@ $(document).ajaxComplete(function() {
 
 $(window).on('hashchange', function() {
   vcustomCheckout.updateStep();
-  vcustomCheckout.buildMiniCart(vtexjs.checkout.orderForm);
-  vcustomCheckout.indexedInItems(vtexjs.checkout.orderForm);
+  vcustomCheckout.changeShippingTimeInfo()
+  if(vcustomCheckout.orderForm || vtexjs.checkout.orderForm) {
+    vcustomCheckout.buildMiniCart(vtexjs.checkout.orderForm);
+    vcustomCheckout.indexedInItems(vtexjs.checkout.orderForm);
+  }
 });
 
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
