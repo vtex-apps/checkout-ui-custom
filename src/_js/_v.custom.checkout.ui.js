@@ -2,7 +2,7 @@ const { _locale } = require("./_locale-infos.js");
 
 
 class checkoutCustom {
-  constructor(type = "vertical", accordionPayments = true, deliveryDateFormat = true) {
+  constructor(type = "vertical", accordionPayments = true, deliveryDateFormat = false) {
     this.type = type; // ["vertical"]
     this.orderForm = ""; 
     this.orderId = this.orderForm ? this.orderForm.orderFormId : "";

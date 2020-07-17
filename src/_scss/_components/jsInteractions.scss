@@ -1,4 +1,34 @@
 
+
+// assemblies custom vtex
+
+  .v-custom-assemblies {
+    margin: 10px 0 3px 0;
+    overflow: hidden;
+    border-top: 1px solid $muted-4;
+    padding-top: 7px;
+    @media(max-width: 490px) {
+      width: 100%;
+      left:0;
+      margin-bottom: 2px;
+    }
+
+    p {display: none;}
+    &__values {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      &__item {
+        strong {
+          &:after {content:":";}
+        }
+        span, strong {line-height: 14px;}
+      }
+    } 
+     
+	}
+	
 //js 
 
 body.v-custom-paymentBuilder-accordion .steps-view {display: none;}

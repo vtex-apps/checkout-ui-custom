@@ -5,13 +5,18 @@ This repo allows you to generate an style to your checkout based in basic config
 A combination of conditions and variables will adapt your checkout according your preferences. 
 
 
-### Running npm
+## Running npm
 
 `npm run watch` 
+
 `npm run build` 
 
+#### ! important
+Is really important to change the file `webpack.config.js` to build the files on the root folder.
 
-### Expected HTML in the header
+
+
+## Expected HTML in the header
 
 ```
 
@@ -35,8 +40,9 @@ If you wanna insert others info, make sure of include the class `.v-custom-mhide
 ```
 
 
-### Expected HTML in the Footer
+## Expected HTML in the Footer
 
+(srry for the huge svg)
 ```
 <footer class="main-footer">
   <div class="container">
@@ -50,16 +56,25 @@ If you wanna insert others info, make sure of include the class `.v-custom-mhide
 
 
 
-### Variables
+## Variables
 
 
 `// CHECKOUT VARS`
 
 Holds all variables to customize the checkout according your own preferences
 
-```
+```javascript
+$font-size: 12px;
+$border-radius:4px;
+$btn-border-radius:30px;
+
 $inputHeight:40px;
-$showCartQuantityPrice:false; // if shows the total price per product ot just the single price
+$showCartQuantityPrice:false; //if shows the total price per product ot just the single price**
 $countingSteps:true; // if shows the number of each step "1,2,3..."
+$showCheckoutSteps:true;
+
+$buttonShadow:false;
+
+$bordersContainers:none; // 2px solid $muted-5
 ```
 
