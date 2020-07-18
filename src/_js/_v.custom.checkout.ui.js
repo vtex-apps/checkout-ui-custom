@@ -186,13 +186,21 @@ class checkoutCustom {
   }
 
   
-  addBusinessDays(n, format) {
+  addBusinessDays(n) {
+    let _this = this;
     let d = new Date();
     d = new Date(d.getTime());
     let day = d.getDay();
     d.setDate(d.getDate() + n + (day === 6 ? 2 : +!day) + (Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2));
     
-    return format.replace("mm",('0' + (d.getMonth()+1)).slice(-2)).replace("dd",('0' + d.getDate()).slice(-2)).replace("yyyy",d.getFullYear())
+    let doptions = { weekday: 'long', month: 'short', day: 'numeric' };
+
+    if(i18n.options.lng=="pt") doptions = { month: 'long', day: 'numeric' };
+
+    d = d.toLocaleDateString(i18n.options.lng, doptions);
+  
+
+    return d
   }
 
   changeShippingTimeInfo() {
@@ -203,20 +211,22 @@ class checkoutCustom {
       "p.vtex-omnishipping-1-x-sla.sla", 
       ".vtex-omnishipping-1-x-leanShippingTextLabelSingle > span",
       "span.shipping-date",
-      ".shp-option-text-time"
+      ".shp-option-text-time",
+      ".pkpmodal-pickup-point-sla"
     ];
     try {
       $(`
         .vtex-omnishipping-1-x-summaryPackage.shp-summary-package:not(.v-changeShippingTimeInfo-active), 
         .vtex-omnishipping-1-x-leanShippingOption, 
         .vtex-omnishipping-1-x-packageItem:not(.v-changeShippingTimeInfo-active),
-        .orderform-template .cart-template.mini-cart .item
+        .orderform-template .cart-template.mini-cart .item,
+        .vtex-pickup-points-modal-3-x-pickupPointSlaAvailability        
       `).each(function(i) {
         let days = parseInt($(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text().match(/\d+/));
         if(days) {
           let _delivtext = _this.lang.deliveryDateText;
           if(!! $(this).find(mainSTIelems.join(", ")).text().toLowerCase().match(/(ready in up)|(pronto)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
-          $(this).find(mainSTIelems.join(", ")).text(`${_delivtext} ${_this.addBusinessDays(days, typeof _this.lang.dateFormat != "undefined" ? _this.lang.dateFormat : "dd/mm/yyyy" )}`).addClass("v-changeShippingTimeInfo-elem-active");
+          $(this).find(mainSTIelems.join(", ")).html(`${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`).addClass("v-changeShippingTimeInfo-elem-active");
         }
         $(this).addClass("v-changeShippingTimeInfo-active");
       });
@@ -332,8 +342,10 @@ class checkoutCustom {
       $(this).addClass("active")
     });
 
-    $("body").on("click", ".pkpmodal-pickup-point, .vtex-pickup-points-modal-3-x-modalDetailsBackLnk", function(e) {
-      _this.changeShippingTimeInfoInit();
+    $("body").on("click", ".vtex-pickup-points-modal-3-x-pickupDetailsHeaderButton, #map-canvas img, .vtex-omnishipping-1-x-pickupPointChange, .pkpmodal-pickup-point, .vtex-pickup-points-modal-3-x-modalDetailsBackLnk", function(e) {
+      setTimeout(() => {
+        _this.changeShippingTimeInfoInit();
+      }, 100);
     });
 
   }
