@@ -194,29 +194,39 @@ class checkoutCustom {
     
     return format.replace("mm",('0' + (d.getMonth()+1)).slice(-2)).replace("dd",('0' + d.getDate()).slice(-2)).replace("yyyy",d.getFullYear())
   }
+
   changeShippingTimeInfo() {
     let _this = this;
+    $("body").addClass("v-custom-changeShippingTimeInfo");
+    let mainSTIelems = [
+      ".shp-summary-package-time > span", 
+      "p.vtex-omnishipping-1-x-sla.sla", 
+      ".vtex-omnishipping-1-x-leanShippingTextLabelSingle > span",
+      "span.shipping-date",
+      ".shp-option-text-time"
+    ];
+    try {
+      $(`
+        .vtex-omnishipping-1-x-summaryPackage.shp-summary-package:not(.v-changeShippingTimeInfo-active), 
+        .vtex-omnishipping-1-x-leanShippingOption, 
+        .vtex-omnishipping-1-x-packageItem:not(.v-changeShippingTimeInfo-active),
+        .orderform-template .cart-template.mini-cart .item
+      `).each(function(i) {
+        let days = parseInt($(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text().match(/\d+/));
+        if(days) {
+          let _delivtext = _this.lang.deliveryDateText;
+          if(!! $(this).find(mainSTIelems.join(", ")).text().toLowerCase().match(/(ready in up)|(pronto)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
+          $(this).find(mainSTIelems.join(", ")).text(`${_delivtext} ${_this.addBusinessDays(days, typeof _this.lang.dateFormat != "undefined" ? _this.lang.dateFormat : "dd/mm/yyyy" )}`).addClass("v-changeShippingTimeInfo-elem-active");
+        }
+        $(this).addClass("v-changeShippingTimeInfo-active");
+      });
+    } catch(e) {}
+  }
+
+  changeShippingTimeInfoInit() {
+    let _this = this;
     if(_this.lang && _this.deliveryDateFormat) {
-      $("body").addClass("v-custom-changeShippingTimeInfo");
-      let mainSTIelems = [
-        ".shp-summary-package-time > span", 
-        "p.vtex-omnishipping-1-x-sla.sla", 
-        ".vtex-omnishipping-1-x-leanShippingTextLabelSingle > span",
-        "span.shipping-date",
-        ".shp-option-text-time"
-      ];
-      try {
-        $(`
-          .vtex-omnishipping-1-x-summaryPackage.shp-summary-package:not(.v-changeShippingTimeInfo-active), 
-          .vtex-omnishipping-1-x-leanShippingOption, 
-          .vtex-omnishipping-1-x-packageItem:not(.v-changeShippingTimeInfo-active),
-          .orderform-template .cart-template.mini-cart .item
-        `).each(function(i) {
-          let days = parseInt($(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text().match(/\d+/));
-          if(days) $(this).find(mainSTIelems.join(", ")).text(`${_this.lang.deliveryDateText} ${_this.addBusinessDays(days, typeof _this.lang.dateFormat != "undefined" ? _this.lang.dateFormat : "dd/mm/yyyy" )}`).addClass("v-changeShippingTimeInfo-elem-active");
-          $(this).addClass("v-changeShippingTimeInfo-active");
-        });
-      } catch(e) {}
+      _this.changeShippingTimeInfo();
     }
   }
 
@@ -322,6 +332,10 @@ class checkoutCustom {
       $(this).addClass("active")
     });
 
+    $("body").on("click", ".pkpmodal-pickup-point, .vtex-pickup-points-modal-3-x-modalDetailsBackLnk", function(e) {
+      _this.changeShippingTimeInfoInit();
+    });
+
   }
 
   init() {
@@ -333,7 +347,7 @@ class checkoutCustom {
     _this.addStepsHeader();
     _this.builder();
     _this.paymentBuilder();
-    _this.changeShippingTimeInfo();
+    _this.changeShippingTimeInfoInit();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)
       _this.addAssemblies(_this.orderForm);
@@ -357,7 +371,7 @@ class checkoutCustom {
 
     $(window).on('hashchange', function() {
       _this.updateStep();
-      _this.changeShippingTimeInfo()
+      _this.changeShippingTimeInfoInit()
       _this.paymentBuilder();
       if(_this.orderForm) {
         _this.buildMiniCart(_this.orderForm);
@@ -372,3 +386,4 @@ class checkoutCustom {
 }
 
 module.exports = checkoutCustom;
+
