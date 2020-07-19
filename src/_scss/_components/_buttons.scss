@@ -14,11 +14,11 @@
 	@if $buttonShadow {
 
 	} @else {
-		background: lighten($muted-5,60%);
-		box-shadow: none !important;
+		background: none;
+		box-shadow: none;
 		&:hover,
 		&:focus {
-			background:lighten($muted-5,30%);
+			background:none;
 		}
 	}
 

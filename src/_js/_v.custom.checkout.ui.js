@@ -186,7 +186,7 @@ class checkoutCustom {
   }
 
   
-  addBusinessDays(n) {
+  addBusinessDays(n, lang = i18n.options.lng) {
     let _this = this;
     let d = new Date();
     d = new Date(d.getTime());
@@ -195,9 +195,9 @@ class checkoutCustom {
     
     let doptions = { weekday: 'long', month: 'short', day: 'numeric' };
 
-    if(i18n.options.lng=="pt") doptions = { month: 'long', day: 'numeric' };
+    if(lang=="pt") doptions = { month: 'long', day: 'numeric' };
 
-    d = d.toLocaleDateString(i18n.options.lng, doptions);
+    d = d.toLocaleDateString(lang, doptions);
   
 
     return d
@@ -370,7 +370,7 @@ class checkoutCustom {
     _this.addEditButtoninLogin();
   }
   
-  export() {
+  start() {
     let _this = this;
     $(function() {
       _this.bind(); 
