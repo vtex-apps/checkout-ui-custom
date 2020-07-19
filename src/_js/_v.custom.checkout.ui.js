@@ -2,7 +2,11 @@ const { _locale } = require("./_locale-infos.js");
 
 
 class checkoutCustom {
-  constructor(type = "vertical", accordionPayments = true, deliveryDateFormat = false) {
+  constructor({
+    type = "vertical", 
+    accordionPayments = true, 
+    deliveryDateFormat = false
+  } = {}) {
     this.type = type; // ["vertical"]
     this.orderForm = ""; 
     this.orderId = this.orderForm ? this.orderForm.orderFormId : "";
@@ -195,7 +199,7 @@ class checkoutCustom {
     
     let doptions = { weekday: 'long', month: 'short', day: 'numeric' };
 
-    if(lang=="pt") doptions = { month: 'long', day: 'numeric' };
+    //if(lang=="pt") doptions = { month: 'long', day: 'numeric' };
 
     d = d.toLocaleDateString(lang, doptions);
   
