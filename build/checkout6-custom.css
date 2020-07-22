@@ -1276,7 +1276,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #eee;
+  background: #fbfbfb;
   float: left;
   width: 100%; }
   .orderform-template-holder #payment-data p.link.link-gift-card.active,
@@ -1318,7 +1318,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 
 .orderform-template-holder #payment-data .payment-group-item {
   position: relative;
-  height: 70px; }
+  height: 40px; }
   .orderform-template-holder #payment-data .payment-group-item span.payment-group-item-text {
     padding: 0;
     line-height: 17px;

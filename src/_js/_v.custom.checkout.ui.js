@@ -199,7 +199,7 @@ class checkoutCustom {
     
     let doptions = { weekday: 'long', month: 'short', day: 'numeric' };
 
-    //if(lang=="pt") doptions = { month: 'long', day: 'numeric' };
+    if(lang=="pt") doptions = { weekday: 'short', month: 'short', day: 'numeric' };
 
     d = d.toLocaleDateString(lang, doptions);
   

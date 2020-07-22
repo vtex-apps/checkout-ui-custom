@@ -183,7 +183,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: $muted-5;
+			background: lighten($muted-5,5%);
 			float: left;
 			width:100%;
 		  
@@ -236,7 +236,7 @@
 
 		.payment-group-item {
 			position: relative;
-			height: 70px;
+			height: 40px;
 			span.payment-group-item-text {
 				padding: 0;
 				line-height: 17px;
@@ -298,7 +298,7 @@
 				}
 
 				&:before {
-					border-color: #1a73e8 transparent transparent transparent;
+					border-color: $action-primary transparent transparent transparent;
 					border-width: 7px;
 				}
 			}
