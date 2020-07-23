@@ -42,7 +42,7 @@ body {
 
 .container-cart.container,
 .container.container-main.container-order-form {
-  max-width:980px;
+  max-width:$maxWrapper;
   width:calc(100% - 40px);
 }
 

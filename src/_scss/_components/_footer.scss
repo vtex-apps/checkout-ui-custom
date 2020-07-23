@@ -24,4 +24,8 @@
 		display: block;
     margin: 0 auto;
 	}
+
+	svg, svg path {
+		fill:$muted-3;
+	}
 }

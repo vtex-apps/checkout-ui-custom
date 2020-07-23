@@ -72,7 +72,7 @@ class checkoutCustom {
     if($(".checkout-steps").length>0) return false
 
     let addStepsHeaderHtml = `
-      <div class="checkout-steps container-cart container">
+      <div class="checkout-steps">
         <div class="checkout-steps-wrap">
           <span class="checkout-steps_bar">
             <span class="checkout-steps_bar_inner"></span>
@@ -98,8 +98,7 @@ class checkoutCustom {
         </div>
       </div>
     `;
-    
-    $(".container.container-main").before(addStepsHeaderHtml)
+    if($("header.main-header").length) $("header.main-header .container").append(addStepsHeaderHtml)
   }
 
   addAssemblies(orderForm) {
