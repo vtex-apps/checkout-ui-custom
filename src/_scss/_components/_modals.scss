@@ -2,6 +2,11 @@
   border-radius:$border-radius;
 }
 
+.modal {
+  .btn {
+    background: #FFF;
+  }
+}
 
 .modal.guest-login-modal {}
     .modal.guest-login-modal button.btn {width:auto;}

@@ -54,7 +54,9 @@ If you wanna insert others info, make sure of include the class `.v-custom-mhide
 
 ```
 
+## Running replacements (!!! beta)
 
+Run on your console or scripts `vcustom.debug.start()` to simulate the header and footer replacing yours. And `vcustom.debug.stop()` to back the normal.
 
 ## Variables
 

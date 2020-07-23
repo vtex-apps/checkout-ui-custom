@@ -48,7 +48,10 @@ body {
         &.back-cart-link {display:none;}
       }
     } 
-
+    
+    .logo {
+      max-width: calc(100% - 180px);
+    }
     .logo,
     .logo img {
       display: inline-block;
@@ -76,6 +79,7 @@ body {
         }
 
         .logo {
+          
           cursor: default;
           pointer-events: none;
           font-weight: bold;

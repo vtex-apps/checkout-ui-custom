@@ -2,10 +2,38 @@
 #vtexIdContainer {
 
   a {color:$action-primary;}
+
+  input {@extend %input-style;}
+
   .vtexIdUI {
     .modal-footer {
       background: none;
     }
+    .btn {
+      border-radius:$btn-border-radius;
+      height: $inputHeight;
+      line-height: $inputHeight;
+      box-shadow: none !important;
+      font-size: $font-size;
+      padding:0 30px;
+      &.btn-success {
+        background: $success;
+        border:1px solid $success;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background:darken($success,5%); 
+          border:1px solid darken($success,5%); 
+        }
+      }
+
+      &#vtexIdUI-facebook {
+        background: #4568ad !important;
+      }
+    }
+
+    
   }
   @media (max-width:768px) {
     position: fixed !important;
