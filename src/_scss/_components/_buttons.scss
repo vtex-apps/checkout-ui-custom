@@ -10,6 +10,8 @@
 	text-align: center;
 	font-size: $font-size;
 	padding: 5px 12px;
+	box-sizing: border-box;
+	display: inline-block;
 
 	@if $buttonShadow {
 

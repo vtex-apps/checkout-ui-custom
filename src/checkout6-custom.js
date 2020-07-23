@@ -15,7 +15,4 @@ window.vcustom = {
 vcustom.checkout.start(); 
 
 
-$(document).ready(() => {
-  vcustom.debug.start();
-})
-
+//

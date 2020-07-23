@@ -28,6 +28,8 @@ body.v-custom-cart-empty {
   border-radius:$border-radius;
 }
 
+.cart-template-holder .cart {border:$bordersContainers;}
+
 .table.cart-items {
 
   display: block;
@@ -468,9 +470,15 @@ body.v-custom-cart-empty {
     min-width: initial;
   
     fieldset.coupon-fieldset {
-      > div {
-          display:block !important;
+
+      @if $showCouponField {
+        > div {
+            display:block !important;
+        }
+        .coupon-data {display: none !important;}
       }
+
+      p.coupon-label {display:none;}
       input[type=text],
       button[type=submit] {
         @extend %input-style;
@@ -479,7 +487,11 @@ body.v-custom-cart-empty {
         @extend .btn-secondary;
       }
 
-      .coupon-data {display: none !important;}
+      .coupon-data {
+        margin:0;
+        a {@extend .btn, .btn-link;width:100%;}
+      }
+      
     }
 
     p.coupon-fields {
@@ -566,7 +578,7 @@ body.v-custom-cart-empty {
   }
 
   .accordion-inner {
-    margin-top: 30px;
+    margin-top: 15px;
   }
 
   tr:not(.Shipping) {
@@ -715,14 +727,14 @@ body.v-custom-cart-empty {
 .body-cart-vertical {
 
   .cart-template-holder {
-    width:calc(61% - 20px);
+    width:calc(70% - 20px);
     @media(max-width:998px) {
       width:100%;
     }
   }
 
   .summary-template-holder {
-    width: 39%;
+    width: 30%;
     @media(max-width:998px) {
       width:100%;
       margin-top: 20px;
