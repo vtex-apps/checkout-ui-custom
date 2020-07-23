@@ -3,7 +3,13 @@
     padding:0;
 }
 
-
+body.v-custom-step-cart {
+  .main-header {
+    .header-link {
+      display: block;
+    }
+  }
+}
 // empty cart
 
 body.v-custom-cart-empty {

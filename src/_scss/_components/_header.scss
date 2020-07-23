@@ -28,6 +28,7 @@ body {
       position:absolute;
       left:10px; 
       top: calc(100% + 2px);
+      display: none;
       a {
         height:20px;
         font-size:10px;
@@ -53,7 +54,6 @@ body {
 
         &.back-cart-link {display:none;}
       }
-
       @media (max-width:490px) {
         top:50%;
         transform: translateY(-50%);

@@ -647,7 +647,7 @@
 
 	&.inactive {display: none !important;}
 
-	@media(max-width: 768px) {
+	@media(max-width: 490px) {
   	width:100%;
   	padding-top:0px;
   }
@@ -996,16 +996,14 @@
 		line-height: 30px;
 	}
 
-	.PaymentCardFlags {
-	  position: absolute;
-	  top: 38px;
-	  right: 3px;
+	.PaymentCardFlags {	
+		padding-top:3px;
 	  .card-flag-label input {
 	    display:none;
 		}
 		.card-flag-label {width:auto;}
-		span.card-flag {display:none;}
-		input:checked + span.card-flag {display:block;}
+		span.card-flag {opacity: 0.7;}
+		input:checked + span.card-flag {opacity: 1;}
 	}
 
 	input#creditCardpayment-card-0Code {
