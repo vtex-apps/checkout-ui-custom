@@ -10,7 +10,8 @@ body.v-custom-cart-empty {
 
   #cart-title,
   #shipping-preview-container,  
-  .summary-template-holder {display:none !important;}
+  .summary-template-holder,
+  .checkout-steps {display:none !important;}
   .cart-template-holder {
     margin:0 auto;
   }
