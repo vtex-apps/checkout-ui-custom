@@ -15,7 +15,7 @@ class debug {
   start() {
     $("body").addClass(this.classOn)
     this.headernFooter();
-    console.log("%c >>>>> YOU ARE CURRENTLY DEBUGING THE HEADER, IT'S A BETA! ISSUES CAN HAPPEN... Use `vcustomDebug.stop()` to stop! ", 'background: #111; color: #bada55');
+    console.log("%c >>>>> YOU ARE CURRENTLY DEBUGING THE HEADER, IT'S A BETA! ISSUES CAN HAPPEN... Use `vcustom.debug.stop()` to stop! ", 'background: #111; color: #bada55');
   }
   stop() {
     $("body").removeClass(this.classOn)
