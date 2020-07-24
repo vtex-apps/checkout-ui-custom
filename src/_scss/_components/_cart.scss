@@ -49,10 +49,11 @@ body.v-custom-cart-empty {
       align-items: center;
       th {
         &.product {
-          width: calc(100% - 255px) !important;
+          width: calc(100% - 235px) !important;
         }
 
-        &.product-price {
+        &.product-price,
+        &.quantity-price {
           width:70px !important;
         }
 
@@ -62,7 +63,7 @@ body.v-custom-cart-empty {
           display: none;
         }
 
-        &.quantity { min-width: 110px; }
+        &.quantity { min-width: 82px; }
 
         &.product-image {order:1;}
         &.product-name {order:2;}
@@ -70,6 +71,11 @@ body.v-custom-cart-empty {
         &.quantity {order:4;}
         &.product-price,
         &.quantity-price {order:5;}
+
+        @if $showCartQuantityPrice {
+          &.product-price {display: none;}
+          &.quantity-price {display: block;}
+        } 
       }
     }
   }
@@ -108,7 +114,6 @@ body.v-custom-cart-empty {
         margin-top:0 !important;
         border-top:none !important;
         border-bottom:1px solid  $muted-5;
-        
       }
 
       &.item-attachments-head,
@@ -125,6 +130,11 @@ body.v-custom-cart-empty {
         @media(max-width: 490px) {
           display: block;
           padding:10px 0;
+          &:after {
+            content:"";
+            clear:both;
+            display:block;
+          }
         }
       }
 
@@ -155,26 +165,66 @@ body.v-custom-cart-empty {
         &.quantity-price {
           width: 70px !important;
           white-space: nowrap;
+          margin: 0 10px;
 
           @media (max-width: 490px) {
             width: initial !important;
+            text-align: right;
+            float: right;
+            margin: 0;
+            padding: 0;
           }
 
           .new-product-price-label,
           .old-product-price-label {
             display: none;
           }
+
+          .total-selling-price,
           .best-price {
             font-weight: bold;
             @media (max-width: 490px) {
               display: flex;
               justify-content: flex-end;
+              margin-top: 7px;
               .discount {margin-left: 5px;display: block;}
             }
           }
+          
 
           .new-product-real-price-per-unit {display: inline-block;}
+
+          .v-custom-quantity-list-price {
+            display: block;
+            font-size: 10px;
+            line-height: 13px;
+            &--list,
+            &--selling {
+              display:block;
+            }
+            &--list {
+              text-decoration: line-through;
+              color: $muted-4;
+            }
+            &--selling {
+              color: $muted-2;
+            }
+
+            > *:last-child {
+              @media (max-width: 490px) {
+                margin-bottom:-7px;
+              }
+            }
+          }
+
         }
+
+        &.product-price {
+          @media (max-width: 490px) {
+            span.list-price:not(.hide) + br + span.best-price {margin-top:0;}
+          }
+        }
+
 
         &.item-remove {
           margin-left: auto;
@@ -196,8 +246,10 @@ body.v-custom-cart-empty {
 
         @if $showCartQuantityPrice {
           &.product-price {display: none !important;}
+          &.quantity-price {display: block !important;}
         } @else {
           &.quantity-price {display: none !important;}
+          &.product-price {display: block !important;}
         }
 
         .field-help {
@@ -388,26 +440,37 @@ body.v-custom-cart-empty {
   }
 
   td.quantity {
-    min-width: 110px; 
-    > .item-quantity-change,
-    > input.tel {display: inline-block !important;}
+    margin: 0 0 0 10px;
+    display:flex;
+    padding: 0;
+    border-radius: $border-radius;
+    border:1px solid $muted-4;
+    float:left;
+    
     input {
-        border-radius:$border-radius;
-        padding:5px;
-        width: 25px !important;
+      margin:0;
+      @extend %input-style;
+      width: 30px !important;
+      height:30px !important;
+      padding:0;
+      border:none;
+      box-shadow:none;
     }
     .item-quantity-change {
-       position:initial;
-       left:initial;
-       top:initial;
-       bottom:initial;
-       height: initial;
-       display: flex;
-       align-items: center;
-       justify-content: center;
+      position:initial;
+      left:initial;
+      top:initial;
+      bottom:initial;
+      height: initial;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
 
       i {
         background:none;
+        line-height:30px;
+        display: inline-block;
         &:before {
           font-weight:bold;
           font-size:22px;

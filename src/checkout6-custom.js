@@ -9,10 +9,13 @@ window.vcustom = {
     accordionPayments: true, 
     deliveryDateFormat: true
   }),
-  debug: new debug(false)
+  debug: new debug({
+    dbg:false,
+    logo:""
+  })
 }
 
 vcustom.checkout.start(); 
 
 
-//
+// vcustom.debug.start(); 

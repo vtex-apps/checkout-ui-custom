@@ -243,9 +243,31 @@ class checkoutCustom {
     }
   }
 
+  enchancementTotalPrice(orderForm) {
+    let _this = this;
+    try {
+      $.each(orderForm.items, function(i) {
+        let _item = this;
+
+        let _eachprice = `
+          <span class="v-custom-quantity-list-price">
+            ${_item.listPrice > _item.sellingPrice ? `<span class="v-custom-quantity-list-price--list">${orderForm.storePreferencesData.currencySymbol} ${(_item.listPrice/100).toFixed(2)}</span>` : ""}
+            ${_item.quantity > 1 ? `<span class="v-custom-quantity-list-price--selling">(${orderForm.storePreferencesData.currencySymbol} ${(_item.sellingPrice/100).toFixed(2)} ${_this.lang.eachLabel})</span>` : ""}
+          </span>
+        `;
+        $(`.table.cart-items tbody tr.product-item:eq(${i})`).find("td.quantity-price").find(".v-custom-quantity-list-price").remove();
+        $(`.table.cart-items tbody tr.product-item:eq(${i})`).find("td.quantity-price").prepend(_eachprice);
+
+      })
+    } catch(e) {
+
+    }
+  }
+
   update(orderForm) {
     this.checkEmpty(orderForm.items);
     this.addAssemblies(orderForm);
+    this.enchancementTotalPrice(orderForm);
     this.bundleItems(orderForm);
     
     this.buildMiniCart(orderForm);
@@ -365,10 +387,7 @@ class checkoutCustom {
     _this.changeShippingTimeInfoInit();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)
-      _this.addAssemblies(_this.orderForm);
-      _this.buildMiniCart(_this.orderForm);
-      _this.indexedInItems(_this.orderForm);
-      _this.bundleItems(_this.orderForm);
+      _this.update(_this.orderForm);
     }
     _this.addEditButtoninLogin();
   }

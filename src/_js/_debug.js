@@ -1,6 +1,9 @@
 
 class debug {
-  constructor(dbg=false, logo='<img src="https://via.placeholder.com/160x60">') {
+  constructor({
+    dbg=false, 
+    logo='<img src="https://via.placeholder.com/160x60">'
+  } = {}) {
 
     this.classOn="debug-on";
 
