@@ -33,6 +33,9 @@ body.v-custom-cart-empty {
   padding:20px 30px;
   background: #FFF;
   border-radius:$border-radius;
+  @media(max-width: 490px) {
+    padding: 12px;
+  }
 }
 
 .cart-template-holder .cart {border:$bordersContainers;}

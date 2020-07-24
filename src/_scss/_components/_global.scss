@@ -44,6 +44,9 @@ body {
 .container.container-main.container-order-form {
   max-width:$maxWrapper;
   width:calc(100% - 40px);
+  @media(max-width: 490px) {
+    width:calc(100% - 20px);
+  }
 }
 
 .checkout-container {overflow:initial !important;}
