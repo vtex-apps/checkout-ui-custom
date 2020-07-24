@@ -152,6 +152,7 @@
   .checkout-steps {
     display: none;
     position: relative;
+    min-width: 470px;
     @if $showCheckoutSteps {
       display: block;
     }
@@ -206,12 +207,11 @@
       } 
       &:after {
         content:"";
-        position:absolute;
         height:2px;
-        background: #1a73e8;
-        right: 5px;
-        top:50%;
-        margin-top:-1px;
+        background: $action-primary;
+        margin: 0px 5px;
+        min-width: 10px;
+        
       }
     
       .text {

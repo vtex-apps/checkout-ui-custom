@@ -137,12 +137,7 @@ input#creditCardpayment-card-0Code {
   font-weight: bold;
   margin-bottom: 15px;
   padding: 7px 0 !important;
-  color: #999999;
-  color: #323232;
-  border: none;
-  font-size: 20px;
-  text-transform: initial;
-  margin-bottom: 0px; }
+  color: #999999; }
 
 .default-modal {
   border-radius: 4px; }
@@ -268,18 +263,6 @@ h1#orderform-title {
     .v-custom-assemblies__values__item span, .v-custom-assemblies__values__item strong {
       line-height: 14px; }
 
-.client-pre-email h3.client-pre-email-h span:before,
-.client-profile-data .accordion-toggle > span:before,
-.shipping-data .accordion-toggle:before,
-.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
-  background: #FFF;
-  border: 1px solid #323232;
-  color: #323232;
-  width: 26px;
-  height: 26px;
-  line-height: 26px;
-  font-size: 15px; }
-
 body.v-custom-step-profile .client-pre-email h3.client-pre-email-h span:before, body.v-custom-step-shipping .client-pre-email h3.client-pre-email-h span:before,
 body.v-custom-step-shipping .client-profile-data .accordion-toggle > span:before, body.v-custom-step-payment .client-pre-email h3.client-pre-email-h span:before,
 body.v-custom-step-payment .client-profile-data .accordion-toggle > span:before,
@@ -287,30 +270,6 @@ body.v-custom-step-payment .shipping-data .accordion-toggle:before, body.v-custo
   background: #1a73e8;
   border-color: #1a73e8;
   color: #FFF; }
-
-.client-pre-email h3.client-pre-email-h span:before,
-.client-profile-data .accordion-toggle > span:before,
-.shipping-data .accordion-toggle:before,
-.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
-  text-align: center;
-  margin-right: 10px;
-  border-radius: 100%;
-  display: inline-block;
-  font-weight: bold;
-  vertical-align: middle;
-  margin-top: -2px; }
-
-.client-pre-email h3.client-pre-email-h span:before {
-  content: "1"; }
-
-.client-profile-data .accordion-toggle > span:before {
-  content: "2"; }
-
-.shipping-data .accordion-toggle:before {
-  content: "3"; }
-
-.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
-  content: "4"; }
 
 @media (max-width: 490px) {
   body:before {
@@ -401,6 +360,7 @@ body.v-custom-step-payment .checkout-steps_item_payment {
 .checkout-steps {
   display: none;
   position: relative;
+  min-width: 470px;
   display: block;
   /*
     &_bar_inner,
@@ -445,12 +405,10 @@ body.v-custom-step-payment .checkout-steps_item_payment {
       transition: all ease 0.3s; }
     .checkout-steps_item:after {
       content: "";
-      position: absolute;
       height: 2px;
       background: #1a73e8;
-      right: 5px;
-      top: 50%;
-      margin-top: -1px; }
+      margin: 0px 5px;
+      min-width: 10px; }
     .checkout-steps_item .text {
       clear: both;
       display: block;
@@ -1118,15 +1076,14 @@ body.v-custom-cart-empty .cart-template-holder {
     .client-pre-email h3.client-pre-email-h span {
       display: block;
       position: relative;
-      font-size: 0;
-      padding: 7px 0 !important; }
+      font-size: 0; }
       .client-pre-email h3.client-pre-email-h span:after {
         content: "Email";
         vertical-align: middle;
         display: inline-block;
         margin: 0; }
       .client-pre-email h3.client-pre-email-h span:after {
-        padding: 0 !important; }
+        width: 100%; }
     .client-pre-email h3.client-pre-email-h .link-box-edit {
       display: none; }
   .client-pre-email a#orderform-to-cart {
@@ -1249,13 +1206,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   margin-bottom: 20px !important;
   z-index: initial;
   border: none;
-  padding: 30px; }
-  @media (max-width: 768px) {
-    .orderform-template-holder #client-profile-data form.client-pre-email,
-    .orderform-template-holder #client-profile-data .step.client-profile-data,
-    .orderform-template-holder #shipping-data,
-    .orderform-template-holder #payment-data {
-      padding: 20px; } }
+  padding: 4px 15px 15px 10px; }
   .orderform-template-holder #client-profile-data form.client-pre-email.client-pre-email,
   .orderform-template-holder #client-profile-data .step.client-profile-data.client-pre-email,
   .orderform-template-holder #shipping-data.client-pre-email,
@@ -1321,8 +1272,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     .orderform-template-holder #payment-data .accordion-toggle > span {
       line-height: 20px;
       display: block;
-      vertical-align: middle;
-      line-height: initial; }
+      vertical-align: middle; }
   .orderform-template-holder #client-profile-data form.client-pre-email .accordion-toggle,
   .orderform-template-holder #client-profile-data form.client-pre-email .accordion-inner,
   .orderform-template-holder #client-profile-data .step.client-profile-data .accordion-toggle,
@@ -1892,16 +1842,6 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       height: auto !important; }
     .orderform-template .custom-cart-template-wrap .summary-template-holder {
       margin-top: 0; }
-
-.step.client-profile-data.active .box-step .form-step[style*="display: block"],
-.step.shipping-data.active .accordion-inner.shipping-container,
-#payment-data .box-step form.form-step {
-  padding-top: 20px !important; }
-
-.orderform-template-holder #shipping-data .shipping-summary-info,
-.orderform-template-holder .step .accordion-body p.notification,
-.client-pre-email + .client-profile-data .accordion-body:before {
-  display: none; }
 
 .steps-view, .gift-card-section,
 .App.iframe-credit-card-payment-group {
