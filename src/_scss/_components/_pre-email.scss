@@ -70,17 +70,15 @@
   .client-email.input.text {
     margin: 0;
     width: 100%;
-    position:initial !important;
+    position:initial;
 
     input[type="email"] {
-      width: 100% !important;
+      width: 100%;
       box-sizing: border-box;
-      margin-right: 10px;
     }
     .btn-success {
       width: 20%;
-      margin: 0 !important;
-      min-width: 90px;
+      margin: 0;
       height: $inputHeight;
       position: absolute;
       top: initial;
