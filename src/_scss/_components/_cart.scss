@@ -28,6 +28,8 @@ body.v-custom-cart-empty {
 
 // end empty cart
 
+h1#cart-title {display:none !important;}
+
 .cart-more-options,
 .cart-template-holder .cart {
   padding:20px 30px;
@@ -207,7 +209,7 @@ body.v-custom-cart-empty {
             }
             &--list {
               text-decoration: line-through;
-              color: $muted-4;
+              color: $muted-3;
             }
             &--selling {
               color: $muted-2;
@@ -308,9 +310,14 @@ body.v-custom-cart-empty {
       }
 
       &.item-unavailable {
-        margin: 10px;
+        margin: 10px 0;
         border-radius: 10px;
         border: none !important;
+
+        @media (max-width:490px) {
+          padding: 0;
+          text-align: center;
+        }
       }
 
       &.v-custom-indexedItems-in {
@@ -834,13 +841,3 @@ body.v-custom-cart-empty {
 
 
 // end split cart in 2 columns
-
-
-
-    
-
-
-
-    
-
-
