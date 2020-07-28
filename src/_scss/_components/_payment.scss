@@ -907,6 +907,12 @@
 			button { margin:0 !important; }
 			
 		}
+
+		#payment-data-submit {
+			&:disabled span {
+				display:none;
+			}
+		}
 	}
 	.summary-note {display: none !important;}
 
