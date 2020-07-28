@@ -63,6 +63,8 @@
     .link-box-edit {display: none;}
   }
 
+
+
   a#orderform-to-cart {
     color:$action-primary;
   }
@@ -90,6 +92,20 @@
       @media(max-width: 768px) {
         width: calc(100% - 60px);
       }
+    }
+
+    .loading-inline {
+      position: absolute;
+      color: #FFF;
+      font-size: 16px;
+      bottom: 26px;
+      top: initial;
+      right: 50%;
+      margin-right: -10px;
+    }
+
+    .loading-inline[style=""] + #btn-client-pre-email {
+      font-size:0;
     }
   }
 
