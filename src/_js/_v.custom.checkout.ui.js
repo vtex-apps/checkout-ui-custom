@@ -200,9 +200,10 @@ class checkoutCustom {
 
     if(lang=="pt") doptions = { weekday: 'short', month: 'short', day: 'numeric' };
 
-    d = d.toLocaleDateString(lang, doptions);
-  
+    if( (d.getDate() - new Date().getDate()) == 1 ) return "Tomorrow"
 
+    d = d.toLocaleDateString(lang, doptions);
+    
     return d
   }
 
@@ -227,7 +228,6 @@ class checkoutCustom {
         .vtex-pickup-points-modal-3-x-pickupPointSlaAvailability        
       `).each(function(i) {
         let txtselectin = $(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text();
-        console.log($(this), txtselectin)
         if(txtselectin!="" && txtselectin.match(/(day)|(dia)/gm)) {
           let days = parseInt(txtselectin.match(/\d+/));
           if(days) {
