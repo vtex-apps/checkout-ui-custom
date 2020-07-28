@@ -215,7 +215,8 @@ class checkoutCustom {
       ".vtex-omnishipping-1-x-leanShippingTextLabelSingle > span",
       "span.shipping-date",
       ".shp-option-text-time",
-      ".pkpmodal-pickup-point-sla"
+      ".pkpmodal-pickup-point-sla",
+      ".shp-option-text-package"
     ];
     try {
       $(`
@@ -225,11 +226,15 @@ class checkoutCustom {
         .orderform-template .cart-template.mini-cart .item,
         .vtex-pickup-points-modal-3-x-pickupPointSlaAvailability        
       `).each(function(i) {
-        let days = parseInt($(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text().match(/\d+/));
-        if(days) {
-          let _delivtext = _this.lang.deliveryDateText;
-          if(!! $(this).find(mainSTIelems.join(", ")).text().toLowerCase().match(/(ready in up)|(pronto)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
-          $(this).find(mainSTIelems.join(", ")).html(`${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`).addClass("v-changeShippingTimeInfo-elem-active");
+        let txtselectin = $(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text();
+        console.log($(this), txtselectin)
+        if(txtselectin!="" && txtselectin.match(/(day)|(dia)/gm)) {
+          let days = parseInt(txtselectin.match(/\d+/));
+          if(days) {
+            let _delivtext = _this.lang.deliveryDateText;
+            if(!! $(this).find(mainSTIelems.join(", ")).text().toLowerCase().match(/(ready in up)|(pronto)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
+            $(this).find(mainSTIelems.join(", ")).html(`${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`).addClass("v-changeShippingTimeInfo-elem-active");
+          }
         }
         $(this).addClass("v-changeShippingTimeInfo-active");
       });
@@ -309,7 +314,7 @@ class checkoutCustom {
     if(_lang.paypalPhone) $(".payment-paypal-help-number").text(_lang.paypalPhone);
 
     if (_lang.paypalImg) {
-      $(".payment-paypal-title-short-logo").css("background-image", _lang.paypalImg);
+      $(".payment-paypal-title-short-logo").css("background-image", `url(${_lang.paypalImg})`);
     } else if (_lang.paypalImg=="") {
       $(".payment-paypal-title-short-logo").hide();
     }
@@ -410,6 +415,7 @@ class checkoutCustom {
       if(_this.orderForm) {
         _this.buildMiniCart(_this.orderForm);
         _this.indexedInItems(_this.orderForm);
+        _this.updateLang(_this.orderForm)
       }
     });
 

@@ -987,8 +987,14 @@
 			width: calc(100% - 1px);
 		}
 		.SavedCard .link-delete {
-			right: 0;
-			top: -16px;
+			right: 8px;
+			top: 50%;
+			margin-top: -10px;
+			border: 1px solid #ccc;
+			background: #FFF;
+			width: 20px;
+			height: 20px;
+			line-height: 17px;
 		}
 	}
 	.FormFieldLabel {
@@ -1025,11 +1031,17 @@
 			color:$action-primary;
 			background:$action-secondary;
 		}
-		.card-flag {
-			position: absolute;
-			left: 5px;
-			top: 8px;
+		
+
+		&:not(.SavedCard) {
+			.card-flag {
+				position: absolute;
+				left: 5px;
+				top: 8px;
+			}
 		}
+
+
 		.icon-ok-circle, .icon-circle-blank {
 			top: 9px;
 		}
