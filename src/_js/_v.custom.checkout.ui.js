@@ -200,8 +200,7 @@ class checkoutCustom {
 
     if(lang=="pt") doptions = { weekday: 'short', month: 'short', day: 'numeric' };
 
-    if( (d.getDate() - new Date().getDate()) == 1 ) return "Tomorrow"
-
+    if( (d.getDate() - new Date().getDate()) == 1 ) return _this.lang.tomorrowLabel||"Tomorrow";
     d = d.toLocaleDateString(lang, doptions);
     
     return d

@@ -4,7 +4,8 @@ module.exports._locale = {
     editLabel: "Editar",
     deliveryDateText:"Entrega até",
     PickupDateText:"Pronto até",
-    eachLabel:"cada"
+    eachLabel:"cada",
+    tomorrowLabel:"Amanhã"
   },
   CAN: {
     editLabel: "Edit",
@@ -13,7 +14,8 @@ module.exports._locale = {
     cartSubmitButton:"Prooced to Payment",
     deliveryDateText:"Arrives by",
     PickupDateText:"Ready by",
-    eachLabel:"each"
+    eachLabel:"each",
+    tomorrowLabel:"Tomorrow"
   },
   USA: {
     editLabel: "Edit",
@@ -22,8 +24,8 @@ module.exports._locale = {
     cartSubmitButton:"Prooced to Payment",
     deliveryDateText:"Arrives by",
     PickupDateText:"Ready by",
-    eachLabel:"each"
+    eachLabel:"each",
+    tomorrowLabel:"Tomorrow"
   },
 
 }
- 
