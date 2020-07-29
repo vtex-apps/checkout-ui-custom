@@ -671,7 +671,8 @@
   		position: relative !important;
 	    max-width: 100%;
 	    width: 100% !important;
-	    top:0;
+			top:0;
+			min-height: initial;
 
   		@media(min-width: 768px) {
   			&.affix {
