@@ -5,14 +5,15 @@ input, select, button {
 //input
 
 %input-style {
-	height: $inputHeight !important;
-	line-height:$inputHeight !important;
+	height: $inputHeight;
+	line-height:$inputHeight;
 	max-height:initial;
 	display:inline-block;
 	padding:0px 10px ;
 	border-radius:$border-radius;
   border:1px solid $muted-4;
 	outline: initial;
+	font-family:$font-family;
 	
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -20,6 +21,10 @@ input, select, button {
 	
 	&.error {
 		border-color:$danger;
+	}
+
+	&:focus {
+		box-shadow:inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba($action-primary,0.6);
 	}
 }
 

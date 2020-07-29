@@ -2,7 +2,7 @@
   outline: none !important; }
 
 #vtexIdContainer input, .table.cart-items tr.item-attachments-content input,
-.table.cart-items tr.item-attachments-content select, .table.cart-items tbody tr td .product-service select, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input[type=text],
+.table.cart-items tr.item-attachments-content select, .table.cart-items tbody tr td .product-service select, .table.cart-items td.quantity input, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input[type=text],
 .summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span, .cart-more-options .srp-container select,
 .cart-more-options .srp-container input[type=text]:not(.pac-target-input), .cart-more-options .srp-container .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input, .orderform-template-holder #client-profile-data form.client-pre-email input[type=text]:not(.pac-target-input),
 .orderform-template-holder #client-profile-data form.client-pre-email input[type=tel]:not(.pac-target-input),
@@ -19,23 +19,24 @@
 .orderform-template-holder #payment-data input[type=text]:not(.pac-target-input),
 .orderform-template-holder #payment-data input[type=tel]:not(.pac-target-input),
 .orderform-template-holder #payment-data input[type=email]:not(.pac-target-input),
-.orderform-template-holder #payment-data select:not(.pac-target-input), .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input, #app-container input[type=text],
+.orderform-template-holder #payment-data select:not(.pac-target-input), .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input, .orderform-template .summary-note .note-textarea, #app-container input[type=text],
 #app-container input[type=tel],
 #app-container input[type=email],
 #app-container select {
-  height: 40px !important;
-  line-height: 40px !important;
+  height: 40px;
+  line-height: 40px;
   max-height: initial;
   display: inline-block;
   padding: 0px 10px;
   border-radius: 4px;
   border: 1px solid #cbcbcb;
   outline: initial;
+  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box; }
   #vtexIdContainer input.error, .table.cart-items tr.item-attachments-content input.error,
-  .table.cart-items tr.item-attachments-content select.error, .table.cart-items tbody tr td .product-service select.error, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input.error[type=text],
+  .table.cart-items tr.item-attachments-content select.error, .table.cart-items tbody tr td .product-service select.error, .table.cart-items td.quantity input.error, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input.error[type=text],
   .summary-template-holder .summary-coupon fieldset.coupon-fieldset button.error[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span.error, .cart-more-options .srp-container select.error,
   .cart-more-options .srp-container input.error[type=text]:not(.pac-target-input), .cart-more-options .srp-container .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input.error, .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=text]:not(.pac-target-input),
   .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=tel]:not(.pac-target-input),
@@ -52,17 +53,41 @@
   .orderform-template-holder #payment-data input.error[type=text]:not(.pac-target-input),
   .orderform-template-holder #payment-data input.error[type=tel]:not(.pac-target-input),
   .orderform-template-holder #payment-data input.error[type=email]:not(.pac-target-input),
-  .orderform-template-holder #payment-data select.error:not(.pac-target-input), .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input.error, #app-container input.error[type=text],
+  .orderform-template-holder #payment-data select.error:not(.pac-target-input), .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input.error, .orderform-template .summary-note .error.note-textarea, #app-container input.error[type=text],
   #app-container input.error[type=tel],
   #app-container input.error[type=email],
   #app-container select.error {
     border-color: #ff4c4c; }
+  #vtexIdContainer input:focus, .table.cart-items tr.item-attachments-content input:focus,
+  .table.cart-items tr.item-attachments-content select:focus, .table.cart-items tbody tr td .product-service select:focus, .table.cart-items td.quantity input:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input:focus[type=text],
+  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span:focus, .cart-more-options .srp-container select:focus,
+  .cart-more-options .srp-container input:focus[type=text]:not(.pac-target-input), .cart-more-options .srp-container .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input:focus, .orderform-template-holder #client-profile-data form.client-pre-email input:focus[type=text]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data form.client-pre-email input:focus[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data form.client-pre-email input:focus[type=email]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data form.client-pre-email select:focus:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data input:focus[type=text]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data input:focus[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data input:focus[type=email]:not(.pac-target-input),
+  .orderform-template-holder #client-profile-data .step.client-profile-data select:focus:not(.pac-target-input),
+  .orderform-template-holder #shipping-data input:focus[type=text]:not(.pac-target-input),
+  .orderform-template-holder #shipping-data input:focus[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #shipping-data input:focus[type=email]:not(.pac-target-input),
+  .orderform-template-holder #shipping-data select:focus:not(.pac-target-input),
+  .orderform-template-holder #payment-data input:focus[type=text]:not(.pac-target-input),
+  .orderform-template-holder #payment-data input:focus[type=tel]:not(.pac-target-input),
+  .orderform-template-holder #payment-data input:focus[type=email]:not(.pac-target-input),
+  .orderform-template-holder #payment-data select:focus:not(.pac-target-input), .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation input:focus, .orderform-template .summary-note .note-textarea:focus, #app-container input:focus[type=text],
+  #app-container input:focus[type=tel],
+  #app-container input:focus[type=email],
+  #app-container select:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(26, 115, 232, 0.6); }
 
 input#creditCardpayment-card-0Number,
 input#creditCardpayment-card-0Code {
   font-size: 18px; }
 
 .btn, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a {
+  font-family: "Roboto", sans-serif;
   transition: all ease 0.2s;
   text-shadow: none;
   border-radius: 30px;
@@ -109,7 +134,8 @@ input#creditCardpayment-card-0Code {
     .table.cart-items tbody tr td.product-name .clone-item.btn:hover, .table.cart-items tbody tr td.product-name .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a.clone-item:hover, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .table.cart-items tbody tr td.product-name a.clone-item:hover,
     .table.cart-items tbody tr td.product-name .add-item-attachment-container a:hover, .table.cart-items tbody tr td .product-service input:hover[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:hover[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:hover, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a:hover, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc a:hover, .orderform-template-holder #payment-data #btn-add-gift-card:hover, .btn-secondary:focus, .table.cart-items tbody tr td.product-name .add-service.btn:focus, .table.cart-items tbody tr td.product-name .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a.add-service:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .table.cart-items tbody tr td.product-name a.add-service:focus,
     .table.cart-items tbody tr td.product-name .clone-item.btn:focus, .table.cart-items tbody tr td.product-name .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a.clone-item:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .table.cart-items tbody tr td.product-name a.clone-item:focus,
-    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:focus, .table.cart-items tbody tr td .product-service input:focus[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:focus, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc a:focus, .orderform-template-holder #payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr td.product-name .add-service.btn:active, .table.cart-items tbody tr td.product-name .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a.add-service:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .table.cart-items tbody tr td.product-name a.add-service:active,
+    .table.cart-items tbody tr td.product-name .add-item-attachment-container a:focus, .table.cart-items tbody tr td .product-service input:focus[type=submit],
+    .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:focus, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc a:focus, .orderform-template-holder #payment-data #btn-add-gift-card:focus, .btn-secondary:active, .table.cart-items tbody tr td.product-name .add-service.btn:active, .table.cart-items tbody tr td.product-name .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a.add-service:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .table.cart-items tbody tr td.product-name a.add-service:active,
     .table.cart-items tbody tr td.product-name .clone-item.btn:active, .table.cart-items tbody tr td.product-name .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a.clone-item:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .table.cart-items tbody tr td.product-name a.clone-item:active,
     .table.cart-items tbody tr td.product-name .add-item-attachment-container a:active, .table.cart-items tbody tr td .product-service input:active[type=submit], .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:active[type=submit], .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .btn:active, .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a:active, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .cart-more-options .srp-container .vtex-shipping-preview-0-x-pc a:active, .orderform-template-holder #payment-data #btn-add-gift-card:active {
       background: #f1f7ff;
@@ -137,7 +163,12 @@ input#creditCardpayment-card-0Code {
   font-weight: bold;
   margin-bottom: 15px;
   padding: 7px 0 !important;
-  color: #999999; }
+  color: #999999;
+  color: #323232;
+  border: none;
+  font-size: 20px;
+  text-transform: initial;
+  margin-bottom: 0px; }
 
 .default-modal {
   border-radius: 4px; }
@@ -210,6 +241,13 @@ body {
   @media (max-width: 768px) {
     body {
       padding-bottom: 0px !important; } }
+  body .cart-template.full-cart > * {
+    opacity: 0;
+    transition-delay: 1.2s;
+    transition-property: opacity;
+    -webkit-transition-duration: 0.5s; }
+  body.v-custom-loaded .cart-template.full-cart > * {
+    opacity: initial; }
 
 .onda-v1 .br-pill,
 .step, .cart, .totalizers {
@@ -222,6 +260,10 @@ body {
 .container.container-main.container-order-form {
   max-width: 980px;
   width: calc(100% - 40px); }
+  @media (max-width: 490px) {
+    .container-cart.container,
+    .container.container-main.container-order-form {
+      width: calc(100% - 20px); } }
 
 .checkout-container {
   overflow: initial !important; }
@@ -263,6 +305,18 @@ h1#orderform-title {
     .v-custom-assemblies__values__item span, .v-custom-assemblies__values__item strong {
       line-height: 14px; }
 
+.client-pre-email h3.client-pre-email-h span:before,
+.client-profile-data .accordion-toggle > span:before,
+.shipping-data .accordion-toggle:before,
+.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
+  background: #FFF;
+  border: 1px solid #323232;
+  color: #323232;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 15px; }
+
 body.v-custom-step-profile .client-pre-email h3.client-pre-email-h span:before, body.v-custom-step-shipping .client-pre-email h3.client-pre-email-h span:before,
 body.v-custom-step-shipping .client-profile-data .accordion-toggle > span:before, body.v-custom-step-payment .client-pre-email h3.client-pre-email-h span:before,
 body.v-custom-step-payment .client-profile-data .accordion-toggle > span:before,
@@ -270,6 +324,30 @@ body.v-custom-step-payment .shipping-data .accordion-toggle:before, body.v-custo
   background: #1a73e8;
   border-color: #1a73e8;
   color: #FFF; }
+
+.client-pre-email h3.client-pre-email-h span:before,
+.client-profile-data .accordion-toggle > span:before,
+.shipping-data .accordion-toggle:before,
+.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
+  text-align: center;
+  margin-right: 10px;
+  border-radius: 100%;
+  display: inline-block;
+  font-weight: bold;
+  vertical-align: middle;
+  margin-top: -2px; }
+
+.client-pre-email h3.client-pre-email-h span:before {
+  content: "1"; }
+
+.client-profile-data .accordion-toggle > span:before {
+  content: "2"; }
+
+.shipping-data .accordion-toggle:before {
+  content: "3"; }
+
+.payment-data .accordion-toggle > span:not(.payment-edit-link):before {
+  content: "4"; }
 
 @media (max-width: 490px) {
   body:before {
@@ -361,6 +439,7 @@ body.v-custom-step-payment .checkout-steps_item_payment {
   display: none;
   position: relative;
   min-width: 470px;
+  width: 100%;
   display: block;
   /*
     &_bar_inner,
@@ -430,7 +509,8 @@ body .main-header {
   text-align: center;
   border-bottom: 1px solid #cbcbcb;
   position: relative;
-  background-color: #FFF; }
+  background-color: #FFF;
+  margin-bottom: 30px; }
   body .main-header, body .main-header > .container {
     display: flex;
     align-items: center; }
@@ -438,21 +518,20 @@ body .main-header {
       body .main-header, body .main-header > .container {
         justify-content: center; } }
   body .main-header > .container {
-    position: initial;
-    width: 100%; }
+    width: 980px; }
     body .main-header > .container:before, body .main-header > .container:after {
       display: none; }
   body .main-header .header-link {
     position: absolute;
     left: 10px;
-    top: calc(100% + 2px);
+    top: calc(100% + 13px);
     display: none; }
     body .main-header .header-link a {
       height: 20px;
       font-size: 10px;
       line-height: 10px;
       padding-left: 0px;
-      color: #1a73e8;
+      color: #676767;
       display: flex;
       align-items: center; }
       body .main-header .header-link a:before {
@@ -464,7 +543,7 @@ body .main-header {
         mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDQzLjUyIDQ0My41MiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDQzLjUyIDQ0My41MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0xNDMuNDkyLDIyMS44NjNMMzM2LjIyNiwyOS4xMjljNi42NjMtNi42NjQsNi42NjMtMTcuNDY4LDAtMjQuMTMyYy02LjY2NS02LjY2Mi0xNy40NjgtNi42NjItMjQuMTMyLDBsLTIwNC44LDIwNC44DQoJCQljLTYuNjYyLDYuNjY0LTYuNjYyLDE3LjQ2OCwwLDI0LjEzMmwyMDQuOCwyMDQuOGM2Ljc4LDYuNTQ4LDE3LjU4NCw2LjM2LDI0LjEzMi0wLjQyYzYuMzg3LTYuNjE0LDYuMzg3LTE3LjA5OSwwLTIzLjcxMg0KCQkJTDE0My40OTIsMjIxLjg2M3oiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==) no-repeat 50% 50%;
         -webkit-mask-size: cover;
         mask-size: cover;
-        background-color: #1a73e8;
+        background-color: #676767;
         content: ""; }
       body .main-header .header-link a.back-cart-link {
         display: none; }
@@ -488,8 +567,9 @@ body .main-header {
     border: none;
     line-height: 39px; }
   body .main-header .checkout-steps {
-    width: 600px;
-    margin-left: auto; }
+    max-width: 600px;
+    margin-left: auto;
+    padding-right: 10px; }
 
 @media (max-width: 490px) {
   body:not(.body-cart) .main-header {
@@ -568,11 +648,19 @@ body.v-custom-cart-empty .cart-template-holder {
 .empty-cart-content {
   padding: 50px 0; }
 
+h1#cart-title {
+  display: none !important; }
+
 .cart-more-options,
 .cart-template-holder .cart {
   padding: 20px 30px;
   background: #FFF;
+  margin: 0;
   border-radius: 4px; }
+  @media (max-width: 490px) {
+    .cart-more-options,
+    .cart-template-holder .cart {
+      padding: 12px; } }
 
 .cart-template-holder .cart {
   border: none; }
@@ -586,13 +674,13 @@ body.v-custom-cart-empty .cart-template-holder {
       display: flex;
       align-items: center; }
       .table.cart-items thead tr th.product {
-        width: calc(100% - 255px) !important; }
-      .table.cart-items thead tr th.product-price {
+        width: calc(100% - 235px) !important; }
+      .table.cart-items thead tr th.product-price, .table.cart-items thead tr th.quantity-price {
         width: 70px !important; }
       .table.cart-items thead tr th.item-remove, .table.cart-items thead tr th.quantity-price, .table.cart-items thead tr th.shipping-date {
         display: none; }
       .table.cart-items thead tr th.quantity {
-        min-width: 110px; }
+        min-width: 82px; }
       .table.cart-items thead tr th.product-image {
         order: 1; }
       .table.cart-items thead tr th.product-name {
@@ -621,9 +709,9 @@ body.v-custom-cart-empty .cart-template-holder {
       border-top: 1px solid #eee; }
       @media (max-width: 490px) {
         .table.cart-items tbody tr {
-          margin-top: 0 !important;
-          border-top: none !important;
-          border-bottom: 1px solid #eee; } }
+          margin-top: 0 !important; }
+          .table.cart-items tbody tr:first-child {
+            border: none; } }
       .table.cart-items tbody tr.item-attachments-head, .table.cart-items tbody tr.item-attachments-content {
         display: none; }
       .table.cart-items tbody tr .v-custom-product-item-wrap {
@@ -635,7 +723,11 @@ body.v-custom-cart-empty .cart-template-holder {
         @media (max-width: 490px) {
           .table.cart-items tbody tr .v-custom-product-item-wrap {
             display: block;
-            padding: 10px 0; } }
+            padding: 10px 0; }
+            .table.cart-items tbody tr .v-custom-product-item-wrap:after {
+              content: "";
+              clear: both;
+              display: block; } }
       .table.cart-items tbody tr td {
         width: auto;
         border: none; }
@@ -656,25 +748,54 @@ body.v-custom-cart-empty .cart-template-holder {
             width: calc(100% - 355px) !important; } }
         .table.cart-items tbody tr td.product-price, .table.cart-items tbody tr td.quantity-price {
           width: 70px !important;
-          white-space: nowrap; }
+          white-space: nowrap;
+          margin: 0 10px; }
           @media (max-width: 490px) {
             .table.cart-items tbody tr td.product-price, .table.cart-items tbody tr td.quantity-price {
-              width: initial !important; } }
+              width: initial !important;
+              text-align: right;
+              float: right;
+              margin: 0;
+              padding: 0; } }
           .table.cart-items tbody tr td.product-price .new-product-price-label,
           .table.cart-items tbody tr td.product-price .old-product-price-label, .table.cart-items tbody tr td.quantity-price .new-product-price-label,
           .table.cart-items tbody tr td.quantity-price .old-product-price-label {
             display: none; }
-          .table.cart-items tbody tr td.product-price .best-price, .table.cart-items tbody tr td.quantity-price .best-price {
+          .table.cart-items tbody tr td.product-price .total-selling-price,
+          .table.cart-items tbody tr td.product-price .best-price, .table.cart-items tbody tr td.quantity-price .total-selling-price,
+          .table.cart-items tbody tr td.quantity-price .best-price {
             font-weight: bold; }
             @media (max-width: 490px) {
-              .table.cart-items tbody tr td.product-price .best-price, .table.cart-items tbody tr td.quantity-price .best-price {
+              .table.cart-items tbody tr td.product-price .total-selling-price,
+              .table.cart-items tbody tr td.product-price .best-price, .table.cart-items tbody tr td.quantity-price .total-selling-price,
+              .table.cart-items tbody tr td.quantity-price .best-price {
                 display: flex;
-                justify-content: flex-end; }
-                .table.cart-items tbody tr td.product-price .best-price .discount, .table.cart-items tbody tr td.quantity-price .best-price .discount {
+                justify-content: flex-end;
+                margin-top: 7px; }
+                .table.cart-items tbody tr td.product-price .total-selling-price .discount,
+                .table.cart-items tbody tr td.product-price .best-price .discount, .table.cart-items tbody tr td.quantity-price .total-selling-price .discount,
+                .table.cart-items tbody tr td.quantity-price .best-price .discount {
                   margin-left: 5px;
                   display: block; } }
           .table.cart-items tbody tr td.product-price .new-product-real-price-per-unit, .table.cart-items tbody tr td.quantity-price .new-product-real-price-per-unit {
             display: inline-block; }
+          .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price {
+            display: block;
+            font-size: 10px;
+            line-height: 13px; }
+            .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--list, .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--selling, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--list, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--selling {
+              display: block; }
+            .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--list, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--list {
+              text-decoration: line-through;
+              color: #999999; }
+            .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--selling, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--selling {
+              color: #676767; }
+            @media (max-width: 490px) {
+              .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price > *:last-child, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price > *:last-child {
+                margin-bottom: -7px; } }
+        @media (max-width: 490px) {
+          .table.cart-items tbody tr td.product-price span.list-price:not(.hide) + br + span.best-price {
+            margin-top: 0; } }
         .table.cart-items tbody tr td.item-remove {
           margin-left: auto;
           width: 20px !important; }
@@ -696,6 +817,8 @@ body.v-custom-cart-empty .cart-template-holder {
           order: 10; }
         .table.cart-items tbody tr td.quantity-price {
           display: none !important; }
+        .table.cart-items tbody tr td.product-price {
+          display: block !important; }
         .table.cart-items tbody tr td .field-help {
           background: #1a73e8;
           border-color: #1a73e8; }
@@ -727,9 +850,13 @@ body.v-custom-cart-empty .cart-template-holder {
       .table.cart-items tbody tr.v-custom-bundles-in .product-service {
         display: none; }
       .table.cart-items tbody tr.item-unavailable {
-        margin: 10px;
+        margin: 10px 0;
         border-radius: 10px;
         border: none !important; }
+        @media (max-width: 490px) {
+          .table.cart-items tbody tr.item-unavailable {
+            padding: 0;
+            text-align: center; } }
       .table.cart-items tbody tr.v-custom-indexedItems-in + tr.item-unavailable {
         display: none; }
       .table.cart-items tbody tr.v-custom-indexed-item {
@@ -752,6 +879,13 @@ body.v-custom-cart-empty .cart-template-holder {
         .table.cart-items tbody tr.v-custom-indexed-item .v-custom-trservice-wrap, .table.cart-items tbody tr.item-service .v-custom-trservice-wrap {
           margin-bottom: 10px;
           margin-top: 10px; }
+        .table.cart-items tbody tr.v-custom-indexed-item td.quantity, .table.cart-items tbody tr.item-service td.quantity {
+          background: #FFF;
+          width: 25px;
+          height: 20px;
+          text-align: center; }
+          .table.cart-items tbody tr.v-custom-indexed-item td.quantity p, .table.cart-items tbody tr.item-service td.quantity p {
+            width: 100%; }
         .table.cart-items tbody tr.v-custom-indexed-item td.product-price, .table.cart-items tbody tr.item-service td.product-price {
           display: none !important; }
         .table.cart-items tbody tr.v-custom-indexed-item td.quantity-price, .table.cart-items tbody tr.item-service td.quantity-price {
@@ -816,14 +950,19 @@ body.v-custom-cart-empty .cart-template-holder {
     font-weight: bold;
     text-decoration: none; }
   .table.cart-items td.quantity {
-    min-width: 110px; }
-    .table.cart-items td.quantity > .item-quantity-change,
-    .table.cart-items td.quantity > input.tel {
-      display: inline-block !important; }
+    margin: 0 0 0 10px;
+    display: flex;
+    padding: 0;
+    border-radius: 4px;
+    border: 1px solid #cbcbcb;
+    float: left; }
     .table.cart-items td.quantity input {
-      border-radius: 4px;
-      padding: 5px;
-      width: 25px !important; }
+      margin: 0;
+      width: 30px !important;
+      height: 30px !important;
+      padding: 0;
+      border: none;
+      box-shadow: none; }
     .table.cart-items td.quantity .item-quantity-change {
       position: initial;
       left: initial;
@@ -832,9 +971,12 @@ body.v-custom-cart-empty .cart-template-holder {
       height: initial;
       display: flex;
       align-items: center;
-      justify-content: center; }
+      justify-content: center;
+      padding: 0; }
       .table.cart-items td.quantity .item-quantity-change i {
-        background: none; }
+        background: none;
+        line-height: 30px;
+        display: inline-block; }
         .table.cart-items td.quantity .item-quantity-change i:before {
           font-weight: bold;
           font-size: 22px;
@@ -1040,8 +1182,9 @@ body.v-custom-cart-empty .cart-template-holder {
   flex-flow: wrap;
   justify-content: space-between;
   align-items: flex-start; }
-  .body-cart-vertical .cart-template.full-cart.span12.active .extensions-checkout-buttons-container.row-fluid {
-    width: auto !important; }
+  .body-cart-vertical .cart-template.full-cart.span12.active .extensions-checkout-buttons-container {
+    width: auto !important;
+    margin: 0; }
   .body-cart-vertical .cart-template.full-cart.span12.active .totalizers.summary-totalizers.cart-totalizers {
     width: 100%;
     padding: 0;
@@ -1076,14 +1219,15 @@ body.v-custom-cart-empty .cart-template-holder {
     .client-pre-email h3.client-pre-email-h span {
       display: block;
       position: relative;
-      font-size: 0; }
+      font-size: 0;
+      padding: 7px 0 !important; }
       .client-pre-email h3.client-pre-email-h span:after {
         content: "Email";
         vertical-align: middle;
         display: inline-block;
         margin: 0; }
       .client-pre-email h3.client-pre-email-h span:after {
-        width: 100%; }
+        padding: 0 !important; }
     .client-pre-email h3.client-pre-email-h .link-box-edit {
       display: none; }
   .client-pre-email a#orderform-to-cart {
@@ -1091,15 +1235,13 @@ body.v-custom-cart-empty .cart-template-holder {
   .client-pre-email .client-email.input.text {
     margin: 0;
     width: 100%;
-    position: initial !important; }
+    position: initial; }
     .client-pre-email .client-email.input.text input[type="email"] {
-      width: 100% !important;
-      box-sizing: border-box;
-      margin-right: 10px; }
+      width: 100%;
+      box-sizing: border-box; }
     .client-pre-email .client-email.input.text .btn-success {
       width: 20%;
-      margin: 0 !important;
-      min-width: 90px;
+      margin: 0;
       height: 40px;
       position: absolute;
       top: initial;
@@ -1111,6 +1253,16 @@ body.v-custom-cart-empty .cart-template-holder {
       @media (max-width: 768px) {
         .client-pre-email .client-email.input.text .btn-success {
           width: calc(100% - 60px); } }
+    .client-pre-email .client-email.input.text .loading-inline {
+      position: absolute;
+      color: #FFF;
+      font-size: 16px;
+      bottom: 26px;
+      top: initial;
+      right: 50%;
+      margin-right: -10px; }
+    .client-pre-email .client-email.input.text .loading-inline[style=""] + #btn-client-pre-email {
+      font-size: 0; }
   .client-pre-email .emailInfo {
     margin-top: 20px;
     width: 80%;
@@ -1121,6 +1273,8 @@ body.v-custom-cart-empty .cart-template-holder {
     @media (max-width: 490px) {
       .client-pre-email .emailInfo {
         width: 100%; } }
+    .client-pre-email .emailInfo .icon-lock {
+      color: #eee; }
   @media (max-width: 490px) {
     .client-pre-email .link-cart {
       display: none !important; } }
@@ -1206,7 +1360,13 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   margin-bottom: 20px !important;
   z-index: initial;
   border: none;
-  padding: 4px 15px 15px 10px; }
+  padding: 30px; }
+  @media (max-width: 768px) {
+    .orderform-template-holder #client-profile-data form.client-pre-email,
+    .orderform-template-holder #client-profile-data .step.client-profile-data,
+    .orderform-template-holder #shipping-data,
+    .orderform-template-holder #payment-data {
+      padding: 20px; } }
   .orderform-template-holder #client-profile-data form.client-pre-email.client-pre-email,
   .orderform-template-holder #client-profile-data .step.client-profile-data.client-pre-email,
   .orderform-template-holder #shipping-data.client-pre-email,
@@ -1272,7 +1432,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     .orderform-template-holder #payment-data .accordion-toggle > span {
       line-height: 20px;
       display: block;
-      vertical-align: middle; }
+      vertical-align: middle;
+      line-height: initial; }
   .orderform-template-holder #client-profile-data form.client-pre-email .accordion-toggle,
   .orderform-template-holder #client-profile-data form.client-pre-email .accordion-inner,
   .orderform-template-holder #client-profile-data .step.client-profile-data .accordion-toggle,
@@ -1634,7 +1795,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
 .orderform-template {
   display: flex !important;
   flex-wrap: wrap;
-  padding-top: 30px;
+  padding-top: 0px;
   min-height: 400px !important;
   align-items: flex-start; }
   .orderform-template.inactive {
@@ -1814,20 +1975,37 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     padding: 0; }
     .orderform-template .payment-confirmation-wrap .payment-submit-wrap {
       margin: 10px 0 0 0; }
+      @media (max-width: 768px) {
+        .orderform-template .payment-confirmation-wrap .payment-submit-wrap {
+          z-index: 9999;
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          left: 0;
+          padding: 0;
+          background: #FFF;
+          margin: 0 !important; }
+          .orderform-template .payment-confirmation-wrap .payment-submit-wrap button {
+            border-radius: 0 !important; } }
     @media (max-width: 768px) {
       .orderform-template .payment-confirmation-wrap {
-        border: none !important;
-        z-index: 9999;
-        position: fixed;
-        bottom: 0;
-        padding: 0;
-        background: #FFF;
-        margin: 0 !important; }
-        .orderform-template .payment-confirmation-wrap button {
-          border-radius: 0 !important; }
+        border: none !important; }
         .orderform-template .payment-confirmation-wrap .payment-submit-wrap,
         .orderform-template .payment-confirmation-wrap button {
           margin: 0 !important; } }
+    .orderform-template .payment-confirmation-wrap #payment-data-submit:disabled span {
+      display: none; }
+  .orderform-template .summary-note p.note-data {
+    display: none !important; }
+  .orderform-template .summary-note > div {
+    display: block !important; }
+  .orderform-template .summary-note .note-textarea {
+    height: 50px;
+    line-height: 20px;
+    max-width: 100%;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    max-height: 100px; }
   .orderform-template .summary-note {
     display: none !important; }
   .orderform-template .custom-cart-template-wrap {
@@ -1842,6 +2020,16 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       height: auto !important; }
     .orderform-template .custom-cart-template-wrap .summary-template-holder {
       margin-top: 0; }
+
+.step.client-profile-data.active .box-step .form-step[style*="display: block"],
+.step.shipping-data.active .accordion-inner.shipping-container,
+#payment-data .box-step form.form-step {
+  padding-top: 20px !important; }
+
+.orderform-template-holder #shipping-data .shipping-summary-info,
+.orderform-template-holder .step .accordion-body p.notification,
+.client-pre-email + .client-profile-data .accordion-body:before {
+  display: none; }
 
 .steps-view, .gift-card-section,
 .App.iframe-credit-card-payment-group {
@@ -1870,8 +2058,14 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   #app-container .CardForm .SavedCardsList {
     width: calc(100% - 1px); }
   #app-container .CardForm .SavedCard .link-delete {
-    right: 0;
-    top: -16px; }
+    right: 8px;
+    top: 50%;
+    margin-top: -10px;
+    border: 1px solid #ccc;
+    background: #FFF;
+    width: 20px;
+    height: 20px;
+    line-height: 17px; }
   #app-container .FormFieldLabel {
     line-height: 30px; }
   #app-container .PaymentCardFlags {
@@ -1896,7 +2090,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     #app-container .label-vertical-group.active {
       color: #1a73e8;
       background: #f1f7ff; }
-    #app-container .label-vertical-group .card-flag {
+    #app-container .label-vertical-group:not(.SavedCard) .card-flag {
       position: absolute;
       left: 5px;
       top: 8px; }
@@ -1943,5 +2137,5 @@ body.v-custom-paymentBuilder-accordion .steps-view {
 body.v-custom-changeShippingTimeInfo .orderform-template .cart-template.mini-cart .item span.shipping-date {
   display: none; }
 
-body.debug-on > *:not(.container-main):not(.main-header):not(.main-footer):not(#vtexIdContainer) {
+body.debug-on > *:not(.container-main):not(.main-header):not(.main-footer):not(#vtexIdContainer):not(.vtex-front-messages-placeholder) {
   display: none; }

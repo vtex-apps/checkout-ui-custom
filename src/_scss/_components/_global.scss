@@ -1,6 +1,7 @@
 // _global.scss
 
 
+
 body {
   font-family:$font-family;
   min-width: initial !important;
@@ -22,9 +23,23 @@ body {
   @media(max-width: 768px) { 
     padding-bottom:0px !important;
   }
+
+  //short preloader to don't show a empty cart
+  .cart-template.full-cart {
+    > * {
+      opacity: 0;
+      transition-delay:1.2s;
+      transition-property: opacity;
+      -webkit-transition-duration:0.5s;
+    }
+  }
+  &.v-custom-loaded {
+    .cart-template.full-cart {
+      > * {opacity: initial;}
+    }
+  }
+  //end short preloader to don't show a empty cart
 }
-
-
 
 .onda-v1 .br-pill,
 .step, .cart, .totalizers {

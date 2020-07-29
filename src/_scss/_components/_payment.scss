@@ -891,21 +891,25 @@
 		padding:0;
 		.payment-submit-wrap {
 			margin:10px 0 0 0;
+
+			@media(max-width: 768px) {
+				z-index: 9999;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+    		left: 0;
+				padding: 0;
+				background:#FFF;
+				margin: 0 !important;
+				button {
+					border-radius:0 !important;
+				}
+			}
 		}
 		@media(max-width: 768px) {
 			border:none !important;
-			z-index: 9999;
-	    position: fixed;
-	    bottom: 0;
-	    padding: 0;
-	    background:#FFF;
-	    margin: 0 !important;
-	    button {
-		    border-radius:0 !important;
-			}
 			.payment-submit-wrap, 
 			button { margin:0 !important; }
-			
 		}
 
 		#payment-data-submit {
@@ -914,7 +918,28 @@
 			}
 		}
 	}
-	.summary-note {display: none !important;}
+	
+	.summary-note {
+		p.note-data {display: none !important;}
+		> div {
+			display: block !important;
+		}
+		.note-textarea {
+			@extend %input-style;
+			height:50px;
+			line-height: 20px;
+			max-width: 100%;
+			width: 100%;
+			font-family:$font-family;
+			max-height: 100px;
+		}
+	}
+	@if $showNoteField {
+		.summary-note {display: block;}
+	}
+	@else {
+		.summary-note {display: none !important;}
+	}
 
 	.custom-cart-template-wrap {
 		position: relative;

@@ -25,7 +25,8 @@ module.exports._locale = {
     deliveryDateText:"Arrives by",
     PickupDateText:"Ready by",
     eachLabel:"each",
-    tomorrowLabel:"Tomorrow"
+    tomorrowLabel:"Tomorrow",
+    cartNoteLabel:"Gift Message or Comments"
   },
 
 }
