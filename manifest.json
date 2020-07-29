@@ -1,0 +1,14 @@
+{
+  "name": "checkout-ui-settings",
+  "vendor": "vtex",
+  "version": "0.1.0",
+  "title": "Checkout UI Settings",
+  "description": "Declare custom settings to be used by checkout ui",
+  "builders": {
+    "docs": "0.x",
+    "checkout-ui-custom": "0.x"
+  },
+  "scripts": {},
+  "credentialType": "absolute",
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
+}

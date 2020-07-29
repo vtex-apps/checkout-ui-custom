@@ -1,0 +1,30 @@
+{
+  "extends": "vtex",
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "globals": {
+    "metrics": true
+  },
+  "rules": {
+    "no-console": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/camelcase": ["warn", { "properties": "never" }],
+    "require-atomic-updates": "off"
+  },
+  "overrides": [
+    {
+      "files": ["node/build/react/**/*"],
+      "globals": {
+        "window": true,
+        "__RUNTIME__": true
+      }
+    }
+  ]
+}

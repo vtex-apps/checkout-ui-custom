@@ -5,15 +5,24 @@ This repo allows you to generate an style to your checkout based in basic config
 A combination of conditions and variables will adapt your checkout according your preferences. 
 
 
-## Running npm
+## Usage
 
-`npm run watch` 
+The repo contains all necessary files to run as the app "checkout.ui.settings". To do so, extract the files in a folder (prefer name "checkout.ui.settings"). Change the `vendor` and `vtex link`.
 
+In the folder "/checkout-ui-custom" you can run the following commands:
+```
+`npm run watch`
 `npm run build` 
+```
 
-#### ! important
-Is really important to change the file `webpack.config.js` to build the files on the root folder.
+In case you are not using the IO, the custom files are just generated in this root folder and be used as well. 
 
+Enjoy ✌️ 
+
+
+#### Updating (temp!)
+
+While it isn't running with command line, you can simply replace the `_components` folder for CSS and `_v.custom.checkout.ui` file for JS, and your store presets will be maintained.
 
 
 ## Expected HTML in the header
@@ -26,13 +35,13 @@ Is really important to change the file `webpack.config.js` to build the files on
 		<a href="/" title="add more products" class="buy-more-link link">Continue shopping</a>
 		<a href="/checkout/#/cart" title="back to cart" class="back-cart-link link">Back to Cart</a>
 	  </div>
-	  <a href="/" title="Go to homepage" class="logo">{shop.name}</a>
+	  <a href="/" title="Go to homepage" class="logo">{logo.image}</a>
   </div>
 </header>
 
 ```
 
-If you wanna insert others info, make sure of include the class `.v-custom-mhide` to hide it at mobile resolutions, example:
+If you wanna insert others contents, make sure of include the class `.v-custom-mhide` to hide it on mobile resolutions, example:
 
 ```
 <header class="main-header"> ... </header>
@@ -70,12 +79,17 @@ $font-size: 12px;
 $border-radius:4px;
 $btn-border-radius:30px;
 
+$maxWrapper: 980px; // Set 100% if you wanna the checkout fluid
+
 $inputHeight:40px;
 $showCartQuantityPrice:false; //if shows the total price per product ot just the single price**
-$countingSteps:true; // if shows the number of each step "1,2,3..."
-$showCheckoutSteps:true;
+$countingSteps:true; // The checkout part counts each step (1,2,3,4). Set to `false` if you wanna show just titles.
+$showCheckoutSteps:true; // Header part where shows the "flow" of checkout steps
 
-$buttonShadow:false;
+$showCouponField:false; //If the coupon field in the summary is just a link or already opened with a field
+$showNoteField:false; // note field on the payment part for orders observations
+
+$buttonShadow:false; // A tiny shadow coming from the default UI that gives the buttons a depth
 
 $bordersContainers:none; // 2px solid $muted-5
 ```

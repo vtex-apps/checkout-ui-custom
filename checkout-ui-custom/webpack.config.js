@@ -9,7 +9,7 @@ module.exports = {
   ],
   output: {
     filename: 'checkout6-custom.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, './'),
   },
   module: {
     rules: [
