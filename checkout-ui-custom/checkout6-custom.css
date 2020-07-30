@@ -686,7 +686,7 @@ h1#cart-title {
       .table.cart-items thead tr th.product {
         width: calc(100% - 235px) !important; }
       .table.cart-items thead tr th.product-price, .table.cart-items thead tr th.quantity-price {
-        width: 70px !important; }
+        width: 90px !important; }
       .table.cart-items thead tr th.item-remove, .table.cart-items thead tr th.quantity-price, .table.cart-items thead tr th.shipping-date {
         display: none; }
       .table.cart-items thead tr th.quantity {
@@ -757,9 +757,12 @@ h1#cart-title {
           .table.cart-items tbody tr td.product-name {
             width: calc(100% - 355px) !important; } }
         .table.cart-items tbody tr td.product-price, .table.cart-items tbody tr td.quantity-price {
-          width: 70px !important;
+          width: 90px !important;
           white-space: nowrap;
-          margin: 0 10px; }
+          margin: 0 10px;
+          line-height: 16px; }
+          .table.cart-items tbody tr td.product-price br, .table.cart-items tbody tr td.quantity-price br {
+            display: none; }
           @media (max-width: 490px) {
             .table.cart-items tbody tr td.product-price, .table.cart-items tbody tr td.quantity-price {
               width: initial !important;
@@ -771,10 +774,13 @@ h1#cart-title {
           .table.cart-items tbody tr td.product-price .old-product-price-label, .table.cart-items tbody tr td.quantity-price .new-product-price-label,
           .table.cart-items tbody tr td.quantity-price .old-product-price-label {
             display: none; }
+          .table.cart-items tbody tr td.product-price .list-price, .table.cart-items tbody tr td.quantity-price .list-price {
+            font-size: 10px; }
           .table.cart-items tbody tr td.product-price .total-selling-price,
           .table.cart-items tbody tr td.product-price .best-price, .table.cart-items tbody tr td.quantity-price .total-selling-price,
           .table.cart-items tbody tr td.quantity-price .best-price {
-            font-weight: bold; }
+            font-weight: bold;
+            position: relative; }
             @media (max-width: 490px) {
               .table.cart-items tbody tr td.product-price .total-selling-price,
               .table.cart-items tbody tr td.product-price .best-price, .table.cart-items tbody tr td.quantity-price .total-selling-price,
@@ -789,20 +795,58 @@ h1#cart-title {
                   display: block; } }
           .table.cart-items tbody tr td.product-price .new-product-real-price-per-unit, .table.cart-items tbody tr td.quantity-price .new-product-real-price-per-unit {
             display: inline-block; }
-          .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price {
+          .table.cart-items tbody tr td.product-price .v-custom-quantity-price__best, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__best {
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 25px; }
+          .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list {
             display: block;
-            font-size: 10px;
-            line-height: 13px; }
-            .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--list, .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--selling, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--list, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--selling {
+            font-size: 10px; }
+            .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--list, .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--selling, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--list, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--selling {
               display: block; }
-            .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--list, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--list {
+            .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--list, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--list {
               text-decoration: line-through;
               color: #999999; }
-            .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price--selling, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price--selling {
-              color: #676767; }
+            .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--selling, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--selling {
+              color: #676767;
+              font-size: 10px;
+              line-height: 6px; }
+              .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--selling .discount, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--selling .discount {
+                display: none; }
+              .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--selling:after, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--selling:after {
+                content: ")"; }
+              .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--selling:before, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--selling:before {
+                content: "("; }
+              .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list--selling .best-price, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list--selling .best-price {
+                font-weight: normal;
+                display: inline-block; }
             @media (max-width: 490px) {
-              .table.cart-items tbody tr td.product-price .v-custom-quantity-list-price > *:last-child, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-list-price > *:last-child {
+              .table.cart-items tbody tr td.product-price .v-custom-quantity-price__list > *:last-child, .table.cart-items tbody tr td.quantity-price .v-custom-quantity-price__list > *:last-child {
                 margin-bottom: -7px; } }
+          .table.cart-items tbody tr td.product-price.v-custom-quantity-price-active > .list-price, .table.cart-items tbody tr td.quantity-price.v-custom-quantity-price-active > .list-price {
+            display: none !important; }
+          .table.cart-items tbody tr td.product-price > span.list-price,
+          .table.cart-items tbody tr td.product-price > span.best-price, .table.cart-items tbody tr td.quantity-price > span.list-price,
+          .table.cart-items tbody tr td.quantity-price > span.best-price {
+            display: block; }
+          .table.cart-items tbody tr td.product-price a.manualprice-link-remove, .table.cart-items tbody tr td.quantity-price a.manualprice-link-remove {
+            position: absolute;
+            top: -3px;
+            left: -17px; }
+          .table.cart-items tbody tr td.product-price a.manualprice-link-remove i.icon-remove:before, .table.cart-items tbody tr td.quantity-price a.manualprice-link-remove i.icon-remove:before {
+            width: 10px !important;
+            height: 10px !important; }
+          .table.cart-items tbody tr td.product-price span.product-manualprice, .table.cart-items tbody tr td.quantity-price span.product-manualprice {
+            padding: 5px 5px 5px 31px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            background: #FFF;
+            border-radius: 5px;
+            box-shadow: 0 0 19px #777;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-29%, -34%); }
         @media (max-width: 490px) {
           .table.cart-items tbody tr td.product-price span.list-price:not(.hide) + br + span.best-price {
             margin-top: 0; } }
@@ -832,6 +876,8 @@ h1#cart-title {
         .table.cart-items tbody tr td .field-help {
           background: #1a73e8;
           border-color: #1a73e8; }
+        .table.cart-items tbody tr td i.icon-question-sign {
+          color: #1a73e8; }
         .table.cart-items tbody tr td .add-item-attachment-container,
         .table.cart-items tbody tr td .clone-item,
         .table.cart-items tbody tr td p.clone-item-container {

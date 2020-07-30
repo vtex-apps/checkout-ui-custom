@@ -5,7 +5,9 @@ class checkoutCustom {
   constructor({
     type = "vertical", 
     accordionPayments = true, 
-    deliveryDateFormat = false
+    deliveryDateFormat = false,
+    quantityPriceCart = false,
+    
   } = {}) {
     this.type = type; // ["vertical"]
     this.orderForm = ""; 
@@ -14,6 +16,7 @@ class checkoutCustom {
 
     this.accordionPayments = accordionPayments;
     this.deliveryDateFormat = deliveryDateFormat;
+    this.quantityPriceCart = quantityPriceCart;
 
   } 
 
@@ -252,18 +255,33 @@ class checkoutCustom {
 
   enchancementTotalPrice(orderForm) {
     let _this = this;
+
+    if(!_this.quantityPriceCart) return;
     try {
       $.each(orderForm.items, function(i) {
         let _item = this;
+        let _trElem = $(`.table.cart-items tbody tr.product-item:eq(${i})`);
 
+       
+        if(_item.quantity==1 || _trElem.find("td.product-price").find(".best-price").length==0) return;
+
+        let totalValue = _trElem.find(".total-selling-price").text()
         let _eachprice = `
-          <span class="v-custom-quantity-list-price">
-            ${_item.listPrice > _item.sellingPrice ? `<span class="v-custom-quantity-list-price--list">${orderForm.storePreferencesData.currencySymbol} ${(_item.listPrice/100).toFixed(2)}</span>` : ""}
-            ${_item.quantity > 1 ? `<span class="v-custom-quantity-list-price--selling">(${orderForm.storePreferencesData.currencySymbol} ${(_item.sellingPrice/100).toFixed(2)} ${_this.lang.eachLabel})</span>` : ""}
-          </span>
+          <div class="v-custom-quantity-price vqc-ldelem">
+            <span class="v-custom-quantity-price__list">
+              ${_item.listPrice > _item.sellingPrice ? `<span class="v-custom-quantity-price__list--list">${orderForm.storePreferencesData.currencySymbol} ${(_item.listPrice/100).toFixed(2)}</span>` : ""}
+            </span>
+          </div>
         `;
-        $(`.table.cart-items tbody tr.product-item:eq(${i})`).find("td.quantity-price").find(".v-custom-quantity-list-price").remove();
-        $(`.table.cart-items tbody tr.product-item:eq(${i})`).find("td.quantity-price").prepend(_eachprice);
+        _trElem.find("td.product-price").find(".vqc-ldelem").remove();
+        //_trElem.find("td.quantity-price").prepend(_eachprice);
+        _trElem.find("td.product-price")
+        .addClass("v-custom-quantity-price-active")
+        .prepend(_eachprice)
+        .append(`<div class="v-custom-quantity-price vqc-ldelem"><span class="v-custom-quantity-price__best">${totalValue}</span></div>`);
+        //console.log(_trElem.find("td.product-price").find(".best-price"), _trElem.find(".js-v-custom-quantity-price").length)
+        _trElem.find("td.product-price").find("> .best-price").wrap(`<div class="v-custom-quantity-price__list--selling"></div>`);
+        _trElem.find("td.product-price").find(".v-custom-quantity-price__list--selling").append(`<span class="vqc-ldelem"> ${_this.lang.eachLabel}</span>`);
 
       })
     } catch(e) {
