@@ -55,6 +55,7 @@ body {
 
 // containers
 
+.main-header > .container,
 .container-cart.container,
 .container.container-main.container-order-form {
   max-width:$maxWrapper;
