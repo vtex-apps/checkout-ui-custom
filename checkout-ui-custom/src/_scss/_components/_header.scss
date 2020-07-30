@@ -27,11 +27,11 @@ body {
     .header-link {
       position:absolute;
       left:10px; 
-      top: calc(100% + 13px);
+      top: calc(100% + 18px);
       display: none;
       a {
         height:20px;
-        font-size:10px;
+        font-size:11px;
         line-height:10px;
         padding-left:0px;
         color:$muted-2;
