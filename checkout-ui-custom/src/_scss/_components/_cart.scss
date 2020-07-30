@@ -69,7 +69,7 @@ thead {
         display: none;
       }
 
-      &.quantity { min-width: 82px; }
+      &.quantity { min-width: 62px; }
 
       &.product-image {order:1;}
       &.product-name {order:2;}
@@ -210,7 +210,6 @@ tbody {
           &__best {
             font-weight:bold;
             font-size:$font-size;
-            line-height: 25px;
           }
           &__list {
             display: block;
@@ -226,11 +225,15 @@ tbody {
               color: $muted-3;
             }
 
+            &,
             &--selling {
               color: $muted-2;
               font-size: 10px;
-              line-height: 6px;
-
+              line-height: 11px;
+            }
+            
+            &--selling {
+              margin-bottom: 3px;
               .discount {display:none;}
 
               &:after {content:")";}
@@ -261,6 +264,11 @@ tbody {
         }
 
         //manual pricing
+        span.product-manualprice,
+        a.manualprice-link-remove {
+          z-index: 2;
+        }
+        
 
         a.manualprice-link-remove {
           position: absolute;
@@ -309,6 +317,7 @@ tbody {
       &.product-image {order:1;}
       &.product-name {order:2;width: 60%;}
       &.shipping-date {order:3;}
+      
       &.quantity {order:4;}
       &.product-price,
       &.quantity-price {order:5;}

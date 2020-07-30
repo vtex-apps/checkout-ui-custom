@@ -445,6 +445,8 @@ class checkoutCustom {
       $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
         _this.update(orderForm);
       })
+
+      console.log(`🎉 Yay! You are using the checkout.ui customization !!`);
     }
     catch(e) {
       _this.general();
