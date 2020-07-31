@@ -17,16 +17,16 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
     danger: '#ff4c4c',
     dangerFaded: '#ffe6e6',
     warning: '#ffb100',
-    warningFaded: '#ffe6e6',
-    muted1: '#ffb100',
-    muted2: '#ffb100',
-    muted3: '#ffb100',
-    muted4: '#ffb100',
-    muted5: '#ffb100',
+    warningFaded: '#fff6e0',
+    muted1: '#323232',
+    muted2: '#676767',
+    muted3: '#999999',
+    muted4: '#cbcbcb',
+    muted5: '#eeeeee',
     history: [],
   })
 
-  const handleChange = (color: string, picker: string) => {
+  const handleChange = (color: any, picker: string) => {
     const { history } = state
 
     history.push(color)
@@ -34,7 +34,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
     setState({
       ...state,
       history,
-      [picker]: color,
+      [picker]: color.hex,
     })
   }
 
@@ -55,7 +55,9 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
     >
       <Tabs fullWidth>
         <Tab
-          label="Layout"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.tab.layout',
+          })}
           active={state.currentTab === 1}
           onClick={() => setState({ ...state, currentTab: 1 })}
         >
@@ -64,18 +66,19 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
           </div>
         </Tab>
         <Tab
-          label="Colors"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.tab.colors',
+          })}
           active={state.currentTab === 2}
           onClick={() => setState({ ...state, currentTab: 2 })}
         >
-          <div className="w-80">
-            <h3>Colors</h3>
+          <div className="w-80 pa4">
             <div className="w-50 mb-4">
               <ColorPicker
                 color={{ hex: state.base }}
                 colorHistory={state.history}
                 label="Base"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'base')
                 }}
               />
@@ -86,7 +89,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.baseInverted }}
                 colorHistory={state.history}
                 label="Base inverted"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'baseInverted')
                 }}
               />
@@ -97,7 +100,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.actionPrimary }}
                 colorHistory={state.history}
                 label="Action Primary"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'actionPrimary')
                 }}
               />
@@ -108,7 +111,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.actionSecondary }}
                 colorHistory={state.history}
                 label="Action Secondary"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'actionSecondary')
                 }}
               />
@@ -119,7 +122,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.emphasis }}
                 colorHistory={state.history}
                 label="Emphasis"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'emphasis')
                 }}
               />
@@ -130,7 +133,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.disabled }}
                 colorHistory={state.history}
                 label="Disabled"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'disabled')
                 }}
               />
@@ -141,7 +144,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.success }}
                 colorHistory={state.history}
                 label="Success"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'success')
                 }}
               />
@@ -152,7 +155,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.successFaded }}
                 colorHistory={state.history}
                 label="Success faded"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'successFaded')
                 }}
               />
@@ -163,7 +166,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.danger }}
                 colorHistory={state.history}
                 label="Danger"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'danger')
                 }}
               />
@@ -174,7 +177,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.dangerFaded }}
                 colorHistory={state.history}
                 label="Danger faded"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'dangerFaded')
                 }}
               />
@@ -185,7 +188,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.warning }}
                 colorHistory={state.history}
                 label="Warning"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'warning')
                 }}
               />
@@ -196,7 +199,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.warningFaded }}
                 colorHistory={state.history}
                 label="Warning faded"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'warningFaded')
                 }}
               />
@@ -207,7 +210,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.muted1 }}
                 colorHistory={state.history}
                 label="Muted 1"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'muted1')
                 }}
               />
@@ -218,7 +221,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.muted2 }}
                 colorHistory={state.history}
                 label="Muted 2"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'muted2')
                 }}
               />
@@ -229,7 +232,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.muted3 }}
                 colorHistory={state.history}
                 label="Muted 3"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'muted3')
                 }}
               />
@@ -240,7 +243,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.muted4 }}
                 colorHistory={state.history}
                 label="Muted 4"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'muted4')
                 }}
               />
@@ -251,7 +254,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
                 color={{ hex: state.muted5 }}
                 colorHistory={state.history}
                 label="Muted 5"
-                onChange={(color: string) => {
+                onChange={(color: any) => {
                   handleChange(color, 'muted5')
                 }}
               />
@@ -259,7 +262,9 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
           </div>
         </Tab>
         <Tab
-          label="Change history"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.tab.history',
+          })}
           active={state.currentTab === 3}
           onClick={() => setState({ ...state, currentTab: 3 })}
         >
