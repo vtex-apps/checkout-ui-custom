@@ -53,9 +53,7 @@ body {
 
 // containers
 
-.main-header > .container,
-.container-cart.container,
-.container.container-main.container-order-form {
+.container {
   max-width:$maxWrapper;
   width:calc(100% - 40px);
   @media(max-width: 490px) {

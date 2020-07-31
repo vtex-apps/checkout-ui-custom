@@ -15,7 +15,8 @@ module.exports._locale = {
     deliveryDateText:"Arrives by",
     PickupDateText:"Ready by",
     eachLabel:"each",
-    tomorrowLabel:"Tomorrow"
+    tomorrowLabel:"Tomorrow",
+    identifiedUserMessage:`Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.`
   },
   USA: {
     editLabel: "Edit",
@@ -26,7 +27,8 @@ module.exports._locale = {
     PickupDateText:"Ready by",
     eachLabel:"each",
     tomorrowLabel:"Tomorrow",
-    cartNoteLabel:"Gift Message or Comments"
+    cartNoteLabel:"Gift Message or Comments",
+    identifiedUserMessage:`Thanks for coming back!<br/>To expedite your transaction, we have securely populated your information for you.`
   },
 
 }

@@ -85,19 +85,19 @@ class checkoutCustom {
             <span class="checkout-steps_bar_inner-active"></span>
           </span>
           <div class="checkout-steps_items">
-            <span class="checkout-steps_item checkout-steps_item_cart">
+            <span class="checkout-steps_item checkout-steps_item_cart js-checkout-steps-item" data-url="/checkout/#/cart">
               <span class="text">Cart</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_identification">
+            <span class="checkout-steps_item checkout-steps_item_identification js-checkout-steps-item" data-url="/checkout/#/profile">
               <span class="text">Identification</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_shipping">
+            <span class="checkout-steps_item checkout-steps_item_shipping js-checkout-steps-item" data-url="/checkout/#/shipping">
               <span class="text">Shipping</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_payment">
+            <span class="checkout-steps_item checkout-steps_item_payment js-checkout-steps-item" data-url="/checkout/#/payment">
               <span class="text">Payment</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_confirmation">
+            <span class="checkout-steps_item checkout-steps_item_confirmation js-checkout-steps-item">
               <span class="text">Confirmation</span>
             </span>
           </div>
@@ -332,6 +332,8 @@ class checkoutCustom {
 
     if(_lang.cartNoteLabel) $("p.note-label label").text(_lang.cartNoteLabel)
 
+    if(_lang.identifiedUserMessage) $(".identified-user-modal-body p.identified-user-message").html(_lang.identifiedUserMessage)
+
     //paypal
     if(_lang.paypalPhone) $(".payment-paypal-help-number").text(_lang.paypalPhone);
 
@@ -398,6 +400,10 @@ class checkoutCustom {
       setTimeout(() => {
         _this.changeShippingTimeInfoInit();
       }, 100);
+    });
+
+    $("body").on("click", ".js-checkout-steps-item .text", function(e) {
+      window.location = $(this).closest(".checkout-steps_item").attr("data-url");
     });
 
   }
