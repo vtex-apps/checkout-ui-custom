@@ -890,6 +890,15 @@
 	.payment-confirmation-wrap {
 		border:none;
 		padding:0;
+
+		@if $showNoteField {
+			display:block !important;		
+			&[style*="display: none"] {}
+			&[style*="display: none"] p.payment-submit-wrap {
+					display:none;
+			}
+		}
+		
 		.payment-submit-wrap {
 			margin:10px 0 0 0;
 
