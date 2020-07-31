@@ -1,0 +1,9 @@
+{
+  "admin.app.checkout-ui": {
+    "around": ["layout"],
+    "path": "/admin/app/checkout-ui/"
+  },
+  "layout": {
+    "component": "Admin"
+  }
+}
