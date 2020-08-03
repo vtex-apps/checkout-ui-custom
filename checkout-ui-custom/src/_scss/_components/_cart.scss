@@ -644,6 +644,8 @@ border: $bordersContainers;
       .coupon-data {display: none !important;}
     }
 
+    p {margin:0;}
+
     p.coupon-label {display:none;}
     input[type=text],
     button[type=submit] {
@@ -656,7 +658,7 @@ border: $bordersContainers;
     .coupon-data {
       margin:0;
       width:100%;
-      a {@extend .btn, .btn-link;width:100%;}
+      a {@extend .btn, .btn-link;width:100%;text-decoration: underline;}
     }
     
   }
@@ -702,6 +704,7 @@ border: $bordersContainers;
     position: absolute;
     top: 25%;
     right:10px;
+    z-index: -1;
   }
 
 

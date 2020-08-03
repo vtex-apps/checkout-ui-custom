@@ -705,6 +705,27 @@
 			padding: 0;
 
 			.accordion-inner {margin-top: 0px;}
+
+			.summary > .summary-coupon-wrap, 
+			.summary-coupon-wrap > .summary-coupon {
+				display: block !important;
+			}
+
+			.summary-coupon p {
+				margin:0;
+			}
+
+			.summary > .summary-coupon-wrap {
+				border-top:1px solid $muted-5;
+				padding:8px 0;
+			}
+
+			input[type=text],
+			button[type=submit],
+			p.coupon-fields span.info > span {
+				line-height: 30px !important;
+				height:30px !important;
+			}
 		}
 
 		.item {
@@ -1089,6 +1110,9 @@
 		&.UseAnotherCard {
 			background-color: $muted-5;
 			padding:4px;
+			font-size: 11px;
+    	text-decoration: underline;
+
 			#use-another-card {
 				color:$muted-2;
 			}
