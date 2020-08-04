@@ -3,7 +3,7 @@
 
 #vtexIdContainer input, .table.cart-items tr.item-attachments-content input,
 .table.cart-items tr.item-attachments-content select, .table.cart-items tbody tr td .product-service select, .table.cart-items td.quantity input, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input[type=text],
-.summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span, .cart-more-options .srp-container select,
+.summary-template-holder .summary-coupon fieldset.coupon-fieldset button[type=submit], .cart-more-options .srp-container select,
 .cart-more-options .srp-container input[type=text]:not(.pac-target-input), .cart-more-options .srp-container .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input, .orderform-template-holder #client-profile-data form.client-pre-email input[type=text]:not(.pac-target-input),
 .orderform-template-holder #client-profile-data form.client-pre-email input[type=tel]:not(.pac-target-input),
 .orderform-template-holder #client-profile-data form.client-pre-email input[type=email]:not(.pac-target-input),
@@ -37,7 +37,7 @@
   -webkit-box-sizing: border-box; }
   #vtexIdContainer input.error, .table.cart-items tr.item-attachments-content input.error,
   .table.cart-items tr.item-attachments-content select.error, .table.cart-items tbody tr td .product-service select.error, .table.cart-items td.quantity input.error, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input.error[type=text],
-  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button.error[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span.error, .cart-more-options .srp-container select.error,
+  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button.error[type=submit], .cart-more-options .srp-container select.error,
   .cart-more-options .srp-container input.error[type=text]:not(.pac-target-input), .cart-more-options .srp-container .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input.error, .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=text]:not(.pac-target-input),
   .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=tel]:not(.pac-target-input),
   .orderform-template-holder #client-profile-data form.client-pre-email input.error[type=email]:not(.pac-target-input),
@@ -60,7 +60,7 @@
     border-color: #ff4c4c; }
   #vtexIdContainer input:focus, .table.cart-items tr.item-attachments-content input:focus,
   .table.cart-items tr.item-attachments-content select:focus, .table.cart-items tbody tr td .product-service select:focus, .table.cart-items td.quantity input:focus, .summary-template-holder .summary-coupon fieldset.coupon-fieldset input:focus[type=text],
-  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .summary-template-holder .summary-coupon p.coupon-fields span.info > span:focus, .cart-more-options .srp-container select:focus,
+  .summary-template-holder .summary-coupon fieldset.coupon-fieldset button:focus[type=submit], .cart-more-options .srp-container select:focus,
   .cart-more-options .srp-container input:focus[type=text]:not(.pac-target-input), .cart-more-options .srp-container .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input:focus, .orderform-template-holder #client-profile-data form.client-pre-email input:focus[type=text]:not(.pac-target-input),
   .orderform-template-holder #client-profile-data form.client-pre-email input:focus[type=tel]:not(.pac-target-input),
   .orderform-template-holder #client-profile-data form.client-pre-email input:focus[type=email]:not(.pac-target-input),
@@ -194,6 +194,9 @@ input:-webkit-autofill:active {
 .modal.modal-payment-template,
 .modal.modal-masked-info-template {
   background: #2fba2d; }
+
+.payment-confirmation-message {
+  width: 100%; }
 
 #vtexIdContainer a {
   color: #1a73e8; }
@@ -759,6 +762,8 @@ h1#cart-title {
         @media (min-width: 769px) {
           .table.cart-items tbody tr td.product-name {
             width: calc(100% - 355px) !important; } }
+        .table.cart-items tbody tr td.product-name .seller {
+          display: block; }
         .table.cart-items tbody tr td.product-price, .table.cart-items tbody tr td.quantity-price {
           width: 90px !important;
           white-space: nowrap;
@@ -1084,32 +1089,53 @@ h1#cart-title {
     margin: 0 auto !important;
     min-width: initial; }
     .summary-template-holder .summary-coupon fieldset.coupon-fieldset p {
-      margin: 0; }
-    .summary-template-holder .summary-coupon fieldset.coupon-fieldset p.coupon-label {
-      display: none; }
+      margin: 0;
+      color: #676767; }
+      .summary-template-holder .summary-coupon fieldset.coupon-fieldset p label {
+        cursor: initial;
+        font-size: 13px; }
     .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data {
       margin: 0;
       width: 100%; }
       .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a {
         width: 100%;
         text-decoration: underline; }
+    .summary-template-holder .summary-coupon fieldset.coupon-fieldset > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .summary-template-holder .summary-coupon fieldset.coupon-fieldset > div[style*="flex"] p.coupon-label {
+        display: none; }
+      .summary-template-holder .summary-coupon fieldset.coupon-fieldset > div[style*="flex"] p.coupon-fields {
+        width: 100%; }
     .summary-template-holder .summary-coupon p.coupon-fields span {
       display: flex;
       width: 100%;
       position: relative; }
       .summary-template-holder .summary-coupon p.coupon-fields span.info {
-        align-items: center; }
+        align-items: center;
+        padding: 0;
+        color: #323232; }
         .summary-template-holder .summary-coupon p.coupon-fields span.info > span {
-          background: #eee;
           text-align: left;
-          margin-right: 10px; }
+          margin-right: 10px;
+          color: #1a73e8; }
       .summary-template-holder .summary-coupon p.coupon-fields span input {
         width: 100%;
         margin-right: 10px; }
     .summary-template-holder .summary-coupon p.coupon-fields .delete {
-      width: 50px; }
+      width: auto; }
       .summary-template-holder .summary-coupon p.coupon-fields .delete #cart-coupon-remove {
-        color: #ff4c4c; }
+        color: #ff4c4c;
+        font-size: 0;
+        display: flex;
+        align-items: center; }
+        .summary-template-holder .summary-coupon p.coupon-fields .delete #cart-coupon-remove:before {
+          content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwMSA1MTIuMDAxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDAxIDUxMi4wMDE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNMjg0LjI4NiwyNTYuMDAyTDUwNi4xNDMsMzQuMTQ0YzcuODExLTcuODExLDcuODExLTIwLjQ3NSwwLTI4LjI4NWMtNy44MTEtNy44MS0yMC40NzUtNy44MTEtMjguMjg1LDBMMjU2LDIyNy43MTcNCgkJCUwzNC4xNDMsNS44NTljLTcuODExLTcuODExLTIwLjQ3NS03LjgxMS0yOC4yODUsMGMtNy44MSw3LjgxMS03LjgxMSwyMC40NzUsMCwyOC4yODVsMjIxLjg1NywyMjEuODU3TDUuODU4LDQ3Ny44NTkNCgkJCWMtNy44MTEsNy44MTEtNy44MTEsMjAuNDc1LDAsMjguMjg1YzMuOTA1LDMuOTA1LDkuMDI0LDUuODU3LDE0LjE0Myw1Ljg1N2M1LjExOSwwLDEwLjIzNy0xLjk1MiwxNC4xNDMtNS44NTdMMjU2LDI4NC4yODcNCgkJCWwyMjEuODU3LDIyMS44NTdjMy45MDUsMy45MDUsOS4wMjQsNS44NTcsMTQuMTQzLDUuODU3czEwLjIzNy0xLjk1MiwxNC4xNDMtNS44NTdjNy44MTEtNy44MTEsNy44MTEtMjAuNDc1LDAtMjguMjg1DQoJCQlMMjg0LjI4NiwyNTYuMDAyeiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K");
+          width: 11px;
+          height: 12px;
+          display: block;
+          line-height: 10px; }
     .summary-template-holder .summary-coupon i.icon-spin.loading-coupon {
       border: 1px solid #666;
       border-top: none;
@@ -1149,7 +1175,7 @@ h1#cart-title {
   .summary-template-holder .summary-totalizers tbody.shipping-calculate {
     display: none; }
   .summary-template-holder .accordion-inner {
-    margin-top: 15px; }
+    margin-top: 10px; }
   .summary-template-holder tr:not(.Shipping) {
     display: flex !important;
     justify-content: space-between;
@@ -1920,7 +1946,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       .orderform-template .cart-template.mini-cart .summary-template-holder .summary-coupon p {
         margin: 0; }
       .orderform-template .cart-template.mini-cart .summary-template-holder .summary > .summary-coupon-wrap {
-        border-top: 1px solid #eee;
+        border-top: 1px solid #cbcbcb;
         padding: 8px 0; }
       .orderform-template .cart-template.mini-cart .summary-template-holder input[type=text],
       .orderform-template .cart-template.mini-cart .summary-template-holder button[type=submit],
@@ -2195,6 +2221,35 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     clear: both;
     width: auto;
     margin-right: 10px; }
+
+.summary-coupon fieldset.coupon-fieldset .vcustom-showCustomMsgCoupon {
+  border: 1px dashed #ffb100;
+  padding: 1px;
+  font-size: 11px;
+  background: #fff6e0;
+  border-radius: 4px;
+  margin-top: 4px !important; }
+
+.v-custom-addLabels-active-flag {
+  background: #FFF;
+  color: #323232;
+  padding: 1px 4px;
+  border-radius: 4px;
+  display: inline-block;
+  align-items: center;
+  font-size: 11px;
+  border: 1px solid #cbcbcb; }
+  .v-custom-addLabels-active-flag:before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url("//io.vtex.com.br/front-libs/bootstrap/2.3.2/img/glyphicons-halflings.png");
+    background-repeat: no-repeat;
+    background-position: 0 -48px;
+    margin-right: 4px;
+    opacity: 0.9;
+    vertical-align: middle; }
 
 .v-custom-assemblies {
   margin: 10px 0 3px 0;

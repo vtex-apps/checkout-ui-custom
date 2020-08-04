@@ -163,6 +163,10 @@ tbody {
         @media(min-width: 769px) {
           width: calc(100% - 355px) !important;
         }
+
+        .seller {
+          display:block;
+        }
       }
 
       &.product-price,
@@ -644,9 +648,12 @@ border: $bordersContainers;
       .coupon-data {display: none !important;}
     }
 
-    p {margin:0;}
+    p {
+      margin:0;
+      color:$muted-2;
+      label {cursor:initial;font-size:13px;}
+    }
 
-    p.coupon-label {display:none;}
     input[type=text],
     button[type=submit] {
       @extend %input-style;
@@ -658,7 +665,27 @@ border: $bordersContainers;
     .coupon-data {
       margin:0;
       width:100%;
-      a {@extend .btn, .btn-link;width:100%;text-decoration: underline;}
+      a {
+        @extend .btn, .btn-link;
+        width:100%;
+        text-decoration: underline;
+      }
+    }
+
+    > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &[style*="flex"] {
+        p.coupon-label {
+          display: none;
+        }
+        p.coupon-fields {
+          width: 100%;
+        }
+      
+      }
     }
     
   }
@@ -670,11 +697,12 @@ border: $bordersContainers;
       position:relative;
       &.info {
         align-items: center;
+        padding:0;
+        color:$muted-1;
         >span {
-          @extend %input-style;
-          background:$muted-5;
           text-align: left;
           margin-right: 10px;
+          color:$action-primary;
         }
       }
       input {
@@ -683,9 +711,21 @@ border: $bordersContainers;
       }
     }
     .delete {
-      width: 50px;
+      width: auto;
       #cart-coupon-remove {
         color:$danger;
+        font-size: 0;
+        display: flex;
+        align-items: center;
+
+        &:before {
+          content: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwMSA1MTIuMDAxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDAxIDUxMi4wMDE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNMjg0LjI4NiwyNTYuMDAyTDUwNi4xNDMsMzQuMTQ0YzcuODExLTcuODExLDcuODExLTIwLjQ3NSwwLTI4LjI4NWMtNy44MTEtNy44MS0yMC40NzUtNy44MTEtMjguMjg1LDBMMjU2LDIyNy43MTcNCgkJCUwzNC4xNDMsNS44NTljLTcuODExLTcuODExLTIwLjQ3NS03LjgxMS0yOC4yODUsMGMtNy44MSw3LjgxMS03LjgxMSwyMC40NzUsMCwyOC4yODVsMjIxLjg1NywyMjEuODU3TDUuODU4LDQ3Ny44NTkNCgkJCWMtNy44MTEsNy44MTEtNy44MTEsMjAuNDc1LDAsMjguMjg1YzMuOTA1LDMuOTA1LDkuMDI0LDUuODU3LDE0LjE0Myw1Ljg1N2M1LjExOSwwLDEwLjIzNy0xLjk1MiwxNC4xNDMtNS44NTdMMjU2LDI4NC4yODcNCgkJCWwyMjEuODU3LDIyMS44NTdjMy45MDUsMy45MDUsOS4wMjQsNS44NTcsMTQuMTQzLDUuODU3czEwLjIzNy0xLjk1MiwxNC4xNDMtNS44NTdjNy44MTEtNy44MTEsNy44MTEtMjAuNDc1LDAtMjguMjg1DQoJCQlMMjg0LjI4NiwyNTYuMDAyeiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K");
+          width: 11px;
+          height: 12px;
+          display: block;
+          line-height: 10px;
+        }
+      
       }
     }
   }
@@ -748,7 +788,7 @@ span.link-choose-more-products-wrapper {display: none;}
 }
 
 .accordion-inner {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 tr:not(.Shipping) {

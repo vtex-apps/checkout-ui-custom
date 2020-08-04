@@ -1,6 +1,7 @@
 module.exports._locale = {
   
   BRA: {
+    couponInactive:"Nenhum desconto aplicado. Confira as regras.",
     editLabel: "Editar",
     deliveryDateText:"Entrega até",
     PickupDateText:"Pronto até",
@@ -8,6 +9,7 @@ module.exports._locale = {
     tomorrowLabel:"Amanhã"
   },
   CAN: {
+    couponInactive:"No discounts available. Check the conditions.",
     editLabel: "Edit",
     paypalImg: "",
     paypalPhone: "1 (888) 221-1161",
@@ -19,6 +21,7 @@ module.exports._locale = {
     identifiedUserMessage:`Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.`
   },
   USA: {
+    couponInactive:"No discounts available. Check the conditions.",
     editLabel: "Edit",
     paypalImg: "",
     paypalPhone: "1 (888) 221-1161",

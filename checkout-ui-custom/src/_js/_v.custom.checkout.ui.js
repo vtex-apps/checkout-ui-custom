@@ -1,4 +1,5 @@
 const { _locale } = require("./_locale-infos.js");
+const { debounce } = require("./_utils.js");
 
 
 class checkoutCustom {
@@ -156,8 +157,61 @@ class checkoutCustom {
     } catch (e) { }
   }
 
+  showCustomMsgCoupon(orderForm) {
+
+    let _this = this,
+        _coupon = orderForm.marketingData.coupon;
+    $("fieldset.coupon-fieldset").removeClass("js-vcustom-showCustomMsgCoupon");
+    $(".vcustom-showCustomMsgCoupon").remove()
+    if(!_coupon) return false;
+
+    let couponItemsCount = orderForm.items.reduce(function (accumulator, item) {
+      return accumulator + (item.priceTags.length ? item.priceTags.filter( _pricetag => { return _pricetag.ratesAndBenefitsIdentifier ? _pricetag.ratesAndBenefitsIdentifier.matchedParameters["couponCode@Marketing"] == _coupon : 0 } ).length : 0);
+    }, 0);
+
+    if(couponItemsCount>0) return false;
+        
+    // $(window).trigger('addMessage', {
+    //   content:  {
+    //     title: '',
+    //     detail: `${_this.lang.couponInactive} "${_coupon}"`
+    //   },
+    //   type: 'info'
+    // });	
+    
+    $("fieldset.coupon-fieldset").addClass("js-vcustom-showCustomMsgCoupon").append(`<p class="vcustom-showCustomMsgCoupon">${_this.lang.couponInactive}</div>`);
+    
+  }
+  addLabels(orderForm) {
+    let _this = this,
+        _coupon = orderForm.marketingData.coupon,
+        _couponItems = [];
+    if(!_coupon) return false;
+
+    try {
+      $(`.table.cart-items tbody tr.product-item, .mini-cart .cart-items li`).removeClass("v-custom-addLabels-active js-vcustom-addLabels");
+      $(`.v-custom-addLabels-active-flag`).remove();
+      $.each(orderForm.items, function (i) {
+
+        if(this.priceTags.length>0) {
+          if(this.priceTags.filter( _pricetag => { return _pricetag.ratesAndBenefitsIdentifier ? _pricetag.ratesAndBenefitsIdentifier.matchedParameters["couponCode@Marketing"] == _coupon : false } ).length>0) {
+            _couponItems.push(this);
+            $(`.table.cart-items tbody tr.product-item:eq(${i})`)
+            .addClass("v-custom-addLabels-active js-vcustom-addLabels")
+            .find(".product-name")
+            .append(`<span class="v-custom-addLabels-active-flag">${_coupon}</span>`);
+          }
+        }
+      });
+      
+      
+    } catch (e) { 
+      console.error(e)
+    }
+  }
+
   buildMiniCart(orderForm) {
-    /* overode refresh from vtex */
+    /* overide refresh from vtex */
     let _this = this;
     if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
     if ($(`.mini-cart .cart-items`).text().trim()!="") {
@@ -290,13 +344,24 @@ class checkoutCustom {
   }
 
   update(orderForm) {
+    let _this = this;
+
     this.checkEmpty(orderForm.items);
     this.addAssemblies(orderForm);
     this.enchancementTotalPrice(orderForm);
     this.bundleItems(orderForm);
-    
     this.buildMiniCart(orderForm);
     this.indexedInItems(orderForm);
+
+    
+    // debounce to prevent append from default script
+    let updateDebounce = (debounce(function() {
+      _this.addLabels(orderForm);
+      _this.showCustomMsgCoupon(orderForm);
+    }, 250));
+    updateDebounce();
+    
+    
     
   }
 
@@ -423,6 +488,7 @@ class checkoutCustom {
       _this.update(_this.orderForm);
     }
     _this.addEditButtoninLogin();
+
   }
   
   start() {
@@ -452,7 +518,7 @@ class checkoutCustom {
         _this.update(orderForm);
       })
 
-      console.log(`🎉 Yay! You are using the checkout.ui customization !!`);
+      console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
     }
     catch(e) {
       _this.general();
