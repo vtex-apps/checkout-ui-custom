@@ -161,15 +161,16 @@ class checkoutCustom {
 
     let _this = this,
         _coupon = orderForm.marketingData.coupon;
-    $("fieldset.coupon-fieldset").removeClass("js-vcustom-showCustomMsgCoupon");
-    $(".vcustom-showCustomMsgCoupon").remove()
-    if(!_coupon) return false;
-
+    
     let couponItemsCount = orderForm.items.reduce(function (accumulator, item) {
       return accumulator + (item.priceTags.length ? item.priceTags.filter( _pricetag => { return _pricetag.ratesAndBenefitsIdentifier ? _pricetag.ratesAndBenefitsIdentifier.matchedParameters["couponCode@Marketing"] == _coupon : 0 } ).length : 0);
     }, 0);
 
-    if(couponItemsCount>0) return false;
+    if(!_coupon || couponItemsCount>0)  {
+      $("fieldset.coupon-fieldset").removeClass("js-vcustom-showCustomMsgCoupon");
+      $(".vcustom-showCustomMsgCoupon").remove();
+      return false;
+    }
         
     // $(window).trigger('addMessage', {
     //   content:  {
@@ -179,7 +180,7 @@ class checkoutCustom {
     //   type: 'info'
     // });	
     
-    $("fieldset.coupon-fieldset").addClass("js-vcustom-showCustomMsgCoupon").append(`<p class="vcustom-showCustomMsgCoupon">${_this.lang.couponInactive}</div>`);
+    if($(".vcustom-showCustomMsgCoupon").length==0) $("fieldset.coupon-fieldset").addClass("js-vcustom-showCustomMsgCoupon").append(`<p class="vcustom-showCustomMsgCoupon">${_this.lang.couponInactive}</div>`);
     
   }
   addLabels(orderForm) {

@@ -2051,7 +2051,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         color: #1a73e8; }
     .orderform-template .cart-template.mini-cart .cart {
       margin-bottom: 0;
-      max-height: calc(100vh - 285px);
+      max-height: calc(100vh - 355px);
       overflow: auto; }
       .orderform-template .cart-template.mini-cart .cart::-webkit-scrollbar {
         width: 6px; }
@@ -2228,7 +2228,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   font-size: 11px;
   background: #fff6e0;
   border-radius: 4px;
-  margin-top: 4px !important; }
+  margin-top: 4px !important;
+  clear: both; }
 
 .v-custom-addLabels-active-flag {
   background: #FFF;
@@ -2278,5 +2279,5 @@ body.v-custom-paymentBuilder-accordion .steps-view {
 body.v-custom-changeShippingTimeInfo .orderform-template .cart-template.mini-cart .item span.shipping-date {
   display: none; }
 
-body.debug-on > *:not(.container-main):not(.main-header):not(.main-footer):not(#vtexIdContainer):not(.vtex-front-messages-placeholder) {
+body.debug-on > *:not(.container-main):not(.main-header):not(.main-footer):not(#vtexIdContainer):not(.vtex-front-messages-placeholder):not(.pac-container) {
   display: none; }
