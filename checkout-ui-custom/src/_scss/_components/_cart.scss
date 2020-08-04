@@ -642,9 +642,6 @@ border: $bordersContainers;
   fieldset.coupon-fieldset {
 
     @if $showCouponField {
-      > div {
-          display:block !important;
-      }
       .coupon-data {display: none !important;}
     }
 
@@ -677,6 +674,14 @@ border: $bordersContainers;
       justify-content: space-between;
       align-items: center;
 
+      @if $showCouponField {
+        &[style*="none"] {
+          p.coupon-label {display: none;}
+          display:block !important;
+        }
+      }
+  
+      
       &[style*="flex"] {
         p.coupon-label {
           display: none;
