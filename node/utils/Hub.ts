@@ -14,9 +14,11 @@ export default class RequestHub extends ExternalClient {
     return this.context.account
   }
 
-  public get(url: string, headers: any, data?: any) {
-    console.log('GET =>', url, headers)
+  public currentWorkspace() {
+    return this.context.workspace
+  }
 
+  public get(url: string, headers: any, data?: any) {
     return this.http.getRaw(url, {
       headers,
       data,

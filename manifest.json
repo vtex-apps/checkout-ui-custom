@@ -15,7 +15,7 @@
   },
   "policies": [
     {
-      "name": "read-workspace-apps"
+      "name": "read-write-any-workspace"
     },
     {
       "name": "update-app-settings"
@@ -29,7 +29,8 @@
     }
   ],
   "dependencies": {
-    "vtex.styleguide": "9.x"
+    "vtex.styleguide": "9.x",
+    "vtex.render-runtime": "8.x"
   },
   "scripts": {},
   "credentialType": "absolute",

@@ -1,0 +1,6 @@
+query workSpaceList{
+  getWorkspaces {
+    name
+    production
+  }
+}

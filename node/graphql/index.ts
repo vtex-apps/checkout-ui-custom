@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import GraphQLError from '../utils/GraphQLError'
 
 const defaultHeaders = (authToken: string) => ({

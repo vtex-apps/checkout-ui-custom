@@ -3,5 +3,11 @@
   "admin/checkout-ui.navigation.title": "Checkout layout",
   "admin/checkout-ui.tab.layout": "Layout",
   "admin/checkout-ui.tab.colors": "Colors",
+  "admin/checkout-ui.tab.javascript": "Javascript",
+  "admin/checkout-ui.tab.javascript.label": "Custom Javascript",
+  "admin/checkout-ui.tab.javascript.helper": "Changes here may impact your sales",
+  "admin/checkout-ui.tab.css": "CSS",
+  "admin/checkout-ui.tab.css.label": "Custom CSS",
+  "admin/checkout-ui.tab.css.helper": "Changes here may impact your sales",
   "admin/checkout-ui.tab.history": "History"
 }

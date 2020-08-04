@@ -3,5 +3,11 @@
   "admin/checkout-ui.title": "admin/checkout-ui.title",
   "admin/checkout-ui.tab.layout": "admin/checkout-ui.tab.layout",
   "admin/checkout-ui.tab.colors": "admin/checkout-ui.tab.colors",
+  "admin/checkout-ui.tab.javascript": "admin/checkout-ui.tab.javascript",
+  "admin/checkout-ui.tab.javascript.label": "admin/checkout-ui.tab.javascript.label",
+  "admin/checkout-ui.tab.javascript.helper": "admin/checkout-ui.tab.javascript.helper",
+  "admin/checkout-ui.tab.css": "admin/checkout-ui.tab.css",
+  "admin/checkout-ui.tab.css.label": "admin/checkout-ui.tab.css.label",
+  "admin/checkout-ui.tab.css.helper": "admin/checkout-ui.tab.css.helper",
   "admin/checkout-ui.tab.history": "admin/checkout-ui.tab.history"
 }
