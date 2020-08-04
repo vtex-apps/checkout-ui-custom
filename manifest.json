@@ -9,8 +9,25 @@
     "checkout-ui-custom": "0.x",
     "admin": "0.x",
     "react": "3.x",
+    "node": "6.x",
+    "graphql": "1.x",
     "messages": "1.x"
   },
+  "policies": [
+    {
+      "name": "read-workspace-apps"
+    },
+    {
+      "name": "update-app-settings"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "platform.io.vtex.com",
+        "path": "/{{account}}/*"
+      }
+    }
+  ],
   "dependencies": {
     "vtex.styleguide": "9.x"
   },

@@ -1,0 +1,4 @@
+type WorkspaceResponse {
+  name: String
+  production: Boolean
+}

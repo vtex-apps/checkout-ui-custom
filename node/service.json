@@ -1,0 +1,12 @@
+{
+  "stack": "nodejs",
+  "memory": 1024,
+  "ttl": 300,
+  "timeout": 60,
+  "routes": {
+    "getWorkspaces": {
+      "path": "/_v/0/checkout-custom/workspaces",
+      "public": false
+    }
+  }
+}
