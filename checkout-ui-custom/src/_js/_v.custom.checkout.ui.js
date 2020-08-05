@@ -414,19 +414,29 @@ class checkoutCustom {
   paymentBuilder() {
     
 
-    if(this.accordionPayments) {
-      $("body").addClass("v-custom-paymentBuilder-accordion");
-      
-      if ($(".payment-group-list-btn").find(".v-custom-payment-item-wrap").length > 0) return false
+    if(!this.accordionPayments || $(".payment-group-list-btn").find(".v-custom-payment-item-wrap").length > 0) return false
 
-      $(".payment-group-item").each(function(i) {
-        $(this).wrap(`<div class='v-custom-payment-item-wrap ${ $(this).hasClass("active") ? "active" : "" }'></div>`);
-      });
+    $("body").addClass("v-custom-paymentBuilder-accordion");
 
-      $(".payment-group-item").each(function(i) {
-        $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
-      });
+    $(".payment-group-item").each(function(i) {
+      $(this).wrap(`<div class='v-custom-payment-item-wrap ${ $(this).hasClass("active") ? "active" : "" }'></div>`);
+    });
+
+    $(".payment-group-item").each(function(i) {
+      $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
+    });
+    
+    if(this.orderForm) {
+      if(this.orderForm.paymentData) {
+        let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
+        $.each(this.orderForm.paymentData.paymentSystems.filter( item => item.groupName=="creditCardPaymentGroup"), function (i) {
+          paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
+        });
+        paymentGroupCardsHtml += `</span>`;
+        $("#payment-group-creditCardPaymentGroup").append(paymentGroupCardsHtml);
+      }
     }
+
   }
 
   bind() {
