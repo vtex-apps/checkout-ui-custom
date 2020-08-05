@@ -3,7 +3,7 @@ import { ExternalClient, InstanceOptions, IOContext } from '@vtex/api'
 
 export default class RequestHub extends ExternalClient {
   constructor(context: IOContext, options?: InstanceOptions) {
-    super(`https://platform.io.vtex.com/${context.account}`, context, options)
+    super(``, context, options)
   }
 
   public authToken() {

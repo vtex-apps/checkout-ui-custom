@@ -2,7 +2,7 @@
   "admin.app.checkout-ui": {
     "around": ["layout"],
     "component": "Admin",
-    "path": "/admin/app/checkout-ui/"
+    "path": "/admin/app/custom-checkout-ui"
   },
   "layout": {
     "component": "PageLayout"

@@ -21,10 +21,30 @@
       "name": "update-app-settings"
     },
     {
+      "name": "POWER_USER_DS"
+    },
+    {
+      "name": "ADMIN_DS"
+    },
+    {
       "name": "outbound-access",
       "attrs": {
         "host": "platform.io.vtex.com",
         "path": "/{{account}}/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "api.vtex.com",
+        "path": "/api/dataentities/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/dataentities/checkout-custom/*"
       }
     }
   ],

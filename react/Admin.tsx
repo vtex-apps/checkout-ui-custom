@@ -7,6 +7,7 @@ import Colors from './components/Colors'
 import LayoutSettings from './components/Layout'
 import Javascript from './components/Javascript'
 import Css from './components/Css'
+import History from './components/History'
 
 const Admin: FC<WrappedComponentProps> = ({ intl }) => {
   const [state, setState] = useState<any>({
@@ -58,7 +59,7 @@ const Admin: FC<WrappedComponentProps> = ({ intl }) => {
         active={state.currentTab === 5}
         onClick={() => setState({ ...state, currentTab: 5 })}
       >
-        <div className="pa4">History change to rollback changes</div>
+        <History />
       </Tab>
     </Tabs>
   )
