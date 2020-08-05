@@ -426,16 +426,16 @@ class checkoutCustom {
       $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
     });
     
-    if(this.orderForm) {
-      if(this.orderForm.paymentData) {
-        let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
-        $.each(this.orderForm.paymentData.paymentSystems.filter( item => item.groupName=="creditCardPaymentGroup"), function (i) {
-          paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
-        });
-        paymentGroupCardsHtml += `</span>`;
-        $("#payment-group-creditCardPaymentGroup").append(paymentGroupCardsHtml);
-      }
-    }
+    // if(this.orderForm) {
+    //   if(this.orderForm.paymentData) {
+    //     let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
+    //     $.each(this.orderForm.paymentData.paymentSystems.filter( item => item.groupName=="creditCardPaymentGroup"), function (i) {
+    //       paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
+    //     });
+    //     paymentGroupCardsHtml += `</span>`;
+    //     $("#payment-group-creditCardPaymentGroup").append(paymentGroupCardsHtml);
+    //   }
+    // }
 
   }
 
