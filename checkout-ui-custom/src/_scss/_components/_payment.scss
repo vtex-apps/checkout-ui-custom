@@ -432,6 +432,9 @@
 					display:flex;
 					.card-flag {
 						width:40px !important;
+						&:last-child {
+							margin: 0;
+						}
 					}
 
 					@media(max-width:450px) {
@@ -479,7 +482,7 @@
 						position: absolute;
 						top: 50%;
 						transform: translateY(-50%);
-						right: 11px;
+						right: 12px;
 						left: initial;
 						border: none;
 					}
@@ -662,6 +665,7 @@
 
 			.vtex-omnishipping-1-x-leanShippingGroupList {
 				border-color:$muted-5;
+				margin: 0;
 			}
 
 			.vtex-omnishipping-1-x-option:hover, 

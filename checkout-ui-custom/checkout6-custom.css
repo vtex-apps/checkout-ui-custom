@@ -1782,6 +1782,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       display: flex; }
       .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-cards .card-flag {
         width: 40px !important; }
+        .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-cards .card-flag:last-child {
+          margin: 0; }
       @media (max-width: 450px) {
         .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-cards {
           display: none; } }
@@ -1810,7 +1812,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        right: 11px;
+        right: 12px;
         left: initial;
         border: none; }
   .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active > div {
@@ -1932,7 +1934,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     border-color: #eee;
     color: #1a73e8; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-leanShippingGroupList {
-    border-color: #eee; }
+    border-color: #eee;
+    margin: 0; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-option:hover,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-leanShippingOptionActive,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-leanShippingOption {
