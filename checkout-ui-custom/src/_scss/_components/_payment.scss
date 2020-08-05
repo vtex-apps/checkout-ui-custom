@@ -644,8 +644,6 @@
 	min-height: 400px !important;
 	align-items:flex-start;
 
-	&.inactive {display: none !important;}
-
 	@media(max-width: 490px) {
   	width:100%;
   	padding-top:0px;

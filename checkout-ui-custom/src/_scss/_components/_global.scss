@@ -11,6 +11,8 @@ body {
   position: relative;
   font-size: $font-size;
 
+  overflow-x:hidden;
+
   a {
     color:$action-primary;
     &:hover {
@@ -61,14 +63,37 @@ body {
   }
 }
 
-.checkout-container {overflow:initial !important;}
 
 
-.row-fluid .full-cart.inactive > * {
-  height:100px;
-  overflow: hidden;
-  
+.checkout-container {
+  overflow: initial !important;
+  .orderform-template,
+  .cart-template {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition:position ease 0.8s, opacity ease 0.8s, margin ease 0.8s;
+    &.inactive {
+      max-height: 50vh;
+      overflow:hidden;
+      top:0;
+      position: absolute;
+    }
+  }
+  .full-cart {
+    &.inactive {
+      margin-left: -140%;;
+    }
+  }
+  .orderform-template {
+    &.inactive {
+      left: 140%;
+      margin: 0;
+    }
+  }
 }
+
 
 //titles
 
