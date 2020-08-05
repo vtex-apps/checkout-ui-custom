@@ -1767,7 +1767,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     top: 0; }
     .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-text {
       width: 100%;
-      text-align: left; }
+      text-align: left;
+      line-height: 25px !important; }
       .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-text:before {
         content: "";
         width: 20px;
@@ -1779,6 +1780,11 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         margin: -3px 10px 0 0; }
     .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-cards {
       display: flex; }
+      .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-cards .card-flag {
+        width: 40px !important; }
+      @media (max-width: 450px) {
+        .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-cards {
+          display: none; } }
     .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item.active {
       background: #f1f7ff;
       border-bottom: 1px solid #1a73e8; }
@@ -1792,6 +1798,21 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       border-color: #1a73e8; }
     .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item:before, .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item:after {
       display: none; }
+    .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item#payment-group-payPalPaymentGroup {
+      position: relative; }
+      .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item#payment-group-payPalPaymentGroup:after {
+        content: "";
+        width: 50px;
+        height: 20px;
+        display: block;
+        background: url("https://io.vtex.com.br/checkout-ui/v6.18.19/img/payment-paypal-landscape.png") center no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 11px;
+        left: initial;
+        border: none; }
   .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active > div {
     padding: 20px;
     overflow: hidden; }
@@ -1861,6 +1882,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         order: 4; }
       .orderform-template-holder .step.shipping-data .box-step > *.vtex-omnishipping-1-x-submitPaymentButton {
         order: 100; }
+      .orderform-template-holder .step.shipping-data .box-step > *:last-child {
+        margin: 0; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-address {
     margin: 0; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-addressSummaryActive .address-summary {
@@ -1894,6 +1917,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     border-color: #ffb100;
     display: flex;
     align-items: center; }
+  .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-linkEdit {
+    text-decoration: underline; }
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsWrapper,
   .orderform-template-holder .step.shipping-data .vtex-omnishipping-1-x-deliveryChannelsToggle {
     border-radius: 4px; }
@@ -2212,6 +2237,10 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     clear: both; }
   #app-container .CardForm .PaymentValue {
     display: none; }
+  #app-container .CardForm input#creditCardpayment-card-0Number[value=""] {
+    background: #FFF;
+    position: relative;
+    z-index: 1; }
   #app-container .CardForm .SavedCardsList {
     width: calc(100% - 1px); }
   #app-container .CardForm .SavedCard .link-delete {
@@ -2226,15 +2255,20 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   #app-container .FormFieldLabel {
     line-height: 30px; }
   #app-container .PaymentCardFlags {
-    padding-top: 3px; }
+    position: absolute;
+    top: calc(30px + (40px - 25px)/2);
+    right: 16px;
+    padding: 0; }
     #app-container .PaymentCardFlags .card-flag-label input {
       display: none; }
     #app-container .PaymentCardFlags .card-flag-label {
       width: auto; }
-    #app-container .PaymentCardFlags span.card-flag {
-      opacity: 0.7; }
-    #app-container .PaymentCardFlags input:checked + span.card-flag {
-      opacity: 1; }
+    #app-container .PaymentCardFlags .card-flag {
+      opacity: 0.7;
+      display: none; }
+    #app-container .PaymentCardFlags .card-flag.card-selected {
+      opacity: 1;
+      display: block; }
   #app-container input#creditCardpayment-card-0Code {
     width: 100px !important; }
   #app-container .PaymentCardValue .add-on {

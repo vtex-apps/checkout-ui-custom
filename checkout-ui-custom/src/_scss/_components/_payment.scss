@@ -415,6 +415,7 @@
 				&-text {
 					width: 100%;
 					text-align: left;
+					line-height:25px !important;
 					&:before {
 						content:"";
 						width:20px;
@@ -429,6 +430,13 @@
 
 				&-cards {
 					display:flex;
+					.card-flag {
+						width:40px !important;
+					}
+
+					@media(max-width:450px) {
+						display:none;
+					}
 				}
 
 				&.active {
@@ -458,6 +466,24 @@
 
 				&:before,
 				&:after {display: none;}
+
+				&#payment-group-payPalPaymentGroup {
+					position: relative;
+					&:after {
+						content:"";
+						width: 50px;
+						height:20px;
+						display:block;
+						background: url('https://io.vtex.com.br/checkout-ui/v6.18.19/img/payment-paypal-landscape.png') center no-repeat;
+						background-size: contain;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						right: 11px;
+						left: initial;
+						border: none;
+					}
+				}
 			}
 
 			&.active {
@@ -559,6 +585,10 @@
 					&.vtex-omnishipping-1-x-addressForm { order: 2; }
 					&.vtex-omnishipping-1-x-deliveryGroup { order: 4; }
 					&.vtex-omnishipping-1-x-submitPaymentButton { order: 100; }
+
+					&:last-child {
+						margin:0;
+					}
 				}
 			}
 
@@ -615,7 +645,7 @@
   			align-items:center;
     	}
 
-
+			.vtex-omnishipping-1-x-linkEdit { text-decoration: underline; }
     	.vtex-omnishipping-1-x-deliveryChannelsWrapper,
     	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $border-radius;}
     	.vtex-omnishipping-1-x-deliveryChannelsWrapper {
@@ -1085,6 +1115,12 @@
 		> div {position: relative;clear: both;}
 		.PaymentValue {display:none;}
 
+		input#creditCardpayment-card-0Number[value=""] {
+			background:#FFF;
+			position:relative;
+			z-index:1;
+		}
+
 		.SavedCardsList {
 			width: calc(100% - 1px);
 		}
@@ -1104,13 +1140,16 @@
 	}
 
 	.PaymentCardFlags {	
-		padding-top:3px;
+		position: absolute;
+    top: calc(30px + (#{$inputHeight} - 25px)/2);
+    right: 16px;
+    padding: 0;
 	  .card-flag-label input {
 	    display:none;
 		}
 		.card-flag-label {width:auto;}
-		span.card-flag {opacity: 0.7;}
-		input:checked + span.card-flag {opacity: 1;}
+		.card-flag {opacity: 0.7;display: none;}
+		.card-flag.card-selected {opacity: 1;display:block;}
 	}
 
 	input#creditCardpayment-card-0Code {
