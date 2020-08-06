@@ -1,26 +1,14 @@
 import React, { FC, useState } from 'react'
 import { injectIntl, WrappedComponentProps } from 'react-intl'
+import PropTypes from 'prop-types'
 import { ColorPicker } from 'vtex.styleguide'
 
-const Colors: FC<WrappedComponentProps> = () => {
+const Colors: FC<WrappedComponentProps & any> = ({
+  initialState,
+  onChange,
+}) => {
   const [state, setState] = useState<any>({
-    base: '#f4f2f2',
-    baseInverted: '#21364f',
-    actionPrimary: '#1a73e8',
-    actionSecondary: '#f1f7ff',
-    emphasis: '#000000',
-    disabled: '#999999',
-    success: '#2fba2d',
-    successFaded: '#beffa5',
-    danger: '#ff4c4c',
-    dangerFaded: '#ffe6e6',
-    warning: '#ffb100',
-    warningFaded: '#fff6e0',
-    muted1: '#323232',
-    muted2: '#676767',
-    muted3: '#999999',
-    muted4: '#cbcbcb',
-    muted5: '#eeeeee',
+    ...initialState,
     history: [],
   })
 
@@ -32,6 +20,11 @@ const Colors: FC<WrappedComponentProps> = () => {
     setState({
       ...state,
       history,
+      [picker]: color.hex,
+    })
+
+    onChange({
+      ...initialState,
       [picker]: color.hex,
     })
   }
@@ -226,6 +219,11 @@ const Colors: FC<WrappedComponentProps> = () => {
       </div>
     </div>
   )
+}
+
+Colors.propTypes = {
+  onChange: PropTypes.func,
+  initialState: PropTypes.any,
 }
 
 export default injectIntl(Colors)

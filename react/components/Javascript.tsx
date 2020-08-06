@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
 import { defineMessages, injectIntl, WrappedComponentProps } from 'react-intl'
+import PropTypes from 'prop-types'
 import { Textarea } from 'vtex.styleguide'
 
 const messages = defineMessages({
@@ -13,10 +14,21 @@ const messages = defineMessages({
   },
 })
 
-const Javascript: FC<WrappedComponentProps> = ({ intl }) => {
+const Javascript: FC<WrappedComponentProps & any> = ({
+  initialState,
+  onChange,
+  intl,
+}) => {
   const [state, setState] = useState<any>({
-    value: null,
+    value: initialState,
   })
+
+  const handleChange = (e: any) => {
+    const { value } = e.target
+
+    onChange(value)
+    setState({ value })
+  }
 
   return (
     <div className="w-80 pa4">
@@ -24,12 +36,17 @@ const Javascript: FC<WrappedComponentProps> = ({ intl }) => {
         size="large"
         rows={30}
         value={state.value}
-        onChange={(e: any) => setState({ value: e.target.value.trim() })}
+        onChange={(e: any) => handleChange(e)}
         label={intl.formatMessage(messages.label)}
         helpText={intl.formatMessage(messages.helper)}
       />
     </div>
   )
+}
+
+Javascript.propTypes = {
+  onChange: PropTypes.func,
+  initialState: PropTypes.any,
 }
 
 export default injectIntl(Javascript)

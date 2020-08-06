@@ -1,19 +1,22 @@
 import React, { FC, useState } from 'react'
 import { injectIntl, WrappedComponentProps } from 'react-intl'
+import PropTypes from 'prop-types'
 import { RadioGroup, Toggle } from 'vtex.styleguide'
 
-const LayoutSettings: FC<WrappedComponentProps> = () => {
+const LayoutSettings: FC<WrappedComponentProps & any> = ({
+  initialState,
+  onChange,
+}) => {
   const [state, setState] = useState<any>({
-    type: 'vertical',
-    accordionPayments: true,
-    deliveryDateFormat: true,
-    showCartQuantityPrice: false,
-    showCheckoutSteps: true,
-    countingSteps: true,
-    showCouponField: false,
-    showNoteField: false,
-    buttonShadow: false,
+    ...initialState,
   })
+
+  const handleChange = (value: any, key: string) => {
+    const newState = { ...state, [key]: value }
+
+    setState(newState)
+    onChange(newState)
+  }
 
   return (
     <div className="w-80 pa4">
@@ -28,9 +31,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
             { value: 'horizontal', label: 'Horizontal (multiple pages)' },
           ]}
           value={state.type}
-          onChange={(e: any) =>
-            setState({ ...state, type: e.currentTarget.value })
-          }
+          onChange={(e: any) => handleChange(e.currentTarget.value, 'type')}
         />
       </div>
       <br />
@@ -41,10 +42,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           size="large"
           checked={state.accordionPayments}
           onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              accordionPayments: !prevState.accordionPayments,
-            }))
+            handleChange(!state.accordionPayments, 'accordionPayments')
           }
         />
       </div>
@@ -56,10 +54,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           size="large"
           checked={state.deliveryDateFormat}
           onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              deliveryDateFormat: !prevState.deliveryDateFormat,
-            }))
+            handleChange(!state.deliveryDateFormat, 'deliveryDateFormat')
           }
         />
       </div>
@@ -71,10 +66,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           size="large"
           checked={state.showCartQuantityPrice}
           onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              showCartQuantityPrice: !prevState.showCartQuantityPrice,
-            }))
+            handleChange(!state.showCartQuantityPrice, 'showCartQuantityPrice')
           }
         />
       </div>
@@ -86,10 +78,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           size="large"
           checked={state.showCheckoutSteps}
           onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              showCheckoutSteps: !prevState.showCheckoutSteps,
-            }))
+            handleChange(!state.showCheckoutSteps, 'showCheckoutSteps')
           }
         />
       </div>
@@ -101,12 +90,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           size="large"
           disabled={!state.showCheckoutSteps}
           checked={state.countingSteps}
-          onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              countingSteps: !prevState.countingSteps,
-            }))
-          }
+          onChange={() => handleChange(!state.countingSteps, 'countingSteps')}
         />
       </div>
       <br />
@@ -117,10 +101,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           size="large"
           checked={state.showCouponField}
           onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              showCouponField: !prevState.showCouponField,
-            }))
+            handleChange(!state.showCouponField, 'showCouponField')
           }
         />
       </div>
@@ -131,12 +112,7 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           label="Show 'notes' field"
           size="large"
           checked={state.showNoteField}
-          onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              showNoteField: !prevState.showNoteField,
-            }))
-          }
+          onChange={() => handleChange(!state.showNoteField, 'showNoteField')}
         />
       </div>
       <br />
@@ -146,16 +122,16 @@ const LayoutSettings: FC<WrappedComponentProps> = () => {
           label="Button shadow"
           size="large"
           checked={state.buttonShadow}
-          onChange={() =>
-            setState((prevState: any) => ({
-              ...prevState,
-              buttonShadow: !prevState.buttonShadow,
-            }))
-          }
+          onChange={() => handleChange(!state.buttonShadow, 'buttonShadow')}
         />
       </div>
     </div>
   )
+}
+
+LayoutSettings.propTypes = {
+  onChange: PropTypes.func,
+  initialState: PropTypes.any,
 }
 
 export default injectIntl(LayoutSettings)
