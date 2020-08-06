@@ -1,0 +1,15 @@
+mutation saveConfiguration(
+  $workspace: String
+  $layout: CustomFields
+  $javascript: String
+  $css: String
+  $colors: CustomFields
+) {
+  saveChanges(
+    workspace: $workspace
+    layout: $layout
+    javascript: $javascript
+    css: $css
+    colors: $colors
+  )
+}

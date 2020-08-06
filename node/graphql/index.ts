@@ -7,6 +7,8 @@ const SCHEMA_VERSION = 'v0.1.1'
 const DATA_ENTITY = 'checkoutcustom'
 
 const routes = {
+  getProfile: () =>
+    `http://${process.env.VTEX_ACCOUNT}.vtexcommercestable.com.br/no-cache/profileSystem/getProfile`,
   baseUrl: () =>
     `http://${process.env.VTEX_ACCOUNT}.vtexcommercestable.com.br/api`,
   configEntity: () => `${routes.baseUrl()}/dataentities/${DATA_ENTITY}`,
@@ -71,12 +73,12 @@ const schema = {
 export const resolvers = {
   Routes: {},
   Mutation: {
-    publishChanges: async (_: any, params: any, ctx: any) => {
+    saveChanges: async (_: any, params: any, ctx: any) => {
       const {
         clients: { masterdata },
       } = ctx
 
-      const creationDate = new Date().getTime()
+      const creationDate = String(new Date().getTime())
       const appVersion = process.env.VTEX_APP_VERSION
       const data = await masterdata
         .createDocument({
@@ -90,6 +92,8 @@ export const resolvers = {
         })
         .then((res: any) => {
           console.log('RES CREATE =>', res)
+
+          return res
         })
         .catch((e: any) => {
           console.log('RES CREATE FAILED =>', e)
@@ -145,16 +149,25 @@ export const resolvers = {
         clients: { masterdata },
       } = ctx
 
-      const { data } = await masterdata.searchDocuments({
-        dataEntity: DATA_ENTITY,
-        schema: SCHEMA_VERSION,
-        fields: ['id', 'email', 'workspace', 'creationDate', 'appVersion'],
-        sort: 'creationDate DESC',
-        pagination: {
-          page: 1,
-          pageSize: 30,
-        },
-      })
+      const { data } = await masterdata
+        .searchDocuments({
+          dataEntity: DATA_ENTITY,
+          schema: SCHEMA_VERSION,
+          fields: ['id', 'email', 'workspace', 'creationDate', 'appVersion'],
+          sort: 'creationDate DESC',
+          pagination: {
+            page: 1,
+            pageSize: 30,
+          },
+        })
+        .then((res: any) => {
+          console.log('History res =>', res)
+
+          return res
+        })
+        .catch((e: any) => {
+          console.log('History catch =>', e)
+        })
 
       return data
     },

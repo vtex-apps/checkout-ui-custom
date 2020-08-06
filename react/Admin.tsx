@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { FC, useState } from 'react'
 import { injectIntl, WrappedComponentProps, defineMessages } from 'react-intl'
-import { compose, graphql } from 'react-apollo'
+import { compose, graphql, useMutation } from 'react-apollo'
 import {
   Tabs,
   Tab,
@@ -11,15 +11,20 @@ import {
   ActionMenu,
   Button,
   Spinner,
+  Modal,
+  IconCheck,
+  IconDeny,
 } from 'vtex.styleguide'
 import { useRuntime } from 'vtex.render-runtime'
+import sessionQuery from 'vtex.store-resources/QuerySession'
 
 import Colors from './components/Colors'
 import LayoutSettings from './components/Layout'
 import Javascript from './components/Javascript'
 import Css from './components/Css'
 import History from './components/History'
-import query from './queries/getWorkspaces.gql'
+import WORKSPACES from './queries/getWorkspaces.gql'
+import saveMutation from './mutations/saveConfiguration.gql'
 
 const messages = defineMessages({
   title: {
@@ -63,16 +68,40 @@ const defaultConfiguration = {
   javascript: '',
 }
 
+let email = window.localStorage.getItem('adminEmail') ?? null
+
 const Admin: FC<any & WrappedComponentProps> = ({
   intl,
+  session,
   data: { loading: workspaceLoading, getWorkspaces },
 }: any) => {
   const { workspace } = useRuntime()
+
   const [state, setState] = useState<any>({
     ...defaultConfiguration,
     currentTab: 1,
-    workspace: window.localStorage.getItem('workspace') || workspace,
+    isModalOpen: false,
+    showCloseIcon: false,
+    workspace: window.localStorage.getItem('workspace') ?? workspace,
   })
+
+  const [
+    saveConfig,
+    {
+      data: dataSave,
+      loading: loadingSave,
+      called: calledSave,
+      error: errorSave,
+    },
+  ] = useMutation(saveMutation)
+
+  if (session?.getSession?.adminUserEmail) {
+    window.localStorage.setItem('adminEmail', session.getSession.adminUserEmail)
+    email = session.getSession.adminUserEmail
+  }
+
+  console.log('email', email)
+  console.log('dataSave', dataSave)
 
   const setWorkspace = (e: any) => {
     window.localStorage.setItem('workspace', e.label)
@@ -121,6 +150,31 @@ const Admin: FC<any & WrappedComponentProps> = ({
     })
   }
 
+  const handlePublish = () => {
+    setState({
+      ...state,
+      isModalOpen: true,
+    })
+
+    saveConfig({
+      variables: {
+        email,
+        workspace: state.workspace,
+        layout: state.layout,
+        colors: state.colors,
+        css: state.css,
+        javascript: state.javascript,
+      },
+    })
+  }
+
+  const handleModalClose = () => {
+    setState({
+      ...state,
+      isModalOpen: false,
+    })
+  }
+
   console.log('State => ', state)
 
   return (
@@ -145,7 +199,14 @@ const Admin: FC<any & WrappedComponentProps> = ({
                 />
               </div>
               <div className="ma3">
-                <Button variation="primary">Publish</Button>
+                <Button
+                  variation="primary"
+                  onClick={() => {
+                    handlePublish()
+                  }}
+                >
+                  Publish
+                </Button>
               </div>
             </div>
           </span>
@@ -206,14 +267,56 @@ const Admin: FC<any & WrappedComponentProps> = ({
             <History />
           </Tab>
         </Tabs>
+        <Modal
+          centered
+          isOpen={state.isModalOpen}
+          showCloseIcon={state.showCloseIcon}
+          onClose={() => {
+            handleModalClose()
+          }}
+        >
+          <div className="dark-gray">
+            <h3>FAKE</h3>
+            <ul className="list pl0">
+              <li>
+                <span className="w-100 mw1 dib">
+                  {loadingSave === true && <Spinner size={12} />}
+                  {loadingSave === false &&
+                    calledSave === true &&
+                    !errorSave && <IconCheck size={12} />}
+                  {errorSave && <IconDeny size={12} />}
+                  {calledSave === false && !errorSave && <span>-</span>}
+                </span>{' '}
+                Saving changes
+              </li>
+              <li>
+                <span className="w-100 mw1 dib"> </span>
+                Building files
+              </li>
+              <li>
+                <span className="w-100 mw1 dib"> </span>
+                Publishing to <strong>{state.workspace}</strong>
+              </li>
+            </ul>
+          </div>
+        </Modal>
       </PageBlock>
     </Layout>
   )
 }
 
+const options = {
+  name: 'session',
+  skip: email !== null,
+  options: () => ({
+    ssr: false,
+  }),
+}
+
 export default injectIntl(
   compose(
-    graphql(query, {
+    graphql(sessionQuery, options),
+    graphql(WORKSPACES, {
       options: {
         ssr: false,
       },

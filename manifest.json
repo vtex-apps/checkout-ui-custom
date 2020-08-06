@@ -50,7 +50,8 @@
   ],
   "dependencies": {
     "vtex.styleguide": "9.x",
-    "vtex.render-runtime": "8.x"
+    "vtex.render-runtime": "8.x",
+    "vtex.store-resources": "0.x"
   },
   "scripts": {},
   "credentialType": "absolute",

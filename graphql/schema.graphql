@@ -6,7 +6,7 @@ type Query {
 }
 
 type Mutation {
-  publishChanges(
+  saveChanges(
     email: String
     workspace: String
     layout: CustomFields
