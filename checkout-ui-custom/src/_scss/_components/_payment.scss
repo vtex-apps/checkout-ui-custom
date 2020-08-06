@@ -214,6 +214,19 @@
 		  margin:0;
 		}
 
+		#iframe-placeholder-creditCardPaymentGroup {
+			> .payment-group-item-cards {
+				display: block;
+				overflow: hidden;
+				position: absolute;
+				right: 0;
+				top:0;
+				.card-flag {
+					opacity:1;
+				}
+			}
+		}
+
 		p.link.link-gift-card {
 			margin-bottom: 10px;
 			padding:0;
@@ -405,7 +418,8 @@
 			}
 
 			.payment-group-item {
-				border:none ;
+				border:none;
+				border-bottom: 1px solid transparent;
 				box-shadow:none;
 				margin:0;
 				width: 100% !important;

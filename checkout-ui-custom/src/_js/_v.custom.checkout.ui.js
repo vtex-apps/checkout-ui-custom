@@ -412,7 +412,25 @@ class checkoutCustom {
   }
 
   paymentBuilder() {
+    let _this = this;
+
     
+    if(_this.orderForm && $(".payment-group-item-cards").length == 0) {
+      if(_this.orderForm.paymentData) {
+        let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
+        $.each(_this.orderForm.paymentData.paymentSystems.filter( item => item.groupName=="creditCardPaymentGroup"), function (i) {
+          paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
+        });
+        paymentGroupCardsHtml += `</span>`;
+
+        if(_this.accordionPayments) {
+          $("#payment-group-creditCardPaymentGroup").append(paymentGroupCardsHtml);
+        } else {
+          $("#iframe-placeholder-creditCardPaymentGroup").prepend(paymentGroupCardsHtml);
+        }
+      }
+    }
+
 
     if(!this.accordionPayments || $(".payment-group-list-btn").find(".v-custom-payment-item-wrap").length > 0) return false
 
@@ -426,16 +444,7 @@ class checkoutCustom {
       $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
     });
     
-    if(this.orderForm) {
-      if(this.orderForm.paymentData) {
-        let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
-        $.each(this.orderForm.paymentData.paymentSystems.filter( item => item.groupName=="creditCardPaymentGroup"), function (i) {
-          paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
-        });
-        paymentGroupCardsHtml += `</span>`;
-        $("#payment-group-creditCardPaymentGroup").append(paymentGroupCardsHtml);
-      }
-    }
+    
 
   }
 
