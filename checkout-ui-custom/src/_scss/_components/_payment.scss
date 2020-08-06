@@ -501,6 +501,20 @@
 						border: none;
 					}
 				}
+				&#payment-group-AffirmPaymentGroup:after {
+					content: "";
+					width: 65px;
+					height: 35px;
+					display: block;
+					background: url(https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png) center no-repeat;
+					background-size: contain;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					right: 3px;
+					left: initial;
+					border: none;
+				}
 			}
 
 			&.active {
