@@ -357,8 +357,10 @@ class checkoutCustom {
     
     // debounce to prevent append from default script
     let updateDebounce = (debounce(function() {
-      _this.addLabels(orderForm);
-      _this.showCustomMsgCoupon(orderForm);
+      if(orderForm.marketingData) {
+        _this.addLabels(orderForm);
+        _this.showCustomMsgCoupon(orderForm);
+      }
     }, 250));
     updateDebounce();
     
