@@ -150,6 +150,17 @@ const Admin: FC<any & WrappedComponentProps> = ({
     })
   }
 
+  const handleLoad = ({ javascript, css, layout, colors }: any) => {
+    setState({
+      ...state,
+      currentTab: 1,
+      layout,
+      colors,
+      css,
+      javascript,
+    })
+  }
+
   const handlePublish = () => {
     setState({
       ...state,
@@ -264,7 +275,7 @@ const Admin: FC<any & WrappedComponentProps> = ({
             active={state.currentTab === 5}
             onClick={() => setState({ ...state, currentTab: 5 })}
           >
-            <History />
+            <History onChange={handleLoad} />
           </Tab>
         </Tabs>
         <Modal

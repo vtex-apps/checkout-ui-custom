@@ -30,12 +30,18 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
     setState({ value })
   }
 
+  const parseText = (text: string) => {
+    const newText = text.replace(/\\n/g, String.fromCharCode(13))
+
+    return newText
+  }
+
   return (
     <div className="w-80 pa4">
       <Textarea
         size="large"
         rows={30}
-        value={state.value}
+        value={parseText(state.value)}
         onChange={(e: any) => handleChange(e)}
         label={intl.formatMessage(messages.label)}
         helpText={intl.formatMessage(messages.helper)}

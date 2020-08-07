@@ -80,26 +80,17 @@ export const resolvers = {
 
       const creationDate = String(new Date().getTime())
       const appVersion = process.env.VTEX_APP_VERSION
-      const data = await masterdata
-        .createDocument({
-          dataEntity: DATA_ENTITY,
-          fields: {
-            ...params,
-            creationDate,
-            appVersion,
-          },
-          schema: SCHEMA_VERSION,
-        })
-        .then((res: any) => {
-          console.log('RES CREATE =>', res)
+      const data = await masterdata.createDocument({
+        dataEntity: DATA_ENTITY,
+        fields: {
+          ...params,
+          creationDate,
+          appVersion,
+        },
+        schema: SCHEMA_VERSION,
+      })
 
-          return res
-        })
-        .catch((e: any) => {
-          console.log('RES CREATE FAILED =>', e)
-        })
-
-      console.log('DATA =>', data)
+      return data
     },
   },
   Query: {
@@ -149,25 +140,29 @@ export const resolvers = {
         clients: { masterdata },
       } = ctx
 
-      const { data } = await masterdata
-        .searchDocuments({
-          dataEntity: DATA_ENTITY,
-          schema: SCHEMA_VERSION,
-          fields: ['id', 'email', 'workspace', 'creationDate', 'appVersion'],
-          sort: 'creationDate DESC',
-          pagination: {
-            page: 1,
-            pageSize: 30,
-          },
-        })
-        .then((res: any) => {
-          console.log('History res =>', res)
+      const data = await masterdata.searchDocuments({
+        dataEntity: DATA_ENTITY,
+        schema: SCHEMA_VERSION,
+        fields: ['id', 'email', 'workspace', 'creationDate', 'appVersion'],
+        sort: 'creationDate DESC',
+        pagination: {
+          page: 1,
+          pageSize: 30,
+        },
+      })
 
-          return res
-        })
-        .catch((e: any) => {
-          console.log('History catch =>', e)
-        })
+      return data
+    },
+    getById: async (_: any, params: any, ctx: any) => {
+      const {
+        clients: { masterdata },
+      } = ctx
+
+      const data = await masterdata.getDocument({
+        dataEntity: DATA_ENTITY,
+        fields: ['css', 'javascript', 'layout', 'colors'],
+        id: params.id,
+      })
 
       return data
     },

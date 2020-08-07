@@ -3,6 +3,7 @@ type Query {
   getSetupConfig: GetSetupConfigResponse @cacheControl(scope: PRIVATE)
   getHistory: [GetHistoryResponse] @cacheControl(scope: PRIVATE)
   getLast: GetLastResponse @cacheControl(scope: PRIVATE)
+  getById(id: String): ConfigResponse @cacheControl(scope: PRIVATE)
 }
 
 type Mutation {
@@ -17,6 +18,12 @@ type Mutation {
 }
 
 scalar CustomFields
+type ConfigResponse {
+  layout: CustomFields
+  colors: CustomFields
+  javascript: String
+  css: String
+}
 type GetLastResponse {
   id: String
   email: String

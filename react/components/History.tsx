@@ -1,17 +1,28 @@
 /* eslint-disable no-console */
 import React, { FC } from 'react'
 import { injectIntl, WrappedComponentProps } from 'react-intl'
-import { compose, graphql } from 'react-apollo'
+import { useQuery, useLazyQuery } from 'react-apollo'
+import PropTypes from 'prop-types'
 import { Table, Button } from 'vtex.styleguide'
 
 import query from '../queries/getHistory.gql'
+import GET_BY_ID from '../queries/getById.gql'
 
-const History: FC<any & WrappedComponentProps> = ({
-  data: { loading, getHistory },
-  intl,
-}: any) => {
+const History: FC<any & WrappedComponentProps> = ({ intl, onChange }: any) => {
+  const { loading, data } = useQuery(query)
+
+  const [getConfig, { loading: loadingConfig }] = useLazyQuery(GET_BY_ID, {
+    onCompleted: (res: any) => {
+      onChange(res.getById)
+    },
+  })
+
   const load = (id: string) => {
-    console.log('Load ID =>', id)
+    getConfig({
+      variables: {
+        id,
+      },
+    })
   }
 
   const customSchema = {
@@ -33,14 +44,16 @@ const History: FC<any & WrappedComponentProps> = ({
         width: 200,
         // eslint-disable-next-line react/display-name
         cellRenderer: ({ cellData }: any) => {
+          const datetime = new Date(parseInt(cellData, 10))
+
           return (
             <span>
-              {intl.formatDate(cellData, {
+              {intl.formatDate(datetime, {
                 day: 'numeric',
                 month: 'numeric',
                 year: 'numeric',
               })}{' '}
-              {intl.formatTime(cellData, {
+              {intl.formatTime(datetime, {
                 hour: 'numeric',
                 minute: 'numeric',
                 second: 'numeric',
@@ -58,6 +71,7 @@ const History: FC<any & WrappedComponentProps> = ({
             <Button
               variation="tertiary"
               size="small"
+              disabled={loadingConfig}
               onClick={() => {
                 load(rowData.id)
               }}
@@ -70,7 +84,7 @@ const History: FC<any & WrappedComponentProps> = ({
     },
   }
 
-  const items = getHistory || []
+  const items = data?.getHistory || []
 
   return (
     <div className="w-80 pt6">
@@ -85,12 +99,8 @@ const History: FC<any & WrappedComponentProps> = ({
   )
 }
 
-export default injectIntl(
-  compose(
-    graphql(query, {
-      options: {
-        ssr: false,
-      },
-    })
-  )(History)
-)
+History.propTypes = {
+  onChange: PropTypes.func,
+}
+
+export default injectIntl(History)

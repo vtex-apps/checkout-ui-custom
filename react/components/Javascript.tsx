@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { FC, useState } from 'react'
 import { defineMessages, injectIntl, WrappedComponentProps } from 'react-intl'
 import PropTypes from 'prop-types'
@@ -30,12 +31,18 @@ const Javascript: FC<WrappedComponentProps & any> = ({
     setState({ value })
   }
 
+  const parseText = (text: string) => {
+    const newText = text.replace(/\\n/g, String.fromCharCode(13))
+
+    return newText
+  }
+
   return (
     <div className="w-80 pa4">
       <Textarea
         size="large"
         rows={30}
-        value={state.value}
+        value={parseText(state.value)}
         onChange={(e: any) => handleChange(e)}
         label={intl.formatMessage(messages.label)}
         helpText={intl.formatMessage(messages.helper)}
