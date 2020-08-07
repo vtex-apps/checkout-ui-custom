@@ -5,7 +5,8 @@ module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   entry: [
     './src/checkout6-custom.js',
-    './src/checkout6-custom.scss'
+    './src/checkout6-custom.scss',
+    './src/app.checkout6-custom.scss'
   ],
   output: {
     filename: 'checkout6-custom.js',
