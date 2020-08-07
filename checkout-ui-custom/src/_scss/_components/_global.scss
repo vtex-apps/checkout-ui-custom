@@ -16,7 +16,7 @@ body {
   a {
     color:$action-primary;
     &:hover {
-      color:darken($action-primary,15%);
+      color:$action-primary--darken;
     }
   }
 

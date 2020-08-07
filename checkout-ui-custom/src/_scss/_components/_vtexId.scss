@@ -23,8 +23,8 @@
         &:hover,
         &:focus,
         &:active {
-          background:darken($success,5%); 
-          border:1px solid darken($success,5%); 
+          background:$success--darken; 
+          border:1px solid $success--darken; 
         }
       }
 

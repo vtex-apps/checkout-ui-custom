@@ -183,7 +183,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: lighten($muted-5,5%);
+			background: $muted-6;
 			float: left;
 			width:100%;
 		  
@@ -1230,7 +1230,7 @@
 			&:hover {
 				#use-another-card {
 					text-decoration: underline;
-					color:darken($muted-2,15%);
+					color:$muted-3;
 				}
 			}
 		}
