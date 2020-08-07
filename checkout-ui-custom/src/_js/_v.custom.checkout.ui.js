@@ -1,11 +1,14 @@
 const { _locale } = require("./_locale-infos.js");
+const { debounce } = require("./_utils.js");
 
 
 class checkoutCustom {
   constructor({
     type = "vertical", 
     accordionPayments = true, 
-    deliveryDateFormat = false
+    deliveryDateFormat = false,
+    quantityPriceCart = false,
+    
   } = {}) {
     this.type = type; // ["vertical"]
     this.orderForm = ""; 
@@ -14,6 +17,7 @@ class checkoutCustom {
 
     this.accordionPayments = accordionPayments;
     this.deliveryDateFormat = deliveryDateFormat;
+    this.quantityPriceCart = quantityPriceCart;
 
   } 
 
@@ -82,19 +86,19 @@ class checkoutCustom {
             <span class="checkout-steps_bar_inner-active"></span>
           </span>
           <div class="checkout-steps_items">
-            <span class="checkout-steps_item checkout-steps_item_cart">
+            <span class="checkout-steps_item checkout-steps_item_cart js-checkout-steps-item" data-url="/checkout/#/cart">
               <span class="text">Cart</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_identification">
+            <span class="checkout-steps_item checkout-steps_item_identification js-checkout-steps-item" data-url="/checkout/#/profile">
               <span class="text">Identification</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_shipping">
+            <span class="checkout-steps_item checkout-steps_item_shipping js-checkout-steps-item" data-url="/checkout/#/shipping">
               <span class="text">Shipping</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_payment">
+            <span class="checkout-steps_item checkout-steps_item_payment js-checkout-steps-item" data-url="/checkout/#/payment">
               <span class="text">Payment</span>
             </span>
-            <span class="checkout-steps_item checkout-steps_item_confirmation">
+            <span class="checkout-steps_item checkout-steps_item_confirmation js-checkout-steps-item">
               <span class="text">Confirmation</span>
             </span>
           </div>
@@ -153,8 +157,62 @@ class checkoutCustom {
     } catch (e) { }
   }
 
+  showCustomMsgCoupon(orderForm) {
+
+    let _this = this,
+        _coupon = orderForm.marketingData.coupon;
+    
+    let couponItemsCount = orderForm.items.reduce(function (accumulator, item) {
+      return accumulator + (item.priceTags.length ? item.priceTags.filter( _pricetag => { return _pricetag.ratesAndBenefitsIdentifier ? _pricetag.ratesAndBenefitsIdentifier.matchedParameters["couponCode@Marketing"] == _coupon : 0 } ).length : 0);
+    }, 0);
+
+    if(!_coupon || couponItemsCount>0)  {
+      $("fieldset.coupon-fieldset").removeClass("js-vcustom-showCustomMsgCoupon");
+      $(".vcustom-showCustomMsgCoupon").remove();
+      return false;
+    }
+        
+    // $(window).trigger('addMessage', {
+    //   content:  {
+    //     title: '',
+    //     detail: `${_this.lang.couponInactive} "${_coupon}"`
+    //   },
+    //   type: 'info'
+    // });	
+    
+    if($(".vcustom-showCustomMsgCoupon").length==0) $("fieldset.coupon-fieldset").addClass("js-vcustom-showCustomMsgCoupon").append(`<p class="vcustom-showCustomMsgCoupon">${_this.lang.couponInactive}</div>`);
+    
+  }
+  addLabels(orderForm) {
+    let _this = this,
+        _coupon = orderForm.marketingData.coupon,
+        _couponItems = [];
+    if(!_coupon) return false;
+
+    try {
+      $(`.table.cart-items tbody tr.product-item, .mini-cart .cart-items li`).removeClass("v-custom-addLabels-active js-vcustom-addLabels");
+      $(`.v-custom-addLabels-active-flag`).remove();
+      $.each(orderForm.items, function (i) {
+
+        if(this.priceTags.length>0) {
+          if(this.priceTags.filter( _pricetag => { return _pricetag.ratesAndBenefitsIdentifier ? _pricetag.ratesAndBenefitsIdentifier.matchedParameters["couponCode@Marketing"] == _coupon : false } ).length>0) {
+            _couponItems.push(this);
+            $(`.table.cart-items tbody tr.product-item:eq(${i})`)
+            .addClass("v-custom-addLabels-active js-vcustom-addLabels")
+            .find(".product-name")
+            .append(`<span class="v-custom-addLabels-active-flag">${_coupon}</span>`);
+          }
+        }
+      });
+      
+      
+    } catch (e) { 
+      console.error(e)
+    }
+  }
+
   buildMiniCart(orderForm) {
-    /* overode refresh from vtex */
+    /* overide refresh from vtex */
     let _this = this;
     if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { return false; }
     if ($(`.mini-cart .cart-items`).text().trim()!="") {
@@ -252,18 +310,33 @@ class checkoutCustom {
 
   enchancementTotalPrice(orderForm) {
     let _this = this;
+
+    if(!_this.quantityPriceCart) return;
     try {
       $.each(orderForm.items, function(i) {
         let _item = this;
+        let _trElem = $(`.table.cart-items tbody tr.product-item:eq(${i})`);
 
+       
+        if(_item.quantity==1 || _trElem.find("td.product-price").find(".best-price").length==0) return;
+
+        let totalValue = _trElem.find(".total-selling-price").text()
         let _eachprice = `
-          <span class="v-custom-quantity-list-price">
-            ${_item.listPrice > _item.sellingPrice ? `<span class="v-custom-quantity-list-price--list">${orderForm.storePreferencesData.currencySymbol} ${(_item.listPrice/100).toFixed(2)}</span>` : ""}
-            ${_item.quantity > 1 ? `<span class="v-custom-quantity-list-price--selling">(${orderForm.storePreferencesData.currencySymbol} ${(_item.sellingPrice/100).toFixed(2)} ${_this.lang.eachLabel})</span>` : ""}
-          </span>
+          <div class="v-custom-quantity-price vqc-ldelem">
+            <span class="v-custom-quantity-price__list">
+              ${_item.listPrice > _item.sellingPrice ? `<span class="v-custom-quantity-price__list--list">${orderForm.storePreferencesData.currencySymbol} ${(_item.listPrice/100).toFixed(2)}</span>` : ""}
+            </span>
+          </div>
         `;
-        $(`.table.cart-items tbody tr.product-item:eq(${i})`).find("td.quantity-price").find(".v-custom-quantity-list-price").remove();
-        $(`.table.cart-items tbody tr.product-item:eq(${i})`).find("td.quantity-price").prepend(_eachprice);
+        _trElem.find("td.product-price").find(".vqc-ldelem").remove();
+        //_trElem.find("td.quantity-price").prepend(_eachprice);
+        _trElem.find("td.product-price")
+        .addClass("v-custom-quantity-price-active")
+        .prepend(_eachprice)
+        .append(`<div class="v-custom-quantity-price vqc-ldelem"><span class="v-custom-quantity-price__best">${totalValue}</span></div>`);
+        //console.log(_trElem.find("td.product-price").find(".best-price"), _trElem.find(".js-v-custom-quantity-price").length)
+        _trElem.find("td.product-price").find("> .best-price").wrap(`<div class="v-custom-quantity-price__list--selling"></div>`);
+        _trElem.find("td.product-price").find(".v-custom-quantity-price__list--selling").append(`<span class="vqc-ldelem"> ${_this.lang.eachLabel}</span>`);
 
       })
     } catch(e) {
@@ -272,13 +345,24 @@ class checkoutCustom {
   }
 
   update(orderForm) {
+    let _this = this;
+
     this.checkEmpty(orderForm.items);
     this.addAssemblies(orderForm);
     this.enchancementTotalPrice(orderForm);
     this.bundleItems(orderForm);
-    
     this.buildMiniCart(orderForm);
     this.indexedInItems(orderForm);
+
+    
+    // debounce to prevent append from default script
+    let updateDebounce = (debounce(function() {
+      _this.addLabels(orderForm);
+      _this.showCustomMsgCoupon(orderForm);
+    }, 250));
+    updateDebounce();
+    
+    
     
   }
 
@@ -314,6 +398,8 @@ class checkoutCustom {
 
     if(_lang.cartNoteLabel) $("p.note-label label").text(_lang.cartNoteLabel)
 
+    if(_lang.identifiedUserMessage) $(".identified-user-modal-body p.identified-user-message").html(_lang.identifiedUserMessage)
+
     //paypal
     if(_lang.paypalPhone) $(".payment-paypal-help-number").text(_lang.paypalPhone);
 
@@ -326,21 +412,40 @@ class checkoutCustom {
   }
 
   paymentBuilder() {
+    let _this = this;
+
+    
+    if(_this.orderForm && $(".payment-group-item-cards").length == 0) {
+      if(_this.orderForm.paymentData) {
+        let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
+        $.each(_this.orderForm.paymentData.paymentSystems.filter( item => item.groupName=="creditCardPaymentGroup"), function (i) {
+          paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
+        });
+        paymentGroupCardsHtml += `</span>`;
+
+        if(_this.accordionPayments) {
+          $("#payment-group-creditCardPaymentGroup").append(paymentGroupCardsHtml);
+        } else {
+          $("#iframe-placeholder-creditCardPaymentGroup").prepend(paymentGroupCardsHtml);
+        }
+      }
+    }
+
+
+    if(!this.accordionPayments || $(".payment-group-list-btn").find(".v-custom-payment-item-wrap").length > 0) return false
+
+    $("body").addClass("v-custom-paymentBuilder-accordion");
+
+    $(".payment-group-item").each(function(i) {
+      $(this).wrap(`<div class='v-custom-payment-item-wrap ${ $(this).hasClass("active") ? "active" : "" }'></div>`);
+    });
+
+    $(".payment-group-item").each(function(i) {
+      $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
+    });
+    
     
 
-    if(this.accordionPayments) {
-      $("body").addClass("v-custom-paymentBuilder-accordion");
-      
-      if ($(".payment-group-list-btn").find(".v-custom-payment-item-wrap").length > 0) return false
-
-      $(".payment-group-item").each(function(i) {
-        $(this).wrap(`<div class='v-custom-payment-item-wrap ${ $(this).hasClass("active") ? "active" : "" }'></div>`);
-      });
-
-      $(".payment-group-item").each(function(i) {
-        $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
-      });
-    }
   }
 
   bind() {
@@ -382,6 +487,10 @@ class checkoutCustom {
       }, 100);
     });
 
+    $("body").on("click", ".js-checkout-steps-item .text", function(e) {
+      window.location = $(this).closest(".checkout-steps_item").attr("data-url");
+    });
+
   }
 
   init() {
@@ -399,6 +508,7 @@ class checkoutCustom {
       _this.update(_this.orderForm);
     }
     _this.addEditButtoninLogin();
+
   }
   
   start() {
@@ -427,6 +537,8 @@ class checkoutCustom {
       $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
         _this.update(orderForm);
       })
+
+      console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
     }
     catch(e) {
       _this.general();

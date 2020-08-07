@@ -8,7 +8,7 @@ body {
     border-bottom: 1px solid $muted-4;
     position:relative; 
     background-color: #FFF;
-    margin-bottom:30px;
+    margin-bottom:40px;
 
     &, > .container { 
       display:flex;
@@ -18,7 +18,6 @@ body {
       }
     } 
     > .container {
-      width:$maxWrapper;
       &:before,
       &:after {display: none;}
     }
@@ -26,13 +25,13 @@ body {
 
     .header-link {
       position:absolute;
-      left:10px; 
-      top: calc(100% + 13px);
+      left:0px; 
+      top: calc(100% + 18px);
       display: none;
       a {
         height:20px;
-        font-size:10px;
-        line-height:10px;
+        font-size:11px;
+        line-height: 115%;
         padding-left:0px;
         color:$muted-2;
         display: flex;
@@ -84,7 +83,7 @@ body {
     }
 
     .checkout-steps {
-      max-width: 600px;
+      max-width: 540px;
       margin-left: auto;
       padding-right: 10px;
     }

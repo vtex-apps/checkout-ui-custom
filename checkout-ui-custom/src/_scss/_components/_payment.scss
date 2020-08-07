@@ -45,7 +45,7 @@
 .orderform-template-holder{
 	
 
-	@media(min-width: 768px) {
+	@media(min-width: 769px) {
 
 		
 		width: 61% !important;
@@ -212,6 +212,19 @@
 		  background: none;
 		  position: relative;
 		  margin:0;
+		}
+
+		#iframe-placeholder-creditCardPaymentGroup {
+			> .payment-group-item-cards {
+				display: block;
+				overflow: hidden;
+				position: absolute;
+				right: 0;
+				top:0;
+				.card-flag {
+					opacity:1;
+				}
+			}
 		}
 
 		p.link.link-gift-card {
@@ -405,16 +418,18 @@
 			}
 
 			.payment-group-item {
-				border:none ;
+				border:none;
+				border-bottom: 1px solid transparent;
 				box-shadow:none;
 				margin:0;
 				width: 100% !important;
 				height:auto;
 				top:0;
 
-				span {
+				&-text {
 					width: 100%;
 					text-align: left;
+					line-height:27px !important;
 					&:before {
 						content:"";
 						width:20px;
@@ -427,10 +442,24 @@
 					}
 				}
 
+				&-cards {
+					display:flex;
+					.card-flag {
+						width:40px !important;
+						&:last-child {
+							margin: 0;
+						}
+					}
+
+					@media(max-width:450px) {
+						display:none;
+					}
+				}
+
 				&.active {
 					background: $action-secondary;
 					border-bottom:1px solid $action-primary;
-					span {
+					.payment-group-item-text {
 
 						&:before {
 							background: $action-primary;
@@ -438,10 +467,14 @@
 							box-shadow:inset 0 0 0 3px  #FFF;
 						}
 					}
+
+					.payment-group-item-cards {
+						span {opacity:1;}
+					}
 				}
 
 				&:hover {
-					span {
+					.payment-group-item-text {
 						&:before {
 							border-color:$action-primary;
 						}
@@ -450,6 +483,38 @@
 
 				&:before,
 				&:after {display: none;}
+
+				&#payment-group-payPalPaymentGroup {
+					position: relative;
+					&:after {
+						content:"";
+						width: 50px;
+						height:20px;
+						display:block;
+						background: url('https://io.vtex.com.br/checkout-ui/v6.18.19/img/payment-paypal-landscape.png') center no-repeat;
+						background-size: contain;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						right: 12px;
+						left: initial;
+						border: none;
+					}
+				}
+				&#payment-group-AffirmPaymentGroup:after {
+					content: "";
+					width: 65px;
+					height: 35px;
+					display: block;
+					background: url(https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png) center no-repeat;
+					background-size: contain;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					right: 3px;
+					left: initial;
+					border: none;
+				}
 			}
 
 			&.active {
@@ -527,12 +592,41 @@
     	.client-notice.notice {margin: 0 0 10px 0;}
     	.box-client-info {
     		margin-bottom: 20px;
-    	}
-
+			}
+			.client-document, .client-phone {
+				width:calc(50% - 5px);
+				@media(max-width:490px) {	
+					width:100%;
+				}
+			}
+			
+				
     }
 
     &.shipping-data {
+			.box-step {
+				display: flex;
+				flex-wrap: wrap;
+				> * {
+					width:100%;
+					order: 1;
+					margin:0 0 20px 0;
 
+					&.vtex-omnishipping-1-x-addressFormPart1 {order: 1;}
+					&.vtex-omnishipping-1-x-addressForm { order: 2; }
+					&.vtex-omnishipping-1-x-deliveryGroup { order: 4; }
+					&.vtex-omnishipping-1-x-submitPaymentButton { order: 100; }
+
+					&:last-child {
+						margin:0;
+					}
+				}
+			}
+
+			.vtex-omnishipping-1-x-address {
+				margin:0;
+			}
+			
 			.vtex-omnishipping-1-x-addressSummaryActive .address-summary {
 					background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='"+str-replace(""+$action-primary, '#', '%23')+"' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='"+str-replace(""+$action-primary, '#', '%23')+"' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
 					background-position: 12px 9px;
@@ -582,14 +676,24 @@
   			align-items:center;
     	}
 
-
+			.vtex-omnishipping-1-x-linkEdit { text-decoration: underline; }
     	.vtex-omnishipping-1-x-deliveryChannelsWrapper,
     	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $border-radius;}
-    	.vtex-omnishipping-1-x-deliveryChannelsWrapper {border:1px solid $muted-4;}
+    	.vtex-omnishipping-1-x-deliveryChannelsWrapper {
+				border:1px solid $muted-4;
+				width:100%;
+				overflow: hidden;
+				margin:0;
+			}
     	.vtex-omnishipping-1-x-summaryChange {
 		    background:$action-secondary;
 		    border-color:$muted-5;
 		    color:$action-primary;
+			}
+
+			.vtex-omnishipping-1-x-leanShippingGroupList {
+				border-color:$muted-5;
+				margin: 0;
 			}
 
 			.vtex-omnishipping-1-x-option:hover, 
@@ -644,8 +748,6 @@
 	min-height: 400px !important;
 	align-items:flex-start;
 
-	&.inactive {display: none !important;}
-
 	@media(max-width: 490px) {
   	width:100%;
   	padding-top:0px;
@@ -674,7 +776,7 @@
 			top:0;
 			min-height: initial;
 
-  		@media(min-width: 768px) {
+  		@media(min-width: 769px) {
   			&.affix {
   			}
   			&.affix-top {position: relative !important;}
@@ -705,6 +807,27 @@
 			padding: 0;
 
 			.accordion-inner {margin-top: 0px;}
+
+			.summary > .summary-coupon-wrap, 
+			.summary-coupon-wrap > .summary-coupon {
+				display: block !important;
+			}
+
+			.summary-coupon p {
+				margin:0;
+			}
+
+			.summary > .summary-coupon-wrap {
+				border-top:1px solid $muted-4;
+				padding:8px 0;
+			}
+
+			input[type=text],
+			button[type=submit],
+			p.coupon-fields span.info > span {
+				line-height: 30px !important;
+				height:30px !important;
+			}
 		}
 
 		.item {
@@ -840,7 +963,7 @@
 
 		.cart {
 			margin-bottom: 0;
-			max-height: calc(100vh - 285px);
+			max-height: calc(100vh - 355px);
 			overflow:auto;
 			
 			&::-webkit-scrollbar {
@@ -890,6 +1013,15 @@
 	.payment-confirmation-wrap {
 		border:none;
 		padding:0;
+
+		@if $showNoteField {
+			display:block !important;		
+			&[style*="display: none"] {}
+			&[style*="display: none"] p.payment-submit-wrap {
+					display:none;
+			}
+		}
+		
 		.payment-submit-wrap {
 			margin:10px 0 0 0;
 
@@ -1015,6 +1147,12 @@
 		> div {position: relative;clear: both;}
 		.PaymentValue {display:none;}
 
+		input#creditCardpayment-card-0Number[value=""] {
+			background:#FFF;
+			position:relative;
+			z-index:1;
+		}
+
 		.SavedCardsList {
 			width: calc(100% - 1px);
 		}
@@ -1034,13 +1172,16 @@
 	}
 
 	.PaymentCardFlags {	
-		padding-top:3px;
+		position: absolute;
+    top: calc(30px + (#{$inputHeight} - 25px)/2);
+    right: 16px;
+    padding: 0;
 	  .card-flag-label input {
 	    display:none;
 		}
 		.card-flag-label {width:auto;}
-		span.card-flag {opacity: 0.7;}
-		input:checked + span.card-flag {opacity: 1;}
+		.card-flag {opacity: 0.7;display: none;}
+		.card-flag.card-selected {opacity: 1;display:block;}
 	}
 
 	input#creditCardpayment-card-0Code {
@@ -1080,6 +1221,9 @@
 		&.UseAnotherCard {
 			background-color: $muted-5;
 			padding:4px;
+			font-size: 11px;
+    	text-decoration: underline;
+
 			#use-another-card {
 				color:$muted-2;
 			}
