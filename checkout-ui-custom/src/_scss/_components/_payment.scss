@@ -504,12 +504,12 @@
 				&#payment-group-AffirmPaymentGroup:after {
 					content: "";
 					width: 65px;
-					height: 35px;
+					height: 25px;
 					display: block;
 					background: url(https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png) center no-repeat;
 					background-size: contain;
 					position: absolute;
-					top: 50%;
+					top: 49%;
 					transform: translateY(-50%);
 					right: 3px;
 					left: initial;
@@ -542,6 +542,9 @@
 
 	  .box-info {
 			color:$muted-1;
+			&[style*="display: block"] {
+				margin-top: 10px;
+			}
 		}
 	    
     .form-step {
@@ -687,7 +690,7 @@
 			}
     	.vtex-omnishipping-1-x-summaryChange {
 		    background:$action-secondary;
-		    border-color:$muted-5;
+		    border-color:$muted-4;
 		    color:$action-primary;
 			}
 
@@ -1014,14 +1017,6 @@
 		border:none;
 		padding:0;
 
-		@if $showNoteField {
-			display:block !important;		
-			&[style*="display: none"] {}
-			&[style*="display: none"] p.payment-submit-wrap {
-					display:none;
-			}
-		}
-		
 		.payment-submit-wrap {
 			margin:10px 0 0 0;
 
@@ -1053,6 +1048,7 @@
 	}
 	
 	.summary-note {
+		display:none !important;
 		p.note-data {display: none !important;}
 		> div {
 			display: block !important;
@@ -1067,13 +1063,7 @@
 			max-height: 100px;
 		}
 	}
-	@if $showNoteField {
-		.summary-note {display: block;}
-	}
-	@else {
-		.summary-note {display: none !important;}
-	}
-
+	
 	.custom-cart-template-wrap {
 		position: relative;
 		background: #FFF;

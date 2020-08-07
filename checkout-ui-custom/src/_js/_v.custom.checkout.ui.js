@@ -8,7 +8,7 @@ class checkoutCustom {
     accordionPayments = true, 
     deliveryDateFormat = false,
     quantityPriceCart = false,
-    
+    showNoteField = false    
   } = {}) {
     this.type = type; // ["vertical"]
     this.orderForm = ""; 
@@ -18,6 +18,7 @@ class checkoutCustom {
     this.accordionPayments = accordionPayments;
     this.deliveryDateFormat = deliveryDateFormat;
     this.quantityPriceCart = quantityPriceCart;
+    this.showNoteField = showNoteField;
 
   } 
 
@@ -42,6 +43,10 @@ class checkoutCustom {
       _this.buildHorizontal();
     } else {
       console.error("No `type` identified, check your code");
+    }
+
+    if(_this.showNoteField) {
+      $("body").addClass("js-vcustom-showNoteField");
     }
   }
 
@@ -357,8 +362,10 @@ class checkoutCustom {
     
     // debounce to prevent append from default script
     let updateDebounce = (debounce(function() {
-      _this.addLabels(orderForm);
-      _this.showCustomMsgCoupon(orderForm);
+      if(orderForm.marketingData) {
+        _this.addLabels(orderForm);
+        _this.showCustomMsgCoupon(orderForm);
+      }
     }, 250));
     updateDebounce();
     

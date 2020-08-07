@@ -1,7 +1,5 @@
 // IMPORTED FROM STORE THEME
 
-
-
 $base: #f4f2f2; // body bg...
 $base--inverted: #21364f; // general
 
@@ -31,10 +29,6 @@ $muted-4: #cbcbcb; //borders
 $muted-5: #eee; //borders
 $muted-6: #f3f3f3; //borders & bg
 
-
-
-
-
 // CHECKOUT VARS
 
 $font-size: 12px;
@@ -42,20 +36,18 @@ $border-radius:4px;
 $btn-border-radius:30px;
 
 $maxWrapper: 980px;
-
 $inputHeight:40px;
-$countingSteps:true;
-$showCheckoutSteps:true;
-
-$showCouponField:false;
-$showNoteField:false;
-
-$buttonShadow:false;
 
 $bordersContainers:none; // 2px solid $muted-5
 
-
 //font
 
-
 $font-family: 'Roboto', sans-serif;
+
+
+// NOT included on admin -- kept for future (no change!)
+
+$showCouponField:true;
+$countingSteps:true;
+$showCheckoutSteps:true;
+$buttonShadow:false;

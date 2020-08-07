@@ -3,7 +3,6 @@
 
 .btn {
 	font-family:$font-family;
-	transition: all ease 0.2s;
 	text-shadow: none;
 	border-radius:$btn-border-radius;
 	outline: none !important;
@@ -12,6 +11,12 @@
 	padding: 5px 12px;
 	box-sizing: border-box;
 	display: inline-block;
+
+	&,
+	&:hover,
+	&:focus {
+		transition: all ease 0.3s;
+	}
 
 	@if $buttonShadow {
 
