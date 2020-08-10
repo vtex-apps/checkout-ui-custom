@@ -1,4 +1,5 @@
-# checkout-custom 
+
+# checkout.ui.custom 🚀
 
 This repo allows you to generate an style to your checkout based in basic configurations and config. Bear in mind that is mandatory to use both files (js/css) on your checkout to a better experience. 
 
