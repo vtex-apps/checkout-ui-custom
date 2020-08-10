@@ -90,6 +90,7 @@ body {
     &.inactive {
       left: 140%;
       margin: 0;
+      display:none !important;
     }
   }
 }

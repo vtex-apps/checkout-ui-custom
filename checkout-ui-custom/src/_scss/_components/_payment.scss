@@ -1,3 +1,7 @@
+
+@import '_card-flags.scss'; 
+
+
 // loadin shhimer
 
 
@@ -427,9 +431,10 @@
 				top:0;
 
 				&-text {
-					width: 100%;
+					margin-right: auto;
 					text-align: left;
-					line-height:27px !important;
+					line-height: 27px !important;
+					white-space: nowrap;
 					&:before {
 						content:"";
 						width:20px;
@@ -444,14 +449,19 @@
 
 				&-cards {
 					display:flex;
+					justify-content: flex-end;
+    			flex-wrap: wrap;
 					.card-flag {
-						width:40px !important;
+						width: 32px !important;
+						background-size: auto 20px;
+						min-width: auto;
+						height: 20px;
 						&:last-child {
 							margin: 0;
 						}
 					}
 
-					@media(max-width:450px) {
+					@media(max-width:360px) {
 						display:none;
 					}
 				}
