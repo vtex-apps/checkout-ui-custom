@@ -1,5 +1,18 @@
 // coupon field
 
+body.js-vcustom-showNoteField {
+  .orderform-template {
+    .payment-confirmation-wrap {
+      display:block !important;		
+      &[style*="display: none"] {}
+      &[style*="display: none"] p.payment-submit-wrap {
+          display:none;
+      }
+    }
+    .summary-note {display: block !important;}
+  }
+}
+
 .summary-coupon fieldset.coupon-fieldset {
   .vcustom-showCustomMsgCoupon {
     border: 1px dashed $warning;

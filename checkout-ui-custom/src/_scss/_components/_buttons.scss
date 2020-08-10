@@ -3,7 +3,6 @@
 
 .btn {
 	font-family:$font-family;
-	transition: all ease 0.2s;
 	text-shadow: none;
 	border-radius:$btn-border-radius;
 	outline: none !important;
@@ -12,6 +11,12 @@
 	padding: 5px 12px;
 	box-sizing: border-box;
 	display: inline-block;
+
+	&,
+	&:hover,
+	&:focus {
+		transition: all ease 0.3s;
+	}
 
 	@if $buttonShadow {
 
@@ -25,14 +30,14 @@
 	}
 
 	&-large {
-		padding:11px 19px;
+		padding:17px 19px;
 	}
 
 	&-link {
 		color:$action-primary;
 		&:hover,
 		&:focus {
-			color:darken($action-primary, 15%);
+			color:$action-primary--darken;
 		}
 	}
 
@@ -44,8 +49,8 @@
 		&:hover,
 		&:focus,
 		&:active {
-			background:darken($success,5%); 
-			border:1px solid darken($success,5%); 
+			background:$success--darken; 
+			border:1px solid $success--darken; 
 		}
 
 		&[disabled] {
@@ -61,8 +66,8 @@
 		&:hover,
 		&:focus,
 		&:active {
-			background:darken($action-primary,5%);
-			border:1px solid darken($action-primary,5%); 
+			background:$action-primary--darken;
+			border:1px solid $action-primary--darken; 
 		}
 	}  
 
@@ -75,8 +80,8 @@
 		&:focus,
 		&:active {
 			background:$action-secondary;
-			border:1px solid darken($action-primary,15%);
-			color:darken($action-primary,15%);
+			border:1px solid $action-primary--darken;
+			color:$action-primary--darken;
 		}
 	}
 
@@ -89,7 +94,7 @@
 		&:focus,
 		&:active {
 			background:transparent; 
-			border:1px solid lighten($success,5%); 
+			border:1px solid $success--darken; 
 		}
 	}
 

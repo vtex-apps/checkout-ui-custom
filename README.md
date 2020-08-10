@@ -1,8 +1,11 @@
-# checkout-custom
+
+# checkout.ui.custom 🚀
 
 This repo allows you to generate an style to your checkout based in basic configurations and config. Bear in mind that is mandatory to use both files (js/css) on your checkout to a better experience. 
 
 A combination of conditions and variables will adapt your checkout according your preferences. 
+
+[What is new?](#Whats-is-new?)
 
 
 ## Usage
@@ -69,6 +72,7 @@ Run on your console or scripts `vcustom.debug.start()` to simulate the header an
 
 ## Variables
 
+### <a name="tith"></a>This is the Heading
 
 `// CHECKOUT VARS`
 
@@ -93,4 +97,28 @@ $buttonShadow:false; // A tiny shadow coming from the default UI that gives the 
 
 $bordersContainers:none; // 2px solid $muted-5
 ```
+# 
+# Whats is new?
+
+
+
+- Mobile first layout
+- New visual design with an easy and user friendly experience. 
+- Accordion or tabs payment selection
+- CTAs with better visibility and navigability
+- Sticky summary box that follows you as you scroll down the checkout page
+- Easily customizable (using the styleguide)
+- Support to multiple assemblies and services, if in use
+- Item with coupons labeled
+- Login step on the same page of checkout
+- Formatted shipping date
+- Translation fixes
+
+![alt text](https://i.ibb.co/gtYWfM5/c.jpg)
+
+![alt text](https://i.ibb.co/mh95086/c.jpg)
+
+![alt text](https://i.ibb.co/7CkqVyZ/c.jpg)
+
+![alt text](https://i.ibb.co/gm6v8ML/c.jpg)
 

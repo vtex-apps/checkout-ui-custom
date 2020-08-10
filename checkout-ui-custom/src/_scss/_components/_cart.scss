@@ -897,7 +897,7 @@ margin:20px 0 0px 0 !important;
   form.srp-postal-code__form.dib.relative {
     width: 100%;
   }
-  button.shp-open-options {border-color:darken($action-secondary,10%);}
+  button.shp-open-options {border-color:$action-primary--darken;}
   .onda-v1 .blue {
     color:$action-primary;
     outline: none;

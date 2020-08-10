@@ -1,3 +1,7 @@
+
+@import '_card-flags.scss'; 
+
+
 // loadin shhimer
 
 
@@ -183,7 +187,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: lighten($muted-5,5%);
+			background: $muted-6;
 			float: left;
 			width:100%;
 		  
@@ -427,9 +431,10 @@
 				top:0;
 
 				&-text {
-					width: 100%;
+					margin-right: auto;
 					text-align: left;
-					line-height:27px !important;
+					line-height: 27px !important;
+					white-space: nowrap;
 					&:before {
 						content:"";
 						width:20px;
@@ -444,14 +449,19 @@
 
 				&-cards {
 					display:flex;
+					justify-content: flex-end;
+    			flex-wrap: wrap;
 					.card-flag {
-						width:40px !important;
+						width: 32px !important;
+						background-size: auto 20px;
+						min-width: auto;
+						height: 20px;
 						&:last-child {
 							margin: 0;
 						}
 					}
 
-					@media(max-width:450px) {
+					@media(max-width:360px) {
 						display:none;
 					}
 				}
@@ -504,12 +514,12 @@
 				&#payment-group-AffirmPaymentGroup:after {
 					content: "";
 					width: 65px;
-					height: 35px;
+					height: 25px;
 					display: block;
 					background: url(https://cdn-assets.affirm.com/images/black_logo-transparent_bg.png) center no-repeat;
 					background-size: contain;
 					position: absolute;
-					top: 50%;
+					top: 49%;
 					transform: translateY(-50%);
 					right: 3px;
 					left: initial;
@@ -542,6 +552,9 @@
 
 	  .box-info {
 			color:$muted-1;
+			&[style*="display: block"] {
+				margin-top: 10px;
+			}
 		}
 	    
     .form-step {
@@ -687,7 +700,7 @@
 			}
     	.vtex-omnishipping-1-x-summaryChange {
 		    background:$action-secondary;
-		    border-color:$muted-5;
+		    border-color:$muted-4;
 		    color:$action-primary;
 			}
 
@@ -1014,14 +1027,6 @@
 		border:none;
 		padding:0;
 
-		@if $showNoteField {
-			display:block !important;		
-			&[style*="display: none"] {}
-			&[style*="display: none"] p.payment-submit-wrap {
-					display:none;
-			}
-		}
-		
 		.payment-submit-wrap {
 			margin:10px 0 0 0;
 
@@ -1053,6 +1058,7 @@
 	}
 	
 	.summary-note {
+		display:none !important;
 		p.note-data {display: none !important;}
 		> div {
 			display: block !important;
@@ -1067,13 +1073,7 @@
 			max-height: 100px;
 		}
 	}
-	@if $showNoteField {
-		.summary-note {display: block;}
-	}
-	@else {
-		.summary-note {display: none !important;}
-	}
-
+	
 	.custom-cart-template-wrap {
 		position: relative;
 		background: #FFF;
@@ -1230,7 +1230,7 @@
 			&:hover {
 				#use-another-card {
 					text-decoration: underline;
-					color:darken($muted-2,15%);
+					color:$muted-3;
 				}
 			}
 		}

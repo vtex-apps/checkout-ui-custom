@@ -180,7 +180,7 @@
     &_bar_inner-active {
       width: calc(100% - 20%);
       height: 3px;
-      background: lighten($action-primary, 30%);
+      background: $action-secondary;
       display: block;
       margin: 0 auto;
       position: absolute;

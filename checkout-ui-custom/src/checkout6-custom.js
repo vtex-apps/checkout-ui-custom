@@ -8,7 +8,8 @@ window.vcustom = {
     type: "vertical", //["vertical" , "horizontal"]
     accordionPayments: true, 
     deliveryDateFormat: false, 
-    quantityPriceCart:false
+    quantityPriceCart:false,
+    showNoteField:false
   }),
   debug: new debug({
     dbg:false,
