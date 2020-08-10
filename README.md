@@ -5,7 +5,7 @@ This repo allows you to generate an style to your checkout based in basic config
 
 A combination of conditions and variables will adapt your checkout according your preferences. 
 
-[What is new?](#Whats-is-new?)
+[What is new?](#user-content-whats-is-new)
 
 
 ## Usage
@@ -97,7 +97,7 @@ $buttonShadow:false; // A tiny shadow coming from the default UI that gives the 
 
 $bordersContainers:none; // 2px solid $muted-5
 ```
-# 
+ 
 # Whats is new?
 
 
