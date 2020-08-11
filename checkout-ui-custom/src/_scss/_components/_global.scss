@@ -67,6 +67,11 @@ body {
 
 .checkout-container {
   overflow: initial !important;
+
+  @media(max-width: 768px) {
+    margin-bottom: 30px;
+  }
+
   .orderform-template,
   .cart-template {
     display: flex;

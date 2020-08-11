@@ -55,6 +55,8 @@
 		width: 61% !important;
 		padding-right:20px;
 		max-width: calc(100% - 270px);
+		margin-right:auto;
+		float:left;
   }
 
 	
@@ -769,11 +771,17 @@
 	.cart-template.mini-cart {
 		width: 39%;
   	min-width: 255px; 
-  	margin: 0 0 0 auto;
+  	margin: 0 0 0 auto; 
 
+		position: -webkit-sticky;
+		position: -moz-sticky;
+		position: -o-sticky;
+		position: -ms-sticky;
   	position: sticky;
     bottom: 0px;
-    top: 20px;
+		top: 20px;
+		right:0;
+		float: right;
 
   	@media(max-width: 768px) {
   		width:100%;
