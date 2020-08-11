@@ -34,7 +34,7 @@
 	svg.vtex-omnishipping-1-x-svg,
 	svg.vtex-omnishipping-1-x-svg path,
 	svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
-	  fill: $action-primary;
+	  fill: $actionPrimary;
 	}
 
 // -- vertical checkout
@@ -69,7 +69,7 @@
   	box-sizing: border-box;
 
   	background:#FFF;
-		border-radius:$border-radius;
+		border-radius:$borderRadius;
 		
 		margin-bottom:20px !important;
 		z-index: initial;
@@ -94,7 +94,7 @@
 	    border: none;
 	    top: 4px;
 	    right: -5px;
-	    color: $action-primary;
+	    color: $actionPrimary;
 	    outline: none;
 
 	    position: absolute;
@@ -175,11 +175,11 @@
 		.payment-group-item {
 		  box-sizing: border-box;
 		  margin: 0 6px 10px 0;
-		  border-radius: $border-radius;
-		  border:1px solid $muted-4;
+		  border-radius: $borderRadius;
+		  border:1px solid $muted4;
 		  opacity: 1;
 		  text-decoration: none;
-			color: $muted-1;
+			color: $muted1;
 			transition: all ease 0.3s;
 
 			padding: 11px;
@@ -187,7 +187,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: $muted-6;
+			background: $muted6;
 			float: left;
 			width:100%;
 		  
@@ -201,8 +201,8 @@
 
 			&.active,
 			&:hover {
-				box-shadow:0 0 6px $muted-4;
-				border:1px solid $action-primary;
+				box-shadow:0 0 6px $muted4;
+				border:1px solid $actionPrimary;
 			}
 		}
 
@@ -315,7 +315,7 @@
 				}
 
 				&:before {
-					border-color: $action-primary transparent transparent transparent;
+					border-color: $actionPrimary transparent transparent transparent;
 					border-width: 7px;
 				}
 			}
@@ -378,7 +378,7 @@
 		#btn-add-gift-card {
 			@extend .btn-secondary;
 			height: $inputHeight;
-			border-radius: $border-radius;
+			border-radius: $borderRadius;
 		}
 
 		.steps-view {
@@ -390,7 +390,7 @@
 		p.notification {
 	    font-weight: bold;
 	    font-weight: 400;
-	    color:$muted-1;
+	    color:$muted1;
 	    &:not([style="display: none;"]) + .box-step {
 		    padding:0;
 		    border:none;
@@ -407,17 +407,17 @@
 
 		.v-custom-payment-item-wrap {
 			box-sizing: border-box;
-		  border-radius: $border-radius;
+		  border-radius: $borderRadius;
 		  background:#FFF;
-		  border:1px solid $muted-4;
-			color: $muted-1;
+		  border:1px solid $muted4;
+			color: $muted1;
 			transition: all ease 0.3s;
 			overflow: hidden;
 			margin-bottom: 10px;
 
 			&.active,
 			&:hover {
-				border-color:$action-primary;
+				border-color:$actionPrimary;
 				box-shadow:0 0 6px #ddd;
 			}
 
@@ -440,7 +440,7 @@
 						width:20px;
 						height:20px;
 						display:inline-block;
-						border:1px solid $muted-3;
+						border:1px solid $muted3;
 						border-radius:100%;
 						vertical-align: middle;
 						margin: -3px 10px 0 0;
@@ -467,13 +467,13 @@
 				}
 
 				&.active {
-					background: $action-secondary;
-					border-bottom:1px solid $action-primary;
+					background: $actionSecondary;
+					border-bottom:1px solid $actionPrimary;
 					.payment-group-item-text {
 
 						&:before {
-							background: $action-primary;
-							border-color:$action-primary;
+							background: $actionPrimary;
+							border-color:$actionPrimary;
 							box-shadow:inset 0 0 0 3px  #FFF;
 						}
 					}
@@ -486,7 +486,7 @@
 				&:hover {
 					.payment-group-item-text {
 						&:before {
-							border-color:$action-primary;
+							border-color:$actionPrimary;
 						}
 					}
 				}
@@ -551,7 +551,7 @@
     }
 
 	  .box-info {
-			color:$muted-1;
+			color:$muted1;
 			&[style*="display: block"] {
 				margin-top: 10px;
 			}
@@ -593,7 +593,7 @@
     	}
 
     	
-			#is-corporate-client {color:$action-primary;}
+			#is-corporate-client {color:$actionPrimary;}
 
 	  }
 
@@ -641,9 +641,9 @@
 			}
 			
 			.vtex-omnishipping-1-x-addressSummaryActive .address-summary {
-					background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='"+str-replace(""+$action-primary, '#', '%23')+"' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='"+str-replace(""+$action-primary, '#', '%23')+"' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
+					background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='"+str-replace(""+$actionPrimary, '#', '%23')+"' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='"+str-replace(""+$actionPrimary, '#', '%23')+"' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
 					background-position: 12px 9px;
-					border:1px solid $muted-4;
+					border:1px solid $muted4;
 			}
 
 			.vtex-omnishipping-1-x-SummaryItemGroup {}
@@ -662,24 +662,24 @@
 			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
 			.vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
 			.vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
-		    background:$action-primary;
-				border-color:$action-primary;
-				border-radius: $border-radius;
+		    background:$actionPrimary;
+				border-color:$actionPrimary;
+				border-radius: $borderRadius;
 			}
 
 			.vtex-pickup-points-modal-3-x-pickupViewOptionInctive {
-				color:$action-primary;
-				border-color:$action-primary;
-				border-radius: $border-radius;
+				color:$actionPrimary;
+				border-color:$actionPrimary;
+				border-radius: $borderRadius;
 			}
  
 			.vtex-omnishipping-1-x-addressItemOption:hover, 
 			.vtex-omnishipping-1-x-active {
-				background-color: $action-secondary;
+				background-color: $actionSecondary;
 			}
 
 			.shipping-method-toggle {
-		    border-color:$action-primary;
+		    border-color:$actionPrimary;
 			}
 
 
@@ -691,21 +691,21 @@
 
 			.vtex-omnishipping-1-x-linkEdit { text-decoration: underline; }
     	.vtex-omnishipping-1-x-deliveryChannelsWrapper,
-    	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $border-radius;}
+    	.vtex-omnishipping-1-x-deliveryChannelsToggle {border-radius: $borderRadius;}
     	.vtex-omnishipping-1-x-deliveryChannelsWrapper {
-				border:1px solid $muted-4;
+				border:1px solid $muted4;
 				width:100%;
 				overflow: hidden;
 				margin:0;
 			}
     	.vtex-omnishipping-1-x-summaryChange {
-		    background:$action-secondary;
-		    border-color:$muted-4;
-		    color:$action-primary;
+		    background:$actionSecondary;
+		    border-color:$muted4;
+		    color:$actionPrimary;
 			}
 
 			.vtex-omnishipping-1-x-leanShippingGroupList {
-				border-color:$muted-5;
+				border-color:$muted5;
 				margin: 0;
 			}
 
@@ -717,18 +717,18 @@
 
 			.vtex-pickup-points-modal-3-x-modalDetailsBackLnk svg path,
 			.vtex-pickup-points-modal-3-x-modalDetailsBackLnk {
-			    color: $muted-2;
-			    fill:$muted-2;
+			    color: $muted2;
+			    fill:$muted2;
 			}
 
 			.vtex-pickup-points-modal-3-x-primary {
 			  outline:none;
-			  background:$action-primary;
-			  border-color:$action-primary;
+			  background:$actionPrimary;
+			  border-color:$actionPrimary;
 			}
 
 			.vtex-omnishipping-1-x-pickupPointChange {
-				border-color:$action-primary;
+				border-color:$actionPrimary;
 			}
 
 			.vtex-omnishipping-1-x-address p {clear:both;}
@@ -739,8 +739,8 @@
 
 			.vtex-omnishipping-1-x-container.shp-pickup-receiver {
 				display: block;
-				svg.person-blue path {fill: $action-primary;}
-				.vtex-omnishipping-1-x-btn {color: $action-primary;}
+				svg.person-blue path {fill: $actionPrimary;}
+				.vtex-omnishipping-1-x-btn {color: $actionPrimary;}
 			}
     }
 
@@ -809,8 +809,8 @@
 			width: 10px;
 	    height: 10px;
 	    display: inline-block;
-	    background:$action-secondary;
-	    color:$action-primary;
+	    background:$actionSecondary;
+	    color:$actionPrimary;
 		}
 
 		.summary-template-holder {
@@ -831,7 +831,7 @@
 			}
 
 			.summary > .summary-coupon-wrap {
-				border-top:1px solid $muted-4;
+				border-top:1px solid $muted4;
 				padding:8px 0;
 			}
 
@@ -847,7 +847,7 @@
 	    padding: 10px 0;
 	    margin: 0;
 	    border: none;
-	    border-bottom: 1px solid $muted-5;
+	    border-bottom: 1px solid $muted5;
 			&:last-child {border:none;}
 			
 			ul.service-list.unstyled {
@@ -860,9 +860,9 @@
 			}
 			.service-item,
 			&.v-custom-indexed-item {
-				background:$action-secondary;
-				border:1px dashed $muted-4;
-				border-radius:$border-radius;
+				background:$actionSecondary;
+				border:1px dashed $muted4;
+				border-radius:$borderRadius;
 
 				width: 100%;
 				display: flex;
@@ -901,7 +901,7 @@
 			}
 
 			.url {
-				border-radius: $border-radius;
+				border-radius: $borderRadius;
     		overflow: hidden;
 			}
 			
@@ -915,7 +915,7 @@
 	    position: absolute;
 	    top:0px;
 	    right: 7px;
-	    color:$action-primary;
+	    color:$actionPrimary;
 	    text-decoration: underline;
 	    @media (max-width: 490px) {
 	    	display: none;
@@ -926,8 +926,8 @@
 
 		.summary-totalizers {
 			 tbody {
-		    border-top:1px solid $muted-4;
-		    border-bottom:1px solid $muted-4;
+		    border-top:1px solid $muted4;
+		    border-bottom:1px solid $muted4;
 		    padding: 14px 0;
   			display: block;
 
@@ -968,7 +968,7 @@
 		        text-align: right !important;
 		        margin-left: auto;
 		        float: right;
-		        color:$action-primary;
+		        color:$actionPrimary;
 		      }
 		    }
 		  }
@@ -985,16 +985,16 @@
 
 			&::-webkit-scrollbar-track {
 				background: transparent;
-				border-radius: $border-radius
+				border-radius: $borderRadius
 			}
 
 			&::-webkit-scrollbar-thumb {
-				background: $muted-4;
+				background: $muted4;
 				border-radius: 30px
 			}
 
 			&:hover::-webkit-scrollbar-thumb {
-				background: $muted-5;
+				background: $muted5;
 			}
 
 			.cart-items:not(.v-loaded) {
@@ -1069,7 +1069,7 @@
 			line-height: 20px;
 			max-width: 100%;
 			width: 100%;
-			font-family:$font-family;
+			font-family:$fontFamily;
 			max-height: 100px;
 		}
 	}
@@ -1080,7 +1080,7 @@
 	  padding: 17px 20px;
 	  text-align: left;
 	  box-sizing: border-box;
-	  border-radius:$border-radius;
+	  border-radius:$borderRadius;
 
 	  border: $bordersContainers;
 	  
@@ -1198,11 +1198,11 @@
 	.label-vertical-group {
 		padding: 9px;
 		&:hover {
-			color:$action-primary;
+			color:$actionPrimary;
 		}
 		&.active {
-			color:$action-primary;
-			background:$action-secondary;
+			color:$actionPrimary;
+			background:$actionSecondary;
 		}
 		
 
@@ -1219,18 +1219,18 @@
 			top: 9px;
 		}
 		&.UseAnotherCard {
-			background-color: $muted-5;
+			background-color: $muted5;
 			padding:4px;
 			font-size: 11px;
     	text-decoration: underline;
 
 			#use-another-card {
-				color:$muted-2;
+				color:$muted2;
 			}
 			&:hover {
 				#use-another-card {
 					text-decoration: underline;
-					color:$muted-3;
+					color:$muted3;
 				}
 			}
 		}

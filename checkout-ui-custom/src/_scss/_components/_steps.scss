@@ -5,8 +5,8 @@
 
   %countingStepsNormal {
     background: #FFF;
-    border:1px solid $muted-1;
-    color:$muted-1;
+    border:1px solid $muted1;
+    color:$muted1;
 
     width:$numberStepSize;
     height: $numberStepSize;
@@ -16,8 +16,8 @@
   }
 
   %countingStepsActive {
-    background:$action-primary;
-    border-color:$action-primary;
+    background:$actionPrimary;
+    border-color:$actionPrimary;
     color:#FFF
   }
 
@@ -61,7 +61,7 @@
       &:before {
         width: 0;
         height: 4px; 
-        background:$action-primary; 
+        background:$actionPrimary; 
         display: block;
         content:"";
         position: fixed;
@@ -79,7 +79,7 @@
 
 
   %checkout-steps-active {
-    color:$muted-1;
+    color:$muted1;
     font-weight: bold;
     pointer-events: initial;
   }
@@ -88,7 +88,7 @@
     &.v-custom-step-cart .checkout-steps_item_cart {
       opacity: 1;
       .text {@extend %checkout-steps-active;pointer-events: none;}
-      &:before {background: $action-primary;border-color: $action-primary;}
+      &:before {background: $actionPrimary;border-color: $actionPrimary;}
     }
     &.v-custom-step-email,
     &.v-custom-step-profile{
@@ -98,7 +98,7 @@
       .checkout-steps_item_identification {
         opacity: 1;
         .text {@extend %checkout-steps-active;}
-        &:before {background: $action-primary;border-color: $action-primary;}
+        &:before {background: $actionPrimary;border-color: $actionPrimary;}
       }
       .checkout-steps_item_identification .text {pointer-events: none;}
 
@@ -114,7 +114,7 @@
       .checkout-steps_item_shipping {
         opacity: 1;
         .text {@extend %checkout-steps-active;}
-        &:before {background: $action-primary;border-color: $action-primary;}
+        &:before {background: $actionPrimary;border-color: $actionPrimary;}
       }
       .checkout-steps_item_shipping .text {pointer-events: none;}
     } 
@@ -127,7 +127,7 @@
       .checkout-steps_item_payment {
         opacity: 1;
         .text {@extend %checkout-steps-active;}
-        &:before {background: $action-primary;border-color: $action-primary;}
+        &:before {background: $actionPrimary;border-color: $actionPrimary;}
       }
       .checkout-steps_item_payment .text {pointer-events: none;}
     } 
@@ -180,7 +180,7 @@
     &_bar_inner-active {
       width: calc(100% - 20%);
       height: 3px;
-      background: $action-secondary;
+      background: $actionSecondary;
       display: block;
       margin: 0 auto;
       position: absolute;
@@ -190,7 +190,7 @@
     }
     */
 
-    &_bar_inner-active {width:0;background: $action-primary;}
+    &_bar_inner-active {width:0;background: $actionPrimary;}
 
     &_items {
       display:flex;
@@ -209,7 +209,7 @@
       &:after {
         content:"";
         height:2px;
-        background: $action-primary;
+        background: $actionPrimary;
         margin: 0px 5px;
         min-width: 10px;
         
@@ -219,7 +219,7 @@
         clear: both;
         display: flex;
         align-items: center;
-        color:$muted-3;
+        color:$muted3;
         font-weight: 500;
         cursor:pointer;
         pointer-events: none;
@@ -228,8 +228,8 @@
           content:  "";
           width: 7px;
           height: 7px;
-          background: $action-primary;
-          border: 2px solid $action-primary;
+          background: $actionPrimary;
+          border: 2px solid $actionPrimary;
           display: inline-block;
           border-radius:100%;
           margin-right: 7px;

@@ -1,48 +1,48 @@
 // IMPORTED FROM STORE THEME
 
 $base: "{{base}}"; // body bg...
-$base--inverted: "{{base--inverted}}"; // general
+$baseInverted: "{{base--inverted}}"; // general
 
-$action-primary: "{{action-primary}}"; //links, buttons borders, backgrounds
-$action-primary--darken: "{{action-primary--darken}}"; // usually 15% more
+$actionPrimary: "{{action-primary}}"; //links, buttons borders, backgrounds
+$actionPrimaryDarken: "{{action-primary--darken}}"; // usually 15% more
 
-$action-secondary: "{{action-secondary}}";
+$actionSecondary: "{{action-secondary}}";
 
 
 $emphasis: "{{emphasis}}";
 $disabled: "{{disabled}}";
 
 $success: "{{success}}"; // success button, cta, usually the "checkout", "login", "pay"
-$success--darken: "{{success--darken}}";  // usually 15% more
-$success--faded: "{{success--faded}}";
+$successDarken: "{{success--darken}}";  // usually 15% more
+$successFaded: "{{success--faded}}";
 
 $danger: "{{danger}}";
-$danger--faded: "{{danger--faded}}"; 
+$dangerFaded: "{{danger--faded}}"; 
 
 $warning: "{{warning}}";
-$warning--faded: "{{warning--faded}}";
+$warningFaded: "{{warning--faded}}";
 
-$muted-1: "{{muted-1}}"; //titles & borders
-$muted-2: "{{muted-2}}"; //borders
-$muted-3: "{{muted-3}}"; //borders
-$muted-4: "{{muted-4}}"; //borders
-$muted-5: "{{muted-5}}"; //borders
-$muted-6: "{{muted-1}}"; //borders & bg
+$muted1: "{{muted-1}}"; //titles & borders
+$muted2: "{{muted-2}}"; //borders
+$muted3: "{{muted-3}}"; //borders
+$muted4: "{{muted-4}}"; //borders
+$muted5: "{{muted-5}}"; //borders
+$muted6: "{{muted-1}}"; //borders & bg
 
 // CHECKOUT VARS
 
-$font-size: "{{font-size}}";
-$border-radius:"{{border-radius}}";
-$btn-border-radius:"{{btn-border-radius}}";
+$fontSize: "{{font-size}}";
+$borderRadius:"{{border-radius}}";
+$btnBorderRadius:"{{btn-border-radius}}";
 
 $maxWrapper: "{{maxWrapper}}";
 $inputHeight:"{{inputHeight}}";
 
-$bordersContainers:"{{bordersContainers}}"; // 2px solid $muted-5
+$bordersContainers:"{{bordersContainers}}"; // 2px solid $muted5
 
 //font
 
-$font-family: "{{font-family}}";
+$fontFamily: "{{font-family}}";
 
 
 // NOT included on admin -- kept for future (no change!)

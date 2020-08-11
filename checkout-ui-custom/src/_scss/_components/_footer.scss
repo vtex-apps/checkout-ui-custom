@@ -2,7 +2,7 @@
 	clear: both;
 	text-align: center;
 	padding: 2px 0;
-	border-top:1px solid $muted-4;
+	border-top:1px solid $muted4;
 
 	position: absolute;
 	bottom: 0;
@@ -26,6 +26,6 @@
 	}
 
 	svg, svg path {
-		fill:$muted-3;
+		fill:$muted3;
 	}
 }

@@ -18,8 +18,8 @@ body.js-vcustom-showNoteField {
     border: 1px dashed $warning;
     padding: 1px;
     font-size: 11px;
-    background: $warning--faded;
-    border-radius: $border-radius;
+    background: $warningFaded;
+    border-radius: $borderRadius;
     margin-top:4px !important;
     clear: both;
   }
@@ -30,13 +30,13 @@ body.js-vcustom-showNoteField {
 
 .v-custom-addLabels-active-flag {
   background:#FFF;
-  color: $muted-1;
+  color: $muted1;
   padding: 1px 4px;
-  border-radius: $border-radius;
+  border-radius: $borderRadius;
   display: inline-block;
   align-items: center;
   font-size: 11px;
-  border:1px solid $muted-4;
+  border:1px solid $muted4;
 
   &:before {
     content:"";
@@ -62,7 +62,7 @@ body.js-vcustom-showNoteField {
   .v-custom-assemblies {
     margin: 10px 0 3px 0;
     overflow: hidden;
-    border-top: 1px solid $muted-4;
+    border-top: 1px solid $muted4;
     padding-top: 7px;
     @media(max-width: 490px) {
       width: 100%;

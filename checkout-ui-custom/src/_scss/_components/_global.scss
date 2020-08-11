@@ -1,7 +1,7 @@
 // _global.scss
 
 body {
-  font-family:$font-family;
+  font-family:$fontFamily;
   min-width: initial !important;
   padding: 0;
   background: $base;
@@ -9,14 +9,14 @@ body {
  
   min-height: 93vh;
   position: relative;
-  font-size: $font-size;
+  font-size: $fontSize;
 
   overflow-x:hidden;
 
   a {
-    color:$action-primary;
+    color:$actionPrimary;
     &:hover {
-      color:$action-primary--darken;
+      color:$actionPrimaryDarken;
     }
   }
 
@@ -43,7 +43,7 @@ body {
 
 .onda-v1 .br-pill,
 .step, .cart, .totalizers {
-	border-radius:$border-radius;
+	border-radius:$borderRadius;
 }
 
 .container-main {
@@ -102,7 +102,7 @@ body {
   h1#orderform-title {
   	font-size: 22px !important;
     font-weight: 400 !important;
-    color: $muted-1 !important;
+    color: $muted1 !important;
   }
 
   h1#orderform-title {display:none !important;}
@@ -117,7 +117,7 @@ body {
   .v-custom-assemblies {
     margin: 10px 0 3px 0;
     overflow: hidden;
-    border-top: 1px solid $muted-4;
+    border-top: 1px solid $muted4;
     padding-top: 7px;
     @media(max-width: 490px) {
       width: 100%;

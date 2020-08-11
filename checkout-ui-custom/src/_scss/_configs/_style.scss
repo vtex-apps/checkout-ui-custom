@@ -1,48 +1,48 @@
 // IMPORTED FROM STORE THEME
 
 $base: #f4f2f2; // body bg...
-$base--inverted: #21364f; // general
+$baseInverted: #21364f; // general
 
-$action-primary: #1a73e8; //links, buttons borders, backgrounds
-$action-primary--darken: #1d63be; // usually 15% more
+$actionPrimary: #1a73e8; //links, buttons borders, backgrounds
+$actionPrimaryDarken: #1d63be; // usually 15% more
 
-$action-secondary: #f1f7ff;
+$actionSecondary: #f1f7ff;
 
 
 $emphasis: #000000;
 $disabled: #999999;
 
 $success: #2fba2d; // success button, cta, usually the "checkout", "login", "pay"
-$success--darken: #269e24;  // usually 15% more
-$success--faded: #beffa5;
+$successDarken: #269e24;  // usually 15% more
+$successFaded: #beffa5;
 
 $danger: #ff4c4c;
-$danger--faded: #ffe6e6; 
+$dangerFaded: #ffe6e6; 
 
 $warning: #ffb100;
-$warning--faded: #fff6e0;
+$warningFaded: #fff6e0;
 
-$muted-1: #323232; //titles & borders
-$muted-2: #676767; //borders
-$muted-3: #999999; //borders
-$muted-4: #cbcbcb; //borders
-$muted-5: #eee; //borders
-$muted-6: #f3f3f3; //borders & bg
+$muted1: #323232; //titles & borders
+$muted2: #676767; //borders
+$muted3: #999999; //borders
+$muted4: #cbcbcb; //borders
+$muted5: #eee; //borders
+$muted6: #f3f3f3; //borders & bg
 
 // CHECKOUT VARS
 
-$font-size: 12px;
-$border-radius:4px;
-$btn-border-radius:30px;
+$fontSize: 12px;
+$borderRadius:4px;
+$btnBorderRadius:30px;
 
 $maxWrapper: 980px;
 $inputHeight:40px;
 
-$bordersContainers:none; // 2px solid $muted-5
+$bordersContainers:none; // 2px solid $muted5
 
 //font
 
-$font-family: 'Roboto', sans-serif;
+$fontFamily: 'Roboto', sans-serif;
 
 
 // NOT included on admin -- kept for future (no change!)
