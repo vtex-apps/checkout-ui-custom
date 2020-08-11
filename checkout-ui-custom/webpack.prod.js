@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require("webpack");
 
-
 var config = {
   // TODO: Add common Configuration
   module: {},
@@ -49,8 +48,8 @@ var appConfig = Object.assign({}, config,{
     './src/app.checkout6-custom.scss'
   ],
   output: {
-    filename: 'app.checkout6-custom.js',
-    path: path.resolve(__dirname, './app'),
+    filename: 'checkout6-custom.js',
+    path: path.resolve(__dirname, '../node/templates'),
   },
   module: {
     rules: [
@@ -60,7 +59,7 @@ var appConfig = Object.assign({}, config,{
           {
             loader: 'file-loader',
             options: {
-              name: '[name].css',
+              name: 'checkout6-custom.css',
             }
           },
           {
