@@ -18,7 +18,8 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "lib":["DOM"]
   },
   "typeAcquisition": {
     "enable": false

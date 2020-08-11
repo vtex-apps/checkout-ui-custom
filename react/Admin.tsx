@@ -66,6 +66,8 @@ const defaultConfiguration = {
   },
   css: '',
   javascript: '',
+  javascriptActive: false,
+  cssActive: false,
 }
 
 let email = window.localStorage.getItem('adminEmail') ?? null
@@ -136,21 +138,33 @@ const Admin: FC<any & WrappedComponentProps> = ({
     })
   }
 
-  const handleCssChange = (css: string) => {
+  const handleCssChange = ({ value: css, active: cssActive }: any) => {
     setState({
       ...state,
       css,
+      cssActive,
     })
   }
 
-  const handleJSChange = (javascript: string) => {
+  const handleJSChange = ({
+    value: javascript,
+    active: javascriptActive,
+  }: any) => {
     setState({
       ...state,
       javascript,
+      javascriptActive,
     })
   }
 
-  const handleLoad = ({ javascript, css, layout, colors }: any) => {
+  const handleLoad = ({
+    javascript,
+    css,
+    layout,
+    colors,
+    javascriptActive,
+    cssActive,
+  }: any) => {
     setState({
       ...state,
       currentTab: 1,
@@ -158,6 +172,8 @@ const Admin: FC<any & WrappedComponentProps> = ({
       colors,
       css,
       javascript,
+      javascriptActive,
+      cssActive,
     })
   }
 
@@ -175,6 +191,8 @@ const Admin: FC<any & WrappedComponentProps> = ({
         colors: state.colors,
         css: state.css,
         javascript: state.javascript,
+        javascriptActive: state.javascriptActive,
+        cssActive: state.cssActive,
       },
     })
   }
@@ -256,7 +274,10 @@ const Admin: FC<any & WrappedComponentProps> = ({
           >
             <Javascript
               onChange={handleJSChange}
-              initialState={state.javascript}
+              initialState={{
+                value: state.javascript,
+                active: state.javascriptActive,
+              }}
             />
           </Tab>
           <Tab
@@ -266,7 +287,13 @@ const Admin: FC<any & WrappedComponentProps> = ({
             active={state.currentTab === 4}
             onClick={() => setState({ ...state, currentTab: 4 })}
           >
-            <Css onChange={handleCssChange} initialState={state.css} />
+            <Css
+              onChange={handleCssChange}
+              initialState={{
+                value: state.css,
+                active: state.cssActive,
+              }}
+            />
           </Tab>
           <Tab
             label={intl.formatMessage({
@@ -287,7 +314,6 @@ const Admin: FC<any & WrappedComponentProps> = ({
           }}
         >
           <div className="dark-gray">
-            <h3>FAKE</h3>
             <ul className="list pl0">
               <li>
                 <span className="w-100 mw1 dib">
@@ -298,14 +324,6 @@ const Admin: FC<any & WrappedComponentProps> = ({
                   {errorSave && <IconDeny size={12} />}
                   {calledSave === false && !errorSave && <span>-</span>}
                 </span>{' '}
-                Saving changes
-              </li>
-              <li>
-                <span className="w-100 mw1 dib"> </span>
-                Building files
-              </li>
-              <li>
-                <span className="w-100 mw1 dib"> </span>
                 Publishing to <strong>{state.workspace}</strong>
               </li>
             </ul>

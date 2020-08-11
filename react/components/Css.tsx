@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { defineMessages, injectIntl, WrappedComponentProps } from 'react-intl'
 import PropTypes from 'prop-types'
-import { Textarea } from 'vtex.styleguide'
+import { Textarea, Toggle } from 'vtex.styleguide'
 
 const messages = defineMessages({
   label: {
@@ -20,14 +20,16 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
   intl,
 }) => {
   const [state, setState] = useState<any>({
-    value: initialState,
+    value: initialState.value,
+    active: initialState.active,
   })
 
   const handleChange = (e: any) => {
     const { value } = e.target
+    const newState = { ...state, value }
 
-    onChange(value)
-    setState({ value })
+    onChange(newState)
+    setState(newState)
   }
 
   const parseText = (text: string) => {
@@ -46,6 +48,14 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
         label={intl.formatMessage(messages.label)}
         helpText={intl.formatMessage(messages.helper)}
       />
+      <div className="mt6 dib">
+        <Toggle
+          label="Activate"
+          size="large"
+          checked={state.active}
+          onChange={() => setState({ ...state, active: !state.active })}
+        />
+      </div>
     </div>
   )
 }
