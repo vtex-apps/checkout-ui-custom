@@ -1,10 +1,10 @@
 // IMPORTED FROM STORE THEME
 
 $base: "{{base}}"; // body bg...
-$baseInverted: "{{base--inverted}}"; // general
+$baseInverted: "{{$baseInverted}}"; // general
 
-$actionPrimary: "{{action-primary}}"; //links, buttons borders, backgrounds
-$actionPrimaryDarken: "{{action-primary--darken}}"; // usually 15% more
+$actionPrimary: "{{actionPrimary}}"; //links, buttons borders, backgrounds
+$actionPrimaryDarken: "{{actionPrimaryDarken}}"; // usually 15% more
 
 $actionSecondary: "{{action-secondary}}";
 
@@ -13,27 +13,27 @@ $emphasis: "{{emphasis}}";
 $disabled: "{{disabled}}";
 
 $success: "{{success}}"; // success button, cta, usually the "checkout", "login", "pay"
-$successDarken: "{{success--darken}}";  // usually 15% more
-$successFaded: "{{success--faded}}";
+$successDarken: "{{successDarken}}";  // usually 15% more
+$successFaded: "{{successFaded}}";
 
 $danger: "{{danger}}";
-$dangerFaded: "{{danger--faded}}"; 
+$dangerFaded: "{{dangerFaded}}"; 
 
 $warning: "{{warning}}";
-$warningFaded: "{{warning--faded}}";
+$warningFaded: "{{warningFaded}}";
 
-$muted1: "{{muted-1}}"; //titles & borders
-$muted2: "{{muted-2}}"; //borders
-$muted3: "{{muted-3}}"; //borders
-$muted4: "{{muted-4}}"; //borders
-$muted5: "{{muted-5}}"; //borders
-$muted6: "{{muted-1}}"; //borders & bg
+$muted1: "{{muted1}}"; //titles & borders
+$muted2: "{{muted2}}"; //borders
+$muted3: "{{muted3}}"; //borders
+$muted4: "{{muted4}}"; //borders
+$muted5: "{{muted5}}"; //borders
+$muted6: "{{muted6}}"; //borders & bg
 
 // CHECKOUT VARS
 
-$fontSize: "{{font-size}}";
-$borderRadius:"{{border-radius}}";
-$btnBorderRadius:"{{btn-border-radius}}";
+$fontSize: "{{fontSize}}";
+$borderRadius:"{{borderRadius}}";
+$btnBorderRadius:"{{btnBorderRadius}}";
 
 $maxWrapper: "{{maxWrapper}}";
 $inputHeight:"{{inputHeight}}";
@@ -42,7 +42,7 @@ $bordersContainers:"{{bordersContainers}}"; // 2px solid $muted5
 
 //font
 
-$fontFamily: "{{font-family}}";
+$fontFamily: "{{fontFamily}}";
 
 
 // NOT included on admin -- kept for future (no change!)
