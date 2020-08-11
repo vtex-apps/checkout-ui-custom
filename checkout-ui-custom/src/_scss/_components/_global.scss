@@ -75,7 +75,6 @@ body {
   .orderform-template,
   .cart-template {
     display: flex;
-    flex-flow: wrap;
     justify-content: space-between;
     align-items: flex-start;
     transition:position ease 0.8s, opacity ease 0.8s, margin ease 0.8s;
