@@ -4,7 +4,8 @@
   "dependencies": {
     "co-body": "^6.0.0",
     "jsonwebtoken": "^8.5.0",
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "@vtex/api": "6.36.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.25",

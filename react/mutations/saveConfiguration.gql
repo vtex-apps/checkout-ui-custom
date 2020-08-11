@@ -3,6 +3,8 @@ mutation saveConfiguration(
   $layout: CustomFields
   $javascript: String
   $css: String
+  $javascriptActive: Boolean
+  $cssActive: Boolean
   $colors: CustomFields
 ) {
   saveChanges(
@@ -10,6 +12,8 @@ mutation saveConfiguration(
     layout: $layout
     javascript: $javascript
     css: $css
+    javascriptActive: $javascriptActive
+    cssActive: $cssActive
     colors: $colors
   )
 }

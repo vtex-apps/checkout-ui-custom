@@ -4,5 +4,7 @@ query GetById($id: String) {
     javascript
     layout
     colors
+    javascriptActive
+    cssActive
   }
 }

@@ -1,9 +1,12 @@
 /* eslint-disable no-console */
+import { promises as fs } from 'fs'
+import * as path from 'path'
+
 import { Apps } from '@vtex/api'
 
 import GraphQLError from '../utils/GraphQLError'
 
-const SCHEMA_VERSION = 'v0.1.1'
+const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
 
 const routes = {
@@ -64,33 +67,82 @@ const schema = {
       type: ['null', 'string'],
       title: 'Custom CSS',
     },
+    javascriptActive: {
+      type: 'boolean',
+      title: 'Activate custom Javascript',
+    },
+    cssActive: {
+      type: 'boolean',
+      title: 'Activate custom CSS',
+    },
+    javascriptBuild: {
+      type: ['null', 'string'],
+      title: 'Javascript Build',
+    },
+    cssBuild: {
+      type: ['null', 'string'],
+      title: 'CSS Build',
+    },
   },
   'v-indexed': ['email', 'workspace', 'creationDate', 'appVersion'],
   'v-default-fields': ['email', 'workspace', 'creationDate', 'appVersion'],
   'v-cache': false,
 }
 
+const replacer = (template: string, keys: any) => {
+  return template.replace(/{{\w+}}/g, (key: string) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore: Object is possibly 'null'.
+    return keys[key.match(/\w+/)[0]] || ''
+  })
+}
+
 export const resolvers = {
   Routes: {},
   Mutation: {
     saveChanges: async (_: any, params: any, ctx: any) => {
+      const keys = { ...params.layout, ...params.colors }
+      const cssTemplate = await fs.readFile(
+        path.join(__dirname, '../templates/checkout6-custom.css'),
+        {
+          encoding: 'utf-8',
+        }
+      )
+
+      const cssBuild =
+        replacer(cssTemplate, keys) + String(params.cssActive ? params.css : '')
+
+      const jsTemplate = await fs.readFile(
+        path.join(__dirname, '../templates/checkout6-custom.js'),
+        {
+          encoding: 'utf-8',
+        }
+      )
+
+      const javascriptBuild =
+        replacer(jsTemplate, keys) +
+        String(params.javascriptActive ? params.javascript : '')
+
       const {
         clients: { masterdata },
       } = ctx
 
       const creationDate = String(new Date().getTime())
       const appVersion = process.env.VTEX_APP_VERSION
+
       const data = await masterdata.createDocument({
         dataEntity: DATA_ENTITY,
         fields: {
           ...params,
+          javascriptBuild,
+          cssBuild,
           creationDate,
           appVersion,
         },
         schema: SCHEMA_VERSION,
       })
 
-      return data
+      return JSON.stringify(data)
     },
   },
   Query: {
@@ -123,8 +175,12 @@ export const resolvers = {
               settings.adminSetup.hasSchema = true
               settings.adminSetup.schemaVersion = SCHEMA_VERSION
             })
-            .catch(() => {
+            .catch((e: any) => {
               settings.adminSetup.hasSchema = false
+              if (e.response.status === 304) {
+                settings.adminSetup.hasSchema = true
+                settings.adminSetup.schemaVersion = SCHEMA_VERSION
+              }
             })
         } catch (e) {
           settings.adminSetup.hasSchema = false
@@ -160,7 +216,14 @@ export const resolvers = {
 
       const data = await masterdata.getDocument({
         dataEntity: DATA_ENTITY,
-        fields: ['css', 'javascript', 'layout', 'colors'],
+        fields: [
+          'css',
+          'javascript',
+          'layout',
+          'colors',
+          'javascriptActive',
+          'cssActive',
+        ],
         id: params.id,
       })
 
@@ -186,7 +249,7 @@ export const resolvers = {
 
       if (!last.length) return {}
 
-      const { data } = await masterdata.getDocument({
+      const data = await masterdata.getDocument({
         dataEntity: DATA_ENTITY,
         id: last[0].id,
         fields: [
@@ -199,6 +262,8 @@ export const resolvers = {
           'javascript',
           'css',
           'colors',
+          'javascriptActive',
+          'cssActive',
         ],
       })
 
