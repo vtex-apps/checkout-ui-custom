@@ -70,7 +70,7 @@ const defaultConfiguration = {
   cssActive: false,
 }
 
-let email = window.localStorage.getItem('adminEmail') ?? null
+let email = window.localStorage.getItem('adminEmail') || null
 
 const Admin: FC<any & WrappedComponentProps> = ({
   intl,
