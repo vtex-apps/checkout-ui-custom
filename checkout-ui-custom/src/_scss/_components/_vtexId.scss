@@ -1,7 +1,7 @@
 
 #vtexIdContainer {
 
-  a {color:$action-primary;}
+  a {color:$actionPrimary;}
 
   input {@extend %input-style;}
 
@@ -10,11 +10,11 @@
       background: none;
     }
     .btn {
-      border-radius:$btn-border-radius;
+      border-radius:$btnBorderRadius;
       height: $inputHeight;
       line-height: $inputHeight;
       box-shadow: none !important;
-      font-size: $font-size;
+      font-size: $fontSize;
       padding:0 30px;
       &.btn-success {
         background: $success;
@@ -23,8 +23,8 @@
         &:hover,
         &:focus,
         &:active {
-          background:$success--darken; 
-          border:1px solid $success--darken; 
+          background:$successDarken; 
+          border:1px solid $successDarken; 
         }
       }
 

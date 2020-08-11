@@ -18,10 +18,10 @@
     line-height: 20px;
 
     small {
-      font-size: $font-size;
+      font-size: $fontSize;
       padding: 0;
       margin: 0;
-      color: $muted-1;
+      color: $muted1;
       font-weight: 400;
       margin: 0;
       vertical-align: top;
@@ -66,7 +66,7 @@
 
 
   a#orderform-to-cart {
-    color:$action-primary;
+    color:$actionPrimary;
   }
 
   .client-email.input.text {
@@ -120,7 +120,7 @@
     box-sizing:border-box;
     .icon-ok, 
     h3 {
-      color:$action-primary;
+      color:$actionPrimary;
     }
 
     @media(max-width: 490px) {
@@ -128,7 +128,7 @@
     }
 
     .icon-lock {
-      color: $muted-5;
+      color: $muted5;
     }
   }
 
@@ -168,7 +168,7 @@
       pointer-events: none;
       cursor: text;
       background: none !important;
-      color:$muted-2;
+      color:$muted2;
     }
 
     .emailInfo,

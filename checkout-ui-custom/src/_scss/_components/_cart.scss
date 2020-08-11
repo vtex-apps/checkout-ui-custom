@@ -35,7 +35,7 @@ h1#cart-title {display:none !important;}
 	padding: 20px 30px;
 	background: #fff;
 	margin: 0;
-	border-radius: $border-radius;
+	border-radius: $borderRadius;
 	@media (max-width: 490px) {
 		padding: 12px;
 	}
@@ -112,7 +112,7 @@ h1#cart-title {display:none !important;}
       width:100%;
       display: flex;
       flex-wrap:wrap;
-      border-top:1px solid  $muted-5;
+      border-top:1px solid  $muted5;
 
       @media(max-width: 490px) {
         margin-top:0 !important;
@@ -214,7 +214,7 @@ h1#cart-title {display:none !important;}
           .v-custom-quantity-price {
             &__best {
               font-weight:bold;
-              font-size:$font-size;
+              font-size:$fontSize;
             }
             &__list {
               display: block;
@@ -227,12 +227,12 @@ h1#cart-title {display:none !important;}
               }
               &--list {
                 text-decoration: line-through;
-                color: $muted-3;
+                color: $muted3;
               }
 
               &,
               &--selling {
-                color: $muted-2;
+                color: $muted2;
                 font-size: 10px;
                 line-height: 11px;
               }
@@ -335,12 +335,12 @@ h1#cart-title {display:none !important;}
         
 
         .field-help {
-          background:$action-primary;
-          border-color:$action-primary;
+          background:$actionPrimary;
+          border-color:$actionPrimary;
         }
 
         i.icon-question-sign {
-          color:$action-primary;
+          color:$actionPrimary;
         }
 
         .add-item-attachment-container,
@@ -417,9 +417,9 @@ h1#cart-title {display:none !important;}
 
         .v-custom-product-item-wrap,
         .v-custom-trservice-wrap {
-          background:$action-secondary;
-          border:1px dashed $muted-4;
-          border-radius:$border-radius;
+          background:$actionSecondary;
+          border:1px dashed $muted4;
+          border-radius:$borderRadius;
 
           width: 100%;
           display: flex;
@@ -513,7 +513,7 @@ h1#cart-title {display:none !important;}
 
     a {
       overflow: hidden;
-      border-radius: $border-radius;
+      border-radius: $borderRadius;
     }
     a {margin-right:20px;}
     a,
@@ -544,8 +544,8 @@ h1#cart-title {display:none !important;}
     margin: 0 0 0 10px;
     display:flex;
     padding: 0;
-    border-radius: $border-radius;
-    border:1px solid $muted-4;
+    border-radius: $borderRadius;
+    border:1px solid $muted4;
     float:left;
     
     input {
@@ -617,7 +617,7 @@ h1#cart-title {display:none !important;}
 	text-align: left;
 
 	box-sizing: border-box;
-	border-radius: $border-radius;
+	border-radius: $borderRadius;
 
 	position: sticky;
 	top: 20px;
@@ -647,7 +647,7 @@ h1#cart-title {display:none !important;}
 
 			p {
 				margin: 0;
-				color: $muted-2;
+				color: $muted2;
 				label {
 					cursor: initial;
 					font-size: 13px;
@@ -705,11 +705,11 @@ h1#cart-title {display:none !important;}
 				&.info {
 					align-items: center;
 					padding: 0;
-					color: $muted-1;
+					color: $muted1;
 					> span {
 						text-align: left;
 						margin-right: 10px;
-						color: $action-primary;
+						color: $actionPrimary;
 					}
 				}
 				input {
@@ -811,8 +811,8 @@ h1#cart-title {display:none !important;}
 	}
 
 	tbody {
-		border-top: 1px solid $muted-4;
-		border-bottom: 1px solid $muted-4;
+		border-top: 1px solid $muted4;
+		border-bottom: 1px solid $muted4;
 		padding: 15px 0;
 		display: block;
 
@@ -820,7 +820,7 @@ h1#cart-title {display:none !important;}
 			display: inline-block;
 			text-align: left !important;
 			width: auto;
-			color: $muted-2;
+			color: $muted2;
 			font-size: 13px;
 			padding: 0 0 3px 0 !important;
 			&.monetary {
@@ -833,14 +833,14 @@ h1#cart-title {display:none !important;}
 	tfoot {
 		tr td {
 			padding: 14px 0 !important;
-			color: $muted-1;
+			color: $muted1;
 			font-size: 14px;
 			font-weight: bold;
 			&.monetary {
 				text-align: right !important;
 				margin-left: auto;
 				float: right;
-				color: $action-primary;
+				color: $actionPrimary;
 			}
 		}
 	}
@@ -878,14 +878,14 @@ margin:20px 0 0px 0 !important;
     label {
       background:#FFF;
       padding:10px 0;
-      border-radius:$border-radius;
+      border-radius:$borderRadius;
     }
   }
 
   .srp-delivery-info {
     .b--light-gray {
       background:#FFF;
-      border-radius:$border-radius;
+      border-radius:$borderRadius;
     }
   }
   select,
@@ -897,19 +897,19 @@ margin:20px 0 0px 0 !important;
   form.srp-postal-code__form.dib.relative {
     width: 100%;
   }
-  button.shp-open-options {border-color:$action-primary--darken;}
+  button.shp-open-options {border-color:$actionPrimaryDarken;}
   .onda-v1 .blue {
-    color:$action-primary;
+    color:$actionPrimary;
     outline: none;
   }
   .onda-v1 .b--blue {
-    border-color:$action-primary;
+    border-color:$actionPrimary;
     outline: none;
     
   }
 
   .onda-v1 .bg-blue {
-    background:$action-primary;
+    background:$actionPrimary;
     outline: initial;
     
   }
@@ -921,7 +921,7 @@ margin:20px 0 0px 0 !important;
     @extend .btn-secondary;
     height: $inputHeight;
     outline: initial;
-    border-radius:$border-radius;
+    border-radius:$borderRadius;
   }
 }
 

@@ -2,12 +2,12 @@
 
 
 .btn {
-	font-family:$font-family;
+	font-family:$fontFamily;
 	text-shadow: none;
-	border-radius:$btn-border-radius;
+	border-radius:$btnBorderRadius;
 	outline: none !important;
 	text-align: center;
-	font-size: $font-size;
+	font-size: $fontSize;
 	padding: 5px 12px;
 	box-sizing: border-box;
 	display: inline-block;
@@ -34,10 +34,10 @@
 	}
 
 	&-link {
-		color:$action-primary;
+		color:$actionPrimary;
 		&:hover,
 		&:focus {
-			color:$action-primary--darken;
+			color:$actionPrimaryDarken;
 		}
 	}
 
@@ -49,8 +49,8 @@
 		&:hover,
 		&:focus,
 		&:active {
-			background:$success--darken; 
-			border:1px solid $success--darken; 
+			background:$successDarken; 
+			border:1px solid $successDarken; 
 		}
 
 		&[disabled] {
@@ -59,29 +59,29 @@
 	}
 
 	&-primary {
-		background: $action-primary;
-		border:1px solid $action-primary;
-		color:$action-secondary;
+		background: $actionPrimary;
+		border:1px solid $actionPrimary;
+		color:$actionSecondary;
 
 		&:hover,
 		&:focus,
 		&:active {
-			background:$action-primary--darken;
-			border:1px solid $action-primary--darken; 
+			background:$actionPrimaryDarken;
+			border:1px solid $actionPrimaryDarken; 
 		}
 	}  
 
 	&-secondary {
 		background: transparent;
-		border:1px solid $action-primary;
-		color:$action-primary;
+		border:1px solid $actionPrimary;
+		color:$actionPrimary;
 	
 		&:hover,
 		&:focus,
 		&:active {
-			background:$action-secondary;
-			border:1px solid $action-primary--darken;
-			color:$action-primary--darken;
+			background:$actionSecondary;
+			border:1px solid $actionPrimaryDarken;
+			color:$actionPrimaryDarken;
 		}
 	}
 
@@ -94,7 +94,7 @@
 		&:focus,
 		&:active {
 			background:transparent; 
-			border:1px solid $success--darken; 
+			border:1px solid $successDarken; 
 		}
 	}
 
