@@ -134,10 +134,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             <div className="flex-col">
               <Slider
                 onChange={(value: any) => {
-                  setState({
-                    ...state,
-                    fontSize: `${value[0]}px`,
-                  })
+                  handleChange(`${value[0]}px`, 'fontSize')
                 }}
                 min={10}
                 max={30}
@@ -158,10 +155,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             <div className="flex-col">
               <Slider
                 onChange={(value: any) => {
-                  setState({
-                    ...state,
-                    borderRadius: `${value[0]}px`,
-                  })
+                  handleChange(`${value[0]}px`, 'borderRadius')
                 }}
                 min={0}
                 max={50}
@@ -182,10 +176,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             <div className="flex-col">
               <Slider
                 onChange={(value: any) => {
-                  setState({
-                    ...state,
-                    btnBorderRadius: `${value[0]}px`,
-                  })
+                  handleChange(`${value[0]}px`, 'btnBorderRadius')
                 }}
                 min={0}
                 max={50}
@@ -206,10 +197,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             <div className="flex-col">
               <Slider
                 onChange={(value: any) => {
-                  setState({
-                    ...state,
-                    inputHeight: `${value[0]}px`,
-                  })
+                  handleChange(`${value[0]}px`, 'inputHeight')
                 }}
                 min={0}
                 max={50}
@@ -228,10 +216,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
               label="Max wrapper width"
               value={state.maxWrapper}
               onChange={(e: any) => {
-                setState({
-                  ...state,
-                  maxWrapper: e.target.value,
-                })
+                handleChange(e.target.value, 'maxWrapper')
               }}
             />
           </div>
@@ -242,10 +227,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
               label="Container's border"
               value={state.bordersContainers}
               onChange={(e: any) => {
-                setState({
-                  ...state,
-                  bordersContainers: e.target.value,
-                })
+                handleChange(e.target.value, 'bordersContainers')
               }}
             />
           </div>
@@ -256,16 +238,55 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
               label="Font family"
               value={state.fontFamily}
               onChange={(e: any) => {
-                setState({
-                  ...state,
-                  fontFamily: e.target.value,
-                })
+                handleChange(e.target.value, 'fontFamily')
               }}
             />
           </div>
         </div>
       </div>
-      <div className="w-50 fr">Preview</div>
+
+      <div className="w-50 fr">
+        <div
+          className="pa7"
+          style={{
+            borderRadius: `${state.borderRadius}`,
+            maxWidth: `${state.maxWrapper}`,
+            border: state.bordersContainers,
+          }}
+        >
+          <h3 className="t-heading-4 mt0">Preview</h3>
+          <div>
+            <p
+              style={{
+                fontFamily: state.fontFamily,
+                fontSize: `${state.fontSize}`,
+              }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              finibus malesuada nisi, sit amet egestas magna vestibulum eget.
+              Maecenas tempus sollicitudin enim quis semper
+            </p>
+
+            <label>
+              Text field:{' '}
+              <input
+                style={{
+                  height: `${state.inputHeight}`,
+                }}
+              />
+            </label>
+            <br />
+
+            <button
+              style={{
+                borderRadius: `${state.btnBorderRadius}`,
+              }}
+            >
+              Button
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
