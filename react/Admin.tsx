@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 import React, { FC, useState } from 'react'
-import { injectIntl, WrappedComponentProps, defineMessages } from 'react-intl'
+import {
+  injectIntl,
+  WrappedComponentProps,
+  defineMessages,
+  FormattedMessage,
+} from 'react-intl'
 import { compose, graphql, useMutation, useQuery } from 'react-apollo'
 import {
   Tabs,
@@ -25,6 +30,7 @@ import Css from './components/Css'
 import History from './components/History'
 import saveMutation from './mutations/saveConfiguration.gql'
 import GET_LAST from './queries/getLast.gql'
+import GET_CONFIG from './queries/getConfig.gql'
 
 const messages = defineMessages({
   title: {
@@ -79,7 +85,11 @@ const defaultConfiguration = {
 let email = window.localStorage.getItem('adminEmail') ?? null
 let initialLoad = false
 
-const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
+const Admin: FC<any & WrappedComponentProps> = ({
+  intl,
+  session,
+  config,
+}: any) => {
   const { workspace } = useRuntime()
 
   const [state, setState] = useState<any>({
@@ -88,16 +98,12 @@ const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
     isModalOpen: false,
     showCloseIcon: false,
     workspace,
+    appVersion: null,
   })
 
   const [
     saveConfig,
-    {
-      data: dataSave,
-      loading: loadingSave,
-      called: calledSave,
-      error: errorSave,
-    },
+    { loading: loadingSave, called: calledSave, error: errorSave },
   ] = useMutation(saveMutation)
 
   const { loading: loadingLast } = useQuery(GET_LAST, {
@@ -128,8 +134,15 @@ const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
     email = session.getSession.adminUserEmail
   }
 
-  console.log('email', email)
-  console.log('dataSave', dataSave)
+  if (
+    config?.getSetupConfig?.adminSetup?.appVersion &&
+    state.appVersion === null
+  ) {
+    setState({
+      ...state,
+      appVersion: config.getSetupConfig.adminSetup.appVersion,
+    })
+  }
 
   const handleLayoutChange = (layout: any) => {
     setState({
@@ -190,19 +203,6 @@ const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
       isModalOpen: true,
     })
 
-    console.log({
-      variables: {
-        email,
-        workspace: state.workspace,
-        layout: state.layout,
-        colors: state.colors,
-        css: state.css,
-        javascript: state.javascript,
-        javascriptActive: state.javascriptActive,
-        cssActive: state.cssActive,
-      },
-    })
-
     if (email) {
       saveConfig({
         variables: {
@@ -226,8 +226,6 @@ const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
     })
   }
 
-  console.log('State => ', state)
-
   return (
     <Layout
       fullWidth
@@ -243,7 +241,7 @@ const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
                     handlePublish()
                   }}
                 >
-                  Publish
+                  <FormattedMessage id="admin/checkout-ui.button.publish" />
                 </Button>
               </div>
             </div>
@@ -316,7 +314,7 @@ const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
               active={state.currentTab === 5}
               onClick={() => setState({ ...state, currentTab: 5 })}
             >
-              <History onChange={handleLoad} />
+              <History onChange={handleLoad} initialState={state.appVersion} />
             </Tab>
           </Tabs>
         )}
@@ -339,7 +337,8 @@ const Admin: FC<any & WrappedComponentProps> = ({ intl, session }: any) => {
                   {errorSave && <IconDeny size={12} />}
                   {calledSave === false && !errorSave && <span>-</span>}
                 </span>{' '}
-                Publishing to <strong>{state.workspace}</strong>
+                <FormattedMessage id="admin/checkout-ui.message.publishing" />{' '}
+                <strong>{state.workspace}</strong>
               </li>
             </ul>
           </div>
@@ -357,4 +356,16 @@ const optionsSession = {
   }),
 }
 
-export default injectIntl(compose(graphql(sessionQuery, optionsSession))(Admin))
+const optionsConfig = {
+  name: 'config',
+  options: () => ({
+    ssr: false,
+  }),
+}
+
+export default injectIntl(
+  compose(
+    graphql(sessionQuery, optionsSession),
+    graphql(GET_CONFIG, optionsConfig)
+  )(Admin)
+)

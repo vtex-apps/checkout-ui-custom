@@ -9,5 +9,14 @@
   "admin/checkout-ui.tab.css": "admin/checkout-ui.tab.css",
   "admin/checkout-ui.tab.css.label": "admin/checkout-ui.tab.css.label",
   "admin/checkout-ui.tab.css.helper": "admin/checkout-ui.tab.css.helper",
-  "admin/checkout-ui.tab.history": "admin/checkout-ui.tab.history"
+  "admin/checkout-ui.tab.history": "admin/checkout-ui.tab.history",
+  "admin/checkout-ui.button.publish": "admin/checkout-ui.button.publish",
+  "admin/checkout-ui.message.publishing": "admin/checkout-ui.message.publishing",
+  "admin/checkout-ui.toggle.active": "admin/checkout-ui.toggle.active",
+  "admin/checkout-ui.history.label.email": "admin/checkout-ui.history.label.email",
+  "admin/checkout-ui.history.label.workspace": "admin/checkout-ui.history.label.workspace",
+  "admin/checkout-ui.history.label.version": "admin/checkout-ui.history.label.version",
+  "admin/checkout-ui.history.label.date": "admin/checkout-ui.history.label.date",
+  "admin/checkout-ui.history.button.load": "admin/checkout-ui.history.button.load",
+  "admin/checkout-ui.history.help.appversion": "admin/checkout-ui.history.help.appversion"
 }

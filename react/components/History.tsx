@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 import React, { FC } from 'react'
-import { injectIntl, WrappedComponentProps } from 'react-intl'
+import {
+  injectIntl,
+  WrappedComponentProps,
+  defineMessages,
+  FormattedMessage,
+} from 'react-intl'
 import { useQuery, useLazyQuery } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Table, Button } from 'vtex.styleguide'
@@ -8,7 +13,34 @@ import { Table, Button } from 'vtex.styleguide'
 import query from '../queries/getHistory.gql'
 import GET_BY_ID from '../queries/getById.gql'
 
-const History: FC<any & WrappedComponentProps> = ({ intl, onChange }: any) => {
+const messages = defineMessages({
+  email: {
+    id: 'admin/checkout-ui.history.label.email',
+    defaultMessage: 'Email',
+  },
+  workspace: {
+    id: 'admin/checkout-ui.history.label.workspace',
+    defaultMessage: 'Workspace',
+  },
+  version: {
+    id: 'admin/checkout-ui.history.label.version',
+    defaultMessage: 'App version',
+  },
+  date: {
+    id: 'admin/checkout-ui.history.label.date',
+    defaultMessage: 'Creation date',
+  },
+  load: {
+    id: 'admin/checkout-ui.history.button.load',
+    defaultMessage: 'Load',
+  },
+})
+
+const History: FC<any & WrappedComponentProps> = ({
+  intl,
+  onChange,
+  initialState,
+}: any) => {
   const { loading, data } = useQuery(query)
 
   const [getConfig, { loading: loadingConfig }] = useLazyQuery(GET_BY_ID, {
@@ -28,19 +60,19 @@ const History: FC<any & WrappedComponentProps> = ({ intl, onChange }: any) => {
   const customSchema = {
     properties: {
       email: {
-        title: 'Email',
+        title: intl.formatMessage(messages.email),
         width: 300,
       },
       workspace: {
-        title: 'Workspace',
+        title: intl.formatMessage(messages.workspace),
         width: 200,
       },
       appVersion: {
-        title: 'App Version',
+        title: intl.formatMessage(messages.version),
         width: 100,
       },
       creationDate: {
-        title: 'Creation data',
+        title: intl.formatMessage(messages.date),
         width: 200,
         // eslint-disable-next-line react/display-name
         cellRenderer: ({ cellData }: any) => {
@@ -76,7 +108,7 @@ const History: FC<any & WrappedComponentProps> = ({ intl, onChange }: any) => {
                 load(rowData.id)
               }}
             >
-              Load
+              {intl.formatMessage(messages.load)}
             </Button>
           )
         },
@@ -86,8 +118,14 @@ const History: FC<any & WrappedComponentProps> = ({ intl, onChange }: any) => {
 
   const items = data?.getHistory || []
 
+  console.log('History initilState', initialState)
+
   return (
     <div className="w-80 pt6">
+      <span>
+        <FormattedMessage id="admin/checkout-ui.history.help.appversion" />{' '}
+        {initialState}
+      </span>
       <Table
         fullWidth
         loading={loading}
@@ -101,6 +139,7 @@ const History: FC<any & WrappedComponentProps> = ({ intl, onChange }: any) => {
 
 History.propTypes = {
   onChange: PropTypes.func,
+  initialState: PropTypes.any,
 }
 
 export default injectIntl(History)

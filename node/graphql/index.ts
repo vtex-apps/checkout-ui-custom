@@ -130,8 +130,6 @@ export const resolvers = {
       const creationDate = String(new Date().getTime())
       const appVersion = process.env.VTEX_APP_VERSION
 
-      console.log('PARAMS =>', params)
-
       const data = await masterdata.createDocument({
         dataEntity: DATA_ENTITY,
         fields: {
@@ -179,6 +177,7 @@ export const resolvers = {
             })
             .catch((e: any) => {
               settings.adminSetup.hasSchema = false
+              // eslint-disable-next-line vtex/prefer-early-return
               if (e.response.status === 304) {
                 settings.adminSetup.hasSchema = true
                 settings.adminSetup.schemaVersion = SCHEMA_VERSION
@@ -190,6 +189,8 @@ export const resolvers = {
 
         await apps.saveAppSettings(app, settings)
       }
+
+      settings.adminSetup.appVersion = process.env.VTEX_APP_VERSION
 
       return settings
     },

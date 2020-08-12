@@ -12,6 +12,10 @@ const messages = defineMessages({
     id: 'admin/checkout-ui.tab.css.helper',
     defaultMessage: 'Changes here may impact your sales',
   },
+  active: {
+    id: 'admin/checkout-ui.toggle.active',
+    defaultMessage: 'Active',
+  },
 })
 
 const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
@@ -50,7 +54,7 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
       />
       <div className="mt6 dib">
         <Toggle
-          label="Activate"
+          label={intl.formatMessage(messages.active)}
           size="large"
           checked={state.active}
           onChange={() => setState({ ...state, active: !state.active })}

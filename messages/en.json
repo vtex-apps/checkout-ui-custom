@@ -9,5 +9,14 @@
   "admin/checkout-ui.tab.css": "CSS",
   "admin/checkout-ui.tab.css.label": "Custom CSS",
   "admin/checkout-ui.tab.css.helper": "Changes here may impact your sales",
-  "admin/checkout-ui.tab.history": "History"
+  "admin/checkout-ui.tab.history": "History",
+  "admin/checkout-ui.button.publish": "Publish",
+  "admin/checkout-ui.message.publishing": "Publishing to",
+  "admin/checkout-ui.toggle.active": "Active",
+  "admin/checkout-ui.history.label.email": "Email",
+  "admin/checkout-ui.history.label.workspace": "Workspace",
+  "admin/checkout-ui.history.label.version": "App version",
+  "admin/checkout-ui.history.label.date": "Creation date",
+  "admin/checkout-ui.history.button.load": "Load",
+  "admin/checkout-ui.history.help.appversion": "Current app version:"
 }

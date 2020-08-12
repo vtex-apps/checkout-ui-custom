@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { injectIntl, WrappedComponentProps } from 'react-intl'
 import PropTypes from 'prop-types'
-import { RadioGroup, Toggle, Slider, Input } from 'vtex.styleguide'
+import { Toggle, Slider, Input } from 'vtex.styleguide'
 
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
   initialState,
@@ -21,22 +21,6 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
   return (
     <div className="w-100 pa4">
       <div className="w-50 fl">
-        <div className="w-50 mb-4 dn">
-          <RadioGroup
-            label="Orientation"
-            hideBorder
-            name="orientation"
-            size="large"
-            options={[
-              { value: 'vertical', label: 'Vertical (single page)' },
-              { value: 'horizontal', label: 'Horizontal (multiple pages)' },
-            ]}
-            value={state.type}
-            onChange={(e: any) => handleChange(e.currentTarget.value, 'type')}
-          />
-        </div>
-        <br />
-
         <div className="mt6 dib">
           <Toggle
             label="Horizontal payment"
@@ -84,48 +68,6 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             onChange={() => handleChange(!state.showNoteField, 'showNoteField')}
           />
         </div>
-
-        <div className="mt6 dn">
-          <Toggle
-            label="Show checkout steps"
-            size="large"
-            checked={state.showCheckoutSteps}
-            onChange={() =>
-              handleChange(!state.showCheckoutSteps, 'showCheckoutSteps')
-            }
-          />
-        </div>
-
-        <div className="mt6 dn">
-          <Toggle
-            label="Counting steps"
-            size="large"
-            disabled={!state.showCheckoutSteps}
-            checked={state.countingSteps}
-            onChange={() => handleChange(!state.countingSteps, 'countingSteps')}
-          />
-        </div>
-
-        <div className="mt6 dn">
-          <Toggle
-            label="Show coupon field"
-            size="large"
-            checked={state.showCouponField}
-            onChange={() =>
-              handleChange(!state.showCouponField, 'showCouponField')
-            }
-          />
-        </div>
-
-        <div className="mt6 dn">
-          <Toggle
-            label="Button shadow"
-            size="large"
-            checked={state.buttonShadow}
-            onChange={() => handleChange(!state.buttonShadow, 'buttonShadow')}
-          />
-        </div>
-        <br />
 
         <div className="mt6 flex">
           <div className="flex flex-column items-left w-50">
