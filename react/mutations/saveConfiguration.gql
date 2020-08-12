@@ -1,4 +1,5 @@
 mutation saveConfiguration(
+  $email: String
   $workspace: String
   $layout: CustomFields
   $javascript: String
@@ -8,6 +9,7 @@ mutation saveConfiguration(
   $colors: CustomFields
 ) {
   saveChanges(
+    email: $email
     workspace: $workspace
     layout: $layout
     javascript: $javascript

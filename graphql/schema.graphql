@@ -2,7 +2,7 @@ type Query {
   getWorkspaces: [WorkspaceResponse] @cacheControl(scope: PRIVATE)
   getSetupConfig: GetSetupConfigResponse @cacheControl(scope: PRIVATE)
   getHistory: [GetHistoryResponse] @cacheControl(scope: PRIVATE)
-  getLast: GetLastResponse @cacheControl(scope: PRIVATE)
+  getLast(workspace: String): GetLastResponse @cacheControl(scope: PRIVATE)
   getById(id: String): ConfigResponse @cacheControl(scope: PRIVATE)
 }
 
@@ -35,7 +35,7 @@ type GetLastResponse {
   creationDate: String
   appVersion: String
   layout: CustomFields
-  color: CustomFields
+  colors: CustomFields
   javascript: String
   css: String
   javascriptActive: Boolean

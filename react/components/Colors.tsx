@@ -66,6 +66,17 @@ const Colors: FC<WrappedComponentProps & any> = ({
 
       <div className="w-50">
         <ColorPicker
+          color={{ hex: state.actionPrimaryDarken }}
+          colorHistory={state.history}
+          label="Action Primary Darken"
+          onChange={(color: any) => {
+            handleChange(color, 'actionPrimaryDarken')
+          }}
+        />
+      </div>
+
+      <div className="w-50">
+        <ColorPicker
           color={{ hex: state.actionSecondary }}
           colorHistory={state.history}
           label="Action Secondary"
@@ -104,6 +115,17 @@ const Colors: FC<WrappedComponentProps & any> = ({
           label="Success"
           onChange={(color: any) => {
             handleChange(color, 'success')
+          }}
+        />
+      </div>
+
+      <div className="w-50">
+        <ColorPicker
+          color={{ hex: state.successDarken }}
+          colorHistory={state.history}
+          label="Success Darken"
+          onChange={(color: any) => {
+            handleChange(color, 'successDarken')
           }}
         />
       </div>
@@ -214,6 +236,17 @@ const Colors: FC<WrappedComponentProps & any> = ({
           label="Muted 5"
           onChange={(color: any) => {
             handleChange(color, 'muted5')
+          }}
+        />
+      </div>
+
+      <div className="w-50">
+        <ColorPicker
+          color={{ hex: state.muted5 }}
+          colorHistory={state.history}
+          label="Muted 6"
+          onChange={(color: any) => {
+            handleChange(color, 'muted6')
           }}
         />
       </div>

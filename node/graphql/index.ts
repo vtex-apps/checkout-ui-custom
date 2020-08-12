@@ -130,6 +130,8 @@ export const resolvers = {
       const creationDate = String(new Date().getTime())
       const appVersion = process.env.VTEX_APP_VERSION
 
+      console.log('PARAMS =>', params)
+
       const data = await masterdata.createDocument({
         dataEntity: DATA_ENTITY,
         fields: {
@@ -229,7 +231,7 @@ export const resolvers = {
 
       return data
     },
-    getLast: async (_: any, __: any, ctx: any) => {
+    getLast: async (_: any, params: any, ctx: any) => {
       const {
         clients: { masterdata },
       } = ctx
@@ -239,6 +241,7 @@ export const resolvers = {
           dataEntity: DATA_ENTITY,
           schema: SCHEMA_VERSION,
           fields: ['id'],
+          where: `workspace=${params.workspace}`,
           sort: 'creationDate DESC',
           pagination: {
             page: 1,

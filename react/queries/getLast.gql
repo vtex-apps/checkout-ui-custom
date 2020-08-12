@@ -1,0 +1,10 @@
+query GetLast($workspace: String) {
+  getLast(workspace: $workspace) {
+    css
+    javascript
+    layout
+    colors
+    javascriptActive
+    cssActive
+  }
+}
