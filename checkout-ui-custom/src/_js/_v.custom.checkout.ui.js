@@ -8,7 +8,7 @@ class checkoutCustom {
     accordionPayments = true, 
     deliveryDateFormat = false,
     quantityPriceCart = false,
-    showNoteField = false    
+    showNoteField = false
   } = {}) {
     this.type = type; // ["vertical"]
     this.orderForm = ""; 
@@ -313,6 +313,10 @@ class checkoutCustom {
     }
   }
 
+  showNoteField() {
+    $(".orderform-template .summary-note").addClass("js-active");
+  }
+
   enchancementTotalPrice(orderForm) {
     let _this = this;
 
@@ -509,6 +513,7 @@ class checkoutCustom {
     _this.addStepsHeader();
     _this.builder();
     _this.paymentBuilder();
+    _this.showNoteField();
     _this.changeShippingTimeInfoInit();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)

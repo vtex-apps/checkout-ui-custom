@@ -1,3 +1,12 @@
+
+//note field
+
+.orderform-template .summary-note {
+  &.js-active {
+    display:block !important;
+  }
+}
+
 // coupon field
 
 body.js-vcustom-showNoteField {
