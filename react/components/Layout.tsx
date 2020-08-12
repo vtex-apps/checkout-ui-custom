@@ -41,6 +41,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <Toggle
             label="Horizontal payment"
             size="large"
+            helpText="Available to stores with 4 or less payment options"
             checked={state.accordionPayments}
             onChange={() =>
               handleChange(!state.accordionPayments, 'accordionPayments')
