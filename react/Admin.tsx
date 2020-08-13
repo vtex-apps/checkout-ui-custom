@@ -212,8 +212,8 @@ const Admin: FC<any & WrappedComponentProps> = ({
           colors: state.colors,
           css: state.css,
           javascript: state.javascript,
-          javascriptActive: state.javascriptActive,
-          cssActive: state.cssActive,
+          javascriptActive: state.javascriptActive || false,
+          cssActive: state.cssActive || false,
         },
       })
     }
