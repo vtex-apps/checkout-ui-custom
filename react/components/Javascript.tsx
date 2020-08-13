@@ -38,6 +38,7 @@ const Javascript: FC<WrappedComponentProps & any> = ({
   }
 
   const parseText = (text: string) => {
+    if (text === null) return ''
     const newText = text.replace(/\\n/g, String.fromCharCode(13))
 
     return newText
