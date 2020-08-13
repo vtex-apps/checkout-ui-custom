@@ -242,7 +242,7 @@ const Colors: FC<WrappedComponentProps & any> = ({
 
       <div className="w-50">
         <ColorPicker
-          color={{ hex: state.muted5 }}
+          color={{ hex: state.muted6 }}
           colorHistory={state.history}
           label="Muted 6"
           onChange={(color: any) => {
