@@ -2,7 +2,7 @@
 //titles in third step checkout
 
 %steps-title {
-	font-size: $fontSize + 2px;
+	font-size: calc( #{$fontSize} + 2px);
   text-transform: uppercase;
   border-bottom: 1px solid $muted5;
   font-weight: bold;

@@ -356,7 +356,7 @@ h1#cart-title {display:none !important;}
         }
 
         .product-service {
-          height:$inputHeight + 10px;
+          height:calc( #{$inputHeight} + 10px);
           margin-top: 10px;
           position: relative;
 
