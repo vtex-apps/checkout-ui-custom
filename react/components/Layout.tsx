@@ -1,7 +1,23 @@
 import React, { FC, useState } from 'react'
 import { injectIntl, WrappedComponentProps } from 'react-intl'
 import PropTypes from 'prop-types'
-import { Toggle, Slider, Input } from 'vtex.styleguide'
+import { Toggle, Slider, Input, Card } from 'vtex.styleguide'
+
+import TabsOn from '../images/payments-tabs-on.png'
+import TabsOff from '../images/payments-tabs-off.png'
+import PriceOn from '../images/cart-quantity-price-on.png'
+import PriceOff from '../images/cart-quantity-price-off.png'
+import ShippingOn from '../images/shipping-date-number.png'
+import ShippingOff from '../images/shipping-date-text.png'
+
+const images: any = {
+  tabsOn: TabsOn,
+  tabsOff: TabsOff,
+  shippingOn: ShippingOn,
+  shippingOff: ShippingOff,
+  priceOn: PriceOn,
+  priceOff: PriceOff,
+}
 
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
   initialState,
@@ -9,10 +25,25 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
 }) => {
   const [state, setState] = useState<any>({
     ...initialState,
+    currentPreview: initialState.accordionPayments ? TabsOff : TabsOn,
   })
 
-  const handleChange = (value: any, key: string) => {
-    const newState = { ...state, [key]: value }
+  const changePreview = (item: string) => {
+    const currentPreview = images[item]
+
+    setState({
+      ...state,
+      currentPreview,
+    })
+  }
+
+  const handleChange = (value: any, key: string, image?: string) => {
+    const currentPreview = image ? images[image] : state.currentPreview
+    const newState = {
+      ...state,
+      [key]: value,
+      currentPreview,
+    }
 
     setState(newState)
     onChange(newState)
@@ -21,40 +52,66 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
   return (
     <div className="w-100 pa4">
       <div className="w-50 fl">
-        <div className="mt6 dib">
+        <div
+          className="mt6 dib"
+          onMouseEnter={() => {
+            changePreview(state.accordionPayments ? 'tabsOff' : 'tabsOn')
+          }}
+        >
           <Toggle
             label="Horizontal payment"
             size="large"
             helpText="Available to stores with 4 or less payment options"
             checked={state.accordionPayments}
-            onChange={() =>
-              handleChange(!state.accordionPayments, 'accordionPayments')
-            }
+            onChange={(e: any) => {
+              handleChange(
+                !state.accordionPayments,
+                'accordionPayments',
+                e.currentTarget.checked ? 'tabsOff' : 'tabsOn'
+              )
+            }}
           />
         </div>
         <br />
 
-        <div className="mt6 dib">
+        <div
+          className="mt6 dib"
+          onMouseEnter={() => {
+            changePreview(
+              state.deliveryDateFormat ? 'shippingOn' : 'shippingOff'
+            )
+          }}
+        >
           <Toggle
             label="Delivery date as text"
             size="large"
             checked={state.deliveryDateFormat}
-            onChange={() =>
-              handleChange(!state.deliveryDateFormat, 'deliveryDateFormat')
+            onChange={(e: any) =>
+              handleChange(
+                !state.deliveryDateFormat,
+                'deliveryDateFormat',
+                e.currentTarget.checked ? 'shippingOn' : 'shippingOff'
+              )
             }
           />
         </div>
         <br />
 
-        <div className="mt6 dib">
+        <div
+          className="mt6 dib"
+          onMouseEnter={() => {
+            changePreview(state.showCartQuantityPrice ? 'priceOn' : 'priceOff')
+          }}
+        >
           <Toggle
             label="Show cart quantity price"
             size="large"
             checked={state.showCartQuantityPrice}
-            onChange={() =>
+            onChange={(e: any) =>
               handleChange(
                 !state.showCartQuantityPrice,
-                'showCartQuantityPrice'
+                'showCartQuantityPrice',
+                e.currentTarget.checked ? 'priceOn' : 'priceOff'
               )
             }
           />
@@ -190,46 +247,49 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
       </div>
 
       <div className="w-50 fr">
-        <div
-          className="pa7"
-          style={{
-            borderRadius: `${state.borderRadius}`,
-            maxWidth: `${state.maxWrapper}`,
-            border: state.bordersContainers,
-          }}
-        >
-          <h3 className="t-heading-4 mt0">Preview</h3>
-          <div>
-            <p
+        <Card noPadding>
+          <h3 className="pl6 pr6 pt6">Preview</h3>
+          <img width="100%" alt="Preview" src={state.currentPreview} />
+          <div className="pa6">
+            <div
+              className="pa3"
               style={{
-                fontFamily: state.fontFamily,
-                fontSize: `${state.fontSize}`,
+                borderRadius: `${state.borderRadius}`,
+                maxWidth: `${state.maxWrapper}`,
+                border: state.bordersContainers,
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-              finibus malesuada nisi, sit amet egestas magna vestibulum eget.
-              Maecenas tempus sollicitudin enim quis semper
-            </p>
-
-            <label>
-              Text field:{' '}
-              <input
+              <p
                 style={{
-                  height: `${state.inputHeight}`,
+                  fontFamily: state.fontFamily,
+                  fontSize: `${state.fontSize}`,
                 }}
-              />
-            </label>
-            <br />
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                finibus malesuada nisi, sit amet egestas magna vestibulum eget.
+                Maecenas tempus sollicitudin enim quis semper
+              </p>
 
-            <button
-              style={{
-                borderRadius: `${state.btnBorderRadius}`,
-              }}
-            >
-              Button
-            </button>
+              <label>
+                Text field:{' '}
+                <input
+                  style={{
+                    height: `${state.inputHeight}`,
+                  }}
+                />
+              </label>
+              <br />
+
+              <button
+                style={{
+                  borderRadius: `${state.btnBorderRadius}`,
+                }}
+              >
+                Button
+              </button>
+            </div>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )
