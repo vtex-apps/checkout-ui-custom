@@ -1,4 +1,11 @@
 .payment-group-item-cards {
+  .card-flag {
+    width: 32px !important;
+    background-size: auto 20px;
+    min-width: auto;
+    height: 20px;
+  }
+
   .card-flag.Visa {
     background-position: 0 0;
   }
