@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { injectIntl, WrappedComponentProps } from 'react-intl'
+import { injectIntl, WrappedComponentProps, FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Toggle, Slider, Input, Card } from 'vtex.styleguide'
 
@@ -22,6 +22,7 @@ const images: any = {
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
   initialState,
   onChange,
+  intl,
 }) => {
   const [state, setState] = useState<any>({
     ...initialState,
@@ -59,9 +60,13 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           }}
         >
           <Toggle
-            label="Horizontal payment"
+            label={intl.formatMessage({
+              id: 'admin/checkout-ui.layout.accordionPayments.label',
+            })}
             size="large"
-            helpText="Available to stores with 4 or less payment options"
+            helpText={intl.formatMessage({
+              id: 'admin/checkout-ui.layout.accordionPayments.help',
+            })}
             checked={state.accordionPayments}
             onChange={(e: any) => {
               handleChange(
@@ -83,7 +88,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           }}
         >
           <Toggle
-            label="Delivery date as text"
+            label={intl.formatMessage({
+              id: 'admin/checkout-ui.layout.deliveryDateFormat.label',
+            })}
             size="large"
             checked={state.deliveryDateFormat}
             onChange={(e: any) =>
@@ -104,7 +111,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           }}
         >
           <Toggle
-            label="Show cart quantity price"
+            label={intl.formatMessage({
+              id: 'admin/checkout-ui.layout.showCartQuantityPrice.label',
+            })}
             size="large"
             checked={state.showCartQuantityPrice}
             onChange={(e: any) =>
@@ -119,7 +128,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
         <br />
         <div className="mt6 dib">
           <Toggle
-            label="Show 'notes' field"
+            label={intl.formatMessage({
+              id: 'admin/checkout-ui.layout.showNoteField.label',
+            })}
             size="large"
             checked={state.showNoteField}
             onChange={() => handleChange(!state.showNoteField, 'showNoteField')}
@@ -248,7 +259,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
 
       <div className="w-50 fr">
         <Card noPadding>
-          <h3 className="pl6 pr6 pt6">Preview</h3>
+          <h3 className="pl6 pr6 pt6">
+            <FormattedMessage id="admin/checkout-ui.layout.preview.title" />
+          </h3>
           <img width="100%" alt="Preview" src={state.currentPreview} />
           <div className="pa6">
             <div
@@ -265,13 +278,11 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                   fontSize: `${state.fontSize}`,
                 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                finibus malesuada nisi, sit amet egestas magna vestibulum eget.
-                Maecenas tempus sollicitudin enim quis semper
+                <FormattedMessage id="admin/checkout-ui.layout.preview.sample" />
               </p>
 
               <label>
-                Text field:{' '}
+                <FormattedMessage id="admin/checkout-ui.layout.preview.inputLabel" />{' '}
                 <input
                   style={{
                     height: `${state.inputHeight}`,
@@ -285,7 +296,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                   borderRadius: `${state.btnBorderRadius}`,
                 }}
               >
-                Button
+                <FormattedMessage id="admin/checkout-ui.layout.preview.button" />
               </button>
             </div>
           </div>
