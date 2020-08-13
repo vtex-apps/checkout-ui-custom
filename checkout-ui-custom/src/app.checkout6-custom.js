@@ -3,11 +3,11 @@ const checkoutCustom = require('./_js/_v.custom.checkout.ui.js')
 
 window.vcustom = {
   checkout: new checkoutCustom({
-    type: '{{type}}', //["vertical" , "horizontal"]
-    accordionPayments: JSON.parse('{{accordionPayments}}'),
-    deliveryDateFormat: JSON.parse('{{deliveryDateFormat}}'),
-    quantityPriceCart: JSON.parse('{{quantityPriceCart}}'),
-    showNoteField: JSON.parse('{{showNoteField}}'),
+    type: '"{{type}}"', //["vertical" , "horizontal"]
+    accordionPayments: "{{accordionPayments}}",
+    deliveryDateFormat: "{{deliveryDateFormat}}",
+    quantityPriceCart: "{{quantityPriceCart}}",
+    showNoteField: "{{showNoteField}}",
   }),
   debug: new debug({
     dbg: false,
