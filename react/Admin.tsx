@@ -42,11 +42,11 @@ const messages = defineMessages({
 const defaultConfiguration = {
   colors: {
     base: '#f4f2f2',
-    baseInverted: '#FF0000',
+    baseInverted: '#21364f',
     actionPrimary: '#1a73e8',
     actionPrimaryDarken: '#1d63be',
-    actionSecondary: '#FF0000',
-    emphasis: '#FF0000',
+    actionSecondary: '#f1f7ff',
+    emphasis: '#000000',
     disabled: '#999999',
     success: '#2fba2d',
     successDarken: '#269e24',
@@ -73,7 +73,7 @@ const defaultConfiguration = {
     btnBorderRadius: '30px',
     maxWrapper: '980px',
     inputHeight: '40px',
-    bordersContainers: '2px solid #eeeeee',
+    bordersContainers: '2px solid #f4f2f2',
     fontFamily: '"Roboto", sans-serif',
   },
   css: '',
