@@ -73,7 +73,7 @@ const defaultConfiguration = {
     btnBorderRadius: '30px',
     maxWrapper: '980px',
     inputHeight: '40px',
-    bordersContainers: '2px solid #f4f2f2',
+    bordersContainers: 'none',
     fontFamily: '"Roboto", sans-serif',
   },
   css: '',

@@ -169,6 +169,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             <Input
               label="Container's border"
               value={state.bordersContainers}
+              placeholder="2px solid #eee"
               onChange={(e: any) => {
                 handleChange(e.target.value, 'bordersContainers')
               }}
