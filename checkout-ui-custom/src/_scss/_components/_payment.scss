@@ -77,7 +77,7 @@
 			padding:4px 15px 15px 10px;
 		}
 
-		&.client-pre-email {display:block !important;padding-bottom: $inputHeight + 30px;}
+		&.client-pre-email {display:block !important;padding-bottom: calc( #{$inputHeight} + 30px);}
 
 		.link-box-edit {
 	    background: none;
