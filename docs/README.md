@@ -1,6 +1,6 @@
-# Checkout UI Settings
+# Checkout Custom
 
-The Checkout UI Settings app is responsible for **customizing your store's Checkout UI through scripts**.
+The **Checkout Custom** app is responsible for **customizing your store's Checkout UI through interface**.
 
 The main advantage of using the app instead of the [store's admin](https://help.vtex.com/tutorial/configure-template-in-smartcheckout-update--ToTE5XB39t0SwtHgpgwSv?locale=en) for this customization is that your Checkout scripts will behave as configurations for platform apps.
 
