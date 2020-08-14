@@ -339,6 +339,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             <Input
               label="Max wrapper width"
               value={state.maxWrapper}
+              placeholder="980px, 90%, etc."
               onChange={(e: any) => {
                 handleChange(e.target.value, 'maxWrapper')
               }}
@@ -360,6 +361,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
             <Input
               label="Font family"
               value={state.fontFamily}
+              placeholder="'Roboto', sans-serif"
               onChange={(e: any) => {
                 handleChange(e.target.value, 'fontFamily')
               }}
