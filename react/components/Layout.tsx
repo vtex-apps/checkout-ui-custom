@@ -9,6 +9,8 @@ import PriceOn from '../images/cart-quantity-price-on.png'
 import PriceOff from '../images/cart-quantity-price-off.png'
 import ShippingOn from '../images/shipping-date-number.png'
 import ShippingOff from '../images/shipping-date-text.png'
+import NotesOn from '../images/notes-field-on.png'
+import NotesOff from '../images/notes-field-off.png'
 
 const images: any = {
   tabsOn: TabsOn,
@@ -17,6 +19,8 @@ const images: any = {
   shippingOff: ShippingOff,
   priceOn: PriceOn,
   priceOff: PriceOff,
+  notesOn: NotesOn,
+  notesOff: NotesOff,
 }
 
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
@@ -31,6 +35,8 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
 
   const changePreview = (item: string) => {
     const currentPreview = images[item]
+
+    console.log('changePreview =>', item)
 
     setState({
       ...state,
@@ -126,21 +132,34 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           />
         </div>
         <br />
-        <div className="mt6 dib">
+        <div
+          className="mt6 dib"
+          onMouseEnter={() => {
+            changePreview(state.showNoteField ? 'notesOn' : 'notesOff')
+          }}
+        >
           <Toggle
             label={intl.formatMessage({
               id: 'admin/checkout-ui.layout.showNoteField.label',
             })}
             size="large"
             checked={state.showNoteField}
-            onChange={() => handleChange(!state.showNoteField, 'showNoteField')}
+            onChange={(e: any) =>
+              handleChange(
+                !state.showNoteField,
+                'showNoteField',
+                e.currentTarget.checked ? 'notesOn' : 'notesOff'
+              )
+            }
           />
         </div>
 
         <div className="mt6 flex">
           <div className="flex flex-column items-left w-50">
             <div className="flex-col">
-              <span>Text size:</span>
+              <span>
+                <FormattedMessage id="admin/checkout-ui.layout.fontSize.label" />
+              </span>
             </div>
             <div className="flex-col">
               <Slider
@@ -161,7 +180,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
         <div className="mt6 flex">
           <div className="flex flex-column items-left w-50">
             <div className="flex-col">
-              <span>Border radius:</span>
+              <span>
+                <FormattedMessage id="admin/checkout-ui.layout.borderRadius.label" />
+              </span>
             </div>
             <div className="flex-col">
               <Slider
@@ -182,7 +203,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
         <div className="mt6 flex">
           <div className="flex flex-column items-left w-50">
             <div className="flex-col">
-              <span>Button border radius:</span>
+              <span>
+                <FormattedMessage id="admin/checkout-ui.layout.btnBorderRadius.label" />
+              </span>
             </div>
             <div className="flex-col">
               <Slider
@@ -203,7 +226,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
         <div className="mt6 flex">
           <div className="flex flex-column items-left w-50">
             <div className="flex-col">
-              <span>Text fields height:</span>
+              <span>
+                <FormattedMessage id="admin/checkout-ui.layout.inputHeight.label" />
+              </span>
             </div>
             <div className="flex-col">
               <Slider
@@ -224,7 +249,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
         <div className="w-40">
           <div className="mb5">
             <Input
-              label="Max wrapper width"
+              label={intl.formatMessage({
+                id: 'admin/checkout-ui.layout.maxWrapper.label',
+              })}
               value={state.maxWrapper}
               onChange={(e: any) => {
                 handleChange(e.target.value, 'maxWrapper')
@@ -235,7 +262,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
 
           <div className="mb5">
             <Input
-              label="Container's border"
+              label={intl.formatMessage({
+                id: 'admin/checkout-ui.layout.bordersContainers.label',
+              })}
               value={state.bordersContainers}
               placeholder="2px solid #eee"
               onChange={(e: any) => {
@@ -247,7 +276,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
 
           <div className="mb5">
             <Input
-              label="Font family"
+              label={intl.formatMessage({
+                id: 'admin/checkout-ui.layout.fontFamily.label',
+              })}
               value={state.fontFamily}
               onChange={(e: any) => {
                 handleChange(e.target.value, 'fontFamily')

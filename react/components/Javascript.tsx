@@ -29,9 +29,8 @@ const Javascript: FC<WrappedComponentProps & any> = ({
     active: initialState.active,
   })
 
-  const handleChange = (e: any) => {
-    const { value } = e.target
-    const newState = { ...state, value }
+  const handleChange = (key: string, value: any) => {
+    const newState = { ...state, [key]: value }
 
     onChange(newState)
     setState(newState)
@@ -50,7 +49,7 @@ const Javascript: FC<WrappedComponentProps & any> = ({
         size="large"
         rows={30}
         value={parseText(state.value)}
-        onChange={(e: any) => handleChange(e)}
+        onChange={(e: any) => handleChange('value', e.target.value)}
         label={intl.formatMessage(messages.label)}
         helpText={intl.formatMessage(messages.helper)}
       />
@@ -59,7 +58,7 @@ const Javascript: FC<WrappedComponentProps & any> = ({
           label={intl.formatMessage(messages.active)}
           size="large"
           checked={state.active}
-          onChange={() => setState({ ...state, active: !state.active })}
+          onChange={(e: any) => handleChange('active', e.currentTarget.checked)}
         />
       </div>
     </div>

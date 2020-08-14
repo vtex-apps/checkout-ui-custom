@@ -226,6 +226,8 @@ const Admin: FC<any & WrappedComponentProps> = ({
     })
   }
 
+  console.log('State =>', state)
+
   return (
     <Layout
       fullWidth
