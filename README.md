@@ -1,7 +1,7 @@
 
 # checkout.ui.custom 🚀
 
-This repo allows you to generate an style to your checkout based in basic configurations and config. Bear in mind that is mandatory to use both files (js/css) on your checkout to a better experience. 
+This repo allows you to generate an style to your checkout based in basic configurations and config. Bear in mind that is mandatory to use both files (js/css) on your checkout for a better experience. 
 
 A combination of conditions and variables will adapt your checkout according your preferences. 
 
@@ -16,9 +16,10 @@ In the folder "/checkout-ui-custom" you can run the following commands:
 ```
 `npm run watch`
 `npm run build` 
+`npm run app` 
 ```
 
-In case you are not using the IO, the custom files are just generated in this root folder and be used as well. 
+In case you are not using the IO, the custom files are just generated in this root folder and can be used as well. 
 
 Enjoy ✌️ 
 
