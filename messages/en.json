@@ -43,7 +43,7 @@
   "admin/checkout-ui.layout.preview.sample": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean finibus malesuada nisi, sit amet egestas magna vestibulum eget. Maecenas tempus sollicitudin enim quis semper",
   "admin/checkout-ui.layout.preview.inputLabel": "Text field: ",
   "admin/checkout-ui.layout.preview.button": "Button",
-  "admin/checkout-ui.layout.accordionPayments.label": "Payment optios as accordion",
+  "admin/checkout-ui.layout.accordionPayments.label": "Payment options as accordion",
   "admin/checkout-ui.layout.accordionPayments.help": "Tabs format is only available to stores with 4 or less payment options",
   "admin/checkout-ui.layout.deliveryDateFormat.label": "Shipping date simplified",
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "Show item's unit price",
