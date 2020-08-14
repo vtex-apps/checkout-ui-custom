@@ -54,5 +54,7 @@
   "admin/checkout-ui.layout.inputHeight.label": "admin/checkout-ui.layout.inputHeight.label",
   "admin/checkout-ui.layout.maxWrapper.label": "admin/checkout-ui.layout.maxWrapper.label",
   "admin/checkout-ui.layout.bordersContainers.label": "admin/checkout-ui.layout.bordersContainers.label",
-  "admin/checkout-ui.layout.fontFamily.label": "admin/checkout-ui.layout.fontFamily.label"
+  "admin/checkout-ui.layout.fontFamily.label": "admin/checkout-ui.layout.fontFamily.label",
+  "admin/checkout-ui.layout.deliveryDateFormat.help": "admin/checkout-ui.layout.deliveryDateFormat.help",
+  "admin/checkout-ui.layout.showCartQuantityPrice.help": "admin/checkout-ui.layout.showCartQuantityPrice.help"
 }
