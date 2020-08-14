@@ -6,7 +6,7 @@ window.vcustom = {
     type: '"{{type}}"', //["vertical" , "horizontal"]
     accordionPayments: "{{accordionPayments}}",
     deliveryDateFormat: "{{deliveryDateFormat}}",
-    quantityPriceCart: "{{quantityPriceCart}}",
+    quantityPriceCart: "{{showCartQuantityPrice}}",
     showNoteField: "{{showNoteField}}",
   }),
   debug: new debug({

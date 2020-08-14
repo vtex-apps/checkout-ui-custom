@@ -118,8 +118,6 @@ const History: FC<any & WrappedComponentProps> = ({
 
   const items = data?.getHistory || []
 
-  console.log('History initilState', initialState)
-
   return (
     <div className="w-80 pt6">
       <span>

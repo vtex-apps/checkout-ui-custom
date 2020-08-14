@@ -6,6 +6,7 @@ import { ColorPicker } from 'vtex.styleguide'
 const Colors: FC<WrappedComponentProps & any> = ({
   initialState,
   onChange,
+  intl,
 }) => {
   const [state, setState] = useState<any>({
     ...initialState,
@@ -35,7 +36,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.base }}
           colorHistory={state.history}
-          label="Base"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.base',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'base')
           }}
@@ -46,7 +49,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.baseInverted }}
           colorHistory={state.history}
-          label="Base inverted"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.baseInverted',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'baseInverted')
           }}
@@ -57,7 +62,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.actionPrimary }}
           colorHistory={state.history}
-          label="Action Primary"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.actionPrimary',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'actionPrimary')
           }}
@@ -68,7 +75,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.actionPrimaryDarken }}
           colorHistory={state.history}
-          label="Action Primary Darken"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.actionPrimaryDarken',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'actionPrimaryDarken')
           }}
@@ -79,7 +88,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.actionSecondary }}
           colorHistory={state.history}
-          label="Action Secondary"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.actionSecondary',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'actionSecondary')
           }}
@@ -90,7 +101,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.emphasis }}
           colorHistory={state.history}
-          label="Emphasis"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.emphasis',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'emphasis')
           }}
@@ -101,7 +114,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.disabled }}
           colorHistory={state.history}
-          label="Disabled"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.disabled',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'disabled')
           }}
@@ -112,7 +127,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.success }}
           colorHistory={state.history}
-          label="Success"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.success',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'success')
           }}
@@ -123,7 +140,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.successDarken }}
           colorHistory={state.history}
-          label="Success Darken"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.successDarken',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'successDarken')
           }}
@@ -134,7 +153,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.successFaded }}
           colorHistory={state.history}
-          label="Success faded"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.successFaded',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'successFaded')
           }}
@@ -145,7 +166,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.danger }}
           colorHistory={state.history}
-          label="Danger"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.danger',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'danger')
           }}
@@ -156,7 +179,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.dangerFaded }}
           colorHistory={state.history}
-          label="Danger faded"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.dangerFaded',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'dangerFaded')
           }}
@@ -167,7 +192,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.warning }}
           colorHistory={state.history}
-          label="Warning"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.warning',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'warning')
           }}
@@ -178,7 +205,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.warningFaded }}
           colorHistory={state.history}
-          label="Warning faded"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.warningFaded',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'warningFaded')
           }}
@@ -189,7 +218,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.muted1 }}
           colorHistory={state.history}
-          label="Muted 1"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.muted1',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'muted1')
           }}
@@ -200,7 +231,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.muted2 }}
           colorHistory={state.history}
-          label="Muted 2"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.muted2',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'muted2')
           }}
@@ -211,7 +244,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.muted3 }}
           colorHistory={state.history}
-          label="Muted 3"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.muted3',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'muted3')
           }}
@@ -222,7 +257,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.muted4 }}
           colorHistory={state.history}
-          label="Muted 4"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.muted4',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'muted4')
           }}
@@ -233,7 +270,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.muted5 }}
           colorHistory={state.history}
-          label="Muted 5"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.muted5',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'muted5')
           }}
@@ -244,7 +283,9 @@ const Colors: FC<WrappedComponentProps & any> = ({
         <ColorPicker
           color={{ hex: state.muted6 }}
           colorHistory={state.history}
-          label="Muted 6"
+          label={intl.formatMessage({
+            id: 'admin/checkout-ui.color.muted6',
+          })}
           onChange={(color: any) => {
             handleChange(color, 'muted6')
           }}
