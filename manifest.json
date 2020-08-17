@@ -1,5 +1,5 @@
 {
-  "name": "checkout-custom",
+  "name": "checkout-ui-custom",
   "vendor": "vtex",
   "version": "0.0.1",
   "title": "Checkout Custom",
@@ -44,7 +44,7 @@
       "name": "outbound-access",
       "attrs": {
         "host": "{{account}}.vtexcommercestable.com.br",
-        "path": "/api/dataentities/checkout-custom/*"
+        "path": "/api/dataentities/checkoutcustom/*"
       }
     }
   ],

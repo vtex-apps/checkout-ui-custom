@@ -1,6 +1,6 @@
 {
   "admin/checkout-ui.title": "Checkout custom interface",
-  "admin/checkout-ui.navigation.title": "Checkout layout",
+  "admin/checkout-ui.navigation.title": "Checkout UI Custom",
   "admin/checkout-ui.tab.layout": "Layout",
   "admin/checkout-ui.tab.colors": "Colors",
   "admin/checkout-ui.tab.javascript": "Javascript",
