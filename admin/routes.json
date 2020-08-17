@@ -1,6 +1,6 @@
 {
   "admin.app.checkout-ui": {
     "component": "Admin",
-    "path": "/admin/app/custom-checkout-ui"
+    "path": "/admin/app/checkout-ui-custom"
   }
 }

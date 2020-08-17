@@ -1,5 +1,5 @@
 {
-  "name": "vtex.checkout-custom",
+  "name": "vtex.checkout-ui-custom",
   "version": "0.0.1",
   "dependencies": {
     "co-body": "^6.0.0",

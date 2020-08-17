@@ -5,7 +5,7 @@
   "timeout": 60,
   "routes": {
     "getWorkspaces": {
-      "path": "/_v/0/checkout-custom/workspaces",
+      "path": "/_v/0/checkout-ui-custom/workspaces",
       "public": false
     }
   }
