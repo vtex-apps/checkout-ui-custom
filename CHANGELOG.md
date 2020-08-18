@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- note field condition to buy button
+
 ## [0.0.6] - 2020-08-18
 
 ### Updated
