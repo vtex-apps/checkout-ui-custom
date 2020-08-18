@@ -13,15 +13,16 @@ body.js-vcustom-showNoteField {
   .orderform-template {
     .payment-confirmation-wrap {
       display:block !important;		
-      
-      &[style*="display: none"] p.payment-submit-wrap {
-          display:none;
-      }
-
       .payment-submit-wrap {display:none;}
-      &[style*="display: block"] .payment-submit-wrap {display:block;}
     }
     .summary-note {display: block !important;}
+  }
+  &.v-custom-step-payment {
+    .orderform-template {
+      .payment-confirmation-wrap {
+        .payment-submit-wrap {display:block !important;}
+      }
+    }
   }
 }
 
