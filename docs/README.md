@@ -30,7 +30,7 @@ For this purpose, you can access the `History` tab using the desired Production 
 
 - **Header HTML:**
 
-```
+```html
 <header class="main-header">
   <div class="container">
 	  <div class="header-link">
@@ -42,16 +42,16 @@ For this purpose, you can access the `History` tab using the desired Production 
 </header>
 ```
 
-If you wanna insert others contents, make sure of include the class `.v-custom-mhide` to hide it on mobile resolutions. For example:
+If you want to insert other contents, make sure of include the class `.v-custom-mhide` to hide it on mobile resolutions. For example:
 
-```
+```html
 <header class="main-header"> ... </header>
 <div class="promobar v-custom-mhide> ... </div>
 ```
 
 - **Footer HTML:** 
 
-```
+```html
 <footer class="main-footer">
   <div class="container">
 	  <a class="credits-vtex" href="http://www.vtex.com/" target="_blank"><img src="http://brand.vtex.com/static/media/VTEX_pink_RGB.751a9fb5.svg"></a>
