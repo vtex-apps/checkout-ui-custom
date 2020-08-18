@@ -18,6 +18,7 @@ import {
   Modal,
   IconCheck,
   IconDeny,
+  ModalDialog,
   Progress,
 } from 'vtex.styleguide'
 import { useRuntime } from 'vtex.render-runtime'
@@ -90,12 +91,13 @@ const Admin: FC<any & WrappedComponentProps> = ({
   session,
   config,
 }: any) => {
-  const { workspace } = useRuntime()
+  const { workspace, production } = useRuntime()
 
   const [state, setState] = useState<any>({
     ...defaultConfiguration,
     currentTab: 0,
     isModalOpen: false,
+    isDialogOpen: false,
     showCloseIcon: false,
     workspace,
     appVersion: null,
@@ -197,10 +199,11 @@ const Admin: FC<any & WrappedComponentProps> = ({
     })
   }
 
-  const handlePublish = () => {
+  const publish = () => {
     setState({
       ...state,
       isModalOpen: true,
+      isDialogOpen: false,
     })
 
     if (email) {
@@ -219,11 +222,37 @@ const Admin: FC<any & WrappedComponentProps> = ({
     }
   }
 
+  const handlePublish = () => {
+    if (production) {
+      setState({
+        ...state,
+        isDialogOpen: true,
+      })
+    } else {
+      publish()
+    }
+  }
+
   const handleModalClose = () => {
     setState({
       ...state,
       isModalOpen: false,
     })
+  }
+
+  const handlePublishDialog = () => {
+    publish()
+  }
+
+  const handleCancelDialog = () => {
+    setState({
+      ...state,
+      isDialogOpen: false,
+    })
+  }
+
+  const handleDialogClose = () => {
+    handleCancelDialog()
   }
 
   return (
@@ -344,6 +373,27 @@ const Admin: FC<any & WrappedComponentProps> = ({
           </div>
         </Modal>
       </PageBlock>
+      <ModalDialog
+        centered
+        confirmation={{
+          onClick: handlePublishDialog,
+          label: intl.formatMessage({
+            id: 'admin/checkout-ui.publish.confirm',
+          }),
+        }}
+        cancelation={{
+          onClick: handleCancelDialog,
+          label: intl.formatMessage({
+            id: 'admin/checkout-ui.publish.cancel',
+          }),
+        }}
+        isOpen={state.isDialogOpen}
+        onClose={handleDialogClose}
+      >
+        <p>
+          <FormattedMessage id="admin/checkout-ui.publish.warning" />
+        </p>
+      </ModalDialog>
     </Layout>
   )
 }

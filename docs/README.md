@@ -7,7 +7,7 @@ The **Checkout UI Custom** app is responsible for **customizing your store's Che
 ## Configuration
 
 1.  Using your terminal and the [VTEX IO Toolbelt](https://vtex.io/docs/recipes/development/vtex-io-cli-installment-and-command-reference), log into the desired account;
-2.  Run `vtex install vtex.checkout-ui-custom` on the account you're working on. If the Checkout Custom option already exists, you can skip to step 7 of this step-by-step;
+2.  Run `vtex install vtex.checkout-ui-custom` on the account you're working on, you can also install it in a specific workspace;
 3.  Head over to YOUR_ACCOUNT.myvtex.com/admin/vtex-checkout-ui-custom/, this link is also available from the navigation menu under "Store Setup > Checkout UI Custom"
 4.  Make the desired changes and click 'Publish', or simply click 'Publish' to send the default configuration to your workspace, otherwise you'll not see any changes on your checkout
 
@@ -25,9 +25,9 @@ Once the app is installed in the account, the files `checkout6-custom.js` and `c
 The HTML of header and footer remains open to change throught the ["Portal"](/admin/portal/#/sites).
 Although, we recommend use the structure below:
 
-💡 Header
+💡 **Header**
 
-```
+```html
 <header class="main-header">
   <div class="container">
 	  <div class="header-link">
@@ -39,16 +39,16 @@ Although, we recommend use the structure below:
 </header>
 ```
 
-If you wanna insert others contents, make sure of include the class `.v-custom-mhide` to hide it on mobile resolutions, example:
+If you want to insert other content, make sure of include the class `.v-custom-mhide` to hide it on mobile:
 
-```
+```html
 <header class="main-header"> ... </header>
 <div class="promobar v-custom-mhide> ... </div>
 ```
 
-💡 Footer
+💡 **Footer**
 
-```
+```html
 <footer class="main-footer">
   <div class="container">
 	  <a class="credits-vtex" href="http://www.vtex.com/" target="_blank"><img src="http://brand.vtex.com/static/media/VTEX_pink_RGB.751a9fb5.svg"></a>
