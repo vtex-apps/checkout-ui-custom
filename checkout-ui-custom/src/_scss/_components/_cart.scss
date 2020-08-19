@@ -114,6 +114,10 @@ h1#cart-title {display:none !important;}
       flex-wrap:wrap;
       border-top:1px solid  $muted5;
 
+      &.hide {
+        display:none;
+      }
+
       @media(max-width: 490px) {
         margin-top:0 !important;
         &:first-child {
@@ -937,6 +941,23 @@ margin:20px 0 0px 0 !important;
 
 }
 
+
+.cart-select-gift-placeholder {
+  .available-gift-item.active {
+    background:$actionSecondary;
+  }
+
+  .label-vertical-group:hover, 
+  .icon-check-empty, 
+  .icon-check-sign {
+    color: $muted2;
+  }
+
+  .label-vertical-group:hover .icon-check-empty, 
+  .icon-check-sign {
+    color: $actionPrimary;
+  }
+}
 
 
 // !IMPORTANT split cart in 2 columns
