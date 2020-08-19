@@ -57,6 +57,6 @@
   "admin/checkout-ui.layout.maxWrapper.label": "Ancho máximo del contenido",
   "admin/checkout-ui.layout.bordersContainers.label": "Borde del contenido",
   "admin/checkout-ui.layout.fontFamily.label": "Familia tipográfica",
-  "admin/checkout-ui.layout.deliveryDateFormat.help": "Por lo general, la fecha estimada muestra la cantidad estimada de días hábiles. Si 'activo' muestra la fecha formateada, por ejemplo: viernes 13/08/20.",
+  "admin/checkout-ui.layout.deliveryDateFormat.help": "Muestra la fecha formateada, por ejemplo: viernes 13/08/20. Si 'inactivo', muestra la cantidad estimada de días hábiles.",
   "admin/checkout-ui.layout.showCartQuantityPrice.help": "Si 'activo' muestra el precio total de cada producto según la cantidad."
 }
