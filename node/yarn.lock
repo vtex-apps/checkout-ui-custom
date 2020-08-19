@@ -167,14 +167,14 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@vtex/api@6.36.1":
-  version "6.36.1"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.36.1.tgz#7de05462227cb9619e93fb38767ae9adb906ead2"
-  integrity sha512-DwULwOhK8BULNmZFAZXFIK1u+YvGkbl8zPt2f3DkXXI0PSnWPUkTVt1fANgYbeOtiepGNA+ibssCAGUFHFy0zg==
+"@vtex/api@6.36.2":
+  version "6.36.2"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.36.2.tgz#98295c5f3e8ae492a55d996f7074e5fe09067e1e"
+  integrity sha512-J72dBwQG0hLJTGnFUwCJgW5v9iRubrQZ13aA2fwHohLeEcBOG/OAdd/eF3tuQY7lh8giCv4w0l0+oWvNor9vTg==
   dependencies:
     "@types/koa" "^2.11.0"
     "@types/koa-compose" "^3.2.3"
-    "@vtex/node-error-report" "^0.0.2"
+    "@vtex/node-error-report" "^0.0.3"
     "@wry/equality" "^0.1.9"
     agentkeepalive "^4.0.2"
     apollo-server-errors "^2.2.1"
@@ -212,10 +212,10 @@
     uuid "^3.3.3"
     xss "^1.0.6"
 
-"@vtex/node-error-report@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/node-error-report/-/node-error-report-0.0.2.tgz#edf15095d6bb543d28b46f86bc109e6214149dfe"
-  integrity sha512-Q6V8E1IR/U0H6uTB1G+gH4ugL4Kw1l/WsK7W46LQBsxv4ISlZcO7dXPlWrL4RzRcVam5yzGAwNkv2wJdW61tAA==
+"@vtex/node-error-report@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@vtex/node-error-report/-/node-error-report-0.0.3.tgz#365a2652aeebbd6b51ddc5d64c3c0bc1a326dc71"
+  integrity sha512-HhBworWQfSs6PU3yroloc7H2/pWboDIzgdiJ6SYc3mJVRU5/bXtwM9HGPkAGZvAb/0cMwFC963SYYKvOfeSjbA==
   dependencies:
     is-stream "^2.0.0"
 
