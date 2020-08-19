@@ -1,0 +1,15 @@
+## Sobre
+Este aplicativo dá as páginas do checkout uma aparência mais moderna, você pode fazer ajustes de cores, ligar e desligar recursos úteis,
+fazer ajustes avançados, etc.
+
+## Funcionalidades
+- Mudar o formato de exibição dos métodos de pagamento
+- Data de entrega simplificada
+- Exibir/Ocultar o valor unitário dos itens no carrinho
+- Exibir/Ocultar o campo de anotações
+- Mudar características dos textos
+- Mudar características dos blocos
+- Mudar cores
+- Área de CSS avançado
+- Área de Javascript avançado
+- Histórico de mudanças

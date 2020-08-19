@@ -1,5 +1,5 @@
 
-@import '_card-flags.scss'; 
+@import '_card-flags.scss';
 
 
 // loadin shhimer
@@ -23,7 +23,7 @@
 	background: darkgray;
 	background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
 	background-size: 800px 104px;
-		
+
 }
 // set svgs
 
@@ -48,7 +48,7 @@
 
 .orderform-template-holder{
 
-	
+
 	#client-profile-data {width: 100%;}
 	#client-profile-data form.client-pre-email,
 	#client-profile-data .step.client-profile-data,
@@ -61,12 +61,12 @@
 
   	background:#FFF;
 		border-radius:$borderRadius;
-		
+
 		margin-bottom:20px !important;
 		z-index: initial;
 
 		border:$bordersContainers;
-		
+
 
   	@if $countingSteps {
 			padding:30px;
@@ -77,7 +77,7 @@
 			padding:4px 15px 15px 10px;
 		}
 
-		&.client-pre-email {display:block !important;padding-bottom: calc( #{$inputHeight} + 30px);} 
+		&.client-pre-email {display:block !important;padding-bottom: calc( #{$inputHeight} + 30px);}
 
 		.link-box-edit {
 	    background: none;
@@ -151,9 +151,9 @@
     }
 
     &.active {
-			
+
 	    @if $countingSteps {
-	    	
+
 	    }
     }
 
@@ -161,7 +161,7 @@
 
 	#payment-data {
 
-		
+
 		p.link.link-gift-card,
 		.payment-group-item {
 		  box-sizing: border-box;
@@ -181,12 +181,12 @@
 			background: $muted6;
 			float: left;
 			width:100%;
-		  
+
 			&.active {
 				background:#FFF;
 				span {
 					color:$emphasis;
-					
+
 				}
 			}
 
@@ -197,8 +197,8 @@
 			}
 		}
 
-		
-		
+
+
 		p.link.link-gift-card,
 		fieldset.payment-group {
 		  width: 100%;
@@ -286,7 +286,7 @@
 			}
 
 			&.active {
-				
+
 				&:after,
 				&:before {
 					content: '';
@@ -355,7 +355,7 @@
 					color:$danger;
 				}
 			}
-			
+
 		}
 
 		input#payment-discounts-code {
@@ -363,7 +363,7 @@
 		}
 
 		.gift-card-multiple-providers {
-			
+
 		}
 
 		#btn-add-gift-card {
@@ -443,7 +443,7 @@
 					justify-content: flex-end;
     			flex-wrap: wrap;
 					.card-flag {
-						
+
 						&:last-child {
 							margin: 0;
 						}
@@ -523,12 +523,12 @@
 			}
 
 			.SecurityEnvironmentIcon {display: none;}
-			
+
 		}
 	}
 
 	.step {
-  
+
 		border:none;
 		padding:0;
 		background: none;
@@ -544,17 +544,17 @@
 				margin-top: 10px;
 			}
 		}
-	    
+
     .form-step {
     	fieldset {
     		width: 100%;
 				float:none;
-				
-    		p { 
+
+    		p {
 	    		position:relative;
 	    		@media(max-width: 490px) {
 	    			float:none !important;
-	    		}	
+	    		}
 
 	    		&.client-last-name,
 					&.client-first-name {
@@ -574,13 +574,13 @@
 	    	}
 
 				&.box-client-info-pj {padding-top:15px;}
-				
+
 				&.box-payment-option {
 					h3 {display:none;}
 				}
     	}
 
-    	
+
 			#is-corporate-client {color:$actionPrimary;}
 
 	  }
@@ -596,12 +596,12 @@
 			}
 			.client-document, .client-phone {
 				width:calc(50% - 5px);
-				@media(max-width:490px) {	
+				@media(max-width:490px) {
 					width:100%;
 				}
 			}
-			
-				
+
+
     }
 
     &.shipping-data {
@@ -627,9 +627,9 @@
 			.vtex-omnishipping-1-x-address {
 				margin:0;
 			}
-			
+
 			.vtex-omnishipping-1-x-addressSummaryActive .address-summary {
-					background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='"+str-replace(""+$actionPrimary, '#', '%23')+"' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='"+str-replace(""+$actionPrimary, '#', '%23')+"' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
+					background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='%23999999' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='%23999999' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
 					background-position: 12px 9px;
 					border:1px solid $muted4;
 			}
@@ -644,9 +644,9 @@
 				@extend %input-style;
 			}
 			.vtex-omnishipping-1-x-pickupButton,
-			.vtex-pickup-points-modal-3-x-pickupViewOptionActive, 
-			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover, 
-			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:active, 
+			.vtex-pickup-points-modal-3-x-pickupViewOptionActive,
+			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:hover,
+			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:active,
 			.vtex-pickup-points-modal-3-x-pickupViewOptionActive:focus,
 			.vtex-omnishipping-1-x-deliveryChannelsTogglePickup,
 			.vtex-omnishipping-1-x-deliveryChannelsOption.vtex-omnishipping-1-x-deliveryOptionActive {
@@ -660,8 +660,8 @@
 				border-color:$actionPrimary;
 				border-radius: $borderRadius;
 			}
- 
-			.vtex-omnishipping-1-x-addressItemOption:hover, 
+
+			.vtex-omnishipping-1-x-addressItemOption:hover,
 			.vtex-omnishipping-1-x-active {
 				background-color: $actionSecondary;
 			}
@@ -697,7 +697,7 @@
 				margin: 0;
 			}
 
-			.vtex-omnishipping-1-x-option:hover, 
+			.vtex-omnishipping-1-x-option:hover,
 			.vtex-omnishipping-1-x-leanShippingOptionActive,
 			.vtex-omnishipping-1-x-leanShippingOption {
 				background:#FFF !important;
@@ -744,7 +744,7 @@
 
 .orderform-template {
 	display: flex !important;
-	
+
 	padding-top: 0px;
 	min-height: 400px !important;
 	align-items:flex-start;
@@ -757,8 +757,8 @@
 		width: 100%;
 
 		@media(min-width: 769px) {
-	
-			
+
+
 			width: 61% !important;
 			padding-right:20px;
 			max-width: calc(100% - 271px);
@@ -775,7 +775,7 @@
 
 	.cart-template.mini-cart {
 		width: 39%;
-  	min-width: 255px; 
+  	min-width: 255px;
 
 		position: -webkit-sticky;
 		position: -moz-sticky;
@@ -834,7 +834,7 @@
 
 			.accordion-inner {margin-top: 0px;}
 
-			.summary > .summary-coupon-wrap, 
+			.summary > .summary-coupon-wrap,
 			.summary-coupon-wrap > .summary-coupon {
 				display: block !important;
 			}
@@ -862,7 +862,7 @@
 	    border: none;
 	    border-bottom: 1px solid $muted5;
 			&:last-child {border:none;}
-			
+
 			ul.service-list.unstyled {
 				margin: 0;
 				float: none;
@@ -917,7 +917,7 @@
 				border-radius: $borderRadius;
     		overflow: hidden;
 			}
-			
+
 		}
 
 		.summary-totalizers {
@@ -991,7 +991,7 @@
 			margin-bottom: 0;
 			max-height: calc(100vh - 355px);
 			overflow:auto;
-			
+
 			&::-webkit-scrollbar {
 				width: 6px
 			}
@@ -1032,7 +1032,7 @@
 				}
 			}
 		}
-		
+
 
 	}
 
@@ -1059,7 +1059,7 @@
 		}
 		@media(max-width: 768px) {
 			border:none !important;
-			.payment-submit-wrap, 
+			.payment-submit-wrap,
 			button { margin:0 !important; }
 		}
 
@@ -1069,7 +1069,7 @@
 			}
 		}
 	}
-	
+
 	.summary-note {
 		display:none !important;
 		p.note-data {display: none !important;}
@@ -1086,7 +1086,7 @@
 			max-height: 100px;
 		}
 	}
-	
+
 	.custom-cart-template-wrap {
 		position: relative;
 		background: #FFF;
@@ -1096,7 +1096,7 @@
 	  border-radius:$borderRadius;
 
 	  border: $bordersContainers;
-	  
+
 
 	  .summary-cart-template-holder {
 	    height: auto !important;
@@ -1136,7 +1136,7 @@
 #app-container {
 	min-height: 100vh;
 	background: #FFF;
-		
+
 	input[type=text],
 	input[type=tel],
 	input[type=email],
@@ -1184,7 +1184,7 @@
 		line-height: 30px;
 	}
 
-	.PaymentCardFlags {	
+	.PaymentCardFlags {
 		position: absolute;
     top: calc(30px + ( #{$inputHeight} - 25px )/2);
     right: 16px;
@@ -1217,7 +1217,7 @@
 			color:$actionPrimary;
 			background:$actionSecondary;
 		}
-		
+
 
 		&:not(.SavedCard) {
 			.card-flag {
@@ -1249,7 +1249,7 @@
 		}
 	}
 
-	
+
 
 
 	label.FormFieldLabel {
