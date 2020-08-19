@@ -1,0 +1,1 @@
+The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.
