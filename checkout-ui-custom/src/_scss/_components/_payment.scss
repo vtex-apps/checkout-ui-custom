@@ -77,7 +77,7 @@
 			padding:4px 15px 15px 10px;
 		}
 
-		&.client-pre-email {display:block !important;padding-bottom: calc( #{$inputHeight} + 30px);}
+		&.client-pre-email {display:block !important;padding-bottom: calc( #{$inputHeight} + 14px + 30px);}
 
 		.link-box-edit {
 	    background: none;
@@ -618,6 +618,7 @@
 					&.vtex-omnishipping-1-x-deliveryGroup { order: 4; }
 					&.vtex-omnishipping-1-x-submitPaymentButton { order: 100; }
 
+					&#postalCode-finished-loading,
 					&:last-child {
 						margin:0;
 					}
@@ -719,7 +720,11 @@
 				border-color:$actionPrimary;
 			}
 
-			.vtex-omnishipping-1-x-address p {clear:both;}
+			.vtex-omnishipping-1-x-address p {
+				clear:both;
+				float: none;
+  			margin: 0;
+			}
 
 			input#ship-addressQuery {
 				width: 100%;

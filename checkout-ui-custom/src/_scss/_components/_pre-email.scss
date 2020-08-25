@@ -81,7 +81,7 @@
     .btn-success {
       width: 20%;
       margin: 0;
-      height: $inputHeight;
+      height: initial;
       position: absolute;
       top: initial;
       bottom:15px;
@@ -89,6 +89,9 @@
       left: 50%;
       transform: translateX(-50%);
       min-width: 55%;
+
+      @extend .btn-large;
+
       @media(max-width: 768px) {
         width: calc(100% - 60px);
       }
@@ -98,7 +101,7 @@
       position: absolute;
       color: #FFF;
       font-size: 16px;
-      bottom: 26px;
+      bottom: 35px;
       top: initial;
       right: 50% !important;
       margin-right: -10px;
