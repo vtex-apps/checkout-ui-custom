@@ -48,7 +48,7 @@
   "admin/checkout-ui.layout.accordionPayments.label": "Opciones de pago estilo acordeón",
   "admin/checkout-ui.layout.accordionPayments.help": "Mostrar las opciones de pago como secciones expandibles. Si está desactivado, las opciones de pago se mostrarán como pestañas.",
   "admin/checkout-ui.layout.deliveryDateFormat.label": "Fecha de entrega simplificada",
-  "admin/checkout-ui.layout.deliveryDateFormat.help": "Mostrar el día y la fecha previstos para la entrega. Si está desactivado, se mostrará el plazo de entrega estimado como  \"Hasta X días hábiles\"."
+  "admin/checkout-ui.layout.deliveryDateFormat.help": "Mostrar el día y la fecha previstos para la entrega. Si está desactivado, se mostrará el plazo de entrega estimado como  \"Hasta X días hábiles\".",
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "Mostrar precio unitario del ítem",
   "admin/checkout-ui.layout.showCartQuantityPrice.help": "Mostrar el total de la suma (precio unitario x cantidad) junto al selector de cantidad. Si está desactivado, aquí se mostrará el precio unitario.",
   "admin/checkout-ui.layout.showNoteField.label": "Mostrar campo de anotaciones",
@@ -58,5 +58,5 @@
   "admin/checkout-ui.layout.inputHeight.label": "Altura del campo de texto:",
   "admin/checkout-ui.layout.maxWrapper.label": "Anchura máxima del envoltorio",
   "admin/checkout-ui.layout.bordersContainers.label": "Borde del contenedor",
-  "admin/checkout-ui.layout.fontFamily.label": "Familia tipográfica",
+  "admin/checkout-ui.layout.fontFamily.label": "Familia tipográfica"
 }
