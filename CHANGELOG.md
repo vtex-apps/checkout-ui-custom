@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+General fixes + change image of preview tabs off
+
 ## [0.0.13] - 2020-08-19
 
 ### Added
