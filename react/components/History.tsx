@@ -119,7 +119,7 @@ const History: FC<any & WrappedComponentProps> = ({
   const items = data?.getHistory || []
 
   return (
-    <div className="w-80 pt6">
+    <div className="w-100 pt6">
       <span>
         <FormattedMessage id="admin/checkout-ui.history.help.appversion" />{' '}
         {initialState}

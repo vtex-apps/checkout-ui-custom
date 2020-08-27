@@ -1127,6 +1127,10 @@
 		.client-pre-email + .client-profile-data .accordion-body:before {
 			display: none;
 		}
+		body.v-custom-step-shipping #shipping-data .shipping-summary-info,
+		body.v-custom-step-payment #shipping-data .shipping-summary-info {
+				display:block
+		}
 	}
 
 // end counting steps
