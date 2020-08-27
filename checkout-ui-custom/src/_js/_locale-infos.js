@@ -31,7 +31,9 @@ module.exports._locale = {
     eachLabel:"each",
     tomorrowLabel:"Tomorrow",
     cartNoteLabel:"Gift Message or Comments",
-    identifiedUserMessage:`Thanks for coming back!<br/>To expedite your transaction, we have securely populated your information for you.`
+    identifiedUserMessage:`Thanks for coming back!<br/>To expedite your transaction, we have securely populated your information for you.`,
+    address1Placeholder:"Street address or P.O. Box",
+    address2Placeholder:"Apartment, suite, building, floor, etc (optional)"
   },
 
 }

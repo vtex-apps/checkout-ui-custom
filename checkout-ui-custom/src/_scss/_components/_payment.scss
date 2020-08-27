@@ -685,7 +685,7 @@
 				border:1px solid $muted4;
 				width:100%;
 				overflow: hidden;
-				margin:0;
+				margin:0 0 20px 0;
 			}
     	.vtex-omnishipping-1-x-summaryChange {
 		    background:$actionSecondary;
@@ -1126,6 +1126,10 @@
 		.orderform-template-holder .step .accordion-body p.notification,
 		.client-pre-email + .client-profile-data .accordion-body:before {
 			display: none;
+		}
+		body.v-custom-step-shipping #shipping-data .shipping-summary-info,
+		body.v-custom-step-payment #shipping-data .shipping-summary-info {
+				display:block
 		}
 	}
 

@@ -31,7 +31,7 @@ const Colors: FC<WrappedComponentProps & any> = ({
   }
 
   return (
-    <div className="w-80 pa4">
+    <div className="w-100 pa4">
       <div className="w-50 mb-4">
         <ColorPicker
           color={{ hex: state.base }}
