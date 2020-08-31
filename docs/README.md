@@ -2,7 +2,7 @@
 
 The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.
 
-![checkout-ui-custom](./images/screenshot.png)
+![checkout-ui-custom](https://user-images.githubusercontent.com/52087100/91737149-11cc4980-eb85-11ea-9b74-a54721de67bc.png)
 
 ## Configuration
 
