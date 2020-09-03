@@ -550,6 +550,10 @@ class checkoutCustom {
         _this.update(orderForm);
       })
 
+      $(window).load(function() {
+        _this.builder();
+      });
+
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
     }
     catch(e) {
