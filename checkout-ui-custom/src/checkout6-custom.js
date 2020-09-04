@@ -19,6 +19,17 @@ window.vcustom = {
 
 vcustom.checkout.start(); 
 
+$(function() {
+  window.vcustom.debug.headernFooter()
+  $("header.main-header.debug-elem .logo").html(`<img src="/arquivos/logo.png">`)
+  vcustom.checkout.addStepsHeader()
+
+})
+
+$(document).ajaxComplete(function() {  //s2
+  $(".coupon-value").attr("placeholder","cupom de desconto");
+})
+
 
 // vcustom.debug.start(); 
 

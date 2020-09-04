@@ -61,7 +61,7 @@ If you want to insert other contents, make sure of include the class `.v-custom-
 
 <details>
   <summary>If you are yet using the classic CMS</summary>
-  You can access the folder "/checkout-ui-custom" change the variables on scss and build using the webpack `npm run build`. ! **Bear in mind** that the orderplaced page isn't included in this app and the classic CMS import the files from checkout.
+  You can create a workspace and install the app by there. While using the app, you will need apply your changes and copy/paste the content of the files to your portal.
 </details>
 
 # 
