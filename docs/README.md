@@ -58,6 +58,14 @@ If you want to insert other contents, make sure of include the class `.v-custom-
   </div>
 </footer>
 ```
+
+<details>
+  <summary>If you are yet using the classic CMS</summary>
+  You can create a workspace and install the app by there. While using the app, you will need apply your changes and copy/paste the content of the files to your portal.
+</details>
+
+# 
+
 <!-- DOCS-IGNORE:start -->
 
 ## Contributors ✨

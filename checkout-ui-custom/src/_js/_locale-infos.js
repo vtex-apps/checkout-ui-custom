@@ -6,7 +6,12 @@ module.exports._locale = {
     deliveryDateText:"Entrega até",
     PickupDateText:"Pronto até",
     eachLabel:"cada",
-    tomorrowLabel:"Amanhã"
+    tomorrowLabel:"Amanhã",
+    checkoutStepsLabelCart:"Carrinho",
+    checkoutStepsLabelIdentification:"Identificação",
+    checkoutStepsLabelShipping:"Entrega",
+    checkoutStepsLabelPayment:"Pagamento",
+    checkoutStepsLabelConfirmation:"Confirmação"
   },
   CAN: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -18,7 +23,12 @@ module.exports._locale = {
     PickupDateText:"Ready by",
     eachLabel:"each",
     tomorrowLabel:"Tomorrow",
-    identifiedUserMessage:`Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.`
+    identifiedUserMessage:`Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.`,
+    checkoutStepsLabelCart:"Cart",
+    checkoutStepsLabelIdentification:"Identification",
+    checkoutStepsLabelShipping:"Shipping",
+    checkoutStepsLabelPayment:"Payment",
+    checkoutStepsLabelConfirmation:"Confirmation"
   },
   USA: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -33,7 +43,12 @@ module.exports._locale = {
     cartNoteLabel:"Gift Message or Comments",
     identifiedUserMessage:`Thanks for coming back!<br/>To expedite your transaction, we have securely populated your information for you.`,
     address1Placeholder:"Street address or P.O. Box",
-    address2Placeholder:"Apartment, suite, building, floor, etc (optional)"
+    address2Placeholder:"Apartment, suite, building, floor, etc (optional)",
+    checkoutStepsLabelCart:"Cart",
+    checkoutStepsLabelIdentification:"Identification",
+    checkoutStepsLabelShipping:"Shipping",
+    checkoutStepsLabelPayment:"Payment",
+    checkoutStepsLabelConfirmation:"Confirmation"
   },
 
 }

@@ -81,7 +81,7 @@ class checkoutCustom {
 
   addStepsHeader() {
 
-    if($(".checkout-steps").length>0) return false
+    if($(".checkout-steps").length>0 || !this.lang) return false
 
     let addStepsHeaderHtml = `
       <div class="checkout-steps">
@@ -92,19 +92,19 @@ class checkoutCustom {
           </span>
           <div class="checkout-steps_items">
             <span class="checkout-steps_item checkout-steps_item_cart js-checkout-steps-item" data-url="/checkout/#/cart">
-              <span class="text">Cart</span>
+              <span class="text">${this.lang ? this.lang.checkoutStepsLabelCart:"Cart"}</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_identification js-checkout-steps-item" data-url="/checkout/#/profile">
-              <span class="text">Identification</span>
+              <span class="text">${this.lang ? this.lang.checkoutStepsLabelIdentification:"Identification"}</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_shipping js-checkout-steps-item" data-url="/checkout/#/shipping">
-              <span class="text">Shipping</span>
+              <span class="text">${this.lang ? this.lang.checkoutStepsLabelShipping:"Shipping"}</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_payment js-checkout-steps-item" data-url="/checkout/#/payment">
-              <span class="text">Payment</span>
+              <span class="text">${this.lang ? this.lang.checkoutStepsLabelPayment:"Payment"}</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_confirmation js-checkout-steps-item">
-              <span class="text">Confirmation</span>
+              <span class="text">${this.lang ? this.lang.checkoutStepsLabelConfirmation:"Confirmation"}</span>
             </span>
           </div>
         </div>
@@ -429,15 +429,21 @@ class checkoutCustom {
     
     if(_this.orderForm && $(".payment-group-item-cards").length == 0) {
       if(_this.orderForm.paymentData) {
-        let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
-        $.each(_this.orderForm.paymentData.paymentSystems.filter( item => item.groupName=="creditCardPaymentGroup"), function (i) {
-          paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
-        });
-        paymentGroupCardsHtml += `</span>`;
 
-        if(_this.accordionPayments) {
-          $("#payment-group-creditCardPaymentGroup").append(paymentGroupCardsHtml);
-        } else {
+        let paymentGroups = ["debitCardPaymentGroup", "creditCardPaymentGroup"];
+
+        $.each(paymentGroups, function(p) {
+          let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
+          $.each(_this.orderForm.paymentData.paymentSystems.filter( item => item.groupName==paymentGroups[p]), function (i) {
+            paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
+          });
+          paymentGroupCardsHtml += `</span>`;
+          if(_this.accordionPayments) {
+            $(`#payment-group-${paymentGroups[p]}`).append(paymentGroupCardsHtml);
+          }
+        })
+
+        if(!_this.accordionPayments) {
           $("#iframe-placeholder-creditCardPaymentGroup").prepend(paymentGroupCardsHtml);
         }
       }
@@ -511,13 +517,13 @@ class checkoutCustom {
     _this.orderForm = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm : false;
     _this.general();
     _this.updateStep();
-    _this.addStepsHeader();
     _this.builder();
     _this.paymentBuilder();
     _this.changeShippingTimeInfoInit();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)
       _this.update(_this.orderForm);
+      _this.addStepsHeader();
     }
     _this.addEditButtoninLogin();
 
@@ -549,6 +555,10 @@ class checkoutCustom {
       $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
         _this.update(orderForm);
       })
+
+      $(window).load(function() {
+        _this.builder();
+      });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
     }
