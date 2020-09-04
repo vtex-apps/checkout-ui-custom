@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Shipping preview on /cart
-
+- Flags on debit card payment
 
 ### Fixed
 - Updated `README.md` file (image link was presenting an error).
