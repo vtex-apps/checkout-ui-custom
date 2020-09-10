@@ -927,6 +927,12 @@ margin:20px 0 0px 0 !important;
     outline: initial;
     border-radius:$borderRadius;
   }
+
+  .ship-postalCode {
+    width: auto !important;
+    max-width: 190px;
+    input#ship-postalCode {width:100%;}
+  }
 }
 
 @media(max-width: 490px) {
