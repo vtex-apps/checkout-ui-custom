@@ -430,9 +430,10 @@ class checkoutCustom {
     if(orderForm && $(".payment-group-item-cards").length == 0) {
       if(orderForm.paymentData) {
 
-        let paymentGroups = ["debitCardPaymentGroup", "creditCardPaymentGroup"];
+        let paymentGroups = ["debitCardPaymentGroup", "creditCardPaymentGroup"],
+            paymentGroupCardsHtml = ``;
         $.each(paymentGroups, function(p) {
-          let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
+          paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
           $.each(orderForm.paymentData.paymentSystems.filter( item => item.groupName==paymentGroups[p]), function (i) {
             paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
           });

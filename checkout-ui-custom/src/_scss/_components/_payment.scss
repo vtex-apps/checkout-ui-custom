@@ -389,7 +389,11 @@
 		.steps-view {
 		  width: 100% !important;
 		  padding: 0;
-		  min-height: initial;
+			min-height: initial;
+			
+			iframe {
+				margin:0;
+			}
 		}
 
 		p.notification {
@@ -1159,6 +1163,7 @@
 #app-container {
 	min-height: 100vh;
 	background: #FFF;
+	
 
 	input[type=text],
 	input[type=tel],
@@ -1166,7 +1171,6 @@
 	select {
 		@extend %input-style;
 		width: 100%;
-		max-width:calc(100% - 1px);
 	}
 
 	span.help.error {
