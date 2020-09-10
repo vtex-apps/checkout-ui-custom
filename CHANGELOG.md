@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Shipping inputs
+- Javascript loops
+
+### Added
+
+- Loyalty program styling
+
 ## [0.0.17] - 2020-09-04
 
 ### Fixed

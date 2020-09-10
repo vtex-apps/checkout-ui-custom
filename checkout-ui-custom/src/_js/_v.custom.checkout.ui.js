@@ -423,18 +423,17 @@ class checkoutCustom {
     
   }
 
-  paymentBuilder() {
+  paymentBuilder(orderForm) {
     let _this = this;
 
     
-    if(_this.orderForm && $(".payment-group-item-cards").length == 0) {
-      if(_this.orderForm.paymentData) {
+    if(orderForm && $(".payment-group-item-cards").length == 0) {
+      if(orderForm.paymentData) {
 
         let paymentGroups = ["debitCardPaymentGroup", "creditCardPaymentGroup"];
-
         $.each(paymentGroups, function(p) {
           let paymentGroupCardsHtml = `<span class="payment-group-item-cards">`;
-          $.each(_this.orderForm.paymentData.paymentSystems.filter( item => item.groupName==paymentGroups[p]), function (i) {
+          $.each(orderForm.paymentData.paymentSystems.filter( item => item.groupName==paymentGroups[p]), function (i) {
             paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`;
           });
           paymentGroupCardsHtml += `</span>`;
@@ -518,12 +517,13 @@ class checkoutCustom {
     _this.general();
     _this.updateStep();
     _this.builder();
-    _this.paymentBuilder();
+    
     _this.changeShippingTimeInfoInit();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)
       _this.update(_this.orderForm);
       _this.addStepsHeader();
+      _this.paymentBuilder(_this.orderForm);
     }
     _this.addEditButtoninLogin();
 
@@ -544,11 +544,12 @@ class checkoutCustom {
       $(window).on('hashchange', function() {
         _this.updateStep();
         _this.changeShippingTimeInfoInit()
-        _this.paymentBuilder();
+        
         if(_this.orderForm) {
           _this.buildMiniCart(_this.orderForm);
           _this.indexedInItems(_this.orderForm);
           _this.updateLang(_this.orderForm)
+          _this.paymentBuilder(_this.orderForm);
         }
       });
 

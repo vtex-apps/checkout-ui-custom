@@ -1,4 +1,10 @@
 
+.payment-data .gift-card-section, .payment-data .payment-discounts-alert {
+  margin: 0;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
 .input-append, .input-prepend {
   .btn, 
   .add-on {

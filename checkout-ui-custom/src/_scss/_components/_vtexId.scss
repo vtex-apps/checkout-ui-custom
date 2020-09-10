@@ -1,6 +1,11 @@
 
-#vtexIdContainer {
 
+.vtexIdUI {
+  position: fixed !important;
+}
+
+#vtexIdContainer {
+  position: fixed;
   a {color:$actionPrimary;}
 
   input {@extend %input-style;}
