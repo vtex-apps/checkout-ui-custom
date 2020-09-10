@@ -337,22 +337,36 @@
 		}
 
 		.payment-discounts-list {
-			margin-bottom: 20px;
+			margin-bottom: 10px;
+			.gift-card-provider-group-loyalty-program {
+				border-bottom: 1px solid $muted5;
+			}
 			table {
 				width: 100%;
+
+				td {padding:0;}
 				tbody,
 				tr {
 						display:flex;
 						width: 100%;
+						flex-wrap: wrap;
+						align-items: center;
 				}
 				td.code,
 				td.number {
 						margin-right:20px;
 						flex-grow: 1;
+						padding:0;
 				}
 				#remove-gift-card {
 					text-decoration:underline;
 					color:$danger;
+				}
+
+				td.action {
+					a {
+						@extend .btn, .btn-secondary;
+					}
 				}
 			}
 
@@ -1208,13 +1222,6 @@
 
 	input#creditCardpayment-card-0Code {
 	  width: 100px !important;
-	}
-
-	.PaymentCardValue {
-		.add-on {
-			height: 30px;
-  		line-height: 30px;
-		}
 	}
 
 	.label-vertical-group {
