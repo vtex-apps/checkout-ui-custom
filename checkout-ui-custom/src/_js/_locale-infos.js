@@ -28,7 +28,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identification",
     checkoutStepsLabelShipping:"Shipping",
     checkoutStepsLabelPayment:"Payment",
-    checkoutStepsLabelConfirmation:"Confirmation"
+    checkoutStepsLabelConfirmation:"Confirmation",
+    googleAddressLabel:"Street Address"
   },
   USA: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -48,7 +49,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identification",
     checkoutStepsLabelShipping:"Shipping",
     checkoutStepsLabelPayment:"Payment",
-    checkoutStepsLabelConfirmation:"Confirmation"
+    checkoutStepsLabelConfirmation:"Confirmation",
+    googleAddressLabel:"Street Address"
   },
 
 }
