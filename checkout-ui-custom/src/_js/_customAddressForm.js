@@ -3,45 +3,17 @@ class fnsCustomAddressForm {
     active=false
   } = {}) {
 
-    this.classOn="v-custom-customAddressForm-on";
+
+    this.BodyFormClasses = ["v-custom-addressForm-on", "v-custom-googleForm-on"];
     this.active = active;
     this.googleMapsApiKey = vtex.googleMapsApiKey;
+    this.ordermForm="";
+    this.classOn = "v-custom-fnsCustomAddressForm";
   }
 
 
   loadScript() {
     $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=en-US&libraries=places"></script>`);
-  }
-
-
-  setupAddress(_place, _state, _postalCode, _city, _complement) {
-    var postalCode = "00000";  
-    console.log(_postalCode, postalCode)
-    let zaddress = {
-      addressType: "residential",
-      receiverName: "",
-      isDisposable: false,
-      postalCode: postalCode,
-      city: _city,
-      state: _state,
-      country: "USA",
-      street: _place.name,
-      number: null,
-      neighborhood: null,
-      complement: _complement,
-      addressQuery:_place.formatted_address
-    };
-
-    vtexjs.checkout.getOrderForm()
-    .then(function(orderForm) {
-      
-      console.log(zaddress)
-      return vtexjs.checkout.calculateShipping(zaddress)
-    }).done(function(orderForm) {
-    
-      console.log(orderForm);
-      vtexjs.checkout.getOrderForm();
-    })
   }
 
   googleForm() {
@@ -54,6 +26,7 @@ class fnsCustomAddressForm {
       country: ["us"]
     });
 
+
     autocomplete.addListener("place_changed", function() {
       let place = autocomplete.getPlace();
       console.log(place)
@@ -65,36 +38,86 @@ class fnsCustomAddressForm {
 
       
         $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
-        $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state)
-        $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(postalCode)
-
-        $("body").removeClass("v-custom-googleForm-on v-custom-addressForm-on");
-
-        _this.setupAddress(place, state, postalCode, city, complement)
+        $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
+        $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(postalCode);
+        
+        _this.sendAddress(place, state, postalCode, city, complement);
       
     });
 
     $("body").on("keyup", "#v-custom-ship-street", function(e) {
-      if(this.value=="") {$("body").removeClass("v-custom-googleForm-on")}
-      else {
-        $("body").addClass("v-custom-googleForm-on");
-      };
+      if(this.value=="") {$("body").removeClass(_this.BodyFormClasses[1])}
+      else { $("body").addClass(_this.BodyFormClasses[1]); };
     })
     
   }
 
-  form() {
-    $("body").addClass(this.classOn)
+  sendAddress(_place, _state, _postalCode, _city, _complement) {
+      let _this = this;
+
+      $("body").removeClass(_this.BodyFormClasses.join(" "));
+      $("body").addClass("js-v-custom-is-loading");
+
+      fetch(`/api/checkout/pub/orderForm/${_this.orderForm.orderFormId}/attachments/shippingData`, 
+      {
+        "credentials":"include",
+        "headers":{
+           "accept":"application/json, text/javascript, */*; q=0.01",
+           "cache-control":"no-cache",
+           "content-type":"application/json; charset=UTF-8",
+           "pragma":"no-cache",
+           "sec-fetch-mode":"cors",
+           "sec-fetch-site":"same-origin",
+           "x-requested-with":"XMLHttpRequest"
+        },
+        "referrerPolicy":"no-referrer-when-downgrade",
+        "body":JSON.stringify({
+          'selectedAddresses':[
+             {
+                'addressType':'residential',
+                'receiverName':'',
+                'isDisposable':true,
+                'postalCode':_postalCode,
+                'city':_city,
+                'state':_state,
+                'country':'USA',
+                'street':_place.name,
+                'number':null,
+                'neighborhood':null,
+                'complement':_complement,
+                'reference':null,
+                'addressQuery':_place.formatted_address
+             }
+          ],
+          'clearAddressIfPostalCodeNotFound':false,
+          
+       }),
+        "method":"POST",
+        "mode":"cors"
+      })
+      .then(response => response.json())
+      .then(function(data) {
+          vtexjs.checkout.getOrderForm()
+          .done(function(order) {
+            _this.orderForm = vtexjs.checkout.orderForm;
+            $("body").removeClass("js-v-custom-is-loading");
+          });
+      });
+  
+  }
+
+  form(orderForm) {
+    
+    let shippingData = orderForm.shippingData;
+
     $(".vcustom--vtex-omnishipping-1-x-address").remove();
     let form = `
       <div class="vcustom--vtex-omnishipping-1-x-address">
         <div>
             <p class="input ship-country hide text"><label for="ship-country">Country</label><input autocomplete="on" id="ship-country" type="text" name="country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
-            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input autocomplete="on" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="" placeholder="Eg: 225 East 41st Street, New York"></p>
-            <p class="input ship-complement text"><label for="ship-complement">Address Line 2</label><input autocomplete="on" id="ship-complement" type="text" name="complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge success" data-hj-whitelist="true" value=""></p>
-            <p class="input ship-reference hide text"><label for="ship-reference">Close to</label><input autocomplete="on" id="ship-reference" type="text" name="reference" maxlength="750" class="input-xlarge" data-hj-whitelist="true" value=""></p>
-            <p class="input ship-neighborhood hide text"><label for="ship-neighborhood">Neighborhood</label><input autocomplete="on" id="ship-neighborhood" type="text" name="neighborhood" maxlength="100" class="input-large" data-hj-whitelist="true" value=""></p>
-            <p class="input ship-city required text"><label for="ship-city">City</label><input autocomplete="on" id="ship-city" type="text" name="city" maxlength="100" class="input-large" data-hj-whitelist="true" value=""></p>
+            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input autocomplete="on" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"></p>
+            <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge success" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement : "" }"></p>
+            <p class="input ship-city required text"><label for="ship-city">City</label><input autocomplete="on" id="ship-city" type="text" name="city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"></p>
             <p class="input ship-state required text"><label for="ship-state">State</label><select name="state" id="ship-state" class="input-large">
                     <option value="" disabled=""></option>
                     <option value="AL">Alabama</option>
@@ -160,25 +183,51 @@ class fnsCustomAddressForm {
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select></p>
-            <p class="input ship-postalCode required text"><label for="ship-postalCode">Zip Code</label><input autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="20" class="input-xlarge" data-hj-whitelist="true" value=""></p>
+            <p class="input ship-postalCode required text"><label for="ship-postalCode">Zip Code</label><input autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="20" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"></p>
         </div>
       </div>
     `;
+
+    shippingData.address ? $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(shippingData.address.state) : "";
+    
 
     $(".orderform-template-holder #shipping-data").append(form);
     this.googleForm();
 
   }
 
+  validateAllFields() {
+
+    let _this = this;
+    $("body").on("keyup", ".vcustom--vtex-omnishipping-1-x-address input", function (e) {
+
+      let street = $("#v-custom-ship-street").val(),
+          complement = $("#ship-complement").val(),
+          city = $("#ship-city").val(),
+          state = $("#ship-state").val(),
+          postalCode =  $("#ship-postalCode").val();
+      if(street.length>=10 && city.length >= 3 && state != "" && postalCode.length>=5) {
+        let place = { name:street, formatted_address:"" };
+        _this.sendAddress(place, state, postalCode, city, complement);
+      }
+    })
+  }
+
   bind() {
-    
+    let _this = this;
     $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
-      $("body").addClass("v-custom-googleForm-on v-custom-addressForm-on");
+      $("body").addClass(_this.BodyFormClasses.join(" "));
+      $("#v-custom-ship-street").val("")
     });
   }
   init(orderForm) {
-    if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1) this.form();
-    this.bind();
+    if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1) {
+      this.form(orderForm);
+      this.bind();
+      this.validateAllFields();
+      this.orderForm = orderForm;
+      $("body").addClass(this.classOn)
+    } 
     
   }
   

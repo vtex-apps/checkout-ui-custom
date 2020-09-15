@@ -3,15 +3,62 @@ body.v-custom-googleForm-on {
   .pac-container.pac-logo {
     display: block !important;
   }
+  
 }
 
+.vcustom--vtex-omnishipping-1-x-address {
+  display: none;
+}
 body.v-custom-addressForm-on {
+  .accordion-inner.shipping-container .box-step {display:none !important;}
   .vcustom--vtex-omnishipping-1-x-address {
-    display:block;
+    display: block;
+  }
+}
+
+
+body.v-custom-fnsCustomAddressForm {
+
+  .accordion-inner.shipping-container {
+    transition:all ease 0.3s;
+  }
+
+  .orderform-template-holder {
+    .step.shipping-data .box-step { 
+      .vtex-omnishipping-1-x-addressFormPart1 {order: 3;}
+      .vtex-omnishipping-1-x-addressForm {
+        
+      }
+    }
+  }
+
+  .pac-logo[style*="none"] {
+    border:0;
+  }
+  .pac-logo[style*="none"]:after {
+      display: none;
+  }
+
+
+}
+ 
+.js-v-custom-is-loading {
+
+  .accordion-inner.shipping-container,
+  .vcustom--vtex-omnishipping-1-x-address {
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .accordion-inner.shipping-container > *,
+  .vcustom--vtex-omnishipping-1-x-address > * {
+    opacity:0.2
   }
 }
 
 .vcustom--vtex-omnishipping-1-x-address {
+  
+  transition:all ease 0.3s;
   p.input {
     float: none;
     width: 100%;
@@ -25,7 +72,4 @@ body.v-custom-addressForm-on {
     width: 100%;
   }
 }
-.vcustom--vtex-omnishipping-1-x-address,
-.vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
-  display: none;
-}
+

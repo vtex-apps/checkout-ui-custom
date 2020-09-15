@@ -431,7 +431,7 @@ class checkoutCustom {
     // placeholders
 
     if(_lang.address1Placeholder) $(".vtex-omnishipping-1-x-address input#ship-street").attr("placeholder",_lang.address1Placeholder);
-    if(_lang.address2Placeholder) $(".vtex-omnishipping-1-x-address input#ship-complement").attr("placeholder",_lang.address2Placeholder)
+    if(_lang.address2Placeholder) $(".vtex-omnishipping-1-x-address label[for='ship-complement']").text(_lang.address2Placeholder);
     
   }
 
@@ -479,7 +479,7 @@ class checkoutCustom {
   customAddressFormLoader() {
     if(this.customAddressForm) {
       this.customAddressForm = new fnsCustomAddressForm({});
-      //this.customAddressForm.loadScript();
+      this.customAddressForm.loadScript();
     }
   }
 
