@@ -1,0 +1,31 @@
+
+body.v-custom-googleForm-on {
+  .pac-container.pac-logo {
+    display: block !important;
+  }
+}
+
+body.v-custom-addressForm-on {
+  .vcustom--vtex-omnishipping-1-x-address {
+    display:block;
+  }
+}
+
+.vcustom--vtex-omnishipping-1-x-address {
+  p.input {
+    float: none;
+    width: 100%;
+  }
+  label {
+    @extend %label;
+  }
+  input {
+    @extend %input-style;
+    max-width: initial;
+    width: 100%;
+  }
+}
+.vcustom--vtex-omnishipping-1-x-address,
+.vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
+  display: none;
+}

@@ -1,7 +1,9 @@
 
 @import '_card-flags.scss';
 
-
+%label {
+	margin:10px 0 5px 0;display:block;color:$muted3;
+}
 // loadin shhimer
 
 
@@ -604,7 +606,7 @@
 	  }
 
     .input.text {
-    	label {margin:10px 0 5px 0;display:block;}
+    	label {@extend %label;}
     }
 
     &.client-profile-data {
