@@ -263,12 +263,20 @@ class fnsCustomAddressForm {
 
   bind() {
     let _this = this;
-    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-addressFormPart1 #edit-address-button, .vtex-omnishipping-1-x-buttonCreateAddress", function(e) {
-      let addressClicked = _this.orderForm.shippingData.availableAddresses[$(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index()];
+    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-addressFormPart1 #edit-address-button", function(e) {
+      let addressClicked = _this.orderForm.shippingData.availableAddresses[$(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index()] || "";
       $("body").addClass(_this.BodyFormClasses.join(" "));
       $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street || addressClicked.street).attr("data-street","");
       _this.address.addressId="";
     });
+
+    $("body").on("click",".vtex-omnishipping-1-x-buttonCreateAddress", function(e) {
+      $("body").addClass(_this.BodyFormClasses.join(" "));
+      _this.address.addressId="";
+      _this.updateAddress("", "", "", "", "", "", "");
+    });
+
+
 
     $("body").on("click",".vtex-omnishipping-1-x-backToAddressList", function(e) {
       $("body").removeClass(_this.BodyFormClasses.join(" "));
