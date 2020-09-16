@@ -30,10 +30,20 @@ body.v-custom-googleForm-on {
 body.v-custom-fnsCustomAddressForm {
 
   .accordion-inner.shipping-container {
+    padding-top:0 !important;
+  }
+  
+
+  .accordion-inner.shipping-container {
     transition:all ease 0.3s;
   }
 
   .vtex-omnishipping-1-x-selectDeliveryText + div {margin:0 !important;}
+
+  .orderform-template-holder p.vtex-omnishipping-1-x-submitPaymentButton.btn-submit-wrapper.btn-go-to-payment-wrapper {
+    margin-bottom:0 !important;
+    margin-top: 20px;
+  }
 
   .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
     p.input.ship-addressQuery.text {display: none;}

@@ -632,8 +632,8 @@
 					width:100%;
 					order: 1;
 					
-					&:not(#postalCode-finished-loading),
-					&:not(.vtex-omnishipping-1-x-geolocation) {margin:0 0 20px 0;}
+					//&:not(#postalCode-finished-loading),
+					//&:not(.vtex-omnishipping-1-x-geolocation) {margin:0 0 20px 0;}
 					
 					&.vtex-omnishipping-1-x-addressFormPart1 {order: 1;}
 					&.vtex-omnishipping-1-x-addressForm { order: 2; }

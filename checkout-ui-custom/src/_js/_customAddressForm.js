@@ -7,7 +7,7 @@ class fnsCustomAddressForm {
     this.BodyFormClasses = ["v-custom-addressForm-on", "v-custom-googleForm-on"];
     this.active = active;
     this.googleMapsApiKey = vtex.googleMapsApiKey;
-    this.ordermForm="";
+    this.orderForm="";
     this.classOn = "v-custom-fnsCustomAddressForm";
 
     this.address = {
@@ -25,6 +25,19 @@ class fnsCustomAddressForm {
 
   loadScript() {
     $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=en-US&libraries=places"></script>`);
+  }
+
+
+  updateAddress(postalCode, city, state, street, complement, addresQuery, addressId) {
+    this.address = {
+      postalCode:postalCode,
+      addressId:addressId,
+      city:city,
+      state:state,
+      street:street,
+      complement:complement,
+      addresQuery:addresQuery
+    };
   }
 
   googleForm() {
@@ -51,9 +64,10 @@ class fnsCustomAddressForm {
         $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
         $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
         $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(postalCode);
+        $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-street", place.name)
 
         _this.validateAllFields();
-        _this.address.addresQuery = place.formatted_address;
+        _this.updateAddress(postalCode, city, state, place.name, complement, place.formatted_address, _this.address.addressId);
         
         //_this.sendAddress(place, state, postalCode, city, complement);    
       
@@ -235,12 +249,15 @@ class fnsCustomAddressForm {
     
     if(!_this.validate) return;
 
-    let street = $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(),
+    let _st = $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street");
+
+    let street = _st.attr("data-street") || _st.val(),
         complement =  $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(),
         city =  $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(),
         state =  $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(),
         postalCode =  $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val();
-
+    
+    _this.updateAddress(postalCode, city, state, street, complement, "", _this.address.addressId);
     _this.sendAddress(street, state, postalCode, city, complement, _this.address.addressQuery)
   }
 
@@ -248,10 +265,17 @@ class fnsCustomAddressForm {
     let _this = this;
     $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-addressFormPart1 #edit-address-button, .vtex-omnishipping-1-x-buttonCreateAddress", function(e) {
       $("body").addClass(_this.BodyFormClasses.join(" "));
+      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street).attr("data-street","");
+      _this.address.addressId="";
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-backToAddressList", function(e) {
       $("body").removeClass(_this.BodyFormClasses.join(" "));
+      _this.address.addressId="";
+    });
+
+    $("body").on("click",".vtex-omnishipping-1-x-addressItemOption", function(e) {
+      _this.address.addressId=_this.orderForm.shippingData.availableAddresses[$(this).index()].addressId;
     });
 
     
@@ -267,14 +291,26 @@ class fnsCustomAddressForm {
       }
     })
   }
+
+  checkFirstLogin(orderForm) {
+    let _this = this;
+    if(orderForm) {
+      if(orderForm.shippingData.address==null) {
+        $("body").addClass(_this.BodyFormClasses[0]);
+      }
+    }
+  }
+
   init(orderForm) {
+    let _this = this;
     if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1) {
       $("body").addClass(`${this.classOn}`);
-      this.orderForm = orderForm;
-      this.bind();
-      this.validateAllFields();
+      _this.orderForm = orderForm;
+      _this.checkFirstLogin(orderForm);
+      _this.bind();
+      _this.validateAllFields();
       if($(".step.accordion-group.shipping-data").length) {
-        this.form(orderForm);
+        _this.form(orderForm);
       } 
     } 
     
