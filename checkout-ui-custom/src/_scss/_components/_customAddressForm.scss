@@ -33,13 +33,15 @@ body.v-custom-fnsCustomAddressForm {
     transition:all ease 0.3s;
   }
 
+  .vtex-omnishipping-1-x-selectDeliveryText + div {margin:0 !important;}
+
   .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
-    display: none;
+    p.input.ship-addressQuery.text {display: none;}
   }
 
   .orderform-template-holder {
     .step.shipping-data .box-step { 
-      .vtex-omnishipping-1-x-addressFormPart1 {order: 3;}
+      .vtex-omnishipping-1-x-addressFormPart1 {order: 1;}
     }
   }
 

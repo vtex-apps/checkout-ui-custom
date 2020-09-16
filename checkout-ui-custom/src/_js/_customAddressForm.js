@@ -132,7 +132,7 @@ class fnsCustomAddressForm {
         <form>
             <p class="input ship-country hide text"><label for="ship-country">Country</label><input required autocomplete="on" id="ship-country" type="text" name="country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
             <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input required autocomplete="on" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
-            <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge success" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement : "" }"></p>
+            <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
             <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
             <p class="input ship-state required text"><label for="ship-state">State</label><select name="state" id="ship-state" class="input-large">
                     <option value="" disabled=""></option>
@@ -246,9 +246,15 @@ class fnsCustomAddressForm {
 
   bind() {
     let _this = this;
-    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
+    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-addressFormPart1 #edit-address-button, .vtex-omnishipping-1-x-buttonCreateAddress", function(e) {
       $("body").addClass(_this.BodyFormClasses.join(" "));
     });
+
+    $("body").on("click",".vtex-omnishipping-1-x-backToAddressList", function(e) {
+      $("body").removeClass(_this.BodyFormClasses.join(" "));
+    });
+
+    
 
     $("body").on("click","#btn-go-to-shippping-method", function(e) {
       e.preventDefault();
