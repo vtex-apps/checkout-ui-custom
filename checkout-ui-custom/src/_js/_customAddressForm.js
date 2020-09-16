@@ -222,7 +222,7 @@ class fnsCustomAddressForm {
   }
   init(orderForm) {
     if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1) {
-      $("body").addClass(`${this.classOn} .v-custom-addressForm-on`);
+      $("body").addClass(`${this.classOn} v-custom-addressForm-on`);
       this.orderForm = orderForm;
       this.bind();
       this.validateAllFields();
