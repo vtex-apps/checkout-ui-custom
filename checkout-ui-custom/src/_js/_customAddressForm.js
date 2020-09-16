@@ -30,12 +30,12 @@ class fnsCustomAddressForm {
 
   updateAddress(postalCode, city, state, street, complement, addresQuery, addressId) {
     this.address = {
-      postalCode:postalCode,
-      addressId:addressId,
-      city:city,
-      state:state,
-      street:street,
-      complement:complement,
+      postalCode: this.orderForm.postalCode || postalCode,
+      addressId:  this.orderForm.addressId || addressId,
+      city: this.orderForm.city || city,
+      state: this.orderForm.state || state,
+      street: this.orderForm.street || street,
+      complement:this.orderForm.complement || complement,
       addresQuery:addresQuery
     };
   }
@@ -264,8 +264,9 @@ class fnsCustomAddressForm {
   bind() {
     let _this = this;
     $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-addressFormPart1 #edit-address-button, .vtex-omnishipping-1-x-buttonCreateAddress", function(e) {
+      let addressClicked = _this.orderForm.shippingData.availableAddresses[$(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index()];
       $("body").addClass(_this.BodyFormClasses.join(" "));
-      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street).attr("data-street","");
+      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street || addressClicked.street).attr("data-street","");
       _this.address.addressId="";
     });
 
