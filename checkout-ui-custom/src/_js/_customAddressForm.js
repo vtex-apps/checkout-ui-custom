@@ -110,12 +110,12 @@ class fnsCustomAddressForm {
     
     let shippingData = orderForm.shippingData;
 
-    $(".vcustom--vtex-omnishipping-1-x-address").remove();
+    //$(".vcustom--vtex-omnishipping-1-x-address").remove();
     let form = `
       <div class="vcustom--vtex-omnishipping-1-x-address">
         <div>
             <p class="input ship-country hide text"><label for="ship-country">Country</label><input autocomplete="on" id="ship-country" type="text" name="country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
-            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input autocomplete="on" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"></p>
+            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input autocomplete="on" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="" placeholder="${shippingData.address ? shippingData.address.street : "" }"></p>
             <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge success" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement : "" }"></p>
             <p class="input ship-city required text"><label for="ship-city">City</label><input autocomplete="on" id="ship-city" type="text" name="city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"></p>
             <p class="input ship-state required text"><label for="ship-state">State</label><select name="state" id="ship-state" class="input-large">
@@ -222,11 +222,13 @@ class fnsCustomAddressForm {
   }
   init(orderForm) {
     if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1) {
-      this.form(orderForm);
+      $("body").addClass(`${this.classOn} .v-custom-addressForm-on`);
+      this.orderForm = orderForm;
       this.bind();
       this.validateAllFields();
-      this.orderForm = orderForm;
-      $("body").addClass(this.classOn)
+      if($(".step.accordion-group.shipping-data").length) {
+        this.form(orderForm);
+      } 
     } 
     
   }

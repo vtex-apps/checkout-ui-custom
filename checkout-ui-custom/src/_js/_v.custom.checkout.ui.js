@@ -533,7 +533,7 @@ class checkoutCustom {
     $("body").on("click", ".vtex-omnishipping-1-x-linkEdit.link-edit", function(e) {
       setTimeout(() => {
         _this.updateLang(_this.orderForm);
-        _this.customAddressFormInit(_this.orderForm);
+        
       }, 50);
       
     });
@@ -555,7 +555,6 @@ class checkoutCustom {
       _this.update(_this.orderForm);
       _this.addStepsHeader();
       _this.paymentBuilder(_this.orderForm);
-      _this.customAddressFormInit(_this.orderForm);
     }
     _this.addEditButtoninLogin();
 
@@ -571,6 +570,9 @@ class checkoutCustom {
 
       $(document).ajaxComplete(function() {
         _this.init();
+        if(_this.orderForm) {
+          _this.customAddressFormInit(_this.orderForm);
+        }
       })
 
 

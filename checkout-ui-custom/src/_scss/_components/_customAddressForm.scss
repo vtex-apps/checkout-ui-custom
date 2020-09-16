@@ -14,6 +14,8 @@ body.v-custom-addressForm-on {
   .vcustom--vtex-omnishipping-1-x-address {
     display: block;
   }
+
+  
 }
 
 
@@ -23,12 +25,13 @@ body.v-custom-fnsCustomAddressForm {
     transition:all ease 0.3s;
   }
 
+  .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
+    display: none;
+  }
+
   .orderform-template-holder {
     .step.shipping-data .box-step { 
       .vtex-omnishipping-1-x-addressFormPart1 {order: 3;}
-      .vtex-omnishipping-1-x-addressForm {
-        
-      }
     }
   }
 
@@ -39,7 +42,21 @@ body.v-custom-fnsCustomAddressForm {
       display: none;
   }
 
+  #shipping-data .accordion-inner + .vcustom--vtex-omnishipping-1-x-address {
+    display: none;
+  }
 
+  div#shipping-data {
+    display: flex;
+    flex-wrap: wrap;
+    > * {
+      width:100%;
+    }
+
+    .step.accordion-group.shipping-data {order: 1;}
+    .vcustom--vtex-omnishipping-1-x-address {order: 3;}
+  }
+  
 }
  
 .js-v-custom-is-loading {
