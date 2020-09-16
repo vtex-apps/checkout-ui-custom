@@ -1,23 +1,31 @@
 
-body.v-custom-googleForm-on {
-  .pac-container.pac-logo {
-    display: block !important;
-  }
-  
-}
+
 
 .vcustom--vtex-omnishipping-1-x-address {
   display: none;
 }
 body.v-custom-addressForm-on {
-  .accordion-inner.shipping-container .box-step {display:none !important;}
-  .vcustom--vtex-omnishipping-1-x-address {
-    display: block;
+  
+  
+  &.v-custom-step-shipping {
+    .vcustom--vtex-omnishipping-1-x-address {
+      display: block;
+    }
   }
-
   
 }
 
+.vtex-omnishipping-1-x-submitShippingStepButton {
+  margin: 20px 0 0 0;
+}
+
+
+body.v-custom-googleForm-on {
+  .pac-container.pac-logo {
+    //display: block !important;
+  }
+  
+}
 
 body.v-custom-fnsCustomAddressForm {
 
@@ -63,30 +71,52 @@ body.v-custom-fnsCustomAddressForm {
 
   .accordion-inner.shipping-container,
   .vcustom--vtex-omnishipping-1-x-address {
-    height: 150px;
     overflow: hidden;
+  }
+
+  .vcustom--vtex-omnishipping-1-x-address {
+    height: 120px;
+    position:relative;
+
+    &:before {
+      content:"";
+      display:block;
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      z-index:2;
+      @extend %loading-shimmer;
+    }
   }
 
   .accordion-inner.shipping-container > *,
   .vcustom--vtex-omnishipping-1-x-address > * {
-    opacity:0.2
+    opacity:0.5
   }
 }
 
 .vcustom--vtex-omnishipping-1-x-address {
-  
   transition:all ease 0.3s;
+
   p.input {
     float: none;
     width: 100%;
   }
+
   label {
     @extend %label;
   }
+
+  span.help.error {display: none;}
+
   input {
     @extend %input-style;
     max-width: initial;
     width: 100%;
+
+    &.error + span.help.error {display: block;}
   }
 }
 

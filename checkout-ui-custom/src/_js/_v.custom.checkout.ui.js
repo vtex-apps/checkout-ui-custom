@@ -479,7 +479,7 @@ class checkoutCustom {
   customAddressFormLoader() {
     if(this.customAddressForm) {
       this.customAddressForm = new fnsCustomAddressForm({});
-      this.customAddressForm.loadScript();
+      //this.customAddressForm.loadScript();
     }
   }
 
