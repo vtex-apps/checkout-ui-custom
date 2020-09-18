@@ -16,7 +16,8 @@ class fnsCustomAddressForm {
       state:"",
       street:"",
       complement:"",
-      addresQuery:""
+      addressQuery:"",
+      addressId:""
     };
 
     this.validate=true;
@@ -28,15 +29,16 @@ class fnsCustomAddressForm {
   }
 
 
-  updateAddress(postalCode, city, state, street, complement, addresQuery, addressId) {
+  updateAddress(postalCode="", city="", state="", street="", complement="", addressQuery="", addressId="") {
+    console.log(arguments, postalCode ,city)
     this.address = {
-      postalCode: this.orderForm.postalCode || postalCode,
-      addressId:  this.orderForm.addressId || addressId,
-      city: this.orderForm.city || city,
-      state: this.orderForm.state || state,
-      street: this.orderForm.street || street,
-      complement:this.orderForm.complement || complement,
-      addresQuery:addresQuery
+      postalCode: postalCode,
+      addressId:  addressId,
+      city: city,
+      state: state,
+      street: street,
+      complement: complement,
+      addressQuery:addressQuery
     };
   }
 
@@ -80,9 +82,32 @@ class fnsCustomAddressForm {
     
   }
 
-  sendAddress(_street, _state, _postalCode, _city, _complement, _addressQuery) {
+  sendAddress(_street, _state, _postalCode, _city, _complement, _addressQuery, _addressId) {
       let _this = this;
 
+      var b = JSON.stringify({
+        'selectedAddresses':[
+           {
+              'addressType':'residential',
+              'receiverName':'',
+              'addressId':_addressId,
+              'addressId2':'19ed870fd45744afb0d6b12504e34aab',
+              'isDisposable':true,
+              'postalCode':_postalCode,
+              'city':_city,
+              'state':_state,
+              'country':'USA',
+              'street':_street,
+              'number':null,
+              'neighborhood':null,
+              'complement':_complement,
+              'reference':null
+           }
+        ],
+        'clearAddressIfPostalCodeNotFound':false,
+     });
+
+      console.log(_addressId, b)
       
       $("body").addClass("js-v-custom-is-loading");
 
@@ -104,6 +129,7 @@ class fnsCustomAddressForm {
              {
                 'addressType':'residential',
                 'receiverName':'',
+                'addressId':'',
                 'isDisposable':true,
                 'postalCode':_postalCode,
                 'city':_city,
@@ -118,7 +144,6 @@ class fnsCustomAddressForm {
              }
           ],
           'clearAddressIfPostalCodeNotFound':false,
-          
        }),
         "method":"POST",
         "mode":"cors"
@@ -127,6 +152,9 @@ class fnsCustomAddressForm {
       .then(function(data) {
           vtexjs.checkout.getOrderForm()
           .done(function(order) {
+            _this.updateAddress(_postalCode, _city, _state, _street, _complement, "", _addressQuery||"");
+
+            console.log(order.shippingData.availableAddresses)
             $("body").removeClass(_this.BodyFormClasses.join(" "));
             _this.orderForm = vtexjs.checkout.orderForm;
             $("body").removeClass("js-v-custom-is-loading");
@@ -145,7 +173,7 @@ class fnsCustomAddressForm {
         <div>
         <form>
             <p class="input ship-country hide text"><label for="ship-country">Country</label><input required autocomplete="on" id="ship-country" type="text" name="country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
-            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input required autocomplete="on" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
+            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
             <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
             <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
             <p class="input ship-state required text"><label for="ship-state">State</label><select name="state" id="ship-state" class="input-large">
@@ -257,23 +285,31 @@ class fnsCustomAddressForm {
         state =  $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(),
         postalCode =  $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val();
     
-    _this.updateAddress(postalCode, city, state, street, complement, "", _this.address.addressId);
-    _this.sendAddress(street, state, postalCode, city, complement, _this.address.addressQuery)
+    //_this.updateAddress(postalCode, city, state, street, complement, "", _this.address.addressId);
+    _this.sendAddress(street, state, postalCode, city, complement, _this.address.addressQuery, _this.address.addressId)
   }
 
   bind() {
     let _this = this;
     $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-addressFormPart1 #edit-address-button", function(e) {
-      let addressClicked = _this.orderForm.shippingData.availableAddresses[$(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index()] || "";
+
+      let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
+
+      if(indexAddress<0) {
+        indexAddress=0
+      }
+
+      let addressClicked = _this.orderForm.shippingData.availableAddresses[_this.orderForm.shippingData.availableAddresses.length-1];
+
       $("body").addClass(_this.BodyFormClasses.join(" "));
+      _this.updateAddress(addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
       $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street || addressClicked.street).attr("data-street","");
-      _this.address.addressId="";
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-buttonCreateAddress", function(e) {
       $("body").addClass(_this.BodyFormClasses.join(" "));
       _this.address.addressId="";
-      _this.updateAddress("", "", "", "", "", "", "");
+      _this.updateAddress("");
     });
 
 
@@ -287,10 +323,10 @@ class fnsCustomAddressForm {
       _this.address.addressId=_this.orderForm.shippingData.availableAddresses[$(this).index()].addressId;
     });
 
-    
-
     $("body").on("click","#btn-go-to-shippping-method", function(e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
+      console.log(">>>>>>>>>>>> #btn-go-to-shippping-method")
       _this.submitAddressForm();
     });
 
@@ -303,7 +339,7 @@ class fnsCustomAddressForm {
 
   checkFirstLogin(orderForm) {
     let _this = this;
-    if(orderForm) {
+    if(orderForm && orderForm.shippingData) {
       if(orderForm.shippingData.address==null) {
         $("body").addClass(_this.BodyFormClasses[0]);
       }
@@ -312,12 +348,27 @@ class fnsCustomAddressForm {
 
   init(orderForm) {
     let _this = this;
-    if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1) {
+    //if(!window.google) _this.loadScript();
+    
+    $("input#v-custom-ship-street").attr("autocomplete","none")
+    if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       $("body").addClass(`${this.classOn}`);
       _this.orderForm = orderForm;
       _this.checkFirstLogin(orderForm);
       _this.bind();
       _this.validateAllFields();
+      
+
+      
+      if(_this.orderForm && _this.orderForm.shippingData) {
+        let shippingData = _this.orderForm.shippingData.address;
+        if(shippingData) {
+          _this.updateAddress(shippingData.postalCode, shippingData.city, shippingData.state, shippingData.street, shippingData.complement, "", shippingData.addressId)
+        } else {
+          _this.updateAddress("");
+        }
+      }
+      
       if($(".step.accordion-group.shipping-data").length) {
         _this.form(orderForm);
       } 

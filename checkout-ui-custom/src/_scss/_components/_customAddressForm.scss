@@ -27,6 +27,12 @@ body.v-custom-googleForm-on {
   
 }
 
+.v-custom-googleFormScript-added.v-custom-googleForm-on .accordion-inner.shipping-container  > * {
+  display: none;
+}
+
+
+
 body.v-custom-fnsCustomAddressForm {
 
   .accordion-inner.shipping-container {
@@ -132,3 +138,14 @@ body.v-custom-fnsCustomAddressForm {
   }
 }
 
+//google address form
+
+.pac-container.pac-logo {border: 1px solid $muted4; border-radius: $borderRadius;}
+
+.pac-logo:after {
+  background: #fbfbfb url(https://developers.google.com/maps/documentation/images/powered_by_google_on_white.png) no-repeat 10px center;
+  padding: 14px;
+  background-size: 110px;
+}
+
+.address-list.vtex-omnishipping-1-x-addressList + p.input.ship-addressQuery.text {display:none;}
