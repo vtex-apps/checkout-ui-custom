@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.20] - 2020-09-20
+
 ### Fixed
 
 - Border on shipping preview
