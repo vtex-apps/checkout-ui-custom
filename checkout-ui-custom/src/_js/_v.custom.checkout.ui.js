@@ -481,7 +481,7 @@ class checkoutCustom {
           location.reload(); 
           setTimeout(function() {
             $("#v-custom-edit-login-data").removeClass("active");
-          },1000)
+          },1000);
         }
       });
 
@@ -508,6 +508,12 @@ class checkoutCustom {
     $("body").on("click", ".js-checkout-steps-item .text", function(e) {
       window.location = $(this).closest(".checkout-steps_item").attr("data-url");
     });
+
+    $("body").on("click", "#btn-client-pre-email", function (e) {
+      setTimeout(function() {
+        if(!$("input#client-pre-email").hasClass("error")) $("input#client-email").focus();
+      },1000)
+    })
 
   }
 

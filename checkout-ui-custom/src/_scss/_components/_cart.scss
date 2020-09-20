@@ -854,96 +854,97 @@ h1#cart-title {display:none !important;}
 .summary-coupon {width: 100% !important;}
 
 .cart-select-gift-placeholder {
-width: auto !important;
+  width: auto !important;
 }
 
 .cart-more-options {
-width:100% !important;
-margin:20px 0 0px 0 !important;
+  width:100% !important;
+  margin:20px 0 0px 0 !important;
+  border:$bordersContainers;
 
 
-.vtex-shipping-preview-0-x-alert {
-  .shp-alert-content.vtex-shipping-preview-0-x-content {
-    display: flex;
-    align-items:center;
-  }
-}
-
-.srp-container {
-
-  max-width:100% !important;
-
-  .srp-main-title {
-    @extend %steps-title;
-  }
-
-  span.error {display:none;}
-  .srp-toggle__wrapper {
-    label {
-      background:#FFF;
-      padding:10px 0;
-      border-radius:$borderRadius;
+  .vtex-shipping-preview-0-x-alert {
+    .shp-alert-content.vtex-shipping-preview-0-x-content {
+      display: flex;
+      align-items:center;
     }
   }
 
-  .srp-delivery-info {
-    .b--light-gray {
-      background:#FFF;
+  .srp-container {
+
+    max-width:100% !important;
+
+    .srp-main-title {
+      @extend %steps-title;
+    }
+
+    span.error {display:none;}
+    .srp-toggle__wrapper {
+      label {
+        background:#FFF;
+        padding:10px 0;
+        border-radius:$borderRadius;
+      }
+    }
+
+    .srp-delivery-info {
+      .b--light-gray {
+        background:#FFF;
+        border-radius:$borderRadius;
+      }
+    }
+    select,
+    input[type=text]:not(.pac-target-input) {
+      @extend %input-style;
+      outline: initial;
+    }
+
+    form.srp-postal-code__form.dib.relative {
+      width: 100%;
+    }
+    button.shp-open-options {border-color:$actionPrimaryDarken;}
+    .onda-v1 .blue {
+      color:$actionPrimary;
+      outline: none;
+    }
+    .onda-v1 .b--blue {
+      border-color:$actionPrimary;
+      outline: none;
+      
+    }
+
+    .onda-v1 .bg-blue {
+      background:$actionPrimary;
+      outline: initial;
+      
+    }
+    .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input {
+      @extend %input-style;
+    }
+    .vtex-shipping-preview-0-x-pc .ship-country {width:98%;}
+    .vtex-shipping-preview-0-x-pc .btn {
+      @extend .btn-secondary;
+      height: $inputHeight;
+      outline: initial;
       border-radius:$borderRadius;
     }
-  }
-  select,
-  input[type=text]:not(.pac-target-input) {
-    @extend %input-style;
-    outline: initial;
+
+    .ship-postalCode {
+      width: auto !important;
+      max-width: 190px;
+      input#ship-postalCode {width:100%;}
+    }
   }
 
-  form.srp-postal-code__form.dib.relative {
-    width: 100%;
-  }
-  button.shp-open-options {border-color:$actionPrimaryDarken;}
-  .onda-v1 .blue {
-    color:$actionPrimary;
-    outline: none;
-  }
-  .onda-v1 .b--blue {
-    border-color:$actionPrimary;
-    outline: none;
-    
+  @media(max-width: 490px) {
+    display: none !important;
   }
 
-  .onda-v1 .bg-blue {
-    background:$actionPrimary;
-    outline: initial;
-    
+  .vtex-pickup-points-modal-3-x-pickupViewMode {
+    .btn {
+      padding:13px 0;
+    }
   }
-  .vtex-shipping-preview-0-x-addressFormPart1.vtex-shipping-preview-0-x-geolocation input {
-    @extend %input-style;
-  }
-  .vtex-shipping-preview-0-x-pc .ship-country {width:98%;}
-  .vtex-shipping-preview-0-x-pc .btn {
-    @extend .btn-secondary;
-    height: $inputHeight;
-    outline: initial;
-    border-radius:$borderRadius;
-  }
-
-  .ship-postalCode {
-    width: auto !important;
-    max-width: 190px;
-    input#ship-postalCode {width:100%;}
-  }
-}
-
-@media(max-width: 490px) {
-  display: none !important;
-}
-
-.vtex-pickup-points-modal-3-x-pickupViewMode {
-  .btn {
-    padding:13px 0;
-  }
-}
 
 }
 
@@ -970,38 +971,38 @@ margin:20px 0 0px 0 !important;
 
 .body-cart-vertical {
 
-.cart-template-holder {
-  width:calc(70% - 20px);
-  @media(max-width:998px) {
-    width:100%;
-  }
-}
-
-.summary-template-holder {
-  width: 30%;
-  @media(max-width:998px) {
-    width:100%;
-    margin-top: 20px;
-  }
-}
-
-.cart-template.full-cart.active {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  .extensions-checkout-buttons-container {
-    width: auto !important;
-    margin:0;
+  .cart-template-holder {
+    width:calc(70% - 20px);
+    @media(max-width:998px) {
+      width:100%;
+    }
   }
 
-  .totalizers.summary-totalizers.cart-totalizers {
-    width: 100%;
-    padding:0;
-    margin:0;
+  .summary-template-holder {
+    width: 30%;
+    @media(max-width:998px) {
+      width:100%;
+      margin-top: 20px;
+    }
   }
-}
+
+  .cart-template.full-cart.active {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .extensions-checkout-buttons-container {
+      width: auto !important;
+      margin:0;
+    }
+
+    .totalizers.summary-totalizers.cart-totalizers {
+      width: 100%;
+      padding:0;
+      margin:0;
+    }
+  }
 }
 
 
