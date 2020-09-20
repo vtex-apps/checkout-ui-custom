@@ -189,3 +189,7 @@
 }
 
 
+
+body:not(.v-custom-step-email) .client-pre-email span.help.error {
+  display: none !important;
+}
