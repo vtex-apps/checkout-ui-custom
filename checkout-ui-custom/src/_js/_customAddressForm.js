@@ -30,7 +30,7 @@ class fnsCustomAddressForm {
 
 
   updateAddress(postalCode="", city="", state="", street="", complement="", addressQuery="", addressId="") {
-    console.log(arguments, postalCode ,city)
+    
     this.address = {
       postalCode: postalCode,
       addressId:  addressId,
@@ -40,6 +40,20 @@ class fnsCustomAddressForm {
       complement: complement,
       addressQuery:addressQuery
     };
+
+    if(arguments[0]=="") {
+      this.setForm("");
+    }
+  }
+
+  setForm(street="", postalCode="", city="", state="", complement="") {
+    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(street);
+    $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(complement);
+    $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
+    $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
+    $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(postalCode);
+    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-street", street)
+
   }
 
   googleForm() {
@@ -55,7 +69,6 @@ class fnsCustomAddressForm {
 
     autocomplete.addListener("place_changed", function() {
       let place = autocomplete.getPlace();
-      console.log(place)
 
       let state = place.address_components.filter(item => item.types[0]=="administrative_area_level_1")[0].short_name;
       let postalCode = place.address_components.filter(item => item.types[0]=="postal_code")[0].long_name;
@@ -63,21 +76,20 @@ class fnsCustomAddressForm {
       let complement = $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val();
 
       
-        $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
-        $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
-        $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(postalCode);
-        $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-street", place.name)
-
-        _this.validateAllFields();
-        _this.updateAddress(postalCode, city, state, place.name, complement, place.formatted_address, _this.address.addressId);
-        
-        //_this.sendAddress(place, state, postalCode, city, complement);    
+      _this.setForm(place.name, postalCode, city, state, complement);
+      _this.validateAllFields();
+      _this.updateAddress(postalCode, city, state, place.name, complement, place.formatted_address, _this.address.addressId);
+      
+      //_this.sendAddress(place, state, postalCode, city, complement);    
       
     });
 
     $("body").on("keyup", "#v-custom-ship-street", function(e) {
-      if(this.value=="") {$("body").removeClass(_this.BodyFormClasses[1])}
-      else { $("body").addClass(_this.BodyFormClasses[1]); };
+      $(this).attr("autocomplete","none")
+    })
+
+    $("body").on("focus", "#v-custom-ship-street", function(e) {
+      $(this).attr("autocomplete","none")
     })
     
   }
@@ -154,7 +166,6 @@ class fnsCustomAddressForm {
           .done(function(order) {
             _this.updateAddress(_postalCode, _city, _state, _street, _complement, "", _addressQuery||"");
 
-            console.log(order.shippingData.availableAddresses)
             $("body").removeClass(_this.BodyFormClasses.join(" "));
             _this.orderForm = vtexjs.checkout.orderForm;
             $("body").removeClass("js-v-custom-is-loading");
@@ -172,11 +183,11 @@ class fnsCustomAddressForm {
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
         <form>
-            <p class="input ship-country hide text"><label for="ship-country">Country</label><input required autocomplete="on" id="ship-country" type="text" name="country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
-            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
-            <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
-            <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
-            <p class="input ship-state required text"><label for="ship-state">State</label><select name="state" id="ship-state" class="input-large">
+            <p class="input ship-country hide text"><label for="ship-country">Country</label><input required autocomplete="on" id="ship-country" type="text" name="v-custom-country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
+            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
+            <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
+            <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
+            <p class="input ship-state required text"><label for="ship-state">State</label><select name="v-custom-state" id="ship-state" class="input-large">
                     <option value="" disabled=""></option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -291,7 +302,7 @@ class fnsCustomAddressForm {
 
   bind() {
     let _this = this;
-    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-addressFormPart1 #edit-address-button", function(e) {
+    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
 
       let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
 
@@ -312,7 +323,9 @@ class fnsCustomAddressForm {
       _this.updateAddress("");
     });
 
-
+    $("body").on("click","#shipping-option-pickup-in-point", function(e) {
+      $("body").removeClass(_this.BodyFormClasses.join(" "));
+    });
 
     $("body").on("click",".vtex-omnishipping-1-x-backToAddressList", function(e) {
       $("body").removeClass(_this.BodyFormClasses.join(" "));
@@ -346,17 +359,26 @@ class fnsCustomAddressForm {
     }
   }
 
+
+
+  events() {
+    let _this = this;
+
+    $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
+      _this.checkFirstLogin(orderForm);
+    })
+  }
+
   init(orderForm) {
     let _this = this;
     //if(!window.google) _this.loadScript();
     
-    $("input#v-custom-ship-street").attr("autocomplete","none")
     if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       $("body").addClass(`${this.classOn}`);
       _this.orderForm = orderForm;
       _this.checkFirstLogin(orderForm);
       _this.bind();
-      _this.validateAllFields();
+      _this.events();
       
 
       
