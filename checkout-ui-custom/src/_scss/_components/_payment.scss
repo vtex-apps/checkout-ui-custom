@@ -533,11 +533,10 @@
 				}
 			}
 
-			&.active {
-				> div {
-					padding:20px;
-					overflow: hidden;
-				}
+			.payment-group-item.active + div,
+			&.active > div {
+				padding:20px;
+				overflow: hidden;
 			}
 
 			.SecurityEnvironmentIcon {display: none;}
