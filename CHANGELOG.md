@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Saved cards when using tabs
+- Margins
+
 ## [0.0.20] - 2020-09-20
 
 ### Fixed
