@@ -212,6 +212,7 @@
 		}
 
 		#iframe-placeholder-creditCardPaymentGroup {
+			padding-top: 32px;
 			> .payment-group-item-cards {
 				display: block;
 				overflow: hidden;
@@ -432,6 +433,10 @@
 				box-shadow:0 0 6px #ddd;
 			}
 
+			#iframe-placeholder-creditCardPaymentGroup {
+				padding-top: 0;
+			}
+
 			.payment-group-item {
 				border:none;
 				border-bottom: 1px solid transparent;
@@ -535,11 +540,10 @@
 				}
 			}
 
-			&.active {
-				> div {
-					padding:20px;
-					overflow: hidden;
-				}
+			.payment-group-item.active + div,
+			&.active > div {
+				padding:20px;
+				overflow: hidden;
 			}
 
 			.SecurityEnvironmentIcon {display: none;}

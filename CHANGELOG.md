@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.21] - 2020-10-13
+
+### Fixed
+
+- Saved cards when using tabs
+- Margins
+
+## [0.0.20] - 2020-09-20
+
+### Fixed
+
+- Border on shipping preview
+- Focus on input
+
 ## [0.0.19] - 2020-09-10
 
 ### Fixed
