@@ -1287,4 +1287,21 @@
   	margin-right: 10px;
 	}
 
+	.AddressForm {
+    display:flex;
+		flex-wrap:wrap;
+		> * {width:100%;order:10;}
+		input {
+				max-width:100%;
+		}
+
+		.payment-billing-address-street {order:1;}
+		.payment-billing-address-complement {order:2;}
+		.payment-billing-address-city {order:3;}
+		.payment-billing-address-state {order:4;}
+		.PostalCode {order:5;}
+	}
+
+	
+
 }
