@@ -113,6 +113,7 @@ body.v-custom-fnsCustomAddressForm {
   .vcustom--vtex-omnishipping-1-x-address > * {
     opacity:0.5
   }
+
 }
 
 .vcustom--vtex-omnishipping-1-x-address {
@@ -121,6 +122,10 @@ body.v-custom-fnsCustomAddressForm {
   p.input {
     float: none;
     width: 100%;
+    margin: 0;
+    &.ship-state {
+      margin: 0 10px;
+    }
   }
 
   label {
@@ -136,6 +141,15 @@ body.v-custom-fnsCustomAddressForm {
 
     &.error + span.help.error {display: block;}
   }
+
+  &__state {
+    display: flex;
+    @media (max-width:768px) {
+      flex-wrap:wrap;
+      p.input.ship-state {margin:0;}
+    }
+  }
+
 }
 
 //google address form

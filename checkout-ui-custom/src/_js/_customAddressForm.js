@@ -75,6 +75,7 @@ class fnsCustomAddressForm {
       let city = place.vicinity;
       let complement = $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val();
 
+      console.log(place)
       
       _this.setForm(place.name, postalCode, city, state, complement);
       _this.validateAllFields();
@@ -184,75 +185,77 @@ class fnsCustomAddressForm {
         <div>
         <form>
             <p class="input ship-country hide text"><label for="ship-country">Country</label><input required autocomplete="on" id="ship-country" type="text" name="v-custom-country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
-            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street Address</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
+            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street address or P.O. Box</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
             <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
-            <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
-            <p class="input ship-state required text"><label for="ship-state">State</label><select name="v-custom-state" id="ship-state" class="input-large">
-                    <option value="" disabled=""></option>
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AS">American Samoa</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="AP">Army Post Office</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE">Delaware</option>
-                    <option value="DC">District Of Columbia (Washington, D.C.)</option>
-                    <option value="FM">Federated States of Micronesia</option>
-                    <option value="FP">Fleet Post Office</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="GU">Guam</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
-                    <option value="KS">Kansas</option>
-                    <option value="KY">Kentucky</option>
-                    <option value="LA">Louisiana</option>
-                    <option value="ME">Maine</option>
-                    <option value="MH">Marshall Islands</option>
-                    <option value="MD">Maryland</option>
-                    <option value="MA">Massachusetts</option>
-                    <option value="MI">Michigan</option>
-                    <option value="MN">Minnesota</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="MO">Missouri</option>
-                    <option value="MT">Montana</option>
-                    <option value="NE">Nebraska</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="NY">New York</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="ND">North Dakota</option>
-                    <option value="MP">Northern Mariana Islands</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="PW">Palau</option>
-                    <option value="PA">Pennsylvania</option>
-                    <option value="PR">Puerto Rico</option>
-                    <option value="RI">Rhode Island</option>
-                    <option value="SC">South Carolina</option>
-                    <option value="SD">South Dakota</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UM">U.S. Minor Outlying Islands</option>
-                    <option value="VI">U.S. Virgin Islands</option>
-                    <option value="UT">Utah</option>
-                    <option value="VT">Vermont</option>
-                    <option value="VA">Virginia</option>
-                    <option value="WA">Washington</option>
-                    <option value="WV">West Virginia</option>
-                    <option value="WI">Wisconsin</option>
-                    <option value="WY">Wyoming</option>
-                </select></p>
-            <p class="input ship-postalCode required text"><label for="ship-postalCode">Zip Code</label><input required autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="20" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"><span class="help error" style="">This field is required.</span></p>
+            <div class="vcustom--vtex-omnishipping-1-x-address__state">
+              <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
+              <p class="input ship-state required text"><label for="ship-state">State</label><select name="v-custom-state" id="ship-state" class="input-large">
+                      <option value="" disabled=""></option>
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <option value="AS">American Samoa</option>
+                      <option value="AZ">Arizona</option>
+                      <option value="AR">Arkansas</option>
+                      <option value="AP">Army Post Office</option>
+                      <option value="CA">California</option>
+                      <option value="CO">Colorado</option>
+                      <option value="CT">Connecticut</option>
+                      <option value="DE">Delaware</option>
+                      <option value="DC">District Of Columbia (Washington, D.C.)</option>
+                      <option value="FM">Federated States of Micronesia</option>
+                      <option value="FP">Fleet Post Office</option>
+                      <option value="FL">Florida</option>
+                      <option value="GA">Georgia</option>
+                      <option value="GU">Guam</option>
+                      <option value="HI">Hawaii</option>
+                      <option value="ID">Idaho</option>
+                      <option value="IL">Illinois</option>
+                      <option value="IN">Indiana</option>
+                      <option value="IA">Iowa</option>
+                      <option value="KS">Kansas</option>
+                      <option value="KY">Kentucky</option>
+                      <option value="LA">Louisiana</option>
+                      <option value="ME">Maine</option>
+                      <option value="MH">Marshall Islands</option>
+                      <option value="MD">Maryland</option>
+                      <option value="MA">Massachusetts</option>
+                      <option value="MI">Michigan</option>
+                      <option value="MN">Minnesota</option>
+                      <option value="MS">Mississippi</option>
+                      <option value="MO">Missouri</option>
+                      <option value="MT">Montana</option>
+                      <option value="NE">Nebraska</option>
+                      <option value="NV">Nevada</option>
+                      <option value="NH">New Hampshire</option>
+                      <option value="NJ">New Jersey</option>
+                      <option value="NM">New Mexico</option>
+                      <option value="NY">New York</option>
+                      <option value="NC">North Carolina</option>
+                      <option value="ND">North Dakota</option>
+                      <option value="MP">Northern Mariana Islands</option>
+                      <option value="OH">Ohio</option>
+                      <option value="OK">Oklahoma</option>
+                      <option value="OR">Oregon</option>
+                      <option value="PW">Palau</option>
+                      <option value="PA">Pennsylvania</option>
+                      <option value="PR">Puerto Rico</option>
+                      <option value="RI">Rhode Island</option>
+                      <option value="SC">South Carolina</option>
+                      <option value="SD">South Dakota</option>
+                      <option value="TN">Tennessee</option>
+                      <option value="TX">Texas</option>
+                      <option value="UM">U.S. Minor Outlying Islands</option>
+                      <option value="VI">U.S. Virgin Islands</option>
+                      <option value="UT">Utah</option>
+                      <option value="VT">Vermont</option>
+                      <option value="VA">Virginia</option>
+                      <option value="WA">Washington</option>
+                      <option value="WV">West Virginia</option>
+                      <option value="WI">Wisconsin</option>
+                      <option value="WY">Wyoming</option>
+                  </select></p>
+              <p class="input ship-postalCode required text"><label for="ship-postalCode">Zip Code</label><input required autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="20" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"><span class="help error" style="">This field is required.</span></p>
+            </div>
             <p class="vtex-omnishipping-1-x-submitShippingStepButton btn-submit-wrapper btn-go-to-shipping-wrapper"><button class="submit  btn-go-to-shippping-method btn btn-large btn-success" id="btn-go-to-shippping-method" type="submit">Continue to shipping</button></p>
         </form>
         </div>
@@ -311,6 +314,8 @@ class fnsCustomAddressForm {
       }
 
       let addressClicked = _this.orderForm.shippingData.availableAddresses[_this.orderForm.shippingData.availableAddresses.length-1];
+
+      console.log(addressClicked);
 
       $("body").addClass(_this.BodyFormClasses.join(" "));
       _this.updateAddress(addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
@@ -374,25 +379,27 @@ class fnsCustomAddressForm {
     //if(!window.google) _this.loadScript();
     
     if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
-      $("body").addClass(`${this.classOn}`);
-      _this.orderForm = orderForm;
-      _this.checkFirstLogin(orderForm);
-      _this.bind();
-      _this.events();
-      
+      if(orderForm.storePreferencesData.countryCode=="USA") {
+        $("body").addClass(`${this.classOn}`);
+        _this.orderForm = orderForm;
+        _this.checkFirstLogin(orderForm);
+        _this.bind();
+        _this.events();
+        
 
-      
-      if(_this.orderForm && _this.orderForm.shippingData) {
-        let shippingData = _this.orderForm.shippingData.address;
-        if(shippingData) {
-          _this.updateAddress(shippingData.postalCode, shippingData.city, shippingData.state, shippingData.street, shippingData.complement, "", shippingData.addressId)
-        } else {
-          _this.updateAddress("");
+        
+        if(_this.orderForm && _this.orderForm.shippingData) {
+          let shippingData = _this.orderForm.shippingData.address;
+          if(shippingData) {
+            _this.updateAddress(shippingData.postalCode, shippingData.city, shippingData.state, shippingData.street, shippingData.complement, "", shippingData.addressId)
+          } else {
+            _this.updateAddress("");
+          }
         }
-      }
-      
-      if($(".step.accordion-group.shipping-data").length) {
-        _this.form(orderForm);
+        
+        if($(".step.accordion-group.shipping-data").length) {
+          _this.form(orderForm);
+        } 
       } 
     } 
     
