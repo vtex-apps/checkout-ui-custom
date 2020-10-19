@@ -423,6 +423,10 @@ class checkoutCustom {
     
   }
 
+  checkProfileFocus() {
+    if(~window.location.hash.indexOf("#/email") && $("#client-email").val()=="") $("#client-email").focus()
+  }
+
   paymentBuilder(orderForm) {
     let _this = this;
 
@@ -547,10 +551,10 @@ class checkoutCustom {
         _this.init();
       })
 
-
       $(window).on('hashchange', function() {
         _this.updateStep();
-        _this.changeShippingTimeInfoInit()
+        _this.changeShippingTimeInfoInit();
+        _this.checkProfileFocus();
         
         if(_this.orderForm) {
           _this.buildMiniCart(_this.orderForm);
@@ -566,6 +570,7 @@ class checkoutCustom {
 
       $(window).load(function() {
         _this.builder();
+        _this.checkProfileFocus();
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
