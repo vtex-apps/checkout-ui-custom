@@ -190,7 +190,7 @@ class fnsCustomAddressForm {
             <div class="vcustom--vtex-omnishipping-1-x-address__state">
               <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
               <p class="input ship-state required text"><label for="ship-state">State</label><select name="v-custom-state" id="ship-state" class="input-large">
-                      <option value="" disabled=""></option>
+                      <option value="" disabled selected>State</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
                       <option value="AS">American Samoa</option>
@@ -305,7 +305,7 @@ class fnsCustomAddressForm {
 
   bind() {
     let _this = this;
-    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
+    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-buttonEditAddress", function(e) {
 
       let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
 
@@ -315,7 +315,7 @@ class fnsCustomAddressForm {
 
       let addressClicked = _this.orderForm.shippingData.availableAddresses[_this.orderForm.shippingData.availableAddresses.length-1];
 
-      console.log(addressClicked);
+      //console.log(addressClicked);
 
       $("body").addClass(_this.BodyFormClasses.join(" "));
       _this.updateAddress(addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
@@ -326,6 +326,11 @@ class fnsCustomAddressForm {
       $("body").addClass(_this.BodyFormClasses.join(" "));
       _this.address.addressId="";
       _this.updateAddress("");
+    });
+
+    $("body").on("click","#open-shipping, #edit-shipping-data", function(e) {
+      //console.log($(".address-list.vtex-omnishipping-1-x-addressList > label").length)
+      if(!_this.orderForm.shippingData.address) $("body").removeClass(_this.BodyFormClasses.join(" "));
     });
 
     $("body").on("click","#shipping-option-pickup-in-point", function(e) {
