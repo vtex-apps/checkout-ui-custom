@@ -36,7 +36,7 @@ h1#cart-title {display:none !important;}
 	background: #fff;
 	margin: 0;
 	border-radius: $borderRadius;
-	@media (max-width: 490px) {
+	@media (max-width: $mobileWidth) {
 		padding: 12px;
 	}
 }
@@ -118,7 +118,7 @@ h1#cart-title {display:none !important;}
         display:none;
       }
 
-      @media(max-width: 490px) {
+      @media(max-width: $mobileWidth) {
         margin-top:0 !important;
         &:first-child {
           border:none;
@@ -136,7 +136,7 @@ h1#cart-title {display:none !important;}
         align-items: center;
         position:relative;
         padding:20px 0;
-        @media(max-width: 490px) {
+        @media(max-width: $mobileWidth) {
           display: block;
           padding:10px 0;
           &:after {
@@ -183,7 +183,7 @@ h1#cart-title {display:none !important;}
 
           br {display:none;}
 
-          @media (max-width: 490px) {
+          @media (max-width: $mobileWidth) {
             width: initial !important;
             text-align: right;
             float: right;
@@ -204,7 +204,7 @@ h1#cart-title {display:none !important;}
           .best-price {
             font-weight: bold;
             position: relative;
-            @media (max-width: 490px) {
+            @media (max-width: $mobileWidth) {
               display: flex;
               justify-content: flex-end;
               margin-top: 7px;
@@ -255,7 +255,7 @@ h1#cart-title {display:none !important;}
               }
     
               > *:last-child {
-                @media (max-width: 490px) {
+                @media (max-width: $mobileWidth) {
                   margin-bottom:-7px;
                 }
               }
@@ -308,7 +308,7 @@ h1#cart-title {display:none !important;}
         }
 
         &.product-price {
-          @media (max-width: 490px) {
+          @media (max-width: $mobileWidth) {
             span.list-price:not(.hide) + br + span.best-price {margin-top:0;}
           }
         }
@@ -317,7 +317,7 @@ h1#cart-title {display:none !important;}
         &.item-remove {
           margin-left: auto;
           width: 20px !important;
-          @media (max-width: 490px) {
+          @media (max-width: $mobileWidth) {
             top:0 !important;
           }
         }
@@ -364,7 +364,7 @@ h1#cart-title {display:none !important;}
           margin-top: 10px;
           position: relative;
 
-          @media (min-width:490px) {
+          @media (min-width:$mobileWidth) {
             fieldset {
               width: 100%;
               position: absolute;
@@ -399,7 +399,7 @@ h1#cart-title {display:none !important;}
         border-radius: 10px;
         border: none !important;
 
-        @media (max-width:490px) {
+        @media (max-width:$mobileWidth) {
           padding: 0;
           text-align: center;
         }
@@ -468,7 +468,7 @@ h1#cart-title {display:none !important;}
           }
         }
 
-        @media(max-width: 490px) {
+        @media(max-width: $mobileWidth) {
           border-top:none !important;
           .product-price,
           .quantity {
@@ -485,7 +485,7 @@ h1#cart-title {display:none !important;}
         }
         td.product-image {display:none;}
         td.quantity {
-          @media (max-width:490px) {
+          @media (max-width:$mobileWidth) {
             display:none;
           }
         }
@@ -527,7 +527,7 @@ h1#cart-title {display:none !important;}
         max-width: initial;
         height: auto;
 
-        @media(max-width: 490px) {
+        @media(max-width: $mobileWidth) {
           width: 70px;
         }
     }
@@ -597,7 +597,7 @@ h1#cart-title {display:none !important;}
     }
   }
 
-  @media(max-width: 490px) {
+  @media(max-width: $mobileWidth) {
 
   
     td.quantity {width: 97px;}
@@ -776,7 +776,7 @@ h1#cart-title {display:none !important;}
 			}
 		}
 
-		@media (max-width: 490px) {
+		@media (max-width: $mobileWidth) {
 			position: fixed;
 			bottom: 0;
 			width: 100%;
@@ -936,7 +936,7 @@ h1#cart-title {display:none !important;}
     }
   }
 
-  @media(max-width: 490px) {
+  @media(max-width: $mobileWidth) {
     display: none !important;
   }
 

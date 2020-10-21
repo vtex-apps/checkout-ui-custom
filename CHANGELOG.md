@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- @media max-width increased to support current devices on responsive
+
 ## [0.0.21] - 2020-10-13
 
 ### Fixed

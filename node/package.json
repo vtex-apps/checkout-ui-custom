@@ -5,7 +5,7 @@
     "co-body": "^6.0.0",
     "jsonwebtoken": "^8.5.0",
     "ramda": "^0.25.0",
-    "@vtex/api": "6.36.2"
+    "@vtex/api": "6.36.3"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.25",
@@ -13,12 +13,12 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^12.0.0",
     "@types/ramda": "types/npm-ramda#dist",
-    "@vtex/api": "6.36.2",
+    "@vtex/api": "6.36.3",
     "@vtex/prettier-config": "^0.3.1",
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-vtex": "^2.1.0",
-    "typescript": "3.8.3",
+    "typescript": "3.9.7",
     "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.126.0/public/@types/vtex.styleguide"
   },
   "scripts": {
