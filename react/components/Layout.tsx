@@ -12,6 +12,8 @@ import ShippingOff from '../images/shipping-date-number.png'
 import ShippingOn from '../images/shipping-date-text.png'
 import NotesOn from '../images/notes-field-on.png'
 import NotesOff from '../images/notes-field-off.png'
+import EmailStepOn from '../images/email-step-on.png'
+import EmailStepOff from '../images/email-step-off.png'
 
 const images: any = {
   tabsOn: TabsOn,
@@ -22,6 +24,8 @@ const images: any = {
   priceOff: PriceOff,
   notesOn: NotesOn,
   notesOff: NotesOff,
+  emailStepOn: EmailStepOn,
+  emailStepOff: EmailStepOff,
 }
 
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
@@ -157,6 +161,28 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                   !state.showNoteField,
                   'showNoteField',
                   e.currentTarget.checked ? 'notesOn' : 'notesOff'
+                )
+              }
+            />
+          </div>
+          <br />
+          <div
+            className="mt6 dib"
+            onMouseEnter={() => {
+              changePreview(state.accordionPayments ? 'emailStepOff' : 'emailStepOn')
+            }}
+          >
+            <Toggle
+              label={intl.formatMessage({
+                id: 'admin/checkout-ui.layout.hideEmailStep.label',
+              })}
+              size="large"
+              checked={state.hideEmailStep}
+              onChange={(e: any) =>
+                handleChange(
+                  !state.hideEmailStep,
+                  'hideEmailStep',
+                  e.currentTarget.checked ? 'emailStepOn' : 'emailStepOff'
                 )
               }
             />
