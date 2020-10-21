@@ -8,7 +8,8 @@ class checkoutCustom {
     accordionPayments = true, 
     deliveryDateFormat = false,
     quantityPriceCart = false,
-    showNoteField = false
+    showNoteField = false,
+    hideEmailStep =  true
   } = {}) {
     this.type = type; // ["vertical"]
     this.orderForm = ""; 
@@ -19,6 +20,7 @@ class checkoutCustom {
     this.deliveryDateFormat = deliveryDateFormat;
     this.quantityPriceCart = quantityPriceCart;
     this.showNoteField = showNoteField;
+    this.hideEmailStep = hideEmailStep;
 
   } 
 
@@ -47,6 +49,9 @@ class checkoutCustom {
 
     if(_this.showNoteField) {
       $("body").addClass("js-vcustom-showNoteField");
+    }
+    if(_this.hideEmailStep) {
+      $("body").addClass("js-vcustom-hideEmailStep");
     }
   }
 
@@ -466,6 +471,11 @@ class checkoutCustom {
 
   }
 
+  checkProfileFocus() {
+    let _this = this;
+    if(_this.hideEmailStep) if(~window.location.hash.indexOf("#/email") && $("#client-email").val()=="") $("#client-email").focus()
+  }
+
   bind() {
     let _this = this;
     $("body").on("click", "#v-custom-edit-login-data", function(e) {
@@ -550,7 +560,8 @@ class checkoutCustom {
 
       $(window).on('hashchange', function() {
         _this.updateStep();
-        _this.changeShippingTimeInfoInit()
+        _this.changeShippingTimeInfoInit();
+        _this.checkProfileFocus();
         
         if(_this.orderForm) {
           _this.buildMiniCart(_this.orderForm);
@@ -566,6 +577,7 @@ class checkoutCustom {
 
       $(window).load(function() {
         _this.builder();
+        _this.checkProfileFocus();
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);

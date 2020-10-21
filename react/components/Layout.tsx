@@ -64,7 +64,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
       <div className="w-100 cf cb">
         <div className="w-50 fl pr7">
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(state.accordionPayments ? 'tabsOff' : 'tabsOn')
             }}
@@ -90,7 +90,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <br />
 
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(
                 state.deliveryDateFormat ? 'shippingOn' : 'shippingOff'
@@ -118,7 +118,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <br />
 
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(
                 state.showCartQuantityPrice ? 'priceOn' : 'priceOff'
@@ -145,7 +145,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           </div>
           <br />
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(state.showNoteField ? 'notesOn' : 'notesOff')
             }}
@@ -167,7 +167,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           </div>
           <br />
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(state.accordionPayments ? 'emailStepOff' : 'emailStepOn')
             }}
@@ -186,6 +186,18 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                 )
               }
             />
+            <p style={{ 
+              display: 'inline-block',
+              background: '#f71963',
+              margin: '0 0 0 10px',
+              padding: '5px',
+              borderRadius: '10px',
+              color: '#FFF',
+              float: 'left',
+              fontSize: '13px'
+            }}>
+              NEW
+            </p>
           </div>
         </div>
         <div className="w-50 fr">
