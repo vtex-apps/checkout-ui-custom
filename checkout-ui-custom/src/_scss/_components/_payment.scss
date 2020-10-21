@@ -574,7 +574,7 @@
 
     		p {
 	    		position:relative;
-	    		@media(max-width: 490px) {
+	    		@media(max-width: $mobileWidth) {
 	    			float:none !important;
 	    		}
 
@@ -582,7 +582,7 @@
 					&.client-first-name {
 					    width: calc(50% - 5px);
 					    position: relative;
-					    @media(max-width: 490px) {
+					    @media(max-width: $mobileWidth) {
 					    	width: 100%;
 					    	input[type="text"] {width: 100% !important;}
 					    }
@@ -618,7 +618,7 @@
 			}
 			.client-document, .client-phone {
 				width:calc(50% - 5px);
-				@media(max-width:490px) {
+				@media(max-width:$mobileWidth) {
 					width:100%;
 				}
 			}
@@ -795,7 +795,7 @@
 
 	}
 
-	@media(max-width: 490px) {
+	@media(max-width: $mobileWidth) {
   	width:100%;
   	padding-top:0px;
   }
@@ -957,7 +957,7 @@
 	    right: 7px;
 	    color:$actionPrimary;
 	    text-decoration: underline;
-	    @media (max-width: 490px) {
+	    @media (max-width: $mobileWidth) {
 	    	display: none;
 	    }
 		}
