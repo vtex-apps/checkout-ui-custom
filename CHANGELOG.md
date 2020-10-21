@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Toggle to hide the e-mail step
+
 ## [0.0.22] - 2020-10-21
 
 ### Fixed
