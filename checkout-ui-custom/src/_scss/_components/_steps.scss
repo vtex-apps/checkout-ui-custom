@@ -56,7 +56,7 @@
 
 
   //mobile
-  @media(max-width: 490px) {
+  @media(max-width: $mobileWidth) {
     body {
       &:before {
         width: 0;
@@ -167,7 +167,7 @@
     @if $showCheckoutSteps {
       display: block;
     }
-    @media(max-width: 490px) {
+    @media(max-width: $mobileWidth) {
       display: none !important;
     }
 

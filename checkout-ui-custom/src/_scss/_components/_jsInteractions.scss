@@ -77,7 +77,7 @@ body.js-vcustom-showNoteField {
     overflow: hidden;
     border-top: 1px solid $muted4;
     padding-top: 7px;
-    @media(max-width: 490px) {
+    @media(max-width: $mobileWidth) {
       width: 100%;
       left:0;
       margin-bottom: 2px;

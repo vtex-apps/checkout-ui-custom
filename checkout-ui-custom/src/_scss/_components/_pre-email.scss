@@ -126,7 +126,7 @@
       color:$actionPrimary;
     }
 
-    @media(max-width: 490px) {
+    @media(max-width: $mobileWidth) {
       width: 100%;
     }
 
@@ -136,7 +136,7 @@
   }
 
 
-  @media(max-width: 490px) {
+  @media(max-width: $mobileWidth) {
     .link-cart { display: none !important;}
   }
 
