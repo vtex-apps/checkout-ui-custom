@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.23] - 2020-10-22
+
+### Added
+
+- Toggle to hide the e-mail step
+
+## [0.0.22] - 2020-10-21
+
+### Fixed
+
+- @media max-width increased to support current devices on responsive
+
 ## [0.0.21] - 2020-10-13
 
 ### Fixed

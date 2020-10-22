@@ -9,7 +9,8 @@ window.vcustom = {
     accordionPayments: true, 
     deliveryDateFormat: false, 
     quantityPriceCart:false,
-    showNoteField:false
+    showNoteField:false,
+    hideEmailStep:true
   }),
   debug: new debug({
     dbg:false,

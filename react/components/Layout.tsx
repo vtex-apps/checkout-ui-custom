@@ -12,6 +12,8 @@ import ShippingOff from '../images/shipping-date-number.png'
 import ShippingOn from '../images/shipping-date-text.png'
 import NotesOn from '../images/notes-field-on.png'
 import NotesOff from '../images/notes-field-off.png'
+import EmailStepOn from '../images/email-step-on.png'
+import EmailStepOff from '../images/email-step-off.png'
 
 const images: any = {
   tabsOn: TabsOn,
@@ -22,6 +24,8 @@ const images: any = {
   priceOff: PriceOff,
   notesOn: NotesOn,
   notesOff: NotesOff,
+  emailStepOn: EmailStepOn,
+  emailStepOff: EmailStepOff,
 }
 
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
@@ -60,7 +64,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
       <div className="w-100 cf cb">
         <div className="w-50 fl pr7">
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(state.accordionPayments ? 'tabsOff' : 'tabsOn')
             }}
@@ -86,7 +90,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <br />
 
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(
                 state.deliveryDateFormat ? 'shippingOn' : 'shippingOff'
@@ -114,7 +118,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <br />
 
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(
                 state.showCartQuantityPrice ? 'priceOn' : 'priceOff'
@@ -141,7 +145,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           </div>
           <br />
           <div
-            className="mt6 dib"
+            className="mt6 db flex items-center"
             onMouseEnter={() => {
               changePreview(state.showNoteField ? 'notesOn' : 'notesOff')
             }}
@@ -160,6 +164,40 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                 )
               }
             />
+          </div>
+          <br />
+          <div
+            className="mt6 db flex items-center"
+            onMouseEnter={() => {
+              changePreview(state.accordionPayments ? 'emailStepOff' : 'emailStepOn')
+            }}
+          >
+            <Toggle
+              label={intl.formatMessage({
+                id: 'admin/checkout-ui.layout.hideEmailStep.label',
+              })}
+              size="large"
+              checked={state.hideEmailStep}
+              onChange={(e: any) =>
+                handleChange(
+                  !state.hideEmailStep,
+                  'hideEmailStep',
+                  e.currentTarget.checked ? 'emailStepOn' : 'emailStepOff'
+                )
+              }
+            />
+            <p style={{ 
+              display: 'inline-block',
+              background: '#f71963',
+              margin: '0 0 0 10px',
+              padding: '5px',
+              borderRadius: '10px',
+              color: '#FFF',
+              float: 'left',
+              fontSize: '13px'
+            }}>
+              NEW
+            </p>
           </div>
         </div>
         <div className="w-50 fr">

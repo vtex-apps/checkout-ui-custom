@@ -13,7 +13,7 @@ body {
     &, > .container { 
       display:flex;
       align-items: center;
-      @media (max-width:490px) {
+      @media (max-width:$mobileWidth) {
         justify-content: center;
       }
     } 
@@ -53,7 +53,7 @@ body {
 
         &.back-cart-link {display:none;}
       }
-      @media (max-width:490px) {
+      @media (max-width:$mobileWidth) {
         top:50%;
         transform: translateY(-50%);
         a {
@@ -92,7 +92,7 @@ body {
 
   &:not(.body-cart) {
     .main-header {
-      @media (max-width: 490px) {
+      @media (max-width: $mobileWidth) {
         padding:4px 0;
         margin-bottom: 10px;
 
