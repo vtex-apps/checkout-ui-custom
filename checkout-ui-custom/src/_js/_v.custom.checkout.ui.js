@@ -476,15 +476,17 @@ class checkoutCustom {
     
   }
 
-  customAddressFormLoader() {
-    if(this.customAddressForm) {
+  customAddressFormLoader() { 
+    console.log($(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length)
+    if(this.customAddressForm && $(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length) {
       this.customAddressForm = new fnsCustomAddressForm({});
       if(!window.google) this.customAddressForm.loadScript();
     }
   }
 
   customAddressFormInit(orderForm) {
-    if(this.customAddressForm && orderForm) this.customAddressForm.init(orderForm);
+    console.log($(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length)
+    if(this.customAddressForm && orderForm && $(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length) this.customAddressForm.init(orderForm);
   }
 
   bind() {
@@ -575,9 +577,6 @@ class checkoutCustom {
 
       $(document).ajaxComplete(function() {
         _this.init();
-        if(_this.orderForm) {
-          _this.customAddressFormInit(_this.orderForm);
-        }
       })
 
 
@@ -598,9 +597,12 @@ class checkoutCustom {
         _this.update(orderForm);
       })
 
+      $(window).one('orderFormUpdated.vtex', function(evt, orderForm) {
+        _this.customAddressFormInit(orderForm);
+      })
+
       $(window).load(function() {
         _this.builder();
-        _this.customAddressFormInit(vtexjs.checkout.orderForm);
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
