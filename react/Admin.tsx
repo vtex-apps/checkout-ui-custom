@@ -69,6 +69,7 @@ const defaultConfiguration = {
     deliveryDateFormat: false,
     showCartQuantityPrice: false,
     showNoteField: false,
+    hideEmailStep: true,
     fontSize: '12px',
     borderRadius: '4px',
     btnBorderRadius: '30px',
