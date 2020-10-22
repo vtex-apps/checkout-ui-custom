@@ -24,6 +24,7 @@ class checkoutCustom {
     this.showNoteField = showNoteField;
     this.customAddressForm = true;
     this.hideEmailStep = hideEmailStep;
+    this.fnsCustomAddressForm = "";
 
   } 
 
@@ -482,16 +483,16 @@ class checkoutCustom {
   }
 
   customAddressFormLoader() { 
-    console.log($(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length)
-    if(this.customAddressForm && $(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length) {
-      this.customAddressForm = new fnsCustomAddressForm({});
-      if(!window.google) this.customAddressForm.loadScript();
+    let _this = this;
+    if(_this.customAddressForm) {
+      _this.customAddressForm = new fnsCustomAddressForm({});
+      if(!window.google) _this.customAddressForm.loadScript();
     }
   }
 
   customAddressFormInit(orderForm) {
-    console.log($(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length)
-    if(this.customAddressForm && orderForm && $(".vtex-omnishipping-1-x-geolocation p.input.ship-addressQuery").length) this.customAddressForm.init(orderForm);
+    let _this = this;
+    if(_this.customAddressForm) _this.customAddressForm.init(orderForm);
   }
 
   checkProfileFocus() {
@@ -615,6 +616,7 @@ class checkoutCustom {
       $(window).load(function() {
         _this.builder();
         _this.checkProfileFocus();
+        _this.customAddressFormInit(vtexjs.checkout.orderForm);
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);

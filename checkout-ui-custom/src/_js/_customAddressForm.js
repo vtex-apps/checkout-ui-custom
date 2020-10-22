@@ -163,15 +163,22 @@ class fnsCustomAddressForm {
       })
       .then(response => response.json())
       .then(function(data) {
-          vtexjs.checkout.getOrderForm()
-          .done(function(order) {
-            _this.updateAddress(_postalCode, _city, _state, _street, _complement, "", _addressQuery||"");
-
-            $("body").removeClass(_this.BodyFormClasses.join(" "));
-            _this.orderForm = vtexjs.checkout.orderForm;
+          if(data.error) {
             $("body").removeClass("js-v-custom-is-loading");
-          });
+            alert(`Something went wrong: ${data.error.message}`);
+          } else {
+            vtexjs.checkout.getOrderForm()
+            .done(function(order) {
+              _this.updateAddress(_postalCode, _city, _state, _street, _complement, "", _addressQuery||"");
+
+              $("body").removeClass(_this.BodyFormClasses.join(" "));
+              _this.orderForm = vtexjs.checkout.orderForm;
+              $("body").removeClass("js-v-custom-is-loading");
+            });
+          }
+          
       });
+      
   
   }
 
@@ -382,7 +389,7 @@ class fnsCustomAddressForm {
   init(orderForm) {
     let _this = this;
     //if(!window.google) _this.loadScript();
-    
+    console.log(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length)
     if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       if(orderForm.storePreferencesData.countryCode=="USA") {
         $("body").addClass(`${this.classOn}`);
