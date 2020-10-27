@@ -2598,7 +2598,7 @@ body.js-vcustom-showNoteField.v-custom-step-payment .orderform-template .payment
   clear: both; }
 
 .vcustom-customTax-tot {
-  display: none;
+  display: inline-block;
   position: relative;
   margin-left: 5px; }
   .vcustom-customTax-tot > span {
@@ -2627,6 +2627,18 @@ body.js-vcustom-showNoteField.v-custom-step-payment .orderform-template .payment
     display: flex;
     justify-content: space-between;
     margin: 0; }
+  .vcustom-customTax-resume:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -4px;
+    top: calc(50% - 4px);
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-right: 4px solid #eee; }
 
 .v-custom-addLabels-active-flag {
   background: #FFF;
