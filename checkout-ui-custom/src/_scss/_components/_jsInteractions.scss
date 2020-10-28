@@ -39,6 +39,60 @@ body.js-vcustom-showNoteField {
 }
 
 
+// custom tax
+
+.vcustom-customTax-tot {
+  display: inline-block;
+  position: relative;
+  margin-left:5px;
+  > span {
+    background:$muted5;
+    width:15px;
+    height:15px;
+    line-height:15px;
+    display:inline-block;
+    border-radius:100%;
+    text-align:center;
+    cursor: pointer;
+  }
+
+  &:hover {
+    .vcustom-customTax-resume {
+      display: block;
+    }
+  }
+}
+
+.vcustom-customTax-resume {
+  position: absolute;
+  left: calc(100% + 10px);
+  width: 128px;
+  background: $muted5;
+  top: 50%;
+  font-size: 11px;
+  padding: 10px;
+  transform: translateY(-50%);
+  display: none;
+  &__i {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  }
+  &:before {
+    content:"";
+    display:block;
+    position:absolute;
+    left:-4px;
+    top:calc(50% - 4px);
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-right: 4px solid $muted5;
+  }
+}
+
 // custom coupon flag
 
 .v-custom-addLabels-active-flag {

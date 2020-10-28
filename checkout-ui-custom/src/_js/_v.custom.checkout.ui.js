@@ -354,6 +354,23 @@ class checkoutCustom {
     }
   }
 
+  condensedTaxes(orderForm) {
+    let customtax = orderForm.totalizers.filter(val => val.id=="CustomTax");
+    if(customtax && customtax.length<2) return false;
+
+    let tooltip = `
+      <div class="vcustom-customTax-resume">
+       ${customtax.map(i => `<p class="vcustom-customTax-resume__i"><span class="n">${i.name}</span><span class="v">${orderForm.storePreferencesData.currencySymbol} ${(i.value/100).toFixed(2)}</span></p>`).join("")}
+      </div>
+    `;
+
+    let customTaxElem = $("tr.CustomTax.CustomTax--total");
+    if(customTaxElem.length) {
+      customTaxElem.find(".vcustom-customTax-tot").remove();
+      customTaxElem.find(".info").append(`<div class="vcustom-customTax-tot"><span>?</span> ${tooltip}</div>`)
+    }
+  }
+
   update(orderForm) {
     let _this = this;
 
@@ -363,6 +380,7 @@ class checkoutCustom {
     this.bundleItems(orderForm);
     this.buildMiniCart(orderForm);
     this.indexedInItems(orderForm);
+    this.condensedTaxes(orderForm);
 
     
     // debounce to prevent append from default script
