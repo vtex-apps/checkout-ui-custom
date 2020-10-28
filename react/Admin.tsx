@@ -70,6 +70,7 @@ const defaultConfiguration = {
     showCartQuantityPrice: false,
     showNoteField: false,
     hideEmailStep: true,
+    customAddressForm: false,
     fontSize: '12px',
     borderRadius: '4px',
     btnBorderRadius: '30px',

@@ -10,6 +10,7 @@ window.vcustom = {
     deliveryDateFormat: false, 
     quantityPriceCart:false,
     showNoteField:false,
+    customAddressForm: false,
     hideEmailStep:true
   }),
   debug: new debug({

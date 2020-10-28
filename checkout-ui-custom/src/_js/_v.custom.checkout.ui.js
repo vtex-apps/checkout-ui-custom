@@ -17,14 +17,14 @@ class checkoutCustom {
     this.orderForm = ""; 
     this.orderId = this.orderForm ? this.orderForm.orderFormId : "";
     this.lang = "";
+    this.fnsCustomAddressForm = "";
 
     this.accordionPayments = accordionPayments;
     this.deliveryDateFormat = deliveryDateFormat;
     this.quantityPriceCart = quantityPriceCart;
     this.showNoteField = showNoteField;
-    this.customAddressForm = true;
+    this.customAddressForm = customAddressForm;
     this.hideEmailStep = hideEmailStep;
-    this.fnsCustomAddressForm = "";
 
   } 
 
@@ -502,6 +502,7 @@ class checkoutCustom {
 
   customAddressFormLoader() { 
     let _this = this;
+    console.log(_this.customAddressForm)
     if(_this.customAddressForm) {
       _this.customAddressForm = new fnsCustomAddressForm({});
       if(!window.google) _this.customAddressForm.loadScript();

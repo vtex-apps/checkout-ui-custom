@@ -53,6 +53,7 @@
   "admin/checkout-ui.layout.showCartQuantityPrice.help": "Display the summed line total (unit price x quantity) next to the quantity selector. If disabled, the unit price is displayed here.",
   "admin/checkout-ui.layout.showNoteField.label": "Show 'notes' field",
   "admin/checkout-ui.layout.hideEmailStep.label": "Hide e-mail step",
+  "admin/checkout-ui.layout.customAddressForm.label": "US Address Form Format",
   "admin/checkout-ui.layout.fontSize.label": "Text size: ",
   "admin/checkout-ui.layout.borderRadius.label": "Border radius: ",
   "admin/checkout-ui.layout.btnBorderRadius.label": "Button border radius: ",
