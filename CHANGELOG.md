@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.24] - 2020-10-28
+
+### Added
+
+- Tooltip displaying custom taxes
+
 ## [0.0.23] - 2020-10-22
 
 ### Added
