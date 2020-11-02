@@ -1,0 +1,21 @@
+{
+  "name": "Checkout-ui-custom",
+  "headline": "Facilidade em customizar o checkout + correções gerais",
+  "overview": "O aplicativo Checkout UI Custom é responsável por personalizar a UI do Checkout de sua loja por meio da interface do administrador.",
+  "features": [
+    "Aletaração na exibição de métodos de pagamento",
+    "Data de envio simplificada",
+    "Mostrar preço unitário do item",
+    "Mostrar campo 'notas'",
+    "Alterar estilos de texto",
+    "Alterar estilos de blocos",
+    "Paleta de cores",
+    "Área CSS avançada",
+    "Área de Javascript avançado",
+    "Histórico de alterações"
+  ],
+  "websiteURL": "https://vtex.com/",
+  "support": {
+    "url": "https://support.vtex.com/hc/requests"
+  }
+}
