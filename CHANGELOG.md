@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## Fix
+
+- Elem change shipping info in the Shipping Preview
+
 ## [0.0.24] - 2020-10-28
 
 ### Added
