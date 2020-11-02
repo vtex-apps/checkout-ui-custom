@@ -287,7 +287,8 @@ class checkoutCustom {
       "span.shipping-date",
       ".shp-option-text-time",
       ".pkpmodal-pickup-point-sla",
-      ".shp-option-text-package"
+      ".shp-option-text-package",
+      ".srp-delivery-current-many__sla"
     ];
     try {
       $(`
@@ -295,7 +296,8 @@ class checkoutCustom {
         .vtex-omnishipping-1-x-leanShippingOption, 
         .vtex-omnishipping-1-x-packageItem:not(.v-changeShippingTimeInfo-active),
         .orderform-template .cart-template.mini-cart .item,
-        .vtex-pickup-points-modal-3-x-pickupPointSlaAvailability        
+        .vtex-pickup-points-modal-3-x-pickupPointSlaAvailability,
+        .srp-delivery-current-many
       `).each(function(i) {
         let txtselectin = $(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text();
         if(txtselectin!="" && txtselectin.match(/(day)|(dia)/gm)) {
@@ -573,6 +575,7 @@ class checkoutCustom {
 
       $(document).ajaxComplete(function() {
         _this.init();
+        _this.changeShippingTimeInfoInit();
       })
 
 
@@ -608,4 +611,3 @@ class checkoutCustom {
 }
 
 module.exports = checkoutCustom;
-
