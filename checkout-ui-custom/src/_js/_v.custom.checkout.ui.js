@@ -575,7 +575,6 @@ class checkoutCustom {
 
       $(document).ajaxComplete(function() {
         _this.init();
-        _this.changeShippingTimeInfoInit();
       })
 
 
