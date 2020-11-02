@@ -50,5 +50,21 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"Payment",
     checkoutStepsLabelConfirmation:"Confirmation"
   },
-
+  ITA: {
+    couponInactive:"Nessuno sconto disponibile. Controlla le condizioni.",
+    editLabel: "Modifica",
+    paypalImg: "",
+    paypalPhone: "",
+    cartSubmitButton:"Procedi al pagamento",
+    deliveryDateText:"In consegna entro",
+    PickupDateText:"Pronto entro",
+    eachLabel:"ciascuno",
+    tomorrowLabel:"Domani",
+    cartNoteLabel:"Messaggio d'auguri o note",
+    checkoutStepsLabelCart:"Carrello",
+    checkoutStepsLabelIdentification:"Identificazione",
+    checkoutStepsLabelShipping:"Spedizione",
+    checkoutStepsLabelPayment:"Pagamento",
+    checkoutStepsLabelConfirmation:"Conferma"
+  }
 }
