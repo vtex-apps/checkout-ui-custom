@@ -310,6 +310,28 @@ class checkoutCustom {
         }
         $(this).addClass("v-changeShippingTimeInfo-active");
       });
+
+      //temporaly
+      let shippingPreviewPackges = $(".srp-delivery-info .srp-packages:not(.v-changeShippingTimeInfo-elem-active)");
+      $(".js-shippingPreviewPackges").remove();
+      if(shippingPreviewPackges.length) {
+        var a = shippingPreviewPackges.text().split(":")[1].split(/,| and | e /);
+        var deliveryDates = [];
+        $.each(a, function(i) {
+            let txtselectin = a[i];
+            if(txtselectin!="" && txtselectin.match(/(day)|(dia)/gm)) {
+              let days = parseInt(txtselectin.match(/\d+/));
+              if(days) {
+                let _delivtext = _this.lang.deliveryDateText;
+                if(!! txtselectin.toLowerCase().match(/(ready in up)|(pronto)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
+                deliveryDates.push(`${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`);
+              }
+            }
+        })
+        shippingPreviewPackges.hide().after(`<p class="black-50 mt3 mb0 js-shippingPreviewPackges">${shippingPreviewPackges.text().split(":")[0]}: ${deliveryDates.join("; ")}</p>`).addClass("v-changeShippingTimeInfo-active");
+      } else {
+
+      }
     } catch(e) {}
   }
 
@@ -549,7 +571,6 @@ class checkoutCustom {
 
   init() {
     let _this = this;
-    
     _this.orderForm = vtexjs.checkout.orderForm ? vtexjs.checkout.orderForm : false;
     _this.general();
     _this.updateStep();
@@ -598,6 +619,7 @@ class checkoutCustom {
       $(window).load(function() {
         _this.builder();
         _this.checkProfileFocus();
+        _this.changeShippingTimeInfoInit();
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
