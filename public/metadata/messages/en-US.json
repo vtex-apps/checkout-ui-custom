@@ -1,0 +1,21 @@
+{
+  "name": "Checkout-ui-custom",
+  "headline": "Easy way to customize the checkout",
+  "overview": "The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.",
+  "features": [
+    "Change payment methods exhibition",
+    "Simplified shipping date",
+    "Show item's unit price",
+    "Show 'notes' field",
+    "Change Text styles",
+    "Change blocks styles",
+    "Change colors",
+    "Advanced CSS area",
+    "Advanced Javascript area",
+    "Changes tracking"
+  ],
+  "websiteURL": "https://vtex.com/",
+  "support": {
+    "url": "https://support.vtex.com/hc/requests"
+  }
+}

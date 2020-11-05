@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.1.2] - 2020-11-04
+
+### Fix
+
+- Formatted date on shipping preview when having more than 1 package
+
+## [0.1.1] - 2020-11-02
+
+### Added 
+
+- Add italian language
+
+## [0.1.0] - 2020-11-02
+
+### Fix
+
+- Elem change shipping info in the Shipping Preview
+
 ## [0.0.24] - 2020-10-28
 
 ### Added
