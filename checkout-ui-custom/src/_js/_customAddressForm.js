@@ -70,16 +70,18 @@ class fnsCustomAddressForm {
     autocomplete.addListener("place_changed", function() {
       let place = autocomplete.getPlace();
 
+      //console.log(place);
+
+      let street = !~place.types.indexOf("street_address") ? place.formatted_address.split(",")[0] : place.name;
       let state = place.address_components.filter(item => item.types[0]=="administrative_area_level_1")[0].short_name;
-      let postalCode = place.address_components.filter(item => item.types[0]=="postal_code")[0].long_name;
-      let city = place.vicinity;
+      let postalCode = place.address_components.filter(item => item.types[0]=="postal_code").length  ? place.address_components.filter(item => item.types[0]=="postal_code")[0].long_name : "";
+      let city = place.address_components.find(i => ~i.types.indexOf("locality"));
+      city = city ? city.long_name : place.vicinity;
       let complement = $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val();
 
-      console.log(place)
-      
-      _this.setForm(place.name, postalCode, city, state, complement);
+      _this.setForm(street, postalCode, city, state, complement);
       _this.validateAllFields();
-      _this.updateAddress(postalCode, city, state, place.name, complement, place.formatted_address, _this.address.addressId);
+      _this.updateAddress(postalCode, city, state, street, complement, place.formatted_address, _this.address.addressId);
       
       //_this.sendAddress(place, state, postalCode, city, complement);    
       
@@ -389,16 +391,14 @@ class fnsCustomAddressForm {
   init(orderForm) {
     let _this = this;
     //if(!window.google) _this.loadScript();
-    console.log(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length)
-    if(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
+    //console.log(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length)
+    if(orderForm && window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       if(orderForm.storePreferencesData.countryCode=="USA") {
         $("body").addClass(`${this.classOn}`);
         _this.orderForm = orderForm;
         _this.checkFirstLogin(orderForm);
         _this.bind();
         _this.events();
-        
-
         
         if(_this.orderForm && _this.orderForm.shippingData) {
           let shippingData = _this.orderForm.shippingData.address;
