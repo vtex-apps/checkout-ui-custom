@@ -1,3 +1,5 @@
+const { _countries, _cities } = require("./_countries.js");
+
 class fnsCustomAddressForm {
   constructor({
     active=false
@@ -9,8 +11,12 @@ class fnsCustomAddressForm {
     this.googleMapsApiKey = vtex.googleMapsApiKey;
     this.orderForm="";
     this.classOn = "v-custom-fnsCustomAddressForm";
+    this.deliveryCountries = "";
+    this.mainCountry = "";
+    this.lang = "";
 
     this.address = {
+      country:"",
       postalCode:"",
       city:"",
       state:"",
@@ -21,6 +27,8 @@ class fnsCustomAddressForm {
     };
 
     this.validate=true;
+
+    this.gPlacesAutocomplete = "";
   }
 
 
@@ -29,9 +37,10 @@ class fnsCustomAddressForm {
   }
 
 
-  updateAddress(postalCode="", city="", state="", street="", complement="", addressQuery="", addressId="") {
+  updateAddress(country="", postalCode="", city="", state="", street="", complement="", addressQuery="", addressId="") {
     
     this.address = {
+      country: country,
       postalCode: postalCode,
       addressId:  addressId,
       city: city,
@@ -46,7 +55,7 @@ class fnsCustomAddressForm {
     }
   }
 
-  setForm(street="", postalCode="", city="", state="", complement="") {
+  setForm(country="", street="", postalCode="", city="", state="", complement="") {
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(street);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(complement);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
@@ -56,32 +65,35 @@ class fnsCustomAddressForm {
 
   }
 
+
+  updateGoogleForm(countryCode = "us") {
+    this.gPlacesAutocomplete.setComponentRestrictions({
+      country: [countryCode]
+    });
+  }
+
   googleForm() {
 
     let _this = this;
+
     
     let input = document.getElementById('v-custom-ship-street');
-    let autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.setComponentRestrictions({
-      country: ["us"]
-    });
+    _this.gPlacesAutocomplete = new google.maps.places.Autocomplete(input);
 
-
-    autocomplete.addListener("place_changed", function() {
-      let place = autocomplete.getPlace();
-
-      //console.log(place);
-
+    _this.gPlacesAutocomplete.addListener("place_changed", function() {
+      let place = _this.gPlacesAutocomplete.getPlace();
+      
+      let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
       let street = !~place.types.indexOf("street_address") ? place.formatted_address.split(",")[0] : place.name;
       let state = place.address_components.filter(item => item.types[0]=="administrative_area_level_1")[0].short_name;
       let postalCode = place.address_components.filter(item => item.types[0]=="postal_code").length  ? place.address_components.filter(item => item.types[0]=="postal_code")[0].long_name : "";
       let city = place.address_components.find(i => ~i.types.indexOf("locality"));
       city = city ? city.long_name : place.vicinity;
       let complement = $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val();
-
-      _this.setForm(street, postalCode, city, state, complement);
+      
+      _this.setForm(country, street, postalCode, city, state, complement);
       _this.validateAllFields();
-      _this.updateAddress(postalCode, city, state, street, complement, place.formatted_address, _this.address.addressId);
+      _this.updateAddress(country, postalCode, city, state, street, complement, place.formatted_address, _this.address.addressId);
       
       //_this.sendAddress(place, state, postalCode, city, complement);    
       
@@ -97,7 +109,7 @@ class fnsCustomAddressForm {
     
   }
 
-  sendAddress(_street, _state, _postalCode, _city, _complement, _addressQuery, _addressId) {
+  sendAddress(_country, _street, _state, _postalCode, _city, _complement, _addressQuery, _addressId) {
       let _this = this;
 
       var b = JSON.stringify({
@@ -106,12 +118,11 @@ class fnsCustomAddressForm {
               'addressType':'residential',
               'receiverName':'',
               'addressId':_addressId,
-              'addressId2':'19ed870fd45744afb0d6b12504e34aab',
               'isDisposable':true,
               'postalCode':_postalCode,
               'city':_city,
               'state':_state,
-              'country':'USA',
+              'country':_country,
               'street':_street,
               'number':null,
               'neighborhood':null,
@@ -149,7 +160,7 @@ class fnsCustomAddressForm {
                 'postalCode':_postalCode,
                 'city':_city,
                 'state':_state,
-                'country':'USA',
+                'country':_country,
                 'street':_street,
                 'number':null,
                 'neighborhood':null,
@@ -171,7 +182,7 @@ class fnsCustomAddressForm {
           } else {
             vtexjs.checkout.getOrderForm()
             .done(function(order) {
-              _this.updateAddress(_postalCode, _city, _state, _street, _complement, "", _addressQuery||"");
+              _this.updateAddress(_country, _postalCode, _city, _state, _street, _complement, "", _addressQuery||"");
 
               $("body").removeClass(_this.BodyFormClasses.join(" "));
               _this.orderForm = vtexjs.checkout.orderForm;
@@ -184,85 +195,45 @@ class fnsCustomAddressForm {
   
   }
 
+  getRegions(country) {
+    let countryRegions = _cities.find(city => city.countryShortCode==country);
+    return countryRegions.regions.map(i => {
+      return `<option value="${i.shortCode}">${i.name}</option>`;
+    })
+  }
+
+  getCountries() {
+    let _this = this;
+    return _this.deliveryCountries.map(countryCode => {
+      return `<option value="${countryCode}" ${countryCode==_this.mainCountry ? "selected" : ""}>${vtex.i18n[_this.lang].countries[countryCode]}</option>`;
+    })
+  }
+
   form(orderForm) {
+
+    let _this = this;
     
     let shippingData = orderForm.shippingData;
+
+    
+    let country = _countries.find(c=>c[1]==_this.mainCountry);
 
     //$(".vcustom--vtex-omnishipping-1-x-address").remove();
     let form = `
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
         <form>
-            <p class="input ship-country hide text"><label for="ship-country">Country</label><input required autocomplete="on" id="ship-country" type="text" name="v-custom-country" maxlength="100" class="input-medium" data-hj-whitelist="true" value="USA"></p>
             <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">Street address or P.O. Box</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
             <p class="input ship-complement text"><label for="ship-complement">Apartment number, unit, floor, etc.</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="Apartment, suite, building, floor, etc (optional)" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
             <div class="vcustom--vtex-omnishipping-1-x-address__state">
+              <p class="input ship-country text ${_this.deliveryCountries.length<=1 ? "hide" : ""} "><label for="ship-country">Country</label><select name="v-custom-country" id="ship-country" class="input-large">${_this.getCountries().join("")}</select></p>
               <p class="input ship-city required text"><label for="ship-city">City</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
-              <p class="input ship-state required text"><label for="ship-state">State</label><select name="v-custom-state" id="ship-state" class="input-large">
-                      <option value="" disabled selected>State</option>
-                      <option value="AL">Alabama</option>
-                      <option value="AK">Alaska</option>
-                      <option value="AS">American Samoa</option>
-                      <option value="AZ">Arizona</option>
-                      <option value="AR">Arkansas</option>
-                      <option value="AP">Army Post Office</option>
-                      <option value="CA">California</option>
-                      <option value="CO">Colorado</option>
-                      <option value="CT">Connecticut</option>
-                      <option value="DE">Delaware</option>
-                      <option value="DC">District Of Columbia (Washington, D.C.)</option>
-                      <option value="FM">Federated States of Micronesia</option>
-                      <option value="FP">Fleet Post Office</option>
-                      <option value="FL">Florida</option>
-                      <option value="GA">Georgia</option>
-                      <option value="GU">Guam</option>
-                      <option value="HI">Hawaii</option>
-                      <option value="ID">Idaho</option>
-                      <option value="IL">Illinois</option>
-                      <option value="IN">Indiana</option>
-                      <option value="IA">Iowa</option>
-                      <option value="KS">Kansas</option>
-                      <option value="KY">Kentucky</option>
-                      <option value="LA">Louisiana</option>
-                      <option value="ME">Maine</option>
-                      <option value="MH">Marshall Islands</option>
-                      <option value="MD">Maryland</option>
-                      <option value="MA">Massachusetts</option>
-                      <option value="MI">Michigan</option>
-                      <option value="MN">Minnesota</option>
-                      <option value="MS">Mississippi</option>
-                      <option value="MO">Missouri</option>
-                      <option value="MT">Montana</option>
-                      <option value="NE">Nebraska</option>
-                      <option value="NV">Nevada</option>
-                      <option value="NH">New Hampshire</option>
-                      <option value="NJ">New Jersey</option>
-                      <option value="NM">New Mexico</option>
-                      <option value="NY">New York</option>
-                      <option value="NC">North Carolina</option>
-                      <option value="ND">North Dakota</option>
-                      <option value="MP">Northern Mariana Islands</option>
-                      <option value="OH">Ohio</option>
-                      <option value="OK">Oklahoma</option>
-                      <option value="OR">Oregon</option>
-                      <option value="PW">Palau</option>
-                      <option value="PA">Pennsylvania</option>
-                      <option value="PR">Puerto Rico</option>
-                      <option value="RI">Rhode Island</option>
-                      <option value="SC">South Carolina</option>
-                      <option value="SD">South Dakota</option>
-                      <option value="TN">Tennessee</option>
-                      <option value="TX">Texas</option>
-                      <option value="UM">U.S. Minor Outlying Islands</option>
-                      <option value="VI">U.S. Virgin Islands</option>
-                      <option value="UT">Utah</option>
-                      <option value="VT">Vermont</option>
-                      <option value="VA">Virginia</option>
-                      <option value="WA">Washington</option>
-                      <option value="WV">West Virginia</option>
-                      <option value="WI">Wisconsin</option>
-                      <option value="WY">Wyoming</option>
-                  </select></p>
+              <p class="input ship-state required text"><label for="ship-state">State</label>
+                  <select name="v-custom-state" id="ship-state" class="input-large">
+                    <option value="" disabled selected>State</option>
+                    ${_this.getRegions(country[0]).join("")}
+                  </select>
+              </p>
               <p class="input ship-postalCode required text"><label for="ship-postalCode">Zip Code</label><input required autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="20" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"><span class="help error" style="">This field is required.</span></p>
             </div>
             <p class="vtex-omnishipping-1-x-submitShippingStepButton btn-submit-wrapper btn-go-to-shipping-wrapper"><button class="submit  btn-go-to-shippping-method btn btn-large btn-success" id="btn-go-to-shippping-method" type="submit">Continue to shipping</button></p>
@@ -276,6 +247,7 @@ class fnsCustomAddressForm {
 
     $(".orderform-template-holder #shipping-data").append(form);
     this.googleForm();
+    this.updateGoogleForm(country[0].toLowerCase());
 
   }
 
@@ -302,14 +274,15 @@ class fnsCustomAddressForm {
 
     let _st = $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street");
 
-    let street = _st.attr("data-street") || _st.val(),
+    let country = $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(),
+        street = _st.attr("data-street") || _st.val(),
         complement =  $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(),
         city =  $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(),
         state =  $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(),
         postalCode =  $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val();
     
     //_this.updateAddress(postalCode, city, state, street, complement, "", _this.address.addressId);
-    _this.sendAddress(street, state, postalCode, city, complement, _this.address.addressQuery, _this.address.addressId)
+    _this.sendAddress(country, street, state, postalCode, city, complement, _this.address.addressQuery, _this.address.addressId)
   }
 
   bind() {
@@ -325,10 +298,13 @@ class fnsCustomAddressForm {
       let addressClicked = _this.orderForm.shippingData.availableAddresses[_this.orderForm.shippingData.availableAddresses.length-1];
 
       //console.log(addressClicked);
-
-      $("body").addClass(_this.BodyFormClasses.join(" "));
-      _this.updateAddress(addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
-      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street || addressClicked.street).attr("data-street","");
+      // setTimeout(() => {
+      //   if(!$(".vtex-omnishipping-1-x-addressForm").length) {
+      //     $("body").addClass(_this.BodyFormClasses.join(" "));
+      //     _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
+      //     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street || addressClicked.street).attr("data-street","");
+      //   }
+      // }, 100);
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-buttonCreateAddress", function(e) {
@@ -353,6 +329,13 @@ class fnsCustomAddressForm {
 
     $("body").on("click",".vtex-omnishipping-1-x-addressItemOption", function(e) {
       _this.address.addressId=_this.orderForm.shippingData.availableAddresses[$(this).index()].addressId;
+    });
+
+    $("body").on("change","select[name='v-custom-country']", function(e) {
+      e.stopImmediatePropagation();
+      let country = _countries.find(c=>c[1]==this.value)[0];
+      $("select[name='v-custom-state']").html(`${_this.getRegions(country).join("")}`);
+      _this.updateGoogleForm(this.value.toLowerCase());
     });
 
     $("body").on("click","#btn-go-to-shippping-method", function(e) {
@@ -391,28 +374,27 @@ class fnsCustomAddressForm {
   init(orderForm) {
     let _this = this;
     //if(!window.google) _this.loadScript();
-    //console.log(window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length)
     if(orderForm && window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
-      if(orderForm.storePreferencesData.countryCode=="USA") {
-        $("body").addClass(`${this.classOn}`);
-        _this.orderForm = orderForm;
-        _this.checkFirstLogin(orderForm);
-        _this.bind();
-        _this.events();
-        
-        if(_this.orderForm && _this.orderForm.shippingData) {
-          let shippingData = _this.orderForm.shippingData.address;
-          if(shippingData) {
-            _this.updateAddress(shippingData.postalCode, shippingData.city, shippingData.state, shippingData.street, shippingData.complement, "", shippingData.addressId)
-          } else {
-            _this.updateAddress("");
-          }
+      $("body").addClass(`${this.classOn}`);
+      _this.orderForm = orderForm;
+      _this.checkFirstLogin(orderForm);
+      _this.bind();
+      _this.events();
+
+      _this.deliveryCountries = checkout.deliveryCountries();
+      _this.mainCountry = checkout.countryCode();
+      _this.lang = _this.orderForm.clientPreferencesData.locale;
+
+      if(_this.orderForm && _this.orderForm.shippingData) {
+        let shippingData = _this.orderForm.shippingData.address;
+        if(shippingData) {
+          _this.updateAddress(shippingData.country, shippingData.postalCode, shippingData.city, shippingData.state, shippingData.street, shippingData.complement, "", shippingData.addressId)
+        } else {
+          _this.updateAddress("");
         }
-        
-        if($(".step.accordion-group.shipping-data").length) {
-          _this.form(orderForm);
-        } 
-      } 
+      }
+      
+      _this.form(orderForm);
     } 
     
   }

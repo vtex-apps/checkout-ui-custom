@@ -123,9 +123,6 @@ body.v-custom-fnsCustomAddressForm {
     float: none;
     width: 100%;
     margin: 0;
-    &.ship-state {
-      margin: 0 10px;
-    }
   }
 
   label {
@@ -144,8 +141,13 @@ body.v-custom-fnsCustomAddressForm {
 
   &__state {
     display: flex;
+    margin: 0 -5px;
+    p.input {
+      margin:0 5px;
+    }
     @media (max-width:768px) {
       flex-wrap:wrap;
+      margin: 0;
       p.input.ship-state {margin:0;}
     }
   }

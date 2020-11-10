@@ -649,10 +649,6 @@ class checkoutCustom {
         _this.update(orderForm);
       })
 
-      $(window).one('orderFormUpdated.vtex', function(evt, orderForm) {
-        _this.customAddressFormInit(orderForm);
-      })
-
       $(window).load(function() {
         _this.builder();
         _this.checkProfileFocus();
