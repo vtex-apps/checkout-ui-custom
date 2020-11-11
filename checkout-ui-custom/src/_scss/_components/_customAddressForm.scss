@@ -52,7 +52,8 @@ body.v-custom-fnsCustomAddressForm {
   }
 
   .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
-    p.input.ship-addressQuery.text {display: none;}
+    .input.ship-country,
+    .input.ship-addressQuery {display: none;}
   }
 
   .orderform-template-holder {
@@ -163,5 +164,6 @@ body.v-custom-fnsCustomAddressForm {
   padding: 14px;
   background-size: 110px;
 }
+
 
 .address-list.vtex-omnishipping-1-x-addressList + p.input.ship-addressQuery.text {display:none;}

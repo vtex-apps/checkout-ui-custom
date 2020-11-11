@@ -643,6 +643,11 @@
 					&.vtex-omnishipping-1-x-addressForm { order: 2; }
 					&.vtex-omnishipping-1-x-deliveryGroup { order: 4; }
 					&.vtex-omnishipping-1-x-submitPaymentButton { order: 100; }
+					&.btn-link.vtex-omnishipping-1-x-btnDelivery {
+						order: 5;
+						margin-top: 20px;
+						background: $actionPrimary;
+					}
 
 					&#postalCode-finished-loading,
 					&:last-child {
@@ -653,12 +658,13 @@
 
 			.vtex-omnishipping-1-x-address {
 				margin:0;
+
 			}
 
 			.vtex-omnishipping-1-x-addressSummaryActive .address-summary {
-					background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='%23999999' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='%23999999' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
-					background-position: 12px 9px;
-					border:1px solid $muted4;
+				background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24'><path fill='%23999999' d='M15.998,5.951L4,16.237V30c0,0.552,0.448,1,1,1h8v-8h6v8h8c0.552,0,1-0.448,1-1V16.238L15.998,5.951z M19,19 h-6v-5h6V19z'></path> <polygon fill='%23999999' points='15.998,0.683 9,6.682 9,3 5,3 5,10.111 0.59,13.892 1.892,15.41 15.998,3.317 30.108,15.41 31.41,13.892 '></polygon></svg>") no-repeat;
+				background-position: 12px 9px;
+				border:1px solid $muted4;
 			}
 
 			.vtex-omnishipping-1-x-SummaryItemGroup {}
@@ -746,10 +752,20 @@
 				border-color:$actionPrimary;
 			}
 
-			.vtex-omnishipping-1-x-address p {
-				clear:both;
-				float: none;
-  			margin: 0;
+			.vtex-omnishipping-1-x-address {
+				p {
+					clear:both;
+					float: none;
+					margin: 0;
+					&.input.ship-checkboxNumberLabel.text {
+						width: auto;
+						align-self: flex-end;
+						display: flex;
+						align-items: center;
+						margin-left: 10px !important;
+						height: $inputHeight;
+					}
+				}
 			}
 
 			input#ship-addressQuery {

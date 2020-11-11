@@ -18893,3 +18893,31 @@ module.exports._cities = [{
     ]
   }
 ];
+
+module.exports._addressFormExample = {
+  "ARG": "Eg: Av. del Libertador 1473, Buenos Aires",
+  "BOL": "Eg: Av Arce, 2556, La Paz",
+  "BRA": "Ex: Av Paulista, 1578, São Paulo",
+  "CAN": "Eg: 450 Wilbrod St, Ottawa",
+  "CHL": "Eg: Los Militares, 6191, Santiago",
+  "COL": "Eg: Calle 93 # 14-20, Bogotá",
+  "ECU": "Eg: Av Rio Amazonas, N 37-61, Quito",
+  "ESP": "Eg: Calle Fernando el Santo, 6, Madrid",
+  "GTM": "Eg: 6A Calle 6, Guatemala",
+  "MEX": "Eg: Calle de Tacuba 8, Ciudad de México",
+  "PER": "Eg: Av. José Pardo, 850, Miraflores, Lima",
+  "PRT": "Eg: Av. da França 20, Porto",
+  "PRY": "Eg: Avenida Eusebio Ayala, 100, Assunção",
+  "UNI": "Eg: 225 East 41st Street, New York",
+  "URY": "Eg: Bulevar Artigas, 1394, Montevidéu",
+  "USA": "Eg: 225 East 41st Street, New York",
+  "VEN": "Eg: Avenida Mohedano, Caracas",
+  "ROU": "Eg: Bulevardul Ion Mihalache, București 011192, Romania",
+  "BGR": "Eg: улица Елин Пелин 13, София",
+  "DEU": "Eg: Rheinalleee 95, Düsseldorf",
+  "FRA": "Eg: 7 Rue Hautefeuille, Paris",
+  "GBR": "Eg: 29 High Street Poole BH15 1AB",
+  "ITA": "Eg: Corso Vittorio Emanuele 69, Milano",
+  "NLD": "Eg: Surinamestraat 27, Amsterdam",
+  "POL": "Eg: Ulica Twarda 3, Szczecin",
+}
