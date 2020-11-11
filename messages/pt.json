@@ -51,7 +51,7 @@
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "Mostrar preço unitário do item",
   "admin/checkout-ui.layout.showNoteField.label": "Exibir campo de anotações",
   "admin/checkout-ui.layout.hideEmailStep.label": "Remove a etapa de pré e-mail",
-  "admin/checkout-ui.layout.customAddressForm.label": "Formato de endereço dos EUA",
+  "admin/checkout-ui.layout.customAddressForm.label": "Formulário de endereço com Google",
   "admin/checkout-ui.layout.fontSize.label": "Tamanho do texto: ",
   "admin/checkout-ui.layout.borderRadius.label": "Arredondamento da borda: ",
   "admin/checkout-ui.layout.btnBorderRadius.label": "Arredondamento da borda do botão: ",

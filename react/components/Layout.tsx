@@ -14,7 +14,7 @@ import NotesOn from '../images/notes-field-on.png'
 import NotesOff from '../images/notes-field-off.png'
 import EmailStepOn from '../images/email-step-on.png'
 import EmailStepOff from '../images/email-step-off.png'
-import UsAddresFormOn from '../images/usaddressform-on.png'
+import CustomAddresFormOn from '../images/usaddressform-on.png'
 import UsAddresFormOff from '../images/usaddressform-off.png'
 
 const images: any = {
@@ -28,7 +28,7 @@ const images: any = {
   notesOff: NotesOff,
   emailStepOn: EmailStepOn,
   emailStepOff: EmailStepOff,
-  usAddresFormOn: UsAddresFormOn,
+  customAddresFormOn: CustomAddresFormOn,
   usAddresFormOff: UsAddresFormOff,
 }
 
@@ -207,7 +207,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <div
             className="mt6 db flex items-center"
             onMouseEnter={() => {
-              changePreview(state.customAddressForm ? 'usAddresFormOn' : 'usAddresFormOff')
+              changePreview(state.customAddressForm ? 'customAddresFormOn' : 'customAddresFormOff')
             }}
           >
             <Toggle
@@ -220,7 +220,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                 handleChange(
                   !state.customAddressForm,
                   'customAddressForm',
-                  e.currentTarget.checked ? 'usAddresFormOn' : 'usAddresFormOff'
+                  e.currentTarget.checked ? 'customAddresFormOn' : 'customAddresFormOff'
                 )
               }
             />
@@ -234,7 +234,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
               float: 'left',
               fontSize: '13px'
             }}>
-              NEW : US ONLY
+              NEW
             </p>
           </div>
         </div>
