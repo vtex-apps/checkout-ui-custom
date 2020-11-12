@@ -64,7 +64,7 @@ class fnsCustomAddressForm {
     $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(postalCode);
-    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-street", street)
+    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-street", country=="USA" ? formattedStreet : street)
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-number", number)
 
   }
@@ -91,17 +91,18 @@ class fnsCustomAddressForm {
       console.log(place)
       
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
-      let street = !~place.types.indexOf("street_address") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name;
+      let street = place.address_components.find(item => item.types[0]=="route").long_name;
       let state = place.address_components.filter(item => item.types[0]=="administrative_area_level_1")[0].short_name;
       let postalCode = place.address_components.filter(item => item.types[0]=="postal_code").length  ? place.address_components.filter(item => item.types[0]=="postal_code")[0].long_name : "";
-      let city = place.address_components.find(i => ~i.types.indexOf("locality"));
-      city = city ? city.long_name : place.vicinity;
+      
       let number = place.address_components.filter(item => item.types[0]=="street_number").length  ? place.address_components.filter(item => item.types[0]=="street_number")[0].long_name : null;;
       let complement = $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val();
 
-      let formattedStreet = $( '<div></div>' );
-      formattedStreet.html(place.adr_address);
-      formattedStreet = $('.street-address', formattedStreet).text()
+      let formattedAddress = $( '<div></div>' );
+      formattedAddress.html(place.adr_address);
+      let formattedStreet = $('.street-address', formattedAddress).text();
+
+      let city = $('.locality', formattedAddress).text() || place.address_components.filter(item => item.types[0]=="administrative_area_level_2")[0].long_name;
       
       _this.setForm(country, street, formattedStreet, number, postalCode, city, state, complement);
       _this.validateAllFields();
@@ -121,7 +122,7 @@ class fnsCustomAddressForm {
 
   sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId) {
       let _this = this;
-      console.log(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId)
+      console.log("_country: "+_country, "_street: "+_street, "_number: "+_number, "_state: "+_state, "_postalCode: "+_postalCode, "_city: "+_city, "_complement: "+_complement, "_addressQuery: "+_addressQuery, "_addressId: "+_addressId)
 
       if(_country=="USA") _number=null;
       
@@ -219,7 +220,9 @@ class fnsCustomAddressForm {
   getCountries() {
     let _this = this;
     return _this.deliveryCountries.map(countryCode => {
-      return `<option value="${countryCode}" ${countryCode==_this.mainCountry ? "selected" : ""}>${vtex.i18n[_this.lang].countries[countryCode]}</option>`;
+      if(vtex.i18n[_this.lang].countries[countryCode]) {
+        return `<option value="${countryCode}" ${countryCode==_this.mainCountry ? "selected" : ""}>${vtex.i18n[_this.lang].countries[countryCode]}</option>`;
+      }
     })
   }
 
@@ -263,6 +266,14 @@ class fnsCustomAddressForm {
     this.googleForm();
     this.updateGoogleForm(country[0].toLowerCase());
 
+    //sort countries
+    let sel = $('.vcustom--vtex-omnishipping-1-x-address #ship-country');
+    let selected = sel.val(); // cache selected value, before reordering
+    let opts_list = sel.find('option');
+    opts_list.sort(function(a, b) { return $(a).text() > $(b).text() ? 1 : -1; });
+    sel.html('').append(opts_list);
+    sel.val(selected); // set cached selected value
+
   }
 
   validateAllFields() {
@@ -302,28 +313,21 @@ class fnsCustomAddressForm {
 
   bind() {
     let _this = this;
-    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit, .vtex-omnishipping-1-x-buttonEditAddress", function(e) {
 
+    $("body").on("click",".step.shipping-data #edit-address-button, .step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
       let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
-
       if(indexAddress<0) {
         indexAddress=0
       }
+      let addressClicked = _this.orderForm.shippingData.availableAddresses[indexAddress];
 
-      let addressClicked = _this.orderForm.shippingData.availableAddresses[_this.orderForm.shippingData.availableAddresses.length-1];
-
-      //console.log(addressClicked);
-      // setTimeout(() => {
-      //   if(!$(".vtex-omnishipping-1-x-addressForm").length) {
-      //     $("body").addClass(_this.BodyFormClasses.join(" "));
-      //     _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
-      //     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(_this.address.street || addressClicked.street).attr("data-street","");
-      //   }
-      // }, 100);
-    });
-
-    $("body").on("click",".step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
-      $("body").addClass(_this.BodyFormClasses.join(" "));
+      if(addressClicked.isDisposable) {
+        $("body").addClass(_this.BodyFormClasses.join(" "));
+        setTimeout(() => {
+          _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
+          $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street).attr("data-street","");
+        }, 150);
+      }
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-buttonCreateAddress, .vtex-omnishipping-1-x-disclaimer a#remove-unavailable-items", function(e) {
@@ -347,7 +351,7 @@ class fnsCustomAddressForm {
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-addressItemOption", function(e) {
-      _this.address.addressId=_this.orderForm.shippingData.availableAddresses[$(this).index()].addressId;
+      _this.address.addressId=_this.orderForm.shippingData.availableAddresses[$(this).index()] ? _this.orderForm.shippingData.availableAddresses[$(this).index()].addressId : "";
     });
 
     $("body").on("change","select[name='v-custom-country']", function(e) {
