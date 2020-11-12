@@ -22,7 +22,7 @@ class checkoutCustom {
     this.deliveryDateFormat = deliveryDateFormat;
     this.quantityPriceCart = quantityPriceCart;
     this.showNoteField = showNoteField;
-    this.customAddressForm = true;
+    this.customAddressForm = customAddressForm;
     this.hideEmailStep = hideEmailStep;
 
   } 
