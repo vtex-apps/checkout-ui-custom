@@ -13,7 +13,9 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"Pagamento",
     checkoutStepsLabelConfirmation:"Confirmação",
     city:"Cidade",
-    state:"Estado"
+    state:"Estado",
+    address1Placeholder:"Endereço",
+    address2Placeholder:"Complemento",
   },
   CAN: {
     couponInactive:"No discounts available. Check the conditions.",
