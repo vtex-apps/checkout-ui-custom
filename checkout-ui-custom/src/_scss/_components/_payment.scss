@@ -819,7 +819,11 @@
   		width:100%;
   		position: relative;
   		top:0;
-  	}
+		}
+		
+		.cart-items {
+			> .v-custom-indexed-item {display:none !important;}
+		}
 
   	.cart-fixed {
   		height: auto !important;
