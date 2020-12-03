@@ -1228,7 +1228,8 @@
 		.card-flag.card-selected {opacity: 1;display:block;}
 	}
 
-	input#creditCardpayment-card-0Code {
+	input#creditCardpayment-card-0Code,
+	input#creditCardpayment-card-1Code{
 	  width: 100px !important;
 	}
 
