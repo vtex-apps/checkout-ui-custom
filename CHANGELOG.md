@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fix
 
+- Fixing indented products on summary and cart
+
+## [0.1.3] - 2020-12-03
+
+### Fix
+
 - Fix field sizes on second card step
 
 ## [0.1.2] - 2020-11-04

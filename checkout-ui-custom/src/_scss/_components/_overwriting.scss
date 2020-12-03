@@ -6,6 +6,9 @@
 }
 
 .input-append, .input-prepend {
+  display: flex !important;
+  align-items: stretch;
+
   .btn, 
   .add-on {
     height: $inputHeight;
@@ -13,6 +16,9 @@
     box-sizing: border-box;
     padding: 0;
     width:20px;
+  }
+  .add-on {
+    height: initial !important;
   }
   input {
     border-radius: 0 $borderRadius $borderRadius 0 !important;
