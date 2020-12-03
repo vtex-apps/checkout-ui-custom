@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+
+- Fix field sizes on second card step
+
 ## [0.1.2] - 2020-11-04
 
 ### Fix
