@@ -242,17 +242,46 @@ class checkoutCustom {
     try {
       if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { _this.removeMCLoader(); return false;}
       if (orderForm.items) {
-        $.each(orderForm.items, function (i) {
-          if (this.parentItemIndex!=null) {
-            $(`.table.cart-items tbody tr.product-item:eq(${i}), .mini-cart .cart-items li:eq(${i}) `).addClass("v-custom-indexed-item")
-            //$(`.table.cart-items tbody tr.product-item:eq(${i})`).appendTo(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`);
-            $(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex}), .mini-cart .cart-items li:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in");
-            
-            if ($(`.mini-cart .cart-items li`).length>0) {
-              $(`.mini-cart .cart-items li:eq(${i})`).appendTo(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`);
+        
+        let indexedInItems = orderForm.items.reduce((c, v) => {
+          if(v.parentItemIndex != null) {
+            c[v.parentItemIndex] = c[v.parentItemIndex] || [];       //Initiate if key does not exist
+            c[v.parentItemIndex].push(v);                //Push the value
+          }
+          return c;
+        }, {});
+        
+
+        for (var key in indexedInItems) {
+          var obj = indexedInItems[key];
+          if($(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(".v-custom-bundles").length<=1) {
+            $(`.table.cart-items tbody > tr.product-item:eq(${key})`).append(`<div class="v-custom-bundles"></div>`).addClass("v-custom-indexedItems-in");
+            if($(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(".v-custom-bundles").html()=="") {
+              for (var prop in obj) {
+                if (!obj.hasOwnProperty(prop)) continue;
+                let iiItem = obj[prop];
+                $(`.table.cart-items tbody > tr.product-item[data-sku='${iiItem.id}']`)
+                .addClass("v-custom-indexed-item")
+                .clone()
+                .appendTo(`.table.cart-items tbody > tr.product-item:eq(${key}) > .v-custom-bundles`);
+              }
             }
           }
-        });
+
+          $(`.mini-cart .cart-items > li:eq(${key})`).find(`.v-custom-bundles`).remove();
+          $(`.mini-cart .cart-items > li:eq(${key})`).append(`<div class="v-custom-bundles"></div>`).addClass("v-custom-indexedItems-in");
+          if($(`.mini-cart .cart-items > li:eq(${key})`).find(" > .v-custom-bundles").html()=="") {
+            for (var prop in obj) {
+              if (!obj.hasOwnProperty(prop)) continue;
+              let iiItem = obj[prop];
+              console.log($(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']:eq(0)`))
+              $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']:eq(0)`)
+              .addClass("v-custom-indexed-item")
+              .clone()
+              .appendTo(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`);
+            }
+          }
+        }
         _this.removeMCLoader();
       }
       
