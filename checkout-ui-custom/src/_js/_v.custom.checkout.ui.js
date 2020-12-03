@@ -274,7 +274,6 @@ class checkoutCustom {
             for (var prop in obj) {
               if (!obj.hasOwnProperty(prop)) continue;
               let iiItem = obj[prop];
-              console.log($(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']:eq(0)`))
               $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']:eq(0)`)
               .addClass("v-custom-indexed-item")
               .clone()
