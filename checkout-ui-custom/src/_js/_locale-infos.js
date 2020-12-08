@@ -66,5 +66,23 @@ module.exports._locale = {
     checkoutStepsLabelShipping:"Spedizione",
     checkoutStepsLabelPayment:"Pagamento",
     checkoutStepsLabelConfirmation:"Conferma"
+  },
+  FRA: {
+    couponInactive:"Aucune réduction disponible. Vérifiez les conditions.",
+    editLabel: "Modifier", 
+    paypalImg: "",
+    paypalPhone: "+33 0186995653",
+    cartSubmitButton:"Procéder au paiement", 
+    deliveryDateText:"Arrive le",
+    PickupDateText:"Prêt le",
+    eachLabel:"chaque", 
+    tomorrowLabel:"Demain", 
+    address1Placeholder:"Adresse ou Boîte postale", 
+    address2Placeholder:"Appartement, suite, bâtiment, étage, etc (facultatif)", 
+    checkoutStepsLabelCart:"Panier", 
+    checkoutStepsLabelIdentification:"Identification", 
+    checkoutStepsLabelShipping:"Expédition", 
+    checkoutStepsLabelPayment:"Paiement", 
+    checkoutStepsLabelConfirmation:"Confirmation" 
   }
 }
