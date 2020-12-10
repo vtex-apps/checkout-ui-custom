@@ -12,3 +12,11 @@ module.exports.debounce = (func, wait) => {
   };
 };
 
+module.exports.formatCurrency = (_locale, _currency, _value) => {
+  let price = _value/100;
+  new Intl.NumberFormat(_locale,
+    { style: 'currency', currency: _currency }
+  ).format(price);
+ return price;
+};
+
