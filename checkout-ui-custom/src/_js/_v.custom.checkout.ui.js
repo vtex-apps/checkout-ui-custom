@@ -1,8 +1,8 @@
 const { _locale } = require("./_locale-infos.js");
-const { debounce } = require("./_utils.js");
+const { debounce, formatCurrency } = require("./_utils.js");
 
 
-class checkoutCustom {
+class checkoutCustom { 
   constructor({
     type = "vertical", 
     accordionPayments = true, 
@@ -251,7 +251,8 @@ class checkoutCustom {
           return c;
         }, {});
         
-
+        //console.log(indexedInItems)
+        
         for (var key in indexedInItems) {
           var obj = indexedInItems[key];
           if($(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(".v-custom-bundles").length<=1) {
@@ -274,10 +275,22 @@ class checkoutCustom {
             for (var prop in obj) {
               if (!obj.hasOwnProperty(prop)) continue;
               let iiItem = obj[prop];
+              $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`).html(`
+                <div class="hproduct item v-custom-indexed-item" data-sku="${iiItem.id}">
+                  <a href="${iiItem.detailUrl}" class="url">
+                    <img height="45" width="45" class="photo" src="${iiItem.imageUrl}" alt="${iiItem.name}">
+                  </a>
+                  <span class="fn product-name" title="${iiItem.name}" href="${iiItem.detailUrl}">${iiItem.name}</span>
+                  <span class="quantity badge">${iiItem.quantity}</span>				
+                  <div class="description">
+                    <strong class="price pull-right" data-bind="text: sellingPriceLabel">${orderForm.storePreferencesData.currencySymbol} ${formatCurrency(orderForm.clientPreferencesData.local, orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice)}</strong>
+                  </div>
+                </div>
+              `);
               $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']:eq(0)`)
               .addClass("v-custom-indexed-item")
-              .clone()
-              .appendTo(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`);
+              //.clone()
+              //.appendTo(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`);
             }
           }
         }
@@ -431,8 +444,8 @@ class checkoutCustom {
     this.enchancementTotalPrice(orderForm);
     this.bundleItems(orderForm);
     this.buildMiniCart(orderForm);
-    this.indexedInItems(orderForm);
     this.condensedTaxes(orderForm);
+    this.indexedInItems(orderForm);
 
     
     // debounce to prevent append from default script
@@ -648,6 +661,7 @@ class checkoutCustom {
         _this.builder();
         _this.checkProfileFocus();
         _this.changeShippingTimeInfoInit();
+        _this.indexedInItems(vtexjs.checkout.orderForm);
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
