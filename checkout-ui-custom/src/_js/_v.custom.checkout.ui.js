@@ -235,7 +235,15 @@ class checkoutCustom {
     }
 
   }
-  
+
+  setParentIndex(orderForm) {
+    $.each(orderForm.items, function(i) {
+      if(this.parentItemIndex!=null) {
+        $(`.table.cart-items tbody > tr.product-item:eq(${i})`).attr("data-parentItemIndex", this.parentItemIndex);
+      }
+    });
+  }
+
   removeMCLoader () { $(`.mini-cart .cart-items`).addClass("v-loaded"); }
   indexedInItems(orderForm) {
     let _this = this;
@@ -245,8 +253,8 @@ class checkoutCustom {
         
         let indexedInItems = orderForm.items.reduce((c, v) => {
           if(v.parentItemIndex != null) {
-            c[v.parentItemIndex] = c[v.parentItemIndex] || [];       //Initiate if key does not exist
-            c[v.parentItemIndex].push(v);                //Push the value
+            c[v.parentItemIndex] = c[v.parentItemIndex] || [];
+            c[v.parentItemIndex].push(v); 
           }
           return c;
         }, {});
@@ -255,13 +263,14 @@ class checkoutCustom {
         
         for (var key in indexedInItems) {
           var obj = indexedInItems[key];
+          //console.log(obj)
           if($(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(".v-custom-bundles").length<=1) {
             $(`.table.cart-items tbody > tr.product-item:eq(${key})`).append(`<div class="v-custom-bundles"></div>`).addClass("v-custom-indexedItems-in");
             if($(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(".v-custom-bundles").html()=="") {
               for (var prop in obj) {
                 if (!obj.hasOwnProperty(prop)) continue;
                 let iiItem = obj[prop];
-                $(`.table.cart-items tbody > tr.product-item[data-sku='${iiItem.id}']`)
+                $(`.table.cart-items tbody > tr.product-item[data-sku='${iiItem.id}'][data-parentitemindex='${iiItem.parentItemIndex}']`)
                 .addClass("v-custom-indexed-item")
                 .clone()
                 .appendTo(`.table.cart-items tbody > tr.product-item:eq(${key}) > .v-custom-bundles`);
@@ -445,6 +454,7 @@ class checkoutCustom {
     this.bundleItems(orderForm);
     this.buildMiniCart(orderForm);
     this.condensedTaxes(orderForm);
+    this.setParentIndex(orderForm);
     this.indexedInItems(orderForm);
 
     
