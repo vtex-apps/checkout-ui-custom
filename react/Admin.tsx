@@ -306,8 +306,7 @@ const Admin: FC<any & WrappedComponentProps> = ({
               state.publishedVersion &&
               state.appVersion !== state.publishedVersion && (
                 <Alert type="warning">
-                  New checkout version available, click PUBLISH if you want to
-                  update your Store&apos;s checkout
+                  <FormattedMessage id="admin/checkout-ui.update-warning" />
                 </Alert>
               )}
             <Tabs fullWidth>
