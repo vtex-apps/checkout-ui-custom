@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Published message
+- Self closing modal after publishing
+### Updated
+- Code cleanup
+
 ## [0.1.8] - 2020-12-22
 
 ### Fix

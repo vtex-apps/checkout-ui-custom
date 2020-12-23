@@ -67,6 +67,7 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
 Css.propTypes = {
   onChange: PropTypes.func,
   initialState: PropTypes.any,
+  intl: PropTypes.any,
 }
 
 export default injectIntl(Css)

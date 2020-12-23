@@ -169,7 +169,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <div
             className="mt6 db flex items-center"
             onMouseEnter={() => {
-              changePreview(state.accordionPayments ? 'emailStepOff' : 'emailStepOn')
+              changePreview(
+                state.accordionPayments ? 'emailStepOff' : 'emailStepOn'
+              )
             }}
           >
             <Toggle
@@ -186,18 +188,6 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                 )
               }
             />
-            <p style={{ 
-              display: 'inline-block',
-              background: '#f71963',
-              margin: '0 0 0 10px',
-              padding: '5px',
-              borderRadius: '10px',
-              color: '#FFF',
-              float: 'left',
-              fontSize: '13px'
-            }}>
-              NEW
-            </p>
           </div>
         </div>
         <div className="w-50 fr">

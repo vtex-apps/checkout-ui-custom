@@ -1,12 +1,6 @@
 {
   "stack": "nodejs",
   "memory": 1024,
-  "ttl": 300,
-  "timeout": 60,
-  "routes": {
-    "getWorkspaces": {
-      "path": "/_v/0/checkout-ui-custom/workspaces",
-      "public": false
-    }
-  }
+  "minReplicas": 10,
+  "maxReplicas": 100
 }

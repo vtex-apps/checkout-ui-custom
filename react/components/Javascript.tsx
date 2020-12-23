@@ -68,6 +68,7 @@ const Javascript: FC<WrappedComponentProps & any> = ({
 Javascript.propTypes = {
   onChange: PropTypes.func,
   initialState: PropTypes.any,
+  intl: PropTypes.any,
 }
 
 export default injectIntl(Javascript)

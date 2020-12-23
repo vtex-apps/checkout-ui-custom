@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { FC, useState } from 'react'
 import {
   injectIntl,
@@ -107,7 +106,16 @@ const Admin: FC<any & WrappedComponentProps> = ({
   const [
     saveConfig,
     { loading: loadingSave, called: calledSave, error: errorSave },
-  ] = useMutation(saveMutation)
+  ] = useMutation(saveMutation, {
+    onCompleted: () => {
+      setTimeout(() => {
+        setState({
+          ...state,
+          isModalOpen: false,
+        })
+      }, 3000)
+    },
+  })
 
   const { loading: loadingLast } = useQuery(GET_LAST, {
     variables: {
@@ -256,6 +264,13 @@ const Admin: FC<any & WrappedComponentProps> = ({
     handleCancelDialog()
   }
 
+  const changeTabTo = (currentTab: number) => {
+    setState({
+      ...state,
+      currentTab,
+    })
+  }
+
   return (
     <Layout
       fullWidth
@@ -288,7 +303,9 @@ const Admin: FC<any & WrappedComponentProps> = ({
                 id: 'admin/checkout-ui.tab.layout',
               })}
               active={state.currentTab === 1}
-              onClick={() => setState({ ...state, currentTab: 1 })}
+              onClick={() => {
+                changeTabTo(1)
+              }}
             >
               <LayoutSettings
                 onChange={handleLayoutChange}
@@ -300,7 +317,9 @@ const Admin: FC<any & WrappedComponentProps> = ({
                 id: 'admin/checkout-ui.tab.colors',
               })}
               active={state.currentTab === 2}
-              onClick={() => setState({ ...state, currentTab: 2 })}
+              onClick={() => {
+                changeTabTo(2)
+              }}
             >
               <Colors
                 onChange={handleColorsChange}
@@ -312,7 +331,9 @@ const Admin: FC<any & WrappedComponentProps> = ({
                 id: 'admin/checkout-ui.tab.javascript',
               })}
               active={state.currentTab === 3}
-              onClick={() => setState({ ...state, currentTab: 3 })}
+              onClick={() => {
+                changeTabTo(3)
+              }}
             >
               <Javascript
                 onChange={handleJSChange}
@@ -327,7 +348,9 @@ const Admin: FC<any & WrappedComponentProps> = ({
                 id: 'admin/checkout-ui.tab.css',
               })}
               active={state.currentTab === 4}
-              onClick={() => setState({ ...state, currentTab: 4 })}
+              onClick={() => {
+                changeTabTo(4)
+              }}
             >
               <Css
                 onChange={handleCssChange}
@@ -342,7 +365,9 @@ const Admin: FC<any & WrappedComponentProps> = ({
                 id: 'admin/checkout-ui.tab.history',
               })}
               active={state.currentTab === 5}
-              onClick={() => setState({ ...state, currentTab: 5 })}
+              onClick={() => {
+                changeTabTo(5)
+              }}
             >
               <History onChange={handleLoad} initialState={state.appVersion} />
             </Tab>
@@ -367,7 +392,12 @@ const Admin: FC<any & WrappedComponentProps> = ({
                   {errorSave && <IconDeny size={12} />}
                   {calledSave === false && !errorSave && <span>-</span>}
                 </span>{' '}
-                <FormattedMessage id="admin/checkout-ui.message.publishing" />{' '}
+                {loadingSave === false && calledSave === true && !errorSave && (
+                  <FormattedMessage id="admin/checkout-ui.message.published" />
+                )}
+                {loadingSave === true && (
+                  <FormattedMessage id="admin/checkout-ui.message.publishing" />
+                )}{' '}
                 <strong>{state.workspace}</strong>
               </li>
             </ul>

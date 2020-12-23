@@ -12,6 +12,7 @@
   "admin/checkout-ui.tab.history": "admin/checkout-ui.tab.history",
   "admin/checkout-ui.button.publish": "admin/checkout-ui.button.publish",
   "admin/checkout-ui.message.publishing": "admin/checkout-ui.message.publishing",
+  "admin/checkout-ui.message.published": "admin/checkout-ui.message.published",
   "admin/checkout-ui.publish.warning": "admin/checkout-ui.publish.warning",
   "admin/checkout-ui.publish.confirm": "admin/checkout-ui.publish.confirm",
   "admin/checkout-ui.publish.cancel": "admin/checkout-ui.publish.cancel",

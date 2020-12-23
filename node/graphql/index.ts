@@ -1,10 +1,5 @@
-/* eslint-disable no-console */
 import { promises as fs } from 'fs'
 import * as path from 'path'
-
-import { Apps } from '@vtex/api'
-
-import GraphQLError from '../utils/GraphQLError'
 
 const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
@@ -21,13 +16,6 @@ const routes = {
     `${routes.configEntity()}/documents/${id}?_fields=id,email,cartName,items,creationDate,subtotal,discounts,shipping,total,customData,address`,
   saveSchema: () => `${routes.configEntity()}/schemas/${SCHEMA_VERSION}`,
 }
-
-const defaultHeaders = (authToken: string) => ({
-  'Content-Type': 'application/json',
-  Accept: 'application/json',
-  VtexIdclientAutCookie: authToken,
-  'Proxy-Authorization': authToken,
-})
 
 const getAppId = (): string => {
   return process.env.VTEX_APP_ID ?? ''
@@ -146,12 +134,11 @@ export const resolvers = {
     },
   },
   Query: {
-    getSetupConfig: async (_: any, __: any, ctx: any) => {
+    getSetupConfig: async (_: any, __: any, ctx: Context) => {
       const {
-        clients: { masterdata },
+        clients: { masterdata, apps },
       } = ctx
 
-      const apps = new Apps(ctx.vtex)
       const app: string = getAppId()
       const settings = await apps.getAppSettings(app)
 
@@ -272,25 +259,6 @@ export const resolvers = {
       })
 
       return data ?? {}
-    },
-    getWorkspaces: async (_: any, __: any, ctx: any) => {
-      const {
-        vtex: { authToken, account },
-        clients: { hub },
-      } = ctx
-
-      try {
-        const url = `http://platform.io.vtex.com/${account}/`
-        const { data } = await hub.get(url, defaultHeaders(authToken))
-
-        return data
-      } catch (e) {
-        if (e.message) {
-          throw new GraphQLError(e.message)
-        } else if (e.response && e.response.data && e.response.data.message) {
-          throw new GraphQLError(e.response.data.message)
-        }
-      }
     },
   },
 }

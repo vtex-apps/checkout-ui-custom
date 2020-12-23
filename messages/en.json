@@ -12,6 +12,7 @@
   "admin/checkout-ui.tab.history": "History",
   "admin/checkout-ui.button.publish": "Publish",
   "admin/checkout-ui.message.publishing": "Publishing to",
+  "admin/checkout-ui.message.published": "Published to",
   "admin/checkout-ui.publish.warning": "You're publishing to a PRODUCTION workspace, be aware that changes here may impact your sales",
   "admin/checkout-ui.publish.confirm": "Proceed",
   "admin/checkout-ui.publish.cancel": "Cancel",
