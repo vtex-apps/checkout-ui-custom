@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Published message
 - Self closing modal after publishing
+- Warning message when a new version is available
 ### Updated
 - Code cleanup
 

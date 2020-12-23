@@ -1,5 +1,6 @@
 {
   "admin/checkout-ui.title": "Checkout UI Custom",
+  "admin/checkout-ui.update-warning": "This app has been updated. Please click PUBLISH to apply the latest fixes to your checkout.",
   "admin/checkout-ui.navigation.title": "Checkout UI Custom",
   "admin/checkout-ui.tab.layout": "Layout",
   "admin/checkout-ui.tab.colors": "Colors",

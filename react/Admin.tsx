@@ -7,6 +7,7 @@ import {
 } from 'react-intl'
 import { compose, graphql, useMutation, useQuery } from 'react-apollo'
 import {
+  Alert,
   Tabs,
   Tab,
   Layout,
@@ -101,6 +102,7 @@ const Admin: FC<any & WrappedComponentProps> = ({
     showCloseIcon: false,
     workspace,
     appVersion: null,
+    publishedVersion: null,
   })
 
   const [
@@ -127,6 +129,7 @@ const Admin: FC<any & WrappedComponentProps> = ({
       setState({
         ...state,
         ...res.getLast,
+        publishedVersion: res.getLast.appVersion,
         currentTab: 1,
         colors: {
           ...state.colors,
@@ -297,81 +300,94 @@ const Admin: FC<any & WrappedComponentProps> = ({
       <PageBlock>
         {loadingLast && <Progress type="steps" steps={['inProgress']} />}
         {!loadingLast && (
-          <Tabs fullWidth>
-            <Tab
-              label={intl.formatMessage({
-                id: 'admin/checkout-ui.tab.layout',
-              })}
-              active={state.currentTab === 1}
-              onClick={() => {
-                changeTabTo(1)
-              }}
-            >
-              <LayoutSettings
-                onChange={handleLayoutChange}
-                initialState={state.layout}
-              />
-            </Tab>
-            <Tab
-              label={intl.formatMessage({
-                id: 'admin/checkout-ui.tab.colors',
-              })}
-              active={state.currentTab === 2}
-              onClick={() => {
-                changeTabTo(2)
-              }}
-            >
-              <Colors
-                onChange={handleColorsChange}
-                initialState={state.colors}
-              />
-            </Tab>
-            <Tab
-              label={intl.formatMessage({
-                id: 'admin/checkout-ui.tab.javascript',
-              })}
-              active={state.currentTab === 3}
-              onClick={() => {
-                changeTabTo(3)
-              }}
-            >
-              <Javascript
-                onChange={handleJSChange}
-                initialState={{
-                  value: state.javascript,
-                  active: state.javascriptActive,
+          <>
+            {state.appVersion &&
+              state.publishedVersion &&
+              state.appVersion !== state.publishedVersion && (
+                <Alert type="warning">
+                  New checkout version available, click PUBLISH if you want to
+                  update your Store&apos;s checkout
+                </Alert>
+              )}
+            <Tabs fullWidth>
+              <Tab
+                label={intl.formatMessage({
+                  id: 'admin/checkout-ui.tab.layout',
+                })}
+                active={state.currentTab === 1}
+                onClick={() => {
+                  changeTabTo(1)
                 }}
-              />
-            </Tab>
-            <Tab
-              label={intl.formatMessage({
-                id: 'admin/checkout-ui.tab.css',
-              })}
-              active={state.currentTab === 4}
-              onClick={() => {
-                changeTabTo(4)
-              }}
-            >
-              <Css
-                onChange={handleCssChange}
-                initialState={{
-                  value: state.css,
-                  active: state.cssActive,
+              >
+                <LayoutSettings
+                  onChange={handleLayoutChange}
+                  initialState={state.layout}
+                />
+              </Tab>
+              <Tab
+                label={intl.formatMessage({
+                  id: 'admin/checkout-ui.tab.colors',
+                })}
+                active={state.currentTab === 2}
+                onClick={() => {
+                  changeTabTo(2)
                 }}
-              />
-            </Tab>
-            <Tab
-              label={intl.formatMessage({
-                id: 'admin/checkout-ui.tab.history',
-              })}
-              active={state.currentTab === 5}
-              onClick={() => {
-                changeTabTo(5)
-              }}
-            >
-              <History onChange={handleLoad} initialState={state.appVersion} />
-            </Tab>
-          </Tabs>
+              >
+                <Colors
+                  onChange={handleColorsChange}
+                  initialState={state.colors}
+                />
+              </Tab>
+              <Tab
+                label={intl.formatMessage({
+                  id: 'admin/checkout-ui.tab.javascript',
+                })}
+                active={state.currentTab === 3}
+                onClick={() => {
+                  changeTabTo(3)
+                }}
+              >
+                <Javascript
+                  onChange={handleJSChange}
+                  initialState={{
+                    value: state.javascript,
+                    active: state.javascriptActive,
+                  }}
+                />
+              </Tab>
+              <Tab
+                label={intl.formatMessage({
+                  id: 'admin/checkout-ui.tab.css',
+                })}
+                active={state.currentTab === 4}
+                onClick={() => {
+                  changeTabTo(4)
+                }}
+              >
+                <Css
+                  onChange={handleCssChange}
+                  initialState={{
+                    value: state.css,
+                    active: state.cssActive,
+                  }}
+                />
+              </Tab>
+              <Tab
+                label={intl.formatMessage({
+                  id: 'admin/checkout-ui.tab.history',
+                })}
+                active={state.currentTab === 5}
+                onClick={() => {
+                  changeTabTo(5)
+                }}
+              >
+                <History
+                  onChange={handleLoad}
+                  initialState={state.appVersion}
+                />
+              </Tab>
+            </Tabs>
+          </>
         )}
         <Modal
           centered
