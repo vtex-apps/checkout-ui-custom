@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { FC } from 'react'
 import {
   injectIntl,

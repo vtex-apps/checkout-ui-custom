@@ -6,5 +6,6 @@ query GetLast($workspace: String) {
     colors
     javascriptActive
     cssActive
+    appVersion
   }
 }

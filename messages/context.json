@@ -1,6 +1,7 @@
 {
   "admin/checkout-ui.navigation.title": "admin/checkout-ui.navigation.title",
   "admin/checkout-ui.title": "admin/checkout-ui.title",
+  "admin/checkout-ui.update-warning": "admin/checkout-ui.update-warning",
   "admin/checkout-ui.tab.layout": "admin/checkout-ui.tab.layout",
   "admin/checkout-ui.tab.colors": "admin/checkout-ui.tab.colors",
   "admin/checkout-ui.tab.javascript": "admin/checkout-ui.tab.javascript",
@@ -12,6 +13,7 @@
   "admin/checkout-ui.tab.history": "admin/checkout-ui.tab.history",
   "admin/checkout-ui.button.publish": "admin/checkout-ui.button.publish",
   "admin/checkout-ui.message.publishing": "admin/checkout-ui.message.publishing",
+  "admin/checkout-ui.message.published": "admin/checkout-ui.message.published",
   "admin/checkout-ui.publish.warning": "admin/checkout-ui.publish.warning",
   "admin/checkout-ui.publish.confirm": "admin/checkout-ui.publish.confirm",
   "admin/checkout-ui.publish.cancel": "admin/checkout-ui.publish.cancel",
