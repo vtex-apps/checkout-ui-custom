@@ -1,9 +1,9 @@
 {
-  "name": "Checkout-ui-custom",
-  "headline": "Facilidade em customizar o checkout + correções gerais",
-  "overview": "O aplicativo Checkout UI Custom é responsável por personalizar a UI do Checkout de sua loja por meio da interface do administrador.",
+  "name": "Customizador do Checkout",
+  "headline": "Personalize a interface do checkout da sua loja com facilidade pelo admin.",
+  "overview": "O aplicativo Checkout UI Custom é responsável por personalizar a UI do Checkout de sua loja por meio da interface do administrador. Com alguns campos é possível mudar a fonte e cores, alterar a exibição dos meios de pagamentos e a aparência da data de entrega, e ainda fornece possibilidades para customizações se necessário. Toda a UI foi pensada em mobile-first, para facilitar o ato da compra.",
   "features": [
-    "Aletaração na exibição de métodos de pagamento",
+    "Alteração na exibição de métodos de pagamento",
     "Data de envio simplificada",
     "Mostrar preço unitário do item",
     "Mostrar campo 'notas'",
