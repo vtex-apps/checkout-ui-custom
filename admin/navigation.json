@@ -1,5 +1,18 @@
-{
-  "section": "storeSetup",
-  "titleId": "admin/checkout-ui.navigation.title",
-  "path": "/admin/vtex-checkout-ui-custom/"
-}
+[
+  {
+    "section": "storeSetup",
+    "titleId": "admin/checkout-ui.navigation.title",
+    "path": "/admin/vtex-checkout-ui-custom/"
+  },
+  {
+    "section": "storeSettings",
+    "subSection": "storeFront",
+    "adminVersion": 4,
+    "subSectionItems": [
+        {
+            "labelId": "admin/checkout-ui.navigation.title",
+            "path": "/admin/vtex-checkout-ui-custom/"
+        }
+    ]
+  }
+]
