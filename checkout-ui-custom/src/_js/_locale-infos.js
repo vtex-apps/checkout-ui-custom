@@ -123,19 +123,20 @@ module.exports._locale = {
     checkoutStepsLabelConfirmation:"Bekräftelse"
   },
   DEU: {
-    couponInactive: "Keine Rabatte verfügbar. Prüfen Sie die Bedingungen.",
-    editLabel: "Bearbeiten",
+    couponInactive: "Kein Rabatt verfügbar. Überprüfen Sie die Bedingungen.",
+    editLabel: "Anpassen",
     paypalImg: "",
     paypalPhone: "",
-    cartSubmitButton: "Zur Zahlung übergehen",
-    deliveryDateText: "Kommt an bis",
-    PickupDateText: "Bereit bis",
-    eachLabel: "Jeder",
+    cartSubmitButton: "Weiter zur Zahlung",
+    DeliveryDateText: "Lieferung bis",
+    PickupDateText: "Abholbereit bis",
+    eachLabel: "jedes/jeder",
     tomorrowLabel: "Morgen",
-    checkoutStepsLabelCart: "Einkaufswagen",
-    checkoutStepsLabelIdentification: "Identifikation",
+    checkoutStepsLabelCart: "Warenkorb",
+    checkoutStepsLabelIdentification: "Anmeldung",
     checkoutStepsLabelShipping: "Versand",
     checkoutStepsLabelPayment: "Zahlung",
-    checkoutStepsLabelConfirmation: "Bestätigung"
-  }
+    checkoutStepsLabelConfirmation: "Bestätigung",
+    googleAddressLabel: "Adresse",
+  },
 }
