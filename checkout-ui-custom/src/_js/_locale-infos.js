@@ -53,6 +53,26 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"Payment",
     checkoutStepsLabelConfirmation:"Confirmation"
   },
+  GBR: {
+    couponInactive:"No discounts available. Check the conditions.",
+    editLabel: "Edit",
+    paypalImg: "",
+    paypalPhone: "",
+    cartSubmitButton:"Proceed to Payment",
+    deliveryDateText:"Arrives by",
+    PickupDateText:"Ready by",
+    eachLabel:"each",
+    tomorrowLabel:"Tomorrow",
+    cartNoteLabel:"Gift Message or Comments",
+    identifiedUserMessage:`Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.`,
+    address1Placeholder:"Street address",
+    address2Placeholder:"Apartment, suite, building, floor, etc (optional)",
+    checkoutStepsLabelCart:"Cart",
+    checkoutStepsLabelIdentification:"Identification",
+    checkoutStepsLabelShipping:"Shipping",
+    checkoutStepsLabelPayment:"Payment",
+    checkoutStepsLabelConfirmation:"Confirmation"
+  },
   ITA: {
     couponInactive:"Nessuno sconto disponibile. Controlla le condizioni.",
     editLabel: "Modifica",
