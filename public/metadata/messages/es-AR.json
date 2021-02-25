@@ -1,7 +1,7 @@
 {
-  "name": "Checkout-ui-custom",
-  "headline": "Una forma sencilla de personalizar el checkout",
-  "overview": "La aplicación Checkout UI Custom es responsable de personalizar la interfaz de usuario de Checkout de su tienda a través de la interfaz de administración. ",
+  "name": "Personalizador del Checkout",
+  "headline": "Una forma sencilla de personalizar el checkout de su tienda por el administrador.",
+  "overview": "El app Checkout UI Custom es responsable por personalizar el Checkout de su tienda por la interfaz de administrador. Con algunos campos es posible cambiar la fuente y los colores, cambiar la visualización de los medios de pago y la apariencia de la fecha de entrega, y aún ofrecer posibilidades de personalización si es necesario. Toda la interfaz de usuario se diseñó primero en mobile-first.",
   "features": [
     "Cambio de exposición de métodos de pago",
     "Fecha de envío simplificada",

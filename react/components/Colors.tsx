@@ -298,6 +298,7 @@ const Colors: FC<WrappedComponentProps & any> = ({
 Colors.propTypes = {
   onChange: PropTypes.func,
   initialState: PropTypes.any,
+  intl: PropTypes.any,
 }
 
 export default injectIntl(Colors)

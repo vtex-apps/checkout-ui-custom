@@ -1,5 +1,4 @@
 type Query {
-  getWorkspaces: [WorkspaceResponse] @cacheControl(scope: PRIVATE)
   getSetupConfig: GetSetupConfigResponse @cacheControl(scope: PRIVATE)
   getHistory: [GetHistoryResponse] @cacheControl(scope: PRIVATE)
   getLast(workspace: String): GetLastResponse @cacheControl(scope: PRIVATE)

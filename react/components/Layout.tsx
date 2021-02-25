@@ -190,18 +190,6 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                 )
               }
             />
-            <p style={{ 
-              display: 'inline-block',
-              background: '#f71963',
-              margin: '0 0 0 10px',
-              padding: '5px',
-              borderRadius: '10px',
-              color: '#FFF',
-              float: 'left',
-              fontSize: '13px'
-            }}>
-              NEW
-            </p>
           </div>
           <br />
           <div

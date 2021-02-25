@@ -1,1 +1,0 @@
-O aplicativo Checkout UI Custom pode ser usado para personalizar as páginas do checkout da sua loja, através de uma interface amigável pelo painel administrativo da loja

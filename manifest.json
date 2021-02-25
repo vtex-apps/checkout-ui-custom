@@ -1,7 +1,7 @@
 {
   "name": "checkout-ui-custom",
   "vendor": "vtex",
-  "version": "0.1.2",
+  "version": "0.3.3",
   "title": "Checkout Custom",
   "description": "Make possible to customize the checkout layout using a easy to use interface from the admin",
   "builders": {
@@ -56,11 +56,9 @@
   "scripts": {},
   "credentialType": "absolute",
   "billingOptions": {
-    "termsURL": "https://compliance.vtex.com/gdpr/policies/vtex-privacy-policy",
     "support": {
       "url": "https://support.vtex.com/hc/requests"
     },
-    "free": true,
     "type": "free",
     "availableCountries": [
       "*"

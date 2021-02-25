@@ -7,6 +7,98 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.3] - 2021-02-18
+
+### Added
+
+- Countries: Spain and Portugal
+
+### Fixed
+
+- increase timeout
+
+## [0.3.2] - 2021-02-16
+
+## [0.3.1] - 2021-02-09
+
+### Fixed
+
+- German language
+
+## [0.3.0] - 2021-01-28
+
+### Added
+
+- Admin v4 sidebar link.
+
+## [0.2.4] - 2021-01-18
+
+### Added
+- Adding SE, FI, DE langs
+
+### Fixed
+- Fix canadian locale translations
+
+## [0.2.3] - 2021-01-05
+
+### Added
+- Better descriptions of metadata
+
+## [0.2.2] - 2020-12-30
+
+### Fixed
+- Remove duplicated css
+
+## [0.2.1] - 2020-12-23
+
+### Fixed
+
+- Not refreshing last app version number
+- Applying translated warning message
+## [0.2.0] - 2020-12-23
+
+### Added
+- Published message
+- Self closing modal after publishing
+- Warning message when a new version is available
+### Updated
+- Code cleanup
+
+## [0.1.8] - 2020-12-22
+
+### Fix
+- Duplicated indexed skus 
+
+## [0.1.7] - 2020-12-11
+
+### Fix
+
+- Remove custom css
+
+## [0.1.6] - 2020-12-11
+
+### Fix
+
+- Fix indented products on summary
+
+## [0.1.5] - 2020-12-08
+
+### Added
+
+- French language
+
+## [0.1.4] - 2020-12-03
+
+### Fix
+
+- Fixing indented products on summary and cart
+
+## [0.1.3] - 2020-12-03
+
+### Fix
+
+- Fix field sizes on second card step
+
 ## [0.1.2] - 2020-11-04
 
 ### Fix

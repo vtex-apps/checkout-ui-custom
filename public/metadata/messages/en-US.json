@@ -1,7 +1,7 @@
 {
-  "name": "Checkout-ui-custom",
-  "headline": "Easy way to customize the checkout",
-  "overview": "The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.",
+  "name": "Checkout Customizer",
+  "headline": "Easily customize your store's checkout interface by the admin.",
+  "overview": "The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface. With some fields its possible to change the font and colors, change the display of the means of payment and the appearance of the delivery date, and still provide possibilities for customizations if necessary. The entire UI was designed in mobile-first, to facilitate the purchase flow.",
   "features": [
     "Change payment methods exhibition",
     "Simplified shipping date",

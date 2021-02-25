@@ -85,8 +85,6 @@
 	    background: none;
 	    box-shadow: none;
 	    border: none;
-	    top: 4px;
-	    right: -5px;
 	    color: $actionPrimary;
 	    outline: none;
 
@@ -839,7 +837,11 @@
   		width:100%;
   		position: relative;
   		top:0;
-  	}
+		}
+		
+		.cart-items {
+			> .v-custom-indexed-item {display:none !important;}
+		}
 
   	.cart-fixed {
   		height: auto !important;
@@ -1248,7 +1250,8 @@
 		.card-flag.card-selected {opacity: 1;display:block;}
 	}
 
-	input#creditCardpayment-card-0Code {
+	input#creditCardpayment-card-0Code,
+	input#creditCardpayment-card-1Code{
 	  width: 100px !important;
 	}
 

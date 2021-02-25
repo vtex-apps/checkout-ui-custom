@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { FC, useState } from 'react'
 import { defineMessages, injectIntl, WrappedComponentProps } from 'react-intl'
 import PropTypes from 'prop-types'
@@ -68,6 +67,7 @@ const Javascript: FC<WrappedComponentProps & any> = ({
 Javascript.propTypes = {
   onChange: PropTypes.func,
   initialState: PropTypes.any,
+  intl: PropTypes.any,
 }
 
 export default injectIntl(Javascript)

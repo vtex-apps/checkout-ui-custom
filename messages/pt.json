@@ -1,5 +1,6 @@
 {
   "admin/checkout-ui.title": "Interface personalizada do Checkout",
+  "admin/checkout-ui.update-warning": "Este App foi atualizado. Por favor, clique em PUBLICAR para aplicar as últimas correções para o seu checkout.",
   "admin/checkout-ui.navigation.title": "Checkout UI Custom",
   "admin/checkout-ui.tab.layout": "Interface",
   "admin/checkout-ui.tab.colors": "Colors",
@@ -12,6 +13,7 @@
   "admin/checkout-ui.tab.history": "Histórico",
   "admin/checkout-ui.button.publish": "Publicar",
   "admin/checkout-ui.message.publishing": "Publicando em",
+  "admin/checkout-ui.message.published": "Publicado em",
   "admin/checkout-ui.publish.warning": "Você está publicando em um workspace em PRODUÇÃO, mudanças aqui podem impactar suas vendas",
   "admin/checkout-ui.publish.confirm": "Continuar",
   "admin/checkout-ui.publish.cancel": "Cancelar",

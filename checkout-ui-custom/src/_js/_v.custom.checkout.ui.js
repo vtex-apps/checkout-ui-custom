@@ -1,9 +1,9 @@
 const { _locale } = require("./_locale-infos.js");
-const { debounce } = require("./_utils.js");
+const { debounce, formatCurrency } = require("./_utils.js");
 const fnsCustomAddressForm = require("./_customAddressForm.js");
 
 
-class checkoutCustom {
+class checkoutCustom { 
   constructor({
     type = "vertical", 
     accordionPayments = true, 
@@ -238,24 +238,74 @@ class checkoutCustom {
     }
 
   }
-  
+
+  setParentIndex(orderForm) {
+    $.each(orderForm.items, function(i) {
+      if(this.parentItemIndex!=null) {
+        $(`.table.cart-items tbody > tr.product-item:eq(${i})`).attr("data-parentItemIndex", this.parentItemIndex);
+      }
+    });
+  }
+
   removeMCLoader () { $(`.mini-cart .cart-items`).addClass("v-loaded"); }
   indexedInItems(orderForm) {
     let _this = this;
     try {
       if (orderForm.items.filter(item => { return item.parentItemIndex != null }).length == 0) { _this.removeMCLoader(); return false;}
       if (orderForm.items) {
-        $.each(orderForm.items, function (i) {
-          if (this.parentItemIndex!=null) {
-            $(`.table.cart-items tbody tr.product-item:eq(${i}), .mini-cart .cart-items li:eq(${i}) `).addClass("v-custom-indexed-item")
-            //$(`.table.cart-items tbody tr.product-item:eq(${i})`).appendTo(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex})`);
-            $(`.table.cart-items tbody tr.product-item:eq(${this.parentItemIndex}), .mini-cart .cart-items li:eq(${this.parentItemIndex})`).addClass("v-custom-indexedItems-in");
-            
-            if ($(`.mini-cart .cart-items li`).length>0) {
-              $(`.mini-cart .cart-items li:eq(${i})`).appendTo(`.mini-cart .cart-items li:eq(${this.parentItemIndex})`);
+        
+        let indexedInItems = orderForm.items.reduce((c, v) => {
+          if(v.parentItemIndex != null) {
+            c[v.parentItemIndex] = c[v.parentItemIndex] || [];
+            c[v.parentItemIndex].push(v); 
+          }
+          return c;
+        }, {});
+        
+        //console.log(indexedInItems)
+        
+        for (var key in indexedInItems) {
+          var obj = indexedInItems[key];
+          //console.log(obj)
+          if($(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(".v-custom-bundles").length<=1) {
+            $(`.table.cart-items tbody > tr.product-item:eq(${key})`).append(`<div class="v-custom-bundles"></div>`).addClass("v-custom-indexedItems-in");
+            if($(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(".v-custom-bundles").html()=="") {
+              for (var prop in obj) {
+                if (!obj.hasOwnProperty(prop)) continue;
+                let iiItem = obj[prop];
+                $(`.table.cart-items tbody > tr.product-item[data-sku='${iiItem.id}'][data-parentitemindex='${iiItem.parentItemIndex}']`)
+                .addClass("v-custom-indexed-item")
+                .clone()
+                .appendTo(`.table.cart-items tbody > tr.product-item:eq(${key}) > .v-custom-bundles`);
+              }
             }
           }
-        });
+
+          $(`.mini-cart .cart-items > li:eq(${key})`).find(`.v-custom-bundles`).remove();
+          $(`.mini-cart .cart-items > li:eq(${key})`).append(`<div class="v-custom-bundles"></div>`).addClass("v-custom-indexedItems-in");
+          if($(`.mini-cart .cart-items > li:eq(${key})`).find(" > .v-custom-bundles").html()=="") {
+            for (var prop in obj) {
+              if (!obj.hasOwnProperty(prop)) continue;
+              let iiItem = obj[prop];
+              $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`).html(`
+                <div class="hproduct item v-custom-indexed-item" data-sku="${iiItem.id}">
+                  <a href="${iiItem.detailUrl}" class="url">
+                    <img height="45" width="45" class="photo" src="${iiItem.imageUrl}" alt="${iiItem.name}">
+                  </a>
+                  <span class="fn product-name" title="${iiItem.name}" href="${iiItem.detailUrl}">${iiItem.name}</span>
+                  <span class="quantity badge">${iiItem.quantity}</span>				
+                  <div class="description">
+                    <strong class="price pull-right" data-bind="text: sellingPriceLabel">${orderForm.storePreferencesData.currencySymbol} ${formatCurrency(orderForm.clientPreferencesData.local, orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice)}</strong>
+                  </div>
+                </div>
+              `);
+              $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']:eq(0)`)
+              .addClass("v-custom-indexed-item")
+              //.clone()
+              //.appendTo(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`);
+            }
+          }
+        }
         _this.removeMCLoader();
       }
       
@@ -406,8 +456,9 @@ class checkoutCustom {
     this.enchancementTotalPrice(orderForm);
     this.bundleItems(orderForm);
     this.buildMiniCart(orderForm);
-    this.indexedInItems(orderForm);
     this.condensedTaxes(orderForm);
+    this.setParentIndex(orderForm);
+    this.indexedInItems(orderForm);
 
     
     // debounce to prevent append from default script
@@ -653,6 +704,8 @@ class checkoutCustom {
         _this.builder();
         _this.checkProfileFocus();
         _this.customAddressFormInit(vtexjs.checkout.orderForm);
+        _this.changeShippingTimeInfoInit();
+        _this.indexedInItems(vtexjs.checkout.orderForm);
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
