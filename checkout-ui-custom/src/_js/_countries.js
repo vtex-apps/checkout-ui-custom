@@ -1,3 +1,20 @@
+module.exports._countriesrules = {
+  
+  ITA: {
+    state:"administrative_area_level_2"
+  },
+  USA: {
+    state:"administrative_area_level_1"
+  },
+  BRA: {
+    state:"administrative_area_level_1"
+  },
+  WWD: {
+    state:"administrative_area_level_1222"
+  }
+
+}
+
 // _countries.find(i=>i[0]=="US")
 module.exports._countries = ([['AF', 'AFG'], ['AX', 'ALA'], ['AL', 'ALB'], ['DZ', 'DZA'], ['AS', 'ASM'], ['AD', 'AND'], ['AO', 'AGO'], ['AI', 'AIA'], ['AQ', 'ATA'], ['AG', 'ATG'], ['AR', 'ARG'], ['AM', 'ARM'], ['AW', 'ABW'], ['AU', 'AUS'], ['AT', 'AUT'], ['AZ', 'AZE'], ['BS', 'BHS'], ['BH', 'BHR'], ['BD', 'BGD'], ['BB', 'BRB'], ['BY', 'BLR'], ['BE', 'BEL'], ['BZ', 'BLZ'], ['BJ', 'BEN'], ['BM', 'BMU'], ['BT', 'BTN'], ['BO', 'BOL'], ['BQ', 'BES'], ['BA', 'BIH'], ['BW', 'BWA'], ['BV', 'BVT'], ['BR', 'BRA'], ['IO', 'IOT'], ['BN', 'BRN'], ['BG', 'BGR'], ['BF', 'BFA'], ['BI', 'BDI'], ['KH', 'KHM'], ['CM', 'CMR'], ['CA', 'CAN'], ['CV', 'CPV'], ['KY', 'CYM'], ['CF', 'CAF'], ['TD', 'TCD'], ['CL', 'CHL'], ['CN', 'CHN'], ['CX', 'CXR'], ['CC', 'CCK'], ['CO', 'COL'], ['KM', 'COM'], ['CG', 'COG'], ['CD', 'COD'], ['CK', 'COK'], ['CR', 'CRI'], ['CI', 'CIV'], ['HR', 'HRV'], ['CU', 'CUB'], ['CW', 'CUW'], ['CY', 'CYP'], ['CZ', 'CZE'], ['DK', 'DNK'], ['DJ', 'DJI'], ['DM', 'DMA'], ['DO', 'DOM'], ['EC', 'ECU'], ['EG', 'EGY'], ['SV', 'SLV'], ['GQ', 'GNQ'], ['ER', 'ERI'], ['EE', 'EST'], ['ET', 'ETH'], ['FK', 'FLK'], ['FO', 'FRO'], ['FJ', 'FJI'], ['FI', 'FIN'], ['FR', 'FRA'], ['GF', 'GUF'], ['PF', 'PYF'], ['TF', 'ATF'], ['GA', 'GAB'], ['GM', 'GMB'], ['GE', 'GEO'], ['DE', 'DEU'], ['GH', 'GHA'], ['GI', 'GIB'], ['GR', 'GRC'], ['GL', 'GRL'], ['GD', 'GRD'], ['GP', 'GLP'], ['GU', 'GUM'], ['GT', 'GTM'], ['GG', 'GGY'], ['GN', 'GIN'], ['GW', 'GNB'], ['GY', 'GUY'], ['HT', 'HTI'], ['HM', 'HMD'], ['VA', 'VAT'], ['HN', 'HND'], ['HK', 'HKG'], ['HU', 'HUN'], ['IS', 'ISL'], ['IN', 'IND'], ['ID', 'IDN'], ['IR', 'IRN'], ['IQ', 'IRQ'], ['IE', 'IRL'], ['IM', 'IMN'], ['IL', 'ISR'], ['IT', 'ITA'], ['JM', 'JAM'], ['JP', 'JPN'], ['JE', 'JEY'], ['JO', 'JOR'], ['KZ', 'KAZ'], ['KE', 'KEN'], ['KI', 'KIR'], ['KP', 'PRK'], ['KR', 'KOR'], ['KW', 'KWT'], ['KG', 'KGZ'], ['LA', 'LAO'], ['LV', 'LVA'], ['LB', 'LBN'], ['LS', 'LSO'], ['LR', 'LBR'], ['LY', 'LBY'], ['LI', 'LIE'], ['LT', 'LTU'], ['LU', 'LUX'], ['MO', 'MAC'], ['MK', 'MKD'], ['MG', 'MDG'], ['MW', 'MWI'], ['MY', 'MYS'], ['MV', 'MDV'], ['ML', 'MLI'], ['MT', 'MLT'], ['MH', 'MHL'], ['MQ', 'MTQ'], ['MR', 'MRT'], ['MU', 'MUS'], ['YT', 'MYT'], ['MX', 'MEX'], ['FM', 'FSM'], ['MD', 'MDA'], ['MC', 'MCO'], ['MN', 'MNG'], ['ME', 'MNE'], ['MS', 'MSR'], ['MA', 'MAR'], ['MZ', 'MOZ'], ['MM', 'MMR'], ['NA', 'NAM'], ['NR', 'NRU'], ['NP', 'NPL'], ['NL', 'NLD'], ['NC', 'NCL'], ['NZ', 'NZL'], ['NI', 'NIC'], ['NE', 'NER'], ['NG', 'NGA'], ['NU', 'NIU'], ['NF', 'NFK'], ['MP', 'MNP'], ['NO', 'NOR'], ['OM', 'OMN'], ['PK', 'PAK'], ['PW', 'PLW'], ['PS', 'PSE'], ['PA', 'PAN'], ['PG', 'PNG'], ['PY', 'PRY'], ['PE', 'PER'], ['PH', 'PHL'], ['PN', 'PCN'], ['PL', 'POL'], ['PT', 'PRT'], ['PR', 'PRI'], ['QA', 'QAT'], ['RE', 'REU'], ['RO', 'ROU'], ['RU', 'RUS'], ['RW', 'RWA'], ['BL', 'BLM'], ['SH', 'SHN'], ['KN', 'KNA'], ['LC', 'LCA'], ['MF', 'MAF'], ['PM', 'SPM'], ['VC', 'VCT'], ['WS', 'WSM'], ['SM', 'SMR'], ['ST', 'STP'], ['SA', 'SAU'], ['SN', 'SEN'], ['RS', 'SRB'], ['SC', 'SYC'], ['SL', 'SLE'], ['SG', 'SGP'], ['SX', 'SXM'], ['SK', 'SVK'], ['SI', 'SVN'], ['SB', 'SLB'], ['SO', 'SOM'], ['ZA', 'ZAF'], ['GS', 'SGS'], ['SS', 'SSD'], ['ES', 'ESP'], ['LK', 'LKA'], ['SD', 'SDN'], ['SR', 'SUR'], ['SJ', 'SJM'], ['SZ', 'SWZ'], ['SE', 'SWE'], ['CH', 'CHE'], ['SY', 'SYR'], ['TW', 'TWN'], ['TJ', 'TJK'], ['TZ', 'TZA'], ['TH', 'THA'], ['TL', 'TLS'], ['TG', 'TGO'], ['TK', 'TKL'], ['TO', 'TON'], ['TT', 'TTO'], ['TN', 'TUN'], ['TR', 'TUR'], ['TM', 'TKM'], ['TC', 'TCA'], ['TV', 'TUV'], ['UG', 'UGA'], ['UA', 'UKR'], ['AE', 'ARE'], ['GB', 'GBR'], ['US', 'USA'], ['UM', 'UMI'], ['UY', 'URY'], ['UZ', 'UZB'], ['VU', 'VUT'], ['VE', 'VEN'], ['VN', 'VNM'], ['VG', 'VGB'], ['VI', 'VIR'], ['WF', 'WLF'], ['EH', 'ESH'], ['YE', 'YEM'], ['ZM', 'ZMB'], ['ZW', 'ZWE'], ['XK', 'XKX']]);
 
@@ -6513,85 +6530,337 @@ module.exports._cities = [{
   {
     countryName: "Italy",
     countryShortCode: "IT",
-    regions: [{
-        name: "Abruzzo",
-        shortCode: "65"
-      },
+    regions: [
       {
-        name: "Basilicata",
-        shortCode: "77"
-      },
-      {
-        name: "Calabria",
-        shortCode: "78"
-      },
-      {
-        name: "Campania",
-        shortCode: "72"
-      },
-      {
-        name: "Emilia-Romagna",
-        shortCode: "45"
-      },
-      {
-        name: "Friuli-Venezia Giulia",
-        shortCode: "36"
-      },
-      {
-        name: "Lazio",
-        shortCode: "62"
-      },
-      {
-        name: "Liguria",
-        shortCode: "42"
-      },
-      {
-        name: "Lombardia",
-        shortCode: "25"
-      },
-      {
-        name: "Marche",
-        shortCode: "57"
-      },
-      {
-        name: "Molise",
-        shortCode: "67"
-      },
-      {
-        name: "Piemonte",
-        shortCode: "21"
-      },
-      {
-        name: "Puglia",
-        shortCode: "75"
-      },
-      {
-        name: "Sardegna",
-        shortCode: "88"
-      },
-      {
-        name: "Sicilia",
-        shortCode: "82"
-      },
-      {
-        name: "Toscana",
-        shortCode: "52"
-      },
-      {
-        name: "Trentino-Alto Adige",
-        shortCode: "32"
-      },
-      {
-        name: "Umbria",
-        shortCode: "55"
-      },
-      {
-        name: "Valle d'Aosta",
-        shortCode: "23"
-      },
-      {
-        name: "Veneto",
-        shortCode: "34"
+        name: "Agrigento",
+        shortCode: "AG"
+      }, {
+        name: "Alessandria",
+        shortCode: "AL"
+      }, {
+        name: "Ancona",
+        shortCode: "AN"
+      }, {
+        name: "Aosta",
+        shortCode: "AO"
+      }, {
+        name: "Arezzo",
+        shortCode: "AR"
+      }, {
+        name: "Ascoli Piceno",
+        shortCode: "AP"
+      }, {
+        name: "Asti",
+        shortCode: "AT"
+      }, {
+        name: "Avellino",
+        shortCode: "AV"
+      }, {
+        name: "Bari",
+        shortCode: "BA"
+      }, {
+        name: "Barletta-Andria-Trani",
+        shortCode: "BT"
+      }, {
+        name: "Belluno",
+        shortCode: "BL"
+      }, {
+        name: "Benevento",
+        shortCode: "BN"
+      }, {
+        name: "Bergamo",
+        shortCode: "BG"
+      }, {
+        name: "Biella",
+        shortCode: "BI"
+      }, {
+        name: "Bologna",
+        shortCode: "BO"
+      }, {
+        name: "Bolzano",
+        shortCode: "BZ"
+      }, {
+        name: "Brescia",
+        shortCode: "BS"
+      }, {
+        name: "Brindisi",
+        shortCode: "BR"
+      }, {
+        name: "Cagliari",
+        shortCode: "CA"
+      }, {
+        name: "Caltanissetta",
+        shortCode: "CL"
+      }, {
+        name: "Campobasso",
+        shortCode: "CB"
+      }, {
+        name: "Carbonia-Iglesias",
+        shortCode: "CI"
+      }, {
+        name: "Caserta",
+        shortCode: "CE"
+      }, {
+        name: "Catania",
+        shortCode: "CT"
+      }, {
+        name: "Catanzaro",
+        shortCode: "CZ"
+      }, {
+        name: "Chieti",
+        shortCode: "CH"
+      }, {
+        name: "Como",
+        shortCode: "CO"
+      }, {
+        name: "Cosenza",
+        shortCode: "CS"
+      }, {
+        name: "Cremona",
+        shortCode: "CR"
+      }, {
+        name: "Crotone",
+        shortCode: "KR"
+      }, {
+        name: "Cuneo",
+        shortCode: "CN"
+      }, {
+        name: "Enna",
+        shortCode: "EN"
+      }, {
+        name: "Fermo",
+        shortCode: "FM"
+      }, {
+        name: "Ferrara",
+        shortCode: "FE"
+      }, {
+        name: "Firenze",
+        shortCode: "FI"
+      }, {
+        name: "Foggia",
+        shortCode: "FG"
+      }, {
+        name: "Forlì-Cesena",
+        shortCode: "FC"
+      }, {
+        name: "Frosinone",
+        shortCode: "FR"
+      }, {
+        name: "Genova",
+        shortCode: "GE"
+      }, {
+        name: "Gorizia",
+        shortCode: "GO"
+      }, {
+        name: "Grosseto",
+        shortCode: "GR"
+      }, {
+        name: "Imperia",
+        shortCode: "IM"
+      }, {
+        name: "Isernia",
+        shortCode: "IS"
+      }, {
+        name: "L'Aquila",
+        shortCode: "AQ"
+      }, {
+        name: "La Spezia",
+        shortCode: "SP"
+      }, {
+        name: "Latina",
+        shortCode: "LT"
+      }, {
+        name: "Lecce",
+        shortCode: "LE"
+      }, {
+        name: "Lecco",
+        shortCode: "LC"
+      }, {
+        name: "Livorno",
+        shortCode: "LI"
+      }, {
+        name: "Lodi",
+        shortCode: "LO"
+      }, {
+        name: "Lucca",
+        shortCode: "LU"
+      }, {
+        name: "Macerata",
+        shortCode: "MC"
+      }, {
+        name: "Mantova",
+        shortCode: "MN"
+      }, {
+        name: "Massa-Carrara",
+        shortCode: "MS"
+      }, {
+        name: "Matera",
+        shortCode: "MT"
+      }, {
+        name: "Medio Campidano",
+        shortCode: "VS"
+      }, {
+        name: "Messina",
+        shortCode: "ME"
+      }, {
+        name: "Milano",
+        shortCode: "MI"
+      }, {
+        name: "Modena",
+        shortCode: "MO"
+      }, {
+        name: "Monza e Brianza",
+        shortCode: "MB"
+      }, {
+        name: "Napoli",
+        shortCode: "NA"
+      }, {
+        name: "Novara",
+        shortCode: "NO"
+      }, {
+        name: "Nuoro",
+        shortCode: "NU"
+      }, {
+        name: "Ogliastra",
+        shortCode: "OG"
+      }, {
+        name: "Olbia-Tempio",
+        shortCode: "OT"
+      }, {
+        name: "Oristano",
+        shortCode: "OR"
+      }, {
+        name: "Padova",
+        shortCode: "PD"
+      }, {
+        name: "Palermo",
+        shortCode: "PA"
+      }, {
+        name: "Parma",
+        shortCode: "PR"
+      }, {
+        name: "Pavia",
+        shortCode: "PV"
+      }, {
+        name: "Perugia",
+        shortCode: "PG"
+      }, {
+        name: "Pesaro e Urbino",
+        shortCode: "PU"
+      }, {
+        name: "Pescara",
+        shortCode: "PE"
+      }, {
+        name: "Piacenza",
+        shortCode: "PC"
+      }, {
+        name: "Pisa",
+        shortCode: "PI"
+      }, {
+        name: "Pistoia",
+        shortCode: "PT"
+      }, {
+        name: "Pordenone",
+        shortCode: "PN"
+      }, {
+        name: "Potenza",
+        shortCode: "PZ"
+      }, {
+        name: "Prato",
+        shortCode: "PO"
+      }, {
+        name: "Ragusa",
+        shortCode: "RG"
+      }, {
+        name: "Ravenna",
+        shortCode: "RA"
+      }, {
+        name: "Reggio Calabria",
+        shortCode: "RC"
+      }, {
+        name: "Reggio Emilia",
+        shortCode: "RE"
+      }, {
+        name: "Rieti",
+        shortCode: "RI"
+      }, {
+        name: "Rimini",
+        shortCode: "RN"
+      }, {
+        name: "Roma",
+        shortCode: "RM"
+      }, {
+        name: "Rovigo",
+        shortCode: "RO"
+      }, {
+        name: "Salerno",
+        shortCode: "SA"
+      }, {
+        name: "Sassari",
+        shortCode: "SS"
+      }, {
+        name: "Savona",
+        shortCode: "SV"
+      }, {
+        name: "Siena",
+        shortCode: "SI"
+      }, {
+        name: "Siracusa",
+        shortCode: "SR"
+      }, {
+        name: "Sondrio",
+        shortCode: "SO"
+      }, {
+        name: "Taranto",
+        shortCode: "TA"
+      }, {
+        name: "Teramo",
+        shortCode: "TE"
+      }, {
+        name: "Terni",
+        shortCode: "TR"
+      }, {
+        name: "Torino",
+        shortCode: "TO"
+      }, {
+        name: "Trapani",
+        shortCode: "TP"
+      }, {
+        name: "Trento",
+        shortCode: "TN"
+      }, {
+        name: "Treviso",
+        shortCode: "TV"
+      }, {
+        name: "Trieste",
+        shortCode: "TS"
+      }, {
+        name: "Udine",
+        shortCode: "UD"
+      }, {
+        name: "Varese",
+        shortCode: "VA"
+      }, {
+        name: "Venezia",
+        shortCode: "VE"
+      }, {
+        name: "Verbano-Cusio-Ossola",
+        shortCode: "VB"
+      }, {
+        name: "Vercelli",
+        shortCode: "VC"
+      }, {
+        name: "Verona",
+        shortCode: "VR"
+      }, {
+        name: "Vibo Valentia",
+        shortCode: "VV"
+      }, {
+        name: "Vicenza",
+        shortCode: "VI"
+      }, {
+        name: "Viterbo",
+        shortCode: "VT"
       }
     ]
   },

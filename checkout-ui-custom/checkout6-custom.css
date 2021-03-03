@@ -83,7 +83,9 @@
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.4); }
 
 input#creditCardpayment-card-0Number,
-input#creditCardpayment-card-0Code {
+input#creditCardpayment-card-0Code,
+input#creditCardpayment-card-1Number,
+input#creditCardpayment-card-1Code {
   font-size: 18px; }
 
 input:-webkit-autofill,
@@ -186,19 +188,23 @@ input:-webkit-autofill:active {
   width: 100% !important;
   box-sizing: border-box; }
 
-.input-append .btn, .input-append .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .input-append a, .input-append .orderform-template-holder #payment-data .payment-discounts-list table td.action a, .orderform-template-holder #payment-data .payment-discounts-list table td.action .input-append a,
-.input-append .add-on, .input-prepend .btn, .input-prepend .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .input-prepend a, .input-prepend .orderform-template-holder #payment-data .payment-discounts-list table td.action a, .orderform-template-holder #payment-data .payment-discounts-list table td.action .input-prepend a,
-.input-prepend .add-on {
-  height: 40px;
-  line-height: 40px;
-  box-sizing: border-box;
-  padding: 0;
-  width: 20px; }
-
-.input-append input, .input-prepend input {
-  border-radius: 0 4px 4px 0 !important;
-  width: 100% !important;
-  max-width: 100px !important; }
+.input-append, .input-prepend {
+  display: flex !important;
+  align-items: stretch; }
+  .input-append .btn, .input-append .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .input-append a, .input-append .orderform-template-holder #payment-data .payment-discounts-list table td.action a, .orderform-template-holder #payment-data .payment-discounts-list table td.action .input-append a,
+  .input-append .add-on, .input-prepend .btn, .input-prepend .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data a, .summary-template-holder .summary-coupon fieldset.coupon-fieldset .coupon-data .input-prepend a, .input-prepend .orderform-template-holder #payment-data .payment-discounts-list table td.action a, .orderform-template-holder #payment-data .payment-discounts-list table td.action .input-prepend a,
+  .input-prepend .add-on {
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    padding: 0;
+    width: 20px; }
+  .input-append .add-on, .input-prepend .add-on {
+    height: initial !important; }
+  .input-append input, .input-prepend input {
+    border-radius: 0 4px 4px 0 !important;
+    width: 100% !important;
+    max-width: 100px !important; }
 
 .payment-discoints-table .number, .gift-card-provider-group .number, .payment-discoints-table .action, .gift-card-provider-group .action {
   text-align: right; }
@@ -881,6 +887,8 @@ h1#cart-title {
       border-top: 1px solid #eee; }
       .table.cart-items tbody tr.hide {
         display: none; }
+      .table.cart-items tbody tr > .v-custom-bundles {
+        width: 100%; }
       @media (max-width: 690px) {
         .table.cart-items tbody tr {
           margin-top: 0 !important; }
@@ -1115,7 +1123,8 @@ h1#cart-title {
           background: #FFF;
           width: 25px;
           height: 20px;
-          text-align: center; }
+          text-align: center;
+          justify-content: center; }
           .table.cart-items tbody tr.v-custom-indexed-item td.quantity p, .table.cart-items tbody tr.item-service td.quantity p {
             width: 100%; }
         .table.cart-items tbody tr.v-custom-indexed-item td.product-price, .table.cart-items tbody tr.item-service td.product-price {
@@ -1161,6 +1170,8 @@ h1#cart-title {
         padding: 0; }
       .table.cart-items tbody tr:last-child {
         border-bottom: none; }
+    .table.cart-items tbody > tr.v-custom-indexed-item {
+      display: none; }
   .table.cart-items td.product-image a {
     overflow: hidden;
     border-radius: 4px; }
@@ -1713,8 +1724,6 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     background: none;
     box-shadow: none;
     border: none;
-    top: 4px;
-    right: -5px;
     color: #1a73e8;
     outline: none;
     position: absolute;
@@ -2272,6 +2281,8 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
         width: 100%;
         position: relative;
         top: 0; } }
+    .orderform-template .cart-template.mini-cart .cart-items > .v-custom-indexed-item {
+      display: none !important; }
     .orderform-template .cart-template.mini-cart .cart-fixed {
       height: auto !important;
       position: relative !important;
@@ -2560,7 +2571,8 @@ body.v-custom-step-payment #shipping-data .shipping-summary-info {
     #app-container .PaymentCardFlags .card-flag.card-selected {
       opacity: 1;
       display: block; }
-  #app-container input#creditCardpayment-card-0Code {
+  #app-container input#creditCardpayment-card-0Code,
+  #app-container input#creditCardpayment-card-1Code {
     width: 100px !important; }
   #app-container .label-vertical-group {
     padding: 9px; }
