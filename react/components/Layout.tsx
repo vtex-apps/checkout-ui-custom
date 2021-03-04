@@ -15,7 +15,7 @@ import NotesOff from '../images/notes-field-off.png'
 import EmailStepOn from '../images/email-step-on.png'
 import EmailStepOff from '../images/email-step-off.png'
 import CustomAddresFormOn from '../images/usaddressform-on.png'
-import UsAddresFormOff from '../images/usaddressform-off.png'
+import CustomAddresFormOff from '../images/usaddressform-off.png'
 
 const images: any = {
   tabsOn: TabsOn,
@@ -29,7 +29,7 @@ const images: any = {
   emailStepOn: EmailStepOn,
   emailStepOff: EmailStepOff,
   customAddresFormOn: CustomAddresFormOn,
-  usAddresFormOff: UsAddresFormOff,
+  customAddresFormOff: CustomAddresFormOff,
 }
 
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
@@ -222,7 +222,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
               float: 'left',
               fontSize: '13px'
             }}>
-              NEW
+              BETA
             </p>
           </div>
         </div>
