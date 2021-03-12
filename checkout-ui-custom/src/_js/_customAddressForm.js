@@ -269,7 +269,10 @@ class fnsCustomAddressForm {
         <div>
         <form>
             <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">${_this.locale.address1Placeholder ? _this.locale.address1Placeholder : "Street address or P.O. Box"}</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">This field is required.</span></p>
-            <p class="input ship-complement text"><label for="ship-complement">${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "Apartment number, unit, floor, etc."}</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
+            <div class="v-custom-ship-info">
+              <p class="input ship-number text"><label for="ship-complement">${_this.locale.addressNumber ? _this.locale.addressNumber : "Number"}</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${_this.locale.addressNumber ? _this.locale.addressNumber : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.number==null ? "" : shippingData.address.number : "" }"></p>
+              <p class="input ship-complement text"><label for="ship-complement">${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "Apartment number, unit, floor, etc."}</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
+            </div>
             <div class="vcustom--vtex-omnishipping-1-x-address__state">
               <p class="input ship-country text ${_this.deliveryCountries.length<=1 ? "hide" : ""} "><label for="ship-country">Country</label><select name="v-custom-country" id="ship-country" class="input-large">${_this.getCountries().join("")}</select></p>
               <p class="input ship-city required text"><label for="ship-city">${_this.locale.city ? _this.locale.city : "City"}</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">This field is required.</span></p>
@@ -424,7 +427,9 @@ class fnsCustomAddressForm {
     }
   }
 
-
+  getCountryRule(country) {
+    return _countriesrules[country] ? _countriesrules[country] : _countriesrules["WWD"];
+  }
 
   events() {
     let _this = this;
@@ -448,7 +453,7 @@ class fnsCustomAddressForm {
       _this.mainCountry = checkout.countryCode();
       _this.lang = _this.orderForm.clientPreferencesData.locale;
       _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode];
-      _this.addressrules = _countriesrules[_this.orderForm.storePreferencesData.countryCode] ? _countriesrules[_this.orderForm.storePreferencesData.countryCode] : _countriesrules["WWD"];
+      _this.addressrules = _this.getCountryRule(_this.orderForm.storePreferencesData.countryCode);
       
 
       if(_this.orderForm && _this.orderForm.shippingData) {

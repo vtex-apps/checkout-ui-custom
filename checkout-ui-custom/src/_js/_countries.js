@@ -1,16 +1,20 @@
 module.exports._countriesrules = {
   
   ITA: {
-    state:"administrative_area_level_2"
+    state:"administrative_area_level_2",
+    number:true
   },
   USA: {
-    state:"administrative_area_level_1"
+    state:"administrative_area_level_1",
+    number:false
   },
   BRA: {
-    state:"administrative_area_level_1"
+    state:"administrative_area_level_1",
+    number:false
   },
   WWD: {
-    state:"administrative_area_level_1222"
+    state:"administrative_area_level_1222",
+    number:false
   }
 
 }
