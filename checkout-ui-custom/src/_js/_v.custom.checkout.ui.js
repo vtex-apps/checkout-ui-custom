@@ -284,7 +284,7 @@ class checkoutCustom {
             for (var prop in obj) {
               if (!obj.hasOwnProperty(prop)) continue;
               let iiItem = obj[prop];
-              $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`).html(`
+              $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`).append(`
                 <div class="hproduct item v-custom-indexed-item" data-sku="${iiItem.id}">
                   <a href="${iiItem.detailUrl}" class="url">
                     <img height="45" width="45" class="photo" src="${iiItem.imageUrl}" alt="${iiItem.name}">
@@ -292,11 +292,11 @@ class checkoutCustom {
                   <span class="fn product-name" title="${iiItem.name}" href="${iiItem.detailUrl}">${iiItem.name}</span>
                   <span class="quantity badge">${iiItem.quantity}</span>				
                   <div class="description">
-                    <strong class="price pull-right" data-bind="text: sellingPriceLabel">${orderForm.storePreferencesData.currencySymbol} ${formatCurrency(orderForm.clientPreferencesData.local, orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice)}</strong>
+                    <strong class="price pull-right" data-bind="text: sellingPriceLabel">${orderForm.storePreferencesData.currencySymbol} ${formatCurrency(orderForm.clientPreferencesData.local, orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice).toFixed(2)}</strong>
                   </div>
                 </div>
               `);
-              $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']:eq(0)`)
+              $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']`)
               .addClass("v-custom-indexed-item")
               //.clone()
               //.appendTo(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`);
