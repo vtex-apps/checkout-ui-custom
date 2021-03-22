@@ -132,7 +132,8 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"Pagamento",
     checkoutStepsLabelConfirmation:"Conferma",
     city:"Città",
-    state:"Provincia"
+    state:"Provincia",
+    number:"Numero"
   },
   FRA: {
     couponInactive:"Aucune réduction disponible. Vérifiez les conditions.",

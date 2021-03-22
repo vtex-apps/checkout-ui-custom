@@ -13,7 +13,7 @@ module.exports._countriesrules = {
     number:false
   },
   WWD: {
-    state:"administrative_area_level_1222",
+    state:"administrative_area_level_1",
     number:false
   }
 
