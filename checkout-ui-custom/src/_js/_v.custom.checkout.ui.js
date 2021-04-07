@@ -706,6 +706,7 @@ class checkoutCustom {
         _this.customAddressFormInit(vtexjs.checkout.orderForm);
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
+        if(_this.customAddressForm) store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);

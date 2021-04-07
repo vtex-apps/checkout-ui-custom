@@ -133,9 +133,7 @@ class fnsCustomAddressForm {
   }
 
   triggerValidateAddress() {
-    (debounce(function() {
-        $("button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery").trigger("click");
-    }, 250));
+    store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
   }
 
   sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId, neighborhood, geoCoordinates) {
@@ -230,7 +228,7 @@ class fnsCustomAddressForm {
               $("body").removeClass(_this.BodyFormClasses.join(" "));
               _this.orderForm = vtexjs.checkout.orderForm;
               $("body").removeClass("js-v-custom-is-loading");
-              //_this.triggerValidateAddress();
+              _this.triggerValidateAddress();
             });
           }
           
@@ -369,18 +367,24 @@ class fnsCustomAddressForm {
         addressClicked = addressClicked.availableAddresses[indexAddress];
       }
       
-      if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
-        setTimeout(() => {
-          if(!$(".vtex-omnishipping-1-x-address").length) {
-            //console.log(addressClicked)
-            $("body").addClass(_this.BodyFormClasses.join(" "));
-            _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
-            $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street).attr("data-street","");
-            $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
-            $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
-          }
-        }, 100);
+      console.log(addressClicked)
+      try {
+        if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
+          setTimeout(() => {
+            if(!$(".vtex-omnishipping-1-x-address").length) {
+              //console.log(addressClicked)
+              $("body").addClass(_this.BodyFormClasses.join(" "));
+              _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
+              $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street).attr("data-street","");
+              $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
+              $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
+            }
+          }, 100);
+        }
+      } catch(e) {
+        $("body").addClass(_this.BodyFormClasses.join(" "));
       }
+      
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-buttonCreateAddress, .vtex-omnishipping-1-x-disclaimer a#remove-unavailable-items", function(e) {
