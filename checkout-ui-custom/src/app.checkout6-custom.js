@@ -8,6 +8,7 @@ window.vcustom = {
     deliveryDateFormat: "{{deliveryDateFormat}}",
     quantityPriceCart: "{{showCartQuantityPrice}}",
     showNoteField: "{{showNoteField}}",
+    customAddressForm: "{{customAddressForm}}",
     hideEmailStep:"{{hideEmailStep}}"
   }),
   debug: new debug({

@@ -1,8 +1,15 @@
 
-
-.vtexIdUI {
+#vtexIdContainer {
   position: fixed !important;
 }
+
+.vtexIdUI {
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+
+}
+
 
 #vtexIdContainer {
   position: fixed;

@@ -14,6 +14,8 @@ import NotesOn from '../images/notes-field-on.png'
 import NotesOff from '../images/notes-field-off.png'
 import EmailStepOn from '../images/email-step-on.png'
 import EmailStepOff from '../images/email-step-off.png'
+import CustomAddresFormOn from '../images/usaddressform-on.png'
+import CustomAddresFormOff from '../images/usaddressform-off.png'
 
 const images: any = {
   tabsOn: TabsOn,
@@ -26,6 +28,8 @@ const images: any = {
   notesOff: NotesOff,
   emailStepOn: EmailStepOn,
   emailStepOff: EmailStepOff,
+  customAddresFormOn: CustomAddresFormOn,
+  customAddresFormOff: CustomAddresFormOff,
 }
 
 const LayoutSettings: FC<WrappedComponentProps & any> = ({
@@ -169,9 +173,7 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <div
             className="mt6 db flex items-center"
             onMouseEnter={() => {
-              changePreview(
-                state.accordionPayments ? 'emailStepOff' : 'emailStepOn'
-              )
+              changePreview(state.hideEmailStep ? 'emailStepOff' : 'emailStepOn')
             }}
           >
             <Toggle
@@ -188,6 +190,40 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                 )
               }
             />
+          </div>
+          <br />
+          <div
+            className="mt6 db flex items-center"
+            onMouseEnter={() => {
+              changePreview(state.customAddressForm ? 'customAddresFormOn' : 'customAddresFormOff')
+            }}
+          >
+            <Toggle
+              label={intl.formatMessage({
+                id: 'admin/checkout-ui.layout.customAddressForm.label',
+              })}
+              size="large"
+              checked={state.customAddressForm}
+              onChange={(e: any) =>
+                handleChange(
+                  !state.customAddressForm,
+                  'customAddressForm',
+                  e.currentTarget.checked ? 'customAddresFormOn' : 'customAddresFormOff'
+                )
+              }
+            />
+            <p style={{ 
+              display: 'inline-block',
+              background: '#f71963',
+              margin: '0 0 0 10px',
+              padding: '5px',
+              borderRadius: '10px',
+              color: '#FFF',
+              float: 'left',
+              fontSize: '13px'
+            }}>
+              BETA
+            </p>
           </div>
         </div>
         <div className="w-50 fr">

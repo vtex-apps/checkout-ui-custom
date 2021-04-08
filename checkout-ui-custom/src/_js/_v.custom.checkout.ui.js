@@ -1,5 +1,6 @@
 const { _locale } = require("./_locale-infos.js");
 const { debounce, formatCurrency } = require("./_utils.js");
+const fnsCustomAddressForm = require("./_customAddressForm.js");
 
 
 class checkoutCustom { 
@@ -9,6 +10,7 @@ class checkoutCustom {
     deliveryDateFormat = false,
     quantityPriceCart = false,
     showNoteField = false,
+    customAddressForm = false,
     hideEmailStep =  true
   } = {}) {
     this.type = type; // ["vertical"]
@@ -20,6 +22,7 @@ class checkoutCustom {
     this.deliveryDateFormat = deliveryDateFormat;
     this.quantityPriceCart = quantityPriceCart;
     this.showNoteField = showNoteField;
+    this.customAddressForm = customAddressForm;
     this.hideEmailStep = hideEmailStep;
 
   } 
@@ -514,10 +517,19 @@ class checkoutCustom {
       $(".payment-paypal-title-short-logo").hide();
     }
 
+    //shipping 
+
+    if(_lang.googleAddressLabel) {
+      let geoElem = $(".vtex-omnishipping-1-x-geolocation");
+      if(geoElem.length) {
+          geoElem.find(".ship-addressQuery > label").text(_lang.googleAddressLabel);
+      }
+    }
+
     // placeholders
 
     if(_lang.address1Placeholder) $(".vtex-omnishipping-1-x-address input#ship-street").attr("placeholder",_lang.address1Placeholder);
-    if(_lang.address2Placeholder) $(".vtex-omnishipping-1-x-address input#ship-complement").attr("placeholder",_lang.address2Placeholder)
+    if(_lang.address2Placeholder) $(".vtex-omnishipping-1-x-address input#ship-complement").attr("placeholder",_lang.address2Placeholder);
     
   }
 
@@ -560,8 +572,19 @@ class checkoutCustom {
       $(`#payment-data .steps-view > div:eq(${0})`).appendTo($(this).closest(".v-custom-payment-item-wrap"));
     });
     
-    
+  }
 
+  customAddressFormLoader() { 
+    let _this = this;
+    if(_this.customAddressForm) {
+      _this.customAddressForm = new fnsCustomAddressForm({});
+      if(!window.google) _this.customAddressForm.loadScript();
+    }
+  }
+
+  customAddressFormInit(orderForm) {
+    let _this = this;
+    if(_this.customAddressForm) _this.customAddressForm.init(orderForm);
   }
 
   checkProfileFocus() {
@@ -612,6 +635,13 @@ class checkoutCustom {
       window.location = $(this).closest(".checkout-steps_item").attr("data-url");
     });
 
+    $("body").on("click", ".vtex-omnishipping-1-x-linkEdit.link-edit", function(e) {
+      setTimeout(() => {
+        _this.updateLang(_this.orderForm);
+        
+      }, 50);
+    });
+
     $("body").on("click", "#btn-client-pre-email", function (e) {
       setTimeout(function() {
         if(!$("input#client-pre-email").hasClass("error")) $("input#client-email").focus();
@@ -626,6 +656,7 @@ class checkoutCustom {
     _this.general();
     _this.updateStep();
     _this.builder();
+    
     
     _this.changeShippingTimeInfoInit();
     if (_this.orderForm) {
@@ -643,6 +674,7 @@ class checkoutCustom {
     try {
       $(function() {
         _this.bind(); 
+        _this.customAddressFormLoader();
       });
 
       $(document).ajaxComplete(function() {
@@ -660,6 +692,7 @@ class checkoutCustom {
           _this.indexedInItems(_this.orderForm);
           _this.updateLang(_this.orderForm)
           _this.paymentBuilder(_this.orderForm);
+          _this.customAddressFormInit(_this.orderForm);
         }
       });
 
@@ -670,8 +703,10 @@ class checkoutCustom {
       $(window).load(function() {
         _this.builder();
         _this.checkProfileFocus();
+        _this.customAddressFormInit(vtexjs.checkout.orderForm);
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
+        if(_this.customAddressForm && store) store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);

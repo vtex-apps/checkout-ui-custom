@@ -11,7 +11,11 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identificação",
     checkoutStepsLabelShipping:"Entrega",
     checkoutStepsLabelPayment:"Pagamento",
-    checkoutStepsLabelConfirmation:"Confirmação"
+    checkoutStepsLabelConfirmation:"Confirmação",
+    city:"Cidade",
+    state:"Estado",
+    address1Placeholder:"Endereço",
+    address2Placeholder:"Complemento",
   },
   CAN: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -31,7 +35,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identification",
     checkoutStepsLabelShipping:"Shipping",
     checkoutStepsLabelPayment:"Payment",
-    checkoutStepsLabelConfirmation:"Confirmation"
+    checkoutStepsLabelConfirmation:"Confirmation",
+    googleAddressLabel:"Street Address"
   },
   USA: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -51,7 +56,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identification",
     checkoutStepsLabelShipping:"Shipping",
     checkoutStepsLabelPayment:"Payment",
-    checkoutStepsLabelConfirmation:"Confirmation"
+    checkoutStepsLabelConfirmation:"Confirmation",
+    googleAddressLabel:"Street Address"
   },
   GBR: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -124,7 +130,10 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identificazione",
     checkoutStepsLabelShipping:"Spedizione",
     checkoutStepsLabelPayment:"Pagamento",
-    checkoutStepsLabelConfirmation:"Conferma"
+    checkoutStepsLabelConfirmation:"Conferma",
+    city:"Città",
+    state:"Provincia",
+    number:"Numero"
   },
   FRA: {
     couponInactive:"Aucune réduction disponible. Vérifiez les conditions.",
@@ -192,5 +201,5 @@ module.exports._locale = {
     checkoutStepsLabelPayment: "Zahlung",
     checkoutStepsLabelConfirmation: "Bestätigung",
     googleAddressLabel: "Adresse",
-  },
+  }
 }

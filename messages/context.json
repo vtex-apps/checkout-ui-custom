@@ -53,6 +53,7 @@
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "admin/checkout-ui.layout.showCartQuantityPrice.label",
   "admin/checkout-ui.layout.showNoteField.label": "admin/checkout-ui.layout.showNoteField.label",
   "admin/checkout-ui.layout.hideEmailStep.label": "admin/checkout-ui.layout.hideEmailStep.label",
+  "admin/checkout-ui.layout.customAddressForm.label": "admin/checkout-ui.layout.customAddressForm.label",
   "admin/checkout-ui.layout.fontSize.label": "admin/checkout-ui.layout.fontSize.label",
   "admin/checkout-ui.layout.borderRadius.label": "admin/checkout-ui.layout.borderRadius.label",
   "admin/checkout-ui.layout.btnBorderRadius.label": "admin/checkout-ui.layout.btnBorderRadius.label",
