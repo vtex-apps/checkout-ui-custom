@@ -4,6 +4,11 @@ module.exports._countriesrules = {
     state:"administrative_area_level_2",
     number:true
   },
+  SMR: {
+    state:"administrative_area_level_1",
+    number:true,
+    city:"locality"
+  },
   USA: {
     state:"administrative_area_level_1",
     number:false
@@ -13371,41 +13376,10 @@ module.exports._cities = [{
   {
     countryName: "San Marino",
     countryShortCode: "SM",
-    regions: [{
-        name: "Acquaviva",
-        shortCode: "01"
-      },
-      {
-        name: "Borgo Maggiore",
-        shortCode: "06"
-      },
-      {
-        name: "Chiesanuova",
-        shortCode: "02"
-      },
-      {
-        name: "Domagnano",
-        shortCode: "03"
-      },
-      {
-        name: "Faetano",
-        shortCode: "04"
-      },
-      {
-        name: "Fiorentino",
-        shortCode: "05"
-      },
-      {
-        name: "Montegiardino",
-        shortCode: "08"
-      },
+    regions: [
       {
         name: "San Marino",
-        shortCode: "07"
-      },
-      {
-        name: "Serravalle",
-        shortCode: "09"
+        shortCode: "SM"
       }
     ]
   },

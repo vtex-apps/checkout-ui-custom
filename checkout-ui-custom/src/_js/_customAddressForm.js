@@ -62,7 +62,8 @@ class fnsCustomAddressForm {
   }
 
   setForm(country="", street="", formattedStreet="", number="", postalCode="", city="", state="", complement="", neighborhood="", geoCoordinates="") {
-    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(formattedStreet);
+
+    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(this.addressrules.number ? street : formattedStreet);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(complement);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(number);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
@@ -83,6 +84,9 @@ class fnsCustomAddressForm {
     });
   }
 
+  returnAddressFRules(components,attr,val) {
+    return components.filter(item => item.types[0]==attr).length ? components.filter(item => item.types[0]==attr)[0][val] : "";
+  }
   googleForm() {
 
     let _this = this;
@@ -95,15 +99,16 @@ class fnsCustomAddressForm {
       let place = _this.gPlacesAutocomplete.getPlace();
 
       //console.log(place)
-
-      
+       
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
       let street = place.address_components.find(item => item.types[0]=="route").long_name;
-      let state = place.address_components.filter(item => item.types[0]==_this.addressrules.state)[0].short_name;
-      let neighborhood = place.address_components.filter(item => item.types[0]=="sublocality_level_1").length  ? place.address_components.find(item => item.types[0]=="sublocality_level_1").long_name : "";
-      let postalCode = place.address_components.filter(item => item.types[0]=="postal_code").length  ? place.address_components.filter(item => item.types[0]=="postal_code")[0].long_name : "";
+      let state = _this.returnAddressFRules(place.address_components,_this.addressrules.state, "short_name");
+      let neighborhood = _this.returnAddressFRules(place.address_components,"sublocality_level_1", "long_name");
+      let postalCode = _this.returnAddressFRules(place.address_components,"postal_code", "long_name");
       
-      let number = _this.addressrules.number ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : place.address_components.filter(item => item.types[0]=="street_number").length  ? place.address_components.filter(item => item.types[0]=="street_number")[0].long_name : "";
+      if(_this.addressrules.number) $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(_this.returnAddressFRules(place.address_components,"street_number", "long_name"));
+      
+      let number = _this.addressrules.number ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : _this.returnAddressFRules(place.address_components,"street_number", "long_name");
       let complement = $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val();
 
       let geoCoordinates = [place.geometry.location.lat(), place.geometry.location.lng()];
@@ -254,7 +259,7 @@ class fnsCustomAddressForm {
   }
 
   updateFormFieldByCountry(addressrules) {
-    console.log(addressrules)
+
     let number = $(".vcustom--vtex-omnishipping-1-x-address p.ship-number");
     if(addressrules.number) {
       number.show();
@@ -359,6 +364,7 @@ class fnsCustomAddressForm {
     let _this = this;
 
     $("body").on("click",".step.shipping-data #edit-address-button, .step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
+      
       let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
       let addressClicked = _this.orderForm.shippingData
       if(indexAddress<0) {
@@ -366,23 +372,26 @@ class fnsCustomAddressForm {
       } else {
         addressClicked = addressClicked.availableAddresses[indexAddress];
       }
-      
-      console.log(addressClicked)
-      try {
-        if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
-          setTimeout(() => {
-            if(!$(".vtex-omnishipping-1-x-address").length) {
-              //console.log(addressClicked)
-              $("body").addClass(_this.BodyFormClasses.join(" "));
-              _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
-              $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street).attr("data-street","");
-              $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
-              $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
-            }
-          }, 100);
+
+      if(addressClicked && !~addressClicked.street.indexOf("*")) {
+        try {
+          if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
+            setTimeout(() => {
+              if(!$(".vtex-omnishipping-1-x-address").length) {
+                //console.log(addressClicked)
+                $("body").addClass(_this.BodyFormClasses.join(" "));
+                _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
+                $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street).attr("data-street","");
+                $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
+                $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
+              }
+            }, 100);
+          }
+        } catch(e) {
+          $("body").removeClass(_this.BodyFormClasses.join(" "));
         }
-      } catch(e) {
-        $("body").addClass(_this.BodyFormClasses.join(" "));
+      } else {
+        $("body").removeClass(_this.BodyFormClasses.join(" "));
       }
       
     });
