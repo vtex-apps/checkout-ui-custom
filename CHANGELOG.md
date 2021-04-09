@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.7] - 2021-04-09
+
 ### Fix
 - Fix country short code for Vatican
 
