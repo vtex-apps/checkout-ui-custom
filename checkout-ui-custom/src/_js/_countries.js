@@ -5597,7 +5597,7 @@ module.exports._cities = [{
     countryShortCode: "VA",
     regions: [{
       name: "Holy See (Vatican City)",
-      shortCode: "01"
+      shortCode: "VA"
     }]
   },
   {
