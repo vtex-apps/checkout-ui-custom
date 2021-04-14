@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.8] - 2021-04-14
+
 ### Fixed
 - Country and Cities when editing an address
 - Number for Vatican
