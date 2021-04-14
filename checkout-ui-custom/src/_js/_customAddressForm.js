@@ -360,6 +360,16 @@ class fnsCustomAddressForm {
     _this.sendAddress(country, street, number, state, postalCode, city, complement, _this.address.addressQuery, _this.address.addressId, neighborhood, geoCoordinates);
   }
 
+
+  updateFormByCountry(gCountry) {
+    let _this = this;
+    let country = _countries.find(c=>c[1]==gCountry);
+    _this.addressrules = _this.getCountryRule(country[1]);
+    _this.updateFormFieldByCountry(_this.addressrules);
+    $("select[name='v-custom-state']").html(`${_this.getRegions(country[0]).join("")}`);
+    _this.updateGoogleForm(gCountry.toLowerCase());
+  }
+
   bind() {
     let _this = this;
 
@@ -380,7 +390,11 @@ class fnsCustomAddressForm {
               if(!$(".vtex-omnishipping-1-x-address").length) {
                 //console.log(addressClicked)
                 $("body").addClass(_this.BodyFormClasses.join(" "));
-                _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
+                _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
+                $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(addressClicked.country);
+                _this.updateFormByCountry(addressClicked.country);
+                let addressRule = _this.getCountryRule(addressClicked.country);
+                if(addressRule.number) $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(addressClicked.number);
                 $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street).attr("data-street","");
                 $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
                 $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
@@ -391,7 +405,7 @@ class fnsCustomAddressForm {
           $("body").removeClass(_this.BodyFormClasses.join(" "));
         }
       } else {
-        $("body").removeClass(_this.BodyFormClasses.join(" "));
+        $("body").addClass(_this.BodyFormClasses.join(" "));
       }
       
     });
@@ -423,11 +437,7 @@ class fnsCustomAddressForm {
     $("body").on("change","select[name='v-custom-country']", function(e) {
       e.stopImmediatePropagation();
       try {
-        let country = _countries.find(c=>c[1]==this.value);
-        _this.addressrules = _this.getCountryRule(country[1]);
-        _this.updateFormFieldByCountry(_this.addressrules);
-        $("select[name='v-custom-state']").html(`${_this.getRegions(country[0]).join("")}`);
-        _this.updateGoogleForm(this.value.toLowerCase());
+        _this.updateFormByCountry(this.value);
         _this.updateAddress("");
       } catch(e) {}
     });
