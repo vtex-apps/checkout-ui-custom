@@ -97,7 +97,7 @@ class fnsCustomAddressForm {
 
     _this.gPlacesAutocomplete.addListener("place_changed", function() {
       let place = _this.gPlacesAutocomplete.getPlace();
-
+      
       //console.log(place)
        
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
@@ -383,14 +383,14 @@ class fnsCustomAddressForm {
         addressClicked = addressClicked.availableAddresses[indexAddress];
       }
 
-      if(addressClicked && !~addressClicked.street.indexOf("*")) {
+      if(addressClicked && addressClicked.street && !~addressClicked.street.indexOf("*")) {
         try {
           if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
             setTimeout(() => {
               if(!$(".vtex-omnishipping-1-x-address").length) {
                 //console.log(addressClicked)
                 $("body").addClass(_this.BodyFormClasses.join(" "));
-                _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", addressClicked.addressId)
+                _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", null)
                 $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(addressClicked.country);
                 _this.updateFormByCountry(addressClicked.country);
                 let addressRule = _this.getCountryRule(addressClicked.country);
@@ -416,10 +416,10 @@ class fnsCustomAddressForm {
       _this.updateAddress("");
     });
 
-    $("body").on("click","#open-shipping, #edit-shipping-data", function(e) {
-      //console.log($(".address-list.vtex-omnishipping-1-x-addressList > label").length)
-      if(!_this.orderForm.shippingData.address) $("body").removeClass(_this.BodyFormClasses.join(" "));
-    });
+    // $("body").on("click","#open-shipping, #edit-shipping-data", function(e) {
+    //   console.log($(".address-list.vtex-omnishipping-1-x-addressList > label").length)
+    //   if(!_this.orderForm.shippingData.address) $("body").removeClass(_this.BodyFormClasses.join(" "));
+    // });
 
     $("body").on("click","#shipping-option-pickup-in-point", function(e) {
       $("body").removeClass(_this.BodyFormClasses.join(" "));
