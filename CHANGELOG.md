@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.9] - 2021-04-15
+
 ### Fixed
 - Fixed an error on the App's first load, when it still don't have the initial config defined
 ## [0.3.8] - 2021-04-14
