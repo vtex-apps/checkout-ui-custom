@@ -2,7 +2,7 @@ module.exports._countriesrules = {
   
   ITA: {
     state:"administrative_area_level_2",
-    number:false
+    number:true
   },
   SMR: {
     state:"administrative_area_level_1",
