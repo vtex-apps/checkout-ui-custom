@@ -131,7 +131,7 @@ const Admin: FC<any & WrappedComponentProps> = ({
         ...state,
         ...res.getLast,
         publishedVersion: res.getLast.appVersion,
-        appVersion: config.getSetupConfig.adminSetup.appVersion,
+        appVersion: config?.getSetupConfig?.adminSetup?.appVersion || '',
         currentTab: 1,
         colors: {
           ...state.colors,
