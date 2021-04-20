@@ -353,11 +353,11 @@ class checkoutCustom {
         .srp-delivery-current-many
       `).each(function(i) {
         let txtselectin = $(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text();
-        if(txtselectin!="" && txtselectin.match(/(day)|(dia)/gm)) {
+        if(txtselectin!="" && txtselectin.match(/(day)|(dia)|(día)/gm)) {
           let days = parseInt(txtselectin.match(/\d+/));
           if(days) {
             let _delivtext = _this.lang.deliveryDateText;
-            if(!! $(this).find(mainSTIelems.join(", ")).text().toLowerCase().match(/(ready in up)|(pronto)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
+            if(!! $(this).find(mainSTIelems.join(", ")).text().toLowerCase().match(/(ready in up)|(pronto)|(A partir de)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
             $(this).find(mainSTIelems.join(", ")).html(`${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`).addClass("v-changeShippingTimeInfo-elem-active");
           }
         }
@@ -368,15 +368,15 @@ class checkoutCustom {
       let shippingPreviewPackges = $(".srp-delivery-info .srp-packages:not(.v-changeShippingTimeInfo-elem-active)");
       $(".js-shippingPreviewPackges").remove();
       if(shippingPreviewPackges.length) {
-        var a = shippingPreviewPackges.text().split(":")[1].split(/,| and | e /);
+        var a = shippingPreviewPackges.text().split(":")[1].split(/,| and | e | y /);
         var deliveryDates = [];
         $.each(a, function(i) {
             let txtselectin = a[i];
-            if(txtselectin!="" && txtselectin.match(/(day)|(dia)/gm)) {
+            if(txtselectin!="" && txtselectin.match(/(day)|(dia)|(día)/gm)) {
               let days = parseInt(txtselectin.match(/\d+/));
               if(days) {
                 let _delivtext = _this.lang.deliveryDateText;
-                if(!! txtselectin.toLowerCase().match(/(ready in up)|(pronto)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
+                if(!! txtselectin.toLowerCase().match(/(ready in up)|(pronto)|(A partir de)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
                 deliveryDates.push(`${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`);
               }
             }
