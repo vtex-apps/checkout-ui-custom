@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.11] - 2021-04-20
+
 ### Fixed
 - Translations issues when using custom addressform
 - Date format for spanish checkout
