@@ -16,6 +16,7 @@ module.exports._locale = {
     state:"Estado",
     address1Placeholder:"Endereço",
     address2Placeholder:"Complemento",
+    requiredField: "Este campo é obrigatório."
   },
   CAN: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -36,7 +37,8 @@ module.exports._locale = {
     checkoutStepsLabelShipping:"Shipping",
     checkoutStepsLabelPayment:"Payment",
     checkoutStepsLabelConfirmation:"Confirmation",
-    googleAddressLabel:"Street Address"
+    googleAddressLabel:"Street Address",
+    requiredField: "This field is required."
   },
   USA: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -57,7 +59,8 @@ module.exports._locale = {
     checkoutStepsLabelShipping:"Shipping",
     checkoutStepsLabelPayment:"Payment",
     checkoutStepsLabelConfirmation:"Confirmation",
-    googleAddressLabel:"Street Address"
+    googleAddressLabel:"Street Address",
+    requiredField: "This field is required."
   },
   GBR: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -77,7 +80,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identification",
     checkoutStepsLabelShipping:"Shipping",
     checkoutStepsLabelPayment:"Payment",
-    checkoutStepsLabelConfirmation:"Confirmation"
+    checkoutStepsLabelConfirmation:"Confirmation",
+    requiredField: "This field is required."
   },
   POR: {
     couponInactive:"Nenhum desconto aplicado. Confira as regras.",
@@ -92,7 +96,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identificação",
     checkoutStepsLabelShipping:"Entrega",
     checkoutStepsLabelPayment:"Pagamento",
-    checkoutStepsLabelConfirmation:"Confirmação"
+    checkoutStepsLabelConfirmation:"Confirmação",
+    requiredField: "Este campo é obrigatório"
   },
   ESP: {
     couponInactive:"No hay descuentos disponibles. Consulta las condiciones.",
@@ -111,7 +116,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identificación",
     checkoutStepsLabelShipping:"Entrega",
     checkoutStepsLabelPayment:"Pago",
-    checkoutStepsLabelConfirmation:"Confirmación"
+    checkoutStepsLabelConfirmation:"Confirmación",
+    requiredField: "Este campo es obligatorio."
   },
   ITA: {
     couponInactive:"Nessuno sconto disponibile. Controlla le condizioni.",
@@ -133,7 +139,8 @@ module.exports._locale = {
     checkoutStepsLabelConfirmation:"Conferma",
     city:"Città",
     state:"Provincia",
-    number:"Numero"
+    number:"Numero",
+    requiredField: "Questo campo è obbligatorio."
   },
   FRA: {
     couponInactive:"Aucune réduction disponible. Vérifiez les conditions.",
@@ -151,7 +158,8 @@ module.exports._locale = {
     checkoutStepsLabelIdentification:"Identification", 
     checkoutStepsLabelShipping:"Expédition", 
     checkoutStepsLabelPayment:"Paiement", 
-    checkoutStepsLabelConfirmation:"Confirmation" 
+    checkoutStepsLabelConfirmation:"Confirmation",
+    requiredField: "Ce champ est obligatoire."
   },
   FIN: {
     couponInactive:"Alennuksia ei saatavilla. Tarkasta ehdot.",
