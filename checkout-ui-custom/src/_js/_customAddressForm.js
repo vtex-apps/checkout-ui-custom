@@ -252,8 +252,9 @@ class fnsCustomAddressForm {
   getCountries() {
     let _this = this;
     return _this.deliveryCountries.map(countryCode => {
-      if(vtex.i18n[_this.lang].countries[countryCode]) {
-        return `<option value="${countryCode}" ${countryCode==_this.mainCountry ? "selected" : ""}>${vtex.i18n[_this.lang].countries[countryCode]}</option>`;
+      let _i18n = vtex.i18n[_this.lang] ? vtex.i18n[_this.lang] : vtex.i18n[vtex.i18n.locale];
+      if(_i18n.countries[countryCode]) {
+        return `<option value="${countryCode}" ${countryCode==_this.mainCountry ? "selected" : ""}>${_i18n.countries[countryCode]}</option>`;
       }
     })
   }
