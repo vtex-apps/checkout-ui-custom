@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add COL and MEX in locales
+
+### Fixed
+- Delivery estimated time in /cart when using date format feature
+- Fallback to custom address form by country
+
 ## [0.4.0] - 2021-04-22
 
 ### Added
