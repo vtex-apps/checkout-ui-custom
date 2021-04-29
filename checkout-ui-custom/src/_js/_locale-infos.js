@@ -139,6 +139,26 @@ module.exports._locale = {
     checkoutStepsLabelConfirmation:"Confirmación",
     requiredField: "Este campo es obligatorio."
   },
+  PAN: {
+    couponInactive:"No hay descuentos disponibles. Consulta las condiciones.",
+    editLabel: "Editar",
+    paypalImg: "",
+    paypalPhone: "",
+    cartSubmitButton:"Proceder al pago",
+    deliveryDateText:"Llega por",
+    PickupDateText:"Disponible",
+    eachLabel:"cada",
+    tomorrowLabel:"Mañana",
+    cartNoteLabel:"Mensaje de regalo o comentarios",
+    address1Placeholder:"Dirección",
+    address2Placeholder:"Dirección Complementaria",
+    checkoutStepsLabelCart:"Carrito",
+    checkoutStepsLabelIdentification:"Identificación",
+    checkoutStepsLabelShipping:"Entrega",
+    checkoutStepsLabelPayment:"Pago",
+    checkoutStepsLabelConfirmation:"Confirmación",
+    requiredField: "Este campo es obligatorio."
+  },
   MEX: {
     couponInactive:"No hay descuentos disponibles. Consulta las condiciones.",
     editLabel: "Editar",

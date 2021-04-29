@@ -2,28 +2,39 @@ module.exports._countriesrules = {
   
   ITA: {
     state:"administrative_area_level_2",
-    number:true
+    number:true,
+    postalCode:true
   },
   SMR: {
     state:"administrative_area_level_1",
     number:true,
-    city:"locality"
+    city:"locality",
+    postalCode:true
   },
   USA: {
     state:"administrative_area_level_1",
-    number:false
+    number:false,
+    postalCode:true
   },
   VAT: {
     state:"administrative_area_level_1",
-    number:true
+    number:true,
+    postalCode:true
   },
   BRA: {
     state:"administrative_area_level_1",
-    number:false
+    number:false,
+    postalCode:true
+  },
+  ARE: {
+    state:"administrative_area_level_1",
+    number:true,
+    postalCode:false
   },
   WWD: {
     state:"administrative_area_level_1",
-    number:false
+    number:false,
+    postalCode:true
   }
 
 }
@@ -19145,7 +19156,7 @@ module.exports._cities = [{
   }
 ];
 
-module.exports._addressFormExample = {
+module.exports._addressPlaceholder = {
   "ARG": "Eg: Av. del Libertador 1473, Buenos Aires",
   "BOL": "Eg: Av Arce, 2556, La Paz",
   "BRA": "Ex: Av Paulista, 1578, São Paulo",

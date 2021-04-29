@@ -1,5 +1,4 @@
-const { _countries, _cities, _addressFormExample, _countriesrules } = require("./_countries.js");
-const { debounce } = require("./_utils.js");
+const { _countries, _cities, _addressPlaceholder, _countriesrules } = require("./_countries.js");
 const { _locale } = require("./_locale-infos.js");
 
 class fnsCustomAddressForm {
@@ -78,7 +77,7 @@ class fnsCustomAddressForm {
 
 
   updateGoogleForm(countryCode = "us") {
-    $("input#v-custom-ship-street").attr("placeholder", _addressFormExample[countryCode.toUpperCase()] ? _addressFormExample[countryCode.toUpperCase()] : "")
+    $("input#v-custom-ship-street").attr("placeholder", _addressPlaceholder[countryCode.toUpperCase()] ? _addressPlaceholder[countryCode.toUpperCase()] : "")
     this.gPlacesAutocomplete.setComponentRestrictions({
       country: [countryCode]
     });
@@ -96,15 +95,16 @@ class fnsCustomAddressForm {
     _this.gPlacesAutocomplete = new google.maps.places.Autocomplete(input);
 
     _this.gPlacesAutocomplete.addListener("place_changed", function() {
+      
       let place = _this.gPlacesAutocomplete.getPlace();
       
       //console.log(place)
-       
+
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
       let street = place.address_components.find(item => item.types[0]=="route").long_name;
       let state = _this.returnAddressFRules(place.address_components,_this.addressrules.state, "short_name");
       let neighborhood = _this.returnAddressFRules(place.address_components,"sublocality_level_1", "long_name");
-      let postalCode = _this.returnAddressFRules(place.address_components,"postal_code", "long_name");
+      let postalCode = _this.addressrules.postalCode ? _this.returnAddressFRules(place.address_components,"postal_code", "long_name") : "00000";
       
       if(_this.addressrules.number) $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(_this.returnAddressFRules(place.address_components,"street_number", "long_name"));
       
@@ -137,13 +137,12 @@ class fnsCustomAddressForm {
     
   }
 
-  triggerValidateAddress() {
+  triggerAddressValidation() {
     store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
   }
 
   sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId, neighborhood, geoCoordinates) {
       let _this = this;
-      //console.log("_country: "+_country, "_street: "+_street, "_number: "+_number, "_state: "+_state, "_postalCode: "+_postalCode, "_city: "+_city, "_complement: "+_complement, "_addressQuery: "+_addressQuery, "_addressId: "+_addressId)
 
       if(_country=="USA") _number=null;
 
@@ -155,31 +154,6 @@ class fnsCustomAddressForm {
       } else {
         geoCoordinates = []
       }
-      
-      var b = JSON.stringify({
-        'selectedAddresses':[
-           {
-              'addressType':'residential',
-              'receiverName':'',
-              'addressId':_addressId,
-              'isDisposable':true,
-              'postalCode':_postalCode,
-              'city':_city,
-              'state':_state,
-              'country':_country,
-              'geoCoordinates':geoCoordinates,
-              'street':_street,
-              'number':_number,
-              'neighborhood':neighborhood,
-              'complement':_complement,
-              'reference':null,
-              'addressQuery':_addressQuery
-           }
-        ],
-        'clearAddressIfPostalCodeNotFound':false,
-     });
-
-      //console.log(_addressId, b)
       
       $("body").addClass("js-v-custom-is-loading");
 
@@ -233,7 +207,7 @@ class fnsCustomAddressForm {
               $("body").removeClass(_this.BodyFormClasses.join(" "));
               _this.orderForm = vtexjs.checkout.orderForm;
               $("body").removeClass("js-v-custom-is-loading");
-              _this.triggerValidateAddress();
+              _this.triggerAddressValidation();
             });
           }
           
@@ -277,10 +251,8 @@ class fnsCustomAddressForm {
     
     let shippingData = orderForm.shippingData;
 
-    
     let country = _countries.find(c=>c[1]==_this.mainCountry);
 
-    //$(".vcustom--vtex-omnishipping-1-x-address").remove();
     let form = `
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
@@ -389,7 +361,6 @@ class fnsCustomAddressForm {
           if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
             setTimeout(() => {
               if(!$(".vtex-omnishipping-1-x-address").length) {
-                //console.log(addressClicked)
                 $("body").addClass(_this.BodyFormClasses.join(" "));
                 _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", null)
                 $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(addressClicked.country);
@@ -446,7 +417,6 @@ class fnsCustomAddressForm {
     $("body").on("click","#btn-go-to-shippping-method", function(e) {
       e.preventDefault();
       e.stopImmediatePropagation();
-      //console.log(">>>>>>>>>>>> #btn-go-to-shippping-method")
       _this.submitAddressForm();
     });
 
@@ -480,7 +450,6 @@ class fnsCustomAddressForm {
 
   init(orderForm) {
     let _this = this;
-    //if(!window.google) _this.loadScript();
     if(orderForm && window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       $("body").addClass(`${this.classOn}`);
       _this.orderForm = orderForm;
