@@ -581,9 +581,13 @@ class checkoutCustom {
 
   customAddressFormLoader() { 
     let _this = this;
+
+    if(!vtex.googleMapsApiKey) {
+      console.log("You might need to add your Google Maps API Key in your admin");
+      return false;
+    }
     if(_this.customAddressForm) {
       _this.customAddressForm = new fnsCustomAddressForm({});
-      if(!window.google) _this.customAddressForm.loadScript();
     }
   }
 
@@ -711,7 +715,8 @@ class checkoutCustom {
         _this.customAddressFormInit(vtexjs.checkout.orderForm);
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
-        if(_this.customAddressForm && store) store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
+        if(!window.google) _this.customAddressForm.loadScript();
+        if(_this.customAddressForm && typeof store !="undefined") store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
       });
 
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);

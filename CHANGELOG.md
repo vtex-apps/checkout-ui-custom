@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Cleaning custom address form js
+- Fix event load of gmaps script fallback
+
+### Added
+- Added Panama to locale infos
+
 ## [0.4.1] - 2021-04-27
 
 ### Added
