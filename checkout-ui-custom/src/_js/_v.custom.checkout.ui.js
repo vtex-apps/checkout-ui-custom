@@ -409,7 +409,6 @@ class checkoutCustom {
         let _item = this;
         let _trElem = $(`.table.cart-items tbody tr.product-item:eq(${i})`);
 
-       
         if(_item.quantity==1 || _trElem.find("td.product-price").find(".best-price").length==0) return;
 
         let totalValue = _trElem.find(".total-selling-price").text()
@@ -426,11 +425,10 @@ class checkoutCustom {
         .addClass("v-custom-quantity-price-active")
         .prepend(_eachprice)
         .append(`<div class="v-custom-quantity-price vqc-ldelem"><span class="v-custom-quantity-price__best">${totalValue}</span></div>`);
-        //console.log(_trElem.find("td.product-price").find(".best-price"), _trElem.find(".js-v-custom-quantity-price").length)
         _trElem.find("td.product-price").find("> .best-price").wrap(`<div class="v-custom-quantity-price__list--selling"></div>`);
-        _trElem.find("td.product-price").find(".v-custom-quantity-price__list--selling").append(`<span class="vqc-ldelem"> ${_this.lang.eachLabel}</span>`);
+        _trElem.find("td.product-price").find(".v-custom-quantity-price__list--selling").append(`<span class="vqc-ldelem"> ${this.lang ? this.lang.eachLabel:"each"}</span>`);
 
-      })
+      });
     } catch(e) {
 
     }
@@ -715,7 +713,7 @@ class checkoutCustom {
         _this.customAddressFormInit(vtexjs.checkout.orderForm);
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
-        if(!window.google) _this.customAddressForm.loadScript();
+        if(!window.google && _this.customAddressForm) _this.customAddressForm.loadScript();
         if(_this.customAddressForm && typeof store !="undefined") store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
       });
 
