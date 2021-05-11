@@ -411,7 +411,7 @@ class checkoutCustom {
 
         if(_item.quantity==1 || _trElem.find("td.product-price").find(".best-price").length==0) return;
 
-        let totalValue = _trElem.find(".total-selling-price").text()
+        let totalValue = _trElem.find(".total-selling-price:eq(0)").text()
         let _eachprice = `
           <div class="v-custom-quantity-price vqc-ldelem">
             <span class="v-custom-quantity-price__list">
