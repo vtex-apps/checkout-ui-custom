@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed 
+- Removing hardcoded custom css (!)
+
 ## [0.4.5] - 2021-06-07
 
 ### Fixed
