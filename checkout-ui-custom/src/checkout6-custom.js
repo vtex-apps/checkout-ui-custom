@@ -21,5 +21,4 @@ window.vcustom = {
 
 vcustom.checkout.start(); 
 
-// vcustom.debug.start(); 
-
+// vcustom.debug.start();

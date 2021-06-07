@@ -348,7 +348,6 @@ class fnsCustomAddressForm {
 
     $("body").on("click",".step.shipping-data #edit-address-button, .step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
       
-      console.log("#2")
       let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
       let addressClicked = _this.orderForm.shippingData
       if(indexAddress<0) {
@@ -387,7 +386,6 @@ class fnsCustomAddressForm {
       $("body").addClass(_this.BodyFormClasses.join(" "));
       _this.address.addressId="";
       _this.updateAddress("");
-      console.log("#3")
     });
 
     // $("body").on("click","#open-shipping, #edit-shipping-data", function(e) {
@@ -397,7 +395,6 @@ class fnsCustomAddressForm {
 
     $("body").on("click","#shipping-option-pickup-in-point", function(e) {
       $("body").removeClass(_this.BodyFormClasses.join(" "));
-      console.log("#1")
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-backToAddressList", function(e) {
@@ -432,9 +429,8 @@ class fnsCustomAddressForm {
 
   checkFirstLogin(orderForm) {
     let _this = this;
-    console.log("#4")
     if(orderForm && orderForm.shippingData) {
-      if(orderForm.shippingData.address==null && $(".vtex-omnishipping-1-x-deliveryOptionActive").attr("id")=="shipping-option-delivery") {
+      if((orderForm.shippingData.address==null || orderForm.shippingData.address.addressType=="search") && $(".vtex-omnishipping-1-x-deliveryOptionActive").attr("id")=="shipping-option-delivery") {
         $("body").addClass(_this.BodyFormClasses[0]);
       }
     }
@@ -455,14 +451,12 @@ class fnsCustomAddressForm {
   init(orderForm) {
     let _this = this;
 
-    console.log(orderForm,window.google,$(".vcustom--vtex-omnishipping-1-x-address").length, orderForm.items.length)
     if(orderForm && window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       $("body").addClass(`${this.classOn}`);
       _this.orderForm = orderForm;
       _this.checkFirstLogin(orderForm);
       _this.bind();
       _this.events();
-      console.log("#5")
       _this.deliveryCountries = checkout.deliveryCountries();
       _this.mainCountry = checkout.countryCode();
       _this.lang = _this.orderForm.clientPreferencesData.locale;
