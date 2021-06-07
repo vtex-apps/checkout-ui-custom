@@ -653,7 +653,13 @@ class checkoutCustom {
       setTimeout(function() {
         if(!$("input#client-pre-email").hasClass("error")) $("input#client-email").focus();
       },1000)
-    })
+    });
+
+    $("body").on("click","#shipping-option-delivery", function(e) {
+      _this.customAddressFormInit(_this.orderForm);
+    });
+
+    
 
   }
 

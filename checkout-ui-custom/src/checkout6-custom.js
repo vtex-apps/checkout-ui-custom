@@ -10,7 +10,7 @@ window.vcustom = {
     deliveryDateFormat: false, 
     quantityPriceCart:false,
     showNoteField:false,
-    customAddressForm: false,
+    customAddressForm: true,
     hideEmailStep:true
   }),
   debug: new debug({
@@ -21,6 +21,4 @@ window.vcustom = {
 
 vcustom.checkout.start(); 
 
-// vcustom.debug.start(); 
-
-
+// vcustom.debug.start();

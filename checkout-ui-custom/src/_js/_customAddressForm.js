@@ -430,7 +430,7 @@ class fnsCustomAddressForm {
   checkFirstLogin(orderForm) {
     let _this = this;
     if(orderForm && orderForm.shippingData) {
-      if(orderForm.shippingData.address==null) {
+      if((orderForm.shippingData.address==null || orderForm.shippingData.address.addressType=="search") && $(".vtex-omnishipping-1-x-deliveryOptionActive").attr("id")=="shipping-option-delivery") {
         $("body").addClass(_this.BodyFormClasses[0]);
       }
     }
@@ -450,13 +450,13 @@ class fnsCustomAddressForm {
 
   init(orderForm) {
     let _this = this;
+
     if(orderForm && window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       $("body").addClass(`${this.classOn}`);
       _this.orderForm = orderForm;
       _this.checkFirstLogin(orderForm);
       _this.bind();
       _this.events();
-
       _this.deliveryCountries = checkout.deliveryCountries();
       _this.mainCountry = checkout.countryCode();
       _this.lang = _this.orderForm.clientPreferencesData.locale;
