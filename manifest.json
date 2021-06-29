@@ -6,14 +6,23 @@
   "description": "Make possible to customize the checkout layout using a easy to use interface from the admin",
   "builders": {
     "docs": "0.x",
-    "checkout-ui-custom": "0.x",
     "admin": "0.x",
     "react": "3.x",
     "node": "6.x",
     "graphql": "1.x",
-    "messages": "1.x"
+    "messages": "1.x",
+    "checkout-ui-custom": "0.x"
+  },
+  "dependencies": {
+    "vtex.styleguide": "9.x",
+    "vtex.render-runtime": "8.x",
+    "vtex.store-resources": "0.x",
+    "vtex.checkout-ui-settings-server": "0.x"
   },
   "policies": [
+    {
+      "name": "vtex.checkout-ui-settings-server:save-build"
+    },
     {
       "name": "read-write-any-workspace"
     },
@@ -48,11 +57,6 @@
       }
     }
   ],
-  "dependencies": {
-    "vtex.styleguide": "9.x",
-    "vtex.render-runtime": "8.x",
-    "vtex.store-resources": "0.x"
-  },
   "scripts": {},
   "credentialType": "absolute",
   "billingOptions": {
@@ -60,9 +64,7 @@
       "url": "https://support.vtex.com/hc/requests"
     },
     "type": "free",
-    "availableCountries": [
-      "*"
-    ]
+    "availableCountries": ["*"]
   },
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
