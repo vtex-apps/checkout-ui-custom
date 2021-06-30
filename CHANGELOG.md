@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.0] - 2021-06-30
+
 ### Changed
 - Now compiled files will be pushed to VBase to improve performance
 ## [0.4.6] - 2021-06-07
