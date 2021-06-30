@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
@@ -88,7 +89,11 @@ const replacer = (template: string, keys: any) => {
 export const resolvers = {
   Routes: {},
   Mutation: {
-    saveChanges: async (_: any, params: any, ctx: any) => {
+    saveChanges: async (_: any, params: any, ctx: Context) => {
+      const {
+        clients: { masterdata, server },
+      } = ctx
+
       const keys = { ...params.layout, ...params.colors }
       const cssTemplate = await fs.readFile(
         path.join(__dirname, '../templates/checkout6-custom.css'),
@@ -111,10 +116,6 @@ export const resolvers = {
         replacer(jsTemplate, keys) +
         String(params.javascriptActive ? params.javascript : '')
 
-      const {
-        clients: { masterdata },
-      } = ctx
-
       const creationDate = String(new Date().getTime())
       const appVersion = process.env.VTEX_APP_VERSION
 
@@ -128,6 +129,18 @@ export const resolvers = {
           appVersion,
         },
         schema: SCHEMA_VERSION,
+      })
+
+      server.saveVB({
+        workspace: params.workspace,
+        field: 'cssBuild',
+        file: cssBuild,
+      })
+
+      server.saveVB({
+        workspace: params.workspace,
+        field: 'javascriptBuild',
+        file: javascriptBuild,
       })
 
       return JSON.stringify(data)
