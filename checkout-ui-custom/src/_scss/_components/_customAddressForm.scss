@@ -30,6 +30,13 @@ body.v-custom-googleForm-on {
   .pac-container.pac-logo {
     //display: block !important;
   }
+
+  .vtex-omnishipping-1-x-deliveryGroup,
+  .vtex-omnishipping-1-x-addressForm,
+  .vtex-omnishipping-1-x-submitPaymentButton {
+      display:none
+  }
+
   
 }
 
@@ -57,10 +64,24 @@ body.v-custom-fnsCustomAddressForm {
     margin-top: 20px;
   }
 
-  .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
+  .vtex-omnishipping-1-x-addressFormPart1 {
     .input.ship-country,
-    .input.ship-addressQuery {display: none;}
+    .input.ship-addressQuery,
+    .input.ship-postalCode {display: none;}
   }
+  
+  
+  .vtex-omnishipping-1-x-container.shp-pickup-receiver +
+  .vtex-omnishipping-1-x-shippingSectionTitle +
+  #back-to-address-list +
+  .vtex-omnishipping-1-x-addressFormPart1 p.input.ship-postalCode,
+  .vtex-omnishipping-1-x-container.shp-pickup-receiver +
+  .vtex-omnishipping-1-x-shippingSectionTitle +
+  .vtex-omnishipping-1-x-addressFormPart1 p.input.ship-postalCode {
+      display:block;
+  }
+
+  .vtex-omnishipping-1-x-addressFormPart1 + .vtex-omnishipping-1-x-submitPaymentButton {display:none;}
 
   .orderform-template-holder {
     .step.shipping-data .box-step { 

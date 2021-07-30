@@ -1,6 +1,12 @@
 const { _countries, _cities, _addressPlaceholder, _countriesrules } = require("./_countries.js");
 const { _locale } = require("./_locale-infos.js");
 
+//temporaly workaorund 
+window.callbackMap = function() {
+  vcustom.checkout.customAddressFormInit(vtexjs.checkout.orderForm)
+}
+//end temporaly workaorund 
+
 class fnsCustomAddressForm {
   constructor({
     active=false
@@ -35,7 +41,7 @@ class fnsCustomAddressForm {
 
 
   loadScript() {
-    $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=en-US&libraries=places"></script>`);
+    $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=en-US&libraries=places&callback=callbackMap"></script>`);
   }
 
 
@@ -62,7 +68,7 @@ class fnsCustomAddressForm {
 
   setForm(country="", street="", formattedStreet="", number="", postalCode="", city="", state="", complement="", neighborhood="", geoCoordinates="") {
 
-    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(this.addressrules.number ? street : formattedStreet);
+    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(this.addressrules.number ? street : (formattedStreet ? formattedStreet : street));
     $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(complement);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(number);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
@@ -97,15 +103,16 @@ class fnsCustomAddressForm {
     _this.gPlacesAutocomplete.addListener("place_changed", function() {
       
       let place = _this.gPlacesAutocomplete.getPlace();
-      
-      //console.log(place)
+
+      console.log(place)
 
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
-      let street = place.address_components.find(item => item.types[0]=="route").long_name;
+      let street = place.address_components.find(item => item.types[0]=="route") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name;
+      //let street = place.address_components.find(item => item.types[0]=="route") ? (place.address_components.find(item => item.types[0]=="street_number") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name) : place.name;
+      
       let state = _this.returnAddressFRules(place.address_components,_this.addressrules.state, "short_name");
       let neighborhood = _this.returnAddressFRules(place.address_components,"sublocality_level_1", "long_name");
-      let postalCode = _this.addressrules.postalCode ? _this.returnAddressFRules(place.address_components,"postal_code", "long_name") : "00000";
-      
+
       if(_this.addressrules.number) $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(_this.returnAddressFRules(place.address_components,"street_number", "long_name"));
       
       let number = _this.addressrules.number ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : _this.returnAddressFRules(place.address_components,"street_number", "long_name");
@@ -118,11 +125,37 @@ class fnsCustomAddressForm {
       let formattedStreet = $('.street-address', formattedAddress).text();
 
       let city = $('.locality', formattedAddress).text() || place.address_components.filter(item => item.types[0]=="administrative_area_level_2")[0].long_name;
+
+      let postalCode = _this.addressrules.postalCode ? _this.returnAddressFRules(place.address_components,"postal_code", "long_name") : "00000";
       
+      //temporaly workaround for ARG
+      
+      if(country=="ARG") {
+        postalCode=postalCode.replace(/ /g,"").replace(/(?:[a-zA-Z]*)(\d+)(?:[a-zA-Z]*)/,'$1');
+      }
+      
+      //end temporaly workaround for ARG
+
       _this.setForm(country, street, formattedStreet, number, postalCode, city, state, complement, neighborhood, geoCoordinates);
       _this.validateAllFields();
       _this.updateAddress(country, postalCode, city, state, street, number, complement, place.formatted_address, _this.address.addressId, geoCoordinates);
-            
+
+      //let ad = {
+      //  'addressType':'residential',
+      //  'receiverName':'',
+      //  'postalCode':postalCode,
+      //  'city':city,
+      //  'state':state,
+      //  'country':country,
+      //  'geoCoordinates':geoCoordinates,
+      //  'street':street,
+      //  'number':number,
+      //  'neighborhood':neighborhood,
+      //  'complement':complement,
+      //  'reference':null,
+      //  'addressQuery':formattedStreet
+      //}
+      //console.log(ad);
     });
 
     $("body").on("keyup", "#v-custom-ship-street", function(e) {
@@ -141,21 +174,36 @@ class fnsCustomAddressForm {
     store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
   }
 
-  sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId, neighborhood, geoCoordinates) {
+  sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId, _neighborhood, geoCoordinates) {
       let _this = this;
 
-      if(_country=="USA") _number=null;
 
       if(~geoCoordinates.indexOf(",")) {
         geoCoordinates = geoCoordinates.split(",");
         geoCoordinates.forEach(function(value, index) {
           geoCoordinates[index] = parseFloat(value);
         });
+
+        //temporaly workaround for ARG
+        if(_country=="ARG") {
+          geoCoordinates=geoCoordinates.reverse();
+          //_neighborhood = null;
+          if(_city.toUpperCase()=="CABA") {
+            _city="Ciudad Autónoma de Buenos Aires";
+          }
+          if(_state.toUpperCase()=="CABA" ) {
+            _state="Ciudad Autónoma de Buenos Aires";
+            _city="Ciudad Autónoma de Buenos Aires";
+          }
+        }
+        //end temporaly workaround for ARG
       } else {
         geoCoordinates = []
       }
       
       $("body").addClass("js-v-custom-is-loading");
+
+      
 
       fetch(`/api/checkout/pub/orderForm/${_this.orderForm.orderFormId}/attachments/shippingData`, 
       {
@@ -183,8 +231,8 @@ class fnsCustomAddressForm {
                 'country':_country,
                 'geoCoordinates':geoCoordinates,
                 'street':_street,
-                'number':_number,
-                'neighborhood':null,
+                'number':_number||"",
+                'neighborhood':_neighborhood,
                 'complement':_complement,
                 'reference':null,
                 'addressQuery':_addressQuery
@@ -257,17 +305,17 @@ class fnsCustomAddressForm {
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
         <form>
-            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">${_this.locale.address1Placeholder ? _this.locale.address1Placeholder : "Street address or P.O. Box"}</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
+            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">${_this.locale ? _this.locale.address1Placeholder : "Street address or P.O. Box"}</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
             <div class="v-custom-ship-info">
-              <p class="input ship-number text ${_this.addressrules.number ? "" : "hide"}"><label for="ship-complement">${_this.locale.number ? _this.locale.number : "Number"}</label><input required autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${_this.locale.number ? _this.locale.number : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.number==null ? "" : shippingData.address.number : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
-              <p class="input ship-complement text"><label for="ship-complement">${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "Apartment number, unit, floor, etc."}</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
+              <p class="input ship-number text ${_this.addressrules.number ? "" : "hide"}"><label for="ship-complement">${_this.locale.number ? _this.locale.number : "Number"}</label><input ${_this.addressrules.number ? "required" : ""} autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${_this.locale.number ? _this.locale.number : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.number==null ? "" : shippingData.address.number : "" }"><span class="help error" style="">${_this.locale ? _this.locale.requiredField : "This field is required."}</span></p>
+              <p class="input ship-complement text"><label for="ship-complement">${_this.locale ? _this.locale.address2Placeholder : "Apartment number, unit, floor, etc."}</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
             </div>
             <div class="vcustom--vtex-omnishipping-1-x-address__state">
               <p class="input ship-country text ${_this.deliveryCountries.length<=1 ? "hide" : ""} "><label for="ship-country">Country</label><select name="v-custom-country" id="ship-country" class="input-large">${_this.getCountries().join("")}</select></p>
-              <p class="input ship-city required text"><label for="ship-city">${_this.locale.city ? _this.locale.city : "City"}</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
-              <p class="input ship-state required text"><label for="ship-state">${_this.locale.state ? _this.locale.state : "State"}</label>
+              <p class="input ship-city required text"><label for="ship-city">${_this.locale ? _this.locale.city : "City"}</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
+              <p class="input ship-state required text"><label for="ship-state">${_this.locale ? _this.locale.state : "State"}</label>
                   <select name="v-custom-state" id="ship-state" class="input-large">
-                    <option value="" disabled selected>${_this.locale.state ? _this.locale.state : "State"}</option>
+                    <option value="" disabled selected>${_this.locale ? _this.locale.state : "State"}</option>
                     ${_this.getRegions(country[0]).join("")}
                   </select>
               </p>
@@ -321,7 +369,7 @@ class fnsCustomAddressForm {
 
     let country = $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(),
         street = _st.attr("data-street") || _st.val(),
-        number = $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : (_st.attr("data-number") || null),
+        number = $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : (_st.attr("data-number") || ""),
         geoCoordinates = _st.attr("data-geocoordinates") || [],
         neighborhood = _st.attr("data-neighborhood") || null,
         complement =  $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(),
@@ -348,44 +396,57 @@ class fnsCustomAddressForm {
 
     $("body").on("click",".step.shipping-data #edit-address-button, .step.shipping-data .vtex-omnishipping-1-x-linkEdit", function(e) {
       
-      let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
-      let addressClicked = _this.orderForm.shippingData
-      if(indexAddress<0) {
-        addressClicked = addressClicked.selectedAddresses[0];
-      } else {
-        addressClicked = addressClicked.availableAddresses[indexAddress];
-      }
+      if(!$("#shipping-option-pickup-in-point").hasClass("vtex-omnishipping-1-x-deliveryOptionActive")) {
+        let indexAddress = $(".vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active").index();
+        let addressClicked = vtexjs.checkout.orderForm.shippingData
+        if(indexAddress<0) {
+          addressClicked = addressClicked.selectedAddresses[0];
+        } else {
+          addressClicked = addressClicked.availableAddresses[indexAddress];
+        }
 
-      if(addressClicked && addressClicked.street && !~addressClicked.street.indexOf("*")) {
-        try {
-          if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
-            setTimeout(() => {
-              if(!$(".vtex-omnishipping-1-x-address").length) {
-                $("body").addClass(_this.BodyFormClasses.join(" "));
-                _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", null)
-                $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(addressClicked.country);
-                _this.updateFormByCountry(addressClicked.country);
-                let addressRule = _this.getCountryRule(addressClicked.country);
-                if(addressRule.number) $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(addressClicked.number);
-                $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street).attr("data-street","");
-                $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
-                $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
-              }
-            }, 100);
+        //console.log("indexAddress",indexAddress, vtexjs.checkout.orderForm.shippingData, "addressClicked", addressClicked)
+
+        if(addressClicked && addressClicked.city.indexOf("*")<0) {
+          try {
+            if(addressClicked.isDisposable || ~window.location.origin.indexOf("myvtex")) {
+              setTimeout(() => {
+                //if(!$(".vtex-omnishipping-1-x-address").length) {
+                  $("body").addClass(_this.BodyFormClasses.join(" "));
+                  addressClicked.street = addressClicked.street || "";
+                  _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", null)
+                  $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(addressClicked.country);
+                  _this.updateFormByCountry(addressClicked.country);
+                  let addressRule = _this.getCountryRule(addressClicked.country);
+                  if(addressRule.number) {
+                    $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(addressClicked.number);
+                    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street);
+                  } else {
+                    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(`${addressClicked.street}${ addressClicked.number ? `, ${addressClicked.number}` : ""}`);
+                  }
+                  $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
+                  $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
+                  $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(addressClicked.postalCode);
+                  $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(addressClicked.complement || "");
+                //}
+              }, 100);
+            }
+          } catch(e) {
+            $("body").removeClass(_this.BodyFormClasses.join(" "));
           }
-        } catch(e) {
+        } else {
           $("body").removeClass(_this.BodyFormClasses.join(" "));
         }
-      } else {
-        $("body").addClass(_this.BodyFormClasses.join(" "));
       }
       
     });
 
     $("body").on("click",".vtex-omnishipping-1-x-buttonCreateAddress, .vtex-omnishipping-1-x-disclaimer a#remove-unavailable-items", function(e) {
-      $("body").addClass(_this.BodyFormClasses.join(" "));
-      _this.address.addressId="";
-      _this.updateAddress("");
+      if(!$("#shipping-option-pickup-in-point").hasClass("vtex-omnishipping-1-x-deliveryOptionActive")) {
+        $("body").addClass(_this.BodyFormClasses.join(" "));
+        _this.address.addressId="";
+        _this.updateAddress("");
+      }
     });
 
     // $("body").on("click","#open-shipping, #edit-shipping-data", function(e) {
@@ -450,7 +511,6 @@ class fnsCustomAddressForm {
 
   init(orderForm) {
     let _this = this;
-
     if(orderForm && window.google && $(".vcustom--vtex-omnishipping-1-x-address").length<1 && orderForm.items.length) {
       $("body").addClass(`${this.classOn}`);
       _this.orderForm = orderForm;
@@ -462,7 +522,8 @@ class fnsCustomAddressForm {
       _this.lang = _this.orderForm.clientPreferencesData.locale;
       _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode];
       _this.addressrules = _this.getCountryRule(_this.orderForm.storePreferencesData.countryCode);
-      
+
+      if(_this.lang=="es-AR") _this.lang = "es";
 
       if(_this.orderForm && _this.orderForm.shippingData) {
         let shippingData = _this.orderForm.shippingData.address;

@@ -591,7 +591,8 @@ class checkoutCustom {
 
   customAddressFormInit(orderForm) {
     let _this = this;
-    if(_this.customAddressForm) _this.customAddressForm.init(orderForm);
+    let _orderForm = orderForm || vtexjs.checkout.orderForm;
+    if(_this.customAddressForm) _this.customAddressForm.init(_orderForm);
   }
 
   checkProfileFocus() {
@@ -711,12 +712,12 @@ class checkoutCustom {
 
       $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
         _this.update(orderForm);
+        _this.customAddressFormInit(orderForm);
       })
 
       $(window).load(function() {
         _this.builder();
         _this.checkProfileFocus();
-        _this.customAddressFormInit(vtexjs.checkout.orderForm);
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
         if(!window.google && _this.customAddressForm) _this.customAddressForm.loadScript();

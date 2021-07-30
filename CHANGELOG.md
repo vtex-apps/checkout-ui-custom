@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Google Address Form supporting Argentina (beta)
+
 ## [0.5.0] - 2021-06-30
 
 ### Changed
