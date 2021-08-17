@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.1] - 2021-08-17
+
 ### Fixed
 - InStore files being overwritten by `checkout-ui-custom`
 
