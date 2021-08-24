@@ -19,7 +19,8 @@ module.exports._countriesrules = {
   ARG: {
     state:"administrative_area_level_1",
     number:false,
-    postalCode:true
+    postalCode:true,
+    postalCodeLength:4
   },
   VAT: {
     state:"administrative_area_level_1",
@@ -890,7 +891,7 @@ module.exports._cities = [{
       },
       {
         name: "Buenos Aires",
-        shortCode: "Buenos Aires"
+        shortCode: "Provincia de Buenos Aires"
       },
       {
         name: "Catamarca",

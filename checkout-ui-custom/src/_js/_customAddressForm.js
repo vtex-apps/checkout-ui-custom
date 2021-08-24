@@ -104,7 +104,7 @@ class fnsCustomAddressForm {
       
       let place = _this.gPlacesAutocomplete.getPlace();
 
-      console.log(place)
+      if(~window.location.host.indexOf("myvtex")) console.log(place)
 
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
       let street = place.address_components.find(item => item.types[0]=="route") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name;
@@ -319,7 +319,7 @@ class fnsCustomAddressForm {
                     ${_this.getRegions(country[0]).join("")}
                   </select>
               </p>
-              <p class="input ship-postalCode required text"><label for="ship-postalCode">${vtex.i18n[_this.lang] ? vtex.i18n[_this.lang].cart.postalCode : "Zip Code"}</label><input required autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="20" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
+              <p class="input ship-postalCode required text"><label for="ship-postalCode">${vtex.i18n[_this.lang] ? vtex.i18n[_this.lang].cart.postalCode : "Zip Code"}</label><input required autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="${_this.addressrules.postalCodeLength ? _this.addressrules.postalCodeLength : "20"}" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
             </div>
             <p class="vtex-omnishipping-1-x-submitShippingStepButton btn-submit-wrapper btn-go-to-shipping-wrapper"><button class="submit  btn-go-to-shippping-method btn btn-large btn-success" id="btn-go-to-shippping-method" type="submit">Continue to shipping</button></p>
         </form>
