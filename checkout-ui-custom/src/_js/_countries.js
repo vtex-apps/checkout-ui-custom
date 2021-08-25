@@ -16,6 +16,12 @@ module.exports._countriesrules = {
     number:false,
     postalCode:true
   },
+  ARG: {
+    state:"administrative_area_level_1",
+    number:false,
+    postalCode:true,
+    postalCodeLength:4
+  },
   VAT: {
     state:"administrative_area_level_1",
     number:true,
@@ -880,100 +886,100 @@ module.exports._cities = [{
     countryName: "Argentina",
     countryShortCode: "AR",
     regions: [{
-        name: "Buenos Aires",
-        shortCode: "B"
+        name: "Ciudad Autónoma de Buenos Aires",
+        shortCode: "Ciudad Autónoma de Buenos Aires"
       },
       {
-        name: "Capital Federal",
-        shortCode: "C"
+        name: "Buenos Aires",
+        shortCode: "Provincia de Buenos Aires"
       },
       {
         name: "Catamarca",
-        shortCode: "K"
+        shortCode: "Catamarca"
       },
       {
         name: "Chaco",
-        shortCode: "H"
+        shortCode: "Chaco"
       },
       {
         name: "Chubut",
-        shortCode: "U"
+        shortCode: "Chubut"
       },
       {
         name: "Córdoba",
-        shortCode: "X"
+        shortCode: "Córdoba"
       },
       {
         name: "Corrientes",
-        shortCode: "W"
+        shortCode: "Corrientes"
       },
       {
         name: "Entre Ríos",
-        shortCode: "E"
+        shortCode: "Entre Ríos"
       },
       {
         name: "Formosa",
-        shortCode: "P"
+        shortCode: "Formosa"
       },
       {
         name: "Jujuy",
-        shortCode: "Y"
+        shortCode: "Jujuy"
       },
       {
         name: "La Pampa",
-        shortCode: "L"
+        shortCode: "La Pampa"
       },
       {
         name: "La Rioja",
-        shortCode: "F"
+        shortCode: "La Rioja"
       },
       {
         name: "Mendoza",
-        shortCode: "M"
+        shortCode: "Mendoza"
       },
       {
         name: "Misiones",
-        shortCode: "N"
+        shortCode: "Misiones"
       },
       {
         name: "Neuquén",
-        shortCode: "Q"
+        shortCode: "Neuquén"
       },
       {
         name: "Río Negro",
-        shortCode: "R"
+        shortCode: "Río Negro"
       },
       {
         name: "Salta",
-        shortCode: "A"
+        shortCode: "Salta"
       },
       {
         name: "San Juan",
-        shortCode: "J"
+        shortCode: "San Juan"
       },
       {
         name: "San Luis",
-        shortCode: "D"
+        shortCode: "San Luis"
       },
       {
         name: "Santa Cruz",
-        shortCode: "Z"
+        shortCode: "Santa Cruz"
       },
       {
         name: "Santa Fe",
-        shortCode: "S"
+        shortCode: "Santa Fe"
       },
       {
         name: "Santiago del Estero",
-        shortCode: "G"
+        shortCode: "Santiago del Estero"
       },
       {
         name: "Tierra del Fuego",
-        shortCode: "V"
+        shortCode: "Tierra del Fuego"
       },
       {
         name: "Tucumán",
-        shortCode: "T"
+        shortCode: "Tucumán"
       }
     ]
   },

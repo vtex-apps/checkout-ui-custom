@@ -38,7 +38,9 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"Payment",
     checkoutStepsLabelConfirmation:"Confirmation",
     googleAddressLabel:"Street Address",
-    requiredField: "This field is required."
+    requiredField: "This field is required.",
+    city:"City",
+    state:"State"
   },
   USA: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -60,7 +62,9 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"Payment",
     checkoutStepsLabelConfirmation:"Confirmation",
     googleAddressLabel:"Street Address",
-    requiredField: "This field is required."
+    requiredField: "This field is required.",
+    city:"City",
+    state:"State"
   },
   GBR: {
     couponInactive:"No discounts available. Check the conditions.",
@@ -118,6 +122,28 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"Pago",
     checkoutStepsLabelConfirmation:"Confirmación",
     requiredField: "Este campo es obligatorio."
+  },
+  ARG: {
+    couponInactive:"No hay descuentos disponibles. Consulta las condiciones.",
+    editLabel: "Editar",
+    paypalImg: "",
+    paypalPhone: "",
+    cartSubmitButton:"Proceder al pago",
+    deliveryDateText:"Llega por",
+    PickupDateText:"Disponible",
+    eachLabel:"cada",
+    tomorrowLabel:"Mañana",
+    cartNoteLabel:"Mensaje de regalo o comentarios",
+    address1Placeholder:"Dirección",
+    address2Placeholder:"Dirección Complementaria",
+    checkoutStepsLabelCart:"Carrito",
+    checkoutStepsLabelIdentification:"Identificación",
+    checkoutStepsLabelShipping:"Entrega",
+    checkoutStepsLabelPayment:"Pago",
+    checkoutStepsLabelConfirmation:"Confirmación",
+    requiredField: "Este campo es obligatorio.",
+    city:"Ciudad",
+    state:"Província"
   },
   COL: {
     couponInactive:"No hay descuentos disponibles. Consulta las condiciones.",

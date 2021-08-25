@@ -51,6 +51,7 @@
 .orderform-template-holder{
 
 
+
 	#client-profile-data {width: 100%;}
 	#client-profile-data form.client-pre-email,
 	#client-profile-data .step.client-profile-data,
@@ -775,6 +776,12 @@
 				svg.person-blue path {fill: $actionPrimary;}
 				.vtex-omnishipping-1-x-btn {color: $actionPrimary;}
 			}
+
+      @media (max-width: 490px) {
+        .vtex-omnishipping-1-x-dateLink {
+            width: 100%;
+        }
+      }
     }
 
     .submit.btn.btn-success {
