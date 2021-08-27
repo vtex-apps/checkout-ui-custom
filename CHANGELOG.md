@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+- Validation when `Google Maps key` is not added
+
 ## [0.5.2] - 2021-08-25
 
 ### Added
