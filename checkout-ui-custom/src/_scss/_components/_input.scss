@@ -14,11 +14,11 @@ input, select, button {
   border:1px solid $muted4;
 	outline: initial;
 	font-family:$fontFamily;
-	
+
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	
+
 	&.error {
 		border-color:$danger;
 	}

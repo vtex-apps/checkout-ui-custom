@@ -5,8 +5,8 @@
   display: none;
 }
 body.v-custom-addressForm-on {
-  
-  
+
+
   &.v-custom-step-shipping {
     .vcustom--vtex-omnishipping-1-x-address {
       display: block;
@@ -18,7 +18,7 @@ body.v-custom-addressForm-on {
       }
     }
   }
-  
+
 }
 
 .vtex-omnishipping-1-x-submitShippingStepButton {
@@ -38,7 +38,7 @@ body.v-custom-googleForm-on {
       display:none
   }
 
-  
+
 }
 
 .v-custom-googleFormScript-added.v-custom-googleForm-on .accordion-inner.shipping-container  > * {
@@ -52,7 +52,7 @@ body.v-custom-fnsCustomAddressForm {
   .accordion-inner.shipping-container {
     padding-top:0 !important;
   }
-  
+
 
   .accordion-inner.shipping-container {
     transition:all ease 0.3s;
@@ -70,8 +70,8 @@ body.v-custom-fnsCustomAddressForm {
     .input.ship-addressQuery,
     .input.ship-postalCode {display: none;}
   }
-  
-  
+
+
   .vtex-omnishipping-1-x-container.shp-pickup-receiver +
   .vtex-omnishipping-1-x-shippingSectionTitle +
   #back-to-address-list +
@@ -85,7 +85,7 @@ body.v-custom-fnsCustomAddressForm {
   .vtex-omnishipping-1-x-addressFormPart1 + .vtex-omnishipping-1-x-submitPaymentButton {display:none;}
 
   .orderform-template-holder {
-    .step.shipping-data .box-step { 
+    .step.shipping-data .box-step {
       .vtex-omnishipping-1-x-addressFormPart1 {order: 1;}
     }
   }
@@ -111,9 +111,9 @@ body.v-custom-fnsCustomAddressForm {
     .step.accordion-group.shipping-data {order: 1;}
     .vcustom--vtex-omnishipping-1-x-address {order: 3;}
   }
-  
+
 }
- 
+
 .js-v-custom-is-loading {
 
   .accordion-inner.shipping-container,
