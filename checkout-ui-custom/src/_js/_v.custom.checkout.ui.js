@@ -96,11 +96,12 @@ class checkoutCustom {
     let fileNode = document.getElementById('prescription-file');
     let filesListNode = document.getElementById('files-list');
     const files = [];
-
+    var formData = new FormData()
     fileNode.onchange = function () {
       let input = this.files[0];
       if (input) {
         files.push(input);
+        formData.append('file', input)
         console.log("files ahora---", files)
         //TODO: que solo puedan cargar 3 recetas
         // filesListNode.innerHTML = files.map(item => `<li><span>${item}</span>  <i  class="btn-remove-prescription icon icon-remove item-remove-ico"></i></li>`);
@@ -119,7 +120,18 @@ class checkoutCustom {
       }); */
 
     btnSendForm.onclick = function (e) {
+      console.log("formData", formData)
       e.preventDefault();
+      fetch("/_v/file-manager-rest/uploadFile",
+        {
+          headers: {
+            'VtexIdclientAutCookie': 'eyJhbGciOiJFUzI1NiIsImtpZCI6IjRGNEYwQTZGODEzOEM4Q0NGNDc4NTcxQUMwMTZDMTgzMjcxNDcwRUIiLCJ0eXAiOiJqd3QifQ.eyJzdWIiOiJhcmllbGEuYmFydWZmYWxkaUB2dGV4LmNvbS5iciIsImFjY291bnQiOiJhYmFydWZmYWxkaSIsImF1ZGllbmNlIjoiYWRtaW4iLCJzZXNzIjoiODkxYzQxZjEtY2EwNi00Yzc1LTkzOTktZGQwNzQ3ZDU0NDUxIiwiZXhwIjoxNjMxMTIzMjU5LCJ1c2VySWQiOiI0M2M0M2IzYS00NDFlLTQzM2MtYTE3MS03ZWU1NWQxZDZkNjQiLCJpYXQiOjE2MzEwMzY4NTksImlzcyI6InRva2VuLWVtaXR0ZXIiLCJqdGkiOiJjYzU5NjJhYi00NzE1LTQ1NzYtOTJhMC04YTM0ZTVlY2FlNjEifQ.ghTcQh7JCSiqHB7y92zRVYADwC6pv86ymikf9ybYI44In_jAhsuuS-xV599nEQKUxsuLI-9KbnPSG87s36sUlg'
+          },
+          method: "PUT",
+          body: formData
+        })
+        .then(function (res) { console.log(res) })
+        .catch(function (res) { console.log(res) })
       // let photo = document.getElementById("prescription-file").files[0];
       // console.log("photo", photo);
     };
