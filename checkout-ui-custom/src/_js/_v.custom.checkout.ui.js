@@ -582,7 +582,8 @@ class checkoutCustom {
     let _this = this;
 
     if(!vtex.googleMapsApiKey) {
-      console.log("You might need to add your Google Maps API Key in your admin");
+      console.error("You might need to add your Google Maps API Key in your admin");
+      _this.customAddressForm = false;
       return false;
     }
     if(_this.customAddressForm) {
