@@ -32,8 +32,9 @@ class checkoutCustom {
     if(!$(".custom-cart-template-wrap").length) $(".cart-template.mini-cart .cart-fixed > *").wrapAll('<div class="custom-cart-template-wrap">');
   
     $(".table.cart-items tbody tr.product-item").each(function (w) {
-      if ($(this).find(".v-custom-product-item-wrap").length > 0) return false;
-      $(this).find("> *").wrapAll(`<div class="v-custom-product-item-wrap">`);
+      if (!$(this).find(".v-custom-product-item-wrap").length) {
+        $(this).find("> *").wrapAll(`<div class="v-custom-product-item-wrap">`);
+      }
     })
 
     $("body").addClass("v-custom-loaded");
@@ -661,6 +662,9 @@ class checkoutCustom {
       _this.customAddressFormInit(_this.orderForm);
     });
 
+    $("body").on("click",".show-more-items-button", function(e) {
+      _this.general();
+    });
     
 
   }
