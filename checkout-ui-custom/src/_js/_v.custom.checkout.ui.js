@@ -57,32 +57,32 @@ class checkoutCustom {
     }
   }
 
-  showPrescription(orderForm) {
+  uploadFiles(orderForm) {
     //if documents exists avoids rerender
-    if ((document.getElementById('prescription-file'))) {
+    if ((document.getElementById('upload-file'))) {
       return
     }
     const form = document.createElement("div");
-    form.id = 'prescription--container';
+    form.id = 'uploadFile--container';
     form.style.display = 'none'
     form.innerHTML = `
-       <h2 class='srp-main-title mt0 mb0 f3 black-60 fw4'>Cargar recetas</h2>
+       <h2 class='srp-main-title mt0 mb0 f3 black-60 fw4'>Recetas Médicas</h2>
        <p class="srp-description mw5">Aquí podes cargar las recetas para tu pedido.</p>
-       <form id='prescription-form'>
+       <form enctype="multipart/form-data" id='uploadFile-form'>
          <ul id='files-list'> </ul>
-         <label class="prescription-file-container">
-          <input id="prescription-file" type="file" />
+         <label id="upload-file-container">
+          <input accept="image/*, application/pdf" id="upload-file" type="file" />
           Seleccionar Receta
          </label>
-         <button id="btn-prescription-file" class="btn btn-success" type="file"> Cargar </button>
+         <button id="btn-upload-file" class="btn btn-success" type="file"> Cargar </button>
+         <span id='upload-file-message' class='srp-description mw5' style= "display: none"> </span>
        </form>
    `;
 
-    console.log("orderForm---", orderForm.length)
     if (orderForm.items.length > 0) {
-      console.log("entro aca")
       form.style.display = 'block'
     }
+
     const container = document.getElementsByClassName(
       // "cart-template"
       "cart-template-holder"
@@ -91,51 +91,67 @@ class checkoutCustom {
 
     container.appendChild(form);
 
-    let btnSendForm = document.getElementById('btn-prescription-file');
+    let btnSendForm = document.getElementById('btn-upload-file');
     // let btnRemovePrescription = document.getElementById('btn-remove-prescription');
-    let fileNode = document.getElementById('prescription-file');
+    let fileNode = document.getElementById('upload-file');
+    let uploadFileMessage = document.getElementById('upload-file-message');
     let filesListNode = document.getElementById('files-list');
     const files = [];
-    var formData = new FormData()
+    var formData = new FormData();
+
     fileNode.onchange = function () {
       let input = this.files[0];
       if (input) {
-        files.push(input);
+        files.push(input.name);
         formData.append('file', input)
-        console.log("files ahora---", files)
         //TODO: que solo puedan cargar 3 recetas
-        // filesListNode.innerHTML = files.map(item => `<li><span>${item}</span>  <i  class="btn-remove-prescription icon icon-remove item-remove-ico"></i></li>`);
-        filesListNode.innerHTML = files.map(item => `<li><span>${item}</span></li>`).join('');
-      } else {
-        console.log('entro aca');
+        filesListNode.innerHTML = files.map(item => `<li class='file-item'><span>${item}</span></li>`).join('');
       }
     };
 
-    /*   var dd = document.getElementsByClassName('btn-remove-prescription');
-      console.log("dd", dd)
-      Array.prototype.forEach.call(dd, function (element) {
-        element.addEventListener('click', function () {
-          console.log('data-wow value is: ' + element);
-        });
-      }); */
-
     btnSendForm.onclick = function (e) {
-      console.log("formData", formData)
+      btnSendForm.innerHTML = '<i class="icon-spinner icon-spin icon-3x"></i>'
       e.preventDefault();
       fetch("/_v/file-manager-rest/uploadFile",
         {
-          headers: {
-            'VtexIdclientAutCookie': 'eyJhbGciOiJFUzI1NiIsImtpZCI6IjRGNEYwQTZGODEzOEM4Q0NGNDc4NTcxQUMwMTZDMTgzMjcxNDcwRUIiLCJ0eXAiOiJqd3QifQ.eyJzdWIiOiJhcmllbGEuYmFydWZmYWxkaUB2dGV4LmNvbS5iciIsImFjY291bnQiOiJhYmFydWZmYWxkaSIsImF1ZGllbmNlIjoiYWRtaW4iLCJzZXNzIjoiODkxYzQxZjEtY2EwNi00Yzc1LTkzOTktZGQwNzQ3ZDU0NDUxIiwiZXhwIjoxNjMxMTIzMjU5LCJ1c2VySWQiOiI0M2M0M2IzYS00NDFlLTQzM2MtYTE3MS03ZWU1NWQxZDZkNjQiLCJpYXQiOjE2MzEwMzY4NTksImlzcyI6InRva2VuLWVtaXR0ZXIiLCJqdGkiOiJjYzU5NjJhYi00NzE1LTQ1NzYtOTJhMC04YTM0ZTVlY2FlNjEifQ.ghTcQh7JCSiqHB7y92zRVYADwC6pv86ymikf9ybYI44In_jAhsuuS-xV599nEQKUxsuLI-9KbnPSG87s36sUlg'
-          },
-          method: "PUT",
+          method: "POST",
           body: formData
         })
-        .then(function (res) { console.log(res) })
-        .catch(function (res) { console.log(res) })
-      // let photo = document.getElementById("prescription-file").files[0];
-      // console.log("photo", photo);
+        .then(response => response.json())
+        .then(data => postOrderForm(data))
+        .catch(res => { console.log(res) })
     };
-
+    function postOrderForm(data) {
+      const bodyData = `{"data":"${JSON.stringify(data).replace(/"/g, "'")}"}`
+      fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/customData/uploadFiles`,
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "PUT",
+          body: bodyData
+        })
+        .then(response => {
+          if (!response.ok) {
+            btnSendForm.innerHTML = 'Cargar'
+            uploadFileMessage.innerHTML = 'Ocurrió un error, inténtelo nuevamente'
+            uploadFileMessage.style.display = 'block'
+            uploadFileMessage.style.color = 'red'
+            throw new Error("Something went wrong")
+          } else {
+            btnSendForm.style.display = 'none'
+            $('#uploadFile--container .srp-description').css('display', 'none')
+            $('#upload-file-message').css('display', 'block')
+            setTimeout(() => { $('#upload-file-message').css('display', 'none') }, 3000)
+            $('#upload-file-message').text('Se cargaron las recetas correctamente.')
+            // $('#files-list').css('display', 'none')
+            $('#upload-file-container').css('display', 'none')
+            $('#upload-file-message').addClass('success')
+          }
+        })
+        .catch(res => { console.log(res) })
+    }
   }
 
 
@@ -542,7 +558,7 @@ class checkoutCustom {
     this.condensedTaxes(orderForm);
     this.setParentIndex(orderForm);
     this.indexedInItems(orderForm);
-    this.showPrescription(orderForm);
+    this.uploadFiles(orderForm);
 
 
     // debounce to prevent append from default script

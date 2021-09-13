@@ -45,7 +45,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
     width: calc(100% - 20px);
   }
 }
-#prescription--container {
+#uploadFile--container {
   padding: 20px 30px;
   background: #fff;
   margin: 0;
@@ -54,24 +54,26 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
   h2 {
     @extend %steps-title;
   }
-  #prescription-form {
+  #uploadFile-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-width: 50%;
     width: fit-content;
-    #files-list{
+    #files-list {
       padding: 0;
       margin: 0;
-      li{
+      li.file-item {
         list-style: none;
-        padding: .5rem 0;
+        padding: 1.2rem 0;
+        font-weight: 500;
+        border-bottom: 1px solid $muted5
       }
     }
-    #btn-prescription-file {
+    #btn-upload-file {
       border-radius: $borderRadius;
     }
-    .prescription-file-container {
+    #upload-file-container {
       @extend %input-style;
       @extend .btn-secondary;
       @extend %input-style;
@@ -83,12 +85,18 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill="white"]) {
       margin: 1rem 0;
       border-radius: $borderRadius;
       text-align: center;
-      #prescription-file {
+      #upload-file {
         display: none;
       } /*
        ::-webkit-file-upload-button {
         display: none;
        } */
+    }
+  }
+  #upload-file-message {
+    &.success {
+      color: $success;
+      font-size: 0.9rem;
     }
   }
 }
