@@ -75,7 +75,7 @@ class checkoutCustom {
           Seleccionar Receta
          </label>
          <button id="btn-upload-file" class="btn btn-success" type="file"> Cargar </button>
-         <span id='upload-file-message' class='srp-description mw5' style= "display: none"> </span>
+         <span id='upload-file-message' class='srp-description mv5' style= "display: none"> </span>
        </form>
    `;
 
@@ -84,34 +84,58 @@ class checkoutCustom {
     }
 
     const container = document.getElementsByClassName(
-      // "cart-template"
       "cart-template-holder"
-      // "summary-template-holder"
     )[0];
 
     container.appendChild(form);
 
     let btnSendForm = document.getElementById('btn-upload-file');
-    // let btnRemovePrescription = document.getElementById('btn-remove-prescription');
     let fileNode = document.getElementById('upload-file');
     let uploadFileMessage = document.getElementById('upload-file-message');
     let filesListNode = document.getElementById('files-list');
-    const files = [];
+    let files = [];
     var formData = new FormData();
-
+    let counter = 0;
     fileNode.onchange = function () {
       let input = this.files[0];
       if (input) {
-        files.push(input.name);
-        formData.append('file', input)
+        input.id = counter
+        files.push(input);
+        // formData.append('file', input)
         //TODO: que solo puedan cargar 3 recetas
-        filesListNode.innerHTML = files.map(item => `<li class='file-item'><span>${item}</span></li>`).join('');
+        filesListNode.innerHTML = files.map(item => `<li data-file=${item.id} class='file-item'><span>${item.name}</span>  <i class="btn-remove-file icon icon-remove item-remove-ico"></i></li>`).join('');
+        onComplete();
+        counter++;
       }
     };
 
+    function onComplete() {
+      let iconEle = document.getElementsByClassName("btn-remove-file");
+      Array.prototype.forEach.call(iconEle, (element) => {
+        element.addEventListener("click", deleteItem.bind(this));
+      });
+    }
+
+    function deleteItem(args) {
+      args.stopPropagation();
+      let liItem = (args.target).parentElement;
+      liItem.parentNode.removeChild(liItem)
+      const liItemId = liItem.dataset.file
+      files = files.filter(item => {
+        return item.id != liItemId
+      })
+      files.forEach(item => formData.append('file', item))
+
+      onComplete();
+    }
+
     btnSendForm.onclick = function (e) {
-      btnSendForm.innerHTML = '<i class="icon-spinner icon-spin icon-3x"></i>'
       e.preventDefault();
+      files.forEach(item => formData.append('file', item))
+      $('.btn-remove-file').css('display', 'none')
+      btnSendForm.innerHTML = '<i class="icon-spinner icon-spin icon-3x"></i>'
+
+      formData.forEach(item => console.log("item...", item))
       fetch("/_v/file-manager-rest/uploadFile",
         {
           method: "POST",
@@ -121,6 +145,8 @@ class checkoutCustom {
         .then(data => postOrderForm(data))
         .catch(res => { console.log(res) })
     };
+
+
     function postOrderForm(data) {
       const bodyData = `{"data":"${JSON.stringify(data).replace(/"/g, "'")}"}`
       fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/customData/uploadFiles`,
@@ -145,7 +171,6 @@ class checkoutCustom {
             $('#upload-file-message').css('display', 'block')
             setTimeout(() => { $('#upload-file-message').css('display', 'none') }, 3000)
             $('#upload-file-message').text('Se cargaron las recetas correctamente.')
-            // $('#files-list').css('display', 'none')
             $('#upload-file-container').css('display', 'none')
             $('#upload-file-message').addClass('success')
           }
