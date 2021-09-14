@@ -58,8 +58,10 @@ class checkoutCustom {
   }
 
   uploadFiles(orderForm) {
-    //if documents exists avoids rerender
-    if ((document.getElementById('upload-file'))) {
+    const categoryId = 3;
+    const isInPharmaCategory = orderForm.items.find(product => Object.keys(product.productCategories).find(category => category == categoryId))
+    console.log("!isInPharmaCategory", !isInPharmaCategory)
+    if ((document.getElementById('upload-file')) || !isInPharmaCategory) {
       return
     }
     const form = document.createElement("div");
@@ -78,17 +80,13 @@ class checkoutCustom {
          <span id='upload-file-message' class='srp-description mv5' style= "display: none"> </span>
        </form>
    `;
-
     if (orderForm.items.length > 0) {
       form.style.display = 'block'
     }
-
     const container = document.getElementsByClassName(
       "cart-template-holder"
     )[0];
-
     container.appendChild(form);
-
     let btnSendForm = document.getElementById('btn-upload-file');
     let fileNode = document.getElementById('upload-file');
     let uploadFileMessage = document.getElementById('upload-file-message');
@@ -101,8 +99,6 @@ class checkoutCustom {
       if (input) {
         input.id = counter
         files.push(input);
-        // formData.append('file', input)
-        //TODO: que solo puedan cargar 3 recetas
         filesListNode.innerHTML = files.map(item => `<li data-file=${item.id} class='file-item'><span>${item.name}</span>  <i class="btn-remove-file icon icon-remove item-remove-ico"></i></li>`).join('');
         onComplete();
         counter++;
@@ -125,7 +121,6 @@ class checkoutCustom {
         return item.id != liItemId
       })
       files.forEach(item => formData.append('file', item))
-
       onComplete();
     }
 
@@ -135,7 +130,6 @@ class checkoutCustom {
       $('.btn-remove-file').css('display', 'none')
       btnSendForm.innerHTML = '<i class="icon-spinner icon-spin icon-3x"></i>'
 
-      formData.forEach(item => console.log("item...", item))
       fetch("/_v/file-manager-rest/uploadFile",
         {
           method: "POST",
@@ -791,7 +785,6 @@ class checkoutCustom {
     _this.updateStep();
     _this.builder();
 
-
     _this.changeShippingTimeInfoInit();
     if (_this.orderForm) {
       _this.updateLang(_this.orderForm)
@@ -804,7 +797,6 @@ class checkoutCustom {
   }
 
   start() {
-    console.log("entro aca 12")
     let _this = this;
     try {
       $(function () {
