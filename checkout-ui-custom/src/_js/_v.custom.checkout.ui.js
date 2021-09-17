@@ -60,7 +60,6 @@ class checkoutCustom {
   uploadFiles(orderForm) {
     const categoryId = 3;
     const isInPharmaCategory = orderForm.items.find(product => Object.keys(product.productCategories).find(category => category == categoryId))
-    console.log("!isInPharmaCategory", !isInPharmaCategory)
     if ((document.getElementById('upload-file')) || !isInPharmaCategory) {
       return
     }
