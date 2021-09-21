@@ -124,19 +124,21 @@ class checkoutCustom {
 
   addAssemblies(orderForm) {
     try {
+      
       $.each(orderForm.items, function(i) {
         let _item = this;
-
-        if(_item.assemblies.length>0) {
-          let _assembliesHtml = `<div class="v-custom-assemblies">`
-          $.each(_item.assemblies, function(w) {
+        console.log(_item)
+        if(_item.assemblies.length>0 || _item.attachments.length>0) {
+          let _assembliesHtml = `<div class="v-custom-assemblies">`;
+          let assemblies = _item.assemblies.length ? _item.assemblies : _item.attachments;
+          $.each(assemblies, function(w) {
             let _assemblies = this;
 
             let inptValues = _assemblies.inputValues;
             _assembliesHtml += `<p>${_assemblies.id}</p>`;
-            _assembliesHtml += `<ul class="v-custom-assemblies__values">`;
+            _assembliesHtml += `<ul class="v-custom-assemblies__values" data-productId="${_item.productId}">`;
               Object.entries(inptValues).forEach(([key, val]) => {
-                _assembliesHtml += `<li class="v-custom-assemblies__values__item assembly-${key.toLowerCase().replace(/ /g, "-")}">
+                _assembliesHtml += `<li class="v-custom-assemblies__values__item assembly-${key.toLowerCase().replace(/ /g, "-")}" data-assemblyKey="${key}">
                                       <strong>${key}</strong>
                                       <span>${val.trim()}</span>
                                     </li>`;
@@ -673,6 +675,11 @@ class checkoutCustom {
 
     $("body").on("click",".show-more-items-button", function(e) {
       _this.general();
+    });
+
+    $("body").on("click",".v-custom-assemblies__values__item", function(e) {
+      let assemblyKey = $(this).attr(".data-assemblykey");
+      _this.changeAssemblies();
     });
     
 
