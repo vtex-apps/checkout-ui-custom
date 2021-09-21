@@ -737,14 +737,14 @@ class checkoutCustom {
       })
 
       $(window).load(function() {
-        _this.builder();
+        $(window).on('componentValidated.vtex', (event, orderForm) => _this.builder());
         _this.checkProfileFocus();
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
         if(!window.google && _this.customAddressForm) _this.customAddressForm.loadScript();
         if(_this.customAddressForm && typeof store !="undefined") store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
       });
-
+      
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`);
     }
     catch(e) {
