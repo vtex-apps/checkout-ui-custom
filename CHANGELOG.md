@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+- Append shipping preview in the first load
+
 ## [0.5.5] - 2021-09-15
 - Update status of `select` for orderForm SLAs when the setting `deliveryDateFormat` is set to true
 
