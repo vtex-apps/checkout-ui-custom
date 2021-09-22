@@ -730,7 +730,7 @@ class checkoutCustom {
       })
 
       $(window).load(function() {
-        _this.builder();
+        $(window).on('componentValidated.vtex', (event, orderForm) => _this.builder());
         _this.checkProfileFocus();
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
