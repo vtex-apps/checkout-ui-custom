@@ -107,7 +107,7 @@ class fnsCustomAddressForm {
       if(~window.location.host.indexOf("myvtex")) console.log(place)
 
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
-      let street = place.address_components.find(item => item.types[0]=="route") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name;
+      let street = place.address_components.find(item => item.types[0]=="route") ? place.address_components.find(item => item.types[0]=="route").long_name : place.vicinity;
       //let street = place.address_components.find(item => item.types[0]=="route") ? (place.address_components.find(item => item.types[0]=="street_number") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name) : place.name;
       
       let state = _this.returnAddressFRules(place.address_components,_this.addressrules.state, "short_name");
@@ -224,7 +224,7 @@ class fnsCustomAddressForm {
                 'addressType':'residential',
                 'receiverName':'',
                 'addressId':_addressId,
-                'isDisposable':true,
+                'isDisposable':false,
                 'postalCode':_postalCode,
                 'city':_city,
                 'state':_state,
