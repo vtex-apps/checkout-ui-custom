@@ -891,7 +891,7 @@ module.exports._cities = [{
       },
       {
         name: "Buenos Aires",
-        shortCode: "Provincia de Buenos Aires"
+        shortCode: "Buenos Aires"
       },
       {
         name: "Catamarca",
