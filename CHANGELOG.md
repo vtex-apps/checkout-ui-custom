@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.7] - 2021-09-27
+
 ### Fixed
 - Addressform needs to insert the direction not the place in to make the order be invoiced properly.
 
