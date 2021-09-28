@@ -1,7 +1,7 @@
 {
   "name": "checkout-ui-custom",
   "vendor": "vtex",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "title": "Checkout Custom",
   "description": "Make possible to customize the checkout layout using a easy to use interface from the admin",
   "builders": {
