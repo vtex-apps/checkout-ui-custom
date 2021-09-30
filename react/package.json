@@ -1,6 +1,6 @@
 {
   "name": "checkout-ui-custom-app",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "scripts": {
     "test": "vtex-test-tools test"
   },
