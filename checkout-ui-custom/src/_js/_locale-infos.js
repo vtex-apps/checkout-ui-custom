@@ -216,8 +216,8 @@ module.exports._locale = {
     eachLabel:"ciascuno",
     tomorrowLabel:"Domani",
     cartNoteLabel:"Messaggio d'auguri o note",
-    address1Placeholder:"Indirizzo (Via e numero civico)",
-    address2Placeholder:"Informazioni aggiuntive",
+    address1Placeholder:"",
+    address2Placeholder:"",
     checkoutStepsLabelCart:"Carrello",
     checkoutStepsLabelIdentification:"Identificazione",
     checkoutStepsLabelShipping:"Spedizione",
@@ -295,5 +295,26 @@ module.exports._locale = {
     checkoutStepsLabelPayment: "Zahlung",
     checkoutStepsLabelConfirmation: "Bestätigung",
     googleAddressLabel: "Adresse",
-  }
+  },
+  ARA:{
+    couponInactive:"لا توجد خصومات متاحة. تحقق من الشروط.",
+    editLabel: "تعديل",
+    paypalImg: "",
+    paypalPhone: "",
+    cartSubmitButton:"انتقل إلى الدفع",
+    deliveryDateText:"تصل قبل",
+    PickupDateText:"جاهزة قبل",
+    eachLabel:"كل",
+    tomorrowLabel:"غدًا",
+    cartNoteLabel:"رسالة هدية أو تعليقات",
+    identifiedUserMessage:`شكرًا على عودتك!\nTلتسريع معاملتك، قمنا بتعبئة معلوماتك بشكل آمن.`,
+    address1Placeholder:"عنوان الشارع",
+    address2Placeholder:"شقة، جناح، مبنى، طابق، إلخ (اختياري)",
+    checkoutStepsLabelCart:"عربة التسوق",
+    checkoutStepsLabelIdentification:"الهوية",
+    checkoutStepsLabelShipping:"التسوق",
+    checkoutStepsLabelPayment:"الدفع",
+    checkoutStepsLabelConfirmation:"تأكيد",
+    requiredField: "هذا الحقل مطلوب."
+}
 }
