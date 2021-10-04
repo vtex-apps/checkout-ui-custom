@@ -67,7 +67,6 @@ class fnsCustomAddressForm {
   }
 
   setForm(country="", street="", formattedStreet="", number="", postalCode="", city="", state="", complement="", neighborhood="", geoCoordinates="") {
-
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(this.addressrules.number ? street : (formattedStreet ? formattedStreet : street));
     $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(complement);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(number);
