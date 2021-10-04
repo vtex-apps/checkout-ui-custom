@@ -216,8 +216,8 @@ module.exports._locale = {
     eachLabel:"ciascuno",
     tomorrowLabel:"Domani",
     cartNoteLabel:"Messaggio d'auguri o note",
-    address1Placeholder:"",
-    address2Placeholder:"",
+    address1Placeholder:" ",
+    address2Placeholder:" ",
     checkoutStepsLabelCart:"Carrello",
     checkoutStepsLabelIdentification:"Identificazione",
     checkoutStepsLabelShipping:"Spedizione",
@@ -316,5 +316,5 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"الدفع",
     checkoutStepsLabelConfirmation:"تأكيد",
     requiredField: "هذا الحقل مطلوب."
-}
+  }
 }
