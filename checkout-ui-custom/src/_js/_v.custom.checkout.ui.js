@@ -543,6 +543,7 @@ class checkoutCustom {
 
     if(_lang.address1Placeholder) $(".vtex-omnishipping-1-x-address input#ship-street").attr("placeholder",_lang.address1Placeholder);
     if(_lang.address2Placeholder) $(".vtex-omnishipping-1-x-address input#ship-complement").attr("placeholder",_lang.address2Placeholder);
+    if(_lang.numberPlaceholder) $(".vtex-omnishipping-1-x-address input#ship-number").attr("placeholder",_lang.numberPlaceholder);
     
   }
 

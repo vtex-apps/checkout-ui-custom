@@ -226,7 +226,8 @@ module.exports._locale = {
     city:"Città",
     state:"Provincia",
     number:"Numero",
-    requiredField: "Questo campo è obbligatorio."
+    requiredField: "Questo campo è obbligatorio.",
+    numberPlaceholder:" "
   },
   FRA: {
     couponInactive:"Aucune réduction disponible. Vérifiez les conditions.",
