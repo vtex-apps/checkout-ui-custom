@@ -2,6 +2,7 @@ module.exports._countriesrules = {
   
   ITA: {
     state:"administrative_area_level_2",
+    city:"locality",
     number:true,
     postalCode:true
   },
@@ -13,32 +14,38 @@ module.exports._countriesrules = {
   },
   USA: {
     state:"administrative_area_level_1",
+    city:"locality",
     number:false,
     postalCode:true
   },
   ARG: {
     state:"administrative_area_level_1",
+    city:"administrative_area_level_2",
     number:false,
     postalCode:true,
     postalCodeLength:4
   },
   VAT: {
     state:"administrative_area_level_1",
+    city:"locality",
     number:true,
     postalCode:true
   },
   BRA: {
     state:"administrative_area_level_1",
+    city:"locality",
     number:false,
     postalCode:true
   },
   ARE: {
     state:"administrative_area_level_1",
+    city:"locality",
     number:true,
     postalCode:false
   },
   WWD: {
     state:"administrative_area_level_1",
+    city:"locality",
     number:false,
     postalCode:true
   }
@@ -891,7 +898,7 @@ module.exports._cities = [{
       },
       {
         name: "Buenos Aires",
-        shortCode: "Provincia de Buenos Aires"
+        shortCode: "Buenos Aires"
       },
       {
         name: "Catamarca",
