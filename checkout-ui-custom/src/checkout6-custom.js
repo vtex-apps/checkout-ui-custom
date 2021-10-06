@@ -8,7 +8,7 @@ window.vcustom = {
     deliveryDateFormat: false, 
     quantityPriceCart:false,
     showNoteField:false,
-    customAddressForm: true,
+    customAddressForm: false,
     hideEmailStep:true
   }),
   debug: new debug({
