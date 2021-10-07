@@ -31,7 +31,8 @@ class fnsCustomAddressForm {
       street:"",
       complement:"",
       addressQuery:"",
-      addressId:""
+      addressId:"",
+      geoCoordinates:[]
     };
 
     this.validate=true;
@@ -47,14 +48,15 @@ class fnsCustomAddressForm {
 
   updateAddress(country="", postalCode="", city="", state="", street="", number=null, complement="", addressQuery="", addressId="", geoCoordinates="") {
     
-    
+    //if(!geoCoordinates) geoCoordinates = [];
+
     this.address = {
       country: country,
       postalCode: postalCode,
       addressId:  addressId,
       city: city,
       state: state,
-      geoCoordinates:[],
+      geoCoordinates: geoCoordinates,
       street: street,
       number: number,
       complement: complement,
@@ -67,17 +69,27 @@ class fnsCustomAddressForm {
   }
 
   setForm(country="", street="", formattedStreet="", number="", postalCode="", city="", state="", complement="", neighborhood="", geoCoordinates="") {
-
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(this.addressrules.number ? street : (formattedStreet ? formattedStreet : street));
     $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(complement);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(number);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(city);
-    $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
     $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(postalCode);
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-street", country=="USA" ? formattedStreet : street)
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-number", number);
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-neighborhood", neighborhood);
     $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-geocoordinates", geoCoordinates);
+    
+    if($(".vcustom--vtex-omnishipping-1-x-address #ship-state option[value='" +state+ "']").length) {
+      $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
+    } else {
+      $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val("");
+    }
+
+    if(this.addressrules.number) {
+      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(street);
+    } else {
+      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(`${formattedStreet ? formattedStreet : (street+`, `+number)}`);
+    }
 
   }
 
@@ -96,7 +108,6 @@ class fnsCustomAddressForm {
 
     let _this = this;
 
-    
     let input = document.getElementById('v-custom-ship-street');
     _this.gPlacesAutocomplete = new google.maps.places.Autocomplete(input);
 
@@ -124,21 +135,19 @@ class fnsCustomAddressForm {
       formattedAddress.html(place.adr_address);
       let formattedStreet = $('.street-address', formattedAddress).text();
 
-      let city = $('.locality', formattedAddress).text() || place.address_components.filter(item => item.types[0]=="administrative_area_level_2")[0].long_name;
+      let city = _this.returnAddressFRules(place.address_components,_this.addressrules.city, "long_name") || $('.locality', formattedAddress).text();
 
       let postalCode = _this.addressrules.postalCode ? _this.returnAddressFRules(place.address_components,"postal_code", "long_name") : "00000";
       
       //temporaly workaround for ARG
       
       if(country=="ARG") {
+        geoCoordinates=geoCoordinates.reverse();
         postalCode=postalCode.replace(/ /g,"").replace(/(?:[a-zA-Z]*)(\d+)(?:[a-zA-Z]*)/,'$1');
+        if(state=="Provincia de Buenos Aires") state = "Buenos Aires";
       }
       
       //end temporaly workaround for ARG
-
-      _this.setForm(country, street, formattedStreet, number, postalCode, city, state, complement, neighborhood, geoCoordinates);
-      _this.validateAllFields();
-      _this.updateAddress(country, postalCode, city, state, street, number, complement, place.formatted_address, _this.address.addressId, geoCoordinates);
 
       //let ad = {
       //  'addressType':'residential',
@@ -156,6 +165,12 @@ class fnsCustomAddressForm {
       //  'addressQuery':formattedStreet
       //}
       //console.log(ad);
+
+      _this.setForm(country, street, formattedStreet, number, postalCode, city, state, complement, neighborhood, geoCoordinates);
+      _this.validateAllFields();
+      _this.updateAddress(country, postalCode, city, state, street, number, complement, place.formatted_address, _this.address.addressId, geoCoordinates);
+
+      
     });
 
     $("body").on("keyup", "#v-custom-ship-street", function(e) {
@@ -186,7 +201,6 @@ class fnsCustomAddressForm {
 
         //temporaly workaround for ARG
         if(_country=="ARG") {
-          geoCoordinates=geoCoordinates.reverse();
           //_neighborhood = null;
           if(_city.toUpperCase()=="CABA") {
             _city="Ciudad Autónoma de Buenos Aires";
@@ -200,10 +214,8 @@ class fnsCustomAddressForm {
       } else {
         geoCoordinates = []
       }
-      
-      $("body").addClass("js-v-custom-is-loading");
 
-      
+      $("body").addClass("js-v-custom-is-loading");
 
       fetch(`/api/checkout/pub/orderForm/${_this.orderForm.orderFormId}/attachments/shippingData`, 
       {
@@ -223,7 +235,7 @@ class fnsCustomAddressForm {
              {
                 'addressType':'residential',
                 'receiverName':'',
-                'addressId':_addressId,
+                'addressId':"",
                 'isDisposable':false,
                 'postalCode':_postalCode,
                 'city':_city,
@@ -414,20 +426,11 @@ class fnsCustomAddressForm {
                 //if(!$(".vtex-omnishipping-1-x-address").length) {
                   $("body").addClass(_this.BodyFormClasses.join(" "));
                   addressClicked.street = addressClicked.street || "";
-                  _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", null)
+                  _this.updateAddress(addressClicked.country, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.number, addressClicked.street, addressClicked.complement, "", addressClicked.addressId, addressClicked.geoCoordinates)
                   $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(addressClicked.country);
                   _this.updateFormByCountry(addressClicked.country);
-                  let addressRule = _this.getCountryRule(addressClicked.country);
-                  if(addressRule.number) {
-                    $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(addressClicked.number);
-                    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(addressClicked.street);
-                  } else {
-                    $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(`${addressClicked.street}${ addressClicked.number ? `, ${addressClicked.number}` : ""}`);
-                  }
-                  $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(addressClicked.state);
-                  $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(addressClicked.city);
-                  $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val(addressClicked.postalCode);
-                  $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(addressClicked.complement || "");
+                  _this.setForm(addressClicked.country, addressClicked.street, addressClicked.addressQuery, addressClicked.number, addressClicked.postalCode, addressClicked.city, addressClicked.state, addressClicked.complement, addressClicked.neighborhood, addressClicked.geoCoordinates);
+
                 //}
               }, 100);
             }
@@ -528,7 +531,7 @@ class fnsCustomAddressForm {
       if(_this.orderForm && _this.orderForm.shippingData) {
         let shippingData = _this.orderForm.shippingData.address;
         if(shippingData) {
-          _this.updateAddress(shippingData.country, shippingData.postalCode, shippingData.city, shippingData.state, shippingData.street, shippingData.number, shippingData.complement, "", shippingData.addressId)
+          _this.updateAddress(shippingData.country, shippingData.postalCode, shippingData.city, shippingData.state, shippingData.street, shippingData.number, shippingData.complement, "", shippingData.addressId, shippingData.geoCoordinates)
         } else {
           _this.updateAddress("");
         }
