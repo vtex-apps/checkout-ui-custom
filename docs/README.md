@@ -10,8 +10,9 @@ This feature renders a form in the checkout that allows the user to upload a fil
 ## Configuration
 
 1. Using your terminal and the [VTEX IO Toolbelt](https://vtex.io/docs/recipes/development/vtex-io-cli-installment-and-command-reference), log into the desired VTEX account.
-2. Run `vtex install vtex.checkout-ui-custom@0.5.3-hkignore.1` on the account you're working on.
-3. This app save the fileUrl in the orderForm configuration, for these to work is neccesary to create the app in the orderForm configuration:
+2. Run `vtex install vtex install vtexarg.file-manager-rest` on the account you're working on.
+3. Run `vtex install vtex.checkout-ui-custom@0.5.3-hkignore.1` on the account you're working on.
+4. This app save the fileUrl in the orderForm configuration, for these to work is neccesary to create the app in the orderForm configuration:
 
 ## Creating the app in the orderForm configuration
 1.  First of all you should get your current orderForm configuration:
