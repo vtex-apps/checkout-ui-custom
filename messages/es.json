@@ -49,6 +49,7 @@
   "admin/checkout-ui.layout.preview.button": "Botón",
   "admin/checkout-ui.layout.accordionPayments.label": "Opciones de pago estilo acordeón",
   "admin/checkout-ui.layout.accordionPayments.help": "Mostrar las opciones de pago como secciones expandibles. Si está desactivado, las opciones de pago se mostrarán como pestañas.",
+  "admin/checkout-ui.layout.purchaseOrderInput.label": "",
   "admin/checkout-ui.layout.deliveryDateFormat.label": "Fecha de entrega simplificada",
   "admin/checkout-ui.layout.deliveryDateFormat.help": "Mostrar el día y la fecha previstos para la entrega. Si está desactivado, se mostrará el plazo de entrega estimado como  \"Hasta X días hábiles\".",
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "Mostrar precio unitario del ítem",

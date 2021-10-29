@@ -1,7 +1,7 @@
 const { _locale } = require("./_locale-infos.js");
 const { debounce, formatCurrency } = require("./_utils.js");
 const fnsCustomAddressForm = require("./_customAddressForm.js");
-
+const { buildPOField } = require('./_b2b-features.js')
 
 class checkoutCustom { 
   constructor({
@@ -10,11 +10,12 @@ class checkoutCustom {
     deliveryDateFormat = false,
     quantityPriceCart = false,
     showNoteField = false,
+    purchaseOrderInput = false,
     customAddressForm = false,
     hideEmailStep =  true
   } = {}) {
     this.type = type; // ["vertical"]
-    this.orderForm = ""; 
+    this.orderForm = "";
     this.orderId = this.orderForm ? this.orderForm.orderFormId : "";
     this.lang = "";
 
@@ -22,6 +23,7 @@ class checkoutCustom {
     this.deliveryDateFormat = deliveryDateFormat;
     this.quantityPriceCart = quantityPriceCart;
     this.showNoteField = showNoteField;
+    this.purchaseOrderInput = purchaseOrderInput
     this.customAddressForm = customAddressForm;
     this.hideEmailStep = hideEmailStep;
 
@@ -56,6 +58,10 @@ class checkoutCustom {
     }
     if(_this.hideEmailStep) {
       $("body").addClass("js-vcustom-hideEmailStep");
+    }
+
+    if (_this.purchaseOrderInput) {
+      buildPOField(_this.lang)
     }
   }
 

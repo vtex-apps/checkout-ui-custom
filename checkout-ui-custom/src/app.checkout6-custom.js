@@ -8,6 +8,7 @@ window.vcustom = {
     deliveryDateFormat: "{{deliveryDateFormat}}",
     quantityPriceCart: "{{showCartQuantityPrice}}",
     showNoteField: "{{showNoteField}}",
+    purchaseOrderInput: "{{purchaseOrderInput}}",
     customAddressForm: "{{customAddressForm}}",
     hideEmailStep:"{{hideEmailStep}}"
   }),

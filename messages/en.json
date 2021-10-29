@@ -49,6 +49,7 @@
   "admin/checkout-ui.layout.preview.button": "Button",
   "admin/checkout-ui.layout.accordionPayments.label": "Payment options as accordion",
   "admin/checkout-ui.layout.accordionPayments.help": "Display payment options as expandable sections. If disabled, payment options will be displayed as tabs.",
+  "admin/checkout-ui.layout.purchaseOrderInput.label": "Show 'Reference or PO Number' field",
   "admin/checkout-ui.layout.deliveryDateFormat.label": "Simplified shipping date",
   "admin/checkout-ui.layout.deliveryDateFormat.help": "Display the estimated delivery day and date. If disabled, the estimated delivery time frame as \"Up to X business days\" will be shown.",
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "Show item's unit price",

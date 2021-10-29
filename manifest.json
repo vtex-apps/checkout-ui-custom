@@ -36,6 +36,9 @@
       "name": "ADMIN_DS"
     },
     {
+      "name": "SaveOrderFormConfiguration"
+    },
+    {
       "name": "outbound-access",
       "attrs": {
         "host": "platform.io.vtex.com",
@@ -54,6 +57,13 @@
       "attrs": {
         "host": "{{account}}.vtexcommercestable.com.br",
         "path": "/api/dataentities/checkoutcustom/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/checkout/pvt/configuration/orderForm"
       }
     }
   ],

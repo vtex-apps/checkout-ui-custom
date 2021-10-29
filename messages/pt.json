@@ -49,6 +49,7 @@
   "admin/checkout-ui.layout.preview.button": "Botão",
   "admin/checkout-ui.layout.accordionPayments.label": "Opções de pagamento estilo sanfona",
   "admin/checkout-ui.layout.accordionPayments.help": "O formato em abas só fica disponível para lojas com menos de 5 formas de pagamento",
+  "admin/checkout-ui.layout.purchaseOrderInput.label": "",
   "admin/checkout-ui.layout.deliveryDateFormat.label": "Data de entrega simplificada",
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "Mostrar preço unitário do item",
   "admin/checkout-ui.layout.showNoteField.label": "Exibir campo de anotações",

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { promises as fs } from 'fs'
 import * as path from 'path'
+import b2bConfiguration from './b2bConfiguration'
 
 const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
@@ -118,6 +119,8 @@ export const resolvers = {
 
       const creationDate = String(new Date().getTime())
       const appVersion = process.env.VTEX_APP_VERSION
+
+      await b2bConfiguration(keys, ctx)
 
       const data = await masterdata.createDocument({
         dataEntity: DATA_ENTITY,

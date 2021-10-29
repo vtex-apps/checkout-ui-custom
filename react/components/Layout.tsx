@@ -16,6 +16,7 @@ import EmailStepOn from '../images/email-step-on.png'
 import EmailStepOff from '../images/email-step-off.png'
 import CustomAddresFormOn from '../images/usaddressform-on.png'
 import CustomAddresFormOff from '../images/usaddressform-off.png'
+import B2bSettings from './LayoutB2b'
 
 const images: any = {
   tabsOn: TabsOn,
@@ -473,6 +474,8 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           </div>
         </div>
       </div>
+
+      <B2bSettings state={state} handleChange={handleChange} />
     </div>
   )
 }

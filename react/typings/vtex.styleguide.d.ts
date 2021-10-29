@@ -5,8 +5,11 @@ declare module 'vtex.styleguide' {
   export const Box
   export const Card
   export const Dropdown
+  export const Divider
   export const Spinner
+  export const Slider
   export const Table
+  export const Toggle
   export const Button
   export const IconWarning
   export const IconCheck

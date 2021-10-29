@@ -49,6 +49,7 @@
   "admin/checkout-ui.layout.preview.button": "Painike",
   "admin/checkout-ui.layout.accordionPayments.label": "Maksutavat haitarivalikossa",
   "admin/checkout-ui.layout.accordionPayments.help": "Näytä maksutavat laajennettavina osioina. Jos tämä on pois käytöstä, maksutavat näytetään välilehtinä.",
+  "admin/checkout-ui.layout.purchaseOrderInput.label": "",
   "admin/checkout-ui.layout.deliveryDateFormat.label": "Yksinkertaistettu lähetyspäivä",
   "admin/checkout-ui.layout.deliveryDateFormat.help": "Näyttää arvioidun toimituspäivän ja päivämäärän. Jos tämä on pois käytöstä, arvioitu toimitusaikaikkuna näytetään muodossa \"Enintään X arkipäivää\".",
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "Näytä tuotteen yksikköhinta",

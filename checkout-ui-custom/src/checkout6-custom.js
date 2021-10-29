@@ -8,6 +8,7 @@ window.vcustom = {
     deliveryDateFormat: false, 
     quantityPriceCart:false,
     showNoteField:false,
+    purchaseOrderInput:false,
     customAddressForm: false,
     hideEmailStep:true
   }),

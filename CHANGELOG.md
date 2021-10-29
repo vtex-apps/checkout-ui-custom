@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add Purchase Order input
+
 ## [0.6.3] - 2021-10-07
 
 ### Fixed

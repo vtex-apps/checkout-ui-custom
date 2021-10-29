@@ -71,6 +71,7 @@ const defaultConfiguration = {
     showNoteField: false,
     hideEmailStep: true,
     customAddressForm: false,
+    purchaseOrderInput: false,
     fontSize: '12px',
     borderRadius: '4px',
     btnBorderRadius: '30px',

@@ -49,6 +49,7 @@
   "admin/checkout-ui.layout.preview.button": "الزر",
   "admin/checkout-ui.layout.accordionPayments.label": "خيارات الدفع مثل accordion",
   "admin/checkout-ui.layout.accordionPayments.help": "عرض خيارات الدفع كأقسام قابلة للتوسيع. إذا تم تعطيله، فسيتم عرض خيارات الدفع كعلامات تبويب.",
+  "admin/checkout-ui.layout.purchaseOrderInput.label": "",
   "admin/checkout-ui.layout.deliveryDateFormat.label": "تاريخ شحن مبسط",
   "admin/checkout-ui.layout.deliveryDateFormat.help": "عرض يوم التسليم والتاريخ المقدرين. إذا تم تعطيله، فسيتم عرض الإطار الزمني المقدر للتسليم كـ \"حتى X يوم عمل\".",
   "admin/checkout-ui.layout.showCartQuantityPrice.label": "إظهار سعر وحدة العنصر",
