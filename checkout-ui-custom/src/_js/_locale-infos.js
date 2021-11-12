@@ -317,5 +317,29 @@ module.exports._locale = {
     checkoutStepsLabelPayment:"الدفع",
     checkoutStepsLabelConfirmation:"تأكيد",
     requiredField: "هذا الحقل مطلوب."
+  },
+  RUS: {
+    couponInactive:"Скидки недоступны. Проверьте условия.",
+    editLabel: "Редактировать",
+    paypalImg: "",
+    paypalPhone: "",
+    cartSubmitButton:"Перейте к оплате",
+    deliveryDateText:"Дата прибытия",
+    PickupDateText:"Дата готовности",
+    eachLabel:"каждый",
+    tomorrowLabel:"Завтра",
+    cartNoteLabel:"Сообщение о подарке или комментарии",
+    identifiedUserMessage:`Спасибо, что вернулись!\nДля ускорения вашей транзакции мы заполнили вашу информацию. Не волнуйтесь, ваши данные надёжно защищены.`,
+    address1Placeholder:"Адрес проживания/улица или адрес почтового ящика",
+    address2Placeholder:"Квартира, номер дома, этаж (дополнительно)",
+    checkoutStepsLabelCart:"Корзина",
+    checkoutStepsLabelIdentification:"Идентификация",
+    checkoutStepsLabelShipping:"Доставка",
+    checkoutStepsLabelPayment:"Оплата",
+    checkoutStepsLabelConfirmation:"Подтверждение",
+    googleAddressLabel:"Улица и номер дома",
+    requiredField: "Это обязательное поле.",
+    city:"Город",
+    state:"Область"
   }
 }

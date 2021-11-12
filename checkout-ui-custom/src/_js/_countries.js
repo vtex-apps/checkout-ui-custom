@@ -4,50 +4,74 @@ module.exports._countriesrules = {
     state:"administrative_area_level_2",
     city:"locality",
     number:true,
-    postalCode:true
+    postalCode:true,
+    neighborhood:true,
+    geoCoordinates:"default"
   },
   SMR: {
     state:"administrative_area_level_1",
     number:true,
     city:"locality",
-    postalCode:true
+    postalCode:true,
+    neighborhood:true,
+    geoCoordinates:"default"
   },
   USA: {
     state:"administrative_area_level_1",
     city:"locality",
     number:false,
-    postalCode:true
+    postalCode:true,
+    neighborhood:true,
+    geoCoordinates:"default"
   },
   ARG: {
     state:"administrative_area_level_1",
     city:"administrative_area_level_2",
     number:false,
     postalCode:true,
-    postalCodeLength:4
+    postalCodeLength:4,
+    neighborhood:true,
+    geoCoordinates:"reverse"
   },
   VAT: {
     state:"administrative_area_level_1",
     city:"locality",
     number:true,
-    postalCode:true
+    postalCode:true,
+    neighborhood:true,
+    geoCoordinates:"default"
   },
   BRA: {
     state:"administrative_area_level_1",
     city:"locality",
     number:false,
-    postalCode:true
+    postalCode:true,
+    neighborhood:true,
+    geoCoordinates:"default"
   },
   ARE: {
     state:"administrative_area_level_1",
     city:"locality",
     number:true,
-    postalCode:false
+    postalCode:false,
+    neighborhood:true,
+    geoCoordinates:"default"
+  },
+  RUS: {
+    state:false,
+    city:"locality",
+    number:false,
+    postalCode:true,
+    neighborhood:true,
+    geoCoordinates:"reverse"
   },
   WWD: {
     state:"administrative_area_level_1",
     city:"locality",
     number:false,
-    postalCode:true
+    postalCode:true,
+    neighborhood:true,
+    geoCoordinates:"default"
   }
 
 }

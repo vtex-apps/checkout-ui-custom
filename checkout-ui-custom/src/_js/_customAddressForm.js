@@ -42,7 +42,7 @@ class fnsCustomAddressForm {
 
 
   loadScript() {
-    $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=en-US&libraries=places&callback=callbackMap"></script>`);
+    $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=${vtex.i18n.locale}&libraries=places&callback=callbackMap"></script>`);
   }
 
 
@@ -81,8 +81,10 @@ class fnsCustomAddressForm {
     
     if($(".vcustom--vtex-omnishipping-1-x-address #ship-state option[value='" +state+ "']").length) {
       $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(state);
+      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-state", state);
     } else {
       $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val("");
+      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").attr("data-state", null);
     }
 
     if(this.addressrules.number) {
@@ -121,8 +123,15 @@ class fnsCustomAddressForm {
       let street = place.address_components.find(item => item.types[0]=="route") ? place.address_components.find(item => item.types[0]=="route").long_name : place.vicinity;
       //let street = place.address_components.find(item => item.types[0]=="route") ? (place.address_components.find(item => item.types[0]=="street_number") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name) : place.name;
       
-      let state = _this.returnAddressFRules(place.address_components,_this.addressrules.state, "short_name");
-      let neighborhood = _this.returnAddressFRules(place.address_components,"sublocality_level_1", "long_name");
+      let state = "";
+      if(_this.addressrules.state) {
+        state = _this.returnAddressFRules(place.address_components,_this.addressrules.state, "short_name");
+      }
+
+      let neighborhood = "";
+      if(!!_this.addressrules.neighborhood) {
+        neighborhood = _this.returnAddressFRules(place.address_components,"sublocality_level_1", "long_name");
+      }
 
       if(_this.addressrules.number) $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(_this.returnAddressFRules(place.address_components,"street_number", "long_name"));
       
@@ -139,32 +148,19 @@ class fnsCustomAddressForm {
 
       let postalCode = _this.addressrules.postalCode ? _this.returnAddressFRules(place.address_components,"postal_code", "long_name") : "00000";
       
+
+      if(_this.addressrules.geoCoordinates=="reverse") geoCoordinates=geoCoordinates.reverse();
+      
       //temporaly workaround for ARG
       
       if(country=="ARG") {
-        geoCoordinates=geoCoordinates.reverse();
         postalCode=postalCode.replace(/ /g,"").replace(/(?:[a-zA-Z]*)(\d+)(?:[a-zA-Z]*)/,'$1');
         if(state=="Provincia de Buenos Aires") state = "Buenos Aires";
       }
       
       //end temporaly workaround for ARG
 
-      //let ad = {
-      //  'addressType':'residential',
-      //  'receiverName':'',
-      //  'postalCode':postalCode,
-      //  'city':city,
-      //  'state':state,
-      //  'country':country,
-      //  'geoCoordinates':geoCoordinates,
-      //  'street':street,
-      //  'number':number,
-      //  'neighborhood':neighborhood,
-      //  'complement':complement,
-      //  'reference':null,
-      //  'addressQuery':formattedStreet
-      //}
-      //console.log(ad);
+      
 
       _this.setForm(country, street, formattedStreet, number, postalCode, city, state, complement, neighborhood, geoCoordinates);
       _this.validateAllFields();
@@ -217,6 +213,25 @@ class fnsCustomAddressForm {
 
       $("body").addClass("js-v-custom-is-loading");
 
+      let ad = {
+        'addressType':'residential',
+        'receiverName':'',
+        'addressId':"",
+        'isDisposable':false,
+        'postalCode':_postalCode,
+        'city':_city,
+        'state':_state,
+        'country':_country,
+        'geoCoordinates':geoCoordinates,
+        'street':_street,
+        'number':_number||"",
+        'neighborhood':"Пресненский",
+        'complement':_complement,
+        'reference':null,
+        'addressQuery':_addressQuery
+      }
+      console.log(ad);
+
       fetch(`/api/checkout/pub/orderForm/${_this.orderForm.orderFormId}/attachments/shippingData`, 
       {
         "credentials":"include",
@@ -241,10 +256,10 @@ class fnsCustomAddressForm {
                 'city':_city,
                 'state':_state,
                 'country':_country,
-                'geoCoordinates':geoCoordinates,
+                'geoCoordinates':[37.5946467, 55.7558722],
                 'street':_street,
                 'number':_number||"",
-                'neighborhood':_neighborhood,
+                'neighborhood':"Пресненский",
                 'complement':_complement,
                 'reference':null,
                 'addressQuery':_addressQuery
@@ -319,13 +334,13 @@ class fnsCustomAddressForm {
         <form>
             <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">${_this.locale ? _this.locale.address1Placeholder : "Street address or P.O. Box"}</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
             <div class="v-custom-ship-info">
-              <p class="input ship-number text ${_this.addressrules.number ? "" : "hide"}"><label for="ship-complement">${_this.locale.number ? _this.locale.number : "Number"}</label><input ${_this.addressrules.number ? "required" : ""} autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${_this.locale.number ? _this.locale.number : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.number==null ? "" : shippingData.address.number : "" }"><span class="help error" style="">${_this.locale ? _this.locale.requiredField : "This field is required."}</span></p>
+              <p class="input ship-number text ${_this.addressrules.number ? "required" : "hide"}"><label for="ship-complement">${_this.locale.number ? _this.locale.number : "Number"}</label><input ${_this.addressrules.number ? "required" : ""} autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${_this.locale.number ? _this.locale.number : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.number==null ? "" : shippingData.address.number : "" }"><span class="help error" style="">${_this.locale ? _this.locale.requiredField : "This field is required."}</span></p>
               <p class="input ship-complement text"><label for="ship-complement">${_this.locale ? _this.locale.address2Placeholder : "Apartment number, unit, floor, etc."}</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
             </div>
             <div class="vcustom--vtex-omnishipping-1-x-address__state">
               <p class="input ship-country text ${_this.deliveryCountries.length<=1 ? "hide" : ""} "><label for="ship-country">Country</label><select name="v-custom-country" id="ship-country" class="input-large">${_this.getCountries().join("")}</select></p>
               <p class="input ship-city required text"><label for="ship-city">${_this.locale ? _this.locale.city : "City"}</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.city : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
-              <p class="input ship-state required text"><label for="ship-state">${_this.locale ? _this.locale.state : "State"}</label>
+              <p class="input ship-state text ${_this.addressrules.state ? "required" : "hide"} "><label for="ship-state">${_this.locale ? _this.locale.state : "State"}</label>
                   <select name="v-custom-state" id="ship-state" class="input-large">
                     <option value="" disabled selected>${_this.locale ? _this.locale.state : "State"}</option>
                     ${_this.getRegions(country[0]).join("")}
@@ -341,8 +356,9 @@ class fnsCustomAddressForm {
 
     shippingData.address ? $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(shippingData.address.state) : "";
     
-
+    $(".orderform-template-holder #shipping-data").append("form");
     $(".orderform-template-holder #shipping-data").append(form);
+    console.log($(".vcustom--vtex-omnishipping-1-x-address").length)
     this.googleForm();
     this.updateGoogleForm(country[1].toLowerCase());
 
@@ -386,7 +402,7 @@ class fnsCustomAddressForm {
         neighborhood = _st.attr("data-neighborhood") || null,
         complement =  $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(),
         city =  $(".vcustom--vtex-omnishipping-1-x-address #ship-city").val(),
-        state =  $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(),
+        state =  _st.attr("data-state") || null,
         postalCode =  $(".vcustom--vtex-omnishipping-1-x-address #ship-postalCode").val();
     
     //_this.updateAddress(postalCode, city, state, street, complement, "", _this.address.addressId);

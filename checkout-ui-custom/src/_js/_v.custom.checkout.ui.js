@@ -22,7 +22,7 @@ class checkoutCustom {
     this.deliveryDateFormat = deliveryDateFormat;
     this.quantityPriceCart = quantityPriceCart;
     this.showNoteField = showNoteField;
-    this.customAddressForm = customAddressForm;
+    this.customAddressForm = true;
     this.hideEmailStep = hideEmailStep;
 
   } 
@@ -604,6 +604,7 @@ class checkoutCustom {
   customAddressFormInit(orderForm) {
     let _this = this;
     let _orderForm = orderForm || vtexjs.checkout.orderForm;
+    console.log("@@@")
     if(_this.customAddressForm) _this.customAddressForm.init(_orderForm);
   }
 
@@ -656,6 +657,7 @@ class checkoutCustom {
     });
 
     $("body").on("click", ".vtex-omnishipping-1-x-linkEdit.link-edit", function(e) {
+      _this.customAddressFormInit(_this.orderForm);
       setTimeout(() => {
         _this.updateLang(_this.orderForm);
         
@@ -730,11 +732,13 @@ class checkoutCustom {
         _this.customAddressFormInit(orderForm);
       })
 
+
       $(window).load(function() {
         $(window).one('componentValidated.vtex', (event, orderForm) => _this.builder());
         _this.checkProfileFocus();
         _this.changeShippingTimeInfoInit();
         _this.indexedInItems(vtexjs.checkout.orderForm);
+        
         if(!window.google && _this.customAddressForm) _this.customAddressForm.loadScript();
         if(_this.customAddressForm && typeof store !="undefined") store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
       });
