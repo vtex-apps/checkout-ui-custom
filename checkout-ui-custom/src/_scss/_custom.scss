@@ -1,1 +1,64 @@
-//custom css
+.RTL-checkout {
+
+.cart-template-holder {
+    order: 2;
+}
+
+body .main-header .header-link {
+    left: initial;
+    right: 0;
+}
+
+body .main-header .checkout-steps {
+    margin-left: initial;
+    margin-right: auto;
+}
+
+.main-header .logo {
+    order: 2;
+}
+
+.summary-template-holder tr {}
+    .summary-template-holder tr .info {
+        order:2;
+    }
+
+.summary-template-holder tbody td.monetary,
+.summary-template-holder tfoot tr td.monetary {
+    margin-right: auto;
+    margin-left: initial !important;
+    text-align: left !important;
+}
+
+
+.summary-template-holder .summary-coupon p.coupon-fields span {
+    flex-direction: row-reverse;
+}
+
+.summary-template-holder .summary-coupon p.coupon-fields span input {
+    margin: 0 0 0 10px;
+}
+
+.table.cart-items tbody tr .v-custom-product-item-wrap,
+.table.cart-items tbody tr,
+.table.cart-items thead tr,
+.table.cart-items thead tr th.product{
+    flex-direction: row-reverse;
+    text-align:right;
+}
+
+.table.cart-items tbody tr td.product-name {
+    text-align: right;
+}
+
+.orderform-template .orderform-template-holder {
+    order: 2;
+    padding: 0 0 0 20px;
+}
+
+.orderform-template .cart-template.mini-cart .summary-totalizers tfoot tr td.monetary {
+    text-align: left !important;
+}
+
+
+}
