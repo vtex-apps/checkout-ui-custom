@@ -543,6 +543,7 @@
 			&.active > div {
 				padding:20px;
 				overflow: hidden;
+        box-sizing: border-box;
 			}
 
 			.SecurityEnvironmentIcon {display: none;}
