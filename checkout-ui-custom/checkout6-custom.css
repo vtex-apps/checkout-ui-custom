@@ -2619,6 +2619,7 @@ svg.pkpmodal-pickup-point-best-marker-image path:not([fill=white]) {
 .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item.active + div, .orderform-template-holder #payment-data .v-custom-payment-item-wrap.active > div {
   padding: 20px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .orderform-template-holder #payment-data .v-custom-payment-item-wrap .SecurityEnvironmentIcon {
   display: none;
@@ -3648,6 +3649,13 @@ body.js-vcustom-hideEmailStep .client-pre-email + .client-profile-data .accordio
 .RTL-checkout .summary-template-holder tr .info {
   order: 2;
 }
+.RTL-checkout .orderform-template-holder #client-profile-data form.client-pre-email .link-box-edit,
+.RTL-checkout .orderform-template-holder #client-profile-data .step.client-profile-data .link-box-edit,
+.RTL-checkout .orderform-template-holder #shipping-data .link-box-edit,
+.RTL-checkout .orderform-template-holder #payment-data .link-box-edit {
+  right: initial;
+  left: 0;
+}
 .RTL-checkout .summary-template-holder tbody td.monetary,
 .RTL-checkout .summary-template-holder tfoot tr td.monetary {
   margin-right: auto;
@@ -3676,6 +3684,145 @@ body.js-vcustom-hideEmailStep .client-pre-email + .client-profile-data .accordio
 }
 .RTL-checkout .orderform-template .cart-template.mini-cart .summary-totalizers tfoot tr td.monetary {
   text-align: left !important;
+}
+.RTL-checkout br {
+  width: 100%;
+  height: 1px;
+  content: " " !important;
+  display: block !important;
+  clear: both;
+}
+.RTL-checkout .step {
+  direction: rtl;
+}
+.RTL-checkout .step .accordion-toggle > span:before,
+.RTL-checkout .step .accordion-toggle:before {
+  margin-right: 0 !important;
+  margin-left: 10px !important;
+}
+.RTL-checkout fieldset.box-client-info-pf {
+  display: flex;
+  flex-wrap: wrap;
+}
+.RTL-checkout .orderform-template-holder .step .form-step fieldset p, .RTL-checkout .orderform-template-holder .step .form-step fieldset div {
+  width: 100%;
+}
+.RTL-checkout p.client-first-name, .RTL-checkout p.client-different-document, .RTL-checkout p.client-document, .RTL-checkout p.client-company-ie, .RTL-checkout p.client-company-postal-code, .RTL-checkout p.client-document-type, .RTL-checkout p.payment-card-due-date {
+  margin-left: 10px;
+  margin-right: 0;
+}
+.RTL-checkout p.client-document, .RTL-checkout p.client-phone, .RTL-checkout p.client-company-document, .RTL-checkout p.client-company-ie, .RTL-checkout p.client-company-postal-code, .RTL-checkout p.client-company-phone, .RTL-checkout p.payment-card-due-month, .RTL-checkout p.payment-card-lash, .RTL-checkout p.payment-card-due-year {
+  float: right;
+}
+.RTL-checkout input.success:not([invalid=true]) {
+  background-position: left top;
+}
+.RTL-checkout .vtexIdUI .vtexIdUI-page {
+  direction: rtl;
+}
+.RTL-checkout .vtexIdUI .modal-header .close {
+  left: -1px;
+  right: initial;
+}
+.RTL-checkout .vtexIdUI .pull-left {
+  float: right;
+}
+.RTL-checkout .orderform-template-holder .step .box-info p {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.RTL-checkout .vtex-omnishipping-1-x-leanShippingIcon.shp-option-icon,
+.RTL-checkout .vtex-omnishipping-1-x-addressItemIcon {
+  margin: 0 0 0 10px;
+}
+.RTL-checkout .vtex-omnishipping-1-x-leanShippingText {
+  padding-right: 10px;
+}
+.RTL-checkout .address-summary {
+  /* direction: unset; */
+  display: flex;
+  flex-wrap: wrap;
+}
+.RTL-checkout br.line1-delimiter {
+  width: 100%;
+  height: 1px;
+  content: " " !important;
+  display: block !important;
+  clear: both;
+}
+.RTL-checkout .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item#payment-group-AffirmPaymentGroup:after,
+.RTL-checkout .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item#payment-group-payPalPaymentGroup:after {
+  right: initial;
+  left: 10px;
+}
+.RTL-checkout .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-text {
+  margin-left: auto;
+  margin-right: inherit;
+}
+.RTL-checkout .orderform-template-holder #payment-data .v-custom-payment-item-wrap .payment-group-item-text:before {
+  margin-right: initial;
+  margin-left: 10px;
+}
+.RTL-checkout .orderform-template-holder #payment-data p.link.link-gift-card a {
+  text-align: right;
+}
+.RTL-checkout .orderform-template .custom-cart-template-wrap .summary-cart-template-holder {
+  direction: rtl;
+}
+.RTL-checkout .pull-right {
+  float: left !important;
+}
+.RTL-checkout .orderform-template .cart-template.mini-cart .item .price {
+  margin-right: auto;
+}
+.RTL-checkout .orderform-template .cart-template.mini-cart .item .url {
+  float: right;
+  margin: 0 0 0 6px;
+}
+.RTL-checkout .orderform-template .cart-template.mini-cart .item .fn {
+  text-align: right;
+  float: right;
+}
+.RTL-checkout .orderform-template .cart-template.mini-cart h2 {
+  text-align: right;
+}
+.RTL-checkout .orderform-template .cart-template.mini-cart #go-to-cart-button {
+  left: 7px;
+  right: initial;
+}
+.RTL-checkout .vtex-omnishipping-1-x-SummaryItemInfo {
+  border: none;
+  border-left: 1px solid #eee;
+  padding: 0 0 0 6px;
+}
+.RTL-checkout .vtexIdUI .vtexIdUI-page {
+  direction: rtl;
+}
+.RTL-checkout .vtexIdUI .modal-header .close {
+  left: -1px;
+  right: initial;
+}
+.RTL-checkout .vtexIdUI .pull-left {
+  float: right;
+}
+.RTL-checkout div#app-container {
+  direction: rtl;
+}
+.RTL-checkout div#app-container .PaymentCardDueDate.clearfix {
+  display: flex;
+}
+.RTL-checkout div#app-container label.FormFieldLabel {
+  margin: 0 0 0 10px;
+}
+.RTL-checkout div#app-container .PaymentCardCVV {
+  display: flex;
+}
+.RTL-checkout div#app-container p.AddressToggle {
+  display: flex;
+}
+.RTL-checkout div#app-container .AddressToggle input {
+  margin: 3px 0 0 5px;
 }
 
 body.debug-on > *:not(.container-main, .main-header, .main-footer, #vtexIdContainer, .vtex-front-messages-placeholder, .pac-container) {
