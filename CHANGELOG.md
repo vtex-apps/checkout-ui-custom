@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fix comma when adding new addres in the custom address form
+
 ## [0.6.3] - 2021-10-07
 
 ### Fixed
