@@ -89,7 +89,7 @@ class fnsCustomAddressForm {
       $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(street);
     } else {
       $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val("");
-      if(street && number) $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(`${formattedStreet ? formattedStreet : (street+` `+number)}`);
+      if(street && number) $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(formattedStreet ? formattedStreet : `${street} ${number}`);
     }
 
   }
