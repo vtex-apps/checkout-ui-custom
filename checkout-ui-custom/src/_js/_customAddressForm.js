@@ -90,7 +90,8 @@ class fnsCustomAddressForm {
     if(this.addressrules.number) {
       $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(street);
     } else {
-      $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(`${formattedStreet ? formattedStreet : (street+`, `+number)}`);
+      $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val("");
+      if(street && number) $(".vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street").val(`${formattedStreet ? formattedStreet : (street+` `+number)}`);
     }
 
   }
@@ -120,7 +121,7 @@ class fnsCustomAddressForm {
       if(~window.location.host.indexOf("myvtex")) console.log(place)
 
       let country = _countries.find(c=>c[0]==place.address_components.filter(item => item.types[0]=="country")[0].short_name)[1];
-      let street = place.address_components.find(item => item.types[0]=="route") ? place.address_components.find(item => item.types[0]=="route").long_name : place.vicinity;
+      
       //let street = place.address_components.find(item => item.types[0]=="route") ? (place.address_components.find(item => item.types[0]=="street_number") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name) : place.name;
       
       let state = "";
@@ -130,12 +131,12 @@ class fnsCustomAddressForm {
 
       let neighborhood = "";
       if(!!_this.addressrules.neighborhood) {
-        neighborhood = _this.returnAddressFRules(place.address_components,"sublocality_level_1", "long_name");
+        neighborhood = _this.returnAddressFRules(place.address_components,_this.addressrules.neighborhood, "long_name")
       }
 
       if(_this.addressrules.number) $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val(_this.returnAddressFRules(place.address_components,"street_number", "long_name"));
       
-      let number = _this.addressrules.number ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : _this.returnAddressFRules(place.address_components,"street_number", "long_name");
+      let number = _this.addressrules.number ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : null ;
       let complement = $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val();
 
       let geoCoordinates = [place.geometry.location.lat(), place.geometry.location.lng()];
@@ -144,9 +145,13 @@ class fnsCustomAddressForm {
       formattedAddress.html(place.adr_address);
       let formattedStreet = $('.street-address', formattedAddress).text();
 
+      let street = _this.addressrules.number ? (place.address_components.find(item => item.types[0]=="route") ? place.address_components.find(item => item.types[0]=="route").long_name : place.vicinity) : formattedStreet ;
+
       let city = _this.returnAddressFRules(place.address_components,_this.addressrules.city, "long_name") || $('.locality', formattedAddress).text();
 
-      let postalCode = _this.addressrules.postalCode ? _this.returnAddressFRules(place.address_components,"postal_code", "long_name") : "00000";
+      let postalCode = _this.addressrules.postalCode ? _this.returnAddressFRules(place.address_components,"postal_code", "long_name") : null;
+
+      
       
 
       if(_this.addressrules.geoCoordinates=="reverse") geoCoordinates=geoCoordinates.reverse();
@@ -160,6 +165,32 @@ class fnsCustomAddressForm {
       
       //end temporaly workaround for ARG
 
+      //temporaly workaround for ARG
+      
+      if(country=="ARE") {
+        postalCode="00000";
+      }
+      
+      //end temporaly workaround for ARG
+
+      let ad = {
+        'addressType':'residential',
+        'receiverName':'',
+        'addressId':"",
+        'isDisposable':false,
+        'postalCode':postalCode,
+        'city':city,
+        'state':state,
+        'country':country,
+        'geoCoordinates':geoCoordinates,
+        'street':street,
+        'number':number,
+        'neighborhood':neighborhood,
+        'complement':complement,
+        'reference':null,
+        'formattedStreet':formattedStreet
+      }
+      console.log("-----------", ad);
       
 
       _this.setForm(country, street, formattedStreet, number, postalCode, city, state, complement, neighborhood, geoCoordinates);
@@ -183,6 +214,7 @@ class fnsCustomAddressForm {
 
   triggerAddressValidation() {
     store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
+    setTimeout(function() { $("button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery").trigger("click") }, 1300);
   }
 
   sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId, _neighborhood, geoCoordinates) {
@@ -225,12 +257,13 @@ class fnsCustomAddressForm {
         'geoCoordinates':geoCoordinates,
         'street':_street,
         'number':_number||"",
-        'neighborhood':"Пресненский",
+        'neighborhood':_neighborhood,
         'complement':_complement,
-        'reference':null,
-        'addressQuery':_addressQuery
+        'reference':null
       }
       console.log(ad);
+
+      
 
       fetch(`/api/checkout/pub/orderForm/${_this.orderForm.orderFormId}/attachments/shippingData`, 
       {
@@ -256,10 +289,10 @@ class fnsCustomAddressForm {
                 'city':_city,
                 'state':_state,
                 'country':_country,
-                'geoCoordinates':[37.5946467, 55.7558722],
+                'geoCoordinates':geoCoordinates,
                 'street':_street,
-                'number':_number||"",
-                'neighborhood':"Пресненский",
+                'number':_number,
+                'neighborhood':_neighborhood,
                 'complement':_complement,
                 'reference':null,
                 'addressQuery':_addressQuery
@@ -346,7 +379,7 @@ class fnsCustomAddressForm {
                     ${_this.getRegions(country[0]).join("")}
                   </select>
               </p>
-              <p class="input ship-postalCode required text"><label for="ship-postalCode">${vtex.i18n[_this.lang] ? vtex.i18n[_this.lang].cart.postalCode : "Zip Code"}</label><input required autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="${_this.addressrules.postalCodeLength ? _this.addressrules.postalCodeLength : "20"}" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
+              <p class="input ship-postalCode ${_this.addressrules.postalCode ? "required" : "hide"} text"><label for="ship-postalCode">${vtex.i18n[_this.lang] ? vtex.i18n[_this.lang].cart.postalCode : "Zip Code"}</label><input ${_this.addressrules.postalCode ? "required" : ""}  autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="${_this.addressrules.postalCodeLength ? _this.addressrules.postalCodeLength : "20"}" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.postalCode : "" }"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
             </div>
             <p class="vtex-omnishipping-1-x-submitShippingStepButton btn-submit-wrapper btn-go-to-shipping-wrapper"><button class="submit  btn-go-to-shippping-method btn btn-large btn-success" id="btn-go-to-shippping-method" type="submit">Continue to shipping</button></p>
         </form>
@@ -356,9 +389,7 @@ class fnsCustomAddressForm {
 
     shippingData.address ? $(".vcustom--vtex-omnishipping-1-x-address #ship-state").val(shippingData.address.state) : "";
     
-    $(".orderform-template-holder #shipping-data").append("form");
     $(".orderform-template-holder #shipping-data").append(form);
-    console.log($(".vcustom--vtex-omnishipping-1-x-address").length)
     this.googleForm();
     this.updateGoogleForm(country[1].toLowerCase());
 
@@ -397,7 +428,7 @@ class fnsCustomAddressForm {
 
     let country = $(".vcustom--vtex-omnishipping-1-x-address #ship-country").val(),
         street = _st.attr("data-street") || _st.val(),
-        number = $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : (_st.attr("data-number") || ""),
+        number = $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() ? $(".vcustom--vtex-omnishipping-1-x-address #ship-number").val() : (_st.attr("data-number") || null),
         geoCoordinates = _st.attr("data-geocoordinates") || [],
         neighborhood = _st.attr("data-neighborhood") || null,
         complement =  $(".vcustom--vtex-omnishipping-1-x-address #ship-complement").val(),

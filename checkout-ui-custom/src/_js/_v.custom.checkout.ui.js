@@ -604,7 +604,6 @@ class checkoutCustom {
   customAddressFormInit(orderForm) {
     let _this = this;
     let _orderForm = orderForm || vtexjs.checkout.orderForm;
-    console.log("@@@")
     if(_this.customAddressForm) _this.customAddressForm.init(_orderForm);
   }
 

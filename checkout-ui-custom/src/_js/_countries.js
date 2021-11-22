@@ -5,7 +5,7 @@ module.exports._countriesrules = {
     city:"locality",
     number:true,
     postalCode:true,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"default"
   },
   SMR: {
@@ -13,7 +13,7 @@ module.exports._countriesrules = {
     number:true,
     city:"locality",
     postalCode:true,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"default"
   },
   USA: {
@@ -21,7 +21,7 @@ module.exports._countriesrules = {
     city:"locality",
     number:false,
     postalCode:true,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"default"
   },
   ARG: {
@@ -30,7 +30,7 @@ module.exports._countriesrules = {
     number:false,
     postalCode:true,
     postalCodeLength:4,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"reverse"
   },
   VAT: {
@@ -38,7 +38,7 @@ module.exports._countriesrules = {
     city:"locality",
     number:true,
     postalCode:true,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"default"
   },
   BRA: {
@@ -46,7 +46,7 @@ module.exports._countriesrules = {
     city:"locality",
     number:false,
     postalCode:true,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"default"
   },
   ARE: {
@@ -54,7 +54,7 @@ module.exports._countriesrules = {
     city:"locality",
     number:true,
     postalCode:false,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"default"
   },
   RUS: {
@@ -62,7 +62,7 @@ module.exports._countriesrules = {
     city:"locality",
     number:false,
     postalCode:true,
-    neighborhood:true,
+    neighborhood:"administrative_area_level_3",
     geoCoordinates:"reverse"
   },
   WWD: {
@@ -70,7 +70,7 @@ module.exports._countriesrules = {
     city:"locality",
     number:false,
     postalCode:true,
-    neighborhood:true,
+    neighborhood:"sublocality_level_1",
     geoCoordinates:"default"
   }
 
