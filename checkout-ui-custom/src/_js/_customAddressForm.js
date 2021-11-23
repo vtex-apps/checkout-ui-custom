@@ -165,32 +165,32 @@ class fnsCustomAddressForm {
       
       //end temporaly workaround for ARG
 
-      //temporaly workaround for ARG
+      //temporaly workaround for ARE
       
       if(country=="ARE") {
         postalCode="00000";
       }
       
-      //end temporaly workaround for ARG
+      //end temporaly workaround for ARE
 
-      let ad = {
-        'addressType':'residential',
-        'receiverName':'',
-        'addressId':"",
-        'isDisposable':false,
-        'postalCode':postalCode,
-        'city':city,
-        'state':state,
-        'country':country,
-        'geoCoordinates':geoCoordinates,
-        'street':street,
-        'number':number,
-        'neighborhood':neighborhood,
-        'complement':complement,
-        'reference':null,
-        'formattedStreet':formattedStreet
-      }
-      console.log("-----------", ad);
+      // let ad = {
+      //   'addressType':'residential',
+      //   'receiverName':'',
+      //   'addressId':"",
+      //   'isDisposable':false,
+      //   'postalCode':postalCode,
+      //   'city':city,
+      //   'state':state,
+      //   'country':country,
+      //   'geoCoordinates':geoCoordinates,
+      //   'street':street,
+      //   'number':number,
+      //   'neighborhood':neighborhood,
+      //   'complement':complement,
+      //   'reference':null,
+      //   'formattedStreet':formattedStreet
+      // }
+      // console.log("-----------", ad);
       
 
       _this.setForm(country, street, formattedStreet, number, postalCode, city, state, complement, neighborhood, geoCoordinates);
@@ -214,7 +214,6 @@ class fnsCustomAddressForm {
 
   triggerAddressValidation() {
     store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
-    setTimeout(function() { $("button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery").trigger("click") }, 1300);
   }
 
   sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId, _neighborhood, geoCoordinates) {
@@ -245,23 +244,23 @@ class fnsCustomAddressForm {
 
       $("body").addClass("js-v-custom-is-loading");
 
-      let ad = {
-        'addressType':'residential',
-        'receiverName':'',
-        'addressId':"",
-        'isDisposable':false,
-        'postalCode':_postalCode,
-        'city':_city,
-        'state':_state,
-        'country':_country,
-        'geoCoordinates':geoCoordinates,
-        'street':_street,
-        'number':_number||"",
-        'neighborhood':_neighborhood,
-        'complement':_complement,
-        'reference':null
-      }
-      console.log(ad);
+      // let ad = {
+      //   'addressType':'residential',
+      //   'receiverName':'',
+      //   'addressId':"",
+      //   'isDisposable':false,
+      //   'postalCode':_postalCode,
+      //   'city':_city,
+      //   'state':_state,
+      //   'country':_country,
+      //   'geoCoordinates':geoCoordinates,
+      //   'street':_street,
+      //   'number':_number||"",
+      //   'neighborhood':_neighborhood,
+      //   'complement':_complement,
+      //   'reference':null
+      // }
+      // console.log(ad);
 
       
 
