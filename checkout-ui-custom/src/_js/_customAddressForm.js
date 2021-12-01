@@ -42,7 +42,7 @@ class fnsCustomAddressForm {
 
 
   loadScript() {
-    $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=en-US&libraries=places&callback=callbackMap"></script>`);
+    $("body").append(`<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=${vtex.i18n.locale}&libraries=places&callback=callbackMap"></script>`);
   }
 
 
@@ -143,9 +143,12 @@ class fnsCustomAddressForm {
       //temporaly workaround for ARG
       
       if(country=="ARG") {
-        geoCoordinates=geoCoordinates.reverse();
         postalCode=postalCode.replace(/ /g,"").replace(/(?:[a-zA-Z]*)(\d+)(?:[a-zA-Z]*)/,'$1');
         if(state=="Provincia de Buenos Aires") state = "Buenos Aires";
+        if(state.toUpperCase()=="CABA" ) {
+          state="Ciudad Autónoma de Buenos Aires";
+          city="Ciudad Autónoma de Buenos Aires";
+        }
       }
       
       //end temporaly workaround for ARG
@@ -187,7 +190,7 @@ class fnsCustomAddressForm {
   }
 
   triggerAddressValidation() {
-    store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false })
+    store.dispatch({ type: 'DISABLE_CALCULATE_BUTTON', isCalculateBttnEnabled: false }) 
   }
 
   sendAddress(_country, _street, _number, _state, _postalCode, _city, _complement, _addressQuery, _addressId, _neighborhood, geoCoordinates) {
@@ -195,21 +198,13 @@ class fnsCustomAddressForm {
 
 
       if(~geoCoordinates.indexOf(",")) {
-        geoCoordinates = geoCoordinates.split(",");
-        geoCoordinates.forEach(function(value, index) {
-          geoCoordinates[index] = parseFloat(value);
-        });
+
+        const [lng, lat] = geoCoordinates.split(',')
+        geoCoordinates = [parseFloat(lat), parseFloat(lng)]
 
         //temporaly workaround for ARG
-        if(_country=="ARG") {
-          //_neighborhood = null;
-          if(_city.toUpperCase()=="CABA") {
-            _city="Ciudad Autónoma de Buenos Aires";
-          }
-          if(_state.toUpperCase()=="CABA" ) {
-            _state="Ciudad Autónoma de Buenos Aires";
-            _city="Ciudad Autónoma de Buenos Aires";
-          }
+        if(_country=="ARG" && _city.toUpperCase()=="CABA") {
+          _city="Ciudad Autónoma de Buenos Aires";
         }
         //end temporaly workaround for ARG
       } else {
@@ -237,7 +232,7 @@ class fnsCustomAddressForm {
                 'addressType':'residential',
                 'receiverName':'',
                 'addressId':"",
-                'isDisposable':false,
+                'isDisposable':true,
                 'postalCode':_postalCode,
                 'city':_city,
                 'state':_state,
