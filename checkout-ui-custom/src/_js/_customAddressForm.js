@@ -48,8 +48,6 @@ class fnsCustomAddressForm {
 
   updateAddress(country="", postalCode="", city="", state="", street="", number=null, complement="", addressQuery="", addressId="", geoCoordinates="") {
     
-    //if(!geoCoordinates) geoCoordinates = [];
-
     this.address = {
       country: country,
       postalCode: postalCode,
@@ -315,7 +313,7 @@ class fnsCustomAddressForm {
         <form>
             <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">${_this.locale ? _this.locale.address1Placeholder : "Street address or P.O. Box"}</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.street : "" }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">${_this.locale.requiredField ? _this.locale.requiredField : "This field is required."}</span></p>
             <div class="v-custom-ship-info">
-              <p class="input ship-number text ${_this.addressrules.number ? "" : "hide"}"><label for="ship-complement">${_this.locale.number ? _this.locale.number : "Number"}</label><input ${_this.addressrules.number ? "required" : ""} autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${_this.locale.number ? _this.locale.number : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.number==null ? "" : shippingData.address.number : "" }"><span class="help error" style="">${_this.locale ? _this.locale.requiredField : "This field is required."}</span></p>
+              <p class="input ship-number text ${_this.addressrules.number ? "required" : "hide"}"><label for="ship-complement">${_this.locale.number ? _this.locale.number : "Number"}</label><input ${_this.addressrules.number ? "required" : ""} autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${_this.locale.number ? _this.locale.number : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.number==null ? "" : shippingData.address.number : "" }"><span class="help error" style="">${_this.locale ? _this.locale.requiredField : "This field is required."}</span></p>
               <p class="input ship-complement text"><label for="ship-complement">${_this.locale ? _this.locale.address2Placeholder : "Apartment number, unit, floor, etc."}</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${_this.locale.address2Placeholder ? _this.locale.address2Placeholder : "" }" class="input-xlarge" data-hj-whitelist="true" value="${shippingData.address ? shippingData.address.complement==null ? "" : shippingData.address.complement : "" }"></p>
             </div>
             <div class="vcustom--vtex-omnishipping-1-x-address__state">
