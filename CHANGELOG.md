@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added 
+- Cyrilic
+
+### Fixed
+- Number requirement using Google Address Format
+
 ## [0.6.5] - 2021-12-01
 
 ### Fixed
