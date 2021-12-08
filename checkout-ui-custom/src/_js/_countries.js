@@ -1,53 +1,69 @@
 module.exports._countriesrules = {
   ITA: {
-    state: 'administrative_area_level_2',
-    city: 'locality',
-    number: true,
-    postalCode: true,
+    state:"administrative_area_level_2",
+    city:"locality",
+    number:true,
+    postalCode:true,
+    neighborhood:"sublocality_level_1"
   },
   SMR: {
-    state: 'administrative_area_level_1',
-    number: true,
-    city: 'locality',
-    postalCode: true,
+    state:"administrative_area_level_1",
+    number:true,
+    city:"locality",
+    postalCode:true,
+    neighborhood:"sublocality_level_1"
   },
   USA: {
-    state: 'administrative_area_level_1',
-    city: 'locality',
-    number: false,
-    postalCode: true,
+    state:"administrative_area_level_1",
+    city:"locality",
+    number:false,
+    postalCode:true,
+    neighborhood:"sublocality_level_1"
   },
   ARG: {
-    state: 'administrative_area_level_1',
-    city: 'administrative_area_level_2',
-    number: false,
-    postalCode: true,
-    postalCodeLength: 4,
+    state:"administrative_area_level_1",
+    city:"administrative_area_level_2",
+    number:false,
+    postalCode:true,
+    postalCodeLength:4,
+    neighborhood:"sublocality_level_1"
   },
   VAT: {
-    state: 'administrative_area_level_1',
-    city: 'locality',
-    number: true,
-    postalCode: true,
+    state:"administrative_area_level_1",
+    city:"locality",
+    number:true,
+    postalCode:true,
+    neighborhood:"sublocality_level_1"
   },
   BRA: {
-    state: 'administrative_area_level_1',
-    city: 'locality',
-    number: false,
-    postalCode: true,
+    state:"administrative_area_level_1",
+    city:"locality",
+    number:false,
+    postalCode:true,
+    neighborhood:"sublocality_level_1"
   },
   ARE: {
-    state: 'administrative_area_level_1',
-    city: 'locality',
-    number: true,
-    postalCode: false,
+    state:"administrative_area_level_1",
+    city:"locality",
+    number:true,
+    postalCode:false,
+    neighborhood:"sublocality_level_1"
+  },
+  RUS: {
+    state:false,
+    city:"locality",
+    number:false,
+    postalCode:true,
+    neighborhood:"administrative_area_level_3"
   },
   WWD: {
-    state: 'administrative_area_level_1',
-    city: 'locality',
-    number: false,
-    postalCode: true,
-  },
+    state:"administrative_area_level_1",
+    city:"locality",
+    number:false,
+    postalCode:true,
+    neighborhood:"sublocality_level_1"
+  }
+
 }
 
 // _countries.find(i=>i[0]=="US")

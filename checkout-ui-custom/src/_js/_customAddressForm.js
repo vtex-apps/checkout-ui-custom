@@ -551,11 +551,13 @@ class fnsCustomAddressForm {
                     ${_this.getRegions(country[0]).join('')}
                   </select>
               </p>
-              <p class="input ship-postalCode required text"><label for="ship-postalCode">${
-                window.vtex.i18n[_this.lang]
-                  ? window.vtex.i18n[_this.lang].cart.postalCode
-                  : 'Zip Code'
-              }</label><input required autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="${
+              <p class="input ship-postalCode ${
+                _this.addressrules.postalCode ? 'required' : 'hide'
+              } text"><label for="ship-postalCode">${
+      window.vtex.i18n[_this.lang] ? window.vtex.i18n[_this.lang].cart.postalCode : 'Zip Code'
+    }</label><input ${
+      _this.addressrules.postalCode ? 'required' : ''
+    }  autocomplete="on" id="ship-postalCode" type="text" name="receiver" maxlength="${
       _this.addressrules.postalCodeLength
         ? _this.addressrules.postalCodeLength
         : '20'
