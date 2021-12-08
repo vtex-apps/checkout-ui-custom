@@ -3632,6 +3632,9 @@ body.js-vcustom-hideEmailStep .client-pre-email + .client-profile-data .accordio
   display: block;
 }
 
+.RTL-checkout select {
+  direction: rtl;
+}
 .RTL-checkout .cart-template-holder {
   order: 2;
 }
@@ -3691,6 +3694,32 @@ body.js-vcustom-hideEmailStep .client-pre-email + .client-profile-data .accordio
   content: " " !important;
   display: block !important;
   clear: both;
+}
+.RTL-checkout .table.cart-items td.quantity {
+  direction: rtl;
+}
+.RTL-checkout .checkout-steps_items {
+  direction: rtl;
+}
+.RTL-checkout .checkout-steps_items .text:before {
+  margin: 0 0 0 7px;
+}
+.RTL-checkout .srp-toggle__wrapper {
+  direction: rtl;
+}
+.RTL-checkout .srp-toggle__wrapper .vtex-shipping-preview-0-x-framePickup {
+  left: 0;
+}
+.RTL-checkout .srp-toggle__wrapper .vtex-shipping-preview-0-x-frameDelivery {
+  left: 50%;
+}
+.RTL-checkout .srp-delivery-header.mb3 {
+  direction: rtl;
+  display: flex;
+}
+.RTL-checkout .srp-delivery-current-many .flex {
+  direction: rtl;
+  text-align: right;
 }
 .RTL-checkout .step {
   direction: rtl;
@@ -3806,23 +3835,63 @@ body.js-vcustom-hideEmailStep .client-pre-email + .client-profile-data .accordio
 .RTL-checkout .vtexIdUI .pull-left {
   float: right;
 }
-.RTL-checkout div#app-container {
+.RTL-checkout #app-container {
   direction: rtl;
 }
-.RTL-checkout div#app-container .PaymentCardDueDate.clearfix {
+.RTL-checkout #app-container .PaymentCardDueDate.clearfix {
   display: flex;
 }
-.RTL-checkout div#app-container label.FormFieldLabel {
+.RTL-checkout #app-container label.FormFieldLabel {
   margin: 0 0 0 10px;
 }
-.RTL-checkout div#app-container .PaymentCardCVV {
+.RTL-checkout #app-container .PaymentCardCVV {
   display: flex;
 }
-.RTL-checkout div#app-container p.AddressToggle {
+.RTL-checkout #app-container p.AddressToggle {
   display: flex;
 }
-.RTL-checkout div#app-container .AddressToggle input {
+.RTL-checkout #app-container .AddressToggle input {
   margin: 3px 0 0 5px;
+}
+@media (max-width: 998px) {
+  .RTL-checkout.body-cart-vertical .summary-template-holder {
+    order: 2;
+  }
+}
+@media (max-width: 768px) {
+  .RTL-checkout .orderform-template .cart-template.mini-cart {
+    order: 2;
+  }
+}
+@media (max-width: 690px) {
+  .RTL-checkout .table.cart-items td.product-image a {
+    margin-right: 0;
+    margin-left: 20px;
+  }
+  .RTL-checkout .full-cart .cart table tbody tr td.product-image,
+.RTL-checkout .full-cart .cart table tbody tr td.bundle-item-image {
+    left: initial;
+    right: 0;
+  }
+  .RTL-checkout .table.cart-items td.product-name,
+.RTL-checkout .table.cart-items td.quantity {
+    margin-left: 0 !important;
+    margin-right: 90px !important;
+  }
+  .RTL-checkout .table.cart-items td.quantity {
+    float: right;
+  }
+  .RTL-checkout .full-cart .cart table tbody tr td.product-name a,
+.RTL-checkout .full-cart .cart table tbody tr td.bundle-item-name span {
+    padding: 0 0 0 20px;
+  }
+  .RTL-checkout .full-cart .cart table tbody tr td.product-price {
+    float: left;
+  }
+  .RTL-checkout .full-cart .cart table tbody tr td.item-remove {
+    left: 0;
+    right: initial;
+  }
 }
 
 body.debug-on > *:not(.container-main, .main-header, .main-footer, #vtexIdContainer, .vtex-front-messages-placeholder, .pac-container) {
