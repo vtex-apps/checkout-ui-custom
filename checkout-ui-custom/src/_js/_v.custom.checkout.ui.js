@@ -612,6 +612,10 @@ class checkoutCustom {
     if(_this.hideEmailStep) if(~window.location.hash.indexOf("#/email") && $("#client-email").val()=="") $("#client-email").focus()
   }
 
+  rtlUI() {
+    if(vtex.i18n.getLocale()=='ar' || vtex.i18n.getLocale()=='ar-SA' || vtex.i18n.getLocale()=='ar-IQ') $("body").addClass("RTL-checkout");
+  }
+
   bind() {
     let _this = this;
     $("body").on("click", "#v-custom-edit-login-data", function(e) {
@@ -704,6 +708,7 @@ class checkoutCustom {
       $(function() {
         _this.bind(); 
         _this.customAddressFormLoader();
+        _this.rtlUI();
       });
 
       $(document).ajaxComplete(function() {
