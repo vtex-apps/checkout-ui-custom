@@ -25,6 +25,7 @@
 	.summary-template-holder tr {
 		.info {
 			order:2;
+			text-align: right !important;
 		}
 	}
 
@@ -226,6 +227,7 @@
 
 	.orderform-template .cart-template.mini-cart .item .price {
 			margin-right:auto;
+			direction: initial;
 	}
 
 	.orderform-template .cart-template.mini-cart .item .url {

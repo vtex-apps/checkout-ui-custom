@@ -613,9 +613,7 @@ class checkoutCustom {
   }
 
   rtlUI() {
-
-    $("body").addClass("RTL-checkout");
-
+    if(vtex.i18n.getLocale()=='ar' || vtex.i18n.getLocale()=='ar-SA' || vtex.i18n.getLocale()=='ar-IQ') $("body").addClass("RTL-checkout");
   }
 
   bind() {

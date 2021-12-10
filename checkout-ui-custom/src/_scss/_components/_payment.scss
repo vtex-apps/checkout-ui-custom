@@ -876,7 +876,8 @@
 
 
 		.quantity {
-			width: 10px;
+			min-width: 10px;
+			width: auto;
 	    height: 10px;
 	    display: inline-block;
 	    background:$actionSecondary;
