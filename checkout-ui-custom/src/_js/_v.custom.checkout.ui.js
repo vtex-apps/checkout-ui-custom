@@ -334,7 +334,6 @@ class checkoutCustom {
   changeShippingTimeInfo() {
     let _this = this;
     $("body").addClass("v-custom-changeShippingTimeInfo");
-    $('.srp-delivery-current-many__sla').removeClass('v-changeShippingTimeInfo-elem-active');
     let mainSTIelems = [
       ".shp-summary-package-time > span", 
       "p.vtex-omnishipping-1-x-sla.sla", 
@@ -362,20 +361,20 @@ class checkoutCustom {
         let selectedSla = vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].selectedSla
         let selectedSlaDays = availableSlas.find(e => e.name == selectedSla).shippingEstimate
         let txtselectin = $(this).find(mainSTIelems.map(elem => elem+":not(.v-changeShippingTimeInfo-elem-active)").join(", ")).text();
-        
-        if(txtselectin!="" && txtselectin.match(/(day)|(dia)|(día)/gm)) {
-          let days
-          if(!$(this).hasClass('srp-delivery-current-many')) {
+        let days
+
+        if(!$(this).hasClass('srp-delivery-current-many')) {
+          if(txtselectin!="" && txtselectin.match(/(day)|(dia)|(día)/gm)) {
             days = parseInt(txtselectin.match(/\d+/));
-          } else {
-            days = parseInt(selectedSlaDays.match(/\d+/));
           }
+        } else {
+          days = parseInt(selectedSlaDays.match(/\d+/));
+        }
           if(days) {
             let _delivtext = _this.lang.deliveryDateText;
             if(!! $(this).find(mainSTIelems.join(", ")).text().toLowerCase().match(/(ready in up)|(pronto)|(a partir de)|(hasta)/gm)) _delivtext = _this.lang.PickupDateText; // check if is pickup. OBS: none of others solutions worked, needs constantly update
             $(this).find(mainSTIelems.join(", ")).html(`${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`).addClass("v-changeShippingTimeInfo-elem-active");
           }
-        }
         $(this).addClass("v-changeShippingTimeInfo-active");
       });
 
