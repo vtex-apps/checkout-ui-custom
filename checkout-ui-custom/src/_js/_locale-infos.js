@@ -346,7 +346,7 @@ module.exports._locale = {
     couponInactive: "Brak dostępnych upustów. Sprawdź warunki.",
     editLabel: "Edytuj",
     paypalImg: "",
-    paypalPhone: "1 (888) 221-1161",
+    paypalPhone: "",
     cartSubmitButton: "Przejdź do płatności",
     deliveryDateText:  "Dotrze do",
     PickupDateText: "Gotowe do",
