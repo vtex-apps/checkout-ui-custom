@@ -36,9 +36,9 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Setup Python 2   
-      - uses: actions/setup-python@v2
+        uses: actions/setup-python@v2
         with:
           python-version: '2.x'
-          
+
       - name: Lint project
         uses: vtex/action-lint@master
