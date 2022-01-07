@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@master
         with:
-          node-version: 12.x
+          node-version: 16.x
         env:
           RUNNER_TEMP: /tmp
 
@@ -35,13 +35,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Setup Python 2
-        uses: actions/setup-python@v2
-        with:
-          python-version: '2.x'
+      # Enable when we fix the bypass
+      # - name: Setup Python 2
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '2.x'
 
       # Fix until we fix the checkout-ui-custom build
-      - name: Baypass checkout-ui-custom build
+      - name: Bypass checkout-ui-custom build
         run: rm -rf checkout-ui-custom/package.json
 
       - name: Lint project
