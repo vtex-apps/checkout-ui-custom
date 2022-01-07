@@ -42,5 +42,5 @@ jobs:
       # - name: Lint project
       #   uses: vtex/action-lint@master
 
-      - name: Lint project - Bypass
+      - name: Lint project - bypass vtex action
         run: bash lint.sh
