@@ -1,4 +1,4 @@
-name: "[QE] Lint"
+name: '[QE] Lint'
 
 on:
   workflow_dispatch:
@@ -12,10 +12,10 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout   
+      - name: Checkout
         uses: actions/checkout@master
 
-      - name: Setup Node   
+      - name: Setup Node
         uses: actions/setup-node@master
         with:
           node-version: 12.x
@@ -30,15 +30,19 @@ jobs:
         uses: actions/cache@v1
         id: yarn-cache
         with:
-          path: "${{ steps.yarn-cache-dir-path.outputs.dir }}"
+          path: '${{ steps.yarn-cache-dir-path.outputs.dir }}'
           key: "${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}"
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Setup Python 2   
+      - name: Setup Python 2
         uses: actions/setup-python@v2
         with:
           python-version: '2.x'
+
+      # Fix until we fix the checkout-ui-custom build
+      - name: Baypass checkout-ui-custom build
+        run: rm -rf checkout-ui-custom/package.json
 
       - name: Lint project
         uses: vtex/action-lint@master
