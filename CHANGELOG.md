@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added =
+- Poland language support
+
 ## [0.6.8] - 2021-12-23
 
 ### fixed
