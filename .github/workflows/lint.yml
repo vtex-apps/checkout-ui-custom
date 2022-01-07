@@ -35,15 +35,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # Enable when we fix the bypass
-      # - name: Setup Python 2
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: '2.x'
+      # Disabled until we fix the never ends linting
+      # - name: Bypass checkout-ui-custom build
+      #   run: rm -rf checkout-ui-custom/package.json
 
-      # Fix until we fix the checkout-ui-custom build
-      - name: Bypass checkout-ui-custom build
-        run: rm -rf checkout-ui-custom/package.json
+      # - name: Lint project
+      #   uses: vtex/action-lint@master
 
-      - name: Lint project
-        uses: vtex/action-lint@master
+      - name: Lint project - Bypass
+        run: bash lint.sh
