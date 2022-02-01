@@ -35,12 +35,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      # Disabled until we fix the never ends linting
-      # - name: Bypass checkout-ui-custom build
-      #   run: rm -rf checkout-ui-custom/package.json
+      - name: Bypass checkout-ui-custom build
+        run: rm -rf checkout-ui-custom/package.json
 
-      # - name: Lint project
-      #   uses: vtex/action-lint@master
+      - name: Lint project
+        uses: vtex/action-lint@master
 
-      - name: Lint project - bypass vtex action
-        run: bash lint.sh
+      #- name: Lint project - bypass vtex action
+      #  run: bash lint.sh
