@@ -1596,9 +1596,25 @@ vary@^1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.126.0/public/@types/vtex.styleguide":
-  version "9.126.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.126.0/public/@types/vtex.styleguide#a2e91aac511eefa04d82d3f44d43c2ad6a16e8f7"
+"vtex.checkout-ui-custom@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.6.10/public/@types/vtex.checkout-ui-custom":
+  version "0.6.10"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.6.10/public/@types/vtex.checkout-ui-custom#bcc10e3dcf1341be59abcd3682f33ef07419868c"
+
+"vtex.checkout-ui-settings-server@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.3/public/_types/react":
+  version "0.0.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.3/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
+
+"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime":
+  version "8.132.3"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime#c7dd142e384f38bd7a7c841543b73e9349fadc93"
+
+"vtex.store-resources@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.85.0/public/@types/vtex.store-resources":
+  version "0.85.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.85.0/public/@types/vtex.store-resources#c320bf775471cec37977bfb8af2cfccd4c857c63"
+
+"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.145.2/public/@types/vtex.styleguide":
+  version "9.145.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.145.2/public/@types/vtex.styleguide#ca64bf8408ad3eb487b0822dd68f77565c986a56"
 
 wrappy@1:
   version "1.0.2"

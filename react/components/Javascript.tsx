@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC, useState } from 'react'
 import { defineMessages, injectIntl, WrappedComponentProps } from 'react-intl'
 import PropTypes from 'prop-types'

@@ -1,12 +1,8 @@
-const path = require('path');
-const webpack = require("webpack");
+const path = require('path')
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  entry: [
-    './src/checkout6-custom.js',
-    './src/checkout6-custom.scss'
-  ],
+  entry: ['./src/checkout6-custom.js', './src/checkout6-custom.scss'],
   output: {
     filename: 'checkout6-custom.js',
     path: path.resolve(__dirname, './'),
@@ -20,19 +16,19 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].css',
-            }
+            },
           },
           {
-            loader: 'extract-loader'
+            loader: 'extract-loader',
           },
           {
-            loader: 'css-loader?-url'
+            loader: 'css-loader?-url',
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
-      }
-    ]
-  }
-};
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ],
+  },
+}

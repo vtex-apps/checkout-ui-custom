@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Lint changes
+
 ## [0.6.10] - 2022-01-20
 
 ## [0.6.9] - 2022-01-07

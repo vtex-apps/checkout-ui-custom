@@ -19,7 +19,7 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "skipLibCheck": true,
-    "lib":["DOM"]
+    "lib": ["DOM"]
   },
   "typeAcquisition": {
     "enable": false
