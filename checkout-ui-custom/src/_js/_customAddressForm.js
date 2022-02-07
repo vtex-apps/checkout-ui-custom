@@ -257,9 +257,7 @@ class fnsCustomAddressForm {
       // temporaly workaround for ARG
 
       if (country === 'ARG') {
-        postalCode = postalCode
-          .replace(/ /g, '')
-          .replace(/(?:[a-zA-Z]*)(\d+)(?:[a-zA-Z]*)/, '$1')
+        postalCode = postalCode.replace(/\D/gi, '')
         if (state === 'Provincia de Buenos Aires') state = 'Buenos Aires'
         if (state.toUpperCase() === 'CABA') {
           state = 'Ciudad Autónoma de Buenos Aires'
