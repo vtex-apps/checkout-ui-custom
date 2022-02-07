@@ -571,11 +571,11 @@ class fnsCustomAddressForm {
       </div>
     `
 
-    shippingData.address
-      ? $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
-          shippingData.address.state
-        )
-      : ''
+    if (shippingData.address) {
+      $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
+        shippingData.address.state
+      )
+    }
 
     $('.orderform-template-holder #shipping-data').append(form)
     this.googleForm()
