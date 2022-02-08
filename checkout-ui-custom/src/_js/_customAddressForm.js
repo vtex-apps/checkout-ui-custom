@@ -443,16 +443,20 @@ class fnsCustomAddressForm {
   getCountries() {
     const _this = this
 
-    return _this.deliveryCountries.forEach(countryCode => {
+    return _this.deliveryCountries.map(countryCode => {
       const _i18n = window.vtex.i18n[_this.lang]
         ? window.vtex.i18n[_this.lang]
         : window.vtex.i18n[window.vtex.i18n.locale]
 
+      let ret = ''
+
       if (_i18n.countries[countryCode]) {
-        return `<option value="${countryCode}" ${
+        ret = `<option value="${countryCode}" ${
           countryCode === _this.mainCountry ? 'selected' : ''
         }>${_i18n.countries[countryCode]}</option>`
       }
+
+      return ret
     })
   }
 
