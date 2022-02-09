@@ -9,10 +9,10 @@
     "subSection": "storeFront",
     "adminVersion": 4,
     "subSectionItems": [
-        {
-            "labelId": "admin/checkout-ui.navigation.title",
-            "path": "/admin/vtex-checkout-ui-custom/"
-        }
+      {
+        "labelId": "admin/checkout-ui.navigation.title",
+        "path": "/admin/vtex-checkout-ui-custom/"
+      }
     ]
   }
 ]

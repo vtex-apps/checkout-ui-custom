@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/prop-types */
 import React, { FC, useState } from 'react'
 import { injectIntl, WrappedComponentProps, FormattedMessage } from 'react-intl'
@@ -173,7 +174,9 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <div
             className="mt6 db flex items-center"
             onMouseEnter={() => {
-              changePreview(state.hideEmailStep ? 'emailStepOff' : 'emailStepOn')
+              changePreview(
+                state.hideEmailStep ? 'emailStepOff' : 'emailStepOn'
+              )
             }}
           >
             <Toggle
@@ -195,7 +198,11 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
           <div
             className="mt6 db flex items-center"
             onMouseEnter={() => {
-              changePreview(state.customAddressForm ? 'customAddresFormOn' : 'customAddresFormOff')
+              changePreview(
+                state.customAddressForm
+                  ? 'customAddresFormOn'
+                  : 'customAddresFormOff'
+              )
             }}
           >
             <Toggle
@@ -208,20 +215,24 @@ const LayoutSettings: FC<WrappedComponentProps & any> = ({
                 handleChange(
                   !state.customAddressForm,
                   'customAddressForm',
-                  e.currentTarget.checked ? 'customAddresFormOn' : 'customAddresFormOff'
+                  e.currentTarget.checked
+                    ? 'customAddresFormOn'
+                    : 'customAddresFormOff'
                 )
               }
             />
-            <p style={{ 
-              display: 'inline-block',
-              background: '#f71963',
-              margin: '0 0 0 10px',
-              padding: '5px',
-              borderRadius: '10px',
-              color: '#FFF',
-              float: 'left',
-              fontSize: '13px'
-            }}>
+            <p
+              style={{
+                display: 'inline-block',
+                background: '#f71963',
+                margin: '0 0 0 10px',
+                padding: '5px',
+                borderRadius: '10px',
+                color: '#FFF',
+                float: 'left',
+                fontSize: '13px',
+              }}
+            >
               BETA
             </p>
           </div>

@@ -1,22 +1,22 @@
-const debug = require("./_js/_debug.js");
-const checkoutCustom = require("./_js/_v.custom.checkout.ui.js");
+const Debug = require('./_js/_debug.js')
+const CheckoutCustom = require('./_js/_v.custom.checkout.ui.js')
 
 window.vcustom = {
-  checkout: new checkoutCustom({
-    type: "vertical", //["vertical" , "horizontal"]
-    accordionPayments: true, 
-    deliveryDateFormat: false, 
-    quantityPriceCart:false,
-    showNoteField:false,
+  checkout: new CheckoutCustom({
+    type: 'vertical', // ["vertical" , "horizontal"]
+    accordionPayments: true,
+    deliveryDateFormat: false,
+    quantityPriceCart: false,
+    showNoteField: false,
     customAddressForm: false,
-    hideEmailStep:true
+    hideEmailStep: true,
   }),
-  debug: new debug({
-    dbg:false,
-    logo:""
-  })
+  debug: new Debug({
+    dbg: false,
+    logo: '',
+  }),
 }
 
-vcustom.checkout.start(); 
+window.vcustom.checkout.start()
 
 // vcustom.debug.start();

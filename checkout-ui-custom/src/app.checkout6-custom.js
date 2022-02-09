@@ -1,20 +1,20 @@
-const debug = require('./_js/_debug.js')
-const checkoutCustom = require('./_js/_v.custom.checkout.ui.js')
+const Debug = require('./_js/_debug.js')
+const CheckoutCustom = require('./_js/_v.custom.checkout.ui.js')
 
 window.vcustom = {
-  checkout: new checkoutCustom({
-    type: '"{{type}}"', //["vertical" , "horizontal"]
-    accordionPayments: "{{accordionPayments}}",
-    deliveryDateFormat: "{{deliveryDateFormat}}",
-    quantityPriceCart: "{{showCartQuantityPrice}}",
-    showNoteField: "{{showNoteField}}",
-    customAddressForm: "{{customAddressForm}}",
-    hideEmailStep:"{{hideEmailStep}}"
+  checkout: new CheckoutCustom({
+    type: '"{{type}}"', // ["vertical" , "horizontal"]
+    accordionPayments: '{{accordionPayments}}',
+    deliveryDateFormat: '{{deliveryDateFormat}}',
+    quantityPriceCart: '{{showCartQuantityPrice}}',
+    showNoteField: '{{showNoteField}}',
+    customAddressForm: '{{customAddressForm}}',
+    hideEmailStep: '{{hideEmailStep}}',
   }),
-  debug: new debug({
+  debug: new Debug({
     dbg: false,
     logo: '',
   }),
 }
 
-vcustom.checkout.start()
+window.vcustom.checkout.start()
