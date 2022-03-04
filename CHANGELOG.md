@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- conditioning waitForRuntime extensions for delivery options.
+
 ## [0.6.12] - 2022-02-25
 
 ### Fixed
