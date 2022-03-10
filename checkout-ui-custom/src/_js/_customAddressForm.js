@@ -139,10 +139,11 @@ class fnsCustomAddressForm {
       )
     } else {
       $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val('')
-      if (street && number)
+      if (street && number) {
         $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
           formattedStreet || `${street} ${number}`
         )
+      }
     }
   }
 
@@ -208,7 +209,7 @@ class fnsCustomAddressForm {
         'long_name'
       )
 
-      if (_this.addressrules.number)
+      if (_this.addressrules.number) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(
           _this.returnAddressFRules(
             place.address_components,
@@ -216,6 +217,7 @@ class fnsCustomAddressForm {
             'long_name'
           )
         )
+      }
 
       const number = _this.addressrules.number
         ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
@@ -354,6 +356,12 @@ class fnsCustomAddressForm {
         _city = 'Ciudad Autónoma de Buenos Aires'
       }
       // end temporaly workaround for ARG
+
+      // temporaly workaround for ZAF
+      if (_country === 'ZAF') {
+        _street = `${_number} ${_street}`
+      }
+      // end temporaly workaround for ZAF
     } else {
       geoCoordinates = []
     }
