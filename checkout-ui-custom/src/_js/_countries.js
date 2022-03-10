@@ -48,6 +48,12 @@ module.exports._countriesrules = {
     number: false,
     postalCode: true,
   },
+  ZAF: {
+    state: 'administrative_area_level_1',
+    city: 'locality',
+    number: true,
+    postalCode: true,
+  },
 }
 
 // _countries.find(i=>i[0]=="US")
@@ -15413,11 +15419,11 @@ module.exports._cities = [
       },
       {
         name: 'Gauteng',
-        shortCode: 'GT',
+        shortCode: 'GP',
       },
       {
         name: 'KwaZulu-Natal',
-        shortCode: 'NL',
+        shortCode: 'KZN',
       },
       {
         name: 'Limpopo',
@@ -19825,4 +19831,5 @@ module.exports._addressPlaceholder = {
   ITA: 'Eg: Corso Vittorio Emanuele 69, Milano',
   NLD: 'Eg: Surinamestraat 27, Amsterdam',
   POL: 'Eg: Ulica Twarda 3, Szczecin',
+  ZAF: 'Eg: 234 Brickfield Rd, Salt River, Cape Town, 7501, South Africa',
 }
