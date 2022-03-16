@@ -451,7 +451,7 @@
         identifiedUserMessage:
           'Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.',
         address1Placeholder: 'Street address or P.O. Box',
-        address2Placeholder: 'Complement',
+        address2Placeholder: 'Apartment number, unit, floor, etc.',
         checkoutStepsLabelCart: 'Cart',
         checkoutStepsLabelIdentification: 'Identification',
         checkoutStepsLabelShipping: 'Shipping',
@@ -554,7 +554,7 @@
         if (0 === $('.cart-more-options').length) {
           return t(() => {
             e.builder()
-          }, 1500)()
+          }, 1e3)()
         }
         'vertical' === this.type
           ? e.buildVertical()
@@ -1388,45 +1388,44 @@
         r = '',
         s = '',
         d = '',
-        m = '',
-        h = ''
+        m = ''
       ) {
         $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-          this.addressrules.number ? o : a || o
+          this.addressrules.number ? e : o || e
         ),
-          $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(d),
-          $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(n),
-          $('.vcustom--vtex-omnishipping-1-x-address #ship-city').val(r),
-          $('.vcustom--vtex-omnishipping-1-x-address #ship-postalCode').val(t),
+          $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(s),
+          $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(a),
+          $('.vcustom--vtex-omnishipping-1-x-address #ship-city').val(t),
+          $('.vcustom--vtex-omnishipping-1-x-address #ship-postalCode').val(n),
           $(
             '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
-          ).attr('data-street', 'USA' === e ? a : o),
+          ).attr('data-street', this.addressrules.number ? e : o || e),
           $(
             '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
-          ).attr('data-number', n),
+          ).attr('data-number', a),
           $(
             '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
-          ).attr('data-neighborhood', m),
+          ).attr('data-neighborhood', d),
           $(
             '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
-          ).attr('data-geocoordinates', h),
+          ).attr('data-geocoordinates', m),
           $(
-            `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${s}']`
+            `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${r}']`
           ).length
-            ? $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(s)
+            ? $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(r)
             : $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(''),
           this.addressrules.number
             ? $(
                 '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
-              ).val(o)
+              ).val(e)
             : ($('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(
                 ''
               ),
-              o &&
-                n &&
+              e &&
+                a &&
                 $(
                   '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
-                ).val(a || `${o} ${n}`))
+                ).val(o || `${e} ${a}`))
       }
       updateGoogleForm(e = 'us') {
         $('input#v-custom-ship-street').attr(
@@ -1449,7 +1448,7 @@
           e.gPlacesAutocomplete.addListener('place_changed', function() {
             const o = e.gPlacesAutocomplete.getPlace()
             ~window.location.host.indexOf('myvtex') && console.log(o)
-            const [, a] = t.find(
+            const [a] = t.find(
                 e =>
                   e[0] ===
                   o.address_components.filter(e => 'country' === e.types[0])[0]
@@ -1481,11 +1480,7 @@
                 ? $(
                     '.vcustom--vtex-omnishipping-1-x-address #ship-number'
                   ).val()
-                : e.returnAddressFRules(
-                    o.address_components,
-                    'street_number',
-                    'long_name'
-                  ),
+                : null,
               m = $(
                 '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
               ).val(),
@@ -1545,12 +1540,11 @@
       sendAddress(e, o, a, n, t, r, s, d, m, h, C) {
         const i = this
         if (~C.indexOf(',')) {
-          const [n, t] = C.split(',')
-          ;(C = [parseFloat(t), parseFloat(n)]),
+          const [o, a] = C.split(',')
+          ;(C = [parseFloat(a), parseFloat(o)]),
             'ARG' === e &&
               'CABA' === r.toUpperCase() &&
-              (r = 'Ciudad Autónoma de Buenos Aires'),
-            'ZAF' === e && (o = `${a} ${o}`)
+              (r = 'Ciudad Autónoma de Buenos Aires')
         } else C = []
         $('body').addClass('js-v-custom-is-loading'),
           fetch(

@@ -84,7 +84,6 @@ class fnsCustomAddressForm {
   }
 
   setForm(
-    country = '',
     street = '',
     formattedStreet = '',
     number = '',
@@ -108,7 +107,7 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      country === 'USA' ? formattedStreet : street
+      this.addressrules.number ? street : formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
@@ -181,7 +180,7 @@ class fnsCustomAddressForm {
         console.log(place)
       }
 
-      const [, country] = _countries.find(
+      const [country] = _countries.find(
         c =>
           c[0] ===
           place.address_components.filter(
@@ -221,11 +220,7 @@ class fnsCustomAddressForm {
 
       const number = _this.addressrules.number
         ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
-        : _this.returnAddressFRules(
-            place.address_components,
-            'street_number',
-            'long_name'
-          )
+        : null
 
       const complement = $(
         '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
@@ -356,12 +351,6 @@ class fnsCustomAddressForm {
         _city = 'Ciudad Autónoma de Buenos Aires'
       }
       // end temporaly workaround for ARG
-
-      // temporaly workaround for ZAF
-      if (_country === 'ZAF') {
-        _street = `${_number} ${_street}`
-      }
-      // end temporaly workaround for ZAF
     } else {
       geoCoordinates = []
     }

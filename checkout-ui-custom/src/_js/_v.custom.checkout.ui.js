@@ -50,7 +50,7 @@ class checkoutCustom {
     if ($('.cart-more-options').length === 0) {
       const builderDebounce = debounce(() => {
         _this.builder()
-      }, 1500)
+      }, 1000)
       return builderDebounce()
     }
     if (this.type === 'vertical') {
