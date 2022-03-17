@@ -451,7 +451,7 @@
         identifiedUserMessage:
           'Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.',
         address1Placeholder: 'Street address or P.O. Box',
-        address2Placeholder: 'Complement',
+        address2Placeholder: 'Apartment number, unit, floor, etc.',
         checkoutStepsLabelCart: 'Cart',
         checkoutStepsLabelIdentification: 'Identification',
         checkoutStepsLabelShipping: 'Shipping',
@@ -554,7 +554,7 @@
         if (0 === $('.cart-more-options').length) {
           return t(() => {
             e.builder()
-          }, 1500)()
+          }, 1e3)()
         }
         'vertical' === this.type
           ? e.buildVertical()
@@ -662,22 +662,23 @@
         }
       }
       showCustomMsgCoupon(e) {
-        const o = e.marketingData.coupon,
-          a = e.items.reduce(function(e, a) {
+        const o = this,
+          a = e.marketingData.coupon,
+          n = e.items.reduce(function(e, o) {
             return (
               e +
-              (a.priceTags.length
-                ? a.priceTags.filter(e =>
+              (o.priceTags.length
+                ? o.priceTags.filter(e =>
                     e.ratesAndBenefitsIdentifier
                       ? e.ratesAndBenefitsIdentifier.matchedParameters[
                           'couponCode@Marketing'
-                        ] === o
+                        ] === a
                       : 0
                   ).length
                 : 0)
             )
           }, 0)
-        if (!o || a > 0)
+        if (!a || n > 0)
           return (
             $('fieldset.coupon-fieldset').removeClass(
               'js-vcustom-showCustomMsgCoupon'
@@ -689,7 +690,7 @@
           $('fieldset.coupon-fieldset')
             .addClass('js-vcustom-showCustomMsgCoupon')
             .append(
-              `<p class="vcustom-showCustomMsgCoupon">${this.lang.couponInactive}</div>`
+              `<p class="vcustom-showCustomMsgCoupon">${o.lang.couponInactive}</div>`
             )
       }
       addLabels(e) {
@@ -846,22 +847,23 @@
         }
       }
       addBusinessDays(e, o = window.i18n.options.lng) {
-        let a = new Date()
-        a = new Date(a.getTime())
-        const n = a.getDay()
-        a.setDate(
-          a.getDate() +
+        const a = this
+        let n = new Date()
+        n = new Date(n.getTime())
+        const t = n.getDay()
+        n.setDate(
+          n.getDate() +
             e +
-            (6 === n ? 2 : +!n) +
-            2 * Math.floor((e - 1 + (n % 6 || 1)) / 5)
+            (6 === t ? 2 : +!t) +
+            2 * Math.floor((e - 1 + (t % 6 || 1)) / 5)
         )
-        let t = { weekday: 'long', month: 'short', day: 'numeric' }
+        let r = { weekday: 'long', month: 'short', day: 'numeric' }
         return (
           'pt' === o &&
-            (t = { weekday: 'short', month: 'short', day: 'numeric' }),
-          a.getDate() - new Date().getDate() == 1
-            ? this.lang.tomorrowLabel || 'Tomorrow'
-            : ((a = a.toLocaleDateString(o, t)), a)
+            (r = { weekday: 'short', month: 'short', day: 'numeric' }),
+          n.getDate() - new Date().getDate() == 1
+            ? a.lang.tomorrowLabel || 'Tomorrow'
+            : ((n = n.toLocaleDateString(o, r)), n)
         )
       }
       changeShippingTimeInfo() {
@@ -1391,16 +1393,17 @@
         m = '',
         h = ''
       ) {
-        $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-          this.addressrules.number ? o : a || o
-        ),
+        console.log('country:', e),
+          $(
+            '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
+          ).val(this.addressrules.number ? o : a || o),
           $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(d),
           $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(n),
           $('.vcustom--vtex-omnishipping-1-x-address #ship-city').val(r),
           $('.vcustom--vtex-omnishipping-1-x-address #ship-postalCode').val(t),
           $(
             '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
-          ).attr('data-street', 'USA' === e ? a : o),
+          ).attr('data-street', this.addressrules.number ? o : a || o),
           $(
             '.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street'
           ).attr('data-number', n),
@@ -1449,7 +1452,7 @@
           e.gPlacesAutocomplete.addListener('place_changed', function() {
             const o = e.gPlacesAutocomplete.getPlace()
             ~window.location.host.indexOf('myvtex') && console.log(o)
-            const [, a] = t.find(
+            const [a] = t.find(
                 e =>
                   e[0] ===
                   o.address_components.filter(e => 'country' === e.types[0])[0]
@@ -1481,11 +1484,7 @@
                 ? $(
                     '.vcustom--vtex-omnishipping-1-x-address #ship-number'
                   ).val()
-                : e.returnAddressFRules(
-                    o.address_components,
-                    'street_number',
-                    'long_name'
-                  ),
+                : null,
               m = $(
                 '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
               ).val(),
@@ -1545,12 +1544,11 @@
       sendAddress(e, o, a, n, t, r, s, d, m, h, C) {
         const i = this
         if (~C.indexOf(',')) {
-          const [n, t] = C.split(',')
-          ;(C = [parseFloat(t), parseFloat(n)]),
+          const [o, a] = C.split(',')
+          ;(C = [parseFloat(a), parseFloat(o)]),
             'ARG' === e &&
               'CABA' === r.toUpperCase() &&
-              (r = 'Ciudad Autónoma de Buenos Aires'),
-            'ZAF' === e && (o = `${a} ${o}`)
+              (r = 'Ciudad Autónoma de Buenos Aires')
         } else C = []
         $('body').addClass('js-v-custom-is-loading'),
           fetch(

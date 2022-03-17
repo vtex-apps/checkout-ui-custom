@@ -29,10 +29,11 @@ class checkoutCustom {
   }
 
   general() {
-    if (!$('.custom-cart-template-wrap').length)
+    if (!$('.custom-cart-template-wrap').length) {
       $('.cart-template.mini-cart .cart-fixed > *').wrapAll(
         '<div class="custom-cart-template-wrap">'
       )
+    }
 
     $('.table.cart-items tbody tr.product-item').each(function() {
       if (!$(this).find('.v-custom-product-item-wrap').length) {
@@ -47,12 +48,15 @@ class checkoutCustom {
 
   builder() {
     const _this = this
+
     if ($('.cart-more-options').length === 0) {
       const builderDebounce = debounce(() => {
         _this.builder()
-      }, 1500)
+      }, 1000)
+
       return builderDebounce()
     }
+
     if (this.type === 'vertical') {
       _this.buildVertical()
     } else if (this.type === 'horizontal') {
@@ -147,8 +151,9 @@ class checkoutCustom {
       </div>
     `
 
-    if ($('header.main-header').length)
+    if ($('header.main-header').length) {
       $('header.main-header .container').append(addStepsHeaderHtml)
+    }
   }
 
   addAssemblies(orderForm) {
@@ -255,12 +260,13 @@ class checkoutCustom {
     //   type: 'info'
     // });
 
-    if ($('.vcustom-showCustomMsgCoupon').length === 0)
+    if ($('.vcustom-showCustomMsgCoupon').length === 0) {
       $('fieldset.coupon-fieldset')
         .addClass('js-vcustom-showCustomMsgCoupon')
         .append(
           `<p class="vcustom-showCustomMsgCoupon">${_this.lang.couponInactive}</div>`
         )
+    }
   }
 
   addLabels(orderForm) {
@@ -472,11 +478,14 @@ class checkoutCustom {
 
     let doptions = { weekday: 'long', month: 'short', day: 'numeric' }
 
-    if (lang === 'pt')
+    if (lang === 'pt') {
       doptions = { weekday: 'short', month: 'short', day: 'numeric' }
+    }
 
-    if (d.getDate() - new Date().getDate() === 1)
+    if (d.getDate() - new Date().getDate() === 1) {
       return _this.lang.tomorrowLabel || 'Tomorrow'
+    }
+
     d = d.toLocaleDateString(lang, doptions)
 
     return d
@@ -548,8 +557,10 @@ class checkoutCustom {
               .text()
               .toLowerCase()
               .match(/(ready in up)|(pronto)|(a partir de)|(hasta)/gm)
-          )
-            _delivtext = _this.lang.PickupDateText // check if is pickup. OBS: none of others solutions worked, needs constantly update
+          ) {
+            _delivtext = _this.lang.PickupDateText
+          } // check if is pickup. OBS: none of others solutions worked, needs constantly update
+
           $(this)
             .find(mainSTIelems.join(', '))
             .html(
@@ -588,8 +599,10 @@ class checkoutCustom {
                 txtselectin
                   .toLowerCase()
                   .match(/(ready in up)|(pronto)|(A partir de)|(hasta)/gm)
-              )
-                _delivtext = _this.lang.PickupDateText // check if is pickup. OBS: none of others solutions worked, needs constantly update
+              ) {
+                _delivtext = _this.lang.PickupDateText
+              } // check if is pickup. OBS: none of others solutions worked, needs constantly update
+
               deliveryDates.push(
                 `${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`
               )
@@ -630,8 +643,9 @@ class checkoutCustom {
         if (
           _item.quantity === 1 ||
           _trElem.find('td.product-price').find('.best-price').length === 0
-        )
+        ) {
           return
+        }
 
         const totalValue = _trElem.find('.total-selling-price:eq(0)').text()
         const _eachprice = `
@@ -764,19 +778,22 @@ class checkoutCustom {
     const _lang = this.lang
 
     if (_lang.editLabel) $('.link-box-edit').attr('title', _lang.editLabel)
-    if (_lang.cartSubmitButton)
+    if (_lang.cartSubmitButton) {
       $('#cart-to-orderform').text(_lang.cartSubmitButton)
+    }
 
     if (_lang.cartNoteLabel) $('p.note-label label').text(_lang.cartNoteLabel)
 
-    if (_lang.identifiedUserMessage)
+    if (_lang.identifiedUserMessage) {
       $('.identified-user-modal-body p.identified-user-message').html(
         _lang.identifiedUserMessage
       )
+    }
 
     // paypal
-    if (_lang.paypalPhone)
+    if (_lang.paypalPhone) {
       $('.payment-paypal-help-number').text(_lang.paypalPhone)
+    }
 
     if (_lang.paypalImg) {
       $('.payment-paypal-title-short-logo').css(
@@ -801,21 +818,26 @@ class checkoutCustom {
 
     // placeholders
 
-    if (_lang.address1Placeholder)
+    if (_lang.address1Placeholder) {
       $('.vtex-omnishipping-1-x-address input#ship-street').attr(
         'placeholder',
         _lang.address1Placeholder
       )
-    if (_lang.address2Placeholder)
+    }
+
+    if (_lang.address2Placeholder) {
       $('.vtex-omnishipping-1-x-address input#ship-complement').attr(
         'placeholder',
         _lang.address2Placeholder
       )
-    if (_lang.numberPlaceholder)
+    }
+
+    if (_lang.numberPlaceholder) {
       $('.vtex-omnishipping-1-x-address input#ship-number').attr(
         'placeholder',
         _lang.numberPlaceholder
       )
+    }
   }
 
   paymentBuilder(orderForm) {
@@ -860,8 +882,9 @@ class checkoutCustom {
       !this.accordionPayments ||
       $('.payment-group-list-btn').find('.v-custom-payment-item-wrap').length >
         0
-    )
+    ) {
       return false
+    }
 
     $('body').addClass('v-custom-paymentBuilder-accordion')
 
@@ -907,12 +930,14 @@ class checkoutCustom {
   checkProfileFocus() {
     const _this = this
 
-    if (_this.hideEmailStep)
+    if (_this.hideEmailStep) {
       if (
         ~window.location.hash.indexOf('#/email') &&
         $('#client-email').val() === ''
-      )
+      ) {
         $('#client-email').focus()
+      }
+    }
   }
 
   rtlUI() {
@@ -920,8 +945,9 @@ class checkoutCustom {
       window.vtex.i18n.getLocale() === 'ar' ||
       window.vtex.i18n.getLocale() === 'ar-SA' ||
       window.vtex.i18n.getLocale() === 'ar-IQ'
-    )
+    ) {
       $('body').addClass('RTL-checkout')
+    }
   }
 
   bind() {
@@ -987,8 +1013,9 @@ class checkoutCustom {
 
     $('body').on('click', '#btn-client-pre-email', function() {
       setTimeout(function() {
-        if (!$('input#client-pre-email').hasClass('error'))
+        if (!$('input#client-pre-email').hasClass('error')) {
           $('input#client-email').focus()
+        }
       }, 1000)
     })
 
@@ -1060,13 +1087,16 @@ class checkoutCustom {
         _this.checkProfileFocus()
         _this.changeShippingTimeInfoInit()
         _this.indexedInItems(window.vtexjs.checkout.orderForm)
-        if (!window.google && _this.customAddressForm)
+        if (!window.google && _this.customAddressForm) {
           _this.customAddressForm.loadScript()
-        if (_this.customAddressForm && typeof store !== 'undefined')
+        }
+
+        if (_this.customAddressForm && typeof store !== 'undefined') {
           window.store.dispatch({
             type: 'DISABLE_CALCULATE_BUTTON',
             isCalculateBttnEnabled: false,
           })
+        }
       })
 
       // eslint-disable-next-line no-console

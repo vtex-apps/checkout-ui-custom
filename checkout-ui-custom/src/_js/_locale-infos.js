@@ -381,7 +381,7 @@ module.exports._locale = {
     cartNoteLabel: 'Gift Message or Comments',
     identifiedUserMessage: `Thanks for coming back!\nTo expedite your transaction, we have securely populated your information for you.`,
     address1Placeholder: 'Street address or P.O. Box',
-    address2Placeholder: 'Complement',
+    address2Placeholder: 'Apartment number, unit, floor, etc.',
     checkoutStepsLabelCart: 'Cart',
     checkoutStepsLabelIdentification: 'Identification',
     checkoutStepsLabelShipping: 'Shipping',
