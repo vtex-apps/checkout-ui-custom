@@ -95,6 +95,7 @@ class fnsCustomAddressForm {
     neighborhood = '',
     geoCoordinates = ''
   ) {
+    console.log('country:', country)
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
       this.addressrules.number ? street : formattedStreet || street
     )
@@ -108,7 +109,7 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      country === 'USA' ? formattedStreet : street
+      this.addressrules.number ? street : formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
@@ -139,10 +140,11 @@ class fnsCustomAddressForm {
       )
     } else {
       $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val('')
-      if (street && number)
+      if (street && number) {
         $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
           formattedStreet || `${street} ${number}`
         )
+      }
     }
   }
 
@@ -180,7 +182,7 @@ class fnsCustomAddressForm {
         console.log(place)
       }
 
-      const [, country] = _countries.find(
+      const [country] = _countries.find(
         c =>
           c[0] ===
           place.address_components.filter(
@@ -208,7 +210,7 @@ class fnsCustomAddressForm {
         'long_name'
       )
 
-      if (_this.addressrules.number)
+      if (_this.addressrules.number) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(
           _this.returnAddressFRules(
             place.address_components,
@@ -216,14 +218,11 @@ class fnsCustomAddressForm {
             'long_name'
           )
         )
+      }
 
       const number = _this.addressrules.number
         ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
-        : _this.returnAddressFRules(
-            place.address_components,
-            'street_number',
-            'long_name'
-          )
+        : null
 
       const complement = $(
         '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
