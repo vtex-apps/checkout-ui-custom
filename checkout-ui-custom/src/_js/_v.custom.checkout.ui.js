@@ -46,32 +46,49 @@ class checkoutCustom {
     $('body').addClass('v-custom-loaded')
   }
 
+  checkForFreightSimulation(func) {
+    // Wait until it have the vtex runtime to call the functions
+    const checkRuntime = setInterval(function() {
+      if (
+        window.vtex !== undefined &&
+        window.vtex.renderRuntime !== undefined
+      ) {
+        clearInterval(checkRuntime)
+        if (
+          'checkout/freight-simulation' in window.vtex.renderRuntime.extensions
+        ) {
+          // Wait until it have the '.cart-more-options'
+          const checkCartMoreOptions = setInterval(function() {
+            if ($('.cart-more-options').length > 0) {
+              clearInterval(checkCartMoreOptions)
+              func()
+            }
+          }, 500)
+        } else {
+          func()
+        }
+      }
+    }, 500)
+  }
+
   builder() {
     const _this = this
 
-    if ($('.cart-more-options').length === 0) {
-      const builderDebounce = debounce(() => {
-        _this.builder()
-      }, 1000)
+    const build = () => {
+      if (_this.type === 'vertical') {
+        _this.buildVertical()
+      } else if (_this.type === 'horizontal') {
+        _this.buildHorizontal()
+      } else {
+        console.error('No `type` identified, check your code')
+      }
 
-      return builderDebounce()
+      if (_this.hideEmailStep) {
+        $('body').addClass('js-vcustom-hideEmailStep')
+      }
     }
 
-    if (this.type === 'vertical') {
-      _this.buildVertical()
-    } else if (this.type === 'horizontal') {
-      _this.buildHorizontal()
-    } else {
-      console.error('No `type` identified, check your code')
-    }
-
-    if (_this.showNoteField) {
-      $('body').addClass('js-vcustom-showNoteField')
-    }
-
-    if (_this.hideEmailStep) {
-      $('body').addClass('js-vcustom-hideEmailStep')
-    }
+    _this.checkForFreightSimulation(build)
   }
 
   buildVertical() {
