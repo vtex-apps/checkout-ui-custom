@@ -1,7 +1,7 @@
 {
-  "admin/checkout-ui.title": "UI เช็คเอาต์กำหนดเอง",
-  "admin/checkout-ui.update-warning": "แอปนี้มีการอัปเดต โปรดคลิก เผยแพร่ เพื่อใช้งานเช็คเอาต์ที่แก้ไขล่าสุดของคุณ",
-  "admin/checkout-ui.navigation.title": "UI เช็คเอาต์กำหนดเอง",
+  "admin/checkout-ui.title": "Checkout UI ที่กำหนดเอง",
+  "admin/checkout-ui.update-warning": "แอปนี้มีการอัปเดต โปรดคลิก เผยแพร่ เพื่อใช้งาน Checkout ที่แก้ไขล่าสุดของคุณ",
+  "admin/checkout-ui.navigation.title": "Checkout UI ที่กำหนดเอง",
   "admin/checkout-ui.tab.layout": "เลย์เอาต์",
   "admin/checkout-ui.tab.colors": "สี",
   "admin/checkout-ui.tab.javascript": "Javascript",
