@@ -47,28 +47,30 @@ class checkoutCustom {
   }
 
   checkForFreightSimulation(func) {
-    // Wait until it have the vtex runtime to call the functions
-    const checkRuntime = setInterval(function() {
-      if (
-        window.vtex !== undefined &&
-        window.vtex.renderRuntime !== undefined
-      ) {
-        clearInterval(checkRuntime)
+    const _this = this
+
+    const isRenderRuntime =
+      window.vtex !== undefined && window.vtex.renderRuntime !== undefined
+
+    _this.awaitForElement({
+      clearIntervalCondition: isRenderRuntime,
+      maxSetIntervalLoop: 20,
+      callback: () => {
         if (
           'checkout/freight-simulation' in window.vtex.renderRuntime.extensions
         ) {
-          // Wait until it have the '.cart-more-options'
-          const checkCartMoreOptions = setInterval(function() {
-            if ($('.cart-more-options').length > 0) {
-              clearInterval(checkCartMoreOptions)
-              func()
-            }
-          }, 500)
+          const isCartMoreOptions = $('.cart-more-options').length > 0
+
+          _this.awaitForElement({
+            clearIntervalCondition: isCartMoreOptions,
+            maxSetIntervalLoop: 20,
+            callback: func(),
+          })
         } else {
           func()
         }
-      }
-    }, 500)
+      },
+    })
   }
 
   builder() {
@@ -360,8 +362,33 @@ class checkoutCustom {
     })
   }
 
+  awaitForElement({ clearIntervalCondition, maxSetIntervalLoop, callback }) {
+    let counter = 0
+    const awaitFor = setInterval(function() {
+      if (clearIntervalCondition || counter >= maxSetIntervalLoop) {
+        clearInterval(awaitFor)
+        callback()
+      } else {
+        counter++
+      }
+    }, 300)
+  }
+
   removeMCLoader() {
     $(`.mini-cart .cart-items`).addClass('v-loaded')
+  }
+
+  removeCILoader() {
+    const _this = this
+    const isCartItems = $('.cart-items').length > 0
+
+    _this.awaitForElement({
+      clearIntervalCondition: isCartItems,
+      maxSetIntervalLoop: 20,
+      callback: () => {
+        $(`.cart-items`).addClass('v-loaded')
+      },
+    })
   }
 
   indexedInItems(orderForm) {
@@ -1091,6 +1118,7 @@ class checkoutCustom {
           _this.updateLang(_this.orderForm)
           _this.paymentBuilder(_this.orderForm)
           _this.customAddressFormInit(_this.orderForm)
+          _this.removeCILoader()
         }
       })
 
