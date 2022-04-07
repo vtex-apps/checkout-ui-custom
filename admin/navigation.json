@@ -2,7 +2,7 @@
   {
     "section": "storeSetup",
     "titleId": "admin/checkout-ui.navigation.title",
-    "path": "/admin/vtex-checkout-ui-custom/"
+    "path": "/admin/codeby-checkout-ui-custom/"
   },
   {
     "section": "storeSettings",
@@ -11,7 +11,7 @@
     "subSectionItems": [
       {
         "labelId": "admin/checkout-ui.navigation.title",
-        "path": "/admin/vtex-checkout-ui-custom/"
+        "path": "/admin/codeby-checkout-ui-custom/"
       }
     ]
   }
