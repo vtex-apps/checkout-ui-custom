@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added country rules for Belgium and Netherlands
+
 ## [0.6.14] - 2022-04-18
 
 ### Fixed
