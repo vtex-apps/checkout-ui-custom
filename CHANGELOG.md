@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Create a method to wait for instances using setInterval.
+- Set cart items when clicking on the forward browser arrow.
+
 ## [0.6.13] - 2022-03-17
 
 ### Fixed
