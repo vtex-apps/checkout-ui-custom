@@ -700,46 +700,39 @@ class fnsCustomAddressForm {
 
           if (addressClicked && addressClicked.city.indexOf('*') < 0) {
             try {
-              if (
-                addressClicked.isDisposable ||
-                ~window.location.origin.indexOf('myvtex')
-              ) {
-                setTimeout(() => {
-                  // if(!$(".vtex-omnishipping-1-x-address").length) {
-                  $('body').addClass(_this.BodyFormClasses.join(' '))
-                  addressClicked.street = addressClicked.street || ''
-                  _this.updateAddress(
-                    addressClicked.country,
-                    addressClicked.postalCode,
-                    addressClicked.city,
-                    addressClicked.state,
-                    addressClicked.number,
-                    addressClicked.street,
-                    addressClicked.complement,
-                    '',
-                    addressClicked.addressId,
-                    addressClicked.geoCoordinates
-                  )
-                  $(
-                    '.vcustom--vtex-omnishipping-1-x-address #ship-country'
-                  ).val(addressClicked.country)
-                  _this.updateFormByCountry(addressClicked.country)
-                  _this.setForm(
-                    addressClicked.country,
-                    addressClicked.street,
-                    addressClicked.addressQuery,
-                    addressClicked.number,
-                    addressClicked.postalCode,
-                    addressClicked.city,
-                    addressClicked.state,
-                    addressClicked.complement,
-                    addressClicked.neighborhood,
-                    addressClicked.geoCoordinates
-                  )
-
-                  // }
-                }, 100)
-              }
+              setTimeout(() => {
+                // if(!$(".vtex-omnishipping-1-x-address").length) {
+                $('body').addClass(_this.BodyFormClasses.join(' '))
+                addressClicked.street = addressClicked.street || ''
+                _this.updateAddress(
+                  addressClicked.country,
+                  addressClicked.postalCode,
+                  addressClicked.city,
+                  addressClicked.state,
+                  addressClicked.number,
+                  addressClicked.street,
+                  addressClicked.complement,
+                  '',
+                  addressClicked.addressId,
+                  addressClicked.geoCoordinates
+                )
+                $(
+                  '.vcustom--vtex-omnishipping-1-x-address #ship-country'
+                ).val(addressClicked.country)
+                _this.updateFormByCountry(addressClicked.country)
+                _this.setForm(
+                  addressClicked.country,
+                  addressClicked.street,
+                  addressClicked.addressQuery,
+                  addressClicked.number,
+                  addressClicked.postalCode,
+                  addressClicked.city,
+                  addressClicked.state,
+                  addressClicked.complement,
+                  addressClicked.neighborhood,
+                  addressClicked.geoCoordinates
+                )
+              }, 100)
             } catch (e) {
               $('body').removeClass(_this.BodyFormClasses.join(' '))
             }
