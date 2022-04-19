@@ -17,6 +17,20 @@ module.exports._countriesrules = {
     number: false,
     postalCode: true,
   },
+  NLD: {
+    state: 'administrative_area_level_1',
+    city: 'administrative_area_level_2',
+    number: false,
+    postalCode: true,
+    postalCodeLength: 6,
+  },
+  BEL: {
+    state: 'administrative_area_level_1',
+    city: 'administrative_area_level_2',
+    number: false,
+    postalCode: true,
+    postalCodeLength: 4,
+  },
   ARG: {
     state: 'administrative_area_level_1',
     city: 'administrative_area_level_2',
