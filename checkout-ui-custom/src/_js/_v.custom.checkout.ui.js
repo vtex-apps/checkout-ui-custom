@@ -367,7 +367,9 @@ class checkoutCustom {
     const awaitFor = setInterval(function() {
       if (clearIntervalCondition || counter >= maxSetIntervalLoop) {
         clearInterval(awaitFor)
-        callback()
+        if (typeof callback === 'function') {
+          callback()
+        }
       } else {
         counter++
       }
