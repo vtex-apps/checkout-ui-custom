@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed notes field not rendering
+
 ## [0.6.16] - 2022-04-21
 
 ### Fixed
