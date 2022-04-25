@@ -208,7 +208,7 @@ class fnsCustomAddressForm {
         place.address_components,
         _this.addressrules.neighborhood,
         'short_name'
-      ) : null
+      ) : 'sublocality_level_1'
 
       if (_this.addressrules.number) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(
