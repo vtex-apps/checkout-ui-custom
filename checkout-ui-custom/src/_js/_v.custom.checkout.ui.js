@@ -85,6 +85,10 @@ class checkoutCustom {
         console.error('No `type` identified, check your code')
       }
 
+      if (_this.showNoteField) {
+        $('body').addClass('js-vcustom-showNoteField')
+      }
+
       if (_this.hideEmailStep) {
         $('body').addClass('js-vcustom-hideEmailStep')
       }
