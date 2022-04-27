@@ -160,10 +160,25 @@ class fnsCustomAddressForm {
     })
   }
 
-  returnAddressFRules(components, attr, val) {
-    return components.filter(item => item.types[0] === attr).length
-      ? components.filter(item => item.types[0] === attr)[0][val]
-      : ''
+  returnAddressFRules(components, attrs) {
+    if (!attrs) return ''
+    const { valueIn = 'short_name', types } = attrs
+
+    for (let i = 0; i < types.length; i++) {
+      const ruleComponent = types[i]
+
+      if (
+        components.find(component =>
+          component.types.some(v => v === ruleComponent)
+        )
+      ) {
+        return components.find(component =>
+          component.types.some(v => v === ruleComponent)
+        )[valueIn]
+      }
+    }
+
+    return ''
   }
 
   googleForm() {
@@ -196,30 +211,25 @@ class fnsCustomAddressForm {
         ? place.address_components.find(item => item.types[0] === 'route')
             .long_name
         : place.vicinity
-      // let street = place.address_components.find(item => item.types[0]=="route") ? (place.address_components.find(item => item.types[0]=="street_number") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name) : place.name;
 
+      // let street = place.address_components.find(item => item.types[0]=="route") ? (place.address_components.find(item => item.types[0]=="street_number") ? place.address_components.find(item => item.types[0]=="route").long_name : place.name) : place.name;
       let state = _this.returnAddressFRules(
         place.address_components,
-        _this.addressrules.state,
-        'short_name'
+        _this.addressrules.state
       )
 
-      const neighborhood = _this.addressrules.neighborhood ? _this.returnAddressFRules(
-        place.address_components,
-        _this.addressrules.neighborhood,
-        'short_name'
-      ) : _this.returnAddressFRules(
-        place.address_components,
-        'sublocality_level_1',
-        'short_name')
+      const neighborhood = _this.addressrules.neighborhood
+        ? _this.returnAddressFRules(
+            place.address_components,
+            _this.addressrules.neighborhood
+          )
+        : ''
 
       if (_this.addressrules.number) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(
-          _this.returnAddressFRules(
-            place.address_components,
-            'street_number',
-            'long_name'
-          )
+          _this.returnAddressFRules(place.address_components, {
+            types: ['street_number'],
+          })
         )
       }
 
@@ -244,16 +254,13 @@ class fnsCustomAddressForm {
       let city =
         _this.returnAddressFRules(
           place.address_components,
-          _this.addressrules.city,
-          'long_name'
+          _this.addressrules.city
         ) || $('.locality', formattedAddress).text()
 
       let postalCode = _this.addressrules.postalCode
-        ? _this.returnAddressFRules(
-            place.address_components,
-            'postal_code',
-            'long_name'
-          )
+        ? _this.returnAddressFRules(place.address_components, {
+            types: ['postal_code'],
+          })
         : '00000'
 
       // temporaly workaround for ARG
@@ -356,6 +363,10 @@ class fnsCustomAddressForm {
         _city = 'Ciudad Autónoma de Buenos Aires'
       }
       // end temporaly workaround for ARG
+
+      if (!_this.addressrules.state) {
+        _state = ''
+      }
     } else {
       geoCoordinates = []
     }
@@ -464,6 +475,7 @@ class fnsCustomAddressForm {
 
   updateFormFieldByCountry(addressrules) {
     const number = $('.vcustom--vtex-omnishipping-1-x-address p.ship-number')
+    const state = $('.vcustom--vtex-omnishipping-1-x-address p.ship-state')
 
     if (addressrules.number) {
       number.show()
@@ -471,6 +483,11 @@ class fnsCustomAddressForm {
     } else {
       number.hide()
       number.find('input').removeAttr('required')
+    }
+
+    if (!addressrules.state) {
+      state.hide()
+      state.find('input').removeAttr('required')
     }
   }
 

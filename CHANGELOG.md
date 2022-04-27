@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Add Russia in the Google Address Form.
+- Convert country rules in an array to take the next value in the array.
+- Hide state select in Google Address Form if it is false.
+- Set as false selectedSlaDays in case of no sla found.
+
 ## [0.6.20] - 2022-05-19
 
 ### Added
