@@ -87,6 +87,7 @@ module.exports._countriesrules = {
   CZE: {
     state: 'administrative_area_level_1',
     city: 'sublocality_level_1',
+    neighborhood:  'neighborhood',
     number: false,
     postalCode: true,
     postalCodeLength: 5,
