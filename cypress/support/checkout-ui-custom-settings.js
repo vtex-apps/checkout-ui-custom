@@ -55,14 +55,11 @@ export function validateGetLastResponse(response) {
   expect(response.body.data).to.not.equal(null)
 }
 
-export function saveChanges(workspace, configuration) {
+export function saveChanges(configuration) {
   const query =
     'mutation' +
     '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
     '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors)}'
-
-  // Setting workspace to dynamic workspace
-  configuration.workspace = workspace
 
   return {
     query,

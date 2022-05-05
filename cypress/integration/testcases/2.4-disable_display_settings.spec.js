@@ -18,12 +18,12 @@ describe('Testing -> Disable display setting', () => {
     cy.getCheckOutItems().then(items => {
       const configurations = items[CONFIG]
 
-      configurations.layout.accordionPayments = true
-      configurations.layout.deliveryDateFormat = true
-      configurations.layout.showCartQuantityPrice = true
-      configurations.layout.showNoteField = true
-      configurations.layout.hideEmailStep = true
-      configurations.layout.customAddressForm = true
+      configurations.layout.accordionPayments = false
+      configurations.layout.deliveryDateFormat = false
+      configurations.layout.showCartQuantityPrice = false
+      configurations.layout.showNoteField = false
+      configurations.layout.hideEmailStep = false
+      configurations.layout.customAddressForm = false
 
       updateSettings(configurations)
     })
@@ -38,13 +38,6 @@ describe('Testing -> Disable display setting', () => {
     })
   })
 
-  it('Updating product quantity to 2', updateRetry(3), () => {
-    // Update Product quantity to 2
-    cy.updateProductQuantity(singleProduct, {
-      quantity: '2',
-    })
-  })
-
   it(
     'Updating Shipping Information for pick up in store',
     updateRetry(3),
@@ -53,6 +46,6 @@ describe('Testing -> Disable display setting', () => {
       cy.updateShippingInformation({ postalCode })
     }
   )
-  verifySettings('Enable', true)
+  verifySettings('Disable', false)
   preserveCookie()
 })

@@ -42,6 +42,7 @@ describe('Testing GraphQL queries', () => {
       expect(response.body.data.getLast.id).to.not.equal(null)
       cy.setCheckOutItem(ID, response.body.data.getLast.id)
       delete response.body.data.getLast.id
+      response.body.data.getLast.workspace = workspace // changing workspace master to dynamic workspace
       cy.setCheckOutItem(CONFIG, response.body.data.getLast)
     })
   })
@@ -55,7 +56,7 @@ describe('Testing GraphQL queries', () => {
   it('Verifying saveChanges mutation', updateRetry(5), () => {
     cy.addDelayBetweenRetries(5000)
     cy.getCheckOutItems().then(items => {
-      graphql(saveChanges(workspace, items[CONFIG]), response => {
+      graphql(saveChanges(items[CONFIG]), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
     })
