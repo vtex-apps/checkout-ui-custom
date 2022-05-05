@@ -41,7 +41,7 @@ base:
     pageLoadTimeout: 45000
     browser: chrome
     chromeWebSecurity: false
-  stateFiles: []
+  stateFiles: ['.checkout.json']
 
 workspace:
   name: b2bshashi

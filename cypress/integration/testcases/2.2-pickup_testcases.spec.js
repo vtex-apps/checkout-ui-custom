@@ -1,5 +1,6 @@
 import { testSetup, updateRetry } from '../../support/common/support'
 import { singleProduct } from '../../support/common/outputvalidation'
+import { orderProduct } from '../../support/checkout-ui-custom'
 
 describe('Testing single product and total amounts', () => {
   const { productName, postalCode } = singleProduct
@@ -32,4 +33,6 @@ describe('Testing single product and total amounts', () => {
       cy.updateShippingInformation({ postalCode, pickup: true })
     }
   )
+
+  orderProduct()
 })

@@ -23,3 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+const checkOutJson = '.checkout.json'
+
+// Set checkout items
+Cypress.Commands.add('setCheckOutItem', (checkItem, checkvalue) => {
+  cy.readFile(checkOutJson).then(items => {
+    items[checkItem] = checkvalue
+    cy.writeFile(checkOutJson, items)
+  })
+})
+
+// Get checkout items
+Cypress.Commands.add('getCheckOutItem', () => {
+  cy.readFile(checkOutJson).then(items => {
+    return items
+  })
+})

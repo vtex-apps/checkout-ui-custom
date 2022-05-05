@@ -15,6 +15,12 @@
 
 // Import commands.js using ES2015 syntax:
 import './common/commands'
+import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// Configure it to preserve cookies
+Cypress.Cookies.defaults({
+  preserve: 'VtexIdclientAutCookie',
+})
