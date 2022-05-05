@@ -24,9 +24,11 @@ base:
     enabled: false
     channel: some-channel
   cypress:
-    devMode: true
+    devMode: false
     runHeaded: false
-    enabled: false
+    getCookies: true
+    maxJobs: 1
+    quiet: true
     projectId: xyza
     video: true
     videoCompression: false
@@ -44,8 +46,8 @@ base:
   stateFiles: ['.checkout.json']
 
 workspace:
-  name: b2bshashi
-  prefix: b2bshashi
+  name: random
+  prefix: checkoutuicustom
   linkApp:
     enabled: true
     logOutput:
@@ -55,7 +57,8 @@ workspace:
   wipe:
     enabled: true
     stopOnFail: false
-    spec: cypress/integration/wipe.spec.js
+    specs:
+    - cypress/integration/wipe.spec.js
   teardown:
     enabled: true
 

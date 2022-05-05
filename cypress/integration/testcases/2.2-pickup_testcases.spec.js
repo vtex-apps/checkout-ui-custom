@@ -29,7 +29,6 @@ describe('Testing single product and total amounts', () => {
     updateRetry(3),
     () => {
       // Update Shipping Section
-      cy.log(postalCode)
       cy.updateShippingInformation({ postalCode, pickup: true })
     }
   )

@@ -1,19 +1,22 @@
-import path from 'path'
-
 import { FAIL_ON_STATUS_CODE } from './common/constants'
 
 const config = Cypress.env()
-const manifestFile = path.join('..', 'manifest.json')
-const APP_VERSION = manifestFile.version
+
 // Constants
 const { vtex } = config.base
+
+function commonGraphlValidation(response) {
+  expect(response.status).to.equal(200)
+  expect(response.body.data).to.not.equal(null)
+  expect(response.body).to.not.have.own.property('errors')
+}
 
 export function graphql(getQuery, validateResponseFn = null) {
   const { query, queryVariables } = getQuery
 
   // Define constants
   const APP_NAME = 'vtex.checkout-ui-custom'
-  const APP = `${APP_NAME}@${APP_VERSION}`
+  const APP = `${APP_NAME}@0.x`
   const CUSTOM_URL = `${vtex.baseUrl}/_v/private/admin-graphql-ide/v0/${APP}`
 
   cy.request({
@@ -28,9 +31,7 @@ export function graphql(getQuery, validateResponseFn = null) {
 
   if (validateResponseFn) {
     cy.get('@RESPONSE').then(response => {
-      expect(response.status).to.equal(200)
-      expect(response.body.data).to.not.equal(null)
-      expect(response.body).to.not.have.own.property('errors')
+      commonGraphlValidation(response)
       validateResponseFn(response)
     })
   } else {
@@ -39,35 +40,38 @@ export function graphql(getQuery, validateResponseFn = null) {
 }
 
 export function getLast(workspace) {
-  const ob = { workspace }
   const query =
     'query' +
     '($workspace: String!)' +
-    '{ getLast(workspace: $workspace){id,workspace,layout}}'
+    '{getLast(workspace: $workspace){id email workspace layout javascript css javascriptActive cssActive colors}}'
 
   return {
     query,
-    queryVariables: ob,
+    queryVariables: { workspace },
   }
 }
 
-export function saveChanges(workspace, layout) {
-  const mutation =
+export function validateGetLastResponse(response) {
+  expect(response.body.data).to.not.equal(null)
+}
+
+export function saveChanges(workspace, configuration) {
+  const query =
     'mutation' +
-    `($workspace: String!, $layout: CustomFields)` +
-    `{saveChanges(workspace: $workspace, layout: $layout)}`
+    '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
+    '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors)}'
 
-  const queryVariables = {
-    workspace,
-    layout,
-  }
-
-  cy.log(queryVariables)
+  // Setting workspace to dynamic workspace
+  configuration.workspace = workspace
 
   return {
-    mutation,
-    queryVariables,
+    query,
+    queryVariables: configuration,
   }
+}
+
+export function validateSaveChangesResponse(response) {
+  expect(response.body.data).to.not.equal(null)
 }
 
 export function getHistory() {
@@ -78,6 +82,12 @@ export function getHistory() {
   }
 }
 
+export function validateGetHistoryResponse(response) {
+  expect(response.body.data.getHistory)
+    .to.be.an('array')
+    .and.to.have.lengthOf.above(0)
+}
+
 export function version() {
   return {
     query: 'query' + '{version}',
@@ -85,13 +95,27 @@ export function version() {
   }
 }
 
+export function validateGetVersionResponse(response) {
+  expect(response.body.data.version).to.not.equal(null)
+}
+
 export function getSetupConfig() {
   return {
     query:
       'query' +
       '{getSetupConfig{adminSetup{hasSchema,schemaVersion,appVersion}}}',
-    queryVariables: {},
   }
+}
+
+export function validateGetSetUpConfigResponse(response) {
+  expect(response.body.data).to.not.equal(null)
+  expect(response.body.data.getSetupConfig.adminSetup.appVersion).to.not.equal(
+    null
+  )
+  expect(response.body.data.getSetupConfig.adminSetup.hasSchema).to.be.true
+  expect(
+    response.body.data.getSetupConfig.adminSetup.schemaVersion
+  ).to.not.equal(null)
 }
 
 export function getById(id) {
@@ -100,30 +124,10 @@ export function getById(id) {
       'query' +
       '($id:String)' +
       '{getById(id:$id){layout,colors,javascript,css,javascriptActive,cssActive}}',
-    queryVariables: id,
+    queryVariables: { id },
   }
 }
 
 export function ValidategetByIdResponse(response) {
-  expect(response.body.data).to.not.equal(null)
-}
-
-export function validateGetHistoryResponse(response) {
-  expect(response.body.data).to.not.equal(null)
-}
-
-export function validateGetVersionResponse(response) {
-  expect(response.body.data).to.not.equal(null)
-}
-
-export function validateGetSetUpConfigResponse(response) {
-  expect(response.body.data).to.not.equal(null)
-}
-
-export function validateGetLastResponse(response) {
-  expect(response.body.data).to.not.equal(null)
-}
-
-export function validateSaveChangesResponse(response) {
-  expect(response.body.data).to.not.equal(null)
+  expect(response.body.data.getById.javascriptActive).to.be.true
 }
