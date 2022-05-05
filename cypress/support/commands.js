@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import selectors from './common/selectors'
+
 const checkOutJson = '.checkout.json'
 
 // Set checkout items
@@ -39,4 +41,13 @@ Cypress.Commands.add('getCheckOutItem', () => {
   cy.readFile(checkOutJson).then(items => {
     return items
   })
+})
+
+Cypress.Commands.add('openStoreFront', () => {
+  cy.intercept('**/rc.vtex.com.br/api/events').as('events')
+  cy.visit('/')
+  cy.wait('@events')
+  cy.get(selectors.ProfileLabel, { timeout: 20000 })
+    .should('be.visible')
+    .should('have.contain', `Hello,`)
 })

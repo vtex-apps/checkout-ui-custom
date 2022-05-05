@@ -52,7 +52,7 @@ export function getLast(workspace) {
 }
 
 export function saveChanges(workspace, layout) {
-  const query =
+  const mutation =
     'mutation' +
     `($workspace: String!, $layout: CustomFields)` +
     `{saveChanges(workspace: $workspace, layout: $layout)}`
@@ -65,7 +65,7 @@ export function saveChanges(workspace, layout) {
   cy.log(queryVariables)
 
   return {
-    query,
+    mutation,
     queryVariables,
   }
 }
