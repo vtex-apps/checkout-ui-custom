@@ -10,48 +10,54 @@ import {
   validateGetHistoryResponse,
   validateGetSetUpConfigResponse,
   validateGetVersionResponse,
-  validateSaveChangesResponse,
   version,
 } from '../../support/checkout-ui-custom-settings'
-import configuration from '../../support/configuration'
 
 describe('Testing GraphQL queries', () => {
-  const config = configuration
   const workspace = Cypress.env('workspace').name
+
+  const ID = 'id'
+  const CONFIG = 'config'
 
   // Load test setup
   testSetup()
 
-  it('Get History', () => {
+  it('Verifying getHistory query', updateRetry(2), () => {
     graphql(getHistory(), validateGetHistoryResponse)
   })
 
-  it('Get Version', () => {
+  it('Verifying version query', updateRetry(2), () => {
     graphql(version(), validateGetVersionResponse)
   })
 
-  it('Get Setupconfig', () => {
+  it('Verifying getSetupConfig query', updateRetry(2), () => {
     graphql(getSetupConfig(), validateGetSetUpConfigResponse)
   })
 
-  it('Verify get settings query', updateRetry(2), () => {
-    graphql(getLast(workspace), response => {
-      expect(response.body.data).to.not.equal(null)
-      cy.setCheckOutItem('value', response.body)
+  it('Verifying getLast query with workspace master', updateRetry(2), () => {
+    const WORKSPACE = 'master'
+
+    graphql(getLast(WORKSPACE), response => {
+      expect(response.body.data.getLast.workspace).to.equal(WORKSPACE)
+      expect(response.body.data.getLast.id).to.not.equal(null)
+      cy.setCheckOutItem(ID, response.body.data.getLast.id)
+      delete response.body.data.getLast.id
+      cy.setCheckOutItem(CONFIG, response.body.data.getLast)
     })
   })
 
-  it('getById', () => {
-    cy.getCheckOutItem().then(check => {
-      graphql(getById(check), ValidategetByIdResponse)
+  it('Verifying getId query', updateRetry(2), () => {
+    cy.getCheckOutItems().then(items => {
+      graphql(getById(items[ID]), ValidategetByIdResponse)
     })
   })
 
-  it('Verify save changes', updateRetry(2), () => {
-    cy.log(workspace)
-    graphql(
-      saveChanges(workspace, config.configurationSettings),
-      validateSaveChangesResponse
-    )
+  it('Verifying saveChanges mutation', updateRetry(5), () => {
+    cy.addDelayBetweenRetries(5000)
+    cy.getCheckOutItems().then(items => {
+      graphql(saveChanges(workspace, items[CONFIG]), response => {
+        expect(response.body.data.saveChanges).to.include('DocumentId')
+      })
+    })
   })
 })
