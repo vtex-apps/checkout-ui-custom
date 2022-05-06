@@ -1,12 +1,34 @@
-import { testSetup, updateRetry } from '../../support/common/support'
+import {
+  preserveCookie,
+  testSetup,
+  updateRetry,
+} from '../../support/common/support'
 import { singleProduct } from '../../support/common/outputvalidation'
 import { orderProduct } from '../../support/checkout-ui-custom'
+import { updateSettings } from '../../support/configuration'
+
+const CONFIG = 'config'
 
 describe('Testing single product and total amounts', () => {
   const { productName, postalCode } = singleProduct
 
   // Load test setup
   testSetup()
+
+  it('Update Settings', updateRetry(3), () => {
+    cy.getCheckOutItems().then(items => {
+      const configurations = items[CONFIG]
+
+      configurations.layout.accordionPayments = false
+      configurations.layout.deliveryDateFormat = false
+      configurations.layout.showCartQuantityPrice = false
+      configurations.layout.showNoteField = false
+      configurations.layout.hideEmailStep = true
+      configurations.layout.customAddressForm = false
+
+      updateSettings(configurations)
+    })
+  })
 
   it('Adding Product to Cart', updateRetry(3), () => {
     // Search the product
@@ -34,4 +56,5 @@ describe('Testing single product and total amounts', () => {
   )
 
   orderProduct()
+  preserveCookie()
 })

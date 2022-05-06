@@ -14,8 +14,6 @@ export function updateSettings(config) {
 
     const QUERY_VARIABLES = config
 
-    cy.log(QUERY_VARIABLES)
-
     cy.request({
       method: 'POST',
       url: CUSTOM_URL,

@@ -4,5 +4,10 @@ import './commands'
 
 // Configure it to preserve cookies
 Cypress.Cookies.defaults({
-  preserve: 'VtexIdclientAutCookie',
+  preserve: /VtexIdclientAutCookie/,
+})
+
+// Avoid application errors
+Cypress.on('uncaught:exception', () => {
+  return false
 })
