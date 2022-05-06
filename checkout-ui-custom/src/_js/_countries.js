@@ -93,7 +93,7 @@ module.exports._countriesrules = {
   CZE: {
     state: 'administrative_area_level_1',
     city: 'sublocality_level_1',
-    neighborhood:  'neighborhood',
+    neighborhood: 'neighborhood',
     number: false,
     postalCode: true,
     postalCodeLength: 5,
@@ -191,6 +191,20 @@ module.exports._countriesrules = {
     city: 'locality',
     number: false,
     postalCode: true,
+  },
+  CHE: {
+    state: 'administrative_area_level_1',
+    city: 'locality',
+    number: !1,
+    postalCode: !0,
+    postalCodeLength: 4,
+  },
+  ROU: {
+    state: 'administrative_area_level_1',
+    city: 'locality',
+    number: !1,
+    postalCode: !0,
+    postalCodeLength: 6,
   },
   ARE: {
     state: 'administrative_area_level_1',
@@ -1554,7 +1568,7 @@ module.exports._cities = [
       },
       {
         name: 'Weghof',
-        shortCode: 'Niederösterreich'
+        shortCode: 'Niederösterreich',
       },
     ],
   },
