@@ -195,15 +195,15 @@ module.exports._countriesrules = {
   CHE: {
     state: 'administrative_area_level_1',
     city: 'locality',
-    number: !1,
-    postalCode: !0,
+    number: true,
+    postalCode: true,
     postalCodeLength: 4,
   },
   ROU: {
     state: 'administrative_area_level_1',
     city: 'locality',
-    number: !1,
-    postalCode: !0,
+    number: true,
+    postalCode: true,
     postalCodeLength: 6,
   },
   ARE: {

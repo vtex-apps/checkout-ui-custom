@@ -2399,14 +2399,14 @@
       CHE: {
         state: 'administrative_area_level_1',
         city: 'locality',
-        number: !1,
+        number: !0,
         postalCode: !0,
         postalCodeLength: 4,
       },
       ROU: {
         state: 'administrative_area_level_1',
         city: 'locality',
-        number: !1,
+        number: !0,
         postalCode: !0,
         postalCodeLength: 6,
       },
