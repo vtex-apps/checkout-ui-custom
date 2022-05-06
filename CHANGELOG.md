@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+- Added some other countries for Europe which they are `GRC`, `CHE`, `AUT`, `NLD`, `BEL`, `CZE`
 ## [0.6.18] - 2022-05-05
 
 ### Added
