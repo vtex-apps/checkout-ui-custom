@@ -53,6 +53,11 @@ describe('Testing -> Disable display setting', () => {
       cy.updateShippingInformation({ postalCode })
     }
   )
+
+  it(`display google address form format`, updateRetry(2), () => {
+    cy.get('.checkout-steps_item_cart').click()
+  })
+
   verifySettings('Enable', true)
   preserveCookie()
 })

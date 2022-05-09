@@ -1,17 +1,36 @@
 import selectors from './common/selectors'
 import { updateRetry } from './common/support'
 
-export function orderProduct() {
+export function orderProduct(pickup = false) {
   it('Place the order', () => {
-    // cy.get(selectors.CalculateShipping).click()
-    // cy.get(selectors.GotoPaymentBtn).click()
-    cy.get(selectors.PromissoryPayment).click()
-    cy.get(selectors.BuyNowBtn).click()
+    if (pickup) {
+      cy.get(selectors.CalculateShipping).click()
+      cy.get(selectors.GotoPaymentBtn).click()
+    }
+
+    cy.get(selectors.PromissoryPayment)
+      .should('be.visible')
+      .click()
+    cy.get(selectors.BuyNowBtn)
+      .should('be.visible')
+      .last()
+      .click()
   })
 }
 
 export function verifySettings(type, enable = false) {
   it(`${type} display items unit price`, updateRetry(2), () => {
+    cy.get('[data-url="/checkout/#/shipping"]').click()
+    if (enable) {
+      cy.get('.v-custom-quantity-price__list--selling').should('exist')
+    } else {
+      cy.get('.v-custom-quantity-price__list--selling').should('not.exist')
+    }
+
+    cy.get(selectors.ProceedtoPaymentBtn).click()
+  })
+
+  it(`${type} display google address form format`, updateRetry(2), () => {
     cy.get('.checkout-steps_item_cart').click()
     if (enable) {
       cy.get('.v-custom-quantity-price__list--selling').should('exist')
@@ -22,7 +41,6 @@ export function verifySettings(type, enable = false) {
     cy.get(selectors.ProceedtoPaymentBtn).click()
   })
 
-  // if (enable === true) {
   it(`${type} Hide email step`, updateRetry(2), () => {
     if (enable) {
       cy.get('.client-pre-email-h').should('not.be.visible')
@@ -30,7 +48,6 @@ export function verifySettings(type, enable = false) {
       cy.get('.client-pre-email-h').should('be.visible')
     }
   })
-  // }
 
   it(`${type} display simplified shipping date`, updateRetry(2), () => {
     if (enable) {
