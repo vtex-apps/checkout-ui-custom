@@ -1,3 +1,4 @@
+import checkoutUiCustomSelectors from './checkout-ui-custom.selectors'
 import selectors from './common/selectors'
 import { updateRetry } from './common/support'
 
@@ -20,60 +21,77 @@ export function orderProduct(pickup = false) {
 
 export function verifySettings(type, enable = false) {
   it(`${type} display items unit price`, updateRetry(2), () => {
-    cy.get('[data-url="/checkout/#/shipping"]').click()
+    cy.get(checkoutUiCustomSelectors.cartLink).click()
     if (enable) {
-      cy.get('.v-custom-quantity-price__list--selling').should('exist')
+      cy.get(checkoutUiCustomSelectors.quantityUnityPrice).should('exist')
     } else {
-      cy.get('.v-custom-quantity-price__list--selling').should('not.exist')
+      cy.get(checkoutUiCustomSelectors.quantityUnityPrice).should('not.exist')
     }
 
     cy.get(selectors.ProceedtoPaymentBtn).click()
   })
 
-  it(`${type} display google address form format`, updateRetry(2), () => {
-    cy.get('.checkout-steps_item_cart').click()
-    if (enable) {
-      cy.get('.v-custom-quantity-price__list--selling').should('exist')
-    } else {
-      cy.get('.v-custom-quantity-price__list--selling').should('not.exist')
-    }
+  // it(`${type} display google address form format`, updateRetry(2), () => {
+  //   cy.get('.checkout-steps_item_cart').click()
+  //   if (enable) {
+  //     cy.get('.v-custom-quantity-price__list--selling').should('exist')
+  //   } else {
+  //     cy.get('.v-custom-quantity-price__list--selling').should('not.exist')
+  //   }
 
-    cy.get(selectors.ProceedtoPaymentBtn).click()
-  })
+  //   cy.get(selectors.ProceedtoPaymentBtn).click()
+  // })
 
   it(`${type} Hide email step`, updateRetry(2), () => {
     if (enable) {
-      cy.get('.client-pre-email-h').should('not.be.visible')
+      cy.get(checkoutUiCustomSelectors.hideEmailHeader).should('not.be.visible')
     } else {
-      cy.get('.client-pre-email-h').should('be.visible')
+      cy.get(checkoutUiCustomSelectors.hideEmailHeader).should('be.visible')
     }
   })
 
   it(`${type} display simplified shipping date`, updateRetry(2), () => {
     if (enable) {
-      cy.get('.v-changeShippingTimeInfo-active').should('exist')
+      cy.get(checkoutUiCustomSelectors.shippingTimeInfo).should('exist')
       // cy.get('.v-changeShippingTimeInfo-elem-active').should(
       //   'contains',
       //   'Arrives by'
       // )
     } else {
-      cy.get('.v-changeShippingTimeInfo-active').should('not.exist')
+      cy.get(checkoutUiCustomSelectors.shippingTimeInfo).should('not.exist')
     }
   })
 
   it(`${type} display payment options as accordion`, updateRetry(2), () => {
     if (enable) {
-      cy.get('.v-custom-payment-item-wrap').should('exist')
+      cy.get(checkoutUiCustomSelectors.paymentAccordion).should('exist')
     } else {
-      cy.get('.v-custom-payment-item-wrap').should('not.exist')
+      cy.get(checkoutUiCustomSelectors.paymentAccordion).should('not.exist')
     }
   })
 
   it(`${type} display notes field`, updateRetry(2), () => {
     if (enable) {
-      cy.get('.summary-note').should('be.visible')
+      cy.get(checkoutUiCustomSelectors.summaryNote).should('be.visible')
     } else {
-      cy.get('.summary-note').should('not.be.visible')
+      cy.get(checkoutUiCustomSelectors.summaryNote).should('not.be.visible')
     }
   })
+}
+
+export function fillLineItems(items, maxChar) {
+  cy.get(checkoutUiCustomSelectors.productLineItem)
+    .first()
+    .type(items.lineItem1)
+    .should('have.attr', 'maxlength')
+    .then(maxlength => {
+      cy.log(maxlength)
+      expect(maxlength).to.equal(maxChar)
+    })
+  cy.get(checkoutUiCustomSelectors.productLineItem)
+    .eq(1)
+    .type(items.lineItem2)
+  cy.get(checkoutUiCustomSelectors.productLineItem)
+    .eq(2)
+    .type(items.lineItem3)
 }
