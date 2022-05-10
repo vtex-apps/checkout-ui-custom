@@ -18,13 +18,15 @@ Cypress.Commands.add('getCheckOutItems', () => {
   })
 })
 
-Cypress.Commands.add('openStoreFront', () => {
+Cypress.Commands.add('openStoreFront', (login = false) => {
   cy.intercept('**/rc.vtex.com.br/api/events').as('events')
   cy.visit('/')
   cy.wait('@events')
-  cy.get(selectors.ProfileLabel, { timeout: 20000 })
-    .should('be.visible')
-    .should('have.contain', `Hello,`)
+  if (login === true) {
+    cy.get(selectors.ProfileLabel, { timeout: 20000 })
+      .should('be.visible')
+      .should('have.contain', `Hello,`)
+  }
 })
 
 Cypress.Commands.add('gotoProductDetailPage', () => {
