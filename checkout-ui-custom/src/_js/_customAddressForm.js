@@ -204,11 +204,14 @@ class fnsCustomAddressForm {
         'short_name'
       )
 
-      const neighborhood = _this.returnAddressFRules(
+      const neighborhood = _this.addressrules.neighborhood ? _this.returnAddressFRules(
+        place.address_components,
+        _this.addressrules.neighborhood,
+        'short_name'
+      ) : _this.returnAddressFRules(
         place.address_components,
         'sublocality_level_1',
-        'long_name'
-      )
+        'short_name')
 
       if (_this.addressrules.number) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(

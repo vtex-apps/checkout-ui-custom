@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.19] - 2022-05-09
+
+### Changed
+- Added some other countries for Europe which they are `GRC`, `CHE`, `AUT`, `NLD`, `BEL`, `CZE`
+
+## [0.6.18] - 2022-05-05
+
+### Added
+- Added missing countries for Europe
+
 ## [0.6.17] - 2022-04-26
 
 ### Fixed
@@ -16,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Fixed callback function error
+
 
 ## [0.6.15] - 2022-04-19
 
