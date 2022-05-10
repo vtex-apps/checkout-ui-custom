@@ -1,4 +1,6 @@
 import { FAIL_ON_STATUS_CODE } from './common/constants'
+import { ENVS } from './constants.js'
+import { updateRetry } from './common/support.js'
 
 const config = Cypress.env()
 
@@ -8,6 +10,7 @@ const { vtex } = config.base
 function commonGraphlValidation(response) {
   expect(response.status).to.equal(200)
   expect(response.body.data).to.not.equal(null)
+  expect(response.body).to.not.equal('OK')
   expect(response.body).to.not.have.own.property('errors')
 }
 
@@ -127,4 +130,28 @@ export function getById(id) {
 
 export function ValidategetByIdResponse(response) {
   expect(response.body.data.getById.javascriptActive).to.be.true
+}
+
+export function updateLayoutSettings(env, option) {
+  it(`${option} Layout Settings via Graphql`, updateRetry(3), () => {
+    cy.getCheckOutItems().then(items => {
+      const configurations = items[ENVS.CONFIG_SETTINGS]
+
+      const bool = /Enable/.test(option)
+
+      configurations.layout.accordionPayments = bool
+      configurations.layout.deliveryDateFormat = bool
+      configurations.layout.showCartQuantityPrice = bool
+      configurations.layout.showNoteField = bool
+      configurations.layout.hideEmailStep = bool
+      configurations.layout.customAddressForm = bool
+
+      graphql(saveChanges(configurations), response => {
+        expect(response.body.data.saveChanges).to.include('DocumentId')
+        const { DocumentId } = JSON.parse(response.body.data.saveChanges)
+
+        cy.setCheckOutItem(env, DocumentId)
+      })
+    })
+  })
 }

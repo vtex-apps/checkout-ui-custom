@@ -57,14 +57,11 @@ Cypress.Commands.add('openProduct', (product, detailPage = false) => {
   }
 })
 
-Cypress.Commands.add('removeProductAndGoToStorefront', product => {
-  cy.log(product)
+Cypress.Commands.add('removeProduct', product => {
   cy.get(`#item-remove-${product}`)
     .should('be.visible')
     .click()
-  cy.get('#cart-choose-products')
-    .should('be.visible')
-    .click()
+  cy.contains('Your cart is empty')
 })
 
 Cypress.Commands.add('checkoutProduct', () => {

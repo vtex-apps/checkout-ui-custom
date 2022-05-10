@@ -7,7 +7,8 @@ export default {
   summaryNote: '.summary-note',
   productLineItem:
     '.vtex-product-customizer-2-x-textInputValue > label > div > input',
-  cartLink: '[data-url="/checkout/#/shipping"]',
+  CartLink: '.checkout-steps_item_cart',
   lineItemAssemble: '.v-custom-assemblies',
   vatRemoveButton: '.vat-number__button--remove',
+  ChooseProducts: '#cart-choose-products',
 }

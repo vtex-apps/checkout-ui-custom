@@ -11,3 +11,8 @@ export const checkoutUiCustomConstants = {
   addLineItemText: 'Add Text Engraving 3 Lines',
   vatText: 'FR40303265045',
 }
+
+export const ENVS = {
+  CONFIG_SETTINGS: 'config',
+  DOCUMENT_IDS: ['DOCUMENT_ID1', 'DOCUMENT_ID2', 'DOCUMENT_ID3'],
+}

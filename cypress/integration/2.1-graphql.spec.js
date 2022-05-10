@@ -1,4 +1,4 @@
-import { testSetup, updateRetry } from '../../support/common/support'
+import { testSetup, updateRetry } from '../support/common/support.js'
 import {
   getById,
   getHistory,
@@ -11,13 +11,14 @@ import {
   validateGetSetUpConfigResponse,
   validateGetVersionResponse,
   version,
-} from '../../support/checkout-ui-custom-settings'
+} from '../support/grapqhl_testcase.js'
+import { ENVS } from '../support/constants.js'
 
-describe('Testing GraphQL queries', () => {
+describe('Testing GraphQL queries & mutation', () => {
   const workspace = Cypress.env('workspace').name
-
+  const { CONFIG_SETTINGS } = ENVS
+  const [DOCUMENT_ID_ENV] = ENVS.DOCUMENT_IDS
   const ID = 'id'
-  const CONFIG = 'config'
 
   // Load test setup
   testSetup()
@@ -43,7 +44,7 @@ describe('Testing GraphQL queries', () => {
       cy.setCheckOutItem(ID, response.body.data.getLast.id)
       delete response.body.data.getLast.id
       response.body.data.getLast.workspace = workspace // changing workspace master to dynamic workspace
-      cy.setCheckOutItem(CONFIG, response.body.data.getLast)
+      cy.setCheckOutItem(CONFIG_SETTINGS, response.body.data.getLast)
     })
   })
 
@@ -56,8 +57,11 @@ describe('Testing GraphQL queries', () => {
   it('Verifying saveChanges mutation', updateRetry(5), () => {
     cy.addDelayBetweenRetries(5000)
     cy.getCheckOutItems().then(items => {
-      graphql(saveChanges(items[CONFIG]), response => {
+      graphql(saveChanges(items[CONFIG_SETTINGS]), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
+        const { DocumentId } = JSON.parse(response.body.data.saveChanges)
+
+        cy.setCheckOutItem(DOCUMENT_ID_ENV, DocumentId)
       })
     })
   })

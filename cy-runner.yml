@@ -27,9 +27,9 @@ base:
     devMode: false
     runHeaded: false
     getCookies: true
-    maxJobs: 1
+    maxJobs: 2
     quiet: true
-    projectId: xyza
+    projectId: x6id56
     video: true
     videoCompression: false
     videoUploadOnPasses: false
@@ -43,6 +43,7 @@ base:
     pageLoadTimeout: 45000
     browser: chrome
     chromeWebSecurity: false
+    sorry: false
   stateFiles: ['.checkout.json']
 
 workspace:
@@ -64,174 +65,39 @@ workspace:
 
 strategy:
   # Clear reviews before testcase
-  wipe:
+  basictest:
     enabled: true
-    sendDashboard: false
+    sendDashboard: true
     hardTries: 1
     stopOnFail: false
-    parallel: false
-    runInOrder: true
+    parallel: true
     specs:
-      - cypress/integration/wipe.spec.js
-  # Enable Anonymous review with no admin approval
-  anonymous_user1:
+      - cypress/integration/2.1-*
+      - cypress/integration/2.2-*
+      - cypress/integration/2.3-*
+      - cypress/integration/2.7-*
+      - cypress/integration/2.8-*
+  LayoutSettingsEnabledAndCustomJSCSS:
     enabled: true
-    sendDashboard: false
+    sendDashboard: true
     hardTries: 1
     stopOnFail: false
-    parallel: false
-    runInOrder: true
+    parallel: true
     specs:
-      - cypress/integration/2.1.1-*
-    dependency:
-      - wipe
-  signed_in_user1:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.1.2-*
-      - cypress/integration/2.1.3-*
-    dependency:
-      - anonymous_user1
-  order_the_product:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.2.1-*
-    dependency:
-      - wipe
-  # Disable Anonymous review with no admin approval
-  anonymous_user2:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.2.2-*
-    dependency:
-      - signed_in_user1
-      - order_the_product
-  signed_in_user_2:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.2.3-*
-      - cypress/integration/2.2.4-*
-    dependency:
-      - anonymous_user2
-  # Enable Anonymous review with admin approval
-  anonymous_user3:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.3.1-*
-    dependency:
-      - signed_in_user_2
-  signed_in_user_3:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.3.2-*
-    dependency:
-      - anonymous_user3
-  # Disable Anonymous review with admin approval
-  anonymous_user4:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.4.1-*
-    dependency:
-      - signed_in_user_3
-  signed_in_user_4:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.4.2-*
-    dependency:
-      - anonymous_user4
-  rest_api_testcase:
-    enabled: true
-    sendDashboard: false
-    hardTries: 3
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
+      - cypress/integration/2.4-*
       - cypress/integration/2.5-*
-  graphql_api_testcase:
+    dependency:
+      - cypress/integration/2.1-*
+  LayoutSettingsDisabled:
     enabled: true
-    sendDashboard: false
-    hardTries: 5
+    sendDashboard: true
+    hardTries: 1
     stopOnFail: false
     parallel: false
-    runInOrder: true
     specs:
       - cypress/integration/2.6-*
     dependency:
-      - signed_in_user1
-  display_settings_anonymous_user:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.7.1-*
-  display_settings_disabled_anonymous_user:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.7.2-*
-  display_settings_signed_in_user:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.7.3-*
-  display_settings_disabled_signed_in_user:
-    enabled: true
-    sendDashboard: false
-    hardTries: 1
-    stopOnFail: false
-    parallel: false
-    runInOrder: true
-    specs:
-      - cypress/integration/2.7.4-*
+      - cypress/integration/2.1-*
+      - cypress/integration/2.5-*
+
+
