@@ -13,14 +13,23 @@ describe(`Testing product ${lineitemProducts.jumper.name} line items`, () => {
   // Load test setup
   testSetup()
 
-  it('open Product', updateRetry(3), () => {
+  it('Open Product', updateRetry(3), () => {
     // Search the product
     cy.searchProduct(lineitemProducts.jumper.name)
     // Add product to cart
-    cy.openProduct(lineitemProducts.jumper.name, true)
+    cy.addProduct(lineitemProducts.jumper.name, {
+      proceedtoCheckout: true,
+      productDetailPage: true,
+    })
   })
 
-  it('Verify line items required', () => {
+  it('Verify line items displayed in checkout ui', () => {
+    cy.get(checkoutUiCustomSelectors.lineItemAssemble).should('exist')
+    cy.removeProductAndGoToStorefront(lineitemProducts.jumper.id)
+  })
+
+  it('Add line items for product', updateRetry(3), () => {
+    cy.openProduct(lineitemProducts.jumper.name, true)
     fillLineItems(
       checkoutUiCustomConstants.lineItems,
       checkoutUiCustomConstants.maxCharecters.max10

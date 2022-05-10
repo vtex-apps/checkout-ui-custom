@@ -5,6 +5,6 @@ export default {
   },
   jumper: {
     name: 'jumper',
-    id: '',
+    id: '880200',
   },
 }
