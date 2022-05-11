@@ -12,19 +12,12 @@ describe(`${prefix} Scenario`, () => {
   // Load test setup
   testSetup()
 
-  it(`${prefix} - Adding Product to Cart`, updateRetry(3), () => {
+  it(`${prefix} - Adding Product to Cart`, updateRetry(1), () => {
     // Search the product
     cy.searchProduct(productName)
     // Add product to cart
     cy.addProduct(productName, {
       proceedtoCheckout: true,
-    })
-  })
-
-  it(`${prefix} - Updating product quantity to 2`, updateRetry(3), () => {
-    // Update Product quantity to 2
-    cy.updateProductQuantity(pickupTestCase, {
-      quantity: '2',
     })
   })
 

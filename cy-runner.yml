@@ -5,6 +5,7 @@ base:
     name: VTEX_QE
   vtex:
     account: productusqa
+    id: 2001459804
     domain: myvtex.com
     vtexIdUrl: https://vtexid.vtex.com.br/api/vtexid/pub/authenticate/default
     deployCli:
@@ -28,7 +29,7 @@ base:
     maxJobs: 3
     quiet: true
     projectId: x6id56
-    video: true
+    video: false
     videoCompression: false
     videoUploadOnPasses: false
     screenshotOnRunFailure: true
@@ -73,17 +74,16 @@ strategy:
       - cypress/integration/2.1-*
       - cypress/integration/2.2-*
       - cypress/integration/2.3-*
-      - cypress/integration/2.7-*
-      - cypress/integration/2.8-*
-  LayoutSettingsEnabledAndCustomJSCSS:
+      - cypress/integration/2.4-*
+  LayoutSettingsEnabledAndCheckoutScenarios:
     enabled: true
     sendDashboard: true
     hardTries: 1
     stopOnFail: false
     parallel: true
     specs:
-      - cypress/integration/2.4-*
       - cypress/integration/2.5-*
+      - cypress/integration/2.6-*
     dependency:
       - cypress/integration/2.1-*
   LayoutSettingsDisabled:
@@ -93,9 +93,9 @@ strategy:
     stopOnFail: false
     parallel: false
     specs:
-      - cypress/integration/2.6-*
+      - cypress/integration/2.7-*
     dependency:
       - cypress/integration/2.1-*
-      - cypress/integration/2.5-*
+      - cypress/integration/2.6-*
 
 
