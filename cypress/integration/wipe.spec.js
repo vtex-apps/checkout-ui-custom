@@ -1,16 +1,39 @@
-import { ENTITIES } from '../support/common/constants.js'
+import {
+  ENTITIES,
+  FAIL_ON_STATUS_CODE,
+  VTEX_AUTH_HEADER,
+} from '../support/common/constants.js'
 import { testSetup } from '../support/common/support.js'
-import { ENVS } from '../support/constants.js'
+
+const config = Cypress.env()
+
+// Constants
+const { name } = config.workspace
 
 describe('Wipe', () => {
   testSetup()
 
   it('Deleting checkout history', () => {
-    for (const id of ENVS.DOCUMENT_IDS) {
-      cy.getCheckOutItems().then(items => {
-        cy.deleteDocumentInMasterData('checkoutcustom', items[id])
+    cy.getVtexItems().then(vtex => {
+      cy.request({
+        url: `https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search`,
+        qs: {
+          _fields: 'workspace,email,id',
+          _schema: 'v0.1.3',
+          workspace: name,
+        },
+        headers: {
+          ...VTEX_AUTH_HEADER(vtex.apiKey, vtex.apiToken),
+          'REST-Range': 'resources=0-50',
+        },
+        ...FAIL_ON_STATUS_CODE,
+      }).then(response => {
+        expect(response.status).to.equal(200)
+        for (const { id } of response.body) {
+          cy.deleteDocumentInMasterData('checkoutcustom', id)
+        }
       })
-    }
+    })
   })
   it('Getting user & then deleting addresses associated with that user', () => {
     cy.getVtexItems().then(vtex => {

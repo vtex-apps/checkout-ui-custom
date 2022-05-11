@@ -17,7 +17,6 @@ import { ENVS } from '../support/constants.js'
 describe('Testing GraphQL queries & mutation', () => {
   const workspace = Cypress.env('workspace').name
   const { CONFIG_SETTINGS } = ENVS
-  const [DOCUMENT_ID_ENV] = ENVS.DOCUMENT_IDS
   const ID = 'id'
 
   // Load test setup
@@ -59,9 +58,6 @@ describe('Testing GraphQL queries & mutation', () => {
     cy.getCheckOutItems().then(items => {
       graphql(saveChanges(items[CONFIG_SETTINGS]), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
-        const { DocumentId } = JSON.parse(response.body.data.saveChanges)
-
-        cy.setCheckOutItem(DOCUMENT_ID_ENV, DocumentId)
       })
     })
   })

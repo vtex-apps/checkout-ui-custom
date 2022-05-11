@@ -25,8 +25,14 @@ export function orderProduct(prefix) {
 
 function proceedToPayment() {
   cy.get('body').then($body => {
-    if ($body.find(selectors.ProceedtoPaymentBtn).length) {
-      cy.get(selectors.ProceedtoPaymentBtn).click()
+    const btn = selectors.ProceedtoPaymentBtn
+
+    if ($body.find(btn).length) {
+      cy.get(btn).then($el => {
+        if (Cypress.dom.isVisible($el)) {
+          cy.get(selectors.ProceedtoPaymentBtn).click()
+        }
+      })
     }
   })
 }

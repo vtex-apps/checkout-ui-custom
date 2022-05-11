@@ -14,5 +14,4 @@ export const checkoutUiCustomConstants = {
 
 export const ENVS = {
   CONFIG_SETTINGS: 'config',
-  DOCUMENT_IDS: ['DOCUMENT_ID1', 'DOCUMENT_ID2', 'DOCUMENT_ID3'],
 }

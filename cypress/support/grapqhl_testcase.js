@@ -132,7 +132,7 @@ export function ValidategetByIdResponse(response) {
   expect(response.body.data.getById.javascriptActive).to.be.true
 }
 
-export function updateLayoutSettings(env, option) {
+export function updateLayoutSettings(option) {
   it(`${option} Layout Settings via Graphql`, updateRetry(3), () => {
     cy.getCheckOutItems().then(items => {
       const configurations = items[ENVS.CONFIG_SETTINGS]
@@ -148,9 +148,6 @@ export function updateLayoutSettings(env, option) {
 
       graphql(saveChanges(configurations), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
-        const { DocumentId } = JSON.parse(response.body.data.saveChanges)
-
-        cy.setCheckOutItem(env, DocumentId)
       })
     })
   })
