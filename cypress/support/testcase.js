@@ -43,7 +43,7 @@ export function verifySettings(type) {
   const { productName } = layoutScenario
   const prefix = `${type} Layout Setting`
 
-  it(`${prefix} - Adding Product to Cart`, updateRetry(3), () => {
+  it(`${prefix} - Adding Product to Cart`, () => {
     // Search the product
     cy.searchProduct(productName)
     // Add product to cart
@@ -79,45 +79,41 @@ export function verifySettings(type) {
     `${prefix} - Display google address form format option`,
     updateRetry(2),
     () => {
-      cy.get(checkoutUiCustomSelectors.CartLink).click()
-      if (enable) {
-        cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('exist')
-      } else {
-        cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('not.exist')
-      }
+      it(`display google address form format`, updateRetry(2), () => {
+        cy.get(checkoutUiCustomSelectors.ChangeShipping).click()
+        cy.get(checkoutUiCustomSelectors.EditAddressButton)
+          .should('be.visible')
+          .click()
+        if (enable) {
+          cy.get(checkoutUiCustomSelectors.CustomShipAddress).should(
+            'be.visible'
+          )
+          cy.get(checkoutUiCustomSelectors.CustomShipAddress)
+            .clear()
+            .type('19501 Biscayne Blvd {downarrow}{enter}')
+        } else {
+          cy.get(selectors.ShipCountry, { timeout: 5000 })
+            .should('not.be.disabled')
+            .select('USA')
+        }
 
-      proceedToPayment()
+        cy.get(selectors.GotoPaymentBtn).click()
+        proceedToPayment()
+      })
     }
   )
 
-  it(`${prefix} - Hide email step`, updateRetry(2), () => {
+  it(`${prefix} - Testing Hide email step, Simplified shipping date, payment options as accordian & notes field`, () => {
+    proceedToPayment()
     if (enable) {
       cy.get(checkoutUiCustomSelectors.HideEmailHeader).should('not.be.visible')
-    } else {
-      cy.get(checkoutUiCustomSelectors.HideEmailHeader).should('be.visible')
-    }
-  })
-
-  it(`${prefix} - Display simplified shipping date`, updateRetry(2), () => {
-    if (enable) {
       cy.get(checkoutUiCustomSelectors.ShippingTimeInfo).should('exist')
-    } else {
-      cy.get(checkoutUiCustomSelectors.ShippingTimeInfo).should('not.exist')
-    }
-  })
-
-  it(`${prefix} - Display payment options as accordion`, updateRetry(2), () => {
-    if (enable) {
       cy.get(checkoutUiCustomSelectors.PaymentAccordion).should('exist')
-    } else {
-      cy.get(checkoutUiCustomSelectors.PaymentAccordion).should('not.exist')
-    }
-  })
-
-  it(`${prefix} - Display notes field`, updateRetry(2), () => {
-    if (enable) {
       cy.get(checkoutUiCustomSelectors.SummaryNote).should('be.visible')
     } else {
+      cy.get(checkoutUiCustomSelectors.HideEmailHeader).should('be.visible')
+      cy.get(checkoutUiCustomSelectors.ShippingTimeInfo).should('not.exist')
+      cy.get(checkoutUiCustomSelectors.PaymentAccordion).should('not.exist')
       cy.get(checkoutUiCustomSelectors.SummaryNote).should('not.be.visible')
     }
   })

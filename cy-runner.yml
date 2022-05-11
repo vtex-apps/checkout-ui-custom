@@ -5,9 +5,7 @@ base:
     name: VTEX_QE
   vtex:
     account: productusqa
-    id: 2001459804
     domain: myvtex.com
-    urlExternalSeller: https://productusqaseller.myvtex.com
     vtexIdUrl: https://vtexid.vtex.com.br/api/vtexid/pub/authenticate/default
     deployCli:
       enabled: true

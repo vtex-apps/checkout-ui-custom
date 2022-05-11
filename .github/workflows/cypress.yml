@@ -25,6 +25,7 @@ concurrency:
 jobs:
   cypress:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     # To avoid waste Cypress tests,
     # lets run it only when the pull request is ready.
     if: github.event.pull_request.draft == false
@@ -62,3 +63,4 @@ jobs:
         with:
           name: cy-runner-logs
           path: cy-runner/logs
+          retention-days: 3
