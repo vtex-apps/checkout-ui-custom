@@ -1,7 +1,7 @@
 import { testSetup, updateRetry } from '../support/common/support.js'
 import { testCustomJSAndCSS } from '../support/outputvalidation.js'
-import { orderProduct } from '../support/testcase.js'
 import selectors from '../support/common/selectors.js'
+import checkoutUiCustomSelectors from '../support/selectors.js'
 
 describe('Testing Custom JS and CSS', () => {
   // Load test setup
@@ -35,10 +35,10 @@ describe('Testing Custom JS and CSS', () => {
       cy.get(selectors.VatInput).type('FR40303265045')
       cy.get(selectors.SubmitVat).click()
       // Tax should not exist
-      cy.get('.vat-number__button--remove').click()
+      cy.get(checkoutUiCustomSelectors.VatRemoveButton)
+        .should('be.visible')
+        .click()
       cy.get(selectors.VatInput).should('be.empty')
     }
   )
-
-  orderProduct(prefix)
 })

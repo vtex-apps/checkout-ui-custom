@@ -27,14 +27,14 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
   })
 
   it(`${prefix} - Verify line items displayed in checkout ui`, () => {
-    cy.get(checkoutUiCustomSelectors.lineItemAssemble).should('exist')
+    cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
     cy.removeProduct(lineitemProducts.jumper.id)
     cy.get(checkoutUiCustomSelectors.ChooseProducts)
       .should('be.visible')
       .click()
   })
 
-  it(`${prefix} - Add line items for product`, updateRetry(3), () => {
+  it(`${prefix} - Add line items for ${product}`, updateRetry(3), () => {
     cy.openProduct(lineitemProducts.jumper.name, true)
     fillLineItems(
       checkoutUiCustomConstants.lineItems,
@@ -43,9 +43,9 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
     cy.get(selectors.AddtoCart).click()
   })
 
-  it(`${prefix} - Verify line items displaying`, () => {
+  it(`${prefix} - Verify line items are displaying in checkout`, () => {
     cy.checkoutProduct()
-    cy.get(checkoutUiCustomSelectors.lineItemAssemble).should('exist')
+    cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
   })
 
   preserveCookie()

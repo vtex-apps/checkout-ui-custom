@@ -4,10 +4,9 @@ import {
   preserveCookie,
 } from '../support/common/support.js'
 import { checkoutScenario } from '../support/outputvalidation.js'
-import { orderProduct } from '../support/testcase.js'
 import selectors from '../support/common/selectors.js'
 
-describe('Testing single product and total amounts', () => {
+describe('Testing Checkout with different scenarios', () => {
   // Load test setup
   testSetup()
 
@@ -50,6 +49,5 @@ describe('Testing single product and total amounts', () => {
       .click()
   })
 
-  orderProduct(prefix)
   preserveCookie()
 })

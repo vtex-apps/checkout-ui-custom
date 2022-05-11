@@ -27,7 +27,7 @@ base:
     devMode: false
     runHeaded: false
     getCookies: true
-    maxJobs: 2
+    maxJobs: 3
     quiet: true
     projectId: x6id56
     video: true

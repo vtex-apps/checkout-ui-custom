@@ -23,6 +23,14 @@ export function orderProduct(prefix) {
   })
 }
 
+function proceedToPayment() {
+  cy.get('body').then($body => {
+    if ($body.find(selectors.ProceedtoPaymentBtn).length) {
+      cy.get(selectors.ProceedtoPaymentBtn).click()
+    }
+  })
+}
+
 export function verifySettings(type) {
   const enable = /Enable/.test(type)
 
@@ -53,64 +61,64 @@ export function verifySettings(type) {
   it(`${prefix} - Display items unit price option`, updateRetry(2), () => {
     cy.get(checkoutUiCustomSelectors.CartLink).click()
     if (enable) {
-      cy.get(checkoutUiCustomSelectors.quantityUnityPrice).should('exist')
+      cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('exist')
     } else {
-      cy.get(checkoutUiCustomSelectors.quantityUnityPrice).should('not.exist')
+      cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('not.exist')
     }
 
-    cy.get(selectors.ProceedtoPaymentBtn).click()
+    proceedToPayment()
   })
 
   it(
     `${prefix} - Display google address form format option`,
     updateRetry(2),
     () => {
-      cy.get('.checkout-steps_item_cart').click()
+      cy.get(checkoutUiCustomSelectors.CartLink).click()
       if (enable) {
-        cy.get('.v-custom-quantity-price__list--selling').should('exist')
+        cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('exist')
       } else {
-        cy.get('.v-custom-quantity-price__list--selling').should('not.exist')
+        cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('not.exist')
       }
 
-      cy.get(selectors.ProceedtoPaymentBtn).click()
+      proceedToPayment()
     }
   )
 
   it(`${prefix} - Hide email step`, updateRetry(2), () => {
     if (enable) {
-      cy.get(checkoutUiCustomSelectors.hideEmailHeader).should('not.be.visible')
+      cy.get(checkoutUiCustomSelectors.HideEmailHeader).should('not.be.visible')
     } else {
-      cy.get(checkoutUiCustomSelectors.hideEmailHeader).should('be.visible')
+      cy.get(checkoutUiCustomSelectors.HideEmailHeader).should('be.visible')
     }
   })
 
   it(`${prefix} - Display simplified shipping date`, updateRetry(2), () => {
     if (enable) {
-      cy.get(checkoutUiCustomSelectors.shippingTimeInfo).should('exist')
+      cy.get(checkoutUiCustomSelectors.ShippingTimeInfo).should('exist')
     } else {
-      cy.get(checkoutUiCustomSelectors.shippingTimeInfo).should('not.exist')
+      cy.get(checkoutUiCustomSelectors.ShippingTimeInfo).should('not.exist')
     }
   })
 
   it(`${prefix} - Display payment options as accordion`, updateRetry(2), () => {
     if (enable) {
-      cy.get(checkoutUiCustomSelectors.paymentAccordion).should('exist')
+      cy.get(checkoutUiCustomSelectors.PaymentAccordion).should('exist')
     } else {
-      cy.get(checkoutUiCustomSelectors.paymentAccordion).should('not.exist')
+      cy.get(checkoutUiCustomSelectors.PaymentAccordion).should('not.exist')
     }
   })
 
   it(`${prefix} - Display notes field`, updateRetry(2), () => {
     if (enable) {
-      cy.get(checkoutUiCustomSelectors.summaryNote).should('be.visible')
+      cy.get(checkoutUiCustomSelectors.SummaryNote).should('be.visible')
     } else {
-      cy.get(checkoutUiCustomSelectors.summaryNote).should('not.be.visible')
+      cy.get(checkoutUiCustomSelectors.SummaryNote).should('not.be.visible')
     }
   })
 }
 
 export function fillLineItems(items, maxChar) {
-  cy.get(checkoutUiCustomSelectors.productLineItem)
+  cy.get(checkoutUiCustomSelectors.ProductLineItem)
     .first()
     .type(items.lineItem1)
     .should('have.attr', 'maxlength')
@@ -118,10 +126,10 @@ export function fillLineItems(items, maxChar) {
       cy.log(maxlength)
       expect(maxlength).to.equal(maxChar)
     })
-  cy.get(checkoutUiCustomSelectors.productLineItem)
+  cy.get(checkoutUiCustomSelectors.ProductLineItem)
     .eq(1)
     .type(items.lineItem2)
-  cy.get(checkoutUiCustomSelectors.productLineItem)
+  cy.get(checkoutUiCustomSelectors.ProductLineItem)
     .eq(2)
     .type(items.lineItem3)
 }

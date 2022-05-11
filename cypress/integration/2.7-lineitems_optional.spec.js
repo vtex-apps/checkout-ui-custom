@@ -27,14 +27,14 @@ describe(`Testing line items(optional) with this product - ${product}`, () => {
   })
 
   it(`${prefix} - Verify line items not displaying`, () => {
-    cy.get(checkoutUiCustomSelectors.lineItemAssemble).should('not.exist')
+    cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('not.exist')
     cy.removeProduct(lineitemProducts.acer.id)
     cy.get(checkoutUiCustomSelectors.ChooseProducts)
       .should('be.visible')
       .click()
   })
 
-  it(`${prefix} -Add line items for acer`, updateRetry(3), () => {
+  it(`${prefix} - Add line items for ${product}`, updateRetry(3), () => {
     cy.openProduct(lineitemProducts.acer.name, true)
     cy.contains(checkoutUiCustomConstants.addLineItemText).click()
     fillLineItems(
@@ -51,7 +51,7 @@ describe(`Testing line items(optional) with this product - ${product}`, () => {
 
   it(`${prefix} - Verify line items displaying`, () => {
     cy.checkoutProduct()
-    cy.get(checkoutUiCustomSelectors.lineItemAssemble).should('exist')
+    cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
   })
 
   preserveCookie()
