@@ -1,0 +1,101 @@
+---
+base:
+  secrets:
+    enabled: true
+    name: VTEX_QE
+  vtex:
+    account: productusqa
+    id: 2001459804
+    domain: myvtex.com
+    vtexIdUrl: https://vtexid.vtex.com.br/api/vtexid/pub/authenticate/default
+    deployCli:
+      enabled: true
+      git: https://github.com/vtex/toolbelt.git
+      branch: qe/cypress
+  twilio:
+    enabled: true
+  jira:
+    enabled: false
+    account: config-dev
+    board: jira-key
+    issueType: task
+  slack:
+    enabled: false
+    channel: some-channel
+  cypress:
+    devMode: false
+    runHeaded: false
+    getCookies: true
+    maxJobs: 3
+    quiet: true
+    projectId: x6id56
+    video: false
+    videoCompression: false
+    videoUploadOnPasses: false
+    screenshotOnRunFailure: true
+    trashAssetsBeforeRuns: false
+    viewportWidth: 1440
+    viewportHeight: 1500
+    defaultCommandTimeout: 25000
+    requestTimeout: 25000
+    watchForFileChanges: false
+    pageLoadTimeout: 45000
+    browser: chrome
+    chromeWebSecurity: false
+    sorry: false
+  stateFiles: ['.checkout.json']
+
+workspace:
+  name: random
+  prefix: checkoutuicustom
+  linkApp:
+    enabled: true
+    logOutput:
+      enabled: false
+  installApps: []
+  removeApps: []
+  wipe:
+    enabled: true
+    stopOnFail: false
+    specs:
+    - cypress/integration/wipe.spec.js
+  teardown:
+    enabled: true
+
+strategy:
+  # Clear reviews before testcase
+  basictest:
+    enabled: true
+    sendDashboard: true
+    hardTries: 1
+    stopOnFail: false
+    parallel: true
+    specs:
+      - cypress/integration/2.1-*
+      - cypress/integration/2.2-*
+      - cypress/integration/2.3-*
+      - cypress/integration/2.4-*
+  LayoutSettingsEnabledAndCheckoutScenarios:
+    enabled: true
+    sendDashboard: true
+    hardTries: 1
+    stopOnFail: false
+    parallel: true
+    specs:
+      - cypress/integration/2.5-*
+      - cypress/integration/2.6-*
+    dependency:
+      - cypress/integration/2.1-*
+  LayoutSettingsDisabled:
+    enabled: true
+    sendDashboard: true
+    hardTries: 1
+    stopOnFail: false
+    parallel: false
+    specs:
+      - cypress/integration/2.7-*
+    dependency:
+      - cypress/integration/2.1-*
+      - cypress/integration/2.6-*
+
+

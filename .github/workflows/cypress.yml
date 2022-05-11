@@ -1,0 +1,66 @@
+name: '[QE] Cypress Runner'
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 8:30 AM UTC = 4:30 AM EDT
+    - cron: '30 8 * * *'
+  pull_request:
+    branches:
+      - master
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+    paths-ignore:
+      - CHANGELOG.md
+      - docs/**
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # To avoid waste Cypress tests,
+    # lets run it only when the pull request is ready.
+    if: github.event.pull_request.draft == false
+    steps:
+      - name: Checkout Checkout UI Custom
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Get cy-runner
+        run: 'git clone https://github.com/vtex-apps/cy-runner.git'
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: '~/.cache/'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Cypress
+        run: |
+          rm -rf .git
+          yarn install --frozen-lockfile
+        working-directory: ./cy-runner
+
+      - name: Cypress Runner
+        run: yarn cy-r
+        env:
+          VTEX_QE: ${{ secrets.VTEX_QE }}
+          NODE_NO_WARNINGS: 1
+
+      - name: Save results
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: cy-runner-logs
+          path: cy-runner/logs
+          retention-days: 3
