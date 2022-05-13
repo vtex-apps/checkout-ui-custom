@@ -1132,6 +1132,9 @@ class checkoutCustom {
       $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
+        if (!window.google && _this.customAddressForm) {
+          _this.customAddressForm.loadScript()
+        }
       })
 
       $(window).load(function() {
@@ -1139,9 +1142,6 @@ class checkoutCustom {
         _this.checkProfileFocus()
         _this.changeShippingTimeInfoInit()
         _this.indexedInItems(window.vtexjs.checkout.orderForm)
-        if (!window.google && _this.customAddressForm) {
-          _this.customAddressForm.loadScript()
-        }
 
         if (_this.customAddressForm && typeof store !== 'undefined') {
           window.store.dispatch({
