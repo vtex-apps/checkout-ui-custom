@@ -445,6 +445,8 @@ class fnsCustomAddressForm {
   getCountries() {
     const _this = this
 
+    console.log(`GetCountries: ${_this.deliveryCountries}`)
+
     return _this.deliveryCountries.map(countryCode => {
       const _i18n = window.vtex.i18n[_this.lang]
         ? window.vtex.i18n[_this.lang]
@@ -869,7 +871,7 @@ class fnsCustomAddressForm {
       _this.checkFirstLogin(orderForm)
       _this.bind()
       _this.events()
-      _this.deliveryCountries = window.checkout.deliveryCountries()
+      _this.deliveryCountries = ['ZAF']
       _this.mainCountry = window.checkout.countryCode()
       _this.lang = _this.orderForm.clientPreferencesData.locale
       _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode]
@@ -877,6 +879,7 @@ class fnsCustomAddressForm {
         _this.orderForm.storePreferencesData.countryCode
       )
 
+      console.log(`COUNTRYNAME: ${_this.deliveryCountries}`)
       if (_this.lang === 'es-AR') _this.lang = 'es'
 
       if (_this.orderForm && _this.orderForm.shippingData) {
