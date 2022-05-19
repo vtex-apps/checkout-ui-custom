@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.20] - 2022-05-19
+
 ### Added
 - Added PANAMA Country Address rules
 
