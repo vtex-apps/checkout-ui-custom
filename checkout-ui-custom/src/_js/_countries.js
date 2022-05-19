@@ -224,6 +224,13 @@ module.exports._countriesrules = {
     number: true,
     postalCode: true,
   },
+  PAN: {
+    state: 'administrative_area_level_1',
+    city: 'administrative_are_level_2',
+    neighborhood: 'locality',
+    number: false,
+    postalCode: true,
+  },
 }
 
 // _countries.find(i=>i[0]=="US")
@@ -20006,4 +20013,5 @@ module.exports._addressPlaceholder = {
   NLD: 'Eg: Surinamestraat 27, Amsterdam',
   POL: 'Eg: Ulica Twarda 3, Szczecin',
   ZAF: 'Eg: 234 Brickfield Rd, Salt River, Cape Town, 7501, South Africa',
+  PAN: 'Eg: C. Enrique Linares 4502',
 }

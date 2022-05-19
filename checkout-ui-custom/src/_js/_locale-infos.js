@@ -183,6 +183,8 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Pago',
     checkoutStepsLabelConfirmation: 'Confirmación',
     requiredField: 'Este campo es obligatorio.',
+    city: 'Ciudad',
+    state: 'Estado',
   },
   MEX: {
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
