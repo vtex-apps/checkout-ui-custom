@@ -1391,7 +1391,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-"stats-lite@github:vtex/node-stats-lite#dist":
+stats-lite@vtex/node-stats-lite#dist:
   version "2.2.0"
   resolved "https://codeload.github.com/vtex/node-stats-lite/tar.gz/1b0d39cc41ef7aaecfd541191f877887a2044797"
   dependencies:
@@ -1596,9 +1596,9 @@ vary@^1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-"vtex.checkout-ui-custom@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.6.10/public/@types/vtex.checkout-ui-custom":
-  version "0.6.10"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.6.10/public/@types/vtex.checkout-ui-custom#bcc10e3dcf1341be59abcd3682f33ef07419868c"
+"vtex.checkout-ui-custom@http://vtex.vtexassets.com/_v/public/typings/v1/thefoschini.checkout-ui-custom@0.0.1/public/@types/vtex.checkout-ui-custom":
+  version "0.0.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/thefoschini.checkout-ui-custom@0.0.1/public/@types/vtex.checkout-ui-custom#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
 
 "vtex.checkout-ui-settings-server@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.3/public/_types/react":
   version "0.0.0"

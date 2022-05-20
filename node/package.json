@@ -19,7 +19,7 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-vtex": "^2.1.0",
     "typescript": "3.9.7",
-    "vtex.checkout-ui-custom": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.6.10/public/@types/vtex.checkout-ui-custom",
+    "vtex.checkout-ui-custom": "http://vtex.vtexassets.com/_v/public/typings/v1/thefoschini.checkout-ui-custom@0.0.1/public/@types/vtex.checkout-ui-custom",
     "vtex.checkout-ui-settings-server": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.3/public/_types/react",
     "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime",
     "vtex.store-resources": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.85.0/public/@types/vtex.store-resources",
