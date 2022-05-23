@@ -1596,9 +1596,9 @@ vary@^1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-"vtex.checkout-ui-custom@http://vtex.vtexassets.com/_v/public/typings/v1/thefoschini.checkout-ui-custom@0.0.1/public/@types/vtex.checkout-ui-custom":
-  version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/thefoschini.checkout-ui-custom@0.0.1/public/@types/vtex.checkout-ui-custom#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
+"vtex.checkout-ui-custom@http://vtex.vtexassets.com/_v/public/typings/v1/thefoschini.checkout-ui-custom@0.0.2/public/@types/thefoschini.checkout-ui-custom":
+  version "0.0.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/thefoschini.checkout-ui-custom@0.0.2/public/@types/thefoschini.checkout-ui-custom#b776af4c4acbe5a91deb82d53f0e996cc6984f56"
 
 "vtex.checkout-ui-settings-server@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.3/public/_types/react":
   version "0.0.0"
