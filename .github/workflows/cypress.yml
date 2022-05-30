@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # 8:30 AM UTC = 4:30 AM EDT
-    - cron: '30 8 * * *'
+    - cron: '30 8 * * MON-FRI'
   pull_request:
     branches:
       - master
