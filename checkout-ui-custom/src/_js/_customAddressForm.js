@@ -185,7 +185,6 @@ class fnsCustomAddressForm {
 
   googleForm() {
     const _this = this
-
     const input = document.getElementById('v-custom-ship-street')
 
     _this.gPlacesAutocomplete = new window.google.maps.places.Autocomplete(
