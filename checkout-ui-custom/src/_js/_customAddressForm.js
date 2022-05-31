@@ -461,7 +461,8 @@ class fnsCustomAddressForm {
   getCountries() {
     const _this = this
 
-    if (_this.deliveryCountries === ['BRA'] || _this.deliveryCountries === 'BRA') {
+    /* eslint eqeqeq: 0 */
+    if (_this.deliveryCountries == ['BRA'] || _this.deliveryCountries == 'BRA') {
       _this.deliveryCountries = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].shipsTo
     }
 
