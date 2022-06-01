@@ -578,7 +578,8 @@ class checkoutCustom {
         const { selectedSla } = logisticsInfo
 
         const selectedSlaDays = availableSlas.find(e => e.name === selectedSla)
-          .shippingEstimate
+          ? availableSlas.find(e => e.name === selectedSla).shippingEstimate
+          : false
 
         const txtselectin = $(this)
           .find(
@@ -594,7 +595,7 @@ class checkoutCustom {
           if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)/gm)) {
             days = parseInt(txtselectin.match(/\d+/), 10)
           }
-        } else {
+        } else if (selectedSlaDays) {
           days = parseInt(selectedSlaDays.match(/\d+/), 10)
         }
 
