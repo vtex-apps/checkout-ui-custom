@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.21] - 2022-06-01
+
 ### Added
 - Add Russia in the Google Address Form.
 - Convert country rules in an array to take the next value in the array.
