@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.22] - 2022-06-01
+
 ### Fixed
 - Get country information again when trying to retrieve getCountries
 - Fixed error adding Google Maps Appkey multiple times
