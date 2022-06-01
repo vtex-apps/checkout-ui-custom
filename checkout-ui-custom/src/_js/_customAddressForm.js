@@ -12,9 +12,11 @@ const {
 
 // temporaly workaorund
 window.callbackMap = () => {
-  window.vcustom.checkout.customAddressFormInit(
-    window.vtexjs.checkout.orderForm
-  )
+  window.vtexjs.checkout.getOrderForm((orderForm) => {
+    window.vcustom.checkout.customAddressFormInit(
+      orderForm
+    )
+  })
 }
 // end temporaly workaorund
 
@@ -109,7 +111,7 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      this.addressrules.number ? street : formattedStreet || street
+      country === 'USA' ? formattedStreet : street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
@@ -183,7 +185,6 @@ class fnsCustomAddressForm {
 
   googleForm() {
     const _this = this
-
     const input = document.getElementById('v-custom-ship-street')
 
     _this.gPlacesAutocomplete = new window.google.maps.places.Autocomplete(
@@ -197,7 +198,7 @@ class fnsCustomAddressForm {
         console.log(place)
       }
 
-      const [country] = _countries.find(
+      const [, country] = _countries.find(
         c =>
           c[0] ===
           place.address_components.filter(
@@ -235,7 +236,11 @@ class fnsCustomAddressForm {
 
       const number = _this.addressrules.number
         ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
-        : null
+        : _this.returnAddressFRules(
+          place.address_components,
+          'street_number',
+          'long_name'
+        )
 
       const complement = $(
         '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
@@ -455,6 +460,11 @@ class fnsCustomAddressForm {
 
   getCountries() {
     const _this = this
+
+    /* eslint eqeqeq: 0 */
+    if (_this.deliveryCountries == ['BRA'] || _this.deliveryCountries == 'BRA') {
+      _this.deliveryCountries = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].shipsTo
+    }
 
     return _this.deliveryCountries.map(countryCode => {
       const _i18n = window.vtex.i18n[_this.lang]
@@ -891,7 +901,7 @@ class fnsCustomAddressForm {
       _this.lang = _this.orderForm.clientPreferencesData.locale
       _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode]
       _this.addressrules = _this.getCountryRule(
-        _this.orderForm.storePreferencesData.countryCode
+      _this.orderForm.storePreferencesData.countryCode
       )
 
       if (_this.lang === 'es-AR') _this.lang = 'es'
