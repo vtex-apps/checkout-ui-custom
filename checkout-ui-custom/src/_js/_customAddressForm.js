@@ -12,10 +12,8 @@ const {
 
 // temporaly workaorund
 window.callbackMap = () => {
-  window.vtexjs.checkout.getOrderForm((orderForm) => {
-    window.vcustom.checkout.customAddressFormInit(
-      orderForm
-    )
+  window.vtexjs.checkout.getOrderForm(orderForm => {
+    window.vcustom.checkout.customAddressFormInit(orderForm)
   })
 }
 // end temporaly workaorund
@@ -236,11 +234,7 @@ class fnsCustomAddressForm {
 
       const number = _this.addressrules.number
         ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
-        : _this.returnAddressFRules(
-          place.address_components,
-          'street_number',
-          'long_name'
-        )
+        : null
 
       const complement = $(
         '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
@@ -462,8 +456,12 @@ class fnsCustomAddressForm {
     const _this = this
 
     /* eslint eqeqeq: 0 */
-    if (_this.deliveryCountries == ['BRA'] || _this.deliveryCountries == 'BRA') {
-      _this.deliveryCountries = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].shipsTo
+    if (
+      _this.deliveryCountries == ['BRA'] ||
+      _this.deliveryCountries == 'BRA'
+    ) {
+      _this.deliveryCountries =
+        window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].shipsTo
     }
 
     return _this.deliveryCountries.map(countryCode => {
@@ -901,7 +899,7 @@ class fnsCustomAddressForm {
       _this.lang = _this.orderForm.clientPreferencesData.locale
       _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode]
       _this.addressrules = _this.getCountryRule(
-      _this.orderForm.storePreferencesData.countryCode
+        _this.orderForm.storePreferencesData.countryCode
       )
 
       if (_this.lang === 'es-AR') _this.lang = 'es'
