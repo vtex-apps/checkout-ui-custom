@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-06-03
+
 ### Added
 - Japanese, Korean, Romanian, Thai general message translations and translation of checkout messages for Greece, Switzerland, Croatia, Romania, Netherlands, Belgium, and Czechia (Czech Republic).
 
