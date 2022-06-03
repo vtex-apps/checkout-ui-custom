@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.2] - 2022-06-03
+
 ### Fixed
 - When number is false dont use find types function.
 
