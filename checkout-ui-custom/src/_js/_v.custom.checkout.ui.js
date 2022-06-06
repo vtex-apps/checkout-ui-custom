@@ -489,7 +489,7 @@ class checkoutCustom {
                     <strong class="price pull-right" data-bind="text: sellingPriceLabel">${
                       orderForm.storePreferencesData.currencySymbol
                     } ${formatCurrency(
-                orderForm.clientPreferencesData.local,
+                orderForm.clientPreferencesData.locale,
                 orderForm.storePreferencesData.currencyCode,
                 iiItem.sellingPrice
               ).toFixed(2)}</strong>
