@@ -824,6 +824,7 @@ class checkoutCustom {
 
   updateLang(orderForm) {
     const clientLocale = orderForm.clientPreferencesData.locale
+
     /* eslint eqeqeq: 0 */
     this.lang = Object.values(_locale).find((country) => country.locale == clientLocale)
     /* eslint eqeqeq: 0 */
