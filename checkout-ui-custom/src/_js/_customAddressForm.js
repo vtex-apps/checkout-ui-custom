@@ -97,7 +97,7 @@ class fnsCustomAddressForm {
   ) {
     console.log('country:', country)
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-      this.addressrules.number ? street : formattedStreet || street
+      this.addressrules.number ? street : formattedStreet
     )
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
       complement
@@ -109,7 +109,7 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      country === 'USA' ? formattedStreet : street
+      country === 'USA' || country === 'ZAF' ? formattedStreet : street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
@@ -132,19 +132,6 @@ class fnsCustomAddressForm {
       $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(state)
     } else {
       $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val('')
-    }
-
-    if (this.addressrules.number) {
-      $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-        street
-      )
-    } else {
-      $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val('')
-      if (street && number) {
-        $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-          formattedStreet || `${street} ${number}`
-        )
-      }
     }
   }
 
@@ -234,7 +221,9 @@ class fnsCustomAddressForm {
 
       const number = _this.addressrules.number
         ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
-        : null
+        : _this.returnAddressFRules(place.address_components, {
+            types: ['street_number'],
+          })
 
       const complement = $(
         '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
@@ -493,7 +482,10 @@ class fnsCustomAddressForm {
       number.find('input').removeAttr('required')
     }
 
-    if (!addressrules.state) {
+    if (addressrules.state) {
+      state.show()
+      state.find('input').attr('required', 'required')
+    } else {
       state.hide()
       state.find('input').removeAttr('required')
     }
@@ -653,7 +645,7 @@ class fnsCustomAddressForm {
       '.vcustom--vtex-omnishipping-1-x-address #ship-country'
     ).val()
 
-    const street = _st.attr('data-street') || _st.val()
+    const street = _st.attr('data-street') || ''
     const number = $(
       '.vcustom--vtex-omnishipping-1-x-address #ship-number'
     ).val()

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Show number when send the address.
+- Update the form when change the country.
+
 ## [0.7.3] - 2022-06-08
 
 ### Fixed
