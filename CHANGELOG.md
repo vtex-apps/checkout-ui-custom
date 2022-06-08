@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Translations for missing elements in the checkout.
+
 ## [0.7.2] - 2022-06-03
 
 ### Fixed
