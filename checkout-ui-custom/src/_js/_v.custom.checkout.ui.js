@@ -823,7 +823,12 @@ class checkoutCustom {
   }
 
   updateLang(orderForm) {
-    this.lang = _locale[orderForm.storePreferencesData.countryCode]
+    const clientLocale = orderForm.clientPreferencesData.locale
+    this.lang = Object.values(_locale).find((country) => country.locale == clientLocale)
+      ? Object.values(_locale).find((country) => country.locale == clientLocale)
+      : _locale[orderForm.storePreferencesData.country]
+
+      debugger
 
     if (!this.lang) return false
     const _lang = this.lang

@@ -6,6 +6,7 @@ module.exports._locale = {
     PickupDateText: 'Pronto até',
     eachLabel: 'cada',
     tomorrowLabel: 'Amanhã',
+    cartSubmitButton: 'Continuar pagamento',
     checkoutStepsLabelCart: 'Carrinho',
     checkoutStepsLabelIdentification: 'Identificação',
     checkoutStepsLabelShipping: 'Entrega',
@@ -16,6 +17,7 @@ module.exports._locale = {
     address1Placeholder: 'Endereço',
     address2Placeholder: 'Complemento',
     requiredField: 'Este campo é obrigatório.',
+    locale: 'pt-BR',
   },
   CAN: {
     couponInactive: 'No discounts available. Check the conditions.',
@@ -40,6 +42,7 @@ module.exports._locale = {
     requiredField: 'This field is required.',
     city: 'City',
     state: 'State',
+    locale: 'en-CA',
   },
   USA: {
     couponInactive: 'No discounts available. Check the conditions.',
@@ -64,6 +67,7 @@ module.exports._locale = {
     requiredField: 'This field is required.',
     city: 'City',
     state: 'State',
+    locale: 'en-US',
   },
   GBR: {
     couponInactive: 'No discounts available. Check the conditions.',
@@ -85,6 +89,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Payment',
     checkoutStepsLabelConfirmation: 'Confirmation',
     requiredField: 'This field is required.',
+    locale: 'en-GB',
   },
   POR: {
     couponInactive: 'Nenhum desconto aplicado. Confira as regras.',
@@ -101,6 +106,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Pagamento',
     checkoutStepsLabelConfirmation: 'Confirmação',
     requiredField: 'Este campo é obrigatório',
+    locale: 'pt-BR',
   },
   ESP: {
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
@@ -121,6 +127,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Pago',
     checkoutStepsLabelConfirmation: 'Confirmación',
     requiredField: 'Este campo es obligatorio.',
+    locale: 'es',
   },
   ARG: {
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
@@ -143,6 +150,7 @@ module.exports._locale = {
     requiredField: 'Este campo es obligatorio.',
     city: 'Ciudad',
     state: 'Província',
+    locale: 'ar',
   },
   COL: {
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
@@ -163,6 +171,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Pago',
     checkoutStepsLabelConfirmation: 'Confirmación',
     requiredField: 'Este campo es obligatorio.',
+    locale: 'es-CO',
   },
   PAN: {
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
@@ -185,6 +194,7 @@ module.exports._locale = {
     requiredField: 'Este campo es obligatorio.',
     city: 'Ciudad',
     state: 'Estado',
+    locale: 'es-PA',
   },
   MEX: {
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
@@ -205,6 +215,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Pago',
     checkoutStepsLabelConfirmation: 'Confirmación',
     requiredField: 'Este campo es obligatorio.',
+    locale: 'es-MX',
   },
   ITA: {
     couponInactive: 'Nessuno sconto disponibile. Controlla le condizioni.',
@@ -229,6 +240,7 @@ module.exports._locale = {
     number: 'Numero',
     requiredField: 'Questo campo è obbligatorio.',
     numberPlaceholder: ' ',
+    locale: 'it',
   },
   FRA: {
     couponInactive: 'Aucune réduction disponible. Vérifiez les conditions.',
@@ -249,6 +261,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Paiement',
     checkoutStepsLabelConfirmation: 'Confirmation',
     requiredField: 'Ce champ est obligatoire.',
+    locale: 'fr',
   },
   FIN: {
     couponInactive: 'Alennuksia ei saatavilla. Tarkasta ehdot.',
@@ -265,6 +278,7 @@ module.exports._locale = {
     checkoutStepsLabelShipping: 'Toimitus',
     checkoutStepsLabelPayment: 'Maksu',
     checkoutStepsLabelConfirmation: 'Vahvistus',
+    locale: 'fi',
   },
   SWE: {
     couponInactive: 'Inga rabatter tillgängliga, kontrollera villkoren.',
@@ -281,6 +295,7 @@ module.exports._locale = {
     checkoutStepsLabelShipping: 'Leverans',
     checkoutStepsLabelPayment: 'Betalning',
     checkoutStepsLabelConfirmation: 'Bekräftelse',
+    locale: 'sv',
   },
   DEU: {
     couponInactive: 'Kein Rabatt verfügbar. Überprüfen Sie die Bedingungen.',
@@ -298,6 +313,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Zahlung',
     checkoutStepsLabelConfirmation: 'Bestätigung',
     googleAddressLabel: 'Adresse',
+    locale: 'de',
   },
   ARA: {
     couponInactive: 'لا توجد خصومات متاحة. تحقق من الشروط.',
@@ -319,6 +335,7 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'الدفع',
     checkoutStepsLabelConfirmation: 'تأكيد',
     requiredField: 'هذا الحقل مطلوب.',
+    locale: 'ar-TN',
   },
   RUS: {
     couponInactive: 'Скидки недоступны. Проверьте условия.',
@@ -343,6 +360,7 @@ module.exports._locale = {
     requiredField: 'Это обязательное поле.',
     city: 'Город',
     state: 'Область',
+    locale: 'ru',
   },
   POL: {
     couponInactive: 'Brak dostępnych upustów. Sprawdź warunki.',
@@ -369,6 +387,7 @@ module.exports._locale = {
     requiredField: 'To pole jest wymagane.',
     city: 'Miejscowość',
     state: 'Stan (województwo)',
+    locale: 'pl',
   },
   ZAF: {
     couponInactive: 'No discounts available. Check the conditions.',
@@ -393,6 +412,7 @@ module.exports._locale = {
     requiredField: 'This field is required.',
     city: 'City',
     state: 'State',
+    locale: 'en-ZA',
   },
   GRC: {
     couponInactive: 'Δεν υπάρχουν διαθέσιμες εκπτώσεις. Ελέγξτε τους όρους.',
@@ -416,7 +436,8 @@ module.exports._locale = {
     googleAddressLabel: 'Διεύθυνση οδού',
     requiredField: 'Αυτό το πεδίο είναι υποχρεωτικό.',
     city: 'Πόλη',
-    state: 'Χώρα'
+    state: 'Χώρα',
+    locale: 'gr',
   },
   CHE: {
     couponInactive: 'Keine Rabatte verfügbar. Prüfen Sie die Bedingungen.',
@@ -440,7 +461,8 @@ module.exports._locale = {
     googleAddressLabel: 'Straße und Hausnummer',
     requiredField: 'Dieses Feld ist erforderlich.',
     city: 'Stadt',
-    state: 'Staat'
+    state: 'Staat',
+    locale: 'fr-CH',
   },
   HRV: {
     couponInactive: 'Popusti niso na voljo. Preverite pogoje.',
@@ -464,7 +486,8 @@ module.exports._locale = {
     googleAddressLabel: 'Naslov ulice',
     requiredField: 'To polje je obvezno.',
     city: 'Mesto',
-    state: 'Država'
+    state: 'Država',
+    locale: 'hr',
   },
   AUT: {
     couponInactive: 'No discounts available. Check the conditions.',
@@ -487,12 +510,13 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Payment',
     checkoutStepsLabelConfirmation: 'Confirmation',
     requiredField: 'This field is required.',
+    locale: 'de-AT',
   },
   ROU: {
     couponInactive: 'Nu sunt disponibile reduceri. Este necesară verificarea condițiilor.',
     editLabel: 'Editează',
     paypalImg: '',
-    paypalPhone: '',    
+    paypalPhone: '',
     cartSubmitButton: 'Mergi la plată',
     deliveryDateText: 'Sosește până la',
     PickupDateText: 'Este pregătit până la',
@@ -510,7 +534,8 @@ module.exports._locale = {
     googleAddressLabel: 'Adresa',
     requiredField: 'Acest câmp este obligatoriu.',
     city: 'Oraș',
-    state: 'Stat'
+    state: 'Stat',
+    locale: 'ro-MD',
   },
   NLD: {
     couponInactive: 'Geen kortingen beschikbaar. Controleer de voorwaarden.',
@@ -534,7 +559,8 @@ module.exports._locale = {
     googleAddressLabel: 'Adres',
     requiredField: 'Dit veld is verplicht.',
     city: 'Stad',
-    state: 'Staat'
+    state: 'Staat',
+    locale: 'nl',
   },
   BEL: {
     couponInactive: 'Geen kortingen beschikbaar. Controleer de voorwaarden.',
@@ -558,7 +584,8 @@ module.exports._locale = {
     googleAddressLabel: 'Adres',
     requiredField: 'Dit veld is verplicht.',
     city: 'Stad',
-    state: 'Staat'
+    state: 'Staat',
+    locale: 'nl-BE',
   },
   CZE: {
     couponInactive: 'Nie sú dostupné žiadne zľavy. Pozrite si podmienky.',
@@ -582,6 +609,7 @@ module.exports._locale = {
     googleAddressLabel: 'Ulica',
     requiredField: 'Toto pole je povinné.',
     city: 'Mesto',
-    state: 'Štát'
+    state: 'Štát',
+    locale: 'cs',
   },
 }
