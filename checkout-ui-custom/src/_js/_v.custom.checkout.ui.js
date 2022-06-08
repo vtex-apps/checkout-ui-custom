@@ -825,11 +825,11 @@ class checkoutCustom {
   updateLang(orderForm) {
     const clientLocale = orderForm.clientPreferencesData.locale
 
-    /* eslint eqeqeq: 0 */
-    this.lang = Object.values(_locale).find((country) => country.locale == clientLocale)
-    /* eslint eqeqeq: 0 */
-      ? Object.values(_locale).find((country) => country.locale == clientLocale)
-      : _locale[orderForm.storePreferencesData.country]
+    this.lang = Object.values(_locale).find(
+      country => country.locale === clientLocale
+    )
+      ? Object.values(_locale).find(country => country.locale === clientLocale)
+      : _locale[orderForm.storePreferencesData.countryCode]
 
     if (!this.lang) return false
     const _lang = this.lang
