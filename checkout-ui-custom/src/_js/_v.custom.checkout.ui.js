@@ -489,7 +489,7 @@ class checkoutCustom {
                     <strong class="price pull-right" data-bind="text: sellingPriceLabel">${
                       orderForm.storePreferencesData.currencySymbol
                     } ${formatCurrency(
-                orderForm.clientPreferencesData.local,
+                orderForm.clientPreferencesData.locale,
                 orderForm.storePreferencesData.currencyCode,
                 iiItem.sellingPrice
               ).toFixed(2)}</strong>
@@ -824,11 +824,11 @@ class checkoutCustom {
 
   updateLang(orderForm) {
     const clientLocale = orderForm.clientPreferencesData.locale
+    /* eslint eqeqeq: 0 */
     this.lang = Object.values(_locale).find((country) => country.locale == clientLocale)
+    /* eslint eqeqeq: 0 */
       ? Object.values(_locale).find((country) => country.locale == clientLocale)
       : _locale[orderForm.storePreferencesData.country]
-
-      debugger
 
     if (!this.lang) return false
     const _lang = this.lang
