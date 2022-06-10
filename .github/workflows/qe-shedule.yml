@@ -1,0 +1,15 @@
+name: '[SCH] Quality Engineering'
+
+on:
+  schedule:
+    - cron: '30 8 * * MON-FRI'
+
+jobs:
+  quality-engineering:
+    name: QE
+    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@main
+    with:
+      cypress: true
+    secrets:
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
+      cypressJson: ${{ secrets.VTEX_QE }}
