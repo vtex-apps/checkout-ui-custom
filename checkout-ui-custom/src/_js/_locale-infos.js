@@ -425,7 +425,8 @@ module.exports._locale = {
     eachLabel: 'καθεμία',
     tomorrowLabel: 'Αύριο',
     cartNoteLabel: 'Μήνυμα δώρου ή Σχόλια',
-    identifiedUserMessage: 'Ευχαριστούμε που επανήλθατε!\n Για να επισπεύσουμε τη συναλλαγή σας, έχουμε συμπληρώσει με ασφάλεια τις πληροφορίες για εσάς.',
+    identifiedUserMessage:
+      'Ευχαριστούμε που επανήλθατε!\n Για να επισπεύσουμε τη συναλλαγή σας, έχουμε συμπληρώσει με ασφάλεια τις πληροφορίες για εσάς.',
     address1Placeholder: 'Διεύθυνση οδού ή Ταχυδρομική Θυρίδα',
     address2Placeholder: 'Διαμέρισμα, σουίτα, κτήριο, όροφος κλπ (προαιρετικό)',
     checkoutStepsLabelCart: 'Καρότσι',
@@ -450,9 +451,11 @@ module.exports._locale = {
     eachLabel: 'jeder',
     tomorrowLabel: 'Morgen',
     cartNoteLabel: 'Geschenknachricht oder Kommentare',
-    identifiedUserMessage: 'Danke, dass Sie zurückgekommen sind!\nUm Ihre Transaktion zu beschleunigen, haben wir Ihre Daten für Sie sicher ausgefüllt.',
+    identifiedUserMessage:
+      'Danke, dass Sie zurückgekommen sind!\nUm Ihre Transaktion zu beschleunigen, haben wir Ihre Daten für Sie sicher ausgefüllt.',
     address1Placeholder: 'Straße oder Anschrift Box',
-    address2Placeholder: 'Wohnung, Appartement, Gebäude, Stockwerk, usw. (optional)',
+    address2Placeholder:
+      'Wohnung, Appartement, Gebäude, Stockwerk, usw. (optional)',
     checkoutStepsLabelCart: 'Warenkorb',
     checkoutStepsLabelIdentification: 'Kennzeichnung',
     checkoutStepsLabelShipping: 'Versand',
@@ -475,9 +478,11 @@ module.exports._locale = {
     eachLabel: 'posamezen',
     tomorrowLabel: 'Jutri',
     cartNoteLabel: 'Darilno sporočilo ali komentarji',
-    identifiedUserMessage: 'Hvala, ker ste se vrnili! Da bi pospešili vašo transakcijo, smo za vas varno izpolnili vaše podatke.',
+    identifiedUserMessage:
+      'Hvala, ker ste se vrnili! Da bi pospešili vašo transakcijo, smo za vas varno izpolnili vaše podatke.',
     address1Placeholder: 'Ulični naslov ali poštna št',
-    address2Placeholder: 'Apartma, apartma, stavba, nadstropje itd. (neobvezno)',
+    address2Placeholder:
+      'Apartma, apartma, stavba, nadstropje itd. (neobvezno)',
     checkoutStepsLabelCart: 'Košarica',
     checkoutStepsLabelIdentification: 'Identifikacija',
     checkoutStepsLabelShipping: 'Odpošiljanje',
@@ -513,7 +518,8 @@ module.exports._locale = {
     locale: 'de-AT',
   },
   ROU: {
-    couponInactive: 'Nu sunt disponibile reduceri. Este necesară verificarea condițiilor.',
+    couponInactive:
+      'Nu sunt disponibile reduceri. Este necesară verificarea condițiilor.',
     editLabel: 'Editează',
     paypalImg: '',
     paypalPhone: '',
@@ -523,7 +529,8 @@ module.exports._locale = {
     eachLabel: 'fiecare',
     tomorrowLabel: 'Mâine',
     cartNoteLabel: 'Mesaj cadou sau observații',
-    identifiedUserMessage: 'Îți mulțumim că ai revenit!\nPentru a-ți accelera tranzacția, am populat în condiții de siguranță informațiile tale',
+    identifiedUserMessage:
+      'Îți mulțumim că ai revenit!\nPentru a-ți accelera tranzacția, am populat în condiții de siguranță informațiile tale',
     address1Placeholder: 'Strada sau cutia poștală',
     address2Placeholder: 'Apartament, clădire, etaj etc. (opțional)',
     checkoutStepsLabelCart: 'Coș de cumpărături',
@@ -548,9 +555,11 @@ module.exports._locale = {
     eachLabel: 'elk',
     tomorrowLabel: 'Morgen',
     cartNoteLabel: 'Geschenkboodschap of commentaar',
-    identifiedUserMessage: 'Bedankt dat u terugkwam!\nOm uw transactie te bespoedigen, hebben wij uw gegevens veilig voor u ingevuld.',
+    identifiedUserMessage:
+      'Bedankt dat u terugkwam!\nOm uw transactie te bespoedigen, hebben wij uw gegevens veilig voor u ingevuld.',
     address1Placeholder: 'Adres of postbus ',
-    address2Placeholder: 'Appartement, suite, gebouw, verdieping, enz (facultatief)',
+    address2Placeholder:
+      'Appartement, suite, gebouw, verdieping, enz (facultatief)',
     checkoutStepsLabelCart: 'Winkelwagen',
     checkoutStepsLabelIdentification: 'Identificatie',
     checkoutStepsLabelShipping: 'Verzending',
@@ -573,9 +582,11 @@ module.exports._locale = {
     eachLabel: 'elk',
     tomorrowLabel: 'Morgen',
     cartNoteLabel: 'Geschenkboodschap of commentaar',
-    identifiedUserMessage: 'Bedankt dat u terugkwam!\nOm uw transactie te bespoedigen, hebben wij uw gegevens veilig voor u ingevuld.',
+    identifiedUserMessage:
+      'Bedankt dat u terugkwam!\nOm uw transactie te bespoedigen, hebben wij uw gegevens veilig voor u ingevuld.',
     address1Placeholder: 'Adres of postbus ',
-    address2Placeholder: 'Appartement, suite, gebouw, verdieping, enz (facultatief)',
+    address2Placeholder:
+      'Appartement, suite, gebouw, verdieping, enz (facultatief)',
     checkoutStepsLabelCart: 'Winkelwagen',
     checkoutStepsLabelIdentification: 'Identificatie',
     checkoutStepsLabelShipping: 'Verzending',
@@ -598,7 +609,8 @@ module.exports._locale = {
     eachLabel: 'každé',
     tomorrowLabel: 'zajtra',
     cartNoteLabel: 'Odkaz k darčeku alebo komentáre',
-    identifiedUserMessage: 'Ďakujeme, že ste tu znova!\nNa urýchlenie vašej transakcie sme za vás bezpečne vyplnili vaše informácie.',
+    identifiedUserMessage:
+      'Ďakujeme, že ste tu znova!\nNa urýchlenie vašej transakcie sme za vás bezpečne vyplnili vaše informácie.',
     address1Placeholder: 'Ulica alebo P.O. box',
     address2Placeholder: 'Byt, apartmán, budova, poschodie atď. (voliteľné)',
     checkoutStepsLabelCart: 'Košík',
