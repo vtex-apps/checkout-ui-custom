@@ -1,0 +1,27 @@
+name: '[PRT] Quality Engineering'
+
+on:
+  pull_request_target:
+    branches:
+      - main
+      - master
+    types:
+      - labeled
+
+jobs:
+  quality-engineering:
+    name: QE
+    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@main
+    with:
+      danger: true
+      dangerRequireChangelog: false
+      nodeLint: true
+      nodeTest: false
+      nodeSonar: true
+      nodeSonarProjectKey: vtex-apps_checkout-ui-custom
+      nodeSonarOrganization: vtex-apps
+      cypress: true
+    secrets:
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
+      sonarToken: ${{ secrets.SONAR_TOKEN }}
+      cypressJson: ${{ secrets.VTEX_QE }}
