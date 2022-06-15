@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Send number as null when USA.
+- Change rules for DEU number to true.
+- Fix update the labels when country change.
+
 ## [0.7.4] - 2022-06-08
 
 ### Fixed
