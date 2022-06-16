@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.5] - 2022-06-16
+
 ### Fixed
 - Send number as null when USA.
 - Change rules for DEU number to true.
