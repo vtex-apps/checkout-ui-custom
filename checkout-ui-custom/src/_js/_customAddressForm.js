@@ -135,7 +135,42 @@ class fnsCustomAddressForm {
     }
   }
 
-  updateGoogleForm(countryCode = 'us') {
+  updateGoogleForm(countryCode = 'usa') {
+    const _this = this
+    const labels = [
+      {
+        default: 'Street address',
+        prop: 'address1Placeholder',
+        element: $('label#address1-label'),
+      },
+      { default: 'Number', prop: 'number', element: $('label#number-label') },
+      {
+        default: 'Complements',
+        prop: 'address2Placeholder',
+        element: $('label#address2-label'),
+      },
+      { default: 'City', prop: 'city', element: $('label#city-label') },
+      { default: 'State', prop: 'state', element: $('label#state-label') },
+      {
+        default: 'Country',
+        prop: 'country',
+        element: $('label#country-label'),
+      },
+      {
+        default: 'Postal Code',
+        prop: 'postalCode',
+        element: $('label#postalCode-label'),
+      },
+    ]
+
+    _this._locale = _locale[countryCode.toUpperCase()]
+
+    for (let i = 0; i < labels.length; i++) {
+      const label = labels[i]
+
+      label.element.text(_this._locale[label.prop] || label.default)
+    }
+
     $('input#v-custom-ship-street').attr(
       'placeholder',
       _addressPlaceholder[countryCode.toUpperCase()]
@@ -352,6 +387,12 @@ class fnsCustomAddressForm {
       }
       // end temporaly workaround for ARG
 
+      // temporaly workaround for USA
+      if (_country === 'USA') {
+        _number = null
+      }
+      // end temporaly workaround for USA
+
       if (!_this.addressrules.state) {
         _state = ''
       }
@@ -502,9 +543,10 @@ class fnsCustomAddressForm {
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
         <form>
-            <p class="input v-custom-ship-street required text"><label for="v-custom-ship-street">${
+            <p class="input v-custom-ship-street required text"><label id="address1-label" for="v-custom-ship-street">${
               _this.locale
-                ? _this.locale.address1Placeholder
+                ? _this.locale.address1Placeholder ||
+                  'Street address or P.O. Box'
                 : 'Street address or P.O. Box'
             }</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${
       shippingData.address ? shippingData.address.street : ''
@@ -516,8 +558,8 @@ class fnsCustomAddressForm {
             <div class="v-custom-ship-info">
               <p class="input ship-number text ${
                 _this.addressrules.number ? 'required' : 'hide'
-              }"><label for="ship-complement">${
-      _this.locale.number ? _this.locale.number : 'Number'
+              }"><label id="number-label" for="ship-complement">${
+      _this.locale.number ? _this.locale.number || 'Number' : 'Number'
     }</label><input ${
       _this.addressrules.number ? 'required' : ''
     } autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${
@@ -531,9 +573,10 @@ class fnsCustomAddressForm {
     }"><span class="help error" style="">${
       _this.locale ? _this.locale.requiredField : 'This field is required.'
     }</span></p>
-              <p class="input ship-complement text"><label for="ship-complement">${
+              <p class="input ship-complement text"><label id="address2-label" for="ship-complement">${
                 _this.locale
-                  ? _this.locale.address2Placeholder
+                  ? _this.locale.address2Placeholder ||
+                    'Apartment number, unit, floor, etc.'
                   : 'Apartment number, unit, floor, etc.'
               }</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${
       _this.locale.address2Placeholder ? _this.locale.address2Placeholder : ''
@@ -548,11 +591,11 @@ class fnsCustomAddressForm {
             <div class="vcustom--vtex-omnishipping-1-x-address__state">
               <p class="input ship-country text ${
                 _this.deliveryCountries.length <= 1 ? 'hide' : ''
-              } "><label for="ship-country">Country</label><select name="v-custom-country" id="ship-country" class="input-large">${_this
+              } "><label id="country-label" for="ship-country">Country</label><select name="v-custom-country" id="ship-country" class="input-large">${_this
       .getCountries()
       .join('')}</select></p>
-              <p class="input ship-city required text"><label for="ship-city">${
-                _this.locale ? _this.locale.city : 'City'
+              <p class="input ship-city required text"><label id="city-label" for="ship-city">${
+                _this.locale ? _this.locale.city || 'City' : 'City'
               }</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${
       shippingData.address ? shippingData.address.city : ''
     }"><span class="help error" style="">${
@@ -560,8 +603,8 @@ class fnsCustomAddressForm {
         ? _this.locale.requiredField
         : 'This field is required.'
     }</span></p>
-              <p class="input ship-state required text"><label for="ship-state">${
-                _this.locale ? _this.locale.state : 'State'
+              <p class="input ship-state required text"><label id="state-label" for="ship-state">${
+                _this.locale ? _this.locale.state || 'State' : 'State'
               }</label>
                   <select name="v-custom-state" id="ship-state" class="input-large">
                     <option value="" disabled selected>${
@@ -570,7 +613,7 @@ class fnsCustomAddressForm {
                     ${_this.getRegions(country[0]).join('')}
                   </select>
               </p>
-              <p class="input ship-postalCode required text"><label for="ship-postalCode">${
+              <p class="input ship-postalCode required text"><label id="postalCode-label" for="ship-postalCode">${
                 window.vtex.i18n[_this.lang]
                   ? window.vtex.i18n[_this.lang].cart.postalCode
                   : 'Zip Code'

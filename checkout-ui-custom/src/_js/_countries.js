@@ -159,7 +159,7 @@ module.exports._countriesrules = {
       types: ['administrative_area_level_2'],
     },
     neighborhood: false,
-    number: false,
+    number: true,
     postalCode: true,
     postalCodeLength: 5,
   },
