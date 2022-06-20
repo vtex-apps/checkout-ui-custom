@@ -5,8 +5,8 @@
   display: none;
 }
 body.v-custom-addressForm-on {
-  
-  
+
+
   &.v-custom-step-shipping {
     .vcustom--vtex-omnishipping-1-x-address {
       display: block;
@@ -16,6 +16,9 @@ body.v-custom-addressForm-on {
       .ship-number {
         margin-right: 10px;
       }
+    }
+    .accordion-inner.shipping-container  > * {
+      display: none;
     }
   }
   
