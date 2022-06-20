@@ -990,12 +990,15 @@ class checkoutCustom {
 
   URLHasIncludePayment() {
     const _this = this
-    if(window.location.hash === '#/payment' && window.vtexjs.checkout.orderForm.shippingData.address.street === null) {
+
+    if (
+      window.location.hash === '#/payment' &&
+      window.vtexjs.checkout.orderForm.shippingData.address.street === null
+    ) {
       _this.goToShippingStep()
       _this.activateCustomForm()
     }
   }
-
 
   customAddressFormInit(orderForm) {
     const _this = this
