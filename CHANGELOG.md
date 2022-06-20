@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Add validation if the user reaches payment method and doesn't have a valid address
+
 ## [0.7.5] - 2022-06-16
 
 ### Fixed
