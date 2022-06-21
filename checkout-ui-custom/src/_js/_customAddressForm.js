@@ -549,7 +549,9 @@ class fnsCustomAddressForm {
                   'Street address or P.O. Box'
                 : 'Street address or P.O. Box'
             }</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address && shippingData.address.street !== null ? shippingData.address.street : ''
+      shippingData.address && shippingData.address.street !== null
+        ? shippingData.address.street
+        : ''
     }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">${
       _this.locale.requiredField
         ? _this.locale.requiredField
@@ -597,7 +599,9 @@ class fnsCustomAddressForm {
               <p class="input ship-city required text"><label id="city-label" for="ship-city">${
                 _this.locale ? _this.locale.city || 'City' : 'City'
               }</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${
-      shippingData.address && shippingData.address.city !== null ? shippingData.address.city : ''
+      shippingData.address && shippingData.address.city !== null
+        ? shippingData.address.city
+        : ''
     }"><span class="help error" style="">${
       _this.locale.requiredField
         ? _this.locale.requiredField
