@@ -17,11 +17,12 @@ body.v-custom-addressForm-on {
         margin-right: 10px;
       }
     }
-    .accordion-inner.shipping-container  > * {
+    .accordion-inner.shipping-container  .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation,
+    .vtex-omnishipping-1-x-addressForm, .vtex-omnishipping-1-x-deliveryGroup, .vtex-omnishipping-1-x-submitPaymentButton {
       display: none;
     }
   }
-  
+
 }
 
 .vtex-omnishipping-1-x-submitShippingStepButton {

@@ -984,8 +984,10 @@ class checkoutCustom {
   activateCustomForm() {
     const _this = this
 
-    $('body').addClass('v-custom-addressForm-on')
-    _this.customAddressForm.validateAllFields()
+    if (_this.customAddressForm) {
+      $('body').addClass('v-custom-addressForm-on')
+      _this.customAddressForm.validateAllFields()
+    }
   }
 
   URLHasIncludePayment() {
