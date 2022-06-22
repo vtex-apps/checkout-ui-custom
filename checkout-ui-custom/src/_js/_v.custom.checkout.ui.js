@@ -977,6 +977,31 @@ class checkoutCustom {
     }
   }
 
+  goToShippingStep() {
+    window.location.hash = '#/shipping'
+  }
+
+  activateCustomForm() {
+    const _this = this
+
+    if (_this.customAddressForm) {
+      $('body').addClass('v-custom-addressForm-on')
+      _this.customAddressForm.validateAllFields()
+    }
+  }
+
+  URLHasIncludePayment() {
+    const _this = this
+
+    if (
+      window.location.hash === '#/payment' &&
+      window.vtexjs.checkout.orderForm.shippingData.address.street === null
+    ) {
+      _this.goToShippingStep()
+      _this.activateCustomForm()
+    }
+  }
+
   customAddressFormInit(orderForm) {
     const _this = this
     const _orderForm = orderForm || window.vtexjs.checkout.orderForm
@@ -1064,6 +1089,9 @@ class checkoutCustom {
       function() {
         setTimeout(() => {
           _this.updateLang(_this.orderForm)
+          if (_this.customAddressForm) {
+            $('body').addClass('v-custom-addressForm-on')
+          }
         }, 50)
       }
     )
@@ -1138,6 +1166,7 @@ class checkoutCustom {
       $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
+        _this.URLHasIncludePayment()
         if (!window.google && _this.customAddressForm) {
           _this.customAddressForm.loadScript()
         }
