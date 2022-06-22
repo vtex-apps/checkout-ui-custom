@@ -1089,6 +1089,9 @@ class checkoutCustom {
       function() {
         setTimeout(() => {
           _this.updateLang(_this.orderForm)
+          if(_this.customAddressForm) {
+            $('body').addClass('v-custom-addressForm-on')
+          }
         }, 50)
       }
     )
