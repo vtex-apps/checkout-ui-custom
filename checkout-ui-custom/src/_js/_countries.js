@@ -152,15 +152,18 @@ module.exports._countriesrules = {
   DEU: {
     state: {
       valueIn: 'short_name',
-      types: ['administrative_area_level_1'],
+      types: ['locality'],
     },
     city: {
       valueIn: 'short_name',
-      types: ['administrative_area_level_2'],
+      types: ['administrative_area_level_1'],
     },
-    neighborhood: false,
+    neighborhood: {
+      valueIn: 'long_name',
+      types: ['administrative_area_level_3'],
+    },
     number: true,
-    postalCode: true,
+    postalCode: false,
     postalCodeLength: 5,
   },
   GRC: {
