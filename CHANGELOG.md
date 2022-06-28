@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fix the address form country rules for Germany
+
 ## [0.7.6] - 2022-06-22
 
 ### Fixed
