@@ -46,37 +46,51 @@ class checkoutCustom {
     $('body').addClass('v-custom-loaded')
   }
 
-  checkForFreightSimulation(func) {
+  observeDOM(obj, callback) {
+    const MutationObserver =
+      window.MutationObserver || window.WebKitMutationObserver
+
+    if (!obj || obj.nodeType !== 1) return
+
+    if (MutationObserver) {
+      // define a new observer
+      const mutationObserver = new MutationObserver(callback)
+
+      // have the observer observe foo for changes in children
+      mutationObserver.observe(obj, { childList: true, subtree: true })
+
+      return mutationObserver
+    }
+
+    // browser support fallback
+    if (window.addEventListener) {
+      obj.addEventListener('DOMNodeInserted', callback, false)
+      obj.addEventListener('DOMNodeRemoved', callback, false)
+    }
+  }
+
+  onDomMutation({ targetNode, callback, disconnectCondition = true }) {
     const _this = this
 
-    const isRenderRuntime =
-      window.vtex !== undefined && window.vtex.renderRuntime !== undefined
+    const observer = new MutationObserver(function() {
+      if (targetNode && disconnectCondition) {
+        debugger
+        observer.disconnect()
 
-    _this.awaitForElement({
-      clearIntervalCondition: isRenderRuntime,
-      maxSetIntervalLoop: 20,
-      callback: () => {
-        if (
-          'checkout/freight-simulation' in window.vtex.renderRuntime.extensions
-        ) {
-          const isCartMoreOptions = $('.cart-more-options').length > 0
+        _this.observeDOM(targetNode, () => callback())
+      }
+    })
 
-          _this.awaitForElement({
-            clearIntervalCondition: isCartMoreOptions,
-            maxSetIntervalLoop: 20,
-            callback: func(),
-          })
-        } else {
-          func()
-        }
-      },
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
     })
   }
 
   builder() {
     const _this = this
-
     const build = () => {
+      debugger
       if (_this.type === 'vertical') {
         _this.buildVertical()
       } else if (_this.type === 'horizontal') {
@@ -94,7 +108,16 @@ class checkoutCustom {
       }
     }
 
-    _this.checkForFreightSimulation(build)
+    const isRenderRuntime =
+      window.vtex !== undefined && window.vtex.renderRuntime !== undefined
+
+    const cartMoreOptions = document.querySelector('.cart-more-options')
+
+    _this.onDomMutation({
+      targetNode: cartMoreOptions,
+      callback: () => build(),
+      disconnectCondition: isRenderRuntime,
+    })
   }
 
   buildVertical() {
@@ -275,14 +298,6 @@ class checkoutCustom {
       return false
     }
 
-    // $(window).trigger('addMessage', {
-    //   content:  {
-    //     title: '',
-    //     detail: `${_this.lang.couponInactive} "${_coupon}"`
-    //   },
-    //   type: 'info'
-    // });
-
     if ($('.vcustom-showCustomMsgCoupon').length === 0) {
       $('fieldset.coupon-fieldset')
         .addClass('js-vcustom-showCustomMsgCoupon')
@@ -366,34 +381,17 @@ class checkoutCustom {
     })
   }
 
-  awaitForElement({ clearIntervalCondition, maxSetIntervalLoop, callback }) {
-    let counter = 0
-    const awaitFor = setInterval(function() {
-      if (clearIntervalCondition || counter >= maxSetIntervalLoop) {
-        clearInterval(awaitFor)
-        if (typeof callback === 'function') {
-          callback()
-        }
-      } else {
-        counter++
-      }
-    }, 300)
-  }
-
   removeMCLoader() {
     $(`.mini-cart .cart-items`).addClass('v-loaded')
   }
 
   removeCILoader() {
     const _this = this
-    const isCartItems = $('.cart-items').length > 0
+    const cartItems = document.querySelector('.cart-items')
 
-    _this.awaitForElement({
-      clearIntervalCondition: isCartItems,
-      maxSetIntervalLoop: 20,
-      callback: () => {
-        $(`.cart-items`).addClass('v-loaded')
-      },
+    _this.onDomMutation({
+      targetNode: cartItems,
+      callback: () => $(`.cart-items`).addClass('v-loaded'),
     })
   }
 
@@ -1121,6 +1119,7 @@ class checkoutCustom {
       : false
     _this.general()
     _this.updateStep()
+    debugger
     _this.builder()
 
     _this.changeShippingTimeInfoInit()
