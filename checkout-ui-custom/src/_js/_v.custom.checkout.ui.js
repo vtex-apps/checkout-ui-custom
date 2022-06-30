@@ -46,38 +46,37 @@ class checkoutCustom {
     $('body').addClass('v-custom-loaded')
   }
 
-  observeDOM(obj, callback) {
-    const MutationObserver =
-      window.MutationObserver || window.WebKitMutationObserver
-
-    if (!obj || obj.nodeType !== 1) return
-
-    if (MutationObserver) {
-      // define a new observer
-      const mutationObserver = new MutationObserver(callback)
-
-      // have the observer observe foo for changes in children
-      mutationObserver.observe(obj, { childList: true, subtree: true })
-
-      return mutationObserver
-    }
-
-    // browser support fallback
-    if (window.addEventListener) {
-      obj.addEventListener('DOMNodeInserted', callback, false)
-      obj.addEventListener('DOMNodeRemoved', callback, false)
-    }
-  }
-
   onDomMutation({ targetNode, callback, disconnectCondition = true }) {
-    const _this = this
+    const observeDOM = (function() {
+      const MutationObserver =
+        window.MutationObserver || window.WebKitMutationObserver
+
+      return function(obj, callback1) {
+        if (!obj || obj.nodeType !== 1) return
+
+        if (MutationObserver) {
+          // define a new observer
+          const mutationObserver = new MutationObserver(callback1)
+
+          // have the observer observe foo for changes in children
+          mutationObserver.observe(obj, { childList: true, subtree: true })
+
+          return mutationObserver
+        }
+
+        // browser support fallback
+        if (window.addEventListener) {
+          obj.addEventListener('DOMNodeInserted', callback1, false)
+          obj.addEventListener('DOMNodeRemoved', callback1, false)
+        }
+      }
+    })()
 
     const observer = new MutationObserver(function() {
       if (targetNode && disconnectCondition) {
-        debugger
         observer.disconnect()
 
-        _this.observeDOM(targetNode, () => callback())
+        observeDOM(targetNode, () => callback())
       }
     })
 
@@ -87,50 +86,42 @@ class checkoutCustom {
     })
   }
 
-  builder() {
-    const _this = this
-    const build = () => {
-      debugger
-      if (_this.type === 'vertical') {
-        _this.buildVertical()
-      } else if (_this.type === 'horizontal') {
-        _this.buildHorizontal()
-      } else {
-        console.error('No `type` identified, check your code')
-      }
-
-      if (_this.showNoteField) {
-        $('body').addClass('js-vcustom-showNoteField')
-      }
-
-      if (_this.hideEmailStep) {
-        $('body').addClass('js-vcustom-hideEmailStep')
-      }
-    }
-
-    const isRenderRuntime =
-      window.vtex !== undefined && window.vtex.renderRuntime !== undefined
-
-    const cartMoreOptions = document.querySelector('.cart-more-options')
-
-    _this.onDomMutation({
-      targetNode: cartMoreOptions,
-      callback: () => build(),
-      disconnectCondition: isRenderRuntime,
-    })
-  }
-
   buildVertical() {
     $('body').addClass('body-cart-vertical')
     $('.cart-template .cart-links-bottom:eq(0)').appendTo(
       '.cart-template > .summary-template-holder'
     )
+  }
+
+  buildHorizontal() {}
+
+  showDeliveryOptions() {
     $(
       '.cart-template .cart-more-options:eq(0), .cart-template .extensions-checkout-buttons-container'
     ).appendTo('.cart-template-holder')
   }
 
-  buildHorizontal() {}
+  builder() {
+    const _this = this
+
+    if (_this.type === 'vertical') {
+      _this.buildVertical()
+    } else if (_this.type === 'horizontal') {
+      _this.buildHorizontal()
+    } else {
+      console.error('No `type` identified, check your code')
+    }
+
+    if (_this.showNoteField) {
+      $('body').addClass('js-vcustom-showNoteField')
+    }
+
+    if (_this.hideEmailStep) {
+      $('body').addClass('js-vcustom-hideEmailStep')
+    }
+
+    _this.showDeliveryOptions()
+  }
 
   checkEmpty(items) {
     if (items.length === 0) {
@@ -386,13 +377,7 @@ class checkoutCustom {
   }
 
   removeCILoader() {
-    const _this = this
-    const cartItems = document.querySelector('.cart-items')
-
-    _this.onDomMutation({
-      targetNode: cartItems,
-      callback: () => $(`.cart-items`).addClass('v-loaded'),
-    })
+    $(`.cart-items`).addClass('v-loaded')
   }
 
   indexedInItems(orderForm) {
@@ -419,12 +404,9 @@ class checkoutCustom {
           return c
         }, {})
 
-        // console.log(indexedInItems)
-
         for (const key in indexedInItems) {
           const obj = indexedInItems[key]
 
-          // console.log(obj)
           if (
             $(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(
               '.v-custom-bundles'
@@ -497,8 +479,6 @@ class checkoutCustom {
               $(
                 `.mini-cart .cart-items > li[data-sku='${iiItem.id}']`
               ).addClass('v-custom-indexed-item')
-              // .clone()
-              // .appendTo(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`);
             }
           }
         }
@@ -1119,7 +1099,6 @@ class checkoutCustom {
       : false
     _this.general()
     _this.updateStep()
-    debugger
     _this.builder()
 
     _this.changeShippingTimeInfoInit()
@@ -1148,6 +1127,8 @@ class checkoutCustom {
       })
 
       $(window).on('hashchange', function() {
+        const cartItems = document.querySelector('.cart-items')
+
         _this.updateStep()
         _this.changeShippingTimeInfoInit()
         _this.checkProfileFocus()
@@ -1159,6 +1140,11 @@ class checkoutCustom {
           _this.paymentBuilder(_this.orderForm)
           _this.customAddressFormInit(_this.orderForm)
           _this.removeCILoader()
+
+          _this.onDomMutation({
+            targetNode: cartItems,
+            callback: () => _this.removeCILoader(),
+          })
         }
       })
 
