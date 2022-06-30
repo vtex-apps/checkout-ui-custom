@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.8] - 2022-06-30
+
 ### Fixed
 - Update city address rule for Germany
 
