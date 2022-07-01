@@ -46,55 +46,44 @@ class checkoutCustom {
     $('body').addClass('v-custom-loaded')
   }
 
-  checkForFreightSimulation(func) {
-    const _this = this
+  onDomMutation({ targetNode, callback, disconnectCondition = true }) {
+    const observeDOM = (function() {
+      const MutationObserver =
+        window.MutationObserver || window.WebKitMutationObserver
 
-    const isRenderRuntime =
-      window.vtex !== undefined && window.vtex.renderRuntime !== undefined
+      return function(obj, callback1) {
+        if (!obj || obj.nodeType !== 1) return
 
-    _this.awaitForElement({
-      clearIntervalCondition: isRenderRuntime,
-      maxSetIntervalLoop: 20,
-      callback: () => {
-        if (
-          'checkout/freight-simulation' in window.vtex.renderRuntime.extensions
-        ) {
-          const isCartMoreOptions = $('.cart-more-options').length > 0
+        if (MutationObserver) {
+          // define a new observer
+          const mutationObserver = new MutationObserver(callback1)
 
-          _this.awaitForElement({
-            clearIntervalCondition: isCartMoreOptions,
-            maxSetIntervalLoop: 20,
-            callback: func(),
-          })
-        } else {
-          func()
+          // have the observer observe foo for changes in children
+          mutationObserver.observe(obj, { childList: true, subtree: true })
+
+          return mutationObserver
         }
-      },
+
+        // browser support fallback
+        if (window.addEventListener) {
+          obj.addEventListener('DOMNodeInserted', callback1, false)
+          obj.addEventListener('DOMNodeRemoved', callback1, false)
+        }
+      }
+    })()
+
+    const observer = new MutationObserver(function() {
+      if (targetNode && disconnectCondition) {
+        observer.disconnect()
+
+        observeDOM(targetNode, () => callback())
+      }
     })
-  }
 
-  builder() {
-    const _this = this
-
-    const build = () => {
-      if (_this.type === 'vertical') {
-        _this.buildVertical()
-      } else if (_this.type === 'horizontal') {
-        _this.buildHorizontal()
-      } else {
-        console.error('No `type` identified, check your code')
-      }
-
-      if (_this.showNoteField) {
-        $('body').addClass('js-vcustom-showNoteField')
-      }
-
-      if (_this.hideEmailStep) {
-        $('body').addClass('js-vcustom-hideEmailStep')
-      }
-    }
-
-    _this.checkForFreightSimulation(build)
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    })
   }
 
   buildVertical() {
@@ -102,12 +91,37 @@ class checkoutCustom {
     $('.cart-template .cart-links-bottom:eq(0)').appendTo(
       '.cart-template > .summary-template-holder'
     )
+  }
+
+  buildHorizontal() {}
+
+  showDeliveryOptions() {
     $(
       '.cart-template .cart-more-options:eq(0), .cart-template .extensions-checkout-buttons-container'
     ).appendTo('.cart-template-holder')
   }
 
-  buildHorizontal() {}
+  builder() {
+    const _this = this
+
+    if (_this.type === 'vertical') {
+      _this.buildVertical()
+    } else if (_this.type === 'horizontal') {
+      _this.buildHorizontal()
+    } else {
+      console.error('No `type` identified, check your code')
+    }
+
+    if (_this.showNoteField) {
+      $('body').addClass('js-vcustom-showNoteField')
+    }
+
+    if (_this.hideEmailStep) {
+      $('body').addClass('js-vcustom-hideEmailStep')
+    }
+
+    _this.showDeliveryOptions()
+  }
 
   checkEmpty(items) {
     if (items.length === 0) {
@@ -275,14 +289,6 @@ class checkoutCustom {
       return false
     }
 
-    // $(window).trigger('addMessage', {
-    //   content:  {
-    //     title: '',
-    //     detail: `${_this.lang.couponInactive} "${_coupon}"`
-    //   },
-    //   type: 'info'
-    // });
-
     if ($('.vcustom-showCustomMsgCoupon').length === 0) {
       $('fieldset.coupon-fieldset')
         .addClass('js-vcustom-showCustomMsgCoupon')
@@ -366,35 +372,12 @@ class checkoutCustom {
     })
   }
 
-  awaitForElement({ clearIntervalCondition, maxSetIntervalLoop, callback }) {
-    let counter = 0
-    const awaitFor = setInterval(function() {
-      if (clearIntervalCondition || counter >= maxSetIntervalLoop) {
-        clearInterval(awaitFor)
-        if (typeof callback === 'function') {
-          callback()
-        }
-      } else {
-        counter++
-      }
-    }, 300)
-  }
-
   removeMCLoader() {
     $(`.mini-cart .cart-items`).addClass('v-loaded')
   }
 
   removeCILoader() {
-    const _this = this
-    const isCartItems = $('.cart-items').length > 0
-
-    _this.awaitForElement({
-      clearIntervalCondition: isCartItems,
-      maxSetIntervalLoop: 20,
-      callback: () => {
-        $(`.cart-items`).addClass('v-loaded')
-      },
-    })
+    $(`.cart-items`).addClass('v-loaded')
   }
 
   indexedInItems(orderForm) {
@@ -421,12 +404,9 @@ class checkoutCustom {
           return c
         }, {})
 
-        // console.log(indexedInItems)
-
         for (const key in indexedInItems) {
           const obj = indexedInItems[key]
 
-          // console.log(obj)
           if (
             $(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(
               '.v-custom-bundles'
@@ -499,8 +479,6 @@ class checkoutCustom {
               $(
                 `.mini-cart .cart-items > li[data-sku='${iiItem.id}']`
               ).addClass('v-custom-indexed-item')
-              // .clone()
-              // .appendTo(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`);
             }
           }
         }
@@ -1149,6 +1127,8 @@ class checkoutCustom {
       })
 
       $(window).on('hashchange', function() {
+        const cartItems = document.querySelector('.cart-items')
+
         _this.updateStep()
         _this.changeShippingTimeInfoInit()
         _this.checkProfileFocus()
@@ -1160,6 +1140,11 @@ class checkoutCustom {
           _this.paymentBuilder(_this.orderForm)
           _this.customAddressFormInit(_this.orderForm)
           _this.removeCILoader()
+
+          _this.onDomMutation({
+            targetNode: cartItems,
+            callback: () => _this.removeCILoader(),
+          })
         }
       })
 
