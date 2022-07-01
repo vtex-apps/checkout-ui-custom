@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added Licence manager product ID in order to restrict access to other users
+
 ## [0.7.10] - 2022-07-07
 
 ### Fixed
