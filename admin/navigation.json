@@ -2,18 +2,18 @@
   {
     "section": "storeSetup",
     "titleId": "admin/checkout-ui.navigation.title",
-    "path": "/admin/private/vtex-checkout-ui-custom/",
-    "LMProductId": "5"
+    "path": "/admin/vtex-checkout-ui-custom/",
+    "LMProductId": "27"
   },
   {
     "section": "storeSettings",
     "subSection": "storeFront",
     "adminVersion": 4,
-    "LMProductId": "5",
+    "LMProductId": "27",
     "subSectionItems": [
       {
         "labelId": "admin/checkout-ui.navigation.title",
-        "path": "/admin/private/vtex-checkout-ui-custom/"
+        "path": "/admin/vtex-checkout-ui-custom/"
       }
     ]
   }
