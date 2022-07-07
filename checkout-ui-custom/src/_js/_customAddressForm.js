@@ -633,7 +633,11 @@ class fnsCustomAddressForm {
         : 'This field is required.'
     }</span></p>
             </div>
-            <p class="vtex-omnishipping-1-x-submitShippingStepButton btn-submit-wrapper btn-go-to-shipping-wrapper"><button class="submit  btn-go-to-shippping-method btn btn-large btn-success" id="btn-go-to-shippping-method" type="submit">Continue to shipping</button></p>
+            <p class="vtex-omnishipping-1-x-submitShippingStepButton btn-submit-wrapper btn-go-to-shipping-wrapper"><button class="submit  btn-go-to-shippping-method btn btn-large btn-success" id="btn-go-to-shippping-method" type="submit">${
+              _this.locale.goToShipping
+                ? _this.locale.goToShipping
+                : 'Continue to shipping'
+            }</button></p>
         </form>
         </div>
       </div>

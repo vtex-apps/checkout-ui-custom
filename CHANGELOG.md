@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Added translation to button in shipping step
+
 ## [0.7.9] - 2022-07-01
 
 ### Fixed
