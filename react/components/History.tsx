@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FC } from 'react'
-import {
-  injectIntl,
-  WrappedComponentProps,
-  defineMessages,
-  FormattedMessage,
-} from 'react-intl'
+import type { FC } from 'react'
+import React from 'react'
+import type { WrappedComponentProps } from 'react-intl'
+import { injectIntl, defineMessages, FormattedMessage } from 'react-intl'
 import { useQuery, useLazyQuery } from 'react-apollo'
 import PropTypes from 'prop-types'
 import { Table, Button } from 'vtex.styleguide'

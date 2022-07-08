@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added a route to get the rules from address-form app.
+
 ## [0.7.13] - 2022-07-14
 
 ### Added

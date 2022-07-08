@@ -40,8 +40,9 @@ describe('Wipe', () => {
       cy.searchInMasterData(ENTITIES.CLIENTS, vtex.robotMail).then(clients => {
         cy.searchInMasterData(ENTITIES.ADDRESSES, clients[0].id).then(
           addresses => {
-            for (const { id } of addresses)
+            for (const { id } of addresses) {
               cy.deleteDocumentInMasterData(ENTITIES.ADDRESSES, id)
+            }
           }
         )
       })

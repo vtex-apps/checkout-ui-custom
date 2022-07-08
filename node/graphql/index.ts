@@ -2,6 +2,10 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
+import { method } from '@vtex/api'
+
+import { getCountryRules } from '../middlewares/getCountryRules'
+
 const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
 
@@ -80,14 +84,18 @@ const schema = {
 
 const replacer = (template: string, keys: any) => {
   return template.replace(/"?{{\w+}}"?/g, (key: string) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore: Object is possibly 'null'.
     return keys[key.match(/\w+/)[0]] || 'false'
   })
 }
 
 export const resolvers = {
-  Routes: {},
+  Routes: {
+    apiGetCountryRules: method({
+      GET: [getCountryRules],
+    }),
+  },
   Mutation: {
     saveChanges: async (_: any, params: any, ctx: Context) => {
       const {

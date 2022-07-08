@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Service, ServiceContext, ClientsConfig, LRUCache } from '@vtex/api'
+import type { Cached, ServiceContext, ClientsConfig } from '@vtex/api'
+import { Service, LRUCache } from '@vtex/api'
 
 import { Clients } from './clients'
 import { resolvers } from './graphql'
@@ -10,7 +10,7 @@ const defaultClientOptions = {
   timeout: TIMEOUT_MS,
 }
 
-const memoryCache = new LRUCache<string, any>({ max: 1000 })
+const memoryCache = new LRUCache<string, Cached>({ max: 1000 })
 
 declare global {
   // We declare a global Context type just to avoid re-writing ServiceContext<Clients, State> in every handler and resolver
