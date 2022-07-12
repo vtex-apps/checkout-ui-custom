@@ -5,19 +5,11 @@ on:
     branches:
       - master
       - main
-      - bugfix/*
-      - chore/*
-      - enhancement/*
-      - feature/*
-      - fix/*
-      - hotfix/*
-      - translation/*
-      - actions/*
 
 jobs:
   quality-engineering:
     name: QE
-    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@main
+    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@v1.0.0
     with:
       nodeLint: true
       nodeTest: false
