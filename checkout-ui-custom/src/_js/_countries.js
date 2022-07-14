@@ -35,6 +35,18 @@ module.exports._countriesrules = {
     number: false,
     postalCode: true,
   },
+  ESP: {
+    state: {
+      valueIn: 'short_name',
+      types: ['administrative_area_level_2'],
+    },
+    city: {
+      valueIn: 'long_name',
+      types: ['locality'],
+    },
+    number: true,
+    postalCode: true,
+  },
   NLD: {
     state: {
       valueIn: 'short_name',

@@ -139,6 +139,7 @@ module.exports._locale = {
     goToShipping: 'Ir para la Entrega',
     state: 'Estado',
     requiredField: 'Este campo es obligatorio.',
+    number: 'Número',
     locale: 'es',
   },
   ARG: {
