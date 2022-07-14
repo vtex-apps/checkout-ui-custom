@@ -5,7 +5,7 @@ import { layoutScenario } from './outputvalidation.js'
 
 export function orderProduct(prefix) {
   it(`In ${prefix} - Place the order`, updateRetry(2), () => {
-    cy.get('body').then($body => {
+    cy.get('body').then(($body) => {
       if ($body.find(selectors.ReceiverName).length) {
         cy.get(selectors.ReceiverName, { timeout: 5000 }).type('Syed')
         cy.get(selectors.GotoPaymentBtn).click()
@@ -24,11 +24,11 @@ export function orderProduct(prefix) {
 }
 
 function proceedToPayment() {
-  cy.get('body').then($body => {
+  cy.get('body').then(($body) => {
     const btn = selectors.ProceedtoPaymentBtn
 
     if ($body.find(btn).length) {
-      cy.get(btn).then($el => {
+      cy.get(btn).then(($el) => {
         if (Cypress.dom.isVisible($el)) {
           cy.get(selectors.ProceedtoPaymentBtn).click()
         }
@@ -124,14 +124,10 @@ export function fillLineItems(items, maxChar) {
     .first()
     .type(items.lineItem1)
     .should('have.attr', 'maxlength')
-    .then(maxlength => {
+    .then((maxlength) => {
       cy.log(maxlength)
       expect(maxlength).to.equal(maxChar)
     })
-  cy.get(checkoutUiCustomSelectors.ProductLineItem)
-    .eq(1)
-    .type(items.lineItem2)
-  cy.get(checkoutUiCustomSelectors.ProductLineItem)
-    .eq(2)
-    .type(items.lineItem3)
+  cy.get(checkoutUiCustomSelectors.ProductLineItem).eq(1).type(items.lineItem2)
+  cy.get(checkoutUiCustomSelectors.ProductLineItem).eq(2).type(items.lineItem3)
 }

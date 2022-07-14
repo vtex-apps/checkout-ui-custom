@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/prop-types */
-import React, { FC, useState } from 'react'
-import { injectIntl, WrappedComponentProps, FormattedMessage } from 'react-intl'
+import type { FC } from 'react'
+import React, { useState } from 'react'
+import type { WrappedComponentProps } from 'react-intl'
+import { injectIntl, FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Toggle, Slider, Input, Card, Divider } from 'vtex.styleguide'
 

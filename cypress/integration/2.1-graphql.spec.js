@@ -37,7 +37,7 @@ describe('Testing GraphQL queries & mutation', () => {
   it('Verifying getLast query with workspace master', updateRetry(2), () => {
     const WORKSPACE = 'master'
 
-    graphql(getLast(WORKSPACE), response => {
+    graphql(getLast(WORKSPACE), (response) => {
       expect(response.body.data.getLast.workspace).to.equal(WORKSPACE)
       expect(response.body.data.getLast.id).to.not.equal(null)
       cy.setCheckOutItem(ID, response.body.data.getLast.id)
@@ -48,15 +48,15 @@ describe('Testing GraphQL queries & mutation', () => {
   })
 
   it('Verifying getId query', updateRetry(2), () => {
-    cy.getCheckOutItems().then(items => {
+    cy.getCheckOutItems().then((items) => {
       graphql(getById(items[ID]), ValidategetByIdResponse)
     })
   })
 
   it('Verifying saveChanges mutation', updateRetry(5), () => {
     cy.addDelayBetweenRetries(5000)
-    cy.getCheckOutItems().then(items => {
-      graphql(saveChanges(items[CONFIG_SETTINGS]), response => {
+    cy.getCheckOutItems().then((items) => {
+      graphql(saveChanges(items[CONFIG_SETTINGS]), (response) => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
     })

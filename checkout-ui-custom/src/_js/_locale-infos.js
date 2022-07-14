@@ -47,6 +47,12 @@ module.exports._locale = {
     locale: 'en-CA',
   },
   USA: {
+    emailConflictMessages: {
+      title: 'Emails conflict',
+      button: 'Login',
+      message:
+        'We have identified that you probably used a different login email than the one you entered previously. Please log in again by clicking the button below.',
+    },
     country: 'Country',
     postalCode: 'Postal Code',
     couponInactive: 'No discounts available. Check the conditions.',
@@ -117,6 +123,12 @@ module.exports._locale = {
     locale: 'pt-BR',
   },
   ESP: {
+    emailConflictMessages: {
+      title: 'Conflicto de correos electrónicos',
+      button: 'Ingresar',
+      message:
+        'Hemos identificado que probablemente utilizó una dirección de correo electrónico de inicio de sesión diferente a la que ingresó anteriormente. Vuelva a iniciar sesión haciendo clic en el botón de abajo.',
+    },
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
     editLabel: 'Editar',
     paypalImg: '',
@@ -143,6 +155,12 @@ module.exports._locale = {
     locale: 'es',
   },
   ARG: {
+    emailConflictMessages: {
+      title: 'Conflicto de correos electrónicos',
+      button: 'Ingresar',
+      message:
+        'Hemos identificado que probablemente utilizó una dirección de correo electrónico de inicio de sesión diferente a la que ingresó anteriormente. Vuelva a iniciar sesión haciendo clic en el botón de abajo.',
+    },
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
     editLabel: 'Editar',
     paypalImg: '',
@@ -166,6 +184,12 @@ module.exports._locale = {
     locale: 'ar',
   },
   COL: {
+    emailConflictMessages: {
+      title: 'Conflicto de correos electrónicos',
+      button: 'Ingresar',
+      message:
+        'Hemos identificado que probablemente utilizó una dirección de correo electrónico de inicio de sesión diferente a la que ingresó anteriormente. Vuelva a iniciar sesión haciendo clic en el botón de abajo.',
+    },
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
     editLabel: 'Editar',
     paypalImg: '',
@@ -187,6 +211,12 @@ module.exports._locale = {
     locale: 'es-CO',
   },
   PAN: {
+    emailConflictMessages: {
+      title: 'Conflicto de correos electrónicos',
+      button: 'Ingresar',
+      message:
+        'Hemos identificado que probablemente utilizó una dirección de correo electrónico de inicio de sesión diferente a la que ingresó anteriormente. Vuelva a iniciar sesión haciendo clic en el botón de abajo.',
+    },
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
     editLabel: 'Editar',
     paypalImg: '',
@@ -210,6 +240,12 @@ module.exports._locale = {
     locale: 'es-PA',
   },
   MEX: {
+    emailConflictMessages: {
+      title: 'Conflicto de correos electrónicos',
+      button: 'Ingresar',
+      message:
+        'Hemos identificado que probablemente utilizó una dirección de correo electrónico de inicio de sesión diferente a la que ingresó anteriormente. Vuelva a iniciar sesión haciendo clic en el botón de abajo.',
+    },
     couponInactive: 'No hay descuentos disponibles. Consulta las condiciones.',
     editLabel: 'Editar',
     paypalImg: '',
@@ -415,6 +451,12 @@ module.exports._locale = {
     locale: 'pl',
   },
   ZAF: {
+    emailConflictMessages: {
+      title: 'Emails conflict',
+      button: 'Login',
+      message:
+        'We have identified that you probably used a different login email than the one you entered previously. Please log in again by clicking the button below.',
+    },
     couponInactive: 'No discounts available. Check the conditions.',
     editLabel: 'Edit',
     paypalImg: '',

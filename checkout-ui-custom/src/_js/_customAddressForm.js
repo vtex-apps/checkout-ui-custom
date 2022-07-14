@@ -12,7 +12,7 @@ const {
 
 // temporaly workaorund
 window.callbackMap = () => {
-  window.vtexjs.checkout.getOrderForm(orderForm => {
+  window.vtexjs.checkout.getOrderForm((orderForm) => {
     window.vcustom.checkout.customAddressFormInit(orderForm)
   })
 }
@@ -190,12 +190,12 @@ class fnsCustomAddressForm {
       const ruleComponent = types[i]
 
       if (
-        components.find(component =>
-          component.types.some(v => v === ruleComponent)
+        components.find((component) =>
+          component.types.some((v) => v === ruleComponent)
         )
       ) {
-        return components.find(component =>
-          component.types.some(v => v === ruleComponent)
+        return components.find((component) =>
+          component.types.some((v) => v === ruleComponent)
         )[valueIn]
       }
     }
@@ -211,7 +211,7 @@ class fnsCustomAddressForm {
       input
     )
 
-    _this.gPlacesAutocomplete.addListener('place_changed', function() {
+    _this.gPlacesAutocomplete.addListener('place_changed', function () {
       const place = _this.gPlacesAutocomplete.getPlace()
 
       if (~window.location.host.indexOf('myvtex')) {
@@ -219,17 +219,17 @@ class fnsCustomAddressForm {
       }
 
       const [, country] = _countries.find(
-        c =>
+        (c) =>
           c[0] ===
           place.address_components.filter(
-            item => item.types[0] === 'country'
+            (item) => item.types[0] === 'country'
           )[0].short_name
       )
 
       const street = place.address_components.find(
-        item => item.types[0] === 'route'
+        (item) => item.types[0] === 'route'
       )
-        ? place.address_components.find(item => item.types[0] === 'route')
+        ? place.address_components.find((item) => item.types[0] === 'route')
             .long_name
         : place.vicinity
 
@@ -343,13 +343,13 @@ class fnsCustomAddressForm {
       )
     })
 
-    $('body').on('keyup', '#v-custom-ship-street', function() {
+    $('body').on('keyup', '#v-custom-ship-street', function () {
       $(this).attr('autocomplete', 'none')
       $(this).attr('data-number', '')
       $(this).attr('data-street', $(this).context.value)
     })
 
-    $('body').on('focus', '#v-custom-ship-street', function() {
+    $('body').on('focus', '#v-custom-ship-street', function () {
       $(this).attr('autocomplete', 'none')
     })
   }
@@ -442,14 +442,14 @@ class fnsCustomAddressForm {
         mode: 'cors',
       }
     )
-      .then(response => response.json())
-      .then(function(data) {
+      .then((response) => response.json())
+      .then(function (data) {
         if (data.error) {
           $('body').removeClass('js-v-custom-is-loading')
           // eslint-disable-next-line no-alert
           alert(`Something went wrong: ${data.error.message}`)
         } else {
-          window.vtexjs.checkout.getOrderForm().done(function() {
+          window.vtexjs.checkout.getOrderForm().done(function () {
             _this.updateAddress(
               _country,
               _postalCode,
@@ -474,10 +474,10 @@ class fnsCustomAddressForm {
 
   getRegions(country) {
     const countryRegions = _cities.find(
-      city => city.countryShortCode === country
+      (city) => city.countryShortCode === country
     )
 
-    return countryRegions.regions.map(i => {
+    return countryRegions.regions.map((i) => {
       return `<option value="${i.shortCode}">${i.name}</option>`
     })
   }
@@ -494,7 +494,7 @@ class fnsCustomAddressForm {
         window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].shipsTo
     }
 
-    return _this.deliveryCountries.map(countryCode => {
+    return _this.deliveryCountries.map((countryCode) => {
       const _i18n = window.vtex.i18n[_this.lang]
         ? window.vtex.i18n[_this.lang]
         : window.vtex.i18n[window.vtex.i18n.locale]
@@ -537,7 +537,7 @@ class fnsCustomAddressForm {
 
     const { shippingData } = orderForm
 
-    const country = _countries.find(c => c[1] === _this.mainCountry)
+    const country = _countries.find((c) => c[1] === _this.mainCountry)
 
     const form = `
       <div class="vcustom--vtex-omnishipping-1-x-address step">
@@ -658,11 +658,58 @@ class fnsCustomAddressForm {
     const selected = sel.val() // cache selected value, before reordering
     const optsList = sel.find('option')
 
-    optsList.sort(function(a, b) {
+    optsList.sort(function (a, b) {
       return $(a).text() > $(b).text() ? 1 : -1
     })
     sel.html('').append(optsList)
     sel.val(selected) // set cached selected value
+  }
+
+  showModal() {
+    const _this = this
+
+    $('.checkEmailAuthConflict__modal').remove()
+
+    const { title, button, message } =
+      _this.locale.emailConflictMessages || _locale.USA.emailConflictMessages
+
+    const modal = `
+			<div class="checkEmailAuthConflict__modal">
+				<div class="checkEmailAuthConflict__modal--bg"></div>
+				<div class="checkEmailAuthConflict__modal--wrap">
+					<h4 class="checkEmailAuthConflict__modal--title">${title}</h4>
+					<p class="checkEmailAuthConflict__modal--text">${message}</p>
+					<button class="checkEmailAuthConflict__modal--button js-checkEmailAuthConflict__modal--button">${button}</button>
+				</div>
+			</div>
+		`
+
+    $('body').append(modal)
+  }
+
+  validateEmail() {
+    const _this = this
+
+    try {
+      if (
+        _this.orderForm &&
+        _this.orderForm.clientProfileData &&
+        _this.orderForm.clientProfileData.email
+      ) {
+        fetch('/api/vtexid/pub/authenticated/user', { credentials: 'include' })
+          .then((response) => response.json())
+          .then((response) => {
+            if (!response) return false
+            const { user } = response
+
+            if (_this.orderForm.clientProfileData.email !== user) {
+              _this.showModal()
+            }
+          })
+      }
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   validateAllFields() {
@@ -670,7 +717,7 @@ class fnsCustomAddressForm {
 
     _this.validate = true
     $('.vcustom--vtex-omnishipping-1-x-address input:required').each(
-      function() {
+      function () {
         if (this.value === '') {
           $(this).addClass('error')
           _this.validate = false
@@ -733,7 +780,7 @@ class fnsCustomAddressForm {
 
   updateFormByCountry(gCountry) {
     const _this = this
-    const country = _countries.find(c => c[1] === gCountry)
+    const country = _countries.find((c) => c[1] === gCountry)
 
     _this.addressrules = _this.getCountryRule(country[1])
     _this.updateFormFieldByCountry(_this.addressrules)
@@ -749,7 +796,7 @@ class fnsCustomAddressForm {
     $('body').on(
       'click',
       '.step.shipping-data #edit-address-button, .step.shipping-data .vtex-omnishipping-1-x-linkEdit',
-      function() {
+      function () {
         if (
           !$('#shipping-option-pickup-in-point').hasClass(
             'vtex-omnishipping-1-x-deliveryOptionActive'
@@ -824,7 +871,7 @@ class fnsCustomAddressForm {
     $('body').on(
       'click',
       '.vtex-omnishipping-1-x-buttonCreateAddress, .vtex-omnishipping-1-x-disclaimer a#remove-unavailable-items',
-      function() {
+      function () {
         if (
           !$('#shipping-option-pickup-in-point').hasClass(
             'vtex-omnishipping-1-x-deliveryOptionActive'
@@ -842,14 +889,14 @@ class fnsCustomAddressForm {
     //   if(!_this.orderForm.shippingData.address) $("body").removeClass(_this.BodyFormClasses.join(" "));
     // });
 
-    $('body').on('click', '#shipping-option-pickup-in-point', function() {
+    $('body').on('click', '#shipping-option-pickup-in-point', function () {
       $('body').removeClass(_this.BodyFormClasses.join(' '))
     })
 
     $('body').on(
       'click',
       '.vtex-omnishipping-1-x-backToAddressList',
-      function() {
+      function () {
         $('body').removeClass(_this.BodyFormClasses.join(' '))
         _this.address.addressId = ''
       }
@@ -858,7 +905,7 @@ class fnsCustomAddressForm {
     $('body').on(
       'click',
       '.vtex-omnishipping-1-x-addressItemOption',
-      function() {
+      function () {
         _this.address.addressId = _this.orderForm.shippingData
           .availableAddresses[$(this).index()]
           ? _this.orderForm.shippingData.availableAddresses[$(this).index()]
@@ -867,7 +914,7 @@ class fnsCustomAddressForm {
       }
     )
 
-    $('body').on('change', "select[name='v-custom-country']", function(e) {
+    $('body').on('change', "select[name='v-custom-country']", function (e) {
       e.stopImmediatePropagation()
       try {
         _this.updateFormByCountry(this.value)
@@ -877,7 +924,7 @@ class fnsCustomAddressForm {
       }
     })
 
-    $('body').on('click', '#btn-go-to-shippping-method', function(e) {
+    $('body').on('click', '#btn-go-to-shippping-method', function (e) {
       e.preventDefault()
       e.stopImmediatePropagation()
       _this.submitAddressForm()
@@ -886,12 +933,39 @@ class fnsCustomAddressForm {
     $('body').on(
       'keyup',
       '.vcustom--vtex-omnishipping-1-x-address input',
-      function() {
+      function () {
         if (this.value !== '') {
           $(this).removeClass('error')
         }
       }
     )
+
+    $('body').on(
+      'click',
+      '.js-checkEmailAuthConflict__modal--button',
+      function (e) {
+        e.preventDefault()
+        $(this).addClass('js-loading')
+        _this.changeUser()
+      }
+    )
+  }
+
+  removeModal() {
+    $('.checkEmailAuthConflict__modal').fadeOut('normal', function () {
+      $('.checkEmailAuthConflict__modal').remove()
+    })
+  }
+
+  changeUser() {
+    const _this = this
+
+    $.ajax(
+      `/checkout/changeToAnonymousUser/${_this.orderForm.orderFormId}`
+    ).done(function () {
+      _this.removeModal()
+      window.vtexid.start()
+    })
   }
 
   checkFirstLogin(orderForm) {
@@ -918,8 +992,13 @@ class fnsCustomAddressForm {
   events() {
     const _this = this
 
-    $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
+    $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
       _this.checkFirstLogin(orderForm)
+      try {
+        _this.validateEmail()
+      } catch (e) {
+        console.error(e)
+      }
     })
   }
 

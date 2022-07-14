@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- (CHECKOUTUI-88) Merge email-checkout-conflict in the checkout-ui-custom.
+
 ## [0.7.13] - 2022-07-14
 
 ### Added

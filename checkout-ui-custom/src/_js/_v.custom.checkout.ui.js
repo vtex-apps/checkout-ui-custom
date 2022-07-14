@@ -35,11 +35,9 @@ class checkoutCustom {
       )
     }
 
-    $('.table.cart-items tbody tr.product-item').each(function() {
+    $('.table.cart-items tbody tr.product-item').each(function () {
       if (!$(this).find('.v-custom-product-item-wrap').length) {
-        $(this)
-          .find('> *')
-          .wrapAll(`<div class="v-custom-product-item-wrap">`)
+        $(this).find('> *').wrapAll(`<div class="v-custom-product-item-wrap">`)
       }
     })
 
@@ -47,11 +45,11 @@ class checkoutCustom {
   }
 
   onDomMutation({ targetNode, callback, disconnectCondition = true }) {
-    const observeDOM = (function() {
+    const observeDOM = (function () {
       const MutationObserver =
         window.MutationObserver || window.WebKitMutationObserver
 
-      return function(obj, callback1) {
+      return function (obj, callback1) {
         if (!obj || obj.nodeType !== 1) return
 
         if (MutationObserver) {
@@ -72,7 +70,7 @@ class checkoutCustom {
       }
     })()
 
-    const observer = new MutationObserver(function() {
+    const observer = new MutationObserver(function () {
       if (targetNode && disconnectCondition) {
         observer.disconnect()
 
@@ -195,13 +193,13 @@ class checkoutCustom {
 
   addAssemblies(orderForm) {
     try {
-      $.each(orderForm.items, function(i) {
+      $.each(orderForm.items, function (i) {
         const _item = this
 
         if (_item.assemblies.length > 0) {
           let _assembliesHtml = `<div class="v-custom-assemblies">`
 
-          $.each(_item.assemblies, function() {
+          $.each(_item.assemblies, function () {
             const _assemblies = this
 
             const inptValues = _assemblies.inputValues
@@ -235,7 +233,7 @@ class checkoutCustom {
 
   bundleItems(orderForm) {
     try {
-      $.each(orderForm.items, function(i) {
+      $.each(orderForm.items, function (i) {
         if (this.bundleItems.length > 0) {
           $(`.table.cart-items tbody tr.product-item:eq(${i})`)
             .addClass('v-custom-bundles-in')
@@ -246,11 +244,9 @@ class checkoutCustom {
           )
         }
       })
-      $('.table.cart-items tbody tr.item-service').each(function() {
+      $('.table.cart-items tbody tr.item-service').each(function () {
         if ($(this).find('.v-custom-trservice-wrap').length > 0) return false
-        $(this)
-          .find('> *')
-          .wrapAll(`<div class="v-custom-trservice-wrap">`)
+        $(this).find('> *').wrapAll(`<div class="v-custom-trservice-wrap">`)
       })
     } catch (e) {
       console.error('bundleItems error:', e)
@@ -261,14 +257,14 @@ class checkoutCustom {
     const _this = this
     const _coupon = orderForm.marketingData.coupon
 
-    const couponItemsCount = orderForm.items.reduce(function(
+    const couponItemsCount = orderForm.items.reduce(function (
       accumulator,
       item
     ) {
       return (
         accumulator +
         (item.priceTags.length
-          ? item.priceTags.filter(_pricetag => {
+          ? item.priceTags.filter((_pricetag) => {
               return _pricetag.ratesAndBenefitsIdentifier
                 ? _pricetag.ratesAndBenefitsIdentifier.matchedParameters[
                     'couponCode@Marketing'
@@ -309,10 +305,10 @@ class checkoutCustom {
         `.table.cart-items tbody tr.product-item, .mini-cart .cart-items li`
       ).removeClass('v-custom-addLabels-active js-vcustom-addLabels')
       $(`.v-custom-addLabels-active-flag`).remove()
-      $.each(orderForm.items, function(i) {
+      $.each(orderForm.items, function (i) {
         if (this.priceTags.length > 0) {
           if (
-            this.priceTags.filter(_pricetag => {
+            this.priceTags.filter((_pricetag) => {
               return _pricetag.ratesAndBenefitsIdentifier
                 ? _pricetag.ratesAndBenefitsIdentifier.matchedParameters[
                     'couponCode@Marketing'
@@ -338,20 +334,16 @@ class checkoutCustom {
   buildMiniCart(orderForm) {
     /* overide refresh from vtex */
     if (
-      orderForm.items.filter(item => {
+      orderForm.items.filter((item) => {
         return item.parentItemIndex !== null
       }).length === 0
     ) {
       return false
     }
 
-    if (
-      $(`.mini-cart .cart-items`)
-        .text()
-        .trim() !== ''
-    ) {
+    if ($(`.mini-cart .cart-items`).text().trim() !== '') {
       $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`)
-      $.each(orderForm.items, function(i) {
+      $.each(orderForm.items, function (i) {
         if (this.availability === 'available') {
           $(`.mini-cart .cart-items li:eq(${i})`)
             .find('.item-unavailable')
@@ -362,7 +354,7 @@ class checkoutCustom {
   }
 
   setParentIndex(orderForm) {
-    $.each(orderForm.items, function(i) {
+    $.each(orderForm.items, function (i) {
       if (this.parentItemIndex !== null) {
         $(`.table.cart-items tbody > tr.product-item:eq(${i})`).attr(
           'data-parentItemIndex',
@@ -385,7 +377,7 @@ class checkoutCustom {
 
     try {
       if (
-        orderForm.items.filter(item => {
+        orderForm.items.filter((item) => {
           return item.parentItemIndex !== null
         }).length === 0
       ) {
@@ -546,23 +538,26 @@ class checkoutCustom {
         .srp-delivery-current-many,
         td.shipping-date,
         .srp-shipping-current-single
-      `).each(function() {
-        const [
-          logisticsInfo,
-        ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
+      `).each(function () {
+        const [logisticsInfo] =
+          window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
 
         const availableSlas = logisticsInfo.slas
 
         const { selectedSla } = logisticsInfo
 
-        const selectedSlaDays = availableSlas.find(e => e.name === selectedSla)
-          ? availableSlas.find(e => e.name === selectedSla).shippingEstimate
+        const selectedSlaDays = availableSlas.find(
+          (e) => e.name === selectedSla
+        )
+          ? availableSlas.find((e) => e.name === selectedSla).shippingEstimate
           : false
 
         const txtselectin = $(this)
           .find(
             mainSTIelems
-              .map(elem => `${elem}:not(.v-changeShippingTimeInfo-elem-active)`)
+              .map(
+                (elem) => `${elem}:not(.v-changeShippingTimeInfo-elem-active)`
+              )
               .join(', ')
           )
           .text()
@@ -615,7 +610,7 @@ class checkoutCustom {
 
         const deliveryDates = []
 
-        $.each(a, function(i) {
+        $.each(a, function (i) {
           const txtselectin = a[i]
 
           if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)/gm)) {
@@ -665,7 +660,7 @@ class checkoutCustom {
 
     if (!_this.quantityPriceCart) return
     try {
-      $.each(orderForm.items, function(i) {
+      $.each(orderForm.items, function (i) {
         const _item = this
         const _trElem = $(`.table.cart-items tbody tr.product-item:eq(${i})`)
 
@@ -691,10 +686,7 @@ class checkoutCustom {
           </div>
         `
 
-        _trElem
-          .find('td.product-price')
-          .find('.vqc-ldelem')
-          .remove()
+        _trElem.find('td.product-price').find('.vqc-ldelem').remove()
         // _trElem.find("td.quantity-price").prepend(_eachprice);
         _trElem
           .find('td.product-price')
@@ -722,7 +714,9 @@ class checkoutCustom {
   }
 
   condensedTaxes(orderForm) {
-    const customtax = orderForm.totalizers.filter(val => val.id === 'CustomTax')
+    const customtax = orderForm.totalizers.filter(
+      (val) => val.id === 'CustomTax'
+    )
 
     if (customtax && customtax.length < 2) return false
 
@@ -730,7 +724,7 @@ class checkoutCustom {
       <div class="vcustom-customTax-resume">
        ${customtax
          .map(
-           i =>
+           (i) =>
              `<p class="vcustom-customTax-resume__i"><span class="n">${
                i.name
              }</span><span class="v">${
@@ -766,7 +760,7 @@ class checkoutCustom {
     this.indexedInItems(orderForm)
 
     // debounce to prevent append from default script
-    const updateDebounce = debounce(function() {
+    const updateDebounce = debounce(function () {
       if (orderForm.marketingData) {
         _this.addLabels(orderForm)
         _this.showCustomMsgCoupon(orderForm)
@@ -782,7 +776,7 @@ class checkoutCustom {
 
     $('body').removeClass(
       bClassStep
-        .map(step => {
+        .map((step) => {
           return prefixClass + step
         })
         .join(' ')
@@ -791,7 +785,7 @@ class checkoutCustom {
       const [, hashstep] = window.location.hash.split('/')
 
       if (
-        bClassStep.findIndex(st => {
+        bClassStep.findIndex((st) => {
           return st === hashstep
         }) !== -1
       ) {
@@ -804,9 +798,11 @@ class checkoutCustom {
     const clientLocale = orderForm.clientPreferencesData.locale
 
     this.lang = Object.values(_locale).find(
-      country => country.locale === clientLocale
+      (country) => country.locale === clientLocale
     )
-      ? Object.values(_locale).find(country => country.locale === clientLocale)
+      ? Object.values(_locale).find(
+          (country) => country.locale === clientLocale
+        )
       : _locale[orderForm.storePreferencesData.countryCode]
 
     if (!this.lang) return false
@@ -887,13 +883,13 @@ class checkoutCustom {
 
         let paymentGroupCardsHtml = ``
 
-        $.each(paymentGroups, function(p) {
+        $.each(paymentGroups, function (p) {
           paymentGroupCardsHtml = `<span class="payment-group-item-cards">`
           $.each(
             orderForm.paymentData.paymentSystems.filter(
-              item => item.groupName === paymentGroups[p]
+              (item) => item.groupName === paymentGroups[p]
             ),
-            function() {
+            function () {
               paymentGroupCardsHtml += `<span class="card-flag ${this.name}">${this.name}</span>`
             }
           )
@@ -923,7 +919,7 @@ class checkoutCustom {
 
     $('body').addClass('v-custom-paymentBuilder-accordion')
 
-    $('.payment-group-item').each(function() {
+    $('.payment-group-item').each(function () {
       $(this).wrap(
         `<div class='v-custom-payment-item-wrap ${
           $(this).hasClass('active') ? 'active' : ''
@@ -931,7 +927,7 @@ class checkoutCustom {
       )
     })
 
-    $('.payment-group-item').each(function() {
+    $('.payment-group-item').each(function () {
       $(`#payment-data .steps-view > div:eq(${0})`).appendTo(
         $(this).closest('.v-custom-payment-item-wrap')
       )
@@ -1013,7 +1009,7 @@ class checkoutCustom {
   bind() {
     const _this = this
 
-    $('body').on('click', '#v-custom-edit-login-data', function(e) {
+    $('body').on('click', '#v-custom-edit-login-data', function (e) {
       e.preventDefault()
 
       $(this).addClass('active')
@@ -1021,10 +1017,10 @@ class checkoutCustom {
       const data = null
       const xhr = new XMLHttpRequest()
 
-      xhr.addEventListener('readystatechange', function() {
+      xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
           window.location.reload()
-          setTimeout(function() {
+          setTimeout(function () {
             $('#v-custom-edit-login-data').removeClass('active')
           }, 1000)
         }
@@ -1040,7 +1036,7 @@ class checkoutCustom {
       xhr.send(data)
     })
 
-    $('body').on('click', '.v-custom-payment-item-wrap', function() {
+    $('body').on('click', '.v-custom-payment-item-wrap', function () {
       $('.v-custom-payment-item-wrap').removeClass('active')
       $(this).addClass('active')
     })
@@ -1048,23 +1044,21 @@ class checkoutCustom {
     $('body').on(
       'click',
       '.vtex-pickup-points-modal-3-x-pickupDetailsHeaderButton, #map-canvas img, .vtex-omnishipping-1-x-pickupPointChange, .pkpmodal-pickup-point, .vtex-pickup-points-modal-3-x-modalDetailsBackLnk',
-      function() {
+      function () {
         setTimeout(() => {
           _this.changeShippingTimeInfoInit()
         }, 100)
       }
     )
 
-    $('body').on('click', '.js-checkout-steps-item .text', function() {
-      window.location = $(this)
-        .closest('.checkout-steps_item')
-        .attr('data-url')
+    $('body').on('click', '.js-checkout-steps-item .text', function () {
+      window.location = $(this).closest('.checkout-steps_item').attr('data-url')
     })
 
     $('body').on(
       'click',
       '.vtex-omnishipping-1-x-linkEdit.link-edit',
-      function() {
+      function () {
         setTimeout(() => {
           _this.updateLang(_this.orderForm)
           if (_this.customAddressForm) {
@@ -1074,19 +1068,19 @@ class checkoutCustom {
       }
     )
 
-    $('body').on('click', '#btn-client-pre-email', function() {
-      setTimeout(function() {
+    $('body').on('click', '#btn-client-pre-email', function () {
+      setTimeout(function () {
         if (!$('input#client-pre-email').hasClass('error')) {
           $('input#client-email').focus()
         }
       }, 1000)
     })
 
-    $('body').on('click', '#shipping-option-delivery', function() {
+    $('body').on('click', '#shipping-option-delivery', function () {
       _this.customAddressFormInit(_this.orderForm)
     })
 
-    $('body').on('click', '.show-more-items-button', function() {
+    $('body').on('click', '.show-more-items-button', function () {
       _this.general()
     })
   }
@@ -1116,17 +1110,17 @@ class checkoutCustom {
     const _this = this
 
     try {
-      $(function() {
+      $(function () {
         _this.bind()
         _this.customAddressFormLoader()
         _this.rtlUI()
       })
 
-      $(document).ajaxComplete(function() {
+      $(document).ajaxComplete(function () {
         _this.init()
       })
 
-      $(window).on('hashchange', function() {
+      $(window).on('hashchange', function () {
         const cartItems = document.querySelector('.cart-items')
 
         _this.updateStep()
@@ -1148,7 +1142,7 @@ class checkoutCustom {
         }
       })
 
-      $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
+      $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
         _this.URLHasIncludePayment()
@@ -1157,7 +1151,7 @@ class checkoutCustom {
         }
       })
 
-      $(window).load(function() {
+      $(window).load(function () {
         $(window).one('componentValidated.vtex', () => _this.builder())
         _this.checkProfileFocus()
         _this.changeShippingTimeInfoInit()

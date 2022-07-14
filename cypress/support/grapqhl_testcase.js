@@ -33,7 +33,7 @@ export function graphql(getQuery, validateResponseFn = null) {
   }).as('RESPONSE')
 
   if (validateResponseFn) {
-    cy.get('@RESPONSE').then(response => {
+    cy.get('@RESPONSE').then((response) => {
       commonGraphlValidation(response)
       validateResponseFn(response)
     })
@@ -134,7 +134,7 @@ export function ValidategetByIdResponse(response) {
 
 export function updateLayoutSettings(option) {
   it(`${option} Layout Settings via Graphql`, updateRetry(3), () => {
-    cy.getCheckOutItems().then(items => {
+    cy.getCheckOutItems().then((items) => {
       const configurations = items[ENVS.CONFIG_SETTINGS]
 
       const bool = /Enable/.test(option)
@@ -146,7 +146,7 @@ export function updateLayoutSettings(option) {
       configurations.layout.hideEmailStep = bool
       configurations.layout.customAddressForm = bool
 
-      graphql(saveChanges(configurations), response => {
+      graphql(saveChanges(configurations), (response) => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
     })

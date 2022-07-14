@@ -42,7 +42,7 @@ body.v-custom-googleForm-on {
       display:none
   }
 
-  
+
 }
 
 .v-custom-googleFormScript-added.v-custom-googleForm-on .accordion-inner.shipping-container  > * {
@@ -56,7 +56,7 @@ body.v-custom-fnsCustomAddressForm {
   .accordion-inner.shipping-container {
     padding-top:0 !important;
   }
-  
+
 
   .accordion-inner.shipping-container {
     transition:all ease 0.3s;
@@ -74,8 +74,8 @@ body.v-custom-fnsCustomAddressForm {
     .input.ship-addressQuery,
     .input.ship-postalCode {display: none;}
   }
-  
-  
+
+
   .vtex-omnishipping-1-x-container.shp-pickup-receiver +
   .vtex-omnishipping-1-x-shippingSectionTitle +
   #back-to-address-list +
@@ -89,7 +89,7 @@ body.v-custom-fnsCustomAddressForm {
   .vtex-omnishipping-1-x-addressFormPart1 + .vtex-omnishipping-1-x-submitPaymentButton {display:none;}
 
   .orderform-template-holder {
-    .step.shipping-data .box-step { 
+    .step.shipping-data .box-step {
       .vtex-omnishipping-1-x-addressFormPart1 {order: 1;}
     }
   }
@@ -115,9 +115,9 @@ body.v-custom-fnsCustomAddressForm {
     .step.accordion-group.shipping-data {order: 1;}
     .vcustom--vtex-omnishipping-1-x-address {order: 3;}
   }
-  
+
 }
- 
+
 .js-v-custom-is-loading {
 
   .accordion-inner.shipping-container,
@@ -199,3 +199,79 @@ body.v-custom-fnsCustomAddressForm {
 
 
 .address-list.vtex-omnishipping-1-x-addressList + p.input.ship-addressQuery.text {display:none;}
+
+.checkEmailAuthConflict__modal,
+.checkEmailAuthConflict__modal--bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+}
+
+.checkEmailAuthConflict__modal--bg {
+  background: #000;
+  opacity: 0.4;
+}
+
+.checkEmailAuthConflict__modal--wrap {
+  width: 400px;
+  background: #fff;
+  position: fixed;
+  left: calc(50% - 200px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99999;
+  padding: 30px;
+  border-radius: 3px;
+  box-sizing: border-box;
+
+  color: #333333;
+  background: #fff;
+  box-shadow: 0 5px 0 #ddd;
+  border-bottom: 1px solid #fff;
+  border-radius: 4px;
+  border: 2px solid #eee;
+}
+
+button.checkEmailAuthConflict__modal--button {
+  background: #1a73e8;
+  padding: 10px;
+  display: inline-block;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+}
+
+  .checkEmailAuthConflict__modal--button.js-loading:after {
+    border: 3px solid #f3f3f3; /* Light grey */
+    border-top: 3px solid #9999; /* Blue */
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    animation: spin 1s linear infinite;
+    content: '';
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+h4.checkEmailAuthConflict__modal--title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+p.checkEmailAuthConflict__modal--text {
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

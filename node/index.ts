@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Service, ServiceContext, ClientsConfig, LRUCache } from '@vtex/api'
+import type { ServiceContext, ClientsConfig } from '@vtex/api'
+import { Service, LRUCache } from '@vtex/api'
 
 import { Clients } from './clients'
 import { resolvers } from './graphql'
