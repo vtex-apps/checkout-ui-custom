@@ -325,7 +325,7 @@ module.exports._locale = {
     eachLabel: 'jedes/jeder',
     tomorrowLabel: 'Morgen',
     address1Placeholder: 'Straße',
-    address2Placeholder: 'Straße (weiter)',
+    address2Placeholder: 'Unterprämisse',
     postalCode: 'Postleitzahl',
     country: 'Land',
     city: 'Stadt',
