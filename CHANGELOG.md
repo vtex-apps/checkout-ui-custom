@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.7.13] - 2022-07-14
+
 ### Added
 - Added rules for SPAIN
 - Added missing translation for number in SPAIN
