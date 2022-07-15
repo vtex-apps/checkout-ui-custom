@@ -170,6 +170,10 @@ module.exports._countriesrules = {
       valueIn: 'long_name',
       types: ['locality'],
     },
+    complement: {
+      valueIn: 'long_name',
+      types: ['subpremise']
+    },
     neighborhood: {
       valueIn: 'long_name',
       types: ['administrative_area_level_3'],
