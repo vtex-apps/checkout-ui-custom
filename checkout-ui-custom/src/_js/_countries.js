@@ -172,7 +172,7 @@ module.exports._countriesrules = {
     },
     complement: {
       valueIn: 'long_name',
-      types: ['subpremise']
+      types: ['subpremise'],
     },
     neighborhood: {
       valueIn: 'long_name',
