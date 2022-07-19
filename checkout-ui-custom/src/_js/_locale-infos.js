@@ -137,7 +137,7 @@ module.exports._locale = {
     city: 'Ciudad',
     postalCode: 'Código Postal',
     goToShipping: 'Ir para la Entrega',
-    state: 'Estado',
+    state: 'Provincia',
     requiredField: 'Este campo es obligatorio.',
     number: 'Número',
     locale: 'es',

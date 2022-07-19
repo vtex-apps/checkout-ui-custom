@@ -15973,211 +15973,211 @@ module.exports._cities = [
     regions: [
       {
         name: 'Albacete',
-        shortCode: 'AB',
+        shortCode: 'Albacete',
       },
       {
         name: 'Alicante',
-        shortCode: 'A',
+        shortCode: 'Alicante',
       },
       {
         name: 'Almería',
-        shortCode: 'AN',
+        shortCode: 'Almería',
       },
       {
         name: 'Araba/Álava',
-        shortCode: 'VI',
+        shortCode: 'Álava',
       },
       {
         name: 'Asturias',
-        shortCode: 'O',
+        shortCode: 'Asturias',
       },
       {
         name: 'Ávila',
-        shortCode: 'AV',
+        shortCode: 'Avila',
       },
       {
         name: 'Badajoz',
-        shortCode: 'BA',
+        shortCode: 'Badajoz',
       },
       {
         name: 'Barcelona',
-        shortCode: 'B',
+        shortCode: 'Barcelona',
       },
       {
         name: 'Bizkaia',
-        shortCode: 'BI',
+        shortCode: 'Vizcaya',
       },
       {
         name: 'Burgos',
-        shortCode: 'BU',
+        shortCode: 'Burgos',
       },
       {
         name: 'Cáceres',
-        shortCode: 'CC',
+        shortCode: 'Cáceres',
       },
       {
         name: 'Cádiz',
-        shortCode: 'CA',
+        shortCode: 'Cádiz',
       },
       {
         name: 'Cantabria',
-        shortCode: 'S',
+        shortCode: 'Cantabria',
       },
       {
         name: 'Castellón/Castelló',
-        shortCode: 'CS',
+        shortCode: 'Castellón',
       },
       {
         name: 'Ceuta',
-        shortCode: 'CE',
+        shortCode: 'Ceuta',
       },
       {
         name: 'Ciudad Real',
-        shortCode: 'CR',
+        shortCode: 'Ciudad Real',
       },
       {
         name: 'Córdoba',
-        shortCode: 'CO',
+        shortCode: 'Córdoba',
       },
       {
-        name: 'A Coruña',
-        shortCode: 'C',
+        name: 'LA Coruña',
+        shortCode: 'La Coruña',
       },
       {
         name: 'Cuenca',
-        shortCode: 'CU',
+        shortCode: 'Cuenca',
       },
       {
         name: 'Gipuzkoa',
-        shortCode: 'SS',
+        shortCode: 'Guipúzcoa',
       },
       {
         name: 'Girona',
-        shortCode: 'GI',
+        shortCode: 'Gerona',
       },
       {
         name: 'Granada',
-        shortCode: 'GR',
+        shortCode: 'Granada',
       },
       {
         name: 'Guadalajara',
-        shortCode: 'GU',
+        shortCode: 'Guadalajara',
       },
       {
         name: 'Huelva',
-        shortCode: 'H',
+        shortCode: 'Huelva',
       },
       {
         name: 'Huesca',
-        shortCode: 'HU',
+        shortCode: 'Huesca',
       },
       {
         name: 'Illes Balears',
-        shortCode: 'PM',
+        shortCode: 'Islas Baleares',
       },
       {
         name: 'Jaén',
-        shortCode: 'J',
+        shortCode: 'Jaen',
       },
       {
         name: 'León',
-        shortCode: 'LE',
+        shortCode: 'León',
       },
       {
         name: 'Lleida',
-        shortCode: 'L',
+        shortCode: 'Lérida',
       },
       {
         name: 'Lugo',
-        shortCode: 'LU',
+        shortCode: 'Lugo',
       },
       {
         name: 'Madrid',
-        shortCode: 'M',
+        shortCode: 'Madrid',
       },
       {
         name: 'Málaga',
-        shortCode: 'MA',
+        shortCode: 'Málaga',
       },
       {
         name: 'Melilla',
-        shortCode: 'ML',
+        shortCode: 'Melilla',
       },
       {
         name: 'Murcia',
-        shortCode: 'MU',
+        shortCode: 'Murcia',
       },
       {
         name: 'Navarra/Nafarroa',
-        shortCode: 'NA',
+        shortCode: 'Navarra',
       },
       {
         name: 'Ourense',
-        shortCode: 'OR',
+        shortCode: 'Orense',
       },
       {
         name: 'Palencia',
-        shortCode: 'P',
+        shortCode: 'Palencia',
       },
       {
         name: 'Las Palmas',
-        shortCode: 'GC',
+        shortCode: 'Las Palmas',
       },
       {
         name: 'Pontevedra',
-        shortCode: 'PO',
+        shortCode: 'Pontevedra',
       },
       {
         name: 'La Rioja',
-        shortCode: 'LO',
+        shortCode: 'La Rioja',
       },
       {
         name: 'Salamanca',
-        shortCode: 'SA',
+        shortCode: 'Salamanca',
       },
       {
         name: 'Santa Cruz de Tenerife',
-        shortCode: 'TF',
+        shortCode: 'S.C.Tenerife',
       },
       {
         name: 'Segovia',
-        shortCode: 'SG',
+        shortCode: 'Segovia',
       },
       {
         name: 'Sevilla',
-        shortCode: 'SE',
+        shortCode: 'Sevilla',
       },
       {
         name: 'Soria',
-        shortCode: 'SO',
+        shortCode: 'Soria',
       },
       {
         name: 'Tarragona',
-        shortCode: 'T',
+        shortCode: 'Tarragona',
       },
       {
         name: 'Teruel',
-        shortCode: 'TE',
+        shortCode: 'Teruel',
       },
       {
         name: 'Toledo',
-        shortCode: 'TO',
+        shortCode: 'Toledo',
       },
       {
         name: 'Valencia/València',
-        shortCode: 'V',
+        shortCode: 'Valencia',
       },
       {
         name: 'Valladolid',
-        shortCode: 'VA',
+        shortCode: 'Valladolid',
       },
       {
         name: 'Zamora',
-        shortCode: 'ZA',
+        shortCode: 'Zamora',
       },
       {
         name: 'Zaragoza',
-        shortCode: 'Z',
+        shortCode: 'Zaragoza',
       },
     ],
   },
