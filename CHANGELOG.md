@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added vtex.email-checkout-conflict as dependency.
+
 ## [0.8.1] - 2022-07-19
 
 ### Fixed
