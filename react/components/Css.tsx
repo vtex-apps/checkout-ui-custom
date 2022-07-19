@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
-import { defineMessages, injectIntl, WrappedComponentProps } from 'react-intl'
+import type { WrappedComponentProps } from 'react-intl'
+import { defineMessages, injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Textarea, Toggle } from 'vtex.styleguide'
 

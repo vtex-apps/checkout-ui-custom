@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { InstanceOptions, IOContext, AppClient } from '@vtex/api'
+import type { InstanceOptions, IOContext } from '@vtex/api'
+import { AppClient } from '@vtex/api'
 
 export class SaveVB extends AppClient {
   constructor(ctx: IOContext, options?: InstanceOptions) {

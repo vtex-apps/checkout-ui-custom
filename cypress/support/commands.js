@@ -33,17 +33,13 @@ Cypress.Commands.add('gotoProductDetailPage', () => {
   cy.get(selectors.ProductAnchorElement)
     .should('have.attr', 'href')
     .then(href => {
-      cy.get(generateAddtoCartCardSelector(href))
-        .first()
-        .click()
+      cy.get(generateAddtoCartCardSelector(href)).first().click()
     })
 })
 
 Cypress.Commands.add('openProduct', (product, detailPage = false) => {
   // Search product in search bar
-  cy.get(selectors.Search)
-    .should('be.not.disabled')
-    .should('be.visible')
+  cy.get(selectors.Search).should('be.not.disabled').should('be.visible')
 
   cy.get(selectors.Search).type(`${product}{enter}`)
   // Page should load successfully now Filter should be visible
@@ -58,17 +54,13 @@ Cypress.Commands.add('openProduct', (product, detailPage = false) => {
 })
 
 Cypress.Commands.add('removeProduct', product => {
-  cy.get(`#item-remove-${product}`)
-    .should('be.visible')
-    .click()
+  cy.get(`#item-remove-${product}`).should('be.visible').click()
   cy.contains('Your cart is empty')
 })
 
 Cypress.Commands.add('checkoutProduct', () => {
   cy.get(selectors.TotalPrice).should('be.visible')
-  cy.get(selectors.ProceedtoCheckout)
-    .should('be.visible')
-    .click()
+  cy.get(selectors.ProceedtoCheckout).should('be.visible').click()
   cy.get(selectors.CartTimeline, { timeout: 30000 })
     .should('be.visible')
     .click({ force: true })

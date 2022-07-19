@@ -2,28 +2,31 @@
   "name": "vtex.checkout-ui-custom",
   "version": "0.7.13",
   "dependencies": {
+    "@vtex/address-form": "^3.25.4",
+    "@vtex/api": "6.45.12",
     "co-body": "^6.0.0",
     "jsonwebtoken": "^8.5.0",
-    "ramda": "^0.25.0",
-    "@vtex/api": "6.45.12"
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.25",
     "@types/co-body": "0.0.3",
+    "@types/jest": "^27.0.2",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^12.0.0",
     "@types/ramda": "types/npm-ramda#dist",
     "@vtex/api": "6.45.12",
     "@vtex/prettier-config": "^0.3.1",
+    "@vtex/tsconfig": "^0.6.0",
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-vtex": "^2.1.0",
     "typescript": "3.9.7",
-    "vtex.checkout-ui-custom": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.6.10/public/@types/vtex.checkout-ui-custom",
-    "vtex.checkout-ui-settings-server": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.3/public/_types/react",
-    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime",
-    "vtex.store-resources": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.85.0/public/@types/vtex.store-resources",
-    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.145.2/public/@types/vtex.styleguide"
+    "vtex.checkout-ui-custom": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.7.13/public/@types/vtex.checkout-ui-custom",
+    "vtex.checkout-ui-settings-server": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.4/public/_types/react",
+    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.4/public/@types/vtex.render-runtime",
+    "vtex.store-resources": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.87.0/public/@types/vtex.store-resources",
+    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.1/public/@types/vtex.styleguide"
   },
   "scripts": {
     "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'"

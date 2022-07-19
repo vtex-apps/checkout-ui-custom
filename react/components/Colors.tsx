@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FC, useState } from 'react'
-import { injectIntl, WrappedComponentProps } from 'react-intl'
+import type { FC } from 'react'
+import React, { useState } from 'react'
+import type { WrappedComponentProps } from 'react-intl'
+import { injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import { ColorPicker } from 'vtex.styleguide'
 
