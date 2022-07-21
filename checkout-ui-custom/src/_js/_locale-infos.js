@@ -240,6 +240,7 @@ module.exports._locale = {
     PickupDateText: 'Pronto entro',
     eachLabel: 'ciascuno',
     tomorrowLabel: 'Domani',
+    country: 'Paese',
     cartNoteLabel: "Messaggio d'auguri o note",
     address1Placeholder: 'Indirizzo',
     address2Placeholder: 'Complementi',
@@ -255,6 +256,7 @@ module.exports._locale = {
     requiredField: 'Questo campo è obbligatorio.',
     numberPlaceholder: ' ',
     locale: 'it',
+    goToShipping: 'Vai alla spedizione',
   },
   FRA: {
     couponInactive: 'Aucune réduction disponible. Vérifiez les conditions.',
