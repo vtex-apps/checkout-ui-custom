@@ -240,6 +240,7 @@ module.exports._locale = {
     PickupDateText: 'Pronto entro',
     eachLabel: 'ciascuno',
     tomorrowLabel: 'Domani',
+    country: 'Paese',
     cartNoteLabel: "Messaggio d'auguri o note",
     address1Placeholder: 'Indirizzo',
     address2Placeholder: 'Complementi',
