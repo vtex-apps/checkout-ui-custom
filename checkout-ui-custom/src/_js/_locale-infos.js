@@ -256,6 +256,7 @@ module.exports._locale = {
     requiredField: 'Questo campo è obbligatorio.',
     numberPlaceholder: ' ',
     locale: 'it',
+    goToShipping: 'Vai alla spedizione',
   },
   FRA: {
     couponInactive: 'Aucune réduction disponible. Vérifiez les conditions.',
