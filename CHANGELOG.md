@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added translations to the italy
+
 ## [0.8.2] - 2022-07-20
 
 ### Added
