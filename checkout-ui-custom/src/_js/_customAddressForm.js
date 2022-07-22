@@ -200,6 +200,7 @@ class fnsCustomAddressForm {
   googleForm() {
     const _this = this
     const input = document.getElementById('v-custom-ship-street')
+    const geocodeClient = new window.google.maps.Geocoder()
 
     _this.gPlacesAutocomplete = new window.google.maps.places.Autocomplete(
       input
@@ -207,6 +208,8 @@ class fnsCustomAddressForm {
 
     _this.gPlacesAutocomplete.addListener('place_changed', function () {
       const place = _this.gPlacesAutocomplete.getPlace()
+
+      geocodeClient.geocode({ address: place.formatted_address })
 
       if (~window.location.host.indexOf('myvtex')) {
         console.log(place)
@@ -254,9 +257,11 @@ class fnsCustomAddressForm {
               types: ['street_number'],
             })
 
-      const complement = $(
-        '.vcustom--vtex-omnishipping-1-x-address #ship-complement'
-      ).val()
+      const complement = _this.addressrules.complement
+        ? _this.returnAddressFRules(place.address_components, {
+            types: ['subpremise'],
+          })
+        : $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val()
 
       const geoCoordinates = [
         place.geometry.location.lat(),
