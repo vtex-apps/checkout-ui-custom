@@ -16,7 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/runtime-corejs2": "^7.0.0",
-    "@vtex/address-form": "^3.25.4",
+    "@vtex/address-form": "^3.26.4",
     "babel-loader": "^8.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
