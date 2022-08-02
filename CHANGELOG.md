@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.5] - 2022-08-02
+
 ### Added
 - Added latest version of AddressForm to package JSON
 
