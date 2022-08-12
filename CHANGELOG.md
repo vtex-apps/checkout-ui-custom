@@ -7,10 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.8.7] - 2022-08-25
-
-### Fixed
-- Fixed Mexico short code states
+## Fixed
+- Changed the type of the button from submit to button.
 
 ## [0.8.6] - 2022-08-17
 
