@@ -1,4 +1,17 @@
 module.exports._countriesrules = {
+  FRA: {
+    city: {
+      types: ['locality'],
+      valueIn: 'long_name',
+    },
+    number: true,
+    postalCode: true,
+    postalCodeLength: 5,
+    state: {
+      types: ['administrative_area_level_1'],
+      valueIn: 'short_name',
+    },
+  },
   ITA: {
     state: {
       valueIn: 'short_name',
@@ -20274,7 +20287,7 @@ module.exports._addressPlaceholder = {
   ROU: 'Eg: Bulevardul Ion Mihalache, București 011192, Romania',
   BGR: 'Eg: улица Елин Пелин 13, София',
   DEU: 'Eg: Rheinalleee 95, Düsseldorf',
-  FRA: 'Eg: 7 Rue Hautefeuille, Paris',
+  FRA: 'Ex: 7 Rue Hautefeuille, Paris',
   GBR: 'Eg: 29 High Street Poole BH15 1AB',
   ITA: 'Eg: Corso Vittorio Emanuele 69, Milano',
   NLD: 'Eg: Surinamestraat 27, Amsterdam',
