@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed duplicated CustomAddress Form
+
 ## [0.8.5] - 2022-08-02
 
 ### Added

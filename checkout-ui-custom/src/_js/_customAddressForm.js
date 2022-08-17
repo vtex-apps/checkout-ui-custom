@@ -629,7 +629,14 @@ class fnsCustomAddressForm {
       )
     }
 
-    $('.orderform-template-holder #shipping-data').append(form)
+    if ($('.vcustom--vtex-omnishipping-1-x-address.step').length == 0) {
+      $('.orderform-template-holder #shipping-data').append(form)
+    }
+
+    if (!$('body').hasClass('.v-custom-addressForm-on')) {
+      $('body').addClass('v-custom-addressForm-on')
+    }
+
     this.googleForm()
     this.updateGoogleForm(country[1].toLowerCase())
 
