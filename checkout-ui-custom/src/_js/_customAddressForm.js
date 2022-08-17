@@ -629,8 +629,6 @@ class fnsCustomAddressForm {
       )
     }
 
-    console.log('Form Initialized')
-
     if ($('.vcustom--vtex-omnishipping-1-x-address.step').length == 0) {
       $('.orderform-template-holder #shipping-data').append(form)
     }
