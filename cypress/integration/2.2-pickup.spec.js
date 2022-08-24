@@ -4,7 +4,6 @@ import { pickupTestCase } from '../support/outputvalidation.js'
 const { productName, postalCode, prefix } = pickupTestCase
 
 describe(`${prefix} Scenario`, () => {
-  // Load test setup
   loginViaCookies()
 
   it(`${prefix} - Adding Product to Cart`, updateRetry(1), () => {

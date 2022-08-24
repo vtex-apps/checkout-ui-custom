@@ -1,8 +1,4 @@
-import {
-  preserveCookie,
-  testSetup,
-  updateRetry,
-} from '../support/common/support.js'
+import { loginViaCookies, updateRetry } from '../support/common/support.js'
 import selectors from '../support/common/selectors.js'
 import { fillLineItems } from '../support/testcase.js'
 import { checkoutUiCustomConstants } from '../support/constants.js'
@@ -13,8 +9,7 @@ const prefix = `Line items required scenario`
 const product = lineitemProducts.jumper.name
 
 describe(`Testing line items(required) with this product - ${product}`, () => {
-  // Load test setup
-  testSetup()
+  loginViaCookies()
 
   it(`${prefix} - Open Product ${product}`, updateRetry(3), () => {
     // Search the product
@@ -47,6 +42,4 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
     cy.checkoutProduct()
     cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
   })
-
-  preserveCookie()
 })

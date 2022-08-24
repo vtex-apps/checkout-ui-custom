@@ -1,8 +1,4 @@
-import {
-  testSetup,
-  updateRetry,
-  preserveCookie,
-} from '../support/common/support.js'
+import { loginViaCookies, updateRetry } from '../support/common/support.js'
 import { discountProduct } from '../support/outputvalidation.js'
 import selectors from '../support/common/selectors.js'
 import checkoutUiCustomSelectors from '../support/selectors.js'
@@ -19,7 +15,7 @@ function discountValidation(quantity = 1) {
 
 describe('Testing Checkout with different scenarios', () => {
   // Load test setup
-  testSetup()
+  loginViaCookies()
 
   const { prefix, productName, productPrice } = discountProduct
 
@@ -77,6 +73,4 @@ describe('Testing Checkout with different scenarios', () => {
       cy.get(selectors.VatInput).should('be.empty')
     }
   )
-
-  preserveCookie()
 })
