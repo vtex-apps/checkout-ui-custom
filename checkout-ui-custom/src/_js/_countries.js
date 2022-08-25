@@ -10886,131 +10886,131 @@ module.exports._cities = [
     regions: [
       {
         name: 'Aguascalientes',
-        shortCode: 'AGU',
+        shortCode: 'Aguascalientes',
       },
       {
         name: 'Baja California',
-        shortCode: 'BCN',
+        shortCode: 'Baja California',
       },
       {
         name: 'Baja California Sur',
-        shortCode: 'BCS',
+        shortCode: 'Baja California Sur',
       },
       {
         name: 'Campeche',
-        shortCode: 'CAM',
+        shortCode: 'Campeche',
       },
       {
         name: 'Ciudad de México',
-        shortCode: 'DIF',
+        shortCode: 'Ciudad de México',
       },
       {
         name: 'Chiapas',
-        shortCode: 'CHP',
+        shortCode: 'Chiapas',
       },
       {
         name: 'Chihuahua',
-        shortCode: 'CHH',
+        shortCode: 'Chihuahua',
       },
       {
         name: 'Coahuila de Zaragoza',
-        shortCode: 'COA',
+        shortCode: 'Coahuila de Zaragoza',
       },
       {
         name: 'Colima',
-        shortCode: 'COL',
+        shortCode: 'Colima',
       },
       {
         name: 'Durango',
-        shortCode: 'DUR',
+        shortCode: 'Durango',
       },
       {
         name: 'Estado de México',
-        shortCode: 'MEX',
+        shortCode: 'Estado de México',
       },
       {
         name: 'Guanajuato',
-        shortCode: 'GUA',
+        shortCode: 'Guanajuato',
       },
       {
         name: 'Guerrero',
-        shortCode: 'GRO',
+        shortCode: 'Guerrero',
       },
       {
         name: 'Hidalgo',
-        shortCode: 'HID',
+        shortCode: 'Hidalgo',
       },
       {
         name: 'Jalisco',
-        shortCode: 'JAL',
+        shortCode: 'Jalisco',
       },
       {
         name: 'Michoacán de Ocampo',
-        shortCode: 'MIC',
+        shortCode: 'Michoacán de Ocampo',
       },
       {
         name: 'Morelos',
-        shortCode: 'MOR',
+        shortCode: 'Morelos',
       },
       {
         name: 'Nayarit',
-        shortCode: 'NAY',
+        shortCode: 'Nayarit',
       },
       {
         name: 'Nuevo León',
-        shortCode: 'NLE',
+        shortCode: 'Nuevo León',
       },
       {
         name: 'Oaxaca',
-        shortCode: 'OAX',
+        shortCode: 'Oaxaca',
       },
       {
         name: 'Puebla',
-        shortCode: 'PUE',
+        shortCode: 'Puebla',
       },
       {
         name: 'Querétaro de Arteaga',
-        shortCode: 'QUE',
+        shortCode: 'Querétaro de Arteaga',
       },
       {
         name: 'Quintana Roo',
-        shortCode: 'ROO',
+        shortCode: 'Quintana Roo',
       },
       {
         name: 'San Luis Potosí',
-        shortCode: 'SLP',
+        shortCode: 'San Luis Potosí',
       },
       {
         name: 'Sinaloa',
-        shortCode: 'SIN',
+        shortCode: 'Sinaloa',
       },
       {
         name: 'Sonora',
-        shortCode: 'SON',
+        shortCode: 'Sonora',
       },
       {
         name: 'Tabasco',
-        shortCode: 'TAB',
+        shortCode: 'Tabasco',
       },
       {
         name: 'Tamaulipas',
-        shortCode: 'TAM',
+        shortCode: 'Tamaulipas',
       },
       {
         name: 'Tlaxcala',
-        shortCode: 'TLA',
+        shortCode: 'Tlaxcala',
       },
       {
         name: 'Veracruz',
-        shortCode: 'VER',
+        shortCode: 'Veracruz',
       },
       {
         name: 'Yucatán',
-        shortCode: 'YUC',
+        shortCode: 'Yucatán',
       },
       {
         name: 'Zacatecas',
-        shortCode: 'ZAC',
+        shortCode: 'Zacatecas',
       },
     ],
   },
