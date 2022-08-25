@@ -1,16 +1,14 @@
 import {
-  preserveCookie,
-  testSetup,
+  loginViaCookies,
   updateRetry,
+  preserveCookie,
 } from '../support/common/support.js'
 import { pickupTestCase } from '../support/outputvalidation.js'
-import { orderProduct } from '../support/testcase.js'
 
 const { productName, postalCode, prefix } = pickupTestCase
 
 describe(`${prefix} Scenario`, () => {
-  // Load test setup
-  testSetup()
+  loginViaCookies()
 
   it(`${prefix} - Adding Product to Cart`, updateRetry(1), () => {
     // Search the product
@@ -26,10 +24,17 @@ describe(`${prefix} Scenario`, () => {
     updateRetry(3),
     () => {
       // Update Shipping Section
-      cy.updateShippingInformation({ postalCode, pickup: true })
+      cy.updateShippingInformation({
+        postalCode,
+        pickup: true,
+        timeout: 12000,
+        checkoutcustom: true,
+      })
     }
   )
 
-  orderProduct(prefix)
+  it(`${prefix} - Order the product`, () => {
+    cy.orderProduct()
+  })
   preserveCookie()
 })

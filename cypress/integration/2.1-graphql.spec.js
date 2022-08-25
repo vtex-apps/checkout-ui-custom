@@ -1,4 +1,8 @@
-import { testSetup, updateRetry } from '../support/common/support.js'
+import {
+  loginViaCookies,
+  updateRetry,
+  preserveCookie,
+} from '../support/common/support.js'
 import {
   getById,
   getHistory,
@@ -19,8 +23,7 @@ describe('Testing GraphQL queries & mutation', () => {
   const { CONFIG_SETTINGS } = ENVS
   const ID = 'id'
 
-  // Load test setup
-  testSetup()
+  loginViaCookies()
 
   it('Verifying getHistory query', updateRetry(2), () => {
     graphql(getHistory(), validateGetHistoryResponse)
@@ -61,4 +64,5 @@ describe('Testing GraphQL queries & mutation', () => {
       })
     })
   })
+  preserveCookie()
 })
