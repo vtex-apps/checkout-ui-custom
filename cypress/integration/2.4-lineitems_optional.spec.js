@@ -21,7 +21,7 @@ describe(`Testing line items(optional) with this product - ${product}`, () => {
     })
   })
 
-  it(`${prefix} - Verify line items not displaying`, () => {
+  it(`${prefix} - Verify line items not displaying`, updateRetry(2), () => {
     cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('not.exist')
     cy.removeProduct(lineitemProducts.acer.id)
     cy.get(checkoutUiCustomSelectors.ChooseProducts)
@@ -29,7 +29,7 @@ describe(`Testing line items(optional) with this product - ${product}`, () => {
       .click()
   })
 
-  it(`${prefix} - Add line items for ${product}`, updateRetry(3), () => {
+  it(`${prefix} - Add line items for ${product}`, updateRetry(2), () => {
     cy.openProduct(lineitemProducts.acer.name, true)
     cy.contains(checkoutUiCustomConstants.addLineItemText).click()
     fillLineItems(

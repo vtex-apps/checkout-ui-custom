@@ -35,7 +35,7 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
       checkoutUiCustomConstants.lineItems,
       checkoutUiCustomConstants.maxCharecters.max10
     )
-    cy.get(selectors.AddtoCart).click()
+    cy.get(selectors.AddtoCart).should('be.visible').click()
   })
 
   it(`${prefix} - Verify line items are displaying in checkout`, () => {

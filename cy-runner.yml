@@ -87,6 +87,7 @@ strategy:
     dependency:
       - cypress/integration/2.1-graphql.spec.js
       - cypress/integration/2.2-pickup.spec.js
+      - cypress/integration/2.3-lineitems_required.spec.js
   LayoutSettingsDisabled:
     enabled: true
     sendDashboard: true
