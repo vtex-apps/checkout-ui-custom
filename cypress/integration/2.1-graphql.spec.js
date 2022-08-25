@@ -1,4 +1,8 @@
-import { loginViaCookies, updateRetry } from '../support/common/support.js'
+import {
+  loginViaCookies,
+  updateRetry,
+  preserveCookie,
+} from '../support/common/support.js'
 import {
   getById,
   getHistory,
@@ -60,4 +64,5 @@ describe('Testing GraphQL queries & mutation', () => {
       })
     })
   })
+  preserveCookie()
 })

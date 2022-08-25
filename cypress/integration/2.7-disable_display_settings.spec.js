@@ -1,5 +1,5 @@
 import { verifySettings } from '../support/testcase.js'
-import { loginViaCookies } from '../support/common/support.js'
+import { loginViaCookies, preserveCookie } from '../support/common/support.js'
 import { updateLayoutSettings } from '../support/grapqhl_testcase.js'
 
 describe('Testing by disabling all settings in layout', () => {
@@ -9,4 +9,5 @@ describe('Testing by disabling all settings in layout', () => {
 
   updateLayoutSettings(decision)
   verifySettings(decision)
+  preserveCookie()
 })

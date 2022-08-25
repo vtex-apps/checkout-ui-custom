@@ -1,4 +1,8 @@
-import { loginViaCookies, updateRetry } from '../support/common/support.js'
+import {
+  loginViaCookies,
+  preserveCookie,
+  updateRetry,
+} from '../support/common/support.js'
 import { discountProduct } from '../support/outputvalidation.js'
 import selectors from '../support/common/selectors.js'
 import checkoutUiCustomSelectors from '../support/selectors.js'
@@ -73,4 +77,5 @@ describe('Testing Checkout with different scenarios', () => {
       cy.get(selectors.VatInput).should('be.empty')
     }
   )
+  preserveCookie()
 })

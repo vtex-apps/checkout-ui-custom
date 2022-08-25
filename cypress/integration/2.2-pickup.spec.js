@@ -1,4 +1,8 @@
-import { loginViaCookies, updateRetry } from '../support/common/support.js'
+import {
+  loginViaCookies,
+  updateRetry,
+  preserveCookie,
+} from '../support/common/support.js'
 import { pickupTestCase } from '../support/outputvalidation.js'
 
 const { productName, postalCode, prefix } = pickupTestCase
@@ -32,4 +36,5 @@ describe(`${prefix} Scenario`, () => {
   it(`${prefix} - Order the product`, () => {
     cy.orderProduct()
   })
+  preserveCookie()
 })
