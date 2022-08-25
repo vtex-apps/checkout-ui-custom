@@ -20,7 +20,12 @@ describe(`${prefix} Scenario`, () => {
     updateRetry(3),
     () => {
       // Update Shipping Section
-      cy.updateShippingInformation({ postalCode, pickup: true, timeout: 12000 })
+      cy.updateShippingInformation({
+        postalCode,
+        pickup: true,
+        timeout: 12000,
+        checkoutcustom: true,
+      })
     }
   )
 

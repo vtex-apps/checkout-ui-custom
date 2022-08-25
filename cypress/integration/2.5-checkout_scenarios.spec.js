@@ -43,7 +43,7 @@ describe('Testing Checkout with different scenarios', () => {
 
   it(`In ${prefix} - Updating Shipping Information`, updateRetry(3), () => {
     // Update Shipping Section
-    cy.updateShippingInformation(discountProduct)
+    cy.updateShippingInformation({ ...discountProduct, checkoutcustom: true })
   })
 
   it(`In ${prefix} Updating product quantity to 1`, updateRetry(2), () => {

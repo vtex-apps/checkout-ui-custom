@@ -41,7 +41,7 @@ export function verifySettings(type) {
 
   it(`${prefix} - Updating Shipping Information`, updateRetry(3), () => {
     // Update Shipping Section
-    cy.updateShippingInformation(layoutScenario)
+    cy.updateShippingInformation({ ...layoutScenario, checkoutcustom: true })
   })
 
   it(`${prefix} - Display items unit price option`, updateRetry(2), () => {
