@@ -1,4 +1,8 @@
-import { loginViaCookies, updateRetry } from '../support/common/support.js'
+import {
+  loginViaCookies,
+  updateRetry,
+  preserveCookie,
+} from '../support/common/support.js'
 import selectors from '../support/common/selectors.js'
 import { fillLineItems } from '../support/testcase.js'
 import { checkoutUiCustomConstants } from '../support/constants.js'
@@ -42,4 +46,6 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
     cy.checkoutProduct()
     cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
   })
+
+  preserveCookie()
 })

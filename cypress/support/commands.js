@@ -61,6 +61,7 @@ Cypress.Commands.add('removeProduct', product => {
 
 Cypress.Commands.add('checkoutProduct', () => {
   cy.get(selectors.TotalPrice).should('be.visible')
+  cy.get('#items-price div[class*=price]').should('have.contain', '$')
   cy.get(selectors.ProceedtoCheckout).should('be.visible').click()
   cy.get(selectors.CartTimeline, { timeout: 30000 })
     .should('be.visible')
