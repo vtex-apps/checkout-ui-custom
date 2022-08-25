@@ -30,7 +30,7 @@ describe('Wipe', () => {
       }).then(response => {
         expect(response.status).to.equal(200)
         for (const { id } of response.body) {
-          cy.deleteDocumentInMasterData('checkoutcustom', id)
+          cy.deleteDocumentInMasterData(ENTITIES.CHECKOUTCUSTOM, id)
         }
       })
     })

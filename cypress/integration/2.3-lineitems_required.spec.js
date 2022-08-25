@@ -1,7 +1,7 @@
 import {
-  preserveCookie,
-  testSetup,
+  loginViaCookies,
   updateRetry,
+  preserveCookie,
 } from '../support/common/support.js'
 import selectors from '../support/common/selectors.js'
 import { fillLineItems } from '../support/testcase.js'
@@ -13,8 +13,7 @@ const prefix = `Line items required scenario`
 const product = lineitemProducts.jumper.name
 
 describe(`Testing line items(required) with this product - ${product}`, () => {
-  // Load test setup
-  testSetup()
+  loginViaCookies()
 
   it(`${prefix} - Open Product ${product}`, updateRetry(3), () => {
     // Search the product
@@ -40,7 +39,7 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
       checkoutUiCustomConstants.lineItems,
       checkoutUiCustomConstants.maxCharecters.max10
     )
-    cy.get(selectors.AddtoCart).click()
+    cy.get(selectors.AddtoCart).should('be.visible').click()
   })
 
   it(`${prefix} - Verify line items are displaying in checkout`, () => {

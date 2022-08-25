@@ -3,26 +3,6 @@ import { updateRetry } from './common/support.js'
 import checkoutUiCustomSelectors from './selectors.js'
 import { layoutScenario } from './outputvalidation.js'
 
-export function orderProduct(prefix) {
-  it(`In ${prefix} - Place the order`, updateRetry(2), () => {
-    cy.get('body').then($body => {
-      if ($body.find(selectors.ReceiverName).length) {
-        cy.get(selectors.ReceiverName, { timeout: 5000 }).type('Syed')
-        cy.get(selectors.GotoPaymentBtn).click()
-      }
-    })
-
-    cy.get(selectors.PromissoryPayment, { timeout: 5000 })
-      .should('be.visible')
-      .click()
-    cy.get(selectors.BuyNowBtn, { timeout: 10000 })
-      .should('be.visible')
-      .last()
-      .click()
-    cy.get(selectors.Search, { timeout: 30000 })
-  })
-}
-
 function proceedToPayment() {
   cy.get('body').then($body => {
     const btn = selectors.ProceedtoPaymentBtn
@@ -61,7 +41,7 @@ export function verifySettings(type) {
 
   it(`${prefix} - Updating Shipping Information`, updateRetry(3), () => {
     // Update Shipping Section
-    cy.updateShippingInformation(layoutScenario)
+    cy.updateShippingInformation({ ...layoutScenario, checkoutcustom: true })
   })
 
   it(`${prefix} - Display items unit price option`, updateRetry(2), () => {

@@ -1,7 +1,7 @@
 import {
-  testSetup,
-  updateRetry,
+  loginViaCookies,
   preserveCookie,
+  updateRetry,
 } from '../support/common/support.js'
 import { discountProduct } from '../support/outputvalidation.js'
 import selectors from '../support/common/selectors.js'
@@ -19,7 +19,7 @@ function discountValidation(quantity = 1) {
 
 describe('Testing Checkout with different scenarios', () => {
   // Load test setup
-  testSetup()
+  loginViaCookies()
 
   const { prefix, productName, productPrice } = discountProduct
 
@@ -47,7 +47,7 @@ describe('Testing Checkout with different scenarios', () => {
 
   it(`In ${prefix} - Updating Shipping Information`, updateRetry(3), () => {
     // Update Shipping Section
-    cy.updateShippingInformation(discountProduct)
+    cy.updateShippingInformation({ ...discountProduct, checkoutcustom: true })
   })
 
   it(`In ${prefix} Updating product quantity to 1`, updateRetry(2), () => {
@@ -77,6 +77,5 @@ describe('Testing Checkout with different scenarios', () => {
       cy.get(selectors.VatInput).should('be.empty')
     }
   )
-
   preserveCookie()
 })

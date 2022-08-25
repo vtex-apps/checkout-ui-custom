@@ -71,10 +71,10 @@ strategy:
     stopOnFail: false
     parallel: true
     specs:
-      - cypress/integration/2.1-*
-      - cypress/integration/2.2-*
-      - cypress/integration/2.3-*
-      - cypress/integration/2.4-*
+      - cypress/integration/2.1-graphql.spec.js
+      - cypress/integration/2.2-pickup.spec.js
+      - cypress/integration/2.3-lineitems_required.spec.js
+      - cypress/integration/2.4-lineitems_optional.spec.js
   LayoutSettingsEnabledAndCheckoutScenarios:
     enabled: true
     sendDashboard: true
@@ -82,10 +82,12 @@ strategy:
     stopOnFail: false
     parallel: true
     specs:
-      - cypress/integration/2.5-*
-      - cypress/integration/2.6-*
+      - cypress/integration/2.5-checkout_scenarios.spec.js
+      - cypress/integration/2.6-enable_display_settings.spec.js
     dependency:
-      - cypress/integration/2.1-*
+      - cypress/integration/2.1-graphql.spec.js
+      - cypress/integration/2.2-pickup.spec.js
+      - cypress/integration/2.3-lineitems_required.spec.js
   LayoutSettingsDisabled:
     enabled: true
     sendDashboard: true
@@ -93,9 +95,8 @@ strategy:
     stopOnFail: false
     parallel: false
     specs:
-      - cypress/integration/2.7-*
+      - cypress/integration/2.7-disable_display_settings.spec.js
     dependency:
-      - cypress/integration/2.1-*
-      - cypress/integration/2.6-*
+      - cypress/integration/2.6-enable_display_settings.spec.js
 
 
