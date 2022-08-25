@@ -26,7 +26,7 @@ base:
     devMode: false
     runHeaded: false
     getCookies: true
-    maxJobs: 2
+    maxJobs: 3
     quiet: true
     projectId: x6id56
     video: false
@@ -86,6 +86,7 @@ strategy:
       - cypress/integration/2.6-enable_display_settings.spec.js
     dependency:
       - cypress/integration/2.1-graphql.spec.js
+      - cypress/integration/2.2-pickup.spec.js
   LayoutSettingsDisabled:
     enabled: true
     sendDashboard: true
@@ -95,7 +96,6 @@ strategy:
     specs:
       - cypress/integration/2.7-disable_display_settings.spec.js
     dependency:
-      - cypress/integration/2.1-graphql.spec.js
       - cypress/integration/2.6-enable_display_settings.spec.js
 
 
