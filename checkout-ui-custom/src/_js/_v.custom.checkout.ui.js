@@ -217,13 +217,16 @@ class checkoutCustom {
             _assembliesHtml += `</ul>`
           })
           _assembliesHtml += `</div>`
-          $(
-            `.table.cart-items tbody tr.product-item:eq(${i}) .v-custom-assemblies`
-          ).remove()
-          $(`.table.cart-items tbody tr.product-item:eq(${i})`)
-            .addClass('v-custom-assemblies-in')
-            .find('td.product-name')
-            .append(_assembliesHtml)
+          if (
+            !$(`.table.cart-items tbody > tr.product-item:eq(${i})`).hasClass(
+              'v-custom-assemblies-in'
+            )
+          ) {
+            $(`.table.cart-items tbody > tr.product-item:eq(${i})`)
+              .addClass('v-custom-assemblies-in')
+              .find('td.product-name')
+              .append(_assembliesHtml)
+          }
         }
       })
     } catch (e) {
