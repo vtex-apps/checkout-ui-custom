@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.9] - 2022-09-01
+
 ### Fixed
 - Fix attachments ui when rendered and after orderForm update
 
