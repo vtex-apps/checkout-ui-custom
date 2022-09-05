@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fix issue to proceed to payment method Germany
+
 ## [0.8.10] - 2022-09-01
 
 ### Added
