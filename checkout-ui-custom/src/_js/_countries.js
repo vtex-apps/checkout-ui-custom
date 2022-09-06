@@ -1832,10 +1832,6 @@ module.exports._cities = [
         name: 'Vienna',
         shortCode: 'Vienna',
       },
-      {
-        name: 'Weghof',
-        shortCode: 'Weghof',
-      },
     ],
   },
   {
