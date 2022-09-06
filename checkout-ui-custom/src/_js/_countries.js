@@ -1806,11 +1806,11 @@ module.exports._cities = [
       },
       {
         name: 'Niederösterreich',
-        shortCode: 'Lower Austria',
+        shortCode: 'Niederösterreich',
       },
       {
         name: 'Oberösterreich',
-        shortCode: 'Upper Austria',
+        shortCode: 'Oberösterreich',
       },
       {
         name: 'Salzburg',
@@ -1818,23 +1818,19 @@ module.exports._cities = [
       },
       {
         name: 'Steiermark',
-        shortCode: 'Styria',
+        shortCode: 'Steiermark',
       },
       {
         name: 'Tirol',
-        shortCode: 'Tyrol',
+        shortCode: 'Tirol',
       },
       {
         name: 'Vorarlberg',
         shortCode: 'Vorarlberg',
       },
       {
-        name: 'Wien',
+        name: 'Vienna',
         shortCode: 'Vienna',
-      },
-      {
-        name: 'Weghof',
-        shortCode: 'Niederösterreich',
       },
     ],
   },
@@ -5842,67 +5838,67 @@ module.exports._cities = [
     regions: [
       {
         name: 'Baden-Württemberg',
-        shortCode: 'BW',
+        shortCode: 'Baden-Württemberg',
       },
       {
         name: 'Bayern',
-        shortCode: 'BY',
+        shortCode: 'Bayern',
       },
       {
         name: 'Berlin',
-        shortCode: 'BE',
+        shortCode: 'Berlin',
       },
       {
         name: 'Brandenburg',
-        shortCode: 'BB',
+        shortCode: 'Brandenburg',
       },
       {
         name: 'Bremen',
-        shortCode: 'HB',
+        shortCode: 'Brandenburg',
       },
       {
         name: 'Hamburg',
-        shortCode: 'HH',
+        shortCode: 'Hamburg',
       },
       {
         name: 'Hessen',
-        shortCode: 'HE',
+        shortCode: 'Hessen',
       },
       {
         name: 'Mecklenburg-Vorpommern',
-        shortCode: 'MV',
+        shortCode: 'Mecklenburg-Vorpommern',
       },
       {
         name: 'Niedersachsen',
-        shortCode: 'NI',
+        shortCode: 'Niedersachsen',
       },
       {
         name: 'Nordrhein-Westfalen',
-        shortCode: 'NW',
+        shortCode: 'Nordrhein-Westfalen',
       },
       {
         name: 'Rheinland-Pfalz',
-        shortCode: 'RP',
+        shortCode: 'Rheinland-Pfalz',
       },
       {
         name: 'Saarland',
-        shortCode: 'SL',
+        shortCode: 'Saarland',
       },
       {
         name: 'Sachsen',
-        shortCode: 'SN',
+        shortCode: 'Sachsen',
       },
       {
         name: 'Sachsen-Anhalt',
-        shortCode: 'ST',
+        shortCode: 'Sachsen-Anhalt',
       },
       {
         name: 'Schleswig-Holstein',
-        shortCode: 'SH',
+        shortCode: 'Schleswig-Holstein',
       },
       {
         name: 'Thüringen',
-        shortCode: 'TH',
+        shortCode: 'Thüringen',
       },
     ],
   },
