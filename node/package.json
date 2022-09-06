@@ -2,7 +2,7 @@
   "name": "vtex.checkout-ui-custom",
   "version": "0.8.11",
   "dependencies": {
-    "@vtex/address-form": "^3.26.4",
+    "@vtex/address-form": "^3.27.2",
     "@vtex/api": "6.45.12",
     "co-body": "^6.0.0",
     "jsonwebtoken": "^8.5.0",
