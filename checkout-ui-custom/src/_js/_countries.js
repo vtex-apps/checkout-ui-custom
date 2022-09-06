@@ -1806,11 +1806,11 @@ module.exports._cities = [
       },
       {
         name: 'Niederösterreich',
-        shortCode: 'Lower Austria',
+        shortCode: 'Niederösterreich',
       },
       {
         name: 'Oberösterreich',
-        shortCode: 'Upper Austria',
+        shortCode: 'Oberösterreich',
       },
       {
         name: 'Salzburg',
@@ -1818,23 +1818,23 @@ module.exports._cities = [
       },
       {
         name: 'Steiermark',
-        shortCode: 'Styria',
+        shortCode: 'Steiermark',
       },
       {
         name: 'Tirol',
-        shortCode: 'Tyrol',
+        shortCode: 'Tirol',
       },
       {
         name: 'Vorarlberg',
         shortCode: 'Vorarlberg',
       },
       {
-        name: 'Wien',
+        name: 'Vienna',
         shortCode: 'Vienna',
       },
       {
         name: 'Weghof',
-        shortCode: 'Niederösterreich',
+        shortCode: 'Weghof',
       },
     ],
   },
