@@ -1829,8 +1829,8 @@ module.exports._cities = [
         shortCode: 'Vorarlberg',
       },
       {
-        name: 'Vienna',
-        shortCode: 'Vienna',
+        name: 'Wien',
+        shortCode: 'Wien',
       },
     ],
   },
