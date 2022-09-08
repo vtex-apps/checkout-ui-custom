@@ -390,7 +390,11 @@ h1#cart-title {display:none !important;}
             @extend .btn-secondary;
           }
         }
-        
+
+        &.quantity input {
+          line-height: inherit;
+        }
+
       }
 
       .v-custom-assemblies {
