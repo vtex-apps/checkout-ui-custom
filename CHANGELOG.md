@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fixed custom address form render wrong place
+
 ## [0.8.14] - 2022-09-08
 ### Fixed
 - Fixed alignment of element in the cart
