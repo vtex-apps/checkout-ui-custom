@@ -632,7 +632,8 @@ class fnsCustomAddressForm {
     if (
       $('.vcustom--vtex-omnishipping-1-x-address.step').length == 0 &&
       shippingData.logisticsInfo[0].selectedDeliveryChannel !==
-        'pickup-in-point'
+        'pickup-in-point' &&
+      $('#shipping-option-pickup-in-point').length
     ) {
       $('.orderform-template-holder #shipping-data').append(form)
     }
