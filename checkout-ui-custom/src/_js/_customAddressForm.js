@@ -23,6 +23,7 @@ class fnsCustomAddressForm {
     this.deliveryCountries = ''
     this.mainCountry = ''
     this.lang = ''
+    this.isPickupPoint = false
     this.locale = ''
 
     this.address = {
@@ -519,6 +520,8 @@ class fnsCustomAddressForm {
 
     const country = _countries.find(c => c[1] === _this.mainCountry)
 
+    const { isPickupPoint } = this
+
     const form = `
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
@@ -529,7 +532,9 @@ class fnsCustomAddressForm {
                   'Street address or P.O. Box'
                 : 'Street address or P.O. Box'
             }</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address && shippingData.address.street !== null
+      shippingData.address &&
+      shippingData.address.street !== null &&
+      !isPickupPoint
         ? shippingData.address.street
         : ''
     }" placeholder="Eg: 225 East 41st Street, New York"><span class="help error" style="">${
@@ -547,10 +552,10 @@ class fnsCustomAddressForm {
     } autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${
       _this.locale.number ? _this.locale.number : ''
     }" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address
-        ? shippingData.address.number === null
-          ? ''
-          : shippingData.address.number
+      shippingData.address &&
+      shippingData.address.number !== null &&
+      !isPickupPoint
+        ? shippingData.address.number
         : ''
     }"><span class="help error" style="">${
       _this.locale ? _this.locale.requiredField : 'This field is required.'
@@ -563,10 +568,10 @@ class fnsCustomAddressForm {
               }</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${
       _this.locale.address2Placeholder ? _this.locale.address2Placeholder : ''
     }" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address
-        ? shippingData.address.complement === null
-          ? ''
-          : shippingData.address.complement
+      shippingData.address &&
+      shippingData.address.complement !== null &&
+      !isPickupPoint
+        ? shippingData.address.complement
         : ''
     }"></p>
             </div>
@@ -579,7 +584,9 @@ class fnsCustomAddressForm {
               <p class="input ship-city required text"><label id="city-label" for="ship-city">${
                 _this.locale ? _this.locale.city || 'City' : 'City'
               }</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${
-      shippingData.address && shippingData.address.city !== null
+      shippingData.address &&
+      shippingData.address.city !== null &&
+      !isPickupPoint
         ? shippingData.address.city
         : ''
     }"><span class="help error" style="">${
@@ -606,7 +613,9 @@ class fnsCustomAddressForm {
         ? _this.addressrules.postalCodeLength
         : '20'
     }" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address ? shippingData.address.postalCode : ''
+      shippingData.address && !isPickupPoint
+        ? shippingData.address.postalCode
+        : ''
     }"><span class="help error" style="">${
       _this.locale.requiredField
         ? _this.locale.requiredField
@@ -623,7 +632,7 @@ class fnsCustomAddressForm {
       </div>
     `
 
-    if (shippingData.address) {
+    if (shippingData.address && !isPickupPoint) {
       $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
         shippingData.address.state
       )
@@ -655,6 +664,10 @@ class fnsCustomAddressForm {
     })
     sel.html('').append(optsList)
     sel.val(selected) // set cached selected value
+
+    shippingData.address.addressType === 'search'
+      ? (this.isPickupPoint = true)
+      : (this.isPickupPoint = false)
   }
 
   validateAllFields() {
