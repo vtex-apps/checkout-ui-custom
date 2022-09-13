@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Google address form STATE select initial value from address
+
 ## [0.8.15] - 2022-09-12
 
 ### Fixed
