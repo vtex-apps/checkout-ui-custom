@@ -733,9 +733,6 @@ class fnsCustomAddressForm {
     _this.getCountryRule(country[1]).then(rules => {
       _this.addressrules = rules
       _this.updateFormFieldByCountry(_this.addressrules)
-      $("select[name='v-custom-state']").html(
-        `${_this.getRegions(country[0]).join('')}`
-      )
       _this.updateGoogleForm(countryCode.toLowerCase())
     })
   }
