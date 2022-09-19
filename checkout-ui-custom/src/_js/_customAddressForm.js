@@ -729,10 +729,19 @@ class fnsCustomAddressForm {
 
     const _this = this
     const country = _countries.find(c => c[1] === countryCode)
+    const state = shippingData?.address?.state
 
     _this.getCountryRule(country[1]).then(rules => {
       _this.addressrules = rules
       _this.updateFormFieldByCountry(_this.addressrules)
+      $("select[name='v-custom-state']").html(`${_this.getRegions(country[0]).join('')}`)
+      if (
+        $(
+          `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${state}']`
+        ).length
+      ) {
+        $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(state)
+      }
       _this.updateGoogleForm(countryCode.toLowerCase())
     })
   }
