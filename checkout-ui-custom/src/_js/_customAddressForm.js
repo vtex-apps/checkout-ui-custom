@@ -639,11 +639,10 @@ class fnsCustomAddressForm {
     }
 
     if (
-      !isPickupPoint &&
       $('.vcustom--vtex-omnishipping-1-x-address.step').length == 0 &&
       shippingData.logisticsInfo[0].selectedDeliveryChannel !==
         'pickup-in-point' &&
-      $('#shipping-option-pickup-in-point').length
+      window.location.href.indexOf('shipping') !== -1
     ) {
       $('.orderform-template-holder #shipping-data').append(form)
     }
