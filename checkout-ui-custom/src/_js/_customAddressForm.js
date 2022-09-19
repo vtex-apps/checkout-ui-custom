@@ -729,7 +729,7 @@ class fnsCustomAddressForm {
 
     const _this = this
     const country = _countries.find(c => c[1] === countryCode)
-    const state = shippingData?.address?.state
+    const state = shippingData.address.state
 
     _this.getCountryRule(country[1]).then(rules => {
       _this.addressrules = rules
