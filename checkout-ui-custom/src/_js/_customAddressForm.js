@@ -665,7 +665,7 @@ class fnsCustomAddressForm {
     sel.html('').append(optsList)
     sel.val(selected) // set cached selected value
 
-    shippingData.address.addressType === 'search'
+    shippingData.address && shippingData.address.addressType === 'search'
       ? (this.isPickupPoint = true)
       : (this.isPickupPoint = false)
   }
