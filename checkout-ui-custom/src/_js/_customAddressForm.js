@@ -729,14 +729,13 @@ class fnsCustomAddressForm {
 
     const _this = this
     const country = _countries.find(c => c[1] === countryCode)
-    const state = shippingData.selectedAddresses().length
-      && shippingData.selectedAddresses()[0].state || null
+    const state = _this.address.state || null
 
     _this.getCountryRule(country[1]).then(rules => {
       _this.addressrules = rules
       _this.updateFormFieldByCountry(_this.addressrules)
       $("select[name='v-custom-state']").html(`${_this.getRegions(country[0]).join('')}`)
-      if (
+      if (state &&
         $(
           `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${state}']`
         ).length
