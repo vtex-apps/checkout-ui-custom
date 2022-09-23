@@ -7,7 +7,7 @@ const { _countries, _cities, _addressPlaceholder } = require('./_countries.js')
 
 // temporaly workaorund
 window.callbackMap = () => {
-  window.vtexjs.checkout.getOrderForm(orderForm => {
+  window.vtexjs.checkout.getOrderForm((orderForm) => {
     window.vcustom.checkout.customAddressFormInit(orderForm)
   })
 }
@@ -184,12 +184,12 @@ class fnsCustomAddressForm {
       const ruleComponent = types[i]
 
       if (
-        components.find(component =>
-          component.types.some(v => v === ruleComponent)
+        components.find((component) =>
+          component.types.some((v) => v === ruleComponent)
         )
       ) {
-        return components.find(component =>
-          component.types.some(v => v === ruleComponent)
+        return components.find((component) =>
+          component.types.some((v) => v === ruleComponent)
         )[valueIn]
       }
     }
@@ -216,17 +216,17 @@ class fnsCustomAddressForm {
       }
 
       const [, country] = _countries.find(
-        c =>
+        (c) =>
           c[0] ===
           place.address_components.filter(
-            item => item.types[0] === 'country'
+            (item) => item.types[0] === 'country'
           )[0].short_name
       )
 
       const street = place.address_components.find(
-        item => item.types[0] === 'route'
+        (item) => item.types[0] === 'route'
       )
-        ? place.address_components.find(item => item.types[0] === 'route')
+        ? place.address_components.find((item) => item.types[0] === 'route')
             .long_name
         : place.vicinity
 
@@ -422,7 +422,7 @@ class fnsCustomAddressForm {
         mode: 'cors',
       }
     )
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(function (data) {
         if (data.error) {
           $('body').removeClass('js-v-custom-is-loading')
@@ -454,10 +454,10 @@ class fnsCustomAddressForm {
 
   getRegions(country) {
     const countryRegions = _cities.find(
-      city => city.countryShortCode === country
+      (city) => city.countryShortCode === country
     )
 
-    return countryRegions.regions.map(i => {
+    return countryRegions.regions.map((i) => {
       return `<option value="${i.shortCode}">${i.name}</option>`
     })
   }
@@ -474,7 +474,7 @@ class fnsCustomAddressForm {
         window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].shipsTo
     }
 
-    return _this.deliveryCountries.map(countryCode => {
+    return _this.deliveryCountries.map((countryCode) => {
       const _i18n = window.vtex.i18n[_this.lang]
         ? window.vtex.i18n[_this.lang]
         : window.vtex.i18n[window.vtex.i18n.locale]
@@ -517,7 +517,7 @@ class fnsCustomAddressForm {
 
     const { shippingData } = orderForm
 
-    const country = _countries.find(c => c[1] === _this.mainCountry)
+    const country = _countries.find((c) => c[1] === _this.mainCountry)
 
     const form = `
       <div class="vcustom--vtex-omnishipping-1-x-address step">
@@ -728,20 +728,24 @@ class fnsCustomAddressForm {
     }
 
     const _this = this
-    const country = _countries.find(c => c[1] === countryCode)
+    const country = _countries.find((c) => c[1] === countryCode)
     const state = _this.address.state || null
 
-    _this.getCountryRule(country[1]).then(rules => {
+    _this.getCountryRule(country[1]).then((rules) => {
       _this.addressrules = rules
       _this.updateFormFieldByCountry(_this.addressrules)
-      $("select[name='v-custom-state']").html(`${_this.getRegions(country[0]).join('')}`)
-      if (state &&
+      $("select[name='v-custom-state']").html(
+        `${_this.getRegions(country[0]).join('')}`
+      )
+      if (
+        state &&
         $(
           `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${state}']`
         ).length
       ) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(state)
       }
+
       _this.updateGoogleForm(countryCode.toLowerCase())
     })
   }
@@ -906,13 +910,13 @@ class fnsCustomAddressForm {
     const _this = this
 
     return fetch(`/rules/${country}`)
-      .then(res => res.json())
-      .then(jsonRes => {
+      .then((res) => res.json())
+      .then((jsonRes) => {
         const { data: rules, success } = jsonRes
 
         return success ? rules.geolocation : _this.getCountryRule('default')
       })
-      .catch(error => {
+      .catch((error) => {
         throw new Error(error)
       })
   }
@@ -938,7 +942,7 @@ class fnsCustomAddressForm {
       _this.orderForm = orderForm
       _this
         .getCountryRule(_this.orderForm.storePreferencesData.countryCode)
-        .then(rules => {
+        .then((rules) => {
           _this.addressrules = rules
           _this.checkFirstLogin(orderForm)
           _this.bind()
