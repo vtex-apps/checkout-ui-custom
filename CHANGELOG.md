@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.17] - 2022-09-23
+
 ### Fixed
 - Prevent Custom Address From from rendering in the pickup point tab
 
