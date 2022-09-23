@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.16] - 2022-09-23
+
 ### Fixed
 - Fixed custom address form state selected value
 
