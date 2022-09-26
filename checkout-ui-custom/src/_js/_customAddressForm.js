@@ -506,10 +506,10 @@ class fnsCustomAddressForm {
 
     if (addressrules.state) {
       state.show()
-      state.find('input').attr('required', 'required')
+      state.find('select').attr('required', 'required')
     } else {
       state.hide()
-      state.find('input').removeAttr('required')
+      state.find('select').removeAttr('required')
     }
   }
 
@@ -597,12 +597,17 @@ class fnsCustomAddressForm {
               <p class="input ship-state required text"><label id="state-label" for="ship-state">${
                 _this.locale ? _this.locale.state || 'State' : 'State'
               }</label>
-                  <select name="v-custom-state" id="ship-state" class="input-large">
+                  <select name="v-custom-state" id="ship-state" class="input-large" ${_this.addressrules.state ? "required": ""}>
                     <option value="" disabled selected>${
                       _this.locale ? _this.locale.state : 'State'
                     }</option>
                     ${_this.getRegions(country[0]).join('')}
                   </select>
+                  <span class="help error" style="">${
+                    _this.locale.requiredField
+                      ? _this.locale.requiredField
+                      : 'This field is required.'
+                  }</span>
               </p>
               <p class="input ship-postalCode required text"><label id="postalCode-label" for="ship-postalCode">${
                 window.vtex.i18n[_this.lang]
@@ -674,7 +679,7 @@ class fnsCustomAddressForm {
     const _this = this
 
     _this.validate = true
-    $('.vcustom--vtex-omnishipping-1-x-address input:required').each(
+    $('.vcustom--vtex-omnishipping-1-x-address input:required, .vcustom--vtex-omnishipping-1-x-address select:required').each(
       function () {
         if (this.value === '') {
           $(this).addClass('error')
