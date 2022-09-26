@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Making field state required accordingly to its rules
+
 ## [0.8.15] - 2022-09-12
 
 ### Fixed

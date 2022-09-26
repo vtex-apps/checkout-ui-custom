@@ -169,8 +169,11 @@ body.v-custom-fnsCustomAddressForm {
     max-width: initial;
     width: 100%;
 
-    &.error + span.help.error {display: block;}
+
   }
+
+  input.error + span.help.error,
+  select.error + span.help.error {display: block;}
 
   &__state {
     display: flex;
