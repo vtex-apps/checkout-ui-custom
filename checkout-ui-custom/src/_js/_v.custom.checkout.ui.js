@@ -975,7 +975,12 @@ class checkoutCustom {
     const _this = this
     const _orderForm = orderForm || window.vtexjs.checkout.orderForm
 
-    if (_this.customAddressForm) _this.customAddressForm.init(_orderForm)
+    if (_this.customAddressForm && _orderForm.canEditData) {
+      $('body').removeClass('returningUser')
+      _this.customAddressForm.init(_orderForm)
+    } else {
+      $('body').addClass('returningUser')
+    }
   }
 
   checkProfileFocus() {

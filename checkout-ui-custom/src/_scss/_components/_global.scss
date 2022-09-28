@@ -39,6 +39,22 @@ body {
     }
   }
   //end short preloader to don't show a empty cart
+
+  &.returningUser.v-custom-addressForm-on.v-custom-step-shipping 
+  .accordion-inner.shipping-container  {
+
+    .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
+      display: block;
+    }
+
+    .vtex-omnishipping-1-x-deliveryGroup {
+      display: block;
+    }
+
+    .vtex-omnishipping-1-x-submitPaymentButton {
+      display: block;
+    }
+  }
 }
 
 .onda-v1 .br-pill,
