@@ -14,7 +14,7 @@ on:
 jobs:
   quality-engineering:
     name: QE
-    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@v1.0.0
+    uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@v2
     with:
       danger: true
       dangerRequireChangelog: false
