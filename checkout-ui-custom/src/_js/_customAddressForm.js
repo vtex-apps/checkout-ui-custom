@@ -597,7 +597,11 @@ class fnsCustomAddressForm {
               <p class="input ship-state required text"><label id="state-label" for="ship-state">${
                 _this.locale ? _this.locale.state || 'State' : 'State'
               }</label>
-                  <select name="v-custom-state" id="ship-state" class="input-large" ${_this.addressrules.state ? "required": ""}>
+                  <select name="v-custom-state" id="ship-state" class="input-large" ${
+                    _this.addressrules.state 
+                    ? "required"
+                    : ""
+                  }>
                     <option value="" disabled selected>${
                       _this.locale ? _this.locale.state : 'State'
                     }</option>
@@ -679,7 +683,9 @@ class fnsCustomAddressForm {
     const _this = this
 
     _this.validate = true
-    $('.vcustom--vtex-omnishipping-1-x-address input:required, .vcustom--vtex-omnishipping-1-x-address select:required').each(
+    $(
+      '.vcustom--vtex-omnishipping-1-x-address input:required, .vcustom--vtex-omnishipping-1-x-address select:required'
+      ).each(
       function () {
         if (this.value === '') {
           $(this).addClass('error')
