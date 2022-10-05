@@ -959,12 +959,12 @@ class checkoutCustom {
     }
   }
 
-  URLHasIncludePayment() {
+  URLHasIncludePayment(orderForm) {
     const _this = this
 
     if (
       window.location.hash === '#/payment' &&
-      window.vtexjs.checkout.orderForm.shippingData.address.street === null
+      orderForm.shippingData.address.street === null
     ) {
       _this.goToShippingStep()
       _this.activateCustomForm()
@@ -1145,7 +1145,7 @@ class checkoutCustom {
       $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
-        _this.URLHasIncludePayment()
+        _this.URLHasIncludePayment(orderForm)
         if (!window.google && _this.customAddressForm) {
           _this.customAddressForm.loadScript()
         }
