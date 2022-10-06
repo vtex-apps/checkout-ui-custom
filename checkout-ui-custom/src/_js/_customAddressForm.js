@@ -598,9 +598,7 @@ class fnsCustomAddressForm {
                 _this.locale ? _this.locale.state || 'State' : 'State'
               }</label>
                   <select name="v-custom-state" id="ship-state" class="input-large" ${
-                    _this.addressrules.state 
-                    ? "required"
-                    : ""
+                    _this.addressrules.state ? 'required' : ''
                   }>
                     <option value="" disabled selected>${
                       _this.locale ? _this.locale.state : 'State'
@@ -685,16 +683,14 @@ class fnsCustomAddressForm {
     _this.validate = true
     $(
       '.vcustom--vtex-omnishipping-1-x-address input:required, .vcustom--vtex-omnishipping-1-x-address select:required'
-      ).each(
-      function () {
-        if (this.value === '') {
-          $(this).addClass('error')
-          _this.validate = false
-        } else {
-          $(this).removeClass('error')
-        }
+    ).each(function () {
+      if (this.value === '') {
+        $(this).addClass('error')
+        _this.validate = false
+      } else {
+        $(this).removeClass('error')
       }
-    )
+    })
   }
 
   submitAddressForm() {
