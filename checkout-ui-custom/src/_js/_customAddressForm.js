@@ -598,13 +598,7 @@ class fnsCustomAddressForm {
                 _this.locale ? _this.locale.state || 'State' : 'State'
               }</label>
                   <select name="v-custom-state" id="ship-state" class="input-large" ${
-<<<<<<< HEAD
-                    _this.addressrules.state 
-                    ? "required"
-                    : ""
-=======
                     _this.addressrules.state ? 'required' : ''
->>>>>>> ec12d1079f020658bc29edeb3f6011246f01216b
                   }>
                     <option value="" disabled selected>${
                       _this.locale ? _this.locale.state : 'State'
