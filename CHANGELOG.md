@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+
+### Fixed
+
+- Making field state required accordingly to its rules
+
 ## [0.8.19] - 2022-10-07
 
 ### Added
@@ -16,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - English, Portuguese and Spanish translations
 
 ### Changed
+
 - GitHub reusable workflow and cy-runner upated to version 2
 
 ## [0.8.18] - 2022-09-29
