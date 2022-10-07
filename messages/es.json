@@ -55,7 +55,7 @@
   "admin/checkout-ui.layout.showCartQuantityPrice.help": "Mostrar el total de línea resumido (precio unitario x cantidad) junto al selector de cantidad. Si está desactivado, el precio unitario se muestra aquí.",
   "admin/checkout-ui.layout.showNoteField.label": "Mostrar campo 'Notas'",
   "admin/checkout-ui.layout.hideEmailStep.label": "Ocultar el paso de email",
-  "admin/checkout-ui.layout.customAddressForm.label": "Formato del formulario de dirección de Google",
+  "admin/checkout-ui.layout.customAddressForm.label": "Formato de dirección de Google",
   "admin/checkout-ui.layout.fontSize.label": "Tamaño del texto: ",
   "admin/checkout-ui.layout.borderRadius.label": "Radio del borde: ",
   "admin/checkout-ui.layout.btnBorderRadius.label": "Radio del borde del botón: ",
