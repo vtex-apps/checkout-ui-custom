@@ -649,7 +649,9 @@ class fnsCustomAddressForm {
       $('.orderform-template-holder #shipping-data').append(form)
     }
 
-    if (!$('body').hasClass('.v-custom-addressForm-on')) {
+    if ($('#shipping-option-pickup-in-point').hasClass('vtex-omnishipping-1-x-deliveryOptionActive')) {
+      $('body').removeClass('v-custom-addressForm-on')
+    } else if (!$('body').hasClass('v-custom-addressForm-on')) {
       $('body').addClass('v-custom-addressForm-on')
     }
 
