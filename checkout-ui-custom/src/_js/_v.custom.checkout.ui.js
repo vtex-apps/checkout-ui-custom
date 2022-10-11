@@ -1082,7 +1082,10 @@ class checkoutCustom {
 
     $('body').on('click', '.show-more-items-button', function () {
       _this.general()
+      _this.update(_this.orderForm)
+      vtexjs.checkout.getOrderForm()
     })
+
   }
 
   init() {
