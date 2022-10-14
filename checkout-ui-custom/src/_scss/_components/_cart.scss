@@ -525,7 +525,8 @@ h1#cart-title {display:none !important;}
         }
     }
 
-    > tr.v-custom-indexed-item {
+    > tr.v-custom-indexed-item,
+    > tr[data-parentitemindex] {
       display:none;
     }
   }

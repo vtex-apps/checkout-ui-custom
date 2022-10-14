@@ -1082,6 +1082,8 @@ class checkoutCustom {
 
     $('body').on('click', '.show-more-items-button', function () {
       _this.general()
+      _this.setParentIndex(window.vtexjs.checkout.orderForm)
+      window.vtexjs.checkout.getOrderForm()
     })
   }
 
