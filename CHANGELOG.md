@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- validation of payload before redirect to shipping (it fixes an KI in the checkout when having 2 addresses in the selected address)
+
 ## [0.8.21] - 2022-10-14
 
 ### Fixed

@@ -964,7 +964,8 @@ class checkoutCustom {
 
     if (
       window.location.hash === '#/payment' &&
-      orderForm.shippingData.address.street === null
+      orderForm.shippingData.address.street === null &&
+      _this.customAddressForm
     ) {
       _this.goToShippingStep()
       _this.activateCustomForm()
