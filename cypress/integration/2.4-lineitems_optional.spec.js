@@ -40,7 +40,10 @@ describe(`Testing line items(optional) with this product - ${product}`, () => {
       checkoutUiCustomConstants.lineItems,
       checkoutUiCustomConstants.maxCharecters.max25
     )
-    cy.get(selectors.PostalCode).clear().type('33180').type('{enter}')
+    cy.get(selectors.PostalCode)
+      .clear()
+      .type('33180')
+      .type('{enter}')
     cy.get(selectors.ProductsQAShipping).click()
     cy.get(selectors.AddtoCart).click()
   })

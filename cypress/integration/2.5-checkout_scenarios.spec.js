@@ -58,7 +58,9 @@ describe('Testing Checkout with different scenarios', () => {
     })
     discountValidation()
     cy.get(selectors.SubTotal, { timeout: 10000 }).contains(productPrice)
-    cy.get(selectors.ProceedtoPaymentBtn).should('be.visible').click()
+    cy.get(selectors.ProceedtoPaymentBtn)
+      .should('be.visible')
+      .click()
   })
 
   it(
