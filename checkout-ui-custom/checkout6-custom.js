@@ -1169,8 +1169,9 @@
           $(
             '\n        .vtex-omnishipping-1-x-summaryPackage.shp-summary-package:not(.v-changeShippingTimeInfo-active),\n        .vtex-omnishipping-1-x-leanShippingOption,\n        .vtex-omnishipping-1-x-packageItem:not(.v-changeShippingTimeInfo-active),\n        .orderform-template .cart-template.mini-cart .item,\n        .vtex-pickup-points-modal-3-x-pickupPointSlaAvailability,\n        .srp-delivery-current-many,\n        td.shipping-date,\n        .srp-shipping-current-single\n      '
           ).each(function () {
-            const [a] =
-                window.vtexjs.checkout.orderForm.shippingData.logisticsInfo,
+            const [
+                a,
+              ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo,
               n = a.slas,
               { selectedSla: t } = a,
               r =
@@ -1452,6 +1453,7 @@
       URLHasIncludePayment(e) {
         const o = this
         '#/payment' === window.location.hash &&
+          'search' !== e.shippingData.address.addressType &&
           null === e.shippingData.address.street &&
           o.customAddressForm &&
           (o.goToShippingStep(), o.activateCustomForm())
@@ -2287,18 +2289,16 @@
                 : ''
             }
           ),
-          $('body').on(
-            'change',
-            "select[name='v-custom-country']",
-            function (o) {
-              o.stopImmediatePropagation()
-              try {
-                e.updateFormByCountry(this.value), e.updateAddress('')
-              } catch (e) {
-                console.error(`updateFormByCountry ${this.value} error:`, e)
-              }
+          $('body').on('change', "select[name='v-custom-country']", function (
+            o
+          ) {
+            o.stopImmediatePropagation()
+            try {
+              e.updateFormByCountry(this.value), e.updateAddress('')
+            } catch (e) {
+              console.error(`updateFormByCountry ${this.value} error:`, e)
             }
-          ),
+          }),
           $('body').on('click', '#btn-go-to-shippping-method', function (o) {
             o.preventDefault(),
               o.stopImmediatePropagation(),
