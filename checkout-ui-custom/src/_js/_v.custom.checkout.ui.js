@@ -538,8 +538,9 @@ class checkoutCustom {
         td.shipping-date,
         .srp-shipping-current-single
       `).each(function () {
-        const [logisticsInfo] =
-          window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
+        const [
+          logisticsInfo,
+        ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
 
         const availableSlas = logisticsInfo.slas
 
@@ -960,6 +961,7 @@ class checkoutCustom {
 
     if (
       window.location.hash === '#/payment' &&
+      orderForm.shippingData.address.addressType !== 'search' &&
       orderForm.shippingData.address.street === null &&
       _this.customAddressForm
     ) {
