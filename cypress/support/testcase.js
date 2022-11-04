@@ -112,10 +112,6 @@ export function fillLineItems(items, maxChar) {
       cy.log(maxlength)
       expect(maxlength).to.equal(maxChar)
     })
-  cy.get(checkoutUiCustomSelectors.ProductLineItem)
-    .eq(1)
-    .type(items.lineItem2)
-  cy.get(checkoutUiCustomSelectors.ProductLineItem)
-    .eq(2)
-    .type(items.lineItem3)
+  cy.get(checkoutUiCustomSelectors.ProductLineItem).eq(1).type(items.lineItem2)
+  cy.get(checkoutUiCustomSelectors.ProductLineItem).eq(2).type(items.lineItem3)
 }

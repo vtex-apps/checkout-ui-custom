@@ -3,11 +3,11 @@ import type { AddressRules } from '@vtex/address-form'
 interface PromiseType {
   success: boolean
   errorMessage: string
-  data: typeof AddressRules | any
+  data: typeof AddressRules | undefined
 }
 
 export async function getCountryRules(
-  ctx: any,
+  ctx: Context,
   next: () => Promise<PromiseType>
 ) {
   const {
@@ -21,7 +21,9 @@ export async function getCountryRules(
   }
 
   const parsedCountryCode =
-    countryCode !== 'default' ? countryCode.toUpperCase() : countryCode
+    countryCode !== 'default'
+      ? (countryCode as string).toUpperCase()
+      : countryCode
 
   try {
     const { default: rules } = await import(
