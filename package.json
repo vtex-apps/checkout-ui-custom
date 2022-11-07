@@ -5,11 +5,12 @@
   "scripts": {
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\"",
-    "cy-r": "cd cy-runner && node cy-runner"
+    "cy-r": "cd cy-runner && node cy-runner",
+    "app": "cd ./checkout-ui-custom && node run app"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "app && lint-staged"
     }
   },
   "lint-staged": {
