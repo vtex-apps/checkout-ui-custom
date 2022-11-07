@@ -10,7 +10,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "app && lint-staged"
+      "pre-commit": "npm run app && lint-staged"
     }
   },
   "lint-staged": {
