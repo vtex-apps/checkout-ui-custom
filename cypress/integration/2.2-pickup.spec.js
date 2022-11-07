@@ -19,6 +19,13 @@ describe(`${prefix} Scenario`, () => {
     })
   })
 
+  it(`In ${prefix} Updating product quantity to 2`, updateRetry(3), () => {
+    // Update Product quantity to 2
+    cy.updateProductQuantity(pickupTestCase, {
+      quantity: '2',
+    })
+  })
+
   it(
     `${prefix} - Updating Shipping Information for pick up in store`,
     updateRetry(3),
@@ -27,7 +34,7 @@ describe(`${prefix} Scenario`, () => {
       cy.updateShippingInformation({
         postalCode,
         pickup: true,
-        timeout: 12000,
+        timeout: 15000,
         checkoutcustom: true,
       })
     }
