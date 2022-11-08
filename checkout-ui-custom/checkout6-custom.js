@@ -1452,6 +1452,7 @@
       URLHasIncludePayment(e) {
         const o = this
         '#/payment' === window.location.hash &&
+          'search' !== e.shippingData.address.addressType &&
           null === e.shippingData.address.street &&
           o.customAddressForm &&
           (o.goToShippingStep(), o.activateCustomForm())

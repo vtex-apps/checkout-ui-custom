@@ -960,6 +960,7 @@ class checkoutCustom {
 
     if (
       window.location.hash === '#/payment' &&
+      orderForm.shippingData.address.addressType !== 'search' &&
       orderForm.shippingData.address.street === null &&
       _this.customAddressForm
     ) {
