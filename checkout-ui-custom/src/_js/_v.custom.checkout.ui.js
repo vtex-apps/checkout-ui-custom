@@ -2,7 +2,7 @@
 /* eslint-disable vtex/prefer-early-return */
 /* eslint-disable func-names */
 const { _locale } = require('./_locale-infos.js')
-const { debounce, formatCurrency } = require('./_utils.js')
+const { debounce, formatCurrency, findClosestLang } = require('./_utils.js')
 const FnsCustomAddressForm = require('./_customAddressForm.js')
 
 class checkoutCustom {
@@ -154,31 +154,27 @@ class checkoutCustom {
           <div class="checkout-steps_items">
             <span class="checkout-steps_item checkout-steps_item_cart js-checkout-steps-item" data-url="/checkout/#/cart">
               <span class="text">${
-                this.lang ? this.lang.checkoutStepsLabelCart : 'Cart'
+                this.lang.checkoutStepsLabelCart || 'Cart'
               }</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_identification js-checkout-steps-item" data-url="/checkout/#/profile">
               <span class="text">${
-                this.lang
-                  ? this.lang.checkoutStepsLabelIdentification
-                  : 'Identification'
+                this.lang.checkoutStepsLabelIdentification || 'Identification'
               }</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_shipping js-checkout-steps-item" data-url="/checkout/#/shipping">
               <span class="text">${
-                this.lang ? this.lang.checkoutStepsLabelShipping : 'Shipping'
+                this.lang.checkoutStepsLabelShipping || 'Shipping'
               }</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_payment js-checkout-steps-item" data-url="/checkout/#/payment">
               <span class="text">${
-                this.lang ? this.lang.checkoutStepsLabelPayment : 'Payment'
+                this.lang.checkoutStepsLabelPayment || 'Payment'
               }</span>
             </span>
             <span class="checkout-steps_item checkout-steps_item_confirmation js-checkout-steps-item">
               <span class="text">${
-                this.lang
-                  ? this.lang.checkoutStepsLabelConfirmation
-                  : 'Confirmation'
+                this.lang.checkoutStepsLabelConfirmation || 'Confirmation'
               }</span>
             </span>
           </div>
@@ -794,11 +790,11 @@ class checkoutCustom {
   updateLang(orderForm) {
     const clientLocale = orderForm.clientPreferencesData.locale
 
-    this.lang = Object.values(_locale).find(
-      country => country.locale === clientLocale
-    )
-      ? Object.values(_locale).find(country => country.locale === clientLocale)
-      : _locale[orderForm.storePreferencesData.countryCode]
+    this.lang =
+      Object.values(_locale).find(country => country.locale === clientLocale) ||
+      _locale[orderForm.storePreferencesData.countryCode] ||
+      findClosestLang(clientLocale, _locale) ||
+      _locale.USA
 
     if (!this.lang) return false
     const _lang = this.lang

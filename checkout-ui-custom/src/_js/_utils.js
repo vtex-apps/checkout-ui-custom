@@ -22,3 +22,13 @@ module.exports.formatCurrency = (_locale, _currency, _value) => {
 
   return price
 }
+
+module.exports.findClosestLang = (clientLocale, locales) => {
+  const [clientLang] = clientLocale.split('-')
+
+  return Object.values(locales).find(country => {
+    const [countryLang] = country.locale.split('-')
+
+    return clientLang === countryLang
+  })
+}

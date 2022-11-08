@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Set `this.lang` based on client's language if client locale or store country is not listed in `_locale`
+ 
 ## [0.8.22] - 2022-10-18
 
 ### Fixed
