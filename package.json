@@ -6,7 +6,7 @@
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\"",
     "cy-r": "cd cy-runner && node cy-runner",
-    "app": "cd ./checkout-ui-custom && npm run app"
+    "build": "cd ./checkout-ui-custom && yarn build"
   },
   "husky": {
     "hooks": {
