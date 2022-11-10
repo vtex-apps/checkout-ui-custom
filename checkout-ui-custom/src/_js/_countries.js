@@ -5574,7 +5574,7 @@ module.exports._cities = [
       },
       {
         name: 'Grand Est',
-        shortCode: 'GES',
+        shortCode: 'Grand Est',
       },
       {
         name: 'Hauts-de-France',
