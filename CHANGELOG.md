@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.26] - 2022-11-10
+
 ### Fixed
 
 - Select state from dropdown options using long name when Google returns a short name different from `shortCode` in `_cities` mapping
