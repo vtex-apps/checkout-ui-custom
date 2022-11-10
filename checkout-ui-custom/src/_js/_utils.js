@@ -32,3 +32,15 @@ module.exports.findClosestLang = (clientLocale, locales) => {
     return clientLang === countryLang
   })
 }
+
+module.exports.getShipStateValue = state => {
+  const stateValue =
+    $(
+      `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value^='${state}']`
+    ).val() ||
+    $(
+      `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value$='${state}']`
+    ).val()
+
+  return stateValue
+}
