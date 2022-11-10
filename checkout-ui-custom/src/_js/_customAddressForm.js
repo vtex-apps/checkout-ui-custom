@@ -121,10 +121,14 @@ class fnsCustomAddressForm {
 
     if (
       $(
-        `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${state}']`
+        `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value*='${state}']`
       ).length
     ) {
-      $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(state)
+      const stateValue = $(
+        `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value*='${state}']`
+      ).val()
+
+      $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(stateValue)
     } else {
       $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val('')
     }
@@ -459,7 +463,7 @@ class fnsCustomAddressForm {
     )
 
     return countryRegions.regions.map(i => {
-      return `<option value="${i.shortCode}">${i.name}</option>`
+      return `<option value="${i.shortCode},${i.name}">${i.name}</option>`
     })
   }
 
@@ -640,9 +644,11 @@ class fnsCustomAddressForm {
     `
 
     if (shippingData.address && !isPickupPoint) {
-      $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
-        shippingData.address.state
-      )
+      const stateValue = $(
+        `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value^='${shippingData.address.state}']`
+      ).val()
+
+      $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(stateValue)
     }
 
     if (
@@ -722,7 +728,10 @@ class fnsCustomAddressForm {
     ).val()
 
     const city = $('.vcustom--vtex-omnishipping-1-x-address #ship-city').val()
-    const state = $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val()
+    const [, state] = $('.vcustom--vtex-omnishipping-1-x-address #ship-state')
+      .val()
+      .split(',')
+
     const postalCode = $(
       '.vcustom--vtex-omnishipping-1-x-address #ship-postalCode'
     ).val()
