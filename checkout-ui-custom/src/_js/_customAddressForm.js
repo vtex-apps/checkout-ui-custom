@@ -4,6 +4,7 @@
 /* eslint-disable max-params */
 const { _locale } = require('./_locale-infos.js')
 const { _countries, _cities, _addressPlaceholder } = require('./_countries.js')
+const { getShipStateValue } = require('./_utils')
 
 // temporaly workaorund
 window.callbackMap = () => {
@@ -119,15 +120,9 @@ class fnsCustomAddressForm {
       geoCoordinates
     )
 
-    if (
-      $(
-        `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${state}']`
-      ).length
-    ) {
-      $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(state)
-    } else {
-      $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val('')
-    }
+    $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
+      getShipStateValue(state) || ''
+    )
   }
 
   updateGoogleForm(countryCode = 'usa') {
@@ -459,7 +454,7 @@ class fnsCustomAddressForm {
     )
 
     return countryRegions.regions.map(i => {
-      return `<option value="${i.shortCode}">${i.name}</option>`
+      return `<option value="${i.shortCode},${i.name}">${i.name}</option>`
     })
   }
 
@@ -641,7 +636,7 @@ class fnsCustomAddressForm {
 
     if (shippingData.address && !isPickupPoint) {
       $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
-        shippingData.address.state
+        getShipStateValue(shippingData.address.state)
       )
     }
 
@@ -722,7 +717,14 @@ class fnsCustomAddressForm {
     ).val()
 
     const city = $('.vcustom--vtex-omnishipping-1-x-address #ship-city').val()
-    const state = $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val()
+    const [stateShortCode, stateName] = $(
+      '.vcustom--vtex-omnishipping-1-x-address #ship-state'
+    )
+      .val()
+      .split(',')
+
+    const state = stateShortCode || stateName
+
     const postalCode = $(
       '.vcustom--vtex-omnishipping-1-x-address #ship-postalCode'
     ).val()
@@ -757,13 +759,10 @@ class fnsCustomAddressForm {
       $("select[name='v-custom-state']").html(
         `${_this.getRegions(country[0]).join('')}`
       )
-      if (
-        state &&
-        $(
-          `.vcustom--vtex-omnishipping-1-x-address #ship-state option[value='${state}']`
-        ).length
-      ) {
-        $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(state)
+      if (state && getShipStateValue(state)) {
+        $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
+          getShipStateValue(state)
+        )
       }
 
       _this.updateGoogleForm(countryCode.toLowerCase())
