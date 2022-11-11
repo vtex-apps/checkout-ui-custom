@@ -5601,7 +5601,7 @@ module.exports._cities = [
         shortCode: 'PDL',
       },
       {
-        name: "Provence-Alpes-Cote d'Azur",
+        name: "Provence-Alpes-Côte d'Azur",
         shortCode: 'PAC',
       },
       {
