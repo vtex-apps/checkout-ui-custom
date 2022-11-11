@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.27] - 2022-11-11
+
 ### Fixed
 
 - Corrected a French province name
