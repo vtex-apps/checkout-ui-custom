@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.29] - 2022-11-23
+
+## Fixed
+
+Modified the shortCodes for Czech Republic so what the address form component expects and what the Checkout UI custom APP sends is aligned. 
+
 ## [0.8.28] - 2022-11-15
 
 ### Fixed
