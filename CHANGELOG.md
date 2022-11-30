@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Czech's country shortcode for Google Autocomplete fields
+
 ## [0.8.28] - 2022-11-15
 
 ### Fixed
