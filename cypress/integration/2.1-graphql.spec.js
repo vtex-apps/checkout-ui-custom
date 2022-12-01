@@ -8,7 +8,6 @@ import {
   getHistory,
   getLast,
   getSetupConfig,
-  graphql,
   saveChanges,
   ValidategetByIdResponse,
   validateGetHistoryResponse,
@@ -16,6 +15,7 @@ import {
   validateGetVersionResponse,
   version,
 } from '../support/grapqhl_testcase.js'
+import { graphql } from '../support/common/graphql_utils'
 import { ENVS } from '../support/constants.js'
 
 describe('Testing GraphQL queries & mutation', () => {
@@ -51,6 +51,7 @@ describe('Testing GraphQL queries & mutation', () => {
   })
 
   it('Verifying getId query', updateRetry(2), () => {
+    // Below Id we use it from line  no 46
     cy.getCheckOutItems().then(items => {
       graphql(getById(items[ID]), ValidategetByIdResponse)
     })
