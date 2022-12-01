@@ -1,5 +1,6 @@
 import { ENVS } from './constants.js'
 import { updateRetry } from './common/support.js'
+import { graphql } from './common/graphql_utils.js'
 
 export function getLast(workspace) {
   const query =
@@ -21,7 +22,7 @@ export function saveChanges(configuration) {
   const query =
     'mutation' +
     '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
-    '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors)}'
+    '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors) @context(provider: "vtex.checkout-ui-custom@*.x")}'
 
   return {
     query,
@@ -89,6 +90,8 @@ export function getById(id) {
 
 export function ValidategetByIdResponse(response) {
   expect(response.body.data.getById.javascriptActive).to.be.true
+  expect(response.body.data.getById.cssActive).to.be.true
+  expect(response.body.data.getById.layout).to.have.property('borderRadius')
 }
 
 export function updateLayoutSettings(option) {
