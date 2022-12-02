@@ -111,7 +111,7 @@ export function updateLayoutSettings(option) {
       configurations.layout.hideEmailStep = bool
       configurations.layout.customAddressForm = bool
 
-      graphql(APP,saveChanges(configurations), response => {
+      graphql(APP, saveChanges(configurations), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
     })
