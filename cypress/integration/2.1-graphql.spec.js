@@ -8,7 +8,6 @@ import {
   getHistory,
   getLast,
   getSetupConfig,
-  graphql,
   saveChanges,
   ValidategetByIdResponse,
   validateGetHistoryResponse,
@@ -16,52 +15,54 @@ import {
   validateGetVersionResponse,
   version,
 } from '../support/grapqhl_testcase.js'
+import { graphql } from '../support/common/graphql_utils'
 import { ENVS } from '../support/constants.js'
+import getConfiguration from '../support/common/checkout_ui_custom.js'
 
 describe('Testing GraphQL queries & mutation', () => {
   const workspace = Cypress.env('workspace').name
   const { CONFIG_SETTINGS } = ENVS
   const ID = 'id'
+  const APP = 'vtex.checkout-ui-custom@*.x'
 
   loginViaCookies()
-
   it('Verifying getHistory query', updateRetry(2), () => {
-    graphql(getHistory(), validateGetHistoryResponse)
+    graphql(APP, getHistory(), validateGetHistoryResponse)
   })
 
   it('Verifying version query', updateRetry(2), () => {
-    graphql(version(), validateGetVersionResponse)
+    graphql(APP, version(), validateGetVersionResponse)
   })
 
   it('Verifying getSetupConfig query', updateRetry(2), () => {
-    graphql(getSetupConfig(), validateGetSetUpConfigResponse)
-  })
-
-  it('Verifying getLast query with workspace master', updateRetry(2), () => {
-    const WORKSPACE = 'master'
-
-    graphql(getLast(WORKSPACE), response => {
-      expect(response.body.data.getLast.workspace).to.equal(WORKSPACE)
-      expect(response.body.data.getLast.id).to.not.equal(null)
-      cy.setCheckOutItem(ID, response.body.data.getLast.id)
-      delete response.body.data.getLast.id
-      response.body.data.getLast.workspace = workspace // changing workspace master to dynamic workspace
-      cy.setCheckOutItem(CONFIG_SETTINGS, response.body.data.getLast)
-    })
-  })
-
-  it('Verifying getId query', updateRetry(2), () => {
-    cy.getCheckOutItems().then(items => {
-      graphql(getById(items[ID]), ValidategetByIdResponse)
-    })
+    cy.setCheckOutItem(CONFIG_SETTINGS, getConfiguration(workspace))
+    graphql(APP, getSetupConfig(), validateGetSetUpConfigResponse)
   })
 
   it('Verifying saveChanges mutation', updateRetry(5), () => {
     cy.addDelayBetweenRetries(5000)
     cy.getCheckOutItems().then(items => {
-      graphql(saveChanges(items[CONFIG_SETTINGS]), response => {
+      graphql(APP, saveChanges(items[CONFIG_SETTINGS]), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
+    })
+  })
+
+  it(
+    `Verifying getLast query with workspace ${workspace}`,
+    updateRetry(2),
+    () => {
+      graphql(APP, getLast(workspace), response => {
+        expect(response.body.data.getLast.workspace).to.equal(workspace)
+        expect(response.body.data.getLast.id).to.not.equal(null)
+        cy.setCheckOutItem(ID, response.body.data.getLast.id)
+      })
+    }
+  )
+
+  it('Verifying getId query', updateRetry(2), () => {
+    cy.getCheckOutItems().then(items => {
+      graphql(APP, getById(items[ID]), ValidategetByIdResponse)
     })
   })
   preserveCookie()
