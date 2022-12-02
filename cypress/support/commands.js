@@ -54,8 +54,10 @@ Cypress.Commands.add('openProduct', (product, detailPage = false) => {
 })
 
 Cypress.Commands.add('removeProduct', product => {
+  cy.intercept('**/shippingData').as('shippingData')
   cy.get(selectors.CartTimeline, { timeout: 30000 }).should('be.visible')
-  cy.get(`#item-remove-${product}`).should('be.visible').click({ force: true })
+  cy.wait('@shippingData')
+  cy.get(`a[id=item-remove-${product}]`).should('be.visible').click()
   cy.contains('Your cart is empty')
 })
 

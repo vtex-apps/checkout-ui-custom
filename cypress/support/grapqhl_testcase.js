@@ -1,6 +1,8 @@
 import { ENVS } from './constants.js'
 import { updateRetry } from './common/support.js'
-import { graphql } from './common/graphql_utils.js'
+import { graphql } from './common/graphql_utils'
+
+const APP = 'vtex.checkout-ui-custom@*.x'
 
 export function getLast(workspace) {
   const query =
@@ -97,6 +99,7 @@ export function ValidategetByIdResponse(response) {
 export function updateLayoutSettings(option) {
   it(`${option} Layout Settings via Graphql`, updateRetry(3), () => {
     cy.getCheckOutItems().then(items => {
+      cy.log(items)
       const configurations = items[ENVS.CONFIG_SETTINGS]
 
       const bool = /Enable/.test(option)
@@ -108,7 +111,7 @@ export function updateLayoutSettings(option) {
       configurations.layout.hideEmailStep = bool
       configurations.layout.customAddressForm = bool
 
-      graphql(saveChanges(configurations), response => {
+      graphql(APP,saveChanges(configurations), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
     })
