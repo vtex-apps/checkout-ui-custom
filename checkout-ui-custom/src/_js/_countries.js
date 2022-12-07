@@ -4650,65 +4650,65 @@ module.exports._cities = [
       },
     ],
   },
-  {
+{
     countryName: 'Czech Republic',
     countryShortCode: 'CZ',
     regions: [
       {
         name: 'Hlavní město Praha',
-        shortCode: 'PR',
+        shortCode: 'Hlavní město Praha',
       },
       {
         name: 'Jihočeský kraj',
-        shortCode: 'JC',
+        shortCode: 'Jihočeský kraj',
       },
       {
         name: 'Jihomoravský kraj',
-        shortCode: 'JM',
+        shortCode: 'Jihomoravský kraj',
       },
       {
         name: 'Karlovarský kraj',
-        shortCode: 'KA',
+        shortCode: 'Karlovarský kraj',
       },
       {
         name: 'Královéhradecký kraj',
-        shortCode: 'KR',
+        shortCode: 'Královéhradecký kraj',
       },
       {
         name: 'Liberecký kraj',
-        shortCode: 'LI',
+        shortCode: 'Liberecký kraj',
       },
       {
         name: 'Moravskoslezský kraj',
-        shortCode: 'MO',
+        shortCode: 'Moravskoslezský kraj',
       },
       {
         name: 'Olomoucký kraj',
-        shortCode: 'OL',
+        shortCode: 'Olomoucký kraj',
       },
       {
         name: 'Pardubický kraj',
-        shortCode: 'PA',
+        shortCode: 'Pardubický kraj',
       },
       {
         name: 'Plzeňský kraj',
-        shortCode: 'PL',
+        shortCode: 'Plzeňský kraj',
       },
       {
         name: 'Středočeský kraj',
-        shortCode: 'ST',
+        shortCode: 'Středočeský kraj',
       },
       {
         name: 'Ústecký kraj',
-        shortCode: 'US',
+        shortCode: 'Ústecký kraj',
       },
       {
         name: 'Vysočina',
-        shortCode: 'VY',
+        shortCode: 'Vysočina',
       },
       {
         name: 'Zlínský kraj',
-        shortCode: 'ZL',
+        shortCode: 'Zlínský kraj',
       },
     ],
   },
