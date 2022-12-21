@@ -974,11 +974,13 @@ class checkoutCustom {
     const _this = this
     const _orderForm = orderForm || window.vtexjs.checkout.orderForm
 
-    if (_this.customAddressForm && _orderForm.canEditData) {
-      $('body').removeClass('returningUser')
+    if (_this.customAddressForm) {
+      if (_orderForm.canEditData) {
+        $('body').removeClass('returningUser')
+      } else {
+        $('body').addClass('returningUser')
+      }
       _this.customAddressForm.init(_orderForm)
-    } else {
-      $('body').addClass('returningUser')
     }
   }
 
@@ -1060,9 +1062,9 @@ class checkoutCustom {
       function () {
         setTimeout(() => {
           _this.updateLang(_this.orderForm)
-          if (_this.customAddressForm) {
-            $('body').addClass('v-custom-addressForm-on')
-          }
+          // if (_this.customAddressForm) {
+          //   $('body').addClass('v-custom-addressForm-on')
+          // }
         }, 50)
       }
     )
