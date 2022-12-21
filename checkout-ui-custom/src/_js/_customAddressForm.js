@@ -978,7 +978,9 @@ class fnsCustomAddressForm {
           _this.deliveryCountries = window.checkout.deliveryCountries()
           _this.mainCountry = window.checkout.countryCode()
           _this.lang = _this.orderForm.clientPreferencesData.locale
-          _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode]
+
+          _this.locale =
+          _locale[_this.orderForm.storePreferencesData.countryCode]
 
           if (_this.lang === 'es-AR') _this.lang = 'es'
 
