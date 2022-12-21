@@ -655,7 +655,10 @@ class fnsCustomAddressForm {
       )
     ) {
       $('body').removeClass('v-custom-addressForm-on')
-    } else if (!$('body').hasClass('v-custom-addressForm-on') && shippingData.selectedAddresses.length == 0 ) {
+    } else if (
+      !$('body').hasClass('v-custom-addressForm-on') &&
+      shippingData.selectedAddresses.length == 0
+    ) {
       $('body').addClass('v-custom-addressForm-on')
     }
 
@@ -976,9 +979,10 @@ class fnsCustomAddressForm {
           _this.mainCountry = window.checkout.countryCode()
           _this.lang = _this.orderForm.clientPreferencesData.locale
           _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode]
+
           if (_this.lang === 'es-AR') _this.lang = 'es'
 
-          if ( _this.orderForm && _this.orderForm.shippingData ) {
+          if (_this.orderForm && _this.orderForm.shippingData) {
             const shippingData = _this.orderForm.shippingData.address
             if (shippingData) {
               _this.updateAddress(
