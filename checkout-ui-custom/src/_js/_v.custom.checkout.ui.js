@@ -975,7 +975,7 @@ class checkoutCustom {
     const _orderForm = orderForm || window.vtexjs.checkout.orderForm
 
     if (_this.customAddressForm) {
-      if(_orderForm.canEditData) {
+      if (_orderForm.canEditData) {
         $('body').removeClass('returningUser')
       } else {
         $('body').addClass('returningUser')
