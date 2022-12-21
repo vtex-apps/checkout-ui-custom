@@ -81,6 +81,7 @@ class fnsCustomAddressForm {
   }
 
   setForm(
+    country = '',
     street = '',
     formattedStreet = '',
     number = '',
@@ -117,6 +118,11 @@ class fnsCustomAddressForm {
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-geocoordinates',
       geoCoordinates
+    )
+
+    $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-country').attr(
+      'data-country',
+      country
     )
 
     $('.vcustom--vtex-omnishipping-1-x-address #ship-state').val(
