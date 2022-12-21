@@ -77,8 +77,6 @@ body.v-custom-fnsCustomAddressForm {
 
   &.returningUser {
     .vtex-omnishipping-1-x-addressFormPart1 {
-      .input.ship-country,
-      .input.ship-addressQuery,
       .input.ship-postalCode {display: block;}
     }
   }

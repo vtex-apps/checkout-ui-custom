@@ -976,10 +976,10 @@ class checkoutCustom {
 
     if (_this.customAddressForm && _orderForm.canEditData) {
       $('body').removeClass('returningUser')
-      _this.customAddressForm.init(_orderForm)
     } else {
       $('body').addClass('returningUser')
     }
+    _this.customAddressForm.init(_orderForm)
   }
 
   checkProfileFocus() {
@@ -1060,9 +1060,9 @@ class checkoutCustom {
       function () {
         setTimeout(() => {
           _this.updateLang(_this.orderForm)
-          if (_this.customAddressForm) {
-            $('body').addClass('v-custom-addressForm-on')
-          }
+          // if (_this.customAddressForm) {
+          //   $('body').addClass('v-custom-addressForm-on')
+          // }
         }, 50)
       }
     )

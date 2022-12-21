@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Possibility do edit address when using the custom form
+
 ## [0.8.28] - 2022-11-15
 
 ### Fixed

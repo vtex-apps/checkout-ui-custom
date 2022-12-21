@@ -93,7 +93,7 @@ class fnsCustomAddressForm {
     geoCoordinates = ''
   ) {
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-      'number' in this.addressrules ? street : formattedStreet
+      formattedStreet ? formattedStreet : street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
       complement
@@ -105,7 +105,7 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      country === 'USA' || country === 'ZAF' ? formattedStreet : street
+      formattedStreet ? formattedStreet : street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
@@ -260,14 +260,14 @@ class fnsCustomAddressForm {
         : $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val()
 
       const geoCoordinates = [
-        place.geometry.location.lat(),
         place.geometry.location.lng(),
+        place.geometry.location.lat(),
       ]
 
       const formattedAddress = $('<div></div>')
 
       formattedAddress.html(place.adr_address)
-      const formattedStreet = $('.street-address', formattedAddress).text()
+      let formattedStreet = $('.street-address', formattedAddress).text()
 
       let city =
         _this.returnAddressFRules(
@@ -284,6 +284,7 @@ class fnsCustomAddressForm {
       // temporaly workaround for ARG
 
       if (country === 'ARG') {
+        formattedStreet = street
         postalCode = postalCode.replace(/\D/gi, '')
         if (state === 'Provincia de Buenos Aires') state = 'Buenos Aires'
         if (state.toUpperCase() === 'CABA') {
@@ -353,7 +354,7 @@ class fnsCustomAddressForm {
     const _this = this
 
     if (~geoCoordinates.indexOf(',')) {
-      const [lng, lat] = geoCoordinates.split(',')
+      const [lat, lng] = geoCoordinates.split(',')
 
       geoCoordinates = [parseFloat(lat), parseFloat(lng)]
 
@@ -655,7 +656,7 @@ class fnsCustomAddressForm {
       )
     ) {
       $('body').removeClass('v-custom-addressForm-on')
-    } else if (!$('body').hasClass('v-custom-addressForm-on')) {
+    } else if (!$('body').hasClass('v-custom-addressForm-on') && shippingData.selectedAddresses.length==0) {
       $('body').addClass('v-custom-addressForm-on')
     }
 
@@ -777,6 +778,9 @@ class fnsCustomAddressForm {
 
   bind() {
     const _this = this
+
+
+
 
     $('body').on(
       'click',
@@ -975,13 +979,11 @@ class fnsCustomAddressForm {
           _this.deliveryCountries = window.checkout.deliveryCountries()
           _this.mainCountry = window.checkout.countryCode()
           _this.lang = _this.orderForm.clientPreferencesData.locale
-          _this.locale =
-            _locale[_this.orderForm.storePreferencesData.countryCode]
+          _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode]
           if (_this.lang === 'es-AR') _this.lang = 'es'
 
           if (_this.orderForm && _this.orderForm.shippingData) {
             const shippingData = _this.orderForm.shippingData.address
-
             if (shippingData) {
               _this.updateAddress(
                 shippingData.country,
