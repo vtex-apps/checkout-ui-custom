@@ -81,7 +81,6 @@ class fnsCustomAddressForm {
   }
 
   setForm(
-    country = '',
     street = '',
     formattedStreet = '',
     number = '',
@@ -93,7 +92,7 @@ class fnsCustomAddressForm {
     geoCoordinates = ''
   ) {
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-      formattedStreet ? formattedStreet : street
+      formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
       complement
@@ -105,7 +104,7 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      formattedStreet ? formattedStreet : street
+      formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
@@ -656,7 +655,7 @@ class fnsCustomAddressForm {
       )
     ) {
       $('body').removeClass('v-custom-addressForm-on')
-    } else if (!$('body').hasClass('v-custom-addressForm-on') && shippingData.selectedAddresses.length==0) {
+    } else if (!$('body').hasClass('v-custom-addressForm-on') && shippingData.selectedAddresses.length == 0 ) {
       $('body').addClass('v-custom-addressForm-on')
     }
 
@@ -778,9 +777,6 @@ class fnsCustomAddressForm {
 
   bind() {
     const _this = this
-
-
-
 
     $('body').on(
       'click',
@@ -982,7 +978,7 @@ class fnsCustomAddressForm {
           _this.locale = _locale[_this.orderForm.storePreferencesData.countryCode]
           if (_this.lang === 'es-AR') _this.lang = 'es'
 
-          if (_this.orderForm && _this.orderForm.shippingData) {
+          if ( _this.orderForm && _this.orderForm.shippingData ) {
             const shippingData = _this.orderForm.shippingData.address
             if (shippingData) {
               _this.updateAddress(
