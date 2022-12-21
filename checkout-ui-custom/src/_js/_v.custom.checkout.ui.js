@@ -979,6 +979,7 @@ class checkoutCustom {
     } else {
       $('body').addClass('returningUser')
     }
+
     _this.customAddressForm.init(_orderForm)
   }
 
