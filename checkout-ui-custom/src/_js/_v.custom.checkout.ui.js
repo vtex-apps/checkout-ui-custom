@@ -538,9 +538,8 @@ class checkoutCustom {
         td.shipping-date,
         .srp-shipping-current-single
       `).each(function () {
-        const [
-          logisticsInfo,
-        ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
+        const [logisticsInfo] =
+          window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
 
         const availableSlas = logisticsInfo.slas
 
@@ -930,7 +929,7 @@ class checkoutCustom {
     const _this = this
 
     if (!window.vtex.googleMapsApiKey) {
-      console.error(
+      console.warn(
         'You might need to add your Google Maps API Key in your admin'
       )
       _this.customAddressForm = false
@@ -980,6 +979,7 @@ class checkoutCustom {
       } else {
         $('body').addClass('returningUser')
       }
+
       _this.customAddressForm.init(_orderForm)
     }
   }
@@ -1062,9 +1062,6 @@ class checkoutCustom {
       function () {
         setTimeout(() => {
           _this.updateLang(_this.orderForm)
-          // if (_this.customAddressForm) {
-          //   $('body').addClass('v-custom-addressForm-on')
-          // }
         }, 50)
       }
     )
@@ -1159,6 +1156,7 @@ class checkoutCustom {
         _this.checkProfileFocus()
         _this.changeShippingTimeInfoInit()
         _this.indexedInItems(window.vtexjs.checkout.orderForm)
+        _this.showDeliveryOptions()
 
         if (_this.customAddressForm && typeof store !== 'undefined') {
           window.store.dispatch({
