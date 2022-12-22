@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.31] - 2022-12-22
+
 ### Fixed
 
 - Add additional `showDeliveryOptions` call in case the first one is triggered too early
