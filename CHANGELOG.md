@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### Fixed
+## [0.8.29-hkignore.2] - 2023-01-05
 
-- Czech's country shortcode for Google Autocomplete fields
+## Fixed
+
+Modified the shortCodes for Czech Republic so what the address form component expects and what the Checkout UI custom APP sends is aligned.
 
 ## [0.8.28] - 2022-11-15
 
