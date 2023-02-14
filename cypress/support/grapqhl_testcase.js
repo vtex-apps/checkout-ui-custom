@@ -1,46 +1,8 @@
-import { FAIL_ON_STATUS_CODE } from './common/constants'
 import { ENVS } from './constants.js'
 import { updateRetry } from './common/support.js'
+import { graphql } from './common/graphql_utils'
 
-const config = Cypress.env()
-
-// Constants
-const { vtex } = config.base
-
-function commonGraphlValidation(response) {
-  expect(response.status).to.equal(200)
-  expect(response.body.data).to.not.equal(null)
-  expect(response.body).to.not.equal('OK')
-  expect(response.body).to.not.have.own.property('errors')
-}
-
-export function graphql(getQuery, validateResponseFn = null) {
-  const { query, queryVariables } = getQuery
-
-  // Define constants
-  const APP_NAME = 'vtex.checkout-ui-custom'
-  const APP = `${APP_NAME}@0.x`
-  const CUSTOM_URL = `${vtex.baseUrl}/_v/private/admin-graphql-ide/v0/${APP}`
-
-  cy.request({
-    method: 'POST',
-    url: CUSTOM_URL,
-    ...FAIL_ON_STATUS_CODE,
-    body: {
-      query,
-      variables: queryVariables,
-    },
-  }).as('RESPONSE')
-
-  if (validateResponseFn) {
-    cy.get('@RESPONSE').then(response => {
-      commonGraphlValidation(response)
-      validateResponseFn(response)
-    })
-  } else {
-    return cy.get('@RESPONSE')
-  }
-}
+const APP = 'vtex.checkout-ui-custom@*.x'
 
 export function getLast(workspace) {
   const query =
@@ -62,7 +24,7 @@ export function saveChanges(configuration) {
   const query =
     'mutation' +
     '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
-    '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors)}'
+    '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors) @context(provider: "vtex.checkout-ui-custom@*.x")}'
 
   return {
     query,
@@ -130,11 +92,14 @@ export function getById(id) {
 
 export function ValidategetByIdResponse(response) {
   expect(response.body.data.getById.javascriptActive).to.be.true
+  expect(response.body.data.getById.cssActive).to.be.true
+  expect(response.body.data.getById.layout).to.have.property('borderRadius')
 }
 
 export function updateLayoutSettings(option) {
   it(`${option} Layout Settings via Graphql`, updateRetry(3), () => {
     cy.getCheckOutItems().then(items => {
+      cy.log(items)
       const configurations = items[ENVS.CONFIG_SETTINGS]
 
       const bool = /Enable/.test(option)
@@ -146,7 +111,7 @@ export function updateLayoutSettings(option) {
       configurations.layout.hideEmailStep = bool
       configurations.layout.customAddressForm = bool
 
-      graphql(saveChanges(configurations), response => {
+      graphql(APP, saveChanges(configurations), response => {
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
     })

@@ -930,7 +930,7 @@ class checkoutCustom {
     const _this = this
 
     if (!window.vtex.googleMapsApiKey) {
-      console.error(
+      console.warn(
         'You might need to add your Google Maps API Key in your admin'
       )
       _this.customAddressForm = false
@@ -974,11 +974,14 @@ class checkoutCustom {
     const _this = this
     const _orderForm = orderForm || window.vtexjs.checkout.orderForm
 
-    if (_this.customAddressForm && _orderForm.canEditData) {
-      $('body').removeClass('returningUser')
+    if (_this.customAddressForm) {
+      if (_orderForm.canEditData) {
+        $('body').removeClass('returningUser')
+      } else {
+        $('body').addClass('returningUser')
+      }
+
       _this.customAddressForm.init(_orderForm)
-    } else {
-      $('body').addClass('returningUser')
     }
   }
 
@@ -1060,9 +1063,6 @@ class checkoutCustom {
       function () {
         setTimeout(() => {
           _this.updateLang(_this.orderForm)
-          if (_this.customAddressForm) {
-            $('body').addClass('v-custom-addressForm-on')
-          }
         }, 50)
       }
     )
@@ -1157,6 +1157,7 @@ class checkoutCustom {
         _this.checkProfileFocus()
         _this.changeShippingTimeInfoInit()
         _this.indexedInItems(window.vtexjs.checkout.orderForm)
+        _this.showDeliveryOptions()
 
         if (_this.customAddressForm && typeof store !== 'undefined') {
           window.store.dispatch({

@@ -874,6 +874,7 @@ h1#cart-title {display:none !important;}
 
 .cart-select-gift-placeholder {
   width: auto !important;
+  display: none !important;
 }
 
 .cart-more-options {
@@ -884,6 +885,10 @@ h1#cart-title {display:none !important;}
   min-height:0 !important;
   display: flex !important;
   flex-wrap: wrap;
+
+  .cart-select-gift-placeholder {
+    display: block !important;
+  }
 
   .vtex-shipping-preview-0-x-alert {
     .shp-alert-content.vtex-shipping-preview-0-x-content {

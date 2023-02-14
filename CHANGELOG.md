@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.32] - 2023-01-11
+
+### Removed
+
+- Unused `jsonwebtoken` package
+
+## [0.8.31] - 2022-12-22
+
+### Fixed
+
+- Add additional `showDeliveryOptions` call in case the first one is triggered too early
+
+## [0.8.30] - 2022-12-21
+
+### Fixed
+
+- restore country field for addressFrom
+
+## [0.8.29] - 2022-12-21
+
+### Fixed
+
+- Possibility do edit address when using the custom form
+
 ## [0.8.28] - 2022-11-15
 
 ### Fixed
