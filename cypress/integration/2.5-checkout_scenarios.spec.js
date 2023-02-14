@@ -11,6 +11,7 @@ function discountValidation(quantity = 1) {
   const productPrice = 10 * quantity
 
   // Discounts should be shown
+  cy.qe('Discount should exists in the dom')
   cy.get(selectors.Discounts).should('be.exist')
   cy.get(checkoutUiCustomSelectors.DiscountAmount)
     .first()
@@ -65,15 +66,20 @@ describe('Testing Checkout with different scenarios', () => {
     `${prefix} - vat number should be visible & test input field`,
     updateRetry(3),
     () => {
-      // VAT number field should be visibel to the user
+      // VAT number field should be visible to the user
+      cy.qe(`Verifying VatInput should be visible`)
       cy.get(selectors.VatInput).should('be.visible')
       // Providing VAT number
+      cy.qe(`Entering the VatInput - FR40303265045`)
       cy.get(selectors.VatInput).type('FR40303265045')
+      cy.qe(`Submitting Vat`)
       cy.get(selectors.SubmitVat).click()
       // Tax should not exist
+      cy.qe(`Verifying VatRemoveButton is visible and clicking on it`)
       cy.get(checkoutUiCustomSelectors.VatRemoveButton)
         .should('be.visible')
         .click()
+      cy.qe(`Verifying VatInput should be empty`)
       cy.get(selectors.VatInput).should('be.empty')
     }
   )

@@ -49,10 +49,13 @@ export function verifySettings(type) {
   })
 
   it(`${prefix} - Display items unit price option`, updateRetry(2), () => {
+    cy.qe(`Clicking on CartLink`)
     cy.get(checkoutUiCustomSelectors.CartLink).click()
     if (enable) {
+      cy.qe(`If enable - QuantityPrice should exist`)
       cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('exist')
     } else {
+      cy.qe(`If disable - QuantityPrice should not exist `)
       cy.get(checkoutUiCustomSelectors.QuantityUnitPrice).should('not.exist')
     }
 
@@ -110,8 +113,12 @@ export function fillLineItems(items, maxChar) {
     .should('have.attr', 'maxlength')
     .then(maxlength => {
       cy.log(maxlength)
+      cy.qe(
+        `${maxlength} of the ProductLineItem should be equal to ${maxChar} `
+      )
       expect(maxlength).to.equal(maxChar)
     })
+  cy.qe(`Filling the line items`)
   cy.get(checkoutUiCustomSelectors.ProductLineItem).eq(1).type(items.lineItem2)
   cy.get(checkoutUiCustomSelectors.ProductLineItem).eq(2).type(items.lineItem3)
 }

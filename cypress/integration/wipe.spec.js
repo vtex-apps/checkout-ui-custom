@@ -15,6 +15,18 @@ describe('Wipe', () => {
 
   it('Deleting checkout history', () => {
     cy.getVtexItems().then(vtex => {
+      cy.qe(`
+
+      curl --location --request GET 'https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search' \
+      qs: {
+        _fields: 'workspace,email,id',
+        _schema: 'v0.1.3',
+        workspace: ${name},
+      },
+--header 'X-VTEX-API-AppKey: AppKey' \
+--header 'X-VTEX-API-AppToken: AppToken' \
+--header 'Cookie: Cookie'
+      `)
       cy.request({
         url: `https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search`,
         qs: {

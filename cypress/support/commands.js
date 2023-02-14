@@ -55,14 +55,21 @@ Cypress.Commands.add('openProduct', (product, detailPage = false) => {
 
 Cypress.Commands.add('removeProduct', product => {
   cy.get(selectors.CartTimeline, { timeout: 30000 }).should('be.visible')
+  cy.qe(
+    `Verifying a[id=item-remove-${product}] is visible and then clicking on it `
+  )
   cy.get(`a[id=item-remove-${product}]`).should('be.visible').click()
+  cy.qe(`It should show Your cart is empty`)
   cy.contains('Your cart is empty')
 })
 
 Cypress.Commands.add('checkoutProduct', () => {
+  cy.qe(`Verifying the total price in the minicart`)
   cy.get(selectors.TotalPrice).should('be.visible')
   cy.get('#items-price div[class*=price]').should('have.contain', '$')
+  cy.qe(`Verifying ProceedtoCheckout button is visible and clicking on it`)
   cy.get(selectors.ProceedtoCheckout).should('be.visible').click()
+  cy.qe('Verifying CartTimeline is visible')
   cy.get(selectors.CartTimeline, { timeout: 30000 })
     .should('be.visible')
     .click({ force: true })

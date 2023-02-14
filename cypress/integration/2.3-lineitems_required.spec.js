@@ -29,6 +29,7 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
     `${prefix} - Verify line items displayed in checkout ui`,
     updateRetry(3),
     () => {
+      cy.qe(`LineItems should exists in the dom`)
       cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
       cy.removeProduct(lineitemProducts.jumper.id)
       cy.get(checkoutUiCustomSelectors.ChooseProducts)
@@ -48,6 +49,7 @@ describe(`Testing line items(required) with this product - ${product}`, () => {
       )
       cy.get(selectors.AddtoCart).should('be.visible').click()
       cy.checkoutProduct()
+      cy.qe(`LineItems should exists in the dom`)
       cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
     }
   )

@@ -40,13 +40,16 @@ describe(`Testing line items(optional) with this product - ${product}`, () => {
       checkoutUiCustomConstants.lineItems,
       checkoutUiCustomConstants.maxCharecters.max25
     )
+    cy.qe('Entering the postal code')
     cy.get(selectors.PostalCode).clear().type('33180').type('{enter}')
     cy.get(selectors.ProductsQAShipping).click()
+    cy.qe(`Clicking on AddtoCart button`)
     cy.get(selectors.AddtoCart).click()
   })
 
   it(`${prefix} - Verify line items displaying`, () => {
     cy.checkoutProduct()
+    cy.qe(`LineItems should exists in the dom`)
     cy.get(checkoutUiCustomSelectors.LineItemAssemble).should('exist')
   })
 

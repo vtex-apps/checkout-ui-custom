@@ -5,6 +5,12 @@ import { graphql } from './common/graphql_utils'
 const APP = 'vtex.checkout-ui-custom@*.x'
 
 export function getLast(workspace) {
+  cy.qe(`
+  getLast query -
+  'query' +
+    '($workspace: String!)' +
+    '{getLast(workspace: $workspace){id email workspace layout javascript css javascriptActive cssActive colors}}'
+  `)
   const query =
     'query' +
     '($workspace: String!)' +
@@ -21,6 +27,12 @@ export function validateGetLastResponse(response) {
 }
 
 export function saveChanges(configuration) {
+  cy.qe(`
+   save changes mutation -
+   'mutation' +
+    '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
+    '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors) @context(provider: "vtex.checkout-ui-custom@*.x")}'
+  `)
   const query =
     'mutation' +
     '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
@@ -37,6 +49,13 @@ export function validateSaveChangesResponse(response) {
 }
 
 export function getHistory() {
+  cy.qe(`
+   getHistory query -
+   query:
+      'query' + '{getHistory {id,email,workspace,creationDate,appVersion}}',
+    queryVariables: {},
+  `)
+
   return {
     query:
       'query' + '{getHistory {id,email,workspace,creationDate,appVersion}}',
@@ -51,6 +70,12 @@ export function validateGetHistoryResponse(response) {
 }
 
 export function version() {
+  cy.qe(`
+version query -
+query: 'query' + '{version}',
+queryVariables: {},
+`)
+
   return {
     query: 'query' + '{version}',
     queryVariables: {},
@@ -62,6 +87,12 @@ export function validateGetVersionResponse(response) {
 }
 
 export function getSetupConfig() {
+  cy.qe(`
+  getSetupConfig query -
+  'query' +
+  '{getSetupConfig{adminSetup{hasSchema,schemaVersion,appVersion}}}'
+  `)
+
   return {
     query:
       'query' +
@@ -81,6 +112,13 @@ export function validateGetSetUpConfigResponse(response) {
 }
 
 export function getById(id) {
+  cy.qe(`
+ getById query -
+'query' +
+      '($id:String)' +
+      '{getById(id:$id){layout,colors,javascript,css,javascriptActive,cssActive}}'
+  `)
+
   return {
     query:
       'query' +
@@ -98,6 +136,7 @@ export function ValidategetByIdResponse(response) {
 
 export function updateLayoutSettings(option) {
   it(`${option} Layout Settings via Graphql`, updateRetry(3), () => {
+    cy.qe(`${option} layout settings via Graphql`)
     cy.getCheckOutItems().then(items => {
       cy.log(items)
       const configurations = items[ENVS.CONFIG_SETTINGS]
@@ -110,8 +149,10 @@ export function updateLayoutSettings(option) {
       configurations.layout.showNoteField = bool
       configurations.layout.hideEmailStep = bool
       configurations.layout.customAddressForm = bool
-
       graphql(APP, saveChanges(configurations), response => {
+        cy.qe(
+          `Validating ${response.body.data.saveChanges} to include 'DocumentId'`
+        )
         expect(response.body.data.saveChanges).to.include('DocumentId')
       })
     })
