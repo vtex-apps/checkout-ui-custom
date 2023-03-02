@@ -523,6 +523,8 @@ class fnsCustomAddressForm {
 
     const { isPickupPoint } = this
 
+    const returningUser = orderForm.canEditData
+
     const form = `
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
@@ -650,7 +652,8 @@ class fnsCustomAddressForm {
       $('.vcustom--vtex-omnishipping-1-x-address.step').length == 0 &&
       shippingData.logisticsInfo[0].selectedDeliveryChannel !==
         'pickup-in-point' &&
-      window.location.href.indexOf('shipping') !== -1
+      window.location.href.indexOf('shipping') !== -1 &&
+      !returningUser
     ) {
       $('.orderform-template-holder #shipping-data').append(form)
     }
