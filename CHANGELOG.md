@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Removed extra address form added to the smart checkout for returning users
+
 ## [0.8.32] - 2023-01-11
 
 ### Removed
