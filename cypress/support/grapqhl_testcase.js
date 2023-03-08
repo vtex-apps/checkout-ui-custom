@@ -5,16 +5,12 @@ import { graphql } from './common/graphql_utils'
 const APP = 'vtex.checkout-ui-custom@*.x'
 
 export function getLast(workspace) {
-  cy.qe(`
-  getLast query -
-  'query' +
-    '($workspace: String!)' +
-    '{getLast(workspace: $workspace){id email workspace layout javascript css javascriptActive cssActive colors}}'
-  `)
   const query =
     'query' +
     '($workspace: String!)' +
     '{getLast(workspace: $workspace){id email workspace layout javascript css javascriptActive cssActive colors}}'
+
+  cy.addGraphqlLogs(query, workspace)
 
   return {
     query,
@@ -27,16 +23,12 @@ export function validateGetLastResponse(response) {
 }
 
 export function saveChanges(configuration) {
-  cy.qe(`
-   save changes mutation -
-   'mutation' +
-    '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
-    '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors) @context(provider: "vtex.checkout-ui-custom@*.x")}'
-  `)
   const query =
     'mutation' +
     '($email: String, $workspace: String, $layout: CustomFields, $javascript: String, $css: String, $javascriptActive: Boolean, $cssActive: Boolean, $colors: CustomFields)' +
     '{saveChanges(email: $email, workspace: $workspace, layout: $layout, javascript: $javascript, css: $css, javascriptActive: $javascriptActive, cssActive: $cssActive, colors: $colors) @context(provider: "vtex.checkout-ui-custom@*.x")}'
+
+  cy.addGraphqlLogs(query, configuration)
 
   return {
     query,
@@ -49,12 +41,10 @@ export function validateSaveChangesResponse(response) {
 }
 
 export function getHistory() {
-  cy.qe(`
-   getHistory query -
-   query:
-      'query' + '{getHistory {id,email,workspace,creationDate,appVersion}}',
-    queryVariables: {},
-  `)
+  const query =
+    'query' + '{getHistory {id,email,workspace,creationDate,appVersion}}'
+
+  cy.addGraphqlLogs(query)
 
   return {
     query:
@@ -70,11 +60,9 @@ export function validateGetHistoryResponse(response) {
 }
 
 export function version() {
-  cy.qe(`
-version query -
-query: 'query' + '{version}',
-queryVariables: {},
-`)
+  const query = 'query' + '{version}'
+
+  cy.addGraphqlLogs(query)
 
   return {
     query: 'query' + '{version}',
@@ -87,11 +75,10 @@ export function validateGetVersionResponse(response) {
 }
 
 export function getSetupConfig() {
-  cy.qe(`
-  getSetupConfig query -
-  'query' +
-  '{getSetupConfig{adminSetup{hasSchema,schemaVersion,appVersion}}}'
-  `)
+  const query =
+    'query' + '{getSetupConfig{adminSetup{hasSchema,schemaVersion,appVersion}}}'
+
+  cy.addGraphqlLogs(query)
 
   return {
     query:
@@ -112,12 +99,12 @@ export function validateGetSetUpConfigResponse(response) {
 }
 
 export function getById(id) {
-  cy.qe(`
- getById query -
-'query' +
-      '($id:String)' +
-      '{getById(id:$id){layout,colors,javascript,css,javascriptActive,cssActive}}'
-  `)
+  const query =
+    'query' +
+    '($id:String)' +
+    '{getById(id:$id){layout,colors,javascript,css,javascriptActive,cssActive}}'
+
+  cy.addGraphqlLogs(query, id)
 
   return {
     query:
