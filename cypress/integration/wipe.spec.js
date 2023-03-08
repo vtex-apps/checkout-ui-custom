@@ -1,8 +1,4 @@
-import {
-  ENTITIES,
-  FAIL_ON_STATUS_CODE,
-  VTEX_AUTH_HEADER,
-} from '../support/common/constants.js'
+import { ENTITIES, VTEX_AUTH_HEADER } from '../support/common/constants.js'
 import { testSetup } from '../support/common/support.js'
 
 const config = Cypress.env()
@@ -28,28 +24,12 @@ describe('Wipe', () => {
           ...VTEX_AUTH_HEADER(vtex.apiKey, vtex.apiToken),
           'REST-Range': 'resources=0-50',
         },
+      }).then(response => {
+        expect(response.status).to.equal(200)
+        for (const { id } of response.body) {
+          cy.deleteDocumentInMasterData(ENTITIES.CHECKOUTCUSTOM, id)
+        }
       })
-
-        // cy.request({
-        //   url: `https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search`,
-
-        //   qs: {
-        //     _fields: 'workspace,email,id',
-        //     _schema: 'v0.1.3',
-        //     workspace: name,
-        //   },
-        //   headers: {
-        //     ...VTEX_AUTH_HEADER(vtex.apiKey, vtex.apiToken),
-        //     'REST-Range': 'resources=0-50',
-        //   },
-        //   ...FAIL_ON_STATUS_CODE,
-        // })
-        .then(response => {
-          expect(response.status).to.equal(200)
-          for (const { id } of response.body) {
-            cy.deleteDocumentInMasterData(ENTITIES.CHECKOUTCUSTOM, id)
-          }
-        })
     })
   })
   it('Getting user & then deleting addresses associated with that user', () => {
