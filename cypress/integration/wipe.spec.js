@@ -15,20 +15,10 @@ describe('Wipe', () => {
 
   it('Deleting checkout history', () => {
     cy.getVtexItems().then(vtex => {
-      cy.qe(`
-
-      curl --location --request GET 'https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search' \
-      qs: {
-        _fields: 'workspace,email,id',
-        _schema: 'v0.1.3',
-        workspace: ${name},
-      },
---header 'X-VTEX-API-AppKey: AppKey' \
---header 'X-VTEX-API-AppToken: AppToken' \
---header 'Cookie: Cookie'
-      `)
-      cy.request({
-        url: `https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search`,
+      cy.addLogsForRestAPI({
+        url:
+          'https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search',
+        method: 'GET',
         qs: {
           _fields: 'workspace,email,id',
           _schema: 'v0.1.3',
@@ -38,13 +28,28 @@ describe('Wipe', () => {
           ...VTEX_AUTH_HEADER(vtex.apiKey, vtex.apiToken),
           'REST-Range': 'resources=0-50',
         },
-        ...FAIL_ON_STATUS_CODE,
-      }).then(response => {
-        expect(response.status).to.equal(200)
-        for (const { id } of response.body) {
-          cy.deleteDocumentInMasterData(ENTITIES.CHECKOUTCUSTOM, id)
-        }
       })
+
+        // cy.request({
+        //   url: `https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search`,
+
+        //   qs: {
+        //     _fields: 'workspace,email,id',
+        //     _schema: 'v0.1.3',
+        //     workspace: name,
+        //   },
+        //   headers: {
+        //     ...VTEX_AUTH_HEADER(vtex.apiKey, vtex.apiToken),
+        //     'REST-Range': 'resources=0-50',
+        //   },
+        //   ...FAIL_ON_STATUS_CODE,
+        // })
+        .then(response => {
+          expect(response.status).to.equal(200)
+          for (const { id } of response.body) {
+            cy.deleteDocumentInMasterData(ENTITIES.CHECKOUTCUSTOM, id)
+          }
+        })
     })
   })
   it('Getting user & then deleting addresses associated with that user', () => {
