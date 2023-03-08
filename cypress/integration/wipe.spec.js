@@ -1,8 +1,4 @@
-import {
-  ENTITIES,
-  FAIL_ON_STATUS_CODE,
-  VTEX_AUTH_HEADER,
-} from '../support/common/constants.js'
+import { ENTITIES, VTEX_AUTH_HEADER } from '../support/common/constants.js'
 import { testSetup } from '../support/common/support.js'
 
 const config = Cypress.env()
@@ -15,8 +11,10 @@ describe('Wipe', () => {
 
   it('Deleting checkout history', () => {
     cy.getVtexItems().then(vtex => {
-      cy.request({
-        url: `https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search`,
+      cy.addLogsForRestAPI({
+        url:
+          'https://productusqa.vtexcommercestable.com.br/api/dataentities/checkoutcustom/search',
+        method: 'GET',
         qs: {
           _fields: 'workspace,email,id',
           _schema: 'v0.1.3',
@@ -26,7 +24,6 @@ describe('Wipe', () => {
           ...VTEX_AUTH_HEADER(vtex.apiKey, vtex.apiToken),
           'REST-Range': 'resources=0-50',
         },
-        ...FAIL_ON_STATUS_CODE,
       }).then(response => {
         expect(response.status).to.equal(200)
         for (const { id } of response.body) {
