@@ -8,7 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+
 - German translation.
+
+## [0.8.33] - 2023-03-27
+
+### Added
+
+- Puerto Rico cities & states
 
 ## [0.8.32] - 2023-01-11
 
