@@ -13427,295 +13427,295 @@ module.exports._cities = [
     regions: [
       {
         name: 'Adjuntas',
-        shorCode: 'Adjuntas',
+        shortCode: 'Adjuntas',
       },
       {
         name: 'Aguada',
-        shorCode: 'Aguada',
+        shortCode: 'Aguada',
       },
       {
         name: 'Aguadilla',
-        shorCode: 'Aguadilla',
+        shortCode: 'Aguadilla',
       },
       {
         name: 'Aguas Buenas',
-        shorCode: 'Aguas Buenas',
+        shortCode: 'Aguas Buenas',
       },
       {
         name: 'Aibonito',
-        shorCode: 'Aibonito',
+        shortCode: 'Aibonito',
       },
       {
         name: 'Anasco',
-        shorCode: 'Anasco',
+        shortCode: 'Anasco',
       },
       {
         name: 'Arecibo',
-        shorCode: 'Arecibo',
+        shortCode: 'Arecibo',
       },
       {
         name: 'Arroyo',
-        shorCode: 'Arroyo',
+        shortCode: 'Arroyo',
       },
       {
         name: 'Barceloneta',
-        shorCode: 'Barceloneta',
+        shortCode: 'Barceloneta',
       },
       {
         name: 'Barranquitas',
-        shorCode: 'Barranquitas',
+        shortCode: 'Barranquitas',
       },
       {
         name: 'Bayamon',
-        shorCode: 'Bayamon',
+        shortCode: 'Bayamon',
       },
       {
         name: 'Cabo Rojo',
-        shorCode: 'Cabo Rojo',
+        shortCode: 'Cabo Rojo',
       },
       {
         name: 'Caguas',
-        shorCode: 'Caguas',
+        shortCode: 'Caguas',
       },
       {
         name: 'Camuy',
-        shorCode: 'Camuy',
+        shortCode: 'Camuy',
       },
       {
         name: 'Canovanas',
-        shorCode: 'Canovanas',
+        shortCode: 'Canovanas',
       },
       {
         name: 'Carolina',
-        shorCode: 'Carolina',
+        shortCode: 'Carolina',
       },
       {
         name: 'Cat',
-        shorCode: 'Cat',
+        shortCode: 'Cat',
       },
       {
         name: 'Ceiba',
-        shorCode: 'Ceiba',
+        shortCode: 'Ceiba',
       },
       {
         name: 'Ciales',
-        shorCode: 'Ciales',
+        shortCode: 'Ciales',
       },
       {
         name: 'Cidra',
-        shorCode: 'Cidra',
+        shortCode: 'Cidra',
       },
       {
         name: 'Coamo',
-        shorCode: 'Coamo',
+        shortCode: 'Coamo',
       },
       {
         name: 'Comerio',
-        shorCode: 'Comerio',
+        shortCode: 'Comerio',
       },
       {
         name: 'Corozal',
-        shorCode: 'Corozal',
+        shortCode: 'Corozal',
       },
       {
         name: 'Culebra',
-        shorCode: 'Culebra',
+        shortCode: 'Culebra',
       },
       {
         name: 'Dorado',
-        shorCode: 'Dorado',
+        shortCode: 'Dorado',
       },
       {
         name: 'Fajardo',
-        shorCode: 'Fajardo',
+        shortCode: 'Fajardo',
       },
       {
         name: 'Florida',
-        shorCode: 'Florida',
+        shortCode: 'Florida',
       },
       {
         name: 'Guanica',
-        shorCode: 'Guanica',
+        shortCode: 'Guanica',
       },
       {
         name: 'Guayama',
-        shorCode: 'Guayama',
+        shortCode: 'Guayama',
       },
       {
         name: 'Guayanilla',
-        shorCode: 'Guayanilla',
+        shortCode: 'Guayanilla',
       },
       {
         name: 'Guaynabo',
-        shorCode: 'Guaynabo',
+        shortCode: 'Guaynabo',
       },
       {
         name: 'Gurabo',
-        shorCode: 'Gurabo',
+        shortCode: 'Gurabo',
       },
       {
         name: 'Hatillo',
-        shorCode: 'Hatillo',
+        shortCode: 'Hatillo',
       },
       {
         name: 'Hormigueros',
-        shorCode: 'Hormigueros',
+        shortCode: 'Hormigueros',
       },
       {
         name: 'Humacao',
-        shorCode: 'Humacao',
+        shortCode: 'Humacao',
       },
       {
         name: 'Isabe',
-        shorCode: 'Isabe',
+        shortCode: 'Isabe',
       },
       {
         name: 'Juana Diaz',
-        shorCode: 'Juana Diaz',
+        shortCode: 'Juana Diaz',
       },
       {
         name: 'Juncos',
-        shorCode: 'Juncos',
+        shortCode: 'Juncos',
       },
       {
         name: 'Lajas',
-        shorCode: 'Lajas',
+        shortCode: 'Lajas',
       },
       {
         name: 'Lares',
-        shorCode: 'Lares',
+        shortCode: 'Lares',
       },
       {
         name: 'Las Marias',
-        shorCode: 'Las Marias',
+        shortCode: 'Las Marias',
       },
       {
         name: 'Las oiza',
-        shorCode: 'Las oiza',
+        shortCode: 'Las oiza',
       },
       {
         name: 'Luquillo',
-        shorCode: 'Luquillo',
+        shortCode: 'Luquillo',
       },
       {
         name: 'Manati',
-        shorCode: 'Manati',
+        shortCode: 'Manati',
       },
       {
         name: 'Maricao',
-        shorCode: 'Maricao',
+        shortCode: 'Maricao',
       },
       {
         name: 'Maunabo',
-        shorCode: 'Maunabo',
+        shortCode: 'Maunabo',
       },
       {
         name: 'Mayaguez',
-        shorCode: 'Mayaguez',
+        shortCode: 'Mayaguez',
       },
       {
         name: 'Moca',
-        shorCode: 'Moca',
+        shortCode: 'Moca',
       },
       {
         name: 'Morovis',
-        shorCode: 'Morovis',
+        shortCode: 'Morovis',
       },
       {
         name: 'Naguabo',
-        shorCode: 'Naguabo',
+        shortCode: 'Naguabo',
       },
       {
         name: 'Naranjito',
-        shorCode: 'Naranjito',
+        shortCode: 'Naranjito',
       },
       {
         name: 'Orocovis',
-        shorCode: 'Orocovis',
+        shortCode: 'Orocovis',
       },
       {
         name: 'Patillas',
-        shorCode: 'Patillas',
+        shortCode: 'Patillas',
       },
       {
         name: 'Penuelas',
-        shorCode: 'Penuelas',
+        shortCode: 'Penuelas',
       },
       {
         name: 'Ponce',
-        shorCode: 'Ponce',
+        shortCode: 'Ponce',
       },
       {
         name: 'Quebradillas',
-        shorCode: 'Quebradillas',
+        shortCode: 'Quebradillas',
       },
       {
         name: 'Rincon',
-        shorCode: 'Rincon',
+        shortCode: 'Rincon',
       },
       {
         name: 'Rio Grande',
-        shorCode: 'Rio Grande',
+        shortCode: 'Rio Grande',
       },
       {
         name: 'Sabana linas',
-        shorCode: 'Sabana linas',
+        shortCode: 'Sabana linas',
       },
       {
         name: 'San German',
-        shorCode: 'San German',
+        shortCode: 'San German',
       },
       {
         name: 'San Juan',
-        shorCode: 'San Juan',
+        shortCode: 'San Juan',
       },
       {
         name: 'San Lorenzo',
-        shorCode: 'San Lorenzo',
+        shortCode: 'San Lorenzo',
       },
       {
         name: 'San Sebastian',
-        shorCode: 'San Sebastian',
+        shortCode: 'San Sebastian',
       },
       {
         name: 'Santa Isabel',
-        shorCode: 'Santa Isabel',
+        shortCode: 'Santa Isabel',
       },
       {
         name: 'Toa Alta',
-        shorCode: 'Toa Alta',
+        shortCode: 'Toa Alta',
       },
       {
         name: 'Toa Baja',
-        shorCode: 'Toa Baja',
+        shortCode: 'Toa Baja',
       },
       {
         name: 'Trujillo Alto',
-        shorCode: 'Trujillo Alto',
+        shortCode: 'Trujillo Alto',
       },
       {
         name: 'Utuado',
-        shorCode: 'Utuado',
+        shortCode: 'Utuado',
       },
       {
         name: 'Vega Alta',
-        shorCode: 'Vega Alta',
+        shortCode: 'Vega Alta',
       },
       {
         name: 'Vega ues',
-        shorCode: 'Vega ues',
+        shortCode: 'Vega ues',
       },
       {
         name: 'Villalba',
-        shorCode: 'Villalba',
+        shortCode: 'Villalba',
       },
       {
         name: 'Yabucoa',
-        shorCode: 'Yabucoa',
+        shortCode: 'Yabucoa',
       },
       {
         name: 'Yauco',
-        shorCode: 'Yauco',
+        shortCode: 'Yauco',
       },
     ],
   },

@@ -455,6 +455,7 @@ class fnsCustomAddressForm {
   }
 
   getRegions(country) {
+
     const countryRegions = _cities.find(
       city => city.countryShortCode === country
     )
