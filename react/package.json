@@ -19,6 +19,6 @@
     "react-intl": "^5.0.2"
   },
   "resolutions": {
-    "expect/node": "^14.15.0"
+    "jest/node": "^14.15.0"
   }
 }
