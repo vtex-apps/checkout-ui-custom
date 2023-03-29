@@ -22,10 +22,6 @@
     "tslint-config-vtex": "^2.1.0",
     "typescript": "3.9.7"
   },
-  "resolutions": {
-    "@types/express": "4.16.0",
-    "@types/express-serve-static-core": "4.16.0"
-  },
   "scripts": {
     "lint": "tsc --noEmit && tslint -c tslint.json './**/*.ts'"
   }

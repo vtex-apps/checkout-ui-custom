@@ -17,9 +17,5 @@
     "graphql": "^15.3.0",
     "prop-types": "^15.7.2",
     "react-intl": "^5.0.2"
-  },
-  "resolutions": {
-    "@types/express": "4.16.0",
-    "@types/express-serve-static-core": "4.16.0"
   }
 }
