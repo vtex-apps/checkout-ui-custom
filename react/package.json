@@ -17,5 +17,8 @@
     "graphql": "15.3.0",
     "prop-types": "15.7.2",
     "react-intl": "5.0.2"
+  },
+  "resolutions": {
+    "testing-library/dom@*": "6.15.0"
   }
 }
