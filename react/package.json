@@ -1,6 +1,7 @@
 {
   "name": "checkout-ui-custom-app",
   "version": "0.9.1",
+  "license": "VTEX",
   "scripts": {
     "test": "vtex-test-tools test"
   },
@@ -9,12 +10,7 @@
     "@types/node": "^14.0.14",
     "@types/prop-types": "^15.7.0",
     "@types/react": "^16.9.41",
-    "@vtex/test-tools": "^3.1.0",
-    "vtex.checkout-ui-custom": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.7.13/public/@types/vtex.checkout-ui-custom",
-    "vtex.checkout-ui-settings-server": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.4/public/_types/react",
-    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.4/public/@types/vtex.render-runtime",
-    "vtex.store-resources": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.87.0/public/@types/vtex.store-resources",
-    "vtex.styleguide": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.1/public/@types/vtex.styleguide"
+    "@vtex/test-tools": "^3.1.0"
   },
   "dependencies": {
     "axios": "^0.19.2",

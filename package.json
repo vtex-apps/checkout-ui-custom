@@ -1,7 +1,7 @@
 {
   "name": "checkout-ui-custom",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "VTEX",
   "scripts": {
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\"",
