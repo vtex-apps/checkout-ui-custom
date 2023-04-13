@@ -93,7 +93,11 @@ class fnsCustomAddressForm {
     geoCoordinates = ''
   ) {
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-      'number' in this.addressrules ? street : formattedStreet ? formattedStreet : street
+      'number' in this.addressrules
+      ? street
+      : formattedStreet
+      ? formattedStreet
+      : street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
       complement
@@ -105,7 +109,11 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      'number' in this.addressrules ? street : formattedStreet ? formattedStreet : street
+      'number' in this.addressrules
+      ? street
+      : formattedStreet
+      ? formattedStreet
+      : street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
