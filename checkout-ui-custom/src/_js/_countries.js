@@ -490,6 +490,13 @@ module.exports._countriesrules = {
     number: false,
     postalCode: true,
   },
+  PRI: {
+    state: 'administrative_area_level_1',
+    city: 'administrative_are_level_2',
+    neighborhood: 'locality',
+    number: false,
+    postalCode: true,
+  },
 }
 
 // _countries.find(i=>i[0]=="US")
