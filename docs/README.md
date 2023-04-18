@@ -79,6 +79,9 @@ When developing a new version of Checkout UI Custom, take care to compile the ch
 
 During implementation, you will need to run `vtex link` on the root folder and also watch assets by running `yarn watch` in the `/checkout-ui-custom/` subfolder
 
+❗Note that during implementation, avoid publishing changes to the workspace. As this will permanently add the changes to the workspace and any changes to the app will not be shown. 
+
+
 #
 
 <!-- DOCS-IGNORE:start -->
