@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+AUSTRIA configuration
+
+### Fixed
+German translations on shipping / pick up times
+Missing translations on the config file
+
 ## [0.10.0] - 2023-04-18
 ### Added
 - Added more info into the README
