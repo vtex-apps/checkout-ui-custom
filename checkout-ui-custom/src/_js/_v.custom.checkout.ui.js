@@ -561,14 +561,14 @@ class checkoutCustom {
         let days
 
         if (!$(this).hasClass('srp-delivery-current-many')) {
-          if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)/gm)) {
+          if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)|(tag)/gm)) {
             days = parseInt(txtselectin.match(/\d+/), 10)
           }
         } else if (selectedSlaDays) {
           days = parseInt(selectedSlaDays.match(/\d+/), 10)
         }
 
-        if (days) {
+        if (days) { 
           let _delivtext = _this.lang.deliveryDateText
 
           if (
@@ -576,7 +576,7 @@ class checkoutCustom {
               .find(mainSTIelems.join(', '))
               .text()
               .toLowerCase()
-              .match(/(ready in up)|(pronto)|(a partir de)|(hasta)/gm)
+              .match(/(ready in up)|(pronto)|(a partir de)|(hasta)|(fertig in)|(Fertig in)/gm)
           ) {
             _delivtext = _this.lang.PickupDateText
           } // check if is pickup. OBS: none of others solutions worked, needs constantly update
@@ -609,16 +609,16 @@ class checkoutCustom {
         $.each(a, function (i) {
           const txtselectin = a[i]
 
-          if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)/gm)) {
+          if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)|(tag)/gm)) {
             const days = parseInt(txtselectin.match(/\d+/), 10)
-
+  
             if (days) {
               let _delivtext = _this.lang.deliveryDateText
 
               if (
                 txtselectin
                   .toLowerCase()
-                  .match(/(ready in up)|(pronto)|(A partir de)|(hasta)/gm)
+                  .match(/(ready in up)|(pronto)|(A partir de)|(hasta)|(fertig in)|(Fertig in)/gm)
               ) {
                 _delivtext = _this.lang.PickupDateText
               } // check if is pickup. OBS: none of others solutions worked, needs constantly update
