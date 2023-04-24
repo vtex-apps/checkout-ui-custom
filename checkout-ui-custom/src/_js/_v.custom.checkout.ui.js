@@ -576,7 +576,7 @@ class checkoutCustom {
               .find(mainSTIelems.join(', '))
               .text()
               .toLowerCase()
-              .match(/(ready in up)|(pronto)|(a partir de)|(hasta)|(fertig in)|(Fertig in)/gm)
+              .match(/(ready in up)|(pronto)|(a partir de)|(hasta)|(fertig in)/gm)
           ) {
             _delivtext = _this.lang.PickupDateText
           } // check if is pickup. OBS: none of others solutions worked, needs constantly update
@@ -618,7 +618,7 @@ class checkoutCustom {
               if (
                 txtselectin
                   .toLowerCase()
-                  .match(/(ready in up)|(pronto)|(A partir de)|(hasta)|(fertig in)|(Fertig in)/gm)
+                  .match(/(ready in up)|(pronto)|(a partir de)|(hasta)|(fertig in)/gm)
               ) {
                 _delivtext = _this.lang.PickupDateText
               } // check if is pickup. OBS: none of others solutions worked, needs constantly update
