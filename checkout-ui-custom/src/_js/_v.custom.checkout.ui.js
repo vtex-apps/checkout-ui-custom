@@ -19,6 +19,7 @@ class checkoutCustom {
     this.orderForm = ''
     this.orderId = this.orderForm ? this.orderForm.orderFormId : ''
     this.lang = ''
+    this.checkoutButton = null
 
     this.accordionPayments = accordionPayments
     this.deliveryDateFormat = deliveryDateFormat
@@ -57,7 +58,10 @@ class checkoutCustom {
           const mutationObserver = new MutationObserver(callback1)
 
           // have the observer observe foo for changes in children
-          mutationObserver.observe(obj, { childList: true, subtree: true })
+          mutationObserver.observe(obj, {
+            childList: true,
+            subtree: true,
+          })
 
           return mutationObserver
         }
@@ -86,9 +90,13 @@ class checkoutCustom {
 
   buildVertical() {
     $('body').addClass('body-cart-vertical')
-    $('.cart-template .cart-links-bottom:eq(0)').appendTo(
-      '.cart-template > .summary-template-holder'
-    )
+    if ($('.cart-template .cart-links-bottom:eq(0)').length) {
+      this.checkoutButton = $('.cart-template .cart-links-bottom:eq(0)')
+    }
+
+    if (this.checkoutButton) {
+      this.checkoutButton.appendTo('.cart-template > .summary-template-holder')
+    }
   }
 
   buildHorizontal() {}

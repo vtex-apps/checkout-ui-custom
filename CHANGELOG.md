@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Bug on Safari causing "Proceed to Payment" / "Checkout" button to disappear from cart page
+
 ## [0.10.0] - 2023-04-18
+
 ### Added
+
 - Added more info into the README
 
 ## [0.9.3] - 2023-04-13
@@ -24,6 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.9.2] - 2023-04-07
 
 ### Fixed
+
 - Address field open at checkout
 
 ## [0.9.1] - 2023-03-28
