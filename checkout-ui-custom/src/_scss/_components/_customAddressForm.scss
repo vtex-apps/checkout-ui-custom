@@ -1,6 +1,31 @@
 
 
 
+#shipping-data .accordion-group.shipping-data:after {
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+.js-v-custom-is-loadAddress {
+  .vtex-omnishipping-1-x-warning {
+    display: none !important;
+  }
+
+  #shipping-data .accordion-group.shipping-data:after {
+    content: "";
+    display: block;
+    opacity: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 20px;
+    z-index: 2;
+    margin:0 0 20px 0;
+    border-radius: 3px;
+    @extend %loading-shimmer;
+  }
+}
+
+
 .vcustom--vtex-omnishipping-1-x-address {
   display: none;
 }
