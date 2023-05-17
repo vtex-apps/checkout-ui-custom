@@ -449,13 +449,14 @@ class fnsCustomAddressForm {
       clearAddressIfPostalCodeNotFound: false,
     }
 
-    window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function() {
+    window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function () {
       $('button.vtex-front-messages-close-all.close').trigger('click')
       $('.vtex-omnishipping-1-x-warning').hide()
       _this.firstAttempt = true
 
-      window.vtexjs.checkout.sendAttachment('shippingData', shippingInfo)
-        .done(function(orderForm) {
+      window.vtexjs.checkout
+      .sendAttachment('shippingData', shippingInfo)
+        .done(function (orderForm) {
           if (orderForm.error) {
             $('body').removeClass('js-v-custom-is-loading')
             // eslint-disable-next-line no-alert
@@ -996,12 +997,11 @@ class fnsCustomAddressForm {
   }
 
   loadingAddress(orderForm) {
-    if(
+    if (
       ~window.location.hash.indexOf('#/shipping') &&
       orderForm.shippingData.availableAddresses.length &&
       orderForm.shippingData.address == null
-    )
-    {
+    ) {
       $('body').addClass('js-v-custom-is-loadAddress')
     } else {
       $('body').removeClass('js-v-custom-is-loadAddress')
