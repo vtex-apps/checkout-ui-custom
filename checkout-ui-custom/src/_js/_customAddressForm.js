@@ -43,7 +43,7 @@ class fnsCustomAddressForm {
 
     this.gPlacesAutocomplete = ''
 
-    this.firstAttempt=false
+    this.firstAttempt = false
   }
 
   loadScript() {
@@ -428,7 +428,8 @@ class fnsCustomAddressForm {
     // )
 
     const shippingInfo = {
-      selectedAddresses: [{
+      selectedAddresses: [
+        {
             addressType: 'residential',
             receiverName: '',
             isDisposable: true,
@@ -443,7 +444,8 @@ class fnsCustomAddressForm {
             reference: null,
             geoCoordinates: geoCoordinates || [],
             addressQuery: _addressQuery
-        }],
+        }
+      ],
       clearAddressIfPostalCodeNotFound: false
     }
 
@@ -451,7 +453,8 @@ class fnsCustomAddressForm {
       $('button.vtex-front-messages-close-all.close').trigger('click');
       $('.vtex-omnishipping-1-x-warning').hide();
       _this.firstAttempt = true;
-      window.vtexjs.checkout.sendAttachment('shippingData', shippingInfo).done(function(orderForm) {
+      window.vtexjs.checkout.sendAttachment('shippingData', shippingInfo)
+      .done(function(orderForm) {
         if (orderForm.error) {
           $('body').removeClass('js-v-custom-is-loading')
           // eslint-disable-next-line no-alert
@@ -475,7 +478,8 @@ class fnsCustomAddressForm {
           $('body').removeClass('js-v-custom-is-loading')
           _this.triggerAddressValidation()
         }
-      }).fail(function(error) {
+      })
+      .fail(function(error) {
         $('body').removeClass(_this.BodyFormClasses.join(' '))
         _this.orderForm = window.vtexjs.checkout.orderForm
         $('body').removeClass('js-v-custom-is-loading')
