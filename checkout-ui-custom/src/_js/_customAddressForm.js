@@ -529,7 +529,7 @@ class fnsCustomAddressForm {
                 : 'Street address or P.O. Box'
             }</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${
       shippingData.address &&
-      shippingData.address.street !== null &&
+      null !== shippingData.address.street &&
       !isPickupPoint
         ? shippingData.address.street
         : ''
