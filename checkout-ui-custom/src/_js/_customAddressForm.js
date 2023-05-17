@@ -443,16 +443,17 @@ class fnsCustomAddressForm {
           complement: _complement,
           reference: null,
           geoCoordinates: geoCoordinates || [],
-          addressQuery: _addressQuery
-        }
+          addressQuery: _addressQuery,
+        },
       ],
-      clearAddressIfPostalCodeNotFound: false
+      clearAddressIfPostalCodeNotFound: false,
     }
 
     window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function() {
-      $('button.vtex-front-messages-close-all.close').trigger('click');
-      $('.vtex-omnishipping-1-x-warning').hide();
-      _this.firstAttempt = true;
+      $('button.vtex-front-messages-close-all.close').trigger('click')
+      $('.vtex-omnishipping-1-x-warning').hide()
+      _this.firstAttempt = true
+
       window.vtexjs.checkout.sendAttachment('shippingData', shippingInfo)
         .done(function(orderForm) {
           if (orderForm.error) {
@@ -703,7 +704,7 @@ class fnsCustomAddressForm {
       !$('body').hasClass('v-custom-addressForm-on') &&
       shippingData.selectedAddresses.length == 0
     ) {
-      //$('body').addClass('v-custom-addressForm-on')
+      // $('body').addClass('v-custom-addressForm-on')
     }
 
     this.googleForm()
@@ -998,7 +999,8 @@ class fnsCustomAddressForm {
     if(
       ~window.location.hash.indexOf('#/shipping') &&
       orderForm.shippingData.availableAddresses.length &&
-      orderForm.shippingData.address == null )
+      orderForm.shippingData.address == null
+    )
     {
       $('body').addClass('js-v-custom-is-loadAddress')
     } else {
