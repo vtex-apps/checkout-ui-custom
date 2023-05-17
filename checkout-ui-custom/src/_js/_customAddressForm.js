@@ -455,7 +455,7 @@ class fnsCustomAddressForm {
       _this.firstAttempt = true
 
       window.vtexjs.checkout
-      .sendAttachment('shippingData', shippingInfo)
+        .sendAttachment('shippingData', shippingInfo)
         .done(function (orderForm) {
           if (orderForm.error) {
             $('body').removeClass('js-v-custom-is-loading')
@@ -481,7 +481,7 @@ class fnsCustomAddressForm {
             _this.triggerAddressValidation()
           }
         })
-        .fail(function(error) {
+        .fail(function (error) {
           $('body').removeClass(_this.BodyFormClasses.join(' '))
           _this.orderForm = window.vtexjs.checkout.orderForm
           $('body').removeClass('js-v-custom-is-loading')
