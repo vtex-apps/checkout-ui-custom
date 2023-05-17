@@ -528,7 +528,8 @@ class fnsCustomAddressForm {
                   'Street address or P.O. Box'
                 : 'Street address or P.O. Box'
             }</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address?.street !== null &&
+      shippingData.address &&
+      shippingData.address.street !== null &&
       !isPickupPoint
         ? shippingData.address.street
         : ''
@@ -547,7 +548,8 @@ class fnsCustomAddressForm {
     } autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${
       _this.locale.number ? _this.locale.number : ''
     }" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address?.number !== null &&
+      shippingData.address &&
+      shippingData.address.number !== null &&
       !isPickupPoint
         ? shippingData.address.number
         : ''
@@ -562,7 +564,8 @@ class fnsCustomAddressForm {
               }</label><input autocomplete="on" id="ship-complement" type="text" name="v-custom-complement" maxlength="750" placeholder="${
       _this.locale.address2Placeholder ? _this.locale.address2Placeholder : ''
     }" class="input-xlarge" data-hj-whitelist="true" value="${
-      shippingData.address?.complement !== null &&
+      shippingData.address &&
+      shippingData.address.complement !== null &&
       !isPickupPoint
         ? shippingData.address.complement
         : ''
@@ -577,7 +580,8 @@ class fnsCustomAddressForm {
               <p class="input ship-city required text"><label id="city-label" for="ship-city">${
                 _this.locale ? _this.locale.city || 'City' : 'City'
               }</label><input required autocomplete="on" id="ship-city" type="text" name="v-custom-city" maxlength="100" class="input-large" data-hj-whitelist="true" value="${
-      shippingData.address?.city !== null &&
+      shippingData.address &&
+      shippingData.address.city !== null &&
       !isPickupPoint
         ? shippingData.address.city
         : ''
@@ -989,7 +993,7 @@ class fnsCustomAddressForm {
 
           if (_this.lang === 'es-AR') _this.lang = 'es'
 
-          if (_this.orderForm?.shippingData) {
+          if (_this.orderForm && _this.orderForm.shippingData) {
             const shippingData = _this.orderForm.shippingData.address
 
             if (shippingData) {
