@@ -386,47 +386,6 @@ class fnsCustomAddressForm {
 
     $('body').addClass('js-v-custom-is-loading')
 
-    // fetch(
-    //   `/api/checkout/pub/orderForm/${_this.orderForm.orderFormId}/attachments/shippingData`,
-    //   {
-    //     credentials: 'include',
-    //     headers: {
-    //       accept: 'application/json, text/javascript, */*; q=0.01',
-    //       'cache-control': 'no-cache',
-    //       'content-type': 'application/json; charset=UTF-8',
-    //       pragma: 'no-cache',
-    //       'sec-fetch-mode': 'cors',
-    //       'sec-fetch-site': 'same-origin',
-    //       'x-requested-with': 'XMLHttpRequest',
-    //     },
-    //     referrerPolicy: 'no-referrer-when-downgrade',
-    //     body: JSON.stringify({
-    //       selectedAddresses: [
-    //         {
-    //           addressType: 'residential',
-    //           receiverName: '',
-    //           addressId: '',
-    //           isDisposable: true,
-    //           postalCode: _postalCode,
-    //           city: _city,
-    //           state: _state,
-    //           country: _country,
-    //           geoCoordinates,
-    //           street: _street,
-    //           number: _number || '',
-    //           neighborhood: _neighborhood,
-    //           complement: _complement,
-    //           reference: null,
-    //           addressQuery: _addressQuery,
-    //         },
-    //       ],
-    //       clearAddressIfPostalCodeNotFound: false,
-    //     }),
-    //     method: 'POST',
-    //     mode: 'cors',
-    //   }
-    // )
-
     const shippingInfo = {
       selectedAddresses: [
         {
@@ -691,23 +650,13 @@ class fnsCustomAddressForm {
       $('.orderform-template-holder #shipping-data').append(form)
     }
 
-    // if (orderForm.canEditData) {
-    //   $('body').removeClass('v-custom-addressForm-on')
-    // }
-
     if (
       $('#shipping-option-pickup-in-point').hasClass(
         'vtex-omnishipping-1-x-deliveryOptionActive'
       )
     ) {
       $('body').removeClass('v-custom-addressForm-on')
-    } else if (
-      !$('body').hasClass('v-custom-addressForm-on') &&
-      shippingData.selectedAddresses.length == 0
-    ) {
-      // $('body').addClass('v-custom-addressForm-on')
     }
-
     this.googleForm()
     this.updateGoogleForm(country[1].toLowerCase())
 
