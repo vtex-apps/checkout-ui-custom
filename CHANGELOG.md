@@ -15,8 +15,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Missing translations on the config file
 
 
-## [0.11.0] - 2023-05-17
-
 ### Fixed
 
 - Major change in the google address form function
