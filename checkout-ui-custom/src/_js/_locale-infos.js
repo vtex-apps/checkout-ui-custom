@@ -368,7 +368,6 @@ module.exports._locale = {
     checkoutStepsLabelPayment: 'Zahlung',
     checkoutStepsLabelConfirmation: 'Bestätigung',
     googleAddressLabel: 'Adresse',
-    locale: 'de',
     locale: 'de-DE',
     cartNoteLabel: 'Bestellhinweis',
     identifiedUserMessage: 'Willkommen zurück!\nUm Ihren Einkauf zu vereinfachen haben wir Ihre sicher gespeicherten Informationen eingetragen.',
