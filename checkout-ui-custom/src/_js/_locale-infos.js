@@ -342,7 +342,8 @@ module.exports._locale = {
     googleAddressLabel: 'Adresse',
     locale: 'de-DE',
     cartNoteLabel: 'Bestellhinweis',
-    identifiedUserMessage: 'Willkommen zurück!\nUm Ihren Einkauf zu vereinfachen haben wir Ihre sicher gespeicherten Informationen eingetragen.',
+    identifiedUserMessage:
+    'Willkommen zurück!\nUm Ihren Einkauf zu vereinfachen haben wir Ihre sicher gespeicherten Informationen eingetragen.',
     requiredField: 'Pflichftfeld.',
   },
   DEU: {
@@ -370,7 +371,8 @@ module.exports._locale = {
     googleAddressLabel: 'Adresse',
     locale: 'de-DE',
     cartNoteLabel: 'Bestellhinweis',
-    identifiedUserMessage: 'Willkommen zurück!\nUm Ihren Einkauf zu vereinfachen haben wir Ihre sicher gespeicherten Informationen eingetragen.',
+    identifiedUserMessage:
+    'Willkommen zurück!\nUm Ihren Einkauf zu vereinfachen haben wir Ihre sicher gespeicherten Informationen eingetragen.',
   },
   ARA: {
     couponInactive: 'لا توجد خصومات متاحة. تحقق من الشروط.',
