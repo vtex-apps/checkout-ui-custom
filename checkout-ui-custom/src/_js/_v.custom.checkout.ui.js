@@ -373,18 +373,16 @@ class checkoutCustom {
 
   handleBreakpointChange() {
     if (window.innerWidth <= 767) {
-      $(document).ajaxComplete(() => {
-        $('body').on('click', '#edit-address-button', () => {
-          setTimeout(() => {
-            const shippingDataElement = document.getElementById('shipping-data')
-            const offset = shippingDataElement.offsetTop - 200
+      $('body').on('click', '#edit-address-button', () => {
+        setTimeout(() => {
+          const shippingDataElement = document.getElementById('shipping-data')
+          const offset = shippingDataElement.offsetTop - 200
 
-            window.scrollTo({
-              top: offset,
-              behavior: 'smooth',
-            })
-          }, 500)
-        })
+          window.scrollTo({
+            top: offset,
+            behavior: 'smooth',
+          })
+        }, 500)
       })
     }
   }
@@ -564,8 +562,9 @@ class checkoutCustom {
         td.shipping-date,
         .srp-shipping-current-single
       `).each(function () {
-        const [logisticsInfo] =
-          window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
+        const [
+          logisticsInfo,
+        ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
 
         const availableSlas = logisticsInfo.slas
 

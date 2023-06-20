@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Added offset scroll on mobile when user changes their address
+
 ## [0.11.1] - 2023-05-19
 
 ### Added
