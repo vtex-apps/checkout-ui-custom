@@ -371,6 +371,24 @@ class checkoutCustom {
     })
   }
 
+  handleBreakpointChange() {
+    if (window.innerWidth <= 767) {
+      $(document).ajaxComplete(() => {
+        $('body').on('click', '#edit-address-button', () => {
+          setTimeout(() => {
+            const shippingDataElement = document.getElementById('shipping-data')
+            const offset = shippingDataElement.offsetTop - 200
+
+            window.scrollTo({
+              top: offset,
+              behavior: 'smooth',
+            })
+          }, 500)
+        })
+      })
+    }
+  }
+
   removeMCLoader() {
     $(`.mini-cart .cart-items`).addClass('v-loaded')
   }
@@ -546,9 +564,8 @@ class checkoutCustom {
         td.shipping-date,
         .srp-shipping-current-single
       `).each(function () {
-        const [
-          logisticsInfo,
-        ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
+        const [logisticsInfo] =
+          window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
 
         const availableSlas = logisticsInfo.slas
 
@@ -1075,6 +1092,10 @@ class checkoutCustom {
     $('body').on('click', '.js-checkout-steps-item .text', function () {
       window.location = $(this).closest('.checkout-steps_item').attr('data-url')
     })
+
+    window.addEventListener('resize', _this.handleBreakpointChange)
+
+    _this.handleBreakpointChange()
 
     $('body').on(
       'click',
