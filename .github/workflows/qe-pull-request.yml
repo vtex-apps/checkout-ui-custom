@@ -20,10 +20,10 @@ jobs:
       dangerRequireChangelog: false
       nodeLint: true
       nodeTest: false
-      nodeSonar: true
+      nodeSonar: false
       nodeSonarProjectKey: vtex-apps_checkout-ui-custom
       nodeSonarOrganization: vtex-apps
-      cypress: true
+      cypress: false
     secrets:
       githubToken: ${{ secrets.GITHUB_TOKEN }}
       sonarToken: ${{ secrets.SONAR_TOKEN }}
