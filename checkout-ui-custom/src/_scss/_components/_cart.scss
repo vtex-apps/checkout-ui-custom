@@ -978,10 +978,6 @@ h1#cart-title {display:none !important;}
     width: 100% !important;
   }
 
-  @media(max-width: $mobileWidth) {
-    #shipping-preview-container {display: none !important;}
-  }
-
   .vtex-pickup-points-modal-3-x-pickupViewMode {
     .btn {
       padding:13px 0;
