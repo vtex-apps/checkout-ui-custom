@@ -274,10 +274,10 @@
     msk "^1.0.5"
     recompose "^0.27.1"
 
-"@vtex/api@6.45.15":
-  version "6.45.15"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.45.15.tgz#aa987d22f7df16ce2861130deda6ffd63156817b"
-  integrity sha512-Rg1VGDzJ4hHUNp1vSidMdGGPojr1PikMTptlZsJ3oNZVdEo4cPx2l8ZcAEwHWORL7QjPjXaEgmeA5ZOSf+boCQ==
+"@vtex/api@6.45.18":
+  version "6.45.18"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.45.18.tgz#0436e45f303769ec5382d4a0c21409b78fd95023"
+  integrity sha512-c4pcFbSBnstW6CXx0UrmQbZuqUv9vzEHzmNPw3Q+Fgr6Nuwyae1h4UnIJZPrOLEwmW3TU6ourrPGX0IUPwbFNg==
   dependencies:
     "@types/koa" "^2.11.0"
     "@types/koa-compose" "^3.2.3"
@@ -308,7 +308,7 @@
     mime-types "^2.1.12"
     opentracing "^0.14.4"
     p-limit "^2.2.0"
-    prom-client "^12.0.0"
+    prom-client "^14.2.0"
     qs "^6.5.1"
     querystring "^0.2.0"
     ramda "^0.26.0"
@@ -2207,10 +2207,10 @@ process@^0.10.0:
   resolved "https://registry.yarnpkg.com/process/-/process-0.10.1.tgz#842457cc51cfed72dc775afeeafb8c6034372725"
   integrity sha512-dyIett8dgGIZ/TXKUzeYExt7WA6ldDzys9vTDU/cCA9L17Ypme+KzS+NjQCjpn9xsvi/shbMC+yP/BcFMBz0NA==
 
-prom-client@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-12.0.0.tgz#9689379b19bd3f6ab88a9866124db9da3d76c6ed"
-  integrity sha512-JbzzHnw0VDwCvoqf8y1WDtq4wSBAbthMB1pcVI/0lzdqHGJI3KBJDXle70XK+c7Iv93Gihqo0a5LlOn+g8+DrQ==
+prom-client@^14.2.0:
+  version "14.2.0"
+  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-14.2.0.tgz#ca94504e64156f6506574c25fb1c34df7812cf11"
+  integrity sha512-sF308EhTenb/pDRPakm+WgiN+VdM/T1RaHj1x+MvAuT8UiQP8JmOEbxVqtkbfR4LrvOg5n7ic01kRBDGXjYikA==
   dependencies:
     tdigest "^0.1.1"
 
@@ -2629,7 +2629,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
-stats-lite@vtex/node-stats-lite#dist:
+"stats-lite@github:vtex/node-stats-lite#dist":
   version "2.2.0"
   resolved "https://codeload.github.com/vtex/node-stats-lite/tar.gz/1b0d39cc41ef7aaecfd541191f877887a2044797"
   dependencies:
