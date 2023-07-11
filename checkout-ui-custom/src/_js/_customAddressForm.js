@@ -9,9 +9,10 @@ const { getShipStateValue } = require('./_utils')
 // temporaly workaorund
 window.callbackMap = () => {
   window.vtexjs.checkout.getOrderForm(orderForm => {
-    window.vcustom.checkout.customAddressFormInit(orderForm)
+    if(window.vcustom && window.vcustom.checkout && window.vcustom.customAddressFormInit) window.vcustom.checkout.customAddressFormInit(orderForm)
   })
 }
+
 // end temporaly workaorund
 
 class fnsCustomAddressForm {
