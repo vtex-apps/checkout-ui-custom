@@ -1016,7 +1016,9 @@ class checkoutCustom {
         $('body').addClass('returningUser')
       }
 
-      _this.customAddressForm.init(_orderForm)
+      try {_this.customAddressForm.init(_orderForm)} catch(e) {
+        console.warn(`Error in "customAddressFormInit"`)
+      }
     }
   }
 
