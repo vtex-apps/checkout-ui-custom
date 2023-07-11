@@ -391,7 +391,7 @@ class fnsCustomAddressForm {
       selectedAddresses: [
         {
           addressType: 'residential',
-          receiverName: '',
+          receiverName: _this.orderForm.clientProfileData ? `${_this.orderForm.clientProfileData.firstName} ${_this.orderForm.clientProfileData.lastName}` : '',
           isDisposable: true,
           postalCode: _postalCode,
           city: _city,
@@ -408,7 +408,6 @@ class fnsCustomAddressForm {
       ],
       clearAddressIfPostalCodeNotFound: false,
     }
-
     window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function () {
       $('button.vtex-front-messages-close-all.close').trigger('click')
       $('.vtex-omnishipping-1-x-warning').hide()
@@ -969,6 +968,13 @@ class fnsCustomAddressForm {
 
   init(orderForm) {
     const _this = this
+
+    try {
+      if (!window.google) _this.loadScript()
+    } catch(e) {
+      console.warn(`Error in customFormInit while loading "loadScript" function`)
+    }
+
 
     if (
       orderForm &&

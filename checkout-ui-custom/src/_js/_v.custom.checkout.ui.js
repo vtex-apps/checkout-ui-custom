@@ -995,6 +995,7 @@ class checkoutCustom {
 
     if (
       window.location.hash === '#/payment' &&
+      orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
       orderForm.shippingData.address.street === null &&
@@ -1188,9 +1189,6 @@ class checkoutCustom {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
         _this.URLHasIncludePayment(orderForm)
-        if (!window.google && _this.customAddressForm) {
-          _this.customAddressForm.loadScript()
-        }
       })
 
       $(window).load(function () {
