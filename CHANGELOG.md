@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Receiver name when using Google Form
+
+### Fixed
+
+- Try catch on the fallback for gmaps script
+
 ## [0.12.2] - 2023-07-11
 
 ### Fixed
