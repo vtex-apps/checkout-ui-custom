@@ -1,0 +1,5 @@
+{
+  "admin.app.checkout-ui": {
+    "path": "/admin/app/vtex-checkout-ui-custom"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "admin/checkout-ui.tab.javascript.label",
+    "defaultMessage": "Custom Javascript"
+  },
+  {
+    "id": "admin/checkout-ui.tab.javascript.helper",
+    "defaultMessage": "Changes here may impact your sales"
+  },
+  {
+    "id": "admin/checkout-ui.toggle.active",
+    "defaultMessage": "Active"
+  }
+]

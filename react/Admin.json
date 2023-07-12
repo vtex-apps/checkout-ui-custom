@@ -1,0 +1,42 @@
+[
+  {
+    "id": "admin/checkout-ui.title",
+    "defaultMessage": "Checkout custom interface"
+  },
+  {
+    "id": "admin/checkout-ui.button.publish"
+  },
+  {
+    "id": "admin/checkout-ui.update-warning"
+  },
+  {
+    "id": "admin/checkout-ui.tab.layout"
+  },
+  {
+    "id": "admin/checkout-ui.tab.colors"
+  },
+  {
+    "id": "admin/checkout-ui.tab.javascript"
+  },
+  {
+    "id": "admin/checkout-ui.tab.css"
+  },
+  {
+    "id": "admin/checkout-ui.tab.history"
+  },
+  {
+    "id": "admin/checkout-ui.message.published"
+  },
+  {
+    "id": "admin/checkout-ui.message.publishing"
+  },
+  {
+    "id": "admin/checkout-ui.publish.confirm"
+  },
+  {
+    "id": "admin/checkout-ui.publish.cancel"
+  },
+  {
+    "id": "admin/checkout-ui.publish.warning"
+  }
+]

@@ -1,0 +1,25 @@
+[
+  {
+    "id": "admin/checkout-ui.history.label.email",
+    "defaultMessage": "Email"
+  },
+  {
+    "id": "admin/checkout-ui.history.label.workspace",
+    "defaultMessage": "Workspace"
+  },
+  {
+    "id": "admin/checkout-ui.history.label.version",
+    "defaultMessage": "App version"
+  },
+  {
+    "id": "admin/checkout-ui.history.label.date",
+    "defaultMessage": "Creation date"
+  },
+  {
+    "id": "admin/checkout-ui.history.button.load",
+    "defaultMessage": "Load"
+  },
+  {
+    "id": "admin/checkout-ui.history.help.appversion"
+  }
+]

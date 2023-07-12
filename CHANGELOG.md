@@ -7,46 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.12.3] - 2023-07-11
-
-### Added
-
-- Receiver name when using Google Form
-
-### Fixed
-
-- Try catch on the fallback for gmaps script
-
-## [0.12.2] - 2023-07-11
-
-### Fixed
-
-- Try catch for address trigger
-
-## [0.12.1] - 2023-07-11
-
-### Fixed
-
-- Fix probably undefined error for `customAddressFormInit`
-
-## [0.12.0] - 2023-06-27
-
-### Added
-- Added offset scroll on mobile when user changes their address
-
-## [0.11.1] - 2023-05-19
-
-### Added
-- AUSTRIA configuration
-
-### Fixed
-- German translations on shipping / pick up times
-- Missing translations on the config file
-
-### Fixed
-
-- Major change in the google address form function
-
 ## [0.10.1] - 2023-04-27
 
 ### Fixed

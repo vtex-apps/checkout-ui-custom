@@ -1,0 +1,59 @@
+[
+  {
+    "id": "admin/checkout-ui.layout.accordionPayments.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.accordionPayments.help"
+  },
+  {
+    "id": "admin/checkout-ui.layout.deliveryDateFormat.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.deliveryDateFormat.help"
+  },
+  {
+    "id": "admin/checkout-ui.layout.showCartQuantityPrice.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.showCartQuantityPrice.help"
+  },
+  {
+    "id": "admin/checkout-ui.layout.showNoteField.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.hideEmailStep.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.customAddressForm.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.preview.title"
+  },
+  {
+    "id": "admin/checkout-ui.layout.fontSize.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.borderRadius.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.btnBorderRadius.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.inputHeight.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.preview.sample"
+  },
+  {
+    "id": "admin/checkout-ui.layout.preview.button"
+  },
+  {
+    "id": "admin/checkout-ui.layout.maxWrapper.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.bordersContainers.label"
+  },
+  {
+    "id": "admin/checkout-ui.layout.fontFamily.label"
+  }
+]

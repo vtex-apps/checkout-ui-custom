@@ -1,0 +1,62 @@
+[
+  {
+    "id": "admin/checkout-ui.color.base"
+  },
+  {
+    "id": "admin/checkout-ui.color.baseInverted"
+  },
+  {
+    "id": "admin/checkout-ui.color.actionPrimary"
+  },
+  {
+    "id": "admin/checkout-ui.color.actionPrimaryDarken"
+  },
+  {
+    "id": "admin/checkout-ui.color.actionSecondary"
+  },
+  {
+    "id": "admin/checkout-ui.color.emphasis"
+  },
+  {
+    "id": "admin/checkout-ui.color.disabled"
+  },
+  {
+    "id": "admin/checkout-ui.color.success"
+  },
+  {
+    "id": "admin/checkout-ui.color.successDarken"
+  },
+  {
+    "id": "admin/checkout-ui.color.successFaded"
+  },
+  {
+    "id": "admin/checkout-ui.color.danger"
+  },
+  {
+    "id": "admin/checkout-ui.color.dangerFaded"
+  },
+  {
+    "id": "admin/checkout-ui.color.warning"
+  },
+  {
+    "id": "admin/checkout-ui.color.warningFaded"
+  },
+  {
+    "id": "admin/checkout-ui.color.muted1"
+  },
+  {
+    "id": "admin/checkout-ui.color.muted2"
+  },
+  {
+    "id": "admin/checkout-ui.color.muted3"
+  },
+  {
+    "id": "admin/checkout-ui.color.muted4"
+  },
+  {
+    "id": "admin/checkout-ui.color.muted5"
+  },
+  {
+    "id": "admin/checkout-ui.color.muted6"
+  }
+]

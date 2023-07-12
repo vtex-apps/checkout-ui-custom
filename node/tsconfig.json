@@ -1,9 +1,1 @@
-{
-  "extends": "@vtex/tsconfig",
-  "include": ["./typings/*.d.ts", "./**/*.tsx", "./**/*.ts"],
-  "compilerOptions": {
-    "types": ["node", "jest"],
-    "module": "commonjs"
-  },
-  "exclude": ["node_modules"]
-}
+{"compilerOptions":{"alwaysStrict":true,"esModuleInterop":true,"module":"commonjs","moduleResolution":"node","noImplicitAny":true,"noImplicitReturns":true,"noImplicitThis":true,"noUnusedLocals":true,"noUnusedParameters":true,"skipLibCheck":true,"strictFunctionTypes":true,"strictNullChecks":true,"strictPropertyInitialization":true,"target":"es2019","allowJs":true,"inlineSourceMap":true,"inlineSources":true,"lib":["es2019"],"listEmittedFiles":true,"noEmitOnError":false,"outDir":"/cache/build/build_vtex_master/vtex.checkout-ui-custom@0.10.2-hkignore.europe.0/dist/service-node/app","rootDir":"/cache/build/build_vtex_master/vtex.checkout-ui-custom@0.10.2-hkignore.europe.0","sourceMap":false,"typeRoots":["/cache/build/build_vtex_master/vtex.checkout-ui-custom@0.10.2-hkignore.europe.0/src/node/node_modules/@types"],"types":["node","jest"],"baseUrl":".","paths":{"vtex.checkout-ui-custom":["/cache/build/build_vtex_master/vtex.checkout-ui-custom@0.10.2-hkignore.europe.0/public/@types/vtex.checkout-ui-custom"]}},"exclude":["node_modules","node_modules"],"files":["/cache/build/build_vtex_master/vtex.checkout-ui-custom@0.10.2-hkignore.europe.0/bundle.ts"],"typeAcquisition":{"enable":false},"extends":"@vtex/tsconfig","include":["./typings/*.d.ts","./**/*.tsx","./**/*.ts"]}

@@ -1,0 +1,6 @@
+{
+  "admin.app.checkout-ui": {
+    "component": "Admin",
+    "render": "client"
+  }
+}

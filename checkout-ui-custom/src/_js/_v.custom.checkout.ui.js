@@ -283,7 +283,12 @@ class checkoutCustom {
     },
     0)
 
-    if (!_coupon || couponItemsCount > 0) {
+     // Match coupon with rateAndBenefitsIdentifiers
+    const couponMatch = orderForm.ratesAndBenefitsData.ratesAndBenefitsIdentifiers.find(
+      item => item.name === _coupon
+    )
+
+    if (!_coupon || couponItemsCount > 0 || couponMatch) {
       $('fieldset.coupon-fieldset').removeClass(
         'js-vcustom-showCustomMsgCoupon'
       )
@@ -369,22 +374,6 @@ class checkoutCustom {
         )
       }
     })
-  }
-
-  handleBreakpointChange() {
-    if (window.innerWidth <= 767) {
-      $('body').on('click', '#edit-address-button', () => {
-        setTimeout(() => {
-          const shippingDataElement = document.getElementById('shipping-data')
-          const offset = shippingDataElement.offsetTop - 200
-
-          window.scrollTo({
-            top: offset,
-            behavior: 'smooth',
-          })
-        }, 500)
-      })
-    }
   }
 
   removeMCLoader() {
@@ -585,10 +574,7 @@ class checkoutCustom {
         let days
 
         if (!$(this).hasClass('srp-delivery-current-many')) {
-          if (
-            txtselectin !== '' &&
-            txtselectin.match(/(day)|(dia)|(día)|(tag)/gm)
-          ) {
+          if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)/gm)) {
             days = parseInt(txtselectin.match(/\d+/), 10)
           }
         } else if (selectedSlaDays) {
@@ -603,9 +589,7 @@ class checkoutCustom {
               .find(mainSTIelems.join(', '))
               .text()
               .toLowerCase()
-              .match(
-                /(ready in up)|(pronto)|(a partir de)|(hasta)|(fertig in)/gm
-              )
+              .match(/(ready in up)|(pronto)|(a partir de)|(hasta)/gm)
           ) {
             _delivtext = _this.lang.PickupDateText
           } // check if is pickup. OBS: none of others solutions worked, needs constantly update
@@ -638,10 +622,7 @@ class checkoutCustom {
         $.each(a, function (i) {
           const txtselectin = a[i]
 
-          if (
-            txtselectin !== '' &&
-            txtselectin.match(/(day)|(dia)|(día)|(tag)/gm)
-          ) {
+          if (txtselectin !== '' && txtselectin.match(/(day)|(dia)|(día)/gm)) {
             const days = parseInt(txtselectin.match(/\d+/), 10)
 
             if (days) {
@@ -650,9 +631,7 @@ class checkoutCustom {
               if (
                 txtselectin
                   .toLowerCase()
-                  .match(
-                    /(ready in up)|(pronto)|(a partir de)|(hasta)|(fertig in)/gm
-                  )
+                  .match(/(ready in up)|(pronto)|(A partir de)|(hasta)/gm)
               ) {
                 _delivtext = _this.lang.PickupDateText
               } // check if is pickup. OBS: none of others solutions worked, needs constantly update
@@ -995,7 +974,6 @@ class checkoutCustom {
 
     if (
       window.location.hash === '#/payment' &&
-      orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
       orderForm.shippingData.address.street === null &&
@@ -1017,9 +995,7 @@ class checkoutCustom {
         $('body').addClass('returningUser')
       }
 
-      try {_this.customAddressForm.init(_orderForm)} catch(e) {
-        console.warn(`Error in "customAddressFormInit"`)
-      }
+      _this.customAddressForm.init(_orderForm)
     }
   }
 
@@ -1094,10 +1070,6 @@ class checkoutCustom {
     $('body').on('click', '.js-checkout-steps-item .text', function () {
       window.location = $(this).closest('.checkout-steps_item').attr('data-url')
     })
-
-    window.addEventListener('resize', _this.handleBreakpointChange)
-
-    _this.handleBreakpointChange()
 
     $('body').on(
       'click',
@@ -1189,6 +1161,9 @@ class checkoutCustom {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
         _this.URLHasIncludePayment(orderForm)
+        if (!window.google && _this.customAddressForm) {
+          _this.customAddressForm.loadScript()
+        }
       })
 
       $(window).load(function () {
