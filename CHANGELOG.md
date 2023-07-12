@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Remove coupong error message when using it with a campaign audience promotion.
+
 ## [0.12.3] - 2023-07-11
 
 ### Added
