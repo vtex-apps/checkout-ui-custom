@@ -283,7 +283,12 @@ class checkoutCustom {
     },
     0)
 
-    if (!_coupon || couponItemsCount > 0) {
+    // Match coupon with rateAndBenefitsIdentifiers
+    const couponMatch = orderForm.ratesAndBenefitsData.ratesAndBenefitsIdentifiers.find(
+      item => item.name === _coupon
+    )
+
+    if (!_coupon || couponItemsCount > 0 || couponMatch) {
       $('fieldset.coupon-fieldset').removeClass(
         'js-vcustom-showCustomMsgCoupon'
       )
