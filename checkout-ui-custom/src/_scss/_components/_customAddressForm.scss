@@ -47,7 +47,6 @@ body.v-custom-addressForm-on {
         margin-right: 10px;
       }
     }
-    .accordion-inner.shipping-container  .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation,
     .vtex-omnishipping-1-x-addressForm, .vtex-omnishipping-1-x-deliveryGroup, .vtex-omnishipping-1-x-submitPaymentButton {
       display: none;
     }
@@ -120,8 +119,6 @@ body.v-custom-fnsCustomAddressForm {
   .vtex-omnishipping-1-x-addressFormPart1 p.input.ship-postalCode {
       display:block;
   }
-
-  .vtex-omnishipping-1-x-addressFormPart1 + .vtex-omnishipping-1-x-submitPaymentButton {display:none;}
 
   .orderform-template-holder {
     .step.shipping-data .box-step {

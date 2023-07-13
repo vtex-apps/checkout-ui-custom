@@ -392,7 +392,7 @@ class fnsCustomAddressForm {
         {
           addressType: 'residential',
           receiverName: _this.orderForm.clientProfileData ? `${_this.orderForm.clientProfileData.firstName} ${_this.orderForm.clientProfileData.lastName}` : '',
-          isDisposable: true,
+          isDisposable: false,
           postalCode: _postalCode,
           city: _city,
           state: _state,
@@ -409,6 +409,9 @@ class fnsCustomAddressForm {
       clearAddressIfPostalCodeNotFound: false,
     }
     window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function () {
+
+      $(window).trigger("VCUSTOM__ADDRESSFORM__CLEARED")
+
       $('button.vtex-front-messages-close-all.close').trigger('click')
       $('.vtex-omnishipping-1-x-warning').hide()
       _this.firstAttempt = true
@@ -416,6 +419,9 @@ class fnsCustomAddressForm {
       window.vtexjs.checkout
         .sendAttachment('shippingData', shippingInfo)
         .done(function (orderForm) {
+
+          $(window).trigger("VCUSTOM__ADDRESSFORM__UPDATED")
+
           if (orderForm.error) {
             $('body').removeClass('js-v-custom-is-loading')
             // eslint-disable-next-line no-alert
@@ -441,11 +447,15 @@ class fnsCustomAddressForm {
           }
         })
         .fail(function (error) {
-          $('body').removeClass(_this.BodyFormClasses.join(' '))
           _this.orderForm = window.vtexjs.checkout.orderForm
-          $('body').removeClass('js-v-custom-is-loading')
-          alert(`Something went wrong: ${error}`)
+          $('body').removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
+          console.error(`Something went wrong: Custom Address Form (sendAddress) --> ${error}`)
         })
+    })
+    .fail(function (error) {
+      _this.orderForm = window.vtexjs.checkout.orderForm
+      $('body').removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
+      console.error(`Something went wrong: Custom Address Form (sendAddress) --> ${error}`)
     })
   }
 
@@ -778,7 +788,7 @@ class fnsCustomAddressForm {
 
     $('body').on(
       'click',
-      '.step.shipping-data #edit-address-button, .step.shipping-data .vtex-omnishipping-1-x-linkEdit',
+      '.step.shipping-data .vtex-omnishipping-1-x-buttonEditAddress, .step.shipping-data .vtex-omnishipping-1-x-linkEdit',
       function () {
         if (
           !$('#shipping-option-pickup-in-point').hasClass(
@@ -799,12 +809,13 @@ class fnsCustomAddressForm {
 
           if (addressClicked && addressClicked.city.indexOf('*') < 0) {
             try {
+              $('body').addClass(_this.BodyFormClasses.join(' '))
               if (
                 addressClicked.isDisposable ||
                 ~window.location.origin.indexOf('myvtex')
               ) {
                 setTimeout(() => {
-                  $('body').addClass(_this.BodyFormClasses.join(' '))
+
                   addressClicked.street = addressClicked.street || ''
                   _this.updateAddress(
                     addressClicked.country,
@@ -946,23 +957,25 @@ class fnsCustomAddressForm {
   }
 
   loadingAddress(orderForm) {
-    if (
-      ~window.location.hash.indexOf('#/shipping') &&
-      orderForm.shippingData.availableAddresses.length &&
-      orderForm.shippingData.address == null
-    ) {
-      $('body').addClass('js-v-custom-is-loadAddress')
-    } else {
-      $('body').removeClass('js-v-custom-is-loadAddress')
-    }
+
+    $(window).on("VCUSTOM__ADDRESSFORM__CLEARED", function() {
+      console.log("VCUSTOM__ADDRESSFORM__CLEARED")
+        $('body').addClass('js-v-custom-is-loadAddress')
+    })
+
+    $(window).on("VCUSTOM__ADDRESSFORM__UPDATED", function() {
+      console.log("VCUSTOM__ADDRESSFORM__UPDATED")
+        $('body').removeClass('js-v-custom-is-loadAddress')
+    })
+
   }
 
   events() {
     const _this = this
-
+    _this.loadingAddress()
     $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
       _this.checkFirstLogin(orderForm)
-      _this.loadingAddress(orderForm)
+
     })
   }
 
