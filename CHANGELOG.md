@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix for when editing address with isDisposable
+
 ## [0.12.4] - 2023-07-12
 
 ### Fixed
