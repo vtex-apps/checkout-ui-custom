@@ -346,6 +346,17 @@ class fnsCustomAddressForm {
     })
   }
 
+  receiverNameF() {
+    const _this = this;
+    if(
+      _this.orderForm.clientProfileData &&
+      _this.orderForm.clientProfileData.firstName
+    ) {
+      return `${_this.orderForm.clientProfileData.firstName} ${_this.orderForm.clientProfileData.lastName ? _this.orderForm.clientProfileData.lastName : ''}`
+    }
+    return ''
+  }
+
   sendAddress(
     _country,
     _street,
@@ -391,7 +402,7 @@ class fnsCustomAddressForm {
       selectedAddresses: [
         {
           addressType: 'residential',
-          receiverName: _this.orderForm.clientProfileData ? `${_this.orderForm.clientProfileData.firstName} ${_this.orderForm.clientProfileData.lastName}` : '',
+          receiverName: _this.receiverNameF(),
           isDisposable: false,
           postalCode: _postalCode,
           city: _city,
@@ -974,6 +985,7 @@ class fnsCustomAddressForm {
     const _this = this
     _this.loadingAddress()
     $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+      _this.orderForm = orderForm
       _this.checkFirstLogin(orderForm)
 
     })
