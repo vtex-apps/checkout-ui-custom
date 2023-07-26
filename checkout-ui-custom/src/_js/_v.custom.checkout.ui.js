@@ -286,7 +286,7 @@ class checkoutCustom {
      // Match coupon with rateAndBenefitsIdentifiers
      let couponMatch = null;
      if(orderForm.ratesAndBenefitsData && orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.length ) {
-       couponMatch = orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.find(item => item.name === _coupon)
+       couponMatch = orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.find(item => item.name.toLowerCase() === _coupon.toLowerCase())
      }
 
     if (!_coupon || couponItemsCount > 0 || couponMatch) {
