@@ -740,7 +740,7 @@ class checkoutCustom {
           .find('.v-custom-quantity-price__list--selling')
           .append(
             `<span class="vqc-ldelem"> ${
-              this.lang ? this.lang.eachLabel : 'each'
+              _this.lang ? _this.lang.eachLabel : 'each'
             }</span>`
           )
       })
