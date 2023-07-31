@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- enchance for summary cart
+- change price for free item
+- Fix `_this` reference for `this.lang`
+
 ## [0.12.7] - 2023-07-18
 ### Fixed
 
