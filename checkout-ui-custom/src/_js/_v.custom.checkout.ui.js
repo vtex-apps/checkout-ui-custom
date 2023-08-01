@@ -409,7 +409,7 @@ class checkoutCustom {
 
   enchanceSummary(key, obj) {
     const _this = this;
-    if ($( ".mini-cart .cart-items > li").length == _this.orderForm.items.length) {
+    if (_this.orderForm && $( ".mini-cart .cart-items > li").length == _this.orderForm.items.length) {
 
       $(`.mini-cart .cart-items > li:eq(${key})`)
         .find(`.v-custom-bundles`)
@@ -760,7 +760,7 @@ class checkoutCustom {
           .find('.v-custom-quantity-price__list--selling')
           .append(
             `<span class="vqc-ldelem"> ${
-              _this.lang ? this.lang.eachLabel : 'each'
+              _this.lang ? _this.lang.eachLabel : 'each'
             }</span>`
           )
       })
