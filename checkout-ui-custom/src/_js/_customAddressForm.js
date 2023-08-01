@@ -350,7 +350,9 @@ class fnsCustomAddressForm {
     const _this = this;
     if(
       _this.orderForm.clientProfileData &&
-      _this.orderForm.clientProfileData.firstName
+      _this.orderForm.clientProfileData.firstName &&
+      _this.orderForm.clientProfileData.lastName &&
+      !~vtexjs.checkout.orderForm.clientProfileData.firstName.indexOf('*')
     ) {
       return `${_this.orderForm.clientProfileData.firstName} ${_this.orderForm.clientProfileData.lastName ? _this.orderForm.clientProfileData.lastName : ''}`
     }
@@ -810,12 +812,14 @@ class fnsCustomAddressForm {
             '.vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active'
           ).index()
 
-          let addressClicked = window.vtexjs.checkout.orderForm.shippingData
+          let addressClicked = _this.orderForm.shippingData.availableAddresses.find((address) => { return address.addressId== _this.orderForm.shippingData.address.addressId })
 
-          if (indexAddress < 0) {
-            addressClicked = addressClicked.selectedAddresses[0]
-          } else {
-            addressClicked = addressClicked.availableAddresses[indexAddress]
+          if(!addressClicked) {
+            if (indexAddress < 0) {
+              addressClicked = addressClicked.selectedAddresses[0]
+            } else {
+              addressClicked = addressClicked.availableAddresses[indexAddress]
+            }
           }
 
           if (addressClicked && addressClicked.city.indexOf('*') < 0) {
@@ -856,6 +860,8 @@ class fnsCustomAddressForm {
                     addressClicked.neighborhood,
                     addressClicked.geoCoordinates
                   )
+
+                  _this.triggerAddressValidation()
                 }, 100)
               }
             } catch (e) {
@@ -989,6 +995,7 @@ class fnsCustomAddressForm {
       _this.checkFirstLogin(orderForm)
 
     })
+
   }
 
   init(orderForm) {

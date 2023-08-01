@@ -197,6 +197,7 @@ class checkoutCustom {
 
   addAssemblies(orderForm) {
     try {
+
       $.each(orderForm.items, function (i) {
         const _item = this
 
@@ -242,11 +243,11 @@ class checkoutCustom {
     try {
       $.each(orderForm.items, function (i) {
         if (this.bundleItems.length > 0) {
-          $(`.table.cart-items tbody tr.product-item:eq(${i})`)
+          $(`.table.cart-items tbody > tr.product-item:eq(${i})`)
             .addClass('v-custom-bundles-in')
             .find('td.product-name')
         } else {
-          $(`.table.cart-items tbody tr.product-item:eq(${i})`).removeClass(
+          $(`.table.cart-items tbody > tr.product-item:eq(${i})`).removeClass(
             'v-custom-bundles-in'
           )
         }
@@ -345,6 +346,7 @@ class checkoutCustom {
   }
 
   buildMiniCart(orderForm) {
+
     /* overide refresh from vtex */
     if (
       orderForm.items.filter(item => {
@@ -354,11 +356,13 @@ class checkoutCustom {
       return false
     }
 
-    if ($(`.mini-cart .cart-items`).text().trim() !== '') {
+    const _items = orderForm.items
+
+    if ($( ".mini-cart .cart-items > li").length == _items.length) {
       $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`)
       $.each(orderForm.items, function (i) {
         if (this.availability === 'available') {
-          $(`.mini-cart .cart-items li:eq(${i})`)
+          $(`.mini-cart .cart-items > li:eq(${i})`)
             .find('.item-unavailable')
             .remove()
         }
@@ -367,7 +371,9 @@ class checkoutCustom {
   }
 
   setParentIndex(orderForm) {
-    $.each(orderForm.items, function (i) {
+
+    const _orderForm = orderForm.items.filter( (item) => !item.isGift ) //remove gift
+    $.each(_orderForm, function (i) {
       if (this.parentItemIndex !== null) {
         $(`.table.cart-items tbody > tr.product-item:eq(${i})`).attr(
           'data-parentItemIndex',
@@ -401,6 +407,57 @@ class checkoutCustom {
     $(`.cart-items`).addClass('v-loaded')
   }
 
+  enchanceSummary(key, obj) {
+    const _this = this;
+    if ($( ".mini-cart .cart-items > li").length == _this.orderForm.items.length) {
+
+      $(`.mini-cart .cart-items > li:eq(${key})`)
+        .find(`.v-custom-bundles`)
+        .remove()
+      $(`.mini-cart .cart-items > li:eq(${key})`)
+        .append(`<div class="v-custom-bundles"></div>`)
+        .addClass('v-custom-indexedItems-in')
+      if (
+        $(`.mini-cart .cart-items > li:eq(${key})`)
+          .find(' > .v-custom-bundles')
+          .html() === ''
+      ) {
+        for (const prop in obj) {
+          if (!obj.hasOwnProperty(prop)) continue
+          const iiItem = obj[prop]
+
+          $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`)
+            .append(`
+            <div class="hproduct item v-custom-indexed-item ${iiItem.sellingPrice ? '' : 'free-item'}" data-sku="${
+              iiItem.id
+            }">
+              <a href="${iiItem.detailUrl}" class="url">
+                <img height="45" width="45" class="photo" src="${
+                  iiItem.imageUrl
+                }" alt="${iiItem.name}">
+              </a>
+              <span class="fn product-name" title="${iiItem.name}" href="${
+            iiItem.detailUrl
+          }">${iiItem.name}</span>
+              <span class="quantity badge">${iiItem.quantity}</span>
+              <div class="description">
+                <strong class="price pull-right" data-bind="text: sellingPriceLabel">
+                ${
+                  iiItem.sellingPrice ?
+                  `${orderForm.storePreferencesData.currencySymbol} ${ formatCurrency(orderForm.clientPreferencesData.locale, orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice ).toFixed(2)}`
+                  : `Free`
+                } </strong>
+              </div>
+            </div>
+          `)
+          $(
+            `.mini-cart .cart-items > li[data-sku='${iiItem.id}']`
+          ).addClass('v-custom-indexed-item')
+        }
+      }
+    }
+  }
+
   indexedInItems(orderForm) {
     const _this = this
 
@@ -415,11 +472,16 @@ class checkoutCustom {
         return false
       }
 
-      if (orderForm.items) {
-        const indexedInItems = orderForm.items.reduce((c, v) => {
+      const _orderForm = orderForm.items.filter( (item) => !item.isGift ) //remove gift
+
+      const giftDifference = orderForm.items.length - _orderForm.length
+
+      if (_orderForm.length) {
+        const indexedInItems = _orderForm.reduce((c, v) => {
           if (v.parentItemIndex !== null) {
-            c[v.parentItemIndex] = c[v.parentItemIndex] || []
-            c[v.parentItemIndex].push(v)
+            const index = v.parentItemIndex - giftDifference < 0 ? v.parentItemIndex : v.parentItemIndex - giftDifference
+            c[index] = c[index] || []
+            c[index].push(v)
           }
 
           return c
@@ -429,9 +491,9 @@ class checkoutCustom {
           const obj = indexedInItems[key]
 
           if (
-            $(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(
+            !$(`.table.cart-items tbody > tr.product-item:eq(${key})`).find(
               '.v-custom-bundles'
-            ).length <= 1
+            ).length
           ) {
             $(`.table.cart-items tbody > tr.product-item:eq(${key})`)
               .append(`<div class="v-custom-bundles"></div>`)
@@ -457,51 +519,9 @@ class checkoutCustom {
             }
           }
 
-          $(`.mini-cart .cart-items > li:eq(${key})`)
-            .find(`.v-custom-bundles`)
-            .remove()
-          $(`.mini-cart .cart-items > li:eq(${key})`)
-            .append(`<div class="v-custom-bundles"></div>`)
-            .addClass('v-custom-indexedItems-in')
-          if (
-            $(`.mini-cart .cart-items > li:eq(${key})`)
-              .find(' > .v-custom-bundles')
-              .html() === ''
-          ) {
-            for (const prop in obj) {
-              if (!obj.hasOwnProperty(prop)) continue
-              const iiItem = obj[prop]
+          _this.enchanceSummary(key, obj)
+          setTimeout(function() { _this.enchanceSummary(key, obj) }, 150)
 
-              $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`)
-                .append(`
-                <div class="hproduct item v-custom-indexed-item" data-sku="${
-                  iiItem.id
-                }">
-                  <a href="${iiItem.detailUrl}" class="url">
-                    <img height="45" width="45" class="photo" src="${
-                      iiItem.imageUrl
-                    }" alt="${iiItem.name}">
-                  </a>
-                  <span class="fn product-name" title="${iiItem.name}" href="${
-                iiItem.detailUrl
-              }">${iiItem.name}</span>
-                  <span class="quantity badge">${iiItem.quantity}</span>
-                  <div class="description">
-                    <strong class="price pull-right" data-bind="text: sellingPriceLabel">${
-                      orderForm.storePreferencesData.currencySymbol
-                    } ${formatCurrency(
-                orderForm.clientPreferencesData.locale,
-                orderForm.storePreferencesData.currencyCode,
-                iiItem.sellingPrice
-              ).toFixed(2)}</strong>
-                  </div>
-                </div>
-              `)
-              $(
-                `.mini-cart .cart-items > li[data-sku='${iiItem.id}']`
-              ).addClass('v-custom-indexed-item')
-            }
-          }
         }
 
         _this.removeMCLoader()
@@ -740,7 +760,7 @@ class checkoutCustom {
           .find('.v-custom-quantity-price__list--selling')
           .append(
             `<span class="vqc-ldelem"> ${
-              this.lang ? this.lang.eachLabel : 'each'
+              _this.lang ? this.lang.eachLabel : 'each'
             }</span>`
           )
       })
