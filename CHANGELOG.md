@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.12.8] - 2023-08-01
+
 ### Fixed
 - enchance for summary cart
 - change price for free item
