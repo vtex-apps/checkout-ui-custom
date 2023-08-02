@@ -1037,9 +1037,7 @@ class checkoutCustom {
       !orderForm.shippingData.address.street.trim() &&
       _this.customAddressForm
     ) {
-      //_this.goToShippingStep()
       _this.appendMessageEmptyStreet(orderForm)
-      //_this.activateCustomForm()
     }
   }
 
