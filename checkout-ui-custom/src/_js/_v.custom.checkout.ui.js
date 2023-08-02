@@ -444,7 +444,7 @@ class checkoutCustom {
                 <strong class="price pull-right" data-bind="text: sellingPriceLabel">
                 ${
                   iiItem.sellingPrice ?
-                  `${orderForm.storePreferencesData.currencySymbol} ${ formatCurrency(orderForm.clientPreferencesData.locale, orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice ).toFixed(2)}`
+                  `${_this.orderForm.storePreferencesData.currencySymbol} ${ formatCurrency(_this.orderForm.clientPreferencesData.locale, _this.orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice ).toFixed(2)}`
                   : `Free`
                 } </strong>
               </div>
@@ -1016,6 +1016,16 @@ class checkoutCustom {
     }
   }
 
+  appendMessageEmptyStreet(orderForm) {
+    const _this = this
+    if(!(orderForm && orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.street && orderForm.shippingData.address.street.trim()) ) {
+      if( !$('.alert-noStreet').length && $('.accordion-inner.shipping-container').length) $('.orderform-template-holder #shipping-data .accordion-inner').append(`<div class="alert-noStreet"><span class="alert">${_this.locale ? _this.locale.noStreetAddress || 'There appears to be no street mentioned in your address, which may is undeliverable' : 'There appears to be no street mentioned in your address, which may is undeliverable'}</span></div>`)
+    } else {
+      $('.alert-noStreet').remove()
+    }
+    
+  }
+  
   URLHasIncludePayment(orderForm) {
     const _this = this
 
@@ -1024,11 +1034,12 @@ class checkoutCustom {
       orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
-      orderForm.shippingData.address.street === null &&
+      !orderForm.shippingData.address.street.trim() &&
       _this.customAddressForm
     ) {
-      _this.goToShippingStep()
-      _this.activateCustomForm()
+      //_this.goToShippingStep()
+      _this.appendMessageEmptyStreet(orderForm)
+      //_this.activateCustomForm()
     }
   }
 
@@ -1208,6 +1219,8 @@ class checkoutCustom {
             targetNode: cartItems,
             callback: () => _this.removeCILoader(),
           })
+
+          
         }
       })
 
@@ -1223,6 +1236,7 @@ class checkoutCustom {
         _this.changeShippingTimeInfoInit()
         _this.indexedInItems(window.vtexjs.checkout.orderForm)
         _this.showDeliveryOptions()
+        _this.URLHasIncludePayment(window.vtexjs.checkout.orderForm)
 
         if (_this.customAddressForm && typeof store !== 'undefined') {
           window.store.dispatch({
@@ -1230,6 +1244,7 @@ class checkoutCustom {
             isCalculateBttnEnabled: false,
           })
         }
+        
       })
 
       // eslint-disable-next-line no-console

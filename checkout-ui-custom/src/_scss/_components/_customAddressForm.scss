@@ -71,6 +71,9 @@ body.v-custom-googleForm-on {
       display:none
   }
 
+  .alert-noStreet {
+    display: none;
+  } 
 
 }
 
@@ -147,6 +150,8 @@ body.v-custom-fnsCustomAddressForm {
     .step.accordion-group.shipping-data {order: 1;}
     .vcustom--vtex-omnishipping-1-x-address {order: 3;}
   }
+
+
 
 }
 
@@ -234,3 +239,8 @@ body.v-custom-fnsCustomAddressForm {
 
 
 .address-list.vtex-omnishipping-1-x-addressList + p.input.ship-addressQuery.text {display:none;}
+
+.alert-noStreet {
+  margin: 30px auto 0 auto;
+  text-align: center;
+}

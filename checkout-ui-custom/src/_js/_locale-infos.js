@@ -72,6 +72,7 @@ module.exports._locale = {
     city: 'City',
     state: 'State',
     locale: 'en-US',
+    noStreetAddress: 'There appears to be no street mentioned in your address, which may is undeliverable',
   },
   GBR: {
     couponInactive: 'No discounts available. Check the conditions.',
