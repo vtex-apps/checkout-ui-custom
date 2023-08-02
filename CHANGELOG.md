@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Change redirect of empty address for a message
+
 ## [0.12.9] - 2023-08-01
 
 ### Fixed

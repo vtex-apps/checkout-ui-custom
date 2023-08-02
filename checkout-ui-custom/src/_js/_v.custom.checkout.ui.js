@@ -444,7 +444,7 @@ class checkoutCustom {
                 <strong class="price pull-right" data-bind="text: sellingPriceLabel">
                 ${
                   iiItem.sellingPrice ?
-                  `${orderForm.storePreferencesData.currencySymbol} ${ formatCurrency(orderForm.clientPreferencesData.locale, orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice ).toFixed(2)}`
+                  `${_this.orderForm.storePreferencesData.currencySymbol} ${ formatCurrency(_this.orderForm.clientPreferencesData.locale, _this.orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice ).toFixed(2)}`
                   : `Free`
                 } </strong>
               </div>
@@ -1016,6 +1016,16 @@ class checkoutCustom {
     }
   }
 
+  appendMessageEmptyStreet(orderForm) {
+    const _this = this
+    if(!(orderForm && orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.street && orderForm.shippingData.address.street.trim()) ) {
+      if( !$('.alert-noStreet').length && $('.accordion-inner.shipping-container').length) $('.orderform-template-holder #shipping-data .accordion-inner').append(`<div class="alert-noStreet"><span class="alert">${_this.locale ? _this.locale.noStreetAddress || 'Your shipping information is missing a required field, please include a street' : 'Your shipping information is missing a required field, please include a street'}</span></div>`)
+    } else {
+      $('.alert-noStreet').remove()
+    }
+    
+  }
+  
   URLHasIncludePayment(orderForm) {
     const _this = this
 
@@ -1024,11 +1034,11 @@ class checkoutCustom {
       orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
-      orderForm.shippingData.address.street === null &&
+      !orderForm.shippingData.address.street.trim() &&
       _this.customAddressForm
     ) {
       _this.goToShippingStep()
-      _this.activateCustomForm()
+      _this.appendMessageEmptyStreet(orderForm)
     }
   }
 
@@ -1203,18 +1213,21 @@ class checkoutCustom {
           _this.paymentBuilder(_this.orderForm)
           _this.customAddressFormInit(_this.orderForm)
           _this.removeCILoader()
+          _this.URLHasIncludePayment(_this.orderForm)
 
           _this.onDomMutation({
             targetNode: cartItems,
             callback: () => _this.removeCILoader(),
           })
+
+          
         }
       })
 
       $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
-        _this.URLHasIncludePayment(orderForm)
+       
       })
 
       $(window).load(function () {
@@ -1230,6 +1243,7 @@ class checkoutCustom {
             isCalculateBttnEnabled: false,
           })
         }
+        
       })
 
       // eslint-disable-next-line no-console

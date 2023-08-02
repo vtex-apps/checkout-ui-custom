@@ -72,6 +72,7 @@ module.exports._locale = {
     city: 'City',
     state: 'State',
     locale: 'en-US',
+    noStreetAddress: 'Your shipping information is missing a required field, please include a street or P.O. Box',
   },
   GBR: {
     couponInactive: 'No discounts available. Check the conditions.',

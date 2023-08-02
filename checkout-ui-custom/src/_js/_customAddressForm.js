@@ -427,6 +427,8 @@ class fnsCustomAddressForm {
 
       $('button.vtex-front-messages-close-all.close').trigger('click')
       $('.vtex-omnishipping-1-x-warning').hide()
+      $('.alert-noStreet').hide()
+      $('.shp-alert.vtex-omnishipping-1-x-alert.shp-alert-shipping-unavailable.vtex-omnishipping-1-x-alertPickup, .button-unavailable-delivery-pickup-wrapper').hide()
       _this.firstAttempt = true
 
       window.vtexjs.checkout
@@ -439,6 +441,7 @@ class fnsCustomAddressForm {
             $('body').removeClass('js-v-custom-is-loading')
             // eslint-disable-next-line no-alert
             alert(`Something went wrong: ${orderForm.error.message}`)
+            $('.vtex-omnishipping-1-x-warning').show()
           } else {
             _this.updateAddress(
               _country,
@@ -453,9 +456,8 @@ class fnsCustomAddressForm {
               _addressId || '',
               geoCoordinates || []
             )
-            $('body').removeClass(_this.BodyFormClasses.join(' '))
+            $('body').removeClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
             _this.orderForm = window.vtexjs.checkout.orderForm
-            $('body').removeClass('js-v-custom-is-loading')
             _this.triggerAddressValidation()
           }
         })
@@ -1006,7 +1008,6 @@ class fnsCustomAddressForm {
     } catch(e) {
       console.warn(`Error in customFormInit while loading "loadScript" function`)
     }
-
 
     if (
       orderForm &&
