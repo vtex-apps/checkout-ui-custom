@@ -1019,7 +1019,7 @@ class checkoutCustom {
   appendMessageEmptyStreet(orderForm) {
     const _this = this
     if(!(orderForm && orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.street && orderForm.shippingData.address.street.trim()) ) {
-      if( !$('.alert-noStreet').length && $('.accordion-inner.shipping-container').length) $('.orderform-template-holder #shipping-data .accordion-inner').append(`<div class="alert-noStreet"><span class="alert">${_this.locale ? _this.locale.noStreetAddress || 'There appears to be no street mentioned in your address, which may is undeliverable' : 'There appears to be no street mentioned in your address, which may is undeliverable'}</span></div>`)
+      if( !$('.alert-noStreet').length && $('.accordion-inner.shipping-container').length) $('.orderform-template-holder #shipping-data .accordion-inner').append(`<div class="alert-noStreet"><span class="alert">${_this.locale ? _this.locale.noStreetAddress || 'Your shipping information is missing a required field, please include a street' : 'Your shipping information is missing a required field, please include a street'}</span></div>`)
     } else {
       $('.alert-noStreet').remove()
     }
@@ -1037,6 +1037,7 @@ class checkoutCustom {
       !orderForm.shippingData.address.street.trim() &&
       _this.customAddressForm
     ) {
+      _this.goToShippingStep()
       _this.appendMessageEmptyStreet(orderForm)
     }
   }
@@ -1212,6 +1213,7 @@ class checkoutCustom {
           _this.paymentBuilder(_this.orderForm)
           _this.customAddressFormInit(_this.orderForm)
           _this.removeCILoader()
+          _this.URLHasIncludePayment(_this.orderForm)
 
           _this.onDomMutation({
             targetNode: cartItems,
@@ -1225,7 +1227,7 @@ class checkoutCustom {
       $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
-        _this.URLHasIncludePayment(orderForm)
+       
       })
 
       $(window).load(function () {
@@ -1234,7 +1236,6 @@ class checkoutCustom {
         _this.changeShippingTimeInfoInit()
         _this.indexedInItems(window.vtexjs.checkout.orderForm)
         _this.showDeliveryOptions()
-        _this.URLHasIncludePayment(window.vtexjs.checkout.orderForm)
 
         if (_this.customAddressForm && typeof store !== 'undefined') {
           window.store.dispatch({

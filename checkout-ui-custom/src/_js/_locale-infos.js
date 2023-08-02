@@ -72,7 +72,7 @@ module.exports._locale = {
     city: 'City',
     state: 'State',
     locale: 'en-US',
-    noStreetAddress: 'There appears to be no street mentioned in your address, which may is undeliverable',
+    noStreetAddress: 'Your shipping information is missing a required field, please include a street',
   },
   GBR: {
     couponInactive: 'No discounts available. Check the conditions.',
