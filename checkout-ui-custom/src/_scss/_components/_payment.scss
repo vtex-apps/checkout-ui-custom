@@ -641,6 +641,7 @@
 
 					&.vtex-omnishipping-1-x-addressFormPart1 {order: 1;}
 					&.vtex-omnishipping-1-x-addressForm { order: 2; }
+					&.vtex-omnishipping-1-x-addressInfo { order: 3; }
 					&.vtex-omnishipping-1-x-deliveryGroup { order: 4; }
 					&.vtex-omnishipping-1-x-submitPaymentButton { order: 100; }
 					&.btn-link.vtex-omnishipping-1-x-btnDelivery {
@@ -787,7 +788,7 @@
 
     .submit.btn.btn-success {
 	    display:block;
-			margin:0 auto;
+			margin:20px auto 0 auto;
 			min-width:55%;
 		}
 
