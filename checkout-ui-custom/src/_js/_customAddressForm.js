@@ -436,12 +436,11 @@ class fnsCustomAddressForm {
         .done(function (orderForm) {
 
 
-
-          if (orderForm.error) {
-            $('body').removeClass('js-v-custom-is-loading')
+          if (orderForm.error || !orderForm.shippingData.address) {
             // eslint-disable-next-line no-alert
-            alert(`Something went wrong: ${orderForm.error.message}`)
+            alert(`Something went wrong: ${orderForm.error ? orderForm.error.message : "null address"}`)
             $('.vtex-omnishipping-1-x-warning').show()
+            $('body').addClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
           } else {
             _this.updateAddress(
               _country,
@@ -457,7 +456,7 @@ class fnsCustomAddressForm {
               geoCoordinates || []
             )
             $('body').removeClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
-            _this.orderForm = window.vtexjs.checkout.orderForm
+            _this.orderForm = orderForm
             _this.triggerAddressValidation()
              $(window).trigger("VCUSTOM__ADDRESSFORM__UPDATED")
 

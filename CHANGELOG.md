@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- fallback when have an error in the orderform
+
 ## [0.13.1] - 2023-08-04
 
 ## [0.13.0] - 2023-08-02
