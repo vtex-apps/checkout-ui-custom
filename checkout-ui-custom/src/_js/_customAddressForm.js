@@ -435,7 +435,7 @@ class fnsCustomAddressForm {
         .sendAttachment('shippingData', shippingInfo)
         .done(function (orderForm) {
 
-          $(window).trigger("VCUSTOM__ADDRESSFORM__UPDATED")
+
 
           if (orderForm.error) {
             $('body').removeClass('js-v-custom-is-loading')
@@ -459,7 +459,10 @@ class fnsCustomAddressForm {
             $('body').removeClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
             _this.orderForm = window.vtexjs.checkout.orderForm
             _this.triggerAddressValidation()
+             $(window).trigger("VCUSTOM__ADDRESSFORM__UPDATED")
+
           }
+
         })
         .fail(function (error) {
           _this.orderForm = window.vtexjs.checkout.orderForm

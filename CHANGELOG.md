@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.13.0] - 2023-08-02
 
+### Fixed
+- events for validation
+
 ### Added
 
 - Change redirect of empty address for a message
