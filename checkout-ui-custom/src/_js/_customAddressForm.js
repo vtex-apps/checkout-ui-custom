@@ -997,7 +997,6 @@ class fnsCustomAddressForm {
     $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
       _this.orderForm = orderForm
       _this.checkFirstLogin(orderForm)
-
     })
 
   }
@@ -1023,9 +1022,7 @@ class fnsCustomAddressForm {
         .getCountryRule(_this.orderForm.storePreferencesData.countryCode)
         .then(rules => {
           _this.addressrules = rules
-          _this.checkFirstLogin(orderForm)
           _this.bind()
-          _this.events()
           _this.deliveryCountries = window.checkout.deliveryCountries()
           _this.mainCountry = window.checkout.countryCode()
           _this.lang = _this.orderForm.clientPreferencesData.locale
