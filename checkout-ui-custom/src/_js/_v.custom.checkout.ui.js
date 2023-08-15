@@ -479,7 +479,7 @@ class checkoutCustom {
       if (_orderForm.length) {
         const indexedInItems = _orderForm.reduce((c, v) => {
           if (v.parentItemIndex !== null) {
-            const index = v.parentItemIndex - giftDifference < 0 ? v.parentItemIndex : v.parentItemIndex - giftDifference
+            const index = v.parentItemIndex
             c[index] = c[index] || []
             c[index].push(v)
           }
@@ -838,12 +838,11 @@ class checkoutCustom {
     if (window.location.hash) {
       const [, hashstep] = window.location.hash.split('/')
 
+      const classStep = bClassStep.filter( st => { return ~hashstep.indexOf(st) })
       if (
-        bClassStep.findIndex(st => {
-          return st === hashstep
-        }) !== -1
+        classStep.length
       ) {
-        $('body').addClass(prefixClass + hashstep)
+        $('body').addClass(prefixClass + classStep[0])
       }
     }
   }
@@ -1000,20 +999,12 @@ class checkoutCustom {
 
     if (_this.customAddressForm) {
       _this.customAddressForm = new FnsCustomAddressForm({})
+      _this.customAddressForm.events()
     }
   }
 
   goToShippingStep() {
     window.location.hash = '#/shipping'
-  }
-
-  activateCustomForm() {
-    const _this = this
-
-    if (_this.customAddressForm) {
-      $('body').addClass('v-custom-addressForm-on')
-      _this.customAddressForm.validateAllFields()
-    }
   }
 
   appendMessageEmptyStreet(orderForm) {

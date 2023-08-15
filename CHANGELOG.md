@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- match of shipping step as indexOf
+- indexedItems when having gift
+
 ## [0.13.2] - 2023-08-04
 
 ### Fixed
