@@ -826,7 +826,7 @@ class fnsCustomAddressForm {
             }
           }
 
-          if (addressClicked && addressClicked?.city?.indexOf('*') < 0) {
+          if (addressClicked && addressClicked.city && addressClicked.city.indexOf('*') < 0) {
             try {
               $('body').addClass(_this.BodyFormClasses.join(' '))
               if (
