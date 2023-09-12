@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.13.5] - 2023-09-12
+
 ### Fixed
 - Address form fixed for the states of Croatia and CZE
 
