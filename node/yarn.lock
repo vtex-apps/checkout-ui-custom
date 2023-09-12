@@ -274,10 +274,10 @@
     msk "^1.0.5"
     recompose "^0.27.1"
 
-"@vtex/api@6.45.19":
-  version "6.45.19"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.45.19.tgz#97b449850b517d6610e7123aa91caec2a29ae7b1"
-  integrity sha512-WUsAn1Oi+Z7Ih84DcRf4HQH85Mh+zO84L0ta7zuRyb13DoAEq2qMi0Mv6vZMd9BFWOCSD8AcTHVF/gZskwh9Yw==
+"@vtex/api@6.45.20":
+  version "6.45.20"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.45.20.tgz#c1090249a424fd700499de3fed0d80d99ff53332"
+  integrity sha512-O7RJWWr4PfvixNpc0GgQh85iKcv9j1IKkpApwJQSW/WzxoTgSrcjYHOVUmJ1GWWBmRV/qvB2VaV6Ow1QL3UOCQ==
   dependencies:
     "@types/koa" "^2.11.0"
     "@types/koa-compose" "^3.2.3"
