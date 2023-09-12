@@ -436,10 +436,14 @@ class fnsCustomAddressForm {
         .done(function (orderForm) {
 
 
-          if (orderForm.error || !orderForm.shippingData.address) {
+          if (
+            orderForm.error ||
+            !orderForm.shippingData.address ||
+            orderForm.items.filter( item => item.availability == "cannotBeDelivered" ).length == orderForm.items.length
+          ) {
             // eslint-disable-next-line no-alert
             alert(`Something went wrong: ${orderForm.error ? orderForm.error.message : "null address"}`)
-            $('.vtex-omnishipping-1-x-warning').show()
+            $('.vtex-omnishipping-1-x-warning, .step.shipping-data .box-step').show()
             $('body').addClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
           } else {
             _this.updateAddress(
@@ -835,9 +839,12 @@ class fnsCustomAddressForm {
               ) {
                 setTimeout(() => {
 
+                  let countryClicked = _this.deliveryCountries.filter( country => country == addressClicked.country)
+                  countryClicked = countryClicked.length ? countryClicked[0] : _this.deliveryCountries[0]
+
                   addressClicked.street = addressClicked.street || ''
                   _this.updateAddress(
-                    addressClicked.country,
+                    countryClicked,
                     addressClicked.postalCode,
                     addressClicked.city,
                     addressClicked.state,
@@ -848,12 +855,14 @@ class fnsCustomAddressForm {
                     addressClicked.addressId,
                     addressClicked.geoCoordinates
                   )
+
+
                   $(
                     '.vcustom--vtex-omnishipping-1-x-address #ship-country'
-                  ).val(addressClicked.country)
-                  _this.updateFormByCountry(addressClicked.country)
+                  ).val(countryClicked)
+                  _this.updateFormByCountry(countryClicked)
                   _this.setForm(
-                    addressClicked.country,
+                    countryClicked,
                     addressClicked.street,
                     addressClicked.addressQuery,
                     addressClicked.number,

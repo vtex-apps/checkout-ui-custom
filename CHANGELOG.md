@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- fallback for country selection when changing trade policies
+
 ## [0.13.4] - 2023-08-30
 ### Fixed
 - Add operator to fix issue in the undefined or null city
