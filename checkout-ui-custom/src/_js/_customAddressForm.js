@@ -53,6 +53,25 @@ class fnsCustomAddressForm {
     )
   }
 
+  messageTrigger(_message) {
+
+		const _this = this
+
+		let messages, message;
+		messages = new window.vtex.Messages.getInstance({ajaxError:true});
+
+
+    message = {
+      content: {
+        title: '',
+        detail: _message,
+      },
+      type: 'warning'
+    }
+
+    $(window).trigger('addMessage', message);
+	}
+
   updateAddress(
     country = '',
     postalCode = '',
@@ -359,6 +378,18 @@ class fnsCustomAddressForm {
     return ''
   }
 
+  geti18n() {
+    const _this = this;
+
+    const locale = _this.orderForm.clientPreferencesData.locale
+    const _lang = window.vtex.i18n[locale]
+
+    let lang = _lang || window.vtex.i18n[locale.split(`-`)[0]]
+
+    if(!lang) window.vtex.i18n['en']
+    return lang
+  }
+
   sendAddress(
     _country,
     _street,
@@ -442,9 +473,13 @@ class fnsCustomAddressForm {
             orderForm.items.filter( item => item.availability == "cannotBeDelivered" ).length == orderForm.items.length
           ) {
             // eslint-disable-next-line no-alert
-            alert(`Something went wrong: ${orderForm.error ? orderForm.error.message : "null address"}`)
             $('.vtex-omnishipping-1-x-warning, .step.shipping-data .box-step').show()
-            $('body').addClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
+            $('body').addClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
+            if(orderForm.error && orderForm.error.message) alert(`Something went wrong: ${orderForm.error ? orderForm.error.message : "null address"}`)
+
+            if(orderForm.items.filter( item => item.availability == "cannotBeDelivered" ).length == orderForm.items.length) {
+              _this.messageTrigger(_this.geti18n().cart.unavailableForDelivery)
+            }
           } else {
             _this.updateAddress(
               _country,
