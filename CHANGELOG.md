@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Fix issue with console log countryLang
+
 ## [0.13.7] - 2023-09-20
 
 ### Fixed
