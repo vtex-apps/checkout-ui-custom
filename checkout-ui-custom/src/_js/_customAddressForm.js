@@ -757,6 +757,12 @@ class fnsCustomAddressForm {
       }
     })
   }
+  scrollToAddress() {
+    var doc = document.documentElement;
+    const scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+    const posSPtop = $("#shipping-data").offset().top
+    if(scrollTop > posSPtop) window.scrollTo(0, posSPtop);
+  }
 
   submitAddressForm() {
     const _this = this
@@ -977,6 +983,8 @@ class fnsCustomAddressForm {
       e.preventDefault()
       e.stopImmediatePropagation()
       _this.submitAddressForm()
+      _this.scrollToAddress()
+
     })
 
     $('body').on(
