@@ -197,7 +197,6 @@ class checkoutCustom {
 
   addAssemblies(orderForm) {
     try {
-
       $.each(orderForm.items, function (i) {
         const _item = this
 
@@ -286,11 +285,9 @@ class checkoutCustom {
 
     // Match coupon with rateAndBenefitsIdentifiers
 
-    let couponMatch = null;
-    if(orderForm.ratesAndBenefitsData && orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.length ) {
-      couponMatch = orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.find(item => item.name === _coupon)
-    }
-
+    const couponMatch = orderForm.ratesAndBenefitsData.ratesAndBenefitsIdentifiers.find(
+      item => item.name === _coupon
+    )
 
     if (!_coupon || couponItemsCount > 0 || couponMatch) {
       $('fieldset.coupon-fieldset').removeClass(
@@ -348,7 +345,6 @@ class checkoutCustom {
   }
 
   buildMiniCart(orderForm) {
-
     /* overide refresh from vtex */
     if (
       orderForm.items.filter(item => {
@@ -360,7 +356,7 @@ class checkoutCustom {
 
     const _items = orderForm.items
 
-    if ($( ".mini-cart .cart-items > li").length == _items.length) {
+    if ($('.mini-cart .cart-items > li').length === _items.length) {
       $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`)
       $.each(orderForm.items, function (i) {
         if (this.availability === 'available') {
@@ -373,8 +369,8 @@ class checkoutCustom {
   }
 
   setParentIndex(orderForm) {
+    const _orderForm = orderForm.items.filter(item => !item.isGift) // remove gift
 
-    const _orderForm = orderForm.items.filter( (item) => !item.isGift ) //remove gift
     $.each(_orderForm, function (i) {
       if (this.parentItemIndex !== null) {
         $(`.table.cart-items tbody > tr.product-item:eq(${i})`).attr(
@@ -410,9 +406,12 @@ class checkoutCustom {
   }
 
   enchanceSummary(key, obj) {
-    const _this = this;
-    if (_this.orderForm && $( ".mini-cart .cart-items > li").length == _this.orderForm.items.length) {
+    const _this = this
 
+    if (
+      _this.orderForm &&
+      $('.mini-cart .cart-items > li').length === _this.orderForm.items.length
+    ) {
       $(`.mini-cart .cart-items > li:eq(${key})`)
         .find(`.v-custom-bundles`)
         .remove()
@@ -430,9 +429,9 @@ class checkoutCustom {
 
           $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`)
             .append(`
-            <div class="hproduct item v-custom-indexed-item ${iiItem.sellingPrice ? '' : 'free-item'}" data-sku="${
-              iiItem.id
-            }">
+            <div class="hproduct item v-custom-indexed-item ${
+              iiItem.sellingPrice ? '' : 'free-item'
+            }" data-sku="${iiItem.id}">
               <a href="${iiItem.detailUrl}" class="url">
                 <img height="45" width="45" class="photo" src="${
                   iiItem.imageUrl
@@ -445,16 +444,22 @@ class checkoutCustom {
               <div class="description">
                 <strong class="price pull-right" data-bind="text: sellingPriceLabel">
                 ${
-                  iiItem.sellingPrice ?
-                  `${_this.orderForm.storePreferencesData.currencySymbol} ${ formatCurrency(_this.orderForm.clientPreferencesData.locale, _this.orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice ).toFixed(2)}`
-                  : `Free`
+                  iiItem.sellingPrice
+                    ? `${
+                        _this.orderForm.storePreferencesData.currencySymbol
+                      } ${formatCurrency(
+                        _this.orderForm.clientPreferencesData.locale,
+                        _this.orderForm.storePreferencesData.currencyCode,
+                        iiItem.sellingPrice
+                      ).toFixed(2)}`
+                    : `Free`
                 } </strong>
               </div>
             </div>
           `)
-          $(
-            `.mini-cart .cart-items > li[data-sku='${iiItem.id}']`
-          ).addClass('v-custom-indexed-item')
+          $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']`).addClass(
+            'v-custom-indexed-item'
+          )
         }
       }
     }
@@ -474,14 +479,13 @@ class checkoutCustom {
         return false
       }
 
-      const _orderForm = orderForm.items.filter( (item) => !item.isGift ) //remove gift
-
-      const giftDifference = orderForm.items.length - _orderForm.length
+      const _orderForm = orderForm.items.filter(item => !item.isGift) // remove gift
 
       if (_orderForm.length) {
         const indexedInItems = _orderForm.reduce((c, v) => {
           if (v.parentItemIndex !== null) {
             const index = v.parentItemIndex
+
             c[index] = c[index] || []
             c[index].push(v)
           }
@@ -522,8 +526,9 @@ class checkoutCustom {
           }
 
           _this.enchanceSummary(key, obj)
-          setTimeout(function() { _this.enchanceSummary(key, obj) }, 150)
-
+          setTimeout(function () {
+            _this.enchanceSummary(key, obj)
+          }, 150)
         }
 
         _this.removeMCLoader()
@@ -840,10 +845,11 @@ class checkoutCustom {
     if (window.location.hash) {
       const [, hashstep] = window.location.hash.split('/')
 
-      const classStep = bClassStep.filter( st => { return ~hashstep.indexOf(st) })
-      if (
-        classStep.length
-      ) {
+      const classStep = bClassStep.filter(st => {
+        return ~hashstep.indexOf(st)
+      })
+
+      if (classStep.length) {
         $('body').addClass(prefixClass + classStep[0])
       }
     }
@@ -1011,14 +1017,33 @@ class checkoutCustom {
 
   appendMessageEmptyStreet(orderForm) {
     const _this = this
-    if(!(orderForm && orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.street != null||undefined && orderForm.shippingData.address.street.trim()) ) {
-      if( !$('.alert-noStreet').length && $('.accordion-inner.shipping-container').length) $('.orderform-template-holder #shipping-data .accordion-inner').append(`<div class="alert-noStreet"><span class="alert">${_this.locale ? _this.locale.noStreetAddress || 'Your shipping information is missing a required field, please include a street' : 'Your shipping information is missing a required field, please include a street'}</span></div>`)
+
+    if (
+      !(
+        (orderForm &&
+          orderForm.shippingData &&
+          orderForm.shippingData.address &&
+          orderForm.shippingData.address.street != null) ||
+        (undefined && orderForm.shippingData.address.street.trim())
+      )
+    ) {
+      if (
+        !$('.alert-noStreet').length &&
+        $('.accordion-inner.shipping-container').length
+      )
+        $('.orderform-template-holder #shipping-data .accordion-inner').append(
+          `<div class="alert-noStreet"><span class="alert">${
+            _this.locale
+              ? _this.locale.noStreetAddress ||
+                'Your shipping information is missing a required field, please include a street'
+              : 'Your shipping information is missing a required field, please include a street'
+          }</span></div>`
+        )
     } else {
       $('.alert-noStreet').remove()
     }
-    
   }
-  
+
   URLHasIncludePayment(orderForm) {
     const _this = this
 
@@ -1046,7 +1071,9 @@ class checkoutCustom {
         $('body').addClass('returningUser')
       }
 
-      try {_this.customAddressForm.init(_orderForm)} catch(e) {
+      try {
+        _this.customAddressForm.init(_orderForm)
+      } catch (e) {
         console.warn(`Error in "customAddressFormInit"`)
       }
     }
@@ -1212,15 +1239,12 @@ class checkoutCustom {
             targetNode: cartItems,
             callback: () => _this.removeCILoader(),
           })
-
-          
         }
       })
 
       $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
-       
       })
 
       $(window).load(function () {
@@ -1236,7 +1260,6 @@ class checkoutCustom {
             isCalculateBttnEnabled: false,
           })
         }
-        
       })
 
       // eslint-disable-next-line no-console
