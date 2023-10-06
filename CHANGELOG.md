@@ -9,6 +9,179 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
  - Remove coupon error
 
+## [0.13.9] - 2023-09-24
+### Added
+
+- scroll on go to shipping button
+## [0.13.8] - 2023-09-22
+
+### Fixed
+- Fix issue with console log countryLang
+
+## [0.13.7] - 2023-09-20
+
+### Fixed
+
+- display undeliverable message instead of a alert
+
+## [0.13.6] - 2023-09-12
+
+### Fixed
+
+- fallback for country selection when changing trade policies
+## [0.13.5] - 2023-09-12
+
+### Fixed
+- Address form fixed for the states of Croatia and CZE
+
+## [0.13.4] - 2023-08-30
+### Fixed
+- Add operator to fix issue in the undefined or null city
+
+## [0.13.3] - 2023-08-15
+
+### Fixed
+
+- match of shipping step as indexOf
+- indexedItems when having gift
+
+## [0.13.2] - 2023-08-04
+
+### Fixed
+
+- fallback when have an error in the orderform
+
+## [0.13.1] - 2023-08-04
+
+## [0.13.0] - 2023-08-02
+
+### Fixed
+- events for validation
+
+### Added
+
+- Change redirect of empty address for a message
+
+## [0.12.9] - 2023-08-01
+
+### Fixed
+- typo + conditional to orderform
+
+## [0.12.8] - 2023-08-01
+
+### Fixed
+- enchance for summary cart
+- change price for free item
+- Fix `_this` reference for `this.lang`
+- editable address
+
+## [0.12.7] - 2023-07-18
+### Fixed
+
+- Change Receiver name of function avoind returning `null`
+
+## [0.12.6] - 2023-07-12
+
+## [0.12.5] - 2023-07-13
+
+## [0.12.5] - 2023-07-13
+
+### Fixed
+
+- Fix for when editing address with isDisposable
+
+## [0.12.4] - 2023-07-12
+
+### Fixed
+
+- Remove coupong error message when using it with a campaign audience promotion.
+
+## [0.12.3] - 2023-07-11
+
+### Added
+
+- Receiver name when using Google Form
+
+### Fixed
+
+- Try catch on the fallback for gmaps script
+
+## [0.12.2] - 2023-07-11
+
+### Fixed
+
+- Try catch for address trigger
+
+## [0.12.1] - 2023-07-11
+
+### Fixed
+
+- Fix probably undefined error for `customAddressFormInit`
+
+## [0.12.0] - 2023-06-27
+
+### Added
+- Added offset scroll on mobile when user changes their address
+
+## [0.11.1] - 2023-05-19
+
+### Added
+- AUSTRIA configuration
+
+### Fixed
+- German translations on shipping / pick up times
+- Missing translations on the config file
+
+### Fixed
+
+- Major change in the google address form function
+
+## [0.10.1] - 2023-04-27
+
+### Fixed
+
+- Bug on Safari causing "Proceed to Payment" / "Checkout" button to disappear from cart page
+
+## [0.10.0] - 2023-04-18
+
+### Added
+
+- Added more info into the README
+
+## [0.9.3] - 2023-04-13
+
+### Added
+
+- Puerto Rico country rules
+
+### Fixed
+
+- address form duplicated number
+
+## [0.9.2] - 2023-04-07
+
+### Fixed
+
+- Address field open at checkout
+
+## [0.9.1] - 2023-03-28
+
+### Fixed
+
+- fix minor typo
+
+## [0.9.0] - 2023-03-28
+
+### Added
+
+- German translation.
+
+## [0.8.33] - 2023-03-27
+
+### Added
+
+- Puerto Rico cities & states
+
 ## [0.8.32] - 2023-01-11
 
 ### Removed

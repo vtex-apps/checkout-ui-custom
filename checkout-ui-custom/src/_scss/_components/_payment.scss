@@ -392,7 +392,7 @@
 		  width: 100% !important;
 		  padding: 0;
 			min-height: initial;
-			
+
 			iframe {
 				margin:0;
 			}
@@ -635,12 +635,13 @@
 				> * {
 					width:100%;
 					order: 1;
-					
+
 					//&:not(#postalCode-finished-loading),
 					//&:not(.vtex-omnishipping-1-x-geolocation) {margin:0 0 20px 0;}
-					
+
 					&.vtex-omnishipping-1-x-addressFormPart1 {order: 1;}
 					&.vtex-omnishipping-1-x-addressForm { order: 2; }
+					&.vtex-omnishipping-1-x-addressInfo { order: 3; }
 					&.vtex-omnishipping-1-x-deliveryGroup { order: 4; }
 					&.vtex-omnishipping-1-x-submitPaymentButton { order: 100; }
 					&.btn-link.vtex-omnishipping-1-x-btnDelivery {
@@ -787,7 +788,7 @@
 
     .submit.btn.btn-success {
 	    display:block;
-			margin:0 auto;
+			margin:20px auto 0 auto;
 			min-width:55%;
 		}
 
@@ -846,7 +847,7 @@
   		position: relative;
   		top:0;
 		}
-		
+
 		.cart-items {
 			> .v-custom-indexed-item {display:none !important;}
 		}
@@ -1198,7 +1199,7 @@
 #app-container {
 	min-height: 100vh;
 	background: #FFF;
-	
+
 
 	input[type=text],
 	input[type=tel],
@@ -1330,7 +1331,6 @@
 		.PostalCode {order:5;}
 	}
 
-	
+
 
 }
- 

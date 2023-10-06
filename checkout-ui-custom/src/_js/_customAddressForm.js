@@ -9,9 +9,10 @@ const { getShipStateValue } = require('./_utils')
 // temporaly workaorund
 window.callbackMap = () => {
   window.vtexjs.checkout.getOrderForm(orderForm => {
-    window.vcustom.checkout.customAddressFormInit(orderForm)
+    if(window.vcustom && window.vcustom.checkout && window.vcustom.customAddressFormInit) window.vcustom.checkout.customAddressFormInit(orderForm)
   })
 }
+
 // end temporaly workaorund
 
 class fnsCustomAddressForm {
@@ -42,6 +43,8 @@ class fnsCustomAddressForm {
     this.validate = true
 
     this.gPlacesAutocomplete = ''
+
+    this.firstAttempt = false
   }
 
   loadScript() {
@@ -49,6 +52,25 @@ class fnsCustomAddressForm {
       `<script src="https://maps.googleapis.com/maps/api/js?key=${this.googleMapsApiKey}&language=${window.vtex.i18n.locale}&libraries=places&callback=callbackMap"></script>`
     )
   }
+
+  messageTrigger(_message) {
+
+		const _this = this
+
+		let messages, message;
+		messages = new window.vtex.Messages.getInstance({ajaxError:true});
+
+
+    message = {
+      content: {
+        title: '',
+        detail: _message,
+      },
+      type: 'warning'
+    }
+
+    $(window).trigger('addMessage', message);
+	}
 
   updateAddress(
     country = '',
@@ -93,7 +115,7 @@ class fnsCustomAddressForm {
     geoCoordinates = ''
   ) {
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-      formattedStreet || street
+      'number' in this.addressrules ? street : formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
       complement
@@ -105,11 +127,11 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      formattedStreet || street
+      'number' in this.addressrules ? street : formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
-      number
+      'number' in this.addressrules ? number : null
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-neighborhood',
@@ -343,6 +365,31 @@ class fnsCustomAddressForm {
     })
   }
 
+  receiverNameF() {
+    const _this = this;
+    if(
+      _this.orderForm.clientProfileData &&
+      _this.orderForm.clientProfileData.firstName &&
+      _this.orderForm.clientProfileData.lastName &&
+      !~vtexjs.checkout.orderForm.clientProfileData.firstName.indexOf('*')
+    ) {
+      return `${_this.orderForm.clientProfileData.firstName} ${_this.orderForm.clientProfileData.lastName ? _this.orderForm.clientProfileData.lastName : ''}`
+    }
+    return ''
+  }
+
+  geti18n() {
+    const _this = this;
+
+    const locale = _this.orderForm.clientPreferencesData.locale
+    const _lang = window.vtex.i18n[locale]
+
+    let lang = _lang || window.vtex.i18n[locale.split(`-`)[0]]
+
+    if(!lang) window.vtex.i18n['en']
+    return lang
+  }
+
   sendAddress(
     _country,
     _street,
@@ -384,54 +431,56 @@ class fnsCustomAddressForm {
 
     $('body').addClass('js-v-custom-is-loading')
 
-    fetch(
-      `/api/checkout/pub/orderForm/${_this.orderForm.orderFormId}/attachments/shippingData`,
-      {
-        credentials: 'include',
-        headers: {
-          accept: 'application/json, text/javascript, */*; q=0.01',
-          'cache-control': 'no-cache',
-          'content-type': 'application/json; charset=UTF-8',
-          pragma: 'no-cache',
-          'sec-fetch-mode': 'cors',
-          'sec-fetch-site': 'same-origin',
-          'x-requested-with': 'XMLHttpRequest',
+    const shippingInfo = {
+      selectedAddresses: [
+        {
+          addressType: 'residential',
+          receiverName: _this.receiverNameF(),
+          isDisposable: false,
+          postalCode: _postalCode,
+          city: _city,
+          state: _state,
+          country: _country,
+          street: _street,
+          number: _number || '',
+          neighborhood: _neighborhood,
+          complement: _complement,
+          reference: null,
+          geoCoordinates: geoCoordinates || [],
+          addressQuery: _addressQuery,
         },
-        referrerPolicy: 'no-referrer-when-downgrade',
-        body: JSON.stringify({
-          selectedAddresses: [
-            {
-              addressType: 'residential',
-              receiverName: '',
-              addressId: '',
-              isDisposable: true,
-              postalCode: _postalCode,
-              city: _city,
-              state: _state,
-              country: _country,
-              geoCoordinates,
-              street: _street,
-              number: _number || '',
-              neighborhood: _neighborhood,
-              complement: _complement,
-              reference: null,
-              addressQuery: _addressQuery,
-            },
-          ],
-          clearAddressIfPostalCodeNotFound: false,
-        }),
-        method: 'POST',
-        mode: 'cors',
-      }
-    )
-      .then(response => response.json())
-      .then(function (data) {
-        if (data.error) {
-          $('body').removeClass('js-v-custom-is-loading')
-          // eslint-disable-next-line no-alert
-          alert(`Something went wrong: ${data.error.message}`)
-        } else {
-          window.vtexjs.checkout.getOrderForm().done(function () {
+      ],
+      clearAddressIfPostalCodeNotFound: false,
+    }
+    window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function () {
+
+      $(window).trigger("VCUSTOM__ADDRESSFORM__CLEARED")
+
+      $('button.vtex-front-messages-close-all.close').trigger('click')
+      $('.vtex-omnishipping-1-x-warning').hide()
+      $('.alert-noStreet').hide()
+      $('.shp-alert.vtex-omnishipping-1-x-alert.shp-alert-shipping-unavailable.vtex-omnishipping-1-x-alertPickup, .button-unavailable-delivery-pickup-wrapper').hide()
+      _this.firstAttempt = true
+
+      window.vtexjs.checkout
+        .sendAttachment('shippingData', shippingInfo)
+        .done(function (orderForm) {
+
+
+          if (
+            orderForm.error ||
+            !orderForm.shippingData.address ||
+            orderForm.items.filter( item => item.availability == "cannotBeDelivered" ).length == orderForm.items.length
+          ) {
+            // eslint-disable-next-line no-alert
+            $('.vtex-omnishipping-1-x-warning, .step.shipping-data .box-step').show()
+            $('body').addClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
+            if(orderForm.error && orderForm.error.message) alert(`Something went wrong: ${orderForm.error ? orderForm.error.message : "null address"}`)
+
+            if(orderForm.items.filter( item => item.availability == "cannotBeDelivered" ).length == orderForm.items.length) {
+              _this.messageTrigger(_this.geti18n().cart.unavailableForDelivery)
+            }
+          } else {
             _this.updateAddress(
               _country,
               _postalCode,
@@ -445,13 +494,25 @@ class fnsCustomAddressForm {
               _addressId || '',
               geoCoordinates || []
             )
-            $('body').removeClass(_this.BodyFormClasses.join(' '))
-            _this.orderForm = window.vtexjs.checkout.orderForm
-            $('body').removeClass('js-v-custom-is-loading')
+            $('body').removeClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
+            _this.orderForm = orderForm
             _this.triggerAddressValidation()
-          })
-        }
-      })
+             $(window).trigger("VCUSTOM__ADDRESSFORM__UPDATED")
+
+          }
+
+        })
+        .fail(function (error) {
+          _this.orderForm = window.vtexjs.checkout.orderForm
+          $('body').removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
+          console.error(`Something went wrong: Custom Address Form (sendAddress) --> ${error}`)
+        })
+    })
+    .fail(function (error) {
+      _this.orderForm = window.vtexjs.checkout.orderForm
+      $('body').removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
+      console.error(`Something went wrong: Custom Address Form (sendAddress) --> ${error}`)
+    })
   }
 
   getRegions(country) {
@@ -534,7 +595,7 @@ class fnsCustomAddressForm {
                 : 'Street address or P.O. Box'
             }</label><input required autocomplete="none" id="v-custom-ship-street" type="text" name="v-custom-street" class="input-xlarge" data-hj-whitelist="true" value="${
       shippingData.address &&
-      shippingData.address.street !== null &&
+      null !== shippingData.address.street &&
       !isPickupPoint
         ? shippingData.address.street
         : ''
@@ -661,13 +722,7 @@ class fnsCustomAddressForm {
       )
     ) {
       $('body').removeClass('v-custom-addressForm-on')
-    } else if (
-      !$('body').hasClass('v-custom-addressForm-on') &&
-      shippingData.selectedAddresses.length == 0
-    ) {
-      $('body').addClass('v-custom-addressForm-on')
     }
-
     this.googleForm()
     this.updateGoogleForm(country[1].toLowerCase())
 
@@ -701,6 +756,12 @@ class fnsCustomAddressForm {
         $(this).removeClass('error')
       }
     })
+  }
+  scrollToAddress() {
+    var doc = document.documentElement;
+    const scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+    const posSPtop = $("#shipping-data").offset().top
+    if(scrollTop > posSPtop) window.scrollTo(0, posSPtop);
   }
 
   submitAddressForm() {
@@ -789,7 +850,7 @@ class fnsCustomAddressForm {
 
     $('body').on(
       'click',
-      '.step.shipping-data #edit-address-button, .step.shipping-data .vtex-omnishipping-1-x-linkEdit',
+      '.step.shipping-data .vtex-omnishipping-1-x-buttonEditAddress, .step.shipping-data .vtex-omnishipping-1-x-linkEdit',
       function () {
         if (
           !$('#shipping-option-pickup-in-point').hasClass(
@@ -800,25 +861,31 @@ class fnsCustomAddressForm {
             '.vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active'
           ).index()
 
-          let addressClicked = window.vtexjs.checkout.orderForm.shippingData
+          let addressClicked = _this.orderForm.shippingData.availableAddresses.find((address) => { return address.addressId== _this.orderForm.shippingData.address.addressId })
 
-          if (indexAddress < 0) {
-            addressClicked = addressClicked.selectedAddresses[0]
-          } else {
-            addressClicked = addressClicked.availableAddresses[indexAddress]
+          if(!addressClicked) {
+            if (indexAddress < 0) {
+              addressClicked = addressClicked.selectedAddresses[0]
+            } else {
+              addressClicked = addressClicked.availableAddresses[indexAddress]
+            }
           }
 
-          if (addressClicked && addressClicked.city.indexOf('*') < 0) {
+          if (addressClicked && addressClicked.city && addressClicked.city.indexOf('*') < 0) {
             try {
+              $('body').addClass(_this.BodyFormClasses.join(' '))
               if (
                 addressClicked.isDisposable ||
                 ~window.location.origin.indexOf('myvtex')
               ) {
                 setTimeout(() => {
-                  $('body').addClass(_this.BodyFormClasses.join(' '))
+
+                  let countryClicked = _this.deliveryCountries.filter( country => country == addressClicked.country)
+                  countryClicked = countryClicked.length ? countryClicked[0] : _this.deliveryCountries[0]
+
                   addressClicked.street = addressClicked.street || ''
                   _this.updateAddress(
-                    addressClicked.country,
+                    countryClicked,
                     addressClicked.postalCode,
                     addressClicked.city,
                     addressClicked.state,
@@ -829,12 +896,14 @@ class fnsCustomAddressForm {
                     addressClicked.addressId,
                     addressClicked.geoCoordinates
                   )
+
+
                   $(
                     '.vcustom--vtex-omnishipping-1-x-address #ship-country'
-                  ).val(addressClicked.country)
-                  _this.updateFormByCountry(addressClicked.country)
+                  ).val(countryClicked)
+                  _this.updateFormByCountry(countryClicked)
                   _this.setForm(
-                    addressClicked.country,
+                    countryClicked,
                     addressClicked.street,
                     addressClicked.addressQuery,
                     addressClicked.number,
@@ -845,6 +914,8 @@ class fnsCustomAddressForm {
                     addressClicked.neighborhood,
                     addressClicked.geoCoordinates
                   )
+
+                  _this.triggerAddressValidation()
                 }, 100)
               }
             } catch (e) {
@@ -912,6 +983,8 @@ class fnsCustomAddressForm {
       e.preventDefault()
       e.stopImmediatePropagation()
       _this.submitAddressForm()
+      _this.scrollToAddress()
+
     })
 
     $('body').on(
@@ -932,6 +1005,7 @@ class fnsCustomAddressForm {
       if (
         (orderForm.shippingData.address === null ||
           orderForm.shippingData.address.addressType === 'search') &&
+        !_this.firstAttempt &&
         $('.vtex-omnishipping-1-x-deliveryOptionActive').attr('id') ===
           'shipping-option-delivery'
       ) {
@@ -955,16 +1029,38 @@ class fnsCustomAddressForm {
       })
   }
 
+  loadingAddress(orderForm) {
+
+    $(window).on("VCUSTOM__ADDRESSFORM__CLEARED", function() {
+      console.log("VCUSTOM__ADDRESSFORM__CLEARED")
+        $('body').addClass('js-v-custom-is-loadAddress')
+    })
+
+    $(window).on("VCUSTOM__ADDRESSFORM__UPDATED", function() {
+      console.log("VCUSTOM__ADDRESSFORM__UPDATED")
+        $('body').removeClass('js-v-custom-is-loadAddress')
+    })
+
+  }
+
   events() {
     const _this = this
-
+    _this.loadingAddress()
     $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+      _this.orderForm = orderForm
       _this.checkFirstLogin(orderForm)
     })
+
   }
 
   init(orderForm) {
     const _this = this
+
+    try {
+      if (!window.google) _this.loadScript()
+    } catch(e) {
+      console.warn(`Error in customFormInit while loading "loadScript" function`)
+    }
 
     if (
       orderForm &&
@@ -978,9 +1074,7 @@ class fnsCustomAddressForm {
         .getCountryRule(_this.orderForm.storePreferencesData.countryCode)
         .then(rules => {
           _this.addressrules = rules
-          _this.checkFirstLogin(orderForm)
           _this.bind()
-          _this.events()
           _this.deliveryCountries = window.checkout.deliveryCountries()
           _this.mainCountry = window.checkout.countryCode()
           _this.lang = _this.orderForm.clientPreferencesData.locale

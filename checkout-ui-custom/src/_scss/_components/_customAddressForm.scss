@@ -1,6 +1,36 @@
 
 
 
+#shipping-data .accordion-group.shipping-data:after {
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+.js-v-custom-is-loadAddress {
+  .vtex-omnishipping-1-x-warning {
+    display: none !important;
+  }
+
+  #shipping-data .accordion-group.shipping-data:after {
+    content: "";
+    display: block;
+    opacity: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 20px;
+    z-index: 2;
+    margin:0 0 20px 0;
+    border-radius: 3px;
+    @extend %loading-shimmer;
+  }
+
+  #postalCode-finished-loading + .mb5 {
+    display: none !important;
+  }
+
+}
+
+
 .vcustom--vtex-omnishipping-1-x-address {
   display: none;
 }
@@ -17,7 +47,6 @@ body.v-custom-addressForm-on {
         margin-right: 10px;
       }
     }
-    .accordion-inner.shipping-container  .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation,
     .vtex-omnishipping-1-x-addressForm, .vtex-omnishipping-1-x-deliveryGroup, .vtex-omnishipping-1-x-submitPaymentButton {
       display: none;
     }
@@ -42,6 +71,9 @@ body.v-custom-googleForm-on {
       display:none
   }
 
+  .alert-noStreet {
+    display: none;
+  }
 
 }
 
@@ -66,7 +98,6 @@ body.v-custom-fnsCustomAddressForm {
 
   .orderform-template-holder p.vtex-omnishipping-1-x-submitPaymentButton.btn-submit-wrapper.btn-go-to-payment-wrapper {
     margin-bottom:0 !important;
-    margin-top: 20px;
   }
 
   .vtex-omnishipping-1-x-addressFormPart1 {
@@ -90,8 +121,6 @@ body.v-custom-fnsCustomAddressForm {
   .vtex-omnishipping-1-x-addressFormPart1 p.input.ship-postalCode {
       display:block;
   }
-
-  .vtex-omnishipping-1-x-addressFormPart1 + .vtex-omnishipping-1-x-submitPaymentButton {display:none;}
 
   .orderform-template-holder {
     .step.shipping-data .box-step {
@@ -120,6 +149,8 @@ body.v-custom-fnsCustomAddressForm {
     .step.accordion-group.shipping-data {order: 1;}
     .vcustom--vtex-omnishipping-1-x-address {order: 3;}
   }
+
+
 
 }
 
@@ -207,3 +238,8 @@ body.v-custom-fnsCustomAddressForm {
 
 
 .address-list.vtex-omnishipping-1-x-addressList + p.input.ship-addressQuery.text {display:none;}
+
+.alert-noStreet {
+  margin: 30px auto 0 auto;
+  text-align: center;
+}
