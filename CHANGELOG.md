@@ -8,8 +8,36 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ## Added
-
 - Korean transaltions
+
+## [0.13.9] - 2023-09-24
+### Added
+
+- scroll on go to shipping button
+## [0.13.8] - 2023-09-22
+
+### Fixed
+- Fix issue with console log countryLang
+
+## [0.13.7] - 2023-09-20
+
+### Fixed
+
+- display undeliverable message instead of a alert
+
+## [0.13.6] - 2023-09-12
+
+### Fixed
+
+- fallback for country selection when changing trade policies
+## [0.13.5] - 2023-09-12
+
+### Fixed
+- Address form fixed for the states of Croatia and CZE
+
+## [0.13.4] - 2023-08-30
+### Fixed
+- Add operator to fix issue in the undefined or null city
 
 ## [0.13.3] - 2023-08-15
 
