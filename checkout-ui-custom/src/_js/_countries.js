@@ -4463,15 +4463,15 @@ module.exports._cities = [
     regions: [
       {
         name: 'Bjelovarsko-bilogorska županija',
-        shortCode: 'Bjelovar-Bilogora County',
+        shortCode: 'Bjelovarsko-bilogorska županija',
       },
       {
         name: 'Brodsko-posavska županija',
-        shortCode: 'Brod-Posavina County',
+        shortCode: 'Brodsko-posavska županija',
       },
       {
         name: 'Dubrovačko-neretvanska županija',
-        shortCode: 'Dubrovnik-Neretva County',
+        shortCode: 'Dubrovačko-neretvanska županija',
       },
       {
         name: 'Grad Zagreb',
@@ -4479,27 +4479,27 @@ module.exports._cities = [
       },
       {
         name: 'Istarska županija',
-        shortCode: 'Istria County',
+        shortCode: 'Istarska županija',
       },
       {
         name: 'Karlovačka županija',
-        shortCode: 'Karlovac County',
+        shortCode: 'Karlovačka županija',
       },
       {
         name: 'Koprivničko-križevačka županija',
-        shortCode: 'Koprivnica-Križevci County',
+        shortCode: 'Koprivničko-križevačka županija',
       },
       {
         name: 'Krapinsko-zagorska županija',
-        shortCode: 'Krapina-Zagorje County',
+        shortCode: 'Krapinsko-zagorska županija',
       },
       {
         name: 'Ličko-senjska županija',
-        shortCode: 'Lika-Senj County',
+        shortCode: 'Ličko-senjska županija',
       },
       {
         name: 'Međimurska županija',
-        shortCode: 'Međimurje County',
+        shortCode: 'Međimurska županija',
       },
       {
         name: 'Osječko-baranjska županija',
@@ -4507,43 +4507,43 @@ module.exports._cities = [
       },
       {
         name: 'Požeško-slavonska županija',
-        shortCode: 'Požega-Slavonia County',
+        shortCode: 'Požeško-slavonska županija',
       },
       {
         name: 'Primorsko-goranska županija',
-        shortCode: 'Primorje-Gorski Kotar County',
+        shortCode: 'Primorsko-goranska županija',
       },
       {
         name: 'Sisačko-moslavačka županija',
-        shortCode: 'Sisak-Moslavina County',
+        shortCode: 'Sisačko-moslavačka županija',
       },
       {
         name: 'Splitsko-dalmatinska županija',
-        shortCode: 'Split-Dalmatia County',
+        shortCode: 'Splitsko-dalmatinska županija',
       },
       {
         name: 'Šibensko-kninska županija',
-        shortCode: 'Šibenik-Knin County',
+        shortCode: 'Šibensko-kninska županija',
       },
       {
         name: 'Varaždinska županija',
-        shortCode: 'Varaždin County',
+        shortCode: 'Varaždinska županija',
       },
       {
         name: 'Virovitičko-podravska županija',
-        shortCode: 'Virovitica-Podravina County',
+        shortCode: 'Virovitičko-podravska županija',
       },
       {
         name: 'Vukovarsko-srijemska županija',
-        shortCode: 'Vukovar-Srijem County',
+        shortCode: 'Vukovarsko-srijemska županija',
       },
       {
         name: 'Zadarska županija',
-        shortCode: 'Zadar County',
+        shortCode: 'Zadarska županija',
       },
       {
         name: 'Zagrebačka županija',
-        shortCode: 'Zagreb County',
+        shortCode: 'Zagrebačka županija',
       },
     ],
   },
@@ -4663,59 +4663,59 @@ module.exports._cities = [
     regions: [
       {
         name: 'Hlavní město Praha',
-        shortCode: 'PR',
+        shortCode: 'Hlavní město Praha',
       },
       {
         name: 'Jihočeský kraj',
-        shortCode: 'JC',
+        shortCode: 'Jihočeský kraj',
       },
       {
         name: 'Jihomoravský kraj',
-        shortCode: 'JM',
+        shortCode: 'Jihomoravský kraj',
       },
       {
         name: 'Karlovarský kraj',
-        shortCode: 'KA',
+        shortCode: 'Karlovarský kraj',
       },
       {
         name: 'Královéhradecký kraj',
-        shortCode: 'KR',
+        shortCode: 'Královéhradecký kraj',
       },
       {
         name: 'Liberecký kraj',
-        shortCode: 'LI',
+        shortCode: 'Liberecký kraj',
       },
       {
         name: 'Moravskoslezský kraj',
-        shortCode: 'MO',
+        shortCode: 'Moravskoslezský kraj',
       },
       {
         name: 'Olomoucký kraj',
-        shortCode: 'OL',
+        shortCode: 'Olomoucký kraj',
       },
       {
         name: 'Pardubický kraj',
-        shortCode: 'PA',
+        shortCode: 'Pardubický kraj',
       },
       {
         name: 'Plzeňský kraj',
-        shortCode: 'PL',
+        shortCode: 'Plzeňský kraj',
       },
       {
         name: 'Středočeský kraj',
-        shortCode: 'ST',
+        shortCode: 'Středočeský kraj',
       },
       {
         name: 'Ústecký kraj',
-        shortCode: 'US',
+        shortCode: 'Ústecký kraj',
       },
       {
         name: 'Vysočina',
-        shortCode: 'VY',
+        shortCode: 'Kraj Vysočina',
       },
       {
         name: 'Zlínský kraj',
-        shortCode: 'ZL',
+        shortCode: 'Zlínský kraj',
       },
     ],
   },
