@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Arabic, German, English, Spanish, Finnish, Italian, Japanese, Korean, Portuguese, Romanian and Thai translations.
+
 ## [0.13.9] - 2023-09-24
 ### Added
 
