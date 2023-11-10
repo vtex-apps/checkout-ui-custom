@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## Added
+- Korean transaltions
+
 ## [0.13.9] - 2023-09-24
 ### Added
 
