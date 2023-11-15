@@ -114,9 +114,13 @@ class fnsCustomAddressForm {
     neighborhood = '',
     geoCoordinates = ''
   ) {
+
+    const _this = this
+
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-      'number' in this.addressrules ? street : formattedStreet || street
+      'number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required ? street : formattedStreet || street
     )
+
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
       complement
     )
@@ -127,11 +131,11 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      'number' in this.addressrules ? street : formattedStreet || street
+      'number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required ? street : formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
-      'number' in this.addressrules ? number : null
+      'number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required ? number : null
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-neighborhood',
@@ -265,7 +269,7 @@ class fnsCustomAddressForm {
           )
         : ''
 
-      if ('number' in _this.addressrules) {
+      if ('number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(
           _this.returnAddressFRules(place.address_components, {
             types: ['street_number'],
@@ -274,7 +278,7 @@ class fnsCustomAddressForm {
       }
 
       const number =
-        'number' in _this.addressrules
+        'number' in _this.addressrules  && _this.addressrules.number && _this.addressrules.number.required
           ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
           : _this.returnAddressFRules(place.address_components, {
               types: ['street_number'],
@@ -416,8 +420,8 @@ class fnsCustomAddressForm {
       }
       // end temporaly workaround for ARG
 
-      // temporaly workaround for USA
-      if (_country === 'USA') {
+      // temporaly workaround for USA and CAN
+      if (_country === 'USA' || _country === 'CAN') {
         _number = null
       }
       // end temporaly workaround for USA
@@ -558,7 +562,7 @@ class fnsCustomAddressForm {
     const number = $('.vcustom--vtex-omnishipping-1-x-address p.ship-number')
     const state = $('.vcustom--vtex-omnishipping-1-x-address p.ship-state')
 
-    if ('number' in addressrules) {
+    if ('number' in addressrules && addressrules.number && addressrules.number.required) {
       number.show()
       number.find('input').attr('required', 'required')
     } else {
@@ -606,11 +610,11 @@ class fnsCustomAddressForm {
     }</span></p>
             <div class="v-custom-ship-info">
               <p class="input ship-number text ${
-                'number' in _this.addressrules ? 'required' : 'hide'
+                'number' in _this.addressrules  && _this.addressrules.number && _this.addressrules.number.required ? 'required' : 'hide'
               }"><label id="number-label" for="ship-complement">${
       _this.locale.number ? _this.locale.number || 'Number' : 'Number'
     }</label><input ${
-      'number' in _this.addressrules ? 'required' : ''
+      'number' in _this.addressrules  && _this.addressrules.number && _this.addressrules.number.required ? 'required' : ''
     } autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${
       _this.locale.number ? _this.locale.number : ''
     }" class="input-xlarge" data-hj-whitelist="true" value="${
