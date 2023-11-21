@@ -112,10 +112,14 @@ class fnsCustomAddressForm {
     state = '',
     complement = '',
     neighborhood = '',
-    geoCoordinates = ''
+    geoCoordinates = '',
+    receiverName = ''
   ) {
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
       'number' in this.addressrules ? street : formattedStreet || street
+    )
+    $('vcustom--vtex-omnishipping-1-x-address #ship-receiverName').val(
+      receiverName
     )
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
       complement
@@ -320,6 +324,10 @@ class fnsCustomAddressForm {
         }
       }
 
+      const receiverName = $(
+        'vcustom--vtex-omnishipping-1-x-address #ship-receiverName'
+      ).val(_this.receiverNameF())
+
       _this.setForm(
         country,
         street,
@@ -330,7 +338,8 @@ class fnsCustomAddressForm {
         state,
         complement,
         neighborhood,
-        geoCoordinates
+        geoCoordinates,
+        receiverName
       )
       _this.validateAllFields()
       _this.updateAddress(
@@ -343,7 +352,8 @@ class fnsCustomAddressForm {
         complement,
         place.formatted_address,
         _this.address.addressId,
-        geoCoordinates
+        geoCoordinates,
+        receiverName
       )
     })
 
@@ -588,6 +598,13 @@ class fnsCustomAddressForm {
       <div class="vcustom--vtex-omnishipping-1-x-address step">
         <div>
         <form>
+            <p class="input ship-receiverName text"><label for="ship-receiverName">Recipient</label><input autocomplete="on" id="ship-receiverName" type="text" name="receiver" maxlength="750" class="input-xlarge" data-hj-whitelist="true" value="${
+              shippingData.address &&
+              shippingData.address.receiverName !== null &&
+              !isPickupPoint
+                ? shippingData.address.receiverName
+                : ''
+            }"></p>
             <p class="input v-custom-ship-street required text"><label id="address1-label" for="v-custom-ship-street">${
               _this.locale
                 ? _this.locale.address1Placeholder ||
