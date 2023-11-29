@@ -9,7 +9,7 @@
   "admin/checkout-ui.tab.javascript.helper": "// Las modificaciones que realices aquí pueden impactar tus ventas",
   "admin/checkout-ui.tab.css": "CSS",
   "admin/checkout-ui.tab.css.label": "CSS personalizado",
-  "admin/checkout-ui.tab.css.helper": "Las modificaciones que realices aquí pueden impactar tus ventas",
+  "admin/checkout-ui.tab.css.helper": "/* Las modificaciones que realices aquí pueden impactar tus ventas */",
   "admin/checkout-ui.tab.history": "Historial",
   "admin/checkout-ui.button.publish": "Publicar",
   "admin/checkout-ui.message.publishing": "Publicando en",
