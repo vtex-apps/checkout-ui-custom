@@ -1,9 +1,6 @@
 {
   "name": "checkout-ui-custom-app",
   "version": "0.13.10",
-  "scripts": {
-    "test": "vtex-test-tools test"
-  },
   "devDependencies": {
     "@types/jest": "^26.0.4",
     "@types/node": "^14.0.14",
@@ -20,6 +17,22 @@
     "axios": "^0.19.2",
     "graphql": "^15.3.0",
     "prop-types": "^15.7.2",
-    "react-intl": "^5.0.2"
+    "react-intl": "^5.0.2",
+    "@monaco-editor/react": "4.2.1",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-scripts": "3.4.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "vtex-test-tools test react-scripts test --env=jsdom"
+  },
+  "transformIgnorePatterns": [
+    "/node_modules/(?!(monaco-editor)).+\\.js$"
+  ],
+  "moduleNameMapper": {
+    "^monaco-editor$": "<rootDir>/node_modules/@monaco-editor/react"
   }
 }

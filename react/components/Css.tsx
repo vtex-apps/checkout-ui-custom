@@ -5,6 +5,8 @@ import { defineMessages, injectIntl } from 'react-intl'
 import PropTypes from 'prop-types'
 import { Textarea, Toggle } from 'vtex.styleguide'
 
+import Editor from '@monaco-editor/react'
+
 const messages = defineMessages({
   label: {
     id: 'admin/checkout-ui.tab.css.label',
@@ -46,14 +48,28 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
 
   return (
     <div className="w-100 pa4">
-      <Textarea
-        size="large"
-        rows={30}
+
+      <p>{intl.formatMessage(messages.label)}</p>
+      <Editor
+        height="90vh"
+        defaultLanguage="css"
+        defaultValue={intl.formatMessage(messages.helper)}
+        theme="vs-dark"
         value={parseText(state.value)}
-        onChange={(e: any) => handleChange('value', e.target.value)}
-        label={intl.formatMessage(messages.label)}
-        helpText={intl.formatMessage(messages.helper)}
+        onChange={(e: any) => handleChange('value', e)}
       />
+
+      <div className="dn">
+        <Textarea
+          size="large"
+          rows={30}
+          value={parseText(state.value)}
+          onChange={(e: any) => handleChange('value', e.target.value)}
+          label={intl.formatMessage(messages.label)}
+          helpText={intl.formatMessage(messages.helper)}
+        />
+      </div>
+
       <div className="mt6 dib">
         <Toggle
           label={intl.formatMessage(messages.active)}
