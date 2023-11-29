@@ -30,6 +30,7 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
   const [state, setState] = useState<any>({
     value: initialState.value,
     active: initialState.active,
+    theme:  true // true for "vs-dark" and false for "vs-light"
   })
 
   const handleChange = (key: string, value: any) => {
@@ -46,15 +47,40 @@ const Css: StorefrontFunctionComponent<WrappedComponentProps & any> = ({
     return newText
   }
 
+  const handleChangeToggle = (value: any, key: string) => {
+    const newState = {
+      ...state,
+      [key]: value
+    }
+    setState(newState)
+    onChange(newState)
+  }
+
   return (
     <div className="w-100 pa4">
 
-      <p>{intl.formatMessage(messages.label)}</p>
+      <div className="flex justify-between items-center">
+        <p>{intl.formatMessage(messages.label)}</p>
+        <div className="dib">
+          <Toggle
+            label={state.theme ? "Dark Theme" : "Light Theme"}
+            checked={state.theme}
+            onChange={() => {
+              handleChangeToggle(
+                !state.theme,
+                'theme'
+              )
+            }}
+          />
+        </div>
+      </div>
+
+
       <Editor
         height="90vh"
         defaultLanguage="css"
         defaultValue={intl.formatMessage(messages.helper)}
-        theme="vs-dark"
+        theme={state.theme ? "vs-dark" : "vs-light" }
         value={parseText(state.value)}
         onChange={(e: any) => handleChange('value', e)}
       />
