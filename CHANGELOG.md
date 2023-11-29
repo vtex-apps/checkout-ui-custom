@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.13.10] - 2023-11-15
+### Added
+
+- Code Editor for CSS and JS 
+
+### Fixed
+
+- Arabic, German, English, Spanish, Finnish, Italian, Japanese, Korean, Portuguese, Romanian and Thai translations.
 
 ## [0.13.9] - 2023-09-24
 ### Added
