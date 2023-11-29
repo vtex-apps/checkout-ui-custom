@@ -14,7 +14,7 @@ const messages = defineMessages({
   },
   helper: {
     id: 'admin/checkout-ui.tab.css.helper',
-    defaultMessage: 'Changes here may impact your sales',
+    defaultMessage: '/* Changes here may impact your sales */',
   },
   active: {
     id: 'admin/checkout-ui.toggle.active',
