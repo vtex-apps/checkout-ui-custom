@@ -2,7 +2,7 @@
 /* eslint-disable vtex/prefer-early-return */
 /* eslint-disable func-names */
 const { _locale } = require('./_locale-infos.js')
-const { debounce, formatCurrency, findClosestLang } = require('./_utils.js')
+const { debounce, formatCurrency, findClosestLang, parseDateBd } = require('./_utils.js')
 const FnsCustomAddressForm = require('./_customAddressForm.js')
 
 class checkoutCustom {
@@ -27,6 +27,8 @@ class checkoutCustom {
     this.showNoteField = showNoteField
     this.customAddressForm = customAddressForm
     this.hideEmailStep = hideEmailStep
+
+    this._holidays = null
   }
 
   general() {
@@ -531,6 +533,24 @@ class checkoutCustom {
     }
   }
 
+
+  holidaysBetweenDates(d0, d1,_holidays) {
+    /* Two working days and an sunday (not working day) */
+    var holidays = _holidays;
+
+    var holidaysCount = 0;
+
+    holidays.forEach(day => {
+      if ((new Date(day) >= d0) && (new Date(day) <= d1)) {
+        /* If it is not saturday (6) or sunday (0), substract it */
+        if ((parseDateBd(day).getDay() % 6) != 0) {
+          holidaysCount++;
+        }
+      }
+    });
+    return holidaysCount;
+  }
+
   addBusinessDays(n, lang = window.i18n.options.lng) {
     const _this = this
     let d = new Date()
@@ -545,6 +565,26 @@ class checkoutCustom {
         Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
     )
 
+    let bdHolidays = 0
+    if(_this._holidays) {
+      bdHolidays = _this.holidaysBetweenDates(new Date(), d, _this._holidays.map( hd => hd.startDate.split("T")[0] ))
+    }
+
+    let dhd = new Date()
+    if(bdHolidays) {
+      dhd = new Date(dhd.getTime())
+      const day = dhd.getDay()
+
+      dhd.setDate(
+        dhd.getDate() +
+        (n+bdHolidays) +
+          (day === 6 ? 2 : +!day) +
+          Math.floor(((n+bdHolidays) - 1 + (day % 6 || 1)) / 5) * 2
+      )
+    }
+
+    let newDate = bdHolidays ? dhd : d;
+
     let doptions = { weekday: 'long', month: 'short', day: 'numeric' }
 
     if (lang === 'pt') {
@@ -555,9 +595,9 @@ class checkoutCustom {
       return _this.lang.tomorrowLabel || 'Tomorrow'
     }
 
-    d = d.toLocaleDateString(lang, doptions)
+    newDate = newDate.toLocaleDateString(lang, doptions)
 
-    return d
+    return newDate
   }
 
   changeShippingTimeInfo() {
@@ -703,10 +743,30 @@ class checkoutCustom {
     }
   }
 
+
+  fetchHolidays() {
+    const _this = this
+    const roothPath = window.__RUNTIME__.rootPath || window.location.pathname.split(`/checkout`)[0];
+
+    if(_this._holidays) return
+
+    fetch(
+      `${roothPath}/_v/holidays`,
+      {
+        method: 'GET'
+      }
+    )
+    .then(response => response.json())
+    .then(function (data) {
+      _this._holidays = data;
+    })
+  }
+
   changeShippingTimeInfoInit() {
     const _this = this
 
     if (_this.lang && _this.deliveryDateFormat) {
+      _this.fetchHolidays()
       _this.changeShippingTimeInfo()
     }
   }
@@ -1014,9 +1074,9 @@ class checkoutCustom {
     } else {
       $('.alert-noStreet').remove()
     }
-    
+
   }
-  
+
   URLHasIncludePayment(orderForm) {
     const _this = this
 
@@ -1211,14 +1271,14 @@ class checkoutCustom {
             callback: () => _this.removeCILoader(),
           })
 
-          
+
         }
       })
 
       $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
-       
+
       })
 
       $(window).load(function () {
@@ -1234,7 +1294,7 @@ class checkoutCustom {
             isCalculateBttnEnabled: false,
           })
         }
-        
+
       })
 
       // eslint-disable-next-line no-console

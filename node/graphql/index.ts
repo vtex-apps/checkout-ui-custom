@@ -5,6 +5,7 @@ import * as path from 'path'
 import { method } from '@vtex/api'
 
 import { getCountryRules } from '../middlewares/getCountryRules'
+import { holidays } from '../middlewares/holidays'
 
 const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
@@ -94,6 +95,9 @@ export const resolvers = {
   Routes: {
     apiGetCountryRules: method({
       GET: [getCountryRules],
+    }),
+    getHolidays: method({
+      GET: [holidays],
     }),
   },
   Mutation: {
