@@ -553,51 +553,58 @@ class checkoutCustom {
 
   addBusinessDays(n, lang = window.i18n.options.lng) {
     const _this = this
-    let d = new Date()
 
-    d = new Date(d.getTime())
-    const day = d.getDay()
+    try {
 
-    d.setDate(
-      d.getDate() +
-        n +
-        (day === 6 ? 2 : +!day) +
-        Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
-    )
+      let d = new Date()
 
-    let bdHolidays = 0
-    if(_this._holidays) {
-      bdHolidays = _this.holidaysBetweenDates(new Date(), d, _this._holidays.map( hd => hd.startDate.split("T")[0] ))
-    }
+      d = new Date(d.getTime())
+      const day = d.getDay()
 
-    let dhd = new Date()
-    if(bdHolidays) {
-      dhd = new Date(dhd.getTime())
-      const day = dhd.getDay()
-
-      dhd.setDate(
-        dhd.getDate() +
-        (n+bdHolidays) +
+      d.setDate(
+        d.getDate() +
+          n +
           (day === 6 ? 2 : +!day) +
-          Math.floor(((n+bdHolidays) - 1 + (day % 6 || 1)) / 5) * 2
+          Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
       )
+
+      let bdHolidays = 0
+      if(_this._holidays) {
+        bdHolidays = _this.holidaysBetweenDates(new Date(), d, _this._holidays.map( hd => hd.startDate.split("T")[0] ))
+      }
+
+      let dhd = new Date()
+      if(bdHolidays) {
+        dhd = new Date(dhd.getTime())
+        const day = dhd.getDay()
+
+        dhd.setDate(
+          dhd.getDate() +
+          (n+bdHolidays) +
+            (day === 6 ? 2 : +!day) +
+            Math.floor(((n+bdHolidays) - 1 + (day % 6 || 1)) / 5) * 2
+        )
+      }
+
+      let newDate = bdHolidays ? dhd : d;
+
+      let doptions = { weekday: 'long', month: 'short', day: 'numeric' }
+
+      if (lang === 'pt') {
+        doptions = { weekday: 'short', month: 'short', day: 'numeric' }
+      }
+
+      if (d.getDate() - new Date().getDate() === 1) {
+        return _this.lang.tomorrowLabel || 'Tomorrow'
+      }
+
+      newDate = newDate.toLocaleDateString(lang, doptions)
+
+      return newDate
+
+    } catch(e) {
+      console.error(`Error at "addBusinessDays":`, e)
     }
-
-    let newDate = bdHolidays ? dhd : d;
-
-    let doptions = { weekday: 'long', month: 'short', day: 'numeric' }
-
-    if (lang === 'pt') {
-      doptions = { weekday: 'short', month: 'short', day: 'numeric' }
-    }
-
-    if (d.getDate() - new Date().getDate() === 1) {
-      return _this.lang.tomorrowLabel || 'Tomorrow'
-    }
-
-    newDate = newDate.toLocaleDateString(lang, doptions)
-
-    return newDate
   }
 
   changeShippingTimeInfo() {
