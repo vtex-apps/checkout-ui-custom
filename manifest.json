@@ -37,6 +37,9 @@
       "name": "ADMIN_DS"
     },
     {
+      "name": "LogisticsViewer"
+    },
+    {
       "name": "outbound-access",
       "attrs": {
         "host": "platform.io.vtex.com",
@@ -55,6 +58,13 @@
       "attrs": {
         "host": "{{account}}.vtexcommercestable.com.br",
         "path": "/api/dataentities/checkoutcustom/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/logistics/pvt/configuration/holidays/"
       }
     }
   ],

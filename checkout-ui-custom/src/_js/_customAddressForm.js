@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable vtex/prefer-early-return */
 /* eslint-disable no-console */
 /* eslint-disable func-names */
@@ -456,6 +457,7 @@ class fnsCustomAddressForm {
       ],
       clearAddressIfPostalCodeNotFound: false,
     }
+
     window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function () {
 
       $(window).trigger("VCUSTOM__ADDRESSFORM__CLEARED")
