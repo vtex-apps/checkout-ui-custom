@@ -569,9 +569,14 @@ class checkoutCustom {
       )
 
       let bdHolidays = 0
-      if(_this._holidays) {
+      if(_this._holidays ) {
         bdHolidays = _this.holidaysBetweenDates(new Date(), d, _this._holidays.map( hd => hd.startDate.split("T")[0] ))
       }
+
+      if(
+        _this._holidays &&
+        _this._holidays.name=="Error"
+      ) bdHolidays = 0
 
       let dhd = new Date()
       if(bdHolidays) {

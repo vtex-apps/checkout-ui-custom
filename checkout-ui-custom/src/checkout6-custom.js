@@ -5,7 +5,7 @@ window.vcustom = {
   checkout: new CheckoutCustom({
     type: 'vertical', // ["vertical" , "horizontal"]
     accordionPayments: true,
-    deliveryDateFormat: false,
+    deliveryDateFormat: true,
     quantityPriceCart: false,
     showNoteField: false,
     customAddressForm: true,
