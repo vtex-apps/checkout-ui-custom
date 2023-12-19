@@ -1,6 +1,6 @@
 {
   "name": "checkout-ui-custom-app",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "devDependencies": {
     "@types/jest": "^26.0.4",
     "@types/node": "^14.0.14",
