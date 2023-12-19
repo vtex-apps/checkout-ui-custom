@@ -12,11 +12,12 @@ export async function holidays(ctx: Context) {
 
   // const { consultantId } = await json(req)
 
-  const holidaysUrl = `https://${account}.vtexcommercestable.com.br/api/logistics/pvt/configuration/holidays`
+  const holidaysUrl = `http://${account}.vtexcommercestable.com.br/api/logistics/pvt/configuration/holidays`
 
   const { data: _holidays } = await axios.get(holidaysUrl, {
     headers: {
-      VtexIdclientAutCookie: authToken,
+      'VtexIdclientAutCookie': authToken,
+      'X-Vtex-Use-Https': 'true'
     },
   })
 
@@ -25,7 +26,6 @@ export async function holidays(ctx: Context) {
 
   let result = _holidays;
   if(!holidays) result = "no holidays"
-
 
   ctx.response.status = 200
   ctx.response.body = result
