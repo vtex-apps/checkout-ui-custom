@@ -561,18 +561,12 @@ class checkoutCustom {
       d = new Date(d.getTime())
       const day = d.getDay()
 
-      if(typeDays === "d") {
-        d.setDate(
-          d.getDate() + n 
-        )
-      } else {
-        d.setDate(
-          d.getDate() +
-            n +
-            (day === 6 ? 2 : +!day) +
-            Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
-        )
-      }
+      d.setDate(
+        d.getDate() +
+          n +
+          (day === 6 ? 2 : +!day) +
+          Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
+      )
 
       let bdHolidays = 0
       if(_this._holidays ) {
