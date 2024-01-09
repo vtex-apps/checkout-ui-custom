@@ -551,8 +551,10 @@ class checkoutCustom {
     return holidaysCount;
   }
 
-  addBusinessDays(n, lang = window.i18n.options.lng) {
+   addBusinessDays(n, days, lang = window.i18n.options.lng) {
     const _this = this
+
+    let typeDays = days.replace(/[0-9]/g, '');
 
     try {
 
@@ -561,12 +563,18 @@ class checkoutCustom {
       d = new Date(d.getTime())
       const day = d.getDay()
 
-      d.setDate(
-        d.getDate() +
-          n +
-          (day === 6 ? 2 : +!day) +
-          Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
-      )
+      if(typeDays === "d") {
+        d.setDate(
+          d.getDate() + n 
+        )
+      } else {
+        d.setDate(
+          d.getDate() +
+            n +
+            (day === 6 ? 2 : +!day) +
+            Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
+        )
+      }
 
       let bdHolidays = 0
       if(_this._holidays ) {
@@ -691,7 +699,7 @@ class checkoutCustom {
           $(this)
             .find(mainSTIelems.join(', '))
             .html(
-              `${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`
+              `${_delivtext} <strong>${_this.addBusinessDays(days, selectedSlaDays)}</strong>`
             )
             .addClass('v-changeShippingTimeInfo-elem-active')
         }
@@ -736,7 +744,7 @@ class checkoutCustom {
               } // check if is pickup. OBS: none of others solutions worked, needs constantly update
 
               deliveryDates.push(
-                `${_delivtext} <strong>${_this.addBusinessDays(days)}</strong>`
+                `${_delivtext} <strong>${_this.addBusinessDays(days, selectedSlaDays)}</strong>`
               )
             }
           }
