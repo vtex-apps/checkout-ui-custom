@@ -1099,17 +1099,13 @@ class checkoutCustom {
 
   URLHasIncludePayment(orderForm) {
     const _this = this
-
-    if (!orderForm.shippingData.address.street) {
-      return
-    }
-
+    
     if (
       window.location.hash === '#/payment' &&
       orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
-      orderForm && orderForm.shippingData && orderForm.shippingData.street &&
+      orderForm.shippingData.address.street &&
       !orderForm.shippingData.address.street.trim() &&
       _this.customAddressForm
     ) {
