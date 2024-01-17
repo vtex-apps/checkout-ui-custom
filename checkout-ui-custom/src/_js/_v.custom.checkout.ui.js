@@ -565,7 +565,7 @@ class checkoutCustom {
 
       if(typeDays === "d") {
         d.setDate(
-          d.getDate() + n 
+          d.getDate() + n
         )
       } else {
         d.setDate(
@@ -1089,7 +1089,7 @@ class checkoutCustom {
 
   appendMessageEmptyStreet(orderForm) {
     const _this = this
-    if(!(orderForm && orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.street != null||undefined && orderForm.shippingData.address.street.trim()) ) {
+    if(!(orderForm && orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.street != null || undefined && orderForm.shippingData.address.street.trim())) {
       if( !$('.alert-noStreet').length && $('.accordion-inner.shipping-container').length) $('.orderform-template-holder #shipping-data .accordion-inner').append(`<div class="alert-noStreet"><span class="alert">${_this.locale ? _this.locale.noStreetAddress || 'Your shipping information is missing a required field, please include a street' : 'Your shipping information is missing a required field, please include a street'}</span></div>`)
     } else {
       $('.alert-noStreet').remove()
@@ -1099,12 +1099,13 @@ class checkoutCustom {
 
   URLHasIncludePayment(orderForm) {
     const _this = this
-
+    
     if (
       window.location.hash === '#/payment' &&
       orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
+      orderForm.shippingData.address.street &&
       !orderForm.shippingData.address.street.trim() &&
       _this.customAddressForm
     ) {
