@@ -1099,7 +1099,7 @@ class checkoutCustom {
 
   URLHasIncludePayment(orderForm) {
     const _this = this
-    
+
     if (
       window.location.hash === '#/payment' &&
       orderForm.shippingData &&
