@@ -333,7 +333,7 @@ class checkoutCustom {
             }).length > 0
           ) {
             _couponItems.push(this)
-            $(`.table.cart-items tbody tr.product-item:eq(${i})`)
+            $(`.table.cart-items tbody tr.product-item[data-sku='${this.id}']`)
               .addClass('v-custom-addLabels-active js-vcustom-addLabels')
               .find('.product-name')
               .append(
