@@ -18,6 +18,7 @@
     "@babel/runtime-corejs2": "^7.0.0",
     "@vtex/address-form": "^3.27.2",
     "babel-loader": "^8.0.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "eslint": "^8.40.0",
     "extract-loader": "^2.0.1",
