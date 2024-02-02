@@ -565,7 +565,7 @@ class checkoutCustom {
 
       if(typeDays === "d") {
         d.setDate(
-          d.getDate() + n 
+          d.getDate() + n
         )
       } else {
         d.setDate(
@@ -1105,7 +1105,7 @@ class checkoutCustom {
       orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
-      !orderForm.shippingData.address.street.trim() &&
+      orderForm.shippingData.address.street &&
       _this.customAddressForm
     ) {
       _this.goToShippingStep()
