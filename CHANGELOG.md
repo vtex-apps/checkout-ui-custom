@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.16.0] - 2024-02-02
+
 ### Added
 
 - Export `_countries`, `_countriesrules`, `_cities`, and `_addressPlaceholder` variables so that other scripts can access them
