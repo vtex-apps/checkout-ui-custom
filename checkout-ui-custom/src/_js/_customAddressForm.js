@@ -10,7 +10,12 @@ const { getShipStateValue } = require('./_utils')
 // temporaly workaorund
 window.callbackMap = () => {
   window.vtexjs.checkout.getOrderForm(orderForm => {
-    if(window.vcustom && window.vcustom.checkout && window.vcustom.customAddressFormInit) window.vcustom.checkout.customAddressFormInit(orderForm)
+    if (
+      window.vcustom &&
+      window.vcustom.checkout &&
+      window.vcustom.customAddressFormInit
+    )
+      window.vcustom.checkout.customAddressFormInit(orderForm)
   })
 }
 
@@ -55,23 +60,16 @@ class fnsCustomAddressForm {
   }
 
   messageTrigger(_message) {
-
-		const _this = this
-
-		let messages, message;
-		messages = new window.vtex.Messages.getInstance({ajaxError:true});
-
-
-    message = {
+    const message = {
       content: {
         title: '',
         detail: _message,
       },
-      type: 'warning'
+      type: 'warning',
     }
 
-    $(window).trigger('addMessage', message);
-	}
+    $(window).trigger('addMessage', message)
+  }
 
   updateAddress(
     country = '',
@@ -115,11 +113,14 @@ class fnsCustomAddressForm {
     neighborhood = '',
     geoCoordinates = ''
   ) {
-
     const _this = this
 
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').val(
-      'number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required ? street : formattedStreet || street
+      'number' in _this.addressrules &&
+        _this.addressrules.number &&
+        _this.addressrules.number.required
+        ? street
+        : formattedStreet || street
     )
 
     $('.vcustom--vtex-omnishipping-1-x-address #ship-complement').val(
@@ -132,11 +133,19 @@ class fnsCustomAddressForm {
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-street',
-      'number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required ? street : formattedStreet || street
+      'number' in _this.addressrules &&
+        _this.addressrules.number &&
+        _this.addressrules.number.required
+        ? street
+        : formattedStreet || street
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-number',
-      'number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required ? number : null
+      'number' in _this.addressrules &&
+        _this.addressrules.number &&
+        _this.addressrules.number.required
+        ? number
+        : null
     )
     $('.vcustom--vtex-omnishipping-1-x-address #v-custom-ship-street').attr(
       'data-neighborhood',
@@ -270,7 +279,11 @@ class fnsCustomAddressForm {
           )
         : ''
 
-      if ('number' in _this.addressrules && _this.addressrules.number && _this.addressrules.number.required) {
+      if (
+        'number' in _this.addressrules &&
+        _this.addressrules.number &&
+        _this.addressrules.number.required
+      ) {
         $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val(
           _this.returnAddressFRules(place.address_components, {
             types: ['street_number'],
@@ -279,7 +292,9 @@ class fnsCustomAddressForm {
       }
 
       const number =
-        'number' in _this.addressrules  && _this.addressrules.number && _this.addressrules.number.required
+        'number' in _this.addressrules &&
+        _this.addressrules.number &&
+        _this.addressrules.number.required
           ? $('.vcustom--vtex-omnishipping-1-x-address #ship-number').val()
           : _this.returnAddressFRules(place.address_components, {
               types: ['street_number'],
@@ -371,27 +386,36 @@ class fnsCustomAddressForm {
   }
 
   receiverNameF() {
-    const _this = this;
-    if(
+    const _this = this
+
+    if (
       _this.orderForm.clientProfileData &&
       _this.orderForm.clientProfileData.firstName &&
       _this.orderForm.clientProfileData.lastName &&
-      !~vtexjs.checkout.orderForm.clientProfileData.firstName.indexOf('*')
+      !~window.vtexjs.checkout.orderForm.clientProfileData.firstName.indexOf(
+        '*'
+      )
     ) {
-      return `${_this.orderForm.clientProfileData.firstName} ${_this.orderForm.clientProfileData.lastName ? _this.orderForm.clientProfileData.lastName : ''}`
+      return `${_this.orderForm.clientProfileData.firstName} ${
+        _this.orderForm.clientProfileData.lastName
+          ? _this.orderForm.clientProfileData.lastName
+          : ''
+      }`
     }
+
     return ''
   }
 
   geti18n() {
-    const _this = this;
+    const _this = this
 
-    const locale = _this.orderForm.clientPreferencesData.locale
+    const { locale } = _this.orderForm.clientPreferencesData
     const _lang = window.vtex.i18n[locale]
 
-    let lang = _lang || window.vtex.i18n[locale.split(`-`)[0]]
+    const lang = _lang || window.vtex.i18n[locale.split(`-`)[0]]
 
-    if(!lang) window.vtex.i18n['en']
+    if (!lang) window.vtex.i18n.en
+
     return lang
   }
 
@@ -458,67 +482,96 @@ class fnsCustomAddressForm {
       clearAddressIfPostalCodeNotFound: false,
     }
 
-    window.vtexjs.checkout.sendAttachment('shippingData', {}).done(function () {
+    window.vtexjs.checkout
+      .sendAttachment('shippingData', {})
+      .done(function () {
+        $(window).trigger('VCUSTOM__ADDRESSFORM__CLEARED')
 
-      $(window).trigger("VCUSTOM__ADDRESSFORM__CLEARED")
+        $('button.vtex-front-messages-close-all.close').trigger('click')
+        $('.vtex-omnishipping-1-x-warning').hide()
+        $('.alert-noStreet').hide()
+        $(
+          '.shp-alert.vtex-omnishipping-1-x-alert.shp-alert-shipping-unavailable.vtex-omnishipping-1-x-alertPickup, .button-unavailable-delivery-pickup-wrapper'
+        ).hide()
+        _this.firstAttempt = true
 
-      $('button.vtex-front-messages-close-all.close').trigger('click')
-      $('.vtex-omnishipping-1-x-warning').hide()
-      $('.alert-noStreet').hide()
-      $('.shp-alert.vtex-omnishipping-1-x-alert.shp-alert-shipping-unavailable.vtex-omnishipping-1-x-alertPickup, .button-unavailable-delivery-pickup-wrapper').hide()
-      _this.firstAttempt = true
+        window.vtexjs.checkout
+          .sendAttachment('shippingData', shippingInfo)
+          .done(function (orderForm) {
+            if (
+              orderForm.error ||
+              !orderForm.shippingData.address ||
+              orderForm.items.filter(
+                item => item.availability == 'cannotBeDelivered'
+              ).length == orderForm.items.length
+            ) {
+              // eslint-disable-next-line no-alert
+              $(
+                '.vtex-omnishipping-1-x-warning, .step.shipping-data .box-step'
+              ).show()
+              $('body')
+                .addClass(_this.BodyFormClasses.join(' '))
+                .removeClass(
+                  'js-v-custom-is-loading js-v-custom-is-loadAddress'
+                )
+              if (orderForm.error && orderForm.error.message)
+                // eslint-disable-next-line no-alert
+                alert(
+                  `Something went wrong: ${
+                    orderForm.error ? orderForm.error.message : 'null address'
+                  }`
+                )
 
-      window.vtexjs.checkout
-        .sendAttachment('shippingData', shippingInfo)
-        .done(function (orderForm) {
-
-
-          if (
-            orderForm.error ||
-            !orderForm.shippingData.address ||
-            orderForm.items.filter( item => item.availability == "cannotBeDelivered" ).length == orderForm.items.length
-          ) {
-            // eslint-disable-next-line no-alert
-            $('.vtex-omnishipping-1-x-warning, .step.shipping-data .box-step').show()
-            $('body').addClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
-            if(orderForm.error && orderForm.error.message) alert(`Something went wrong: ${orderForm.error ? orderForm.error.message : "null address"}`)
-
-            if(orderForm.items.filter( item => item.availability == "cannotBeDelivered" ).length == orderForm.items.length) {
-              _this.messageTrigger(_this.geti18n().cart.unavailableForDelivery)
+              if (
+                orderForm.items.filter(
+                  item => item.availability == 'cannotBeDelivered'
+                ).length == orderForm.items.length
+              ) {
+                _this.messageTrigger(
+                  _this.geti18n().cart.unavailableForDelivery
+                )
+              }
+            } else {
+              _this.updateAddress(
+                _country,
+                _postalCode,
+                _city,
+                _state,
+                _street,
+                _number,
+                _complement,
+                '',
+                _addressQuery || '',
+                _addressId || '',
+                geoCoordinates || []
+              )
+              $('body')
+                .removeClass(_this.BodyFormClasses.join(' '))
+                .removeClass('js-v-custom-is-loading')
+              _this.orderForm = orderForm
+              _this.triggerAddressValidation()
+              $(window).trigger('VCUSTOM__ADDRESSFORM__UPDATED')
             }
-          } else {
-            _this.updateAddress(
-              _country,
-              _postalCode,
-              _city,
-              _state,
-              _street,
-              _number,
-              _complement,
-              '',
-              _addressQuery || '',
-              _addressId || '',
-              geoCoordinates || []
+          })
+          .fail(function (error) {
+            _this.orderForm = window.vtexjs.checkout.orderForm
+            $('body').removeClass(
+              'js-v-custom-is-loading js-v-custom-is-loadAddress'
             )
-            $('body').removeClass(_this.BodyFormClasses.join(' ')).removeClass('js-v-custom-is-loading')
-            _this.orderForm = orderForm
-            _this.triggerAddressValidation()
-             $(window).trigger("VCUSTOM__ADDRESSFORM__UPDATED")
-
-          }
-
-        })
-        .fail(function (error) {
-          _this.orderForm = window.vtexjs.checkout.orderForm
-          $('body').removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
-          console.error(`Something went wrong: Custom Address Form (sendAddress) --> ${error}`)
-        })
-    })
-    .fail(function (error) {
-      _this.orderForm = window.vtexjs.checkout.orderForm
-      $('body').removeClass('js-v-custom-is-loading js-v-custom-is-loadAddress')
-      console.error(`Something went wrong: Custom Address Form (sendAddress) --> ${error}`)
-    })
+            console.error(
+              `Something went wrong: Custom Address Form (sendAddress) --> ${error}`
+            )
+          })
+      })
+      .fail(function (error) {
+        _this.orderForm = window.vtexjs.checkout.orderForm
+        $('body').removeClass(
+          'js-v-custom-is-loading js-v-custom-is-loadAddress'
+        )
+        console.error(
+          `Something went wrong: Custom Address Form (sendAddress) --> ${error}`
+        )
+      })
   }
 
   getRegions(country) {
@@ -564,7 +617,11 @@ class fnsCustomAddressForm {
     const number = $('.vcustom--vtex-omnishipping-1-x-address p.ship-number')
     const state = $('.vcustom--vtex-omnishipping-1-x-address p.ship-state')
 
-    if ('number' in addressrules && addressrules.number && addressrules.number.required) {
+    if (
+      'number' in addressrules &&
+      addressrules.number &&
+      addressrules.number.required
+    ) {
       number.show()
       number.find('input').attr('required', 'required')
     } else {
@@ -612,11 +669,19 @@ class fnsCustomAddressForm {
     }</span></p>
             <div class="v-custom-ship-info">
               <p class="input ship-number text ${
-                'number' in _this.addressrules  && _this.addressrules.number && _this.addressrules.number.required ? 'required' : 'hide'
+                'number' in _this.addressrules &&
+                _this.addressrules.number &&
+                _this.addressrules.number.required
+                  ? 'required'
+                  : 'hide'
               }"><label id="number-label" for="ship-complement">${
       _this.locale.number ? _this.locale.number || 'Number' : 'Number'
     }</label><input ${
-      'number' in _this.addressrules  && _this.addressrules.number && _this.addressrules.number.required ? 'required' : ''
+      'number' in _this.addressrules &&
+      _this.addressrules.number &&
+      _this.addressrules.number.required
+        ? 'required'
+        : ''
     } autocomplete="on" id="ship-number" type="text" name="v-custom-number" maxlength="20" placeholder="${
       _this.locale.number ? _this.locale.number : ''
     }" class="input-xlarge" data-hj-whitelist="true" value="${
@@ -729,6 +794,7 @@ class fnsCustomAddressForm {
     ) {
       $('body').removeClass('v-custom-addressForm-on')
     }
+
     this.googleForm()
     this.updateGoogleForm(country[1].toLowerCase())
 
@@ -763,11 +829,15 @@ class fnsCustomAddressForm {
       }
     })
   }
+
   scrollToAddress() {
-    var doc = document.documentElement;
-    const scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
-    const posSPtop = $("#shipping-data").offset().top
-    if(scrollTop > posSPtop) window.scrollTo(0, posSPtop);
+    const doc = document.documentElement
+    const scrollTop =
+      (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+
+    const posSPtop = $('#shipping-data').offset().top
+
+    if (scrollTop > posSPtop) window.scrollTo(0, posSPtop)
   }
 
   submitAddressForm() {
@@ -867,9 +937,16 @@ class fnsCustomAddressForm {
             '.vtex-omnishipping-1-x-addressItemOption.vtex-omnishipping-1-x-active'
           ).index()
 
-          let addressClicked = _this.orderForm.shippingData.availableAddresses.find((address) => { return address.addressId== _this.orderForm.shippingData.address.addressId })
+          let addressClicked = _this.orderForm.shippingData.availableAddresses.find(
+            address => {
+              return (
+                address.addressId ==
+                _this.orderForm.shippingData.address.addressId
+              )
+            }
+          )
 
-          if(!addressClicked) {
+          if (!addressClicked) {
             if (indexAddress < 0) {
               addressClicked = addressClicked.selectedAddresses[0]
             } else {
@@ -877,7 +954,11 @@ class fnsCustomAddressForm {
             }
           }
 
-          if (addressClicked && addressClicked.city && addressClicked.city.indexOf('*') < 0) {
+          if (
+            addressClicked &&
+            addressClicked.city &&
+            addressClicked.city.indexOf('*') < 0
+          ) {
             try {
               $('body').addClass(_this.BodyFormClasses.join(' '))
               if (
@@ -885,9 +966,13 @@ class fnsCustomAddressForm {
                 ~window.location.origin.indexOf('myvtex')
               ) {
                 setTimeout(() => {
+                  let countryClicked = _this.deliveryCountries.filter(
+                    country => country == addressClicked.country
+                  )
 
-                  let countryClicked = _this.deliveryCountries.filter( country => country == addressClicked.country)
-                  countryClicked = countryClicked.length ? countryClicked[0] : _this.deliveryCountries[0]
+                  countryClicked = countryClicked.length
+                    ? countryClicked[0]
+                    : _this.deliveryCountries[0]
 
                   addressClicked.street = addressClicked.street || ''
                   _this.updateAddress(
@@ -902,7 +987,6 @@ class fnsCustomAddressForm {
                     addressClicked.addressId,
                     addressClicked.geoCoordinates
                   )
-
 
                   $(
                     '.vcustom--vtex-omnishipping-1-x-address #ship-country'
@@ -990,7 +1074,6 @@ class fnsCustomAddressForm {
       e.stopImmediatePropagation()
       _this.submitAddressForm()
       _this.scrollToAddress()
-
     })
 
     $('body').on(
@@ -1035,28 +1118,26 @@ class fnsCustomAddressForm {
       })
   }
 
-  loadingAddress(orderForm) {
-
-    $(window).on("VCUSTOM__ADDRESSFORM__CLEARED", function() {
-      console.log("VCUSTOM__ADDRESSFORM__CLEARED")
-        $('body').addClass('js-v-custom-is-loadAddress')
+  loadingAddress() {
+    $(window).on('VCUSTOM__ADDRESSFORM__CLEARED', function () {
+      console.log('VCUSTOM__ADDRESSFORM__CLEARED')
+      $('body').addClass('js-v-custom-is-loadAddress')
     })
 
-    $(window).on("VCUSTOM__ADDRESSFORM__UPDATED", function() {
-      console.log("VCUSTOM__ADDRESSFORM__UPDATED")
-        $('body').removeClass('js-v-custom-is-loadAddress')
+    $(window).on('VCUSTOM__ADDRESSFORM__UPDATED', function () {
+      console.log('VCUSTOM__ADDRESSFORM__UPDATED')
+      $('body').removeClass('js-v-custom-is-loadAddress')
     })
-
   }
 
   events() {
     const _this = this
+
     _this.loadingAddress()
     $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
       _this.orderForm = orderForm
       _this.checkFirstLogin(orderForm)
     })
-
   }
 
   init(orderForm) {
@@ -1064,8 +1145,10 @@ class fnsCustomAddressForm {
 
     try {
       if (!window.google) _this.loadScript()
-    } catch(e) {
-      console.warn(`Error in customFormInit while loading "loadScript" function`)
+    } catch (e) {
+      console.warn(
+        `Error in customFormInit while loading "loadScript" function`
+      )
     }
 
     if (
