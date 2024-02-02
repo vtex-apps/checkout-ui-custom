@@ -2,7 +2,18 @@
 /* eslint-disable vtex/prefer-early-return */
 /* eslint-disable func-names */
 const { _locale } = require('./_locale-infos.js')
-const { debounce, formatCurrency, findClosestLang, parseDateBd } = require('./_utils.js')
+const {
+  debounce,
+  formatCurrency,
+  findClosestLang,
+  parseDateBd,
+} = require('./_utils.js')
+const {
+  _countriesrules,
+  _countries,
+  _cities,
+  _addressPlaceholder,
+} = require('./_countries.js')
 const FnsCustomAddressForm = require('./_customAddressForm.js')
 
 class checkoutCustom {
@@ -29,6 +40,10 @@ class checkoutCustom {
     this.hideEmailStep = hideEmailStep
 
     this._holidays = null
+    this.countriesRules = _countriesrules
+    this.countries = _countries
+    this.cities = _cities
+    this.addressPlaceholder = _addressPlaceholder
   }
 
   general() {
@@ -199,7 +214,6 @@ class checkoutCustom {
 
   addAssemblies(orderForm) {
     try {
-
       $.each(orderForm.items, function (i) {
         const _item = this
 
@@ -287,9 +301,15 @@ class checkoutCustom {
     0)
 
     // Match coupon with rateAndBenefitsIdentifiers
-    let couponMatch = null;
-    if(orderForm.ratesAndBenefitsData && orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.length ) {
-      couponMatch = orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.find(item => item.name === _coupon)
+    let couponMatch = null
+
+    if (
+      orderForm.ratesAndBenefitsData &&
+      orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.length
+    ) {
+      couponMatch = orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.find(
+        item => item.name === _coupon
+      )
     }
 
     if (!_coupon || couponItemsCount > 0 || couponMatch) {
@@ -348,7 +368,6 @@ class checkoutCustom {
   }
 
   buildMiniCart(orderForm) {
-
     /* overide refresh from vtex */
     if (
       orderForm.items.filter(item => {
@@ -360,7 +379,7 @@ class checkoutCustom {
 
     const _items = orderForm.items
 
-    if ($( ".mini-cart .cart-items > li").length == _items.length) {
+    if ($('.mini-cart .cart-items > li').length === _items.length) {
       $(`.mini-cart .cart-items`).html(`${$(`.mini-cart .cart-items`).html()}`)
       $.each(orderForm.items, function (i) {
         if (this.availability === 'available') {
@@ -373,8 +392,8 @@ class checkoutCustom {
   }
 
   setParentIndex(orderForm) {
+    const _orderForm = orderForm.items.filter(item => !item.isGift) // remove gift
 
-    const _orderForm = orderForm.items.filter( (item) => !item.isGift ) //remove gift
     $.each(_orderForm, function (i) {
       if (this.parentItemIndex !== null) {
         $(`.table.cart-items tbody > tr.product-item:eq(${i})`).attr(
@@ -410,9 +429,12 @@ class checkoutCustom {
   }
 
   enchanceSummary(key, obj) {
-    const _this = this;
-    if (_this.orderForm && $( ".mini-cart .cart-items > li").length == _this.orderForm.items.length) {
+    const _this = this
 
+    if (
+      _this.orderForm &&
+      $('.mini-cart .cart-items > li').length === _this.orderForm.items.length
+    ) {
       $(`.mini-cart .cart-items > li:eq(${key})`)
         .find(`.v-custom-bundles`)
         .remove()
@@ -430,9 +452,9 @@ class checkoutCustom {
 
           $(`.mini-cart .cart-items > li:eq(${key}) > .v-custom-bundles`)
             .append(`
-            <div class="hproduct item v-custom-indexed-item ${iiItem.sellingPrice ? '' : 'free-item'}" data-sku="${
-              iiItem.id
-            }">
+            <div class="hproduct item v-custom-indexed-item ${
+              iiItem.sellingPrice ? '' : 'free-item'
+            }" data-sku="${iiItem.id}">
               <a href="${iiItem.detailUrl}" class="url">
                 <img height="45" width="45" class="photo" src="${
                   iiItem.imageUrl
@@ -445,16 +467,22 @@ class checkoutCustom {
               <div class="description">
                 <strong class="price pull-right" data-bind="text: sellingPriceLabel">
                 ${
-                  iiItem.sellingPrice ?
-                  `${_this.orderForm.storePreferencesData.currencySymbol} ${ formatCurrency(_this.orderForm.clientPreferencesData.locale, _this.orderForm.storePreferencesData.currencyCode, iiItem.sellingPrice ).toFixed(2)}`
-                  : `Free`
+                  iiItem.sellingPrice
+                    ? `${
+                        _this.orderForm.storePreferencesData.currencySymbol
+                      } ${formatCurrency(
+                        _this.orderForm.clientPreferencesData.locale,
+                        _this.orderForm.storePreferencesData.currencyCode,
+                        iiItem.sellingPrice
+                      ).toFixed(2)}`
+                    : `Free`
                 } </strong>
               </div>
             </div>
           `)
-          $(
-            `.mini-cart .cart-items > li[data-sku='${iiItem.id}']`
-          ).addClass('v-custom-indexed-item')
+          $(`.mini-cart .cart-items > li[data-sku='${iiItem.id}']`).addClass(
+            'v-custom-indexed-item'
+          )
         }
       }
     }
@@ -474,14 +502,13 @@ class checkoutCustom {
         return false
       }
 
-      const _orderForm = orderForm.items.filter( (item) => !item.isGift ) //remove gift
-
-      const giftDifference = orderForm.items.length - _orderForm.length
+      const _orderForm = orderForm.items.filter(item => !item.isGift) // remove gift
 
       if (_orderForm.length) {
         const indexedInItems = _orderForm.reduce((c, v) => {
           if (v.parentItemIndex !== null) {
             const index = v.parentItemIndex
+
             c[index] = c[index] || []
             c[index].push(v)
           }
@@ -522,8 +549,9 @@ class checkoutCustom {
           }
 
           _this.enchanceSummary(key, obj)
-          setTimeout(function() { _this.enchanceSummary(key, obj) }, 150)
-
+          setTimeout(function () {
+            _this.enchanceSummary(key, obj)
+          }, 150)
         }
 
         _this.removeMCLoader()
@@ -533,40 +561,37 @@ class checkoutCustom {
     }
   }
 
-
-  holidaysBetweenDates(d0, d1,_holidays) {
+  holidaysBetweenDates(d0, d1, _holidays) {
     /* Two working days and an sunday (not working day) */
-    var holidays = _holidays;
+    const holidays = _holidays
 
-    var holidaysCount = 0;
+    let holidaysCount = 0
 
     holidays.forEach(day => {
-      if ((new Date(day) >= d0) && (new Date(day) <= d1)) {
+      if (new Date(day) >= d0 && new Date(day) <= d1) {
         /* If it is not saturday (6) or sunday (0), substract it */
-        if ((parseDateBd(day).getDay() % 6) != 0) {
-          holidaysCount++;
+        if (parseDateBd(day).getDay() % 6 !== 0) {
+          holidaysCount++
         }
       }
-    });
-    return holidaysCount;
+    })
+
+    return holidaysCount
   }
 
-   addBusinessDays(n, days, lang = window.i18n.options.lng) {
+  addBusinessDays(n, days, lang = window.i18n.options.lng) {
     const _this = this
 
-    let typeDays = days.replace(/[0-9]/g, '');
+    const typeDays = days.replace(/[0-9]/g, '')
 
     try {
-
       let d = new Date()
 
       d = new Date(d.getTime())
       const day = d.getDay()
 
-      if(typeDays === "d") {
-        d.setDate(
-          d.getDate() + n
-        )
+      if (typeDays === 'd') {
+        d.setDate(d.getDate() + n)
       } else {
         d.setDate(
           d.getDate() +
@@ -577,29 +602,32 @@ class checkoutCustom {
       }
 
       let bdHolidays = 0
-      if(_this._holidays ) {
-        bdHolidays = _this.holidaysBetweenDates(new Date(), d, _this._holidays.map( hd => hd.startDate.split("T")[0] ))
-      }
 
-      if(
-        _this._holidays &&
-        _this._holidays.name=="Error"
-      ) bdHolidays = 0
-
-      let dhd = new Date()
-      if(bdHolidays) {
-        dhd = new Date(dhd.getTime())
-        const day = dhd.getDay()
-
-        dhd.setDate(
-          dhd.getDate() +
-          (n+bdHolidays) +
-            (day === 6 ? 2 : +!day) +
-            Math.floor(((n+bdHolidays) - 1 + (day % 6 || 1)) / 5) * 2
+      if (_this._holidays) {
+        bdHolidays = _this.holidaysBetweenDates(
+          new Date(),
+          d,
+          _this._holidays.map(hd => hd.startDate.split('T')[0])
         )
       }
 
-      let newDate = bdHolidays ? dhd : d;
+      if (_this._holidays && _this._holidays.name === 'Error') bdHolidays = 0
+
+      let dhd = new Date()
+
+      if (bdHolidays) {
+        dhd = new Date(dhd.getTime())
+        const dhdDay = dhd.getDay()
+
+        dhd.setDate(
+          dhd.getDate() +
+            (n + bdHolidays) +
+            (dhdDay === 6 ? 2 : +!dhdDay) +
+            Math.floor((n + bdHolidays - 1 + (dhdDay % 6 || 1)) / 5) * 2
+        )
+      }
+
+      let newDate = bdHolidays ? dhd : d
 
       let doptions = { weekday: 'long', month: 'short', day: 'numeric' }
 
@@ -614,8 +642,7 @@ class checkoutCustom {
       newDate = newDate.toLocaleDateString(lang, doptions)
 
       return newDate
-
-    } catch(e) {
+    } catch (e) {
       console.error(`Error at "addBusinessDays":`, e)
     }
   }
@@ -637,6 +664,18 @@ class checkoutCustom {
       '.srp-shipping-current-single__sla',
     ]
 
+    const [
+      logisticsInfo,
+    ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
+
+    const availableSlas = logisticsInfo.slas
+
+    const { selectedSla } = logisticsInfo
+
+    const selectedSlaDays = availableSlas.find(e => e.name === selectedSla)
+      ? availableSlas.find(e => e.name === selectedSla).shippingEstimate
+      : false
+
     try {
       $(`
         .vtex-omnishipping-1-x-summaryPackage.shp-summary-package:not(.v-changeShippingTimeInfo-active),
@@ -648,18 +687,6 @@ class checkoutCustom {
         td.shipping-date,
         .srp-shipping-current-single
       `).each(function () {
-        const [
-          logisticsInfo,
-        ] = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo
-
-        const availableSlas = logisticsInfo.slas
-
-        const { selectedSla } = logisticsInfo
-
-        const selectedSlaDays = availableSlas.find(e => e.name === selectedSla)
-          ? availableSlas.find(e => e.name === selectedSla).shippingEstimate
-          : false
-
         const txtselectin = $(this)
           .find(
             mainSTIelems
@@ -699,7 +726,10 @@ class checkoutCustom {
           $(this)
             .find(mainSTIelems.join(', '))
             .html(
-              `${_delivtext} <strong>${_this.addBusinessDays(days, selectedSlaDays)}</strong>`
+              `${_delivtext} <strong>${_this.addBusinessDays(
+                days,
+                selectedSlaDays
+              )}</strong>`
             )
             .addClass('v-changeShippingTimeInfo-elem-active')
         }
@@ -744,7 +774,10 @@ class checkoutCustom {
               } // check if is pickup. OBS: none of others solutions worked, needs constantly update
 
               deliveryDates.push(
-                `${_delivtext} <strong>${_this.addBusinessDays(days, selectedSlaDays)}</strong>`
+                `${_delivtext} <strong>${_this.addBusinessDays(
+                  days,
+                  selectedSlaDays
+                )}</strong>`
               )
             }
           }
@@ -763,23 +796,21 @@ class checkoutCustom {
     }
   }
 
-
   fetchHolidays() {
     const _this = this
-    const roothPath = window.__RUNTIME__.rootPath || window.location.pathname.split(`/checkout`)[0];
+    const roothPath =
+      window.__RUNTIME__.rootPath ||
+      window.location.pathname.split(`/checkout`)[0]
 
-    if(_this._holidays) return
+    if (_this._holidays) return
 
-    fetch(
-      `${roothPath}/_v/holidays`,
-      {
-        method: 'GET'
-      }
-    )
-    .then(response => response.json())
-    .then(function (data) {
-      _this._holidays = data;
+    fetch(`${roothPath}/_v/holidays`, {
+      method: 'GET',
     })
+      .then(response => response.json())
+      .then(function (data) {
+        _this._holidays = data
+      })
   }
 
   changeShippingTimeInfoInit() {
@@ -918,10 +949,11 @@ class checkoutCustom {
     if (window.location.hash) {
       const [, hashstep] = window.location.hash.split('/')
 
-      const classStep = bClassStep.filter( st => { return ~hashstep.indexOf(st) })
-      if (
-        classStep.length
-      ) {
+      const classStep = bClassStep.filter(st => {
+        return ~hashstep.indexOf(st)
+      })
+
+      if (classStep.length) {
         $('body').addClass(prefixClass + classStep[0])
       }
     }
@@ -1089,12 +1121,31 @@ class checkoutCustom {
 
   appendMessageEmptyStreet(orderForm) {
     const _this = this
-    if(!(orderForm && orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.street != null || undefined && orderForm.shippingData.address.street.trim())) {
-      if( !$('.alert-noStreet').length && $('.accordion-inner.shipping-container').length) $('.orderform-template-holder #shipping-data .accordion-inner').append(`<div class="alert-noStreet"><span class="alert">${_this.locale ? _this.locale.noStreetAddress || 'Your shipping information is missing a required field, please include a street' : 'Your shipping information is missing a required field, please include a street'}</span></div>`)
+
+    if (
+      !(
+        (orderForm &&
+          orderForm.shippingData &&
+          orderForm.shippingData.address &&
+          orderForm.shippingData.address.street != null) ||
+        (undefined && orderForm.shippingData.address.street.trim())
+      )
+    ) {
+      if (
+        !$('.alert-noStreet').length &&
+        $('.accordion-inner.shipping-container').length
+      )
+        $('.orderform-template-holder #shipping-data .accordion-inner').append(
+          `<div class="alert-noStreet"><span class="alert">${
+            _this.locale
+              ? _this.locale.noStreetAddress ||
+                'Your shipping information is missing a required field, please include a street'
+              : 'Your shipping information is missing a required field, please include a street'
+          }</span></div>`
+        )
     } else {
       $('.alert-noStreet').remove()
     }
-
   }
 
   URLHasIncludePayment(orderForm) {
@@ -1125,7 +1176,9 @@ class checkoutCustom {
         $('body').addClass('returningUser')
       }
 
-      try {_this.customAddressForm.init(_orderForm)} catch(e) {
+      try {
+        _this.customAddressForm.init(_orderForm)
+      } catch (e) {
         console.warn(`Error in "customAddressFormInit"`)
       }
     }
@@ -1239,9 +1292,10 @@ class checkoutCustom {
   init() {
     const _this = this
 
-    _this.orderForm = window.vtexjs.checkout.orderForm
-      ? window.vtexjs.checkout.orderForm
-      : false
+    _this.orderForm =
+      window.vtexjs.checkout && window.vtexjs.checkout.orderForm
+        ? window.vtexjs.checkout.orderForm
+        : false
     _this.general()
     _this.updateStep()
     _this.builder()
@@ -1291,15 +1345,12 @@ class checkoutCustom {
             targetNode: cartItems,
             callback: () => _this.removeCILoader(),
           })
-
-
         }
       })
 
       $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
         _this.update(orderForm)
         _this.customAddressFormInit(orderForm)
-
       })
 
       $(window).load(function () {
@@ -1315,7 +1366,6 @@ class checkoutCustom {
             isCalculateBttnEnabled: false,
           })
         }
-
       })
 
       // eslint-disable-next-line no-console
