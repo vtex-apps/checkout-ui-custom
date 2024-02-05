@@ -1100,12 +1100,20 @@ class checkoutCustom {
   URLHasIncludePayment(orderForm) {
     const _this = this
 
+    let street = ''
+
+    if (orderForm.shippingData.address) {
+      if (orderForm.shippingData.address.street) {
+        street = orderForm.shippingData.address.street
+      }
+    }
+
     if (
       window.location.hash === '#/payment' &&
       orderForm.shippingData &&
       orderForm.shippingData.address &&
       orderForm.shippingData.address.addressType !== 'search' &&
-      orderForm.shippingData.address.street &&
+      !street.trim() &&
       _this.customAddressForm
     ) {
       _this.goToShippingStep()
