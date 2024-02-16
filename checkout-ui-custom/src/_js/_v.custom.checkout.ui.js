@@ -1102,22 +1102,31 @@ class checkoutCustom {
 
     let street = ''
 
-    if (orderForm.shippingData.address) {
-      if (orderForm.shippingData.address.street) {
+    try {
+      if (
+        orderForm &&
+        orderForm.shippingData &&
+        orderForm.shippingData.address &&
+        orderForm.shippingData.address.street
+      ) {
         street = orderForm.shippingData.address.street
       }
-    }
 
-    if (
-      window.location.hash === '#/payment' &&
-      orderForm.shippingData &&
-      orderForm.shippingData.address &&
-      orderForm.shippingData.address.addressType !== 'search' &&
-      !street.trim() &&
-      _this.customAddressForm
-    ) {
-      _this.goToShippingStep()
-      _this.appendMessageEmptyStreet(orderForm)
+      if (
+        window.location.hash === '#/payment' &&
+        orderForm &&
+        orderForm.shippingData &&
+        orderForm.shippingData.address &&
+        orderForm.shippingData.address.addressType !== 'search' &&
+        street &&
+        !street.trim() &&
+        _this.customAddressForm
+      ) {
+        _this.goToShippingStep()
+        _this.appendMessageEmptyStreet(orderForm)
+      }
+    } catch (error) {
+      console.error('URLHasIncludePayment error:', error)
     }
   }
 
