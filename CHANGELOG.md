@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fix: removes trim() from shipping validation
 
+## [0.17.0] - 2024-02-07
+
+### Fixed
+
+- Build files again
+
+## [0.16.0] - 2024-02-02
+
+### Added
+
+- Export `_countries`, `_countriesrules`, `_cities`, and `_addressPlaceholder` variables so that other scripts can access them
+
+### Fixed
+
+- Linting and code cleanup
+- Update webpack package to 5.x
+
 ## [0.15.6] - 2024-01-24
 
 ## [0.15.5] - 2024-01-17
@@ -41,19 +58,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Code Editor for CSS and JS 
+- Code Editor for CSS and JS
 
 ### Fixed
 
 - Arabic, German, English, Spanish, Finnish, Italian, Japanese, Korean, Portuguese, Romanian and Thai translations.
 
 ## [0.13.9] - 2023-09-24
+
 ### Added
 
 - scroll on go to shipping button
+
 ## [0.13.8] - 2023-09-22
 
 ### Fixed
+
 - Fix issue with console log countryLang
 
 ## [0.13.7] - 2023-09-20
@@ -67,13 +87,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - fallback for country selection when changing trade policies
+
 ## [0.13.5] - 2023-09-12
 
 ### Fixed
+
 - Address form fixed for the states of Croatia and CZE
 
 ## [0.13.4] - 2023-08-30
+
 ### Fixed
+
 - Add operator to fix issue in the undefined or null city
 
 ## [0.13.3] - 2023-08-15
@@ -94,6 +118,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.13.0] - 2023-08-02
 
 ### Fixed
+
 - events for validation
 
 ### Added
@@ -103,17 +128,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.12.9] - 2023-08-01
 
 ### Fixed
+
 - typo + conditional to orderform
 
 ## [0.12.8] - 2023-08-01
 
 ### Fixed
+
 - enchance for summary cart
 - change price for free item
 - Fix `_this` reference for `this.lang`
 - editable address
 
 ## [0.12.7] - 2023-07-18
+
 ### Fixed
 
 - Change Receiver name of function avoind returning `null`
@@ -159,14 +187,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.12.0] - 2023-06-27
 
 ### Added
+
 - Added offset scroll on mobile when user changes their address
 
 ## [0.11.1] - 2023-05-19
 
 ### Added
+
 - AUSTRIA configuration
 
 ### Fixed
+
 - German translations on shipping / pick up times
 - Missing translations on the config file
 
