@@ -1151,17 +1151,32 @@ class checkoutCustom {
   URLHasIncludePayment(orderForm) {
     const _this = this
 
-    if (
-      window.location.hash === '#/payment' &&
-      orderForm.shippingData &&
-      orderForm.shippingData.address &&
-      orderForm.shippingData.address.addressType !== 'search' &&
-      orderForm.shippingData.address.street &&
-      !orderForm.shippingData.address.street.trim() &&
-      _this.customAddressForm
-    ) {
-      _this.goToShippingStep()
-      _this.appendMessageEmptyStreet(orderForm)
+    let street = ''
+
+    try {
+      if (
+        orderForm &&
+        orderForm.shippingData &&
+        orderForm.shippingData.address &&
+        orderForm.shippingData.address.street
+      ) {
+        street = orderForm.shippingData.address.street
+      }
+
+      if (
+        window.location.hash === '#/payment' &&
+        orderForm &&
+        orderForm.shippingData &&
+        orderForm.shippingData.address &&
+        orderForm.shippingData.address.addressType !== 'search' &&
+        !street.trim() &&
+        _this.customAddressForm
+      ) {
+        _this.goToShippingStep()
+        _this.appendMessageEmptyStreet(orderForm)
+      }
+    } catch (error) {
+      console.error('URLHasIncludePayment error:', error)
     }
   }
 

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix: removes trim() from shipping validation
+
 ## [0.17.0] - 2024-02-07
 
 ### Fixed
