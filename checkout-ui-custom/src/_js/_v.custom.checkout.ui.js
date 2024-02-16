@@ -1118,7 +1118,6 @@ class checkoutCustom {
         orderForm.shippingData &&
         orderForm.shippingData.address &&
         orderForm.shippingData.address.addressType !== 'search' &&
-        street &&
         !street.trim() &&
         _this.customAddressForm
       ) {
