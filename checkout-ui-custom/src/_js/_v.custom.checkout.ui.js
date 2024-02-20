@@ -535,6 +535,7 @@ class checkoutCustom {
 
 
   holidaysBetweenDates(d0, d1,_holidays) {
+    console.log('info: ',d0,', ',d1,', ',_holidays)
     /* Two working days and an sunday (not working day) */
     var holidays = _holidays;
 
@@ -543,7 +544,7 @@ class checkoutCustom {
     holidays.forEach(day => {
       if ((new Date(day) >= d0) && (new Date(day) <= d1)) {
         /* If it is not saturday (6) or sunday (0), substract it */
-        if ((parseDateBd(day).getDay() % 6) != 0) {
+        if ((parseDateBd(day).getDay() % 6) !== 0) {
           holidaysCount++;
         }
       }
@@ -552,6 +553,7 @@ class checkoutCustom {
   }
 
    addBusinessDays(n, days, lang = window.i18n.options.lng) {
+    console.log(`called addBusinessDays(${n}, ${days}, lang = window.i18n.options.lng)`)
     const _this = this
 
     let typeDays = days.replace(/[0-9]/g, '');
@@ -567,14 +569,27 @@ class checkoutCustom {
         d.setDate(
           d.getDate() + n
         )
-      } else {
+      } else /* if (true) */ { // case: carrier works on saturday
+        d.setDate(
+          d.getDate() +
+            n +
+            (day === 0 ? 1 : 0) +
+            Math.floor((n) / 6)
+        ) 
+        d.setDate(d.getDay() === 0 ? d.getDate() + 1 : d.getDate())
+
+
+      }
+      
+     /*  else {
         d.setDate(
           d.getDate() +
             n +
             (day === 6 ? 2 : +!day) +
             Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
         )
-      }
+      } */
+      
 
       let bdHolidays = 0
       if(_this._holidays ) {
@@ -621,6 +636,7 @@ class checkoutCustom {
   }
 
   changeShippingTimeInfo() {
+    console.log('llamado 2.')
     const _this = this
 
     $('body').addClass('v-custom-changeShippingTimeInfo')
@@ -1319,7 +1335,8 @@ class checkoutCustom {
       })
 
       // eslint-disable-next-line no-console
-      console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`)
+      console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !! perfecto...`)
+      console.log(`prueba de link`)
     } catch (e) {
       _this.general()
     }
