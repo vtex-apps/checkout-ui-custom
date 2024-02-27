@@ -1105,7 +1105,7 @@ class fnsCustomAddressForm {
 
   getCountryRule(country) {
     const _this = this
-
+    console.log('llamado a rules: ', `/rules/${country}`)
     return fetch(`/rules/${country}`)
       .then(res => res.json())
       .then(jsonRes => {

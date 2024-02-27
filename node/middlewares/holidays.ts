@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-
+//import { shippingOnWeekends } from './shippingOnWeekends'
 import axios from 'axios'
 
 export async function holidays(ctx: Context) {
@@ -26,6 +26,8 @@ export async function holidays(ctx: Context) {
 
   let result = _holidays;
   if(!holidays) result = "no holidays"
+
+  //shippingOnWeekends(ctx);
 
   ctx.response.status = 200
   ctx.response.body = result

@@ -12,6 +12,10 @@
     "getHolidays": {
       "path": "/_v/holidays",
       "public": true
+    },
+    "shippingOnWeekends": {
+      "path": "/_v/shippingOnWeekends/:slaId",
+      "public":true
     }
   }
 }

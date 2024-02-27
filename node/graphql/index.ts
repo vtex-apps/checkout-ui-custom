@@ -6,6 +6,7 @@ import { method } from '@vtex/api'
 
 import { getCountryRules } from '../middlewares/getCountryRules'
 import { holidays } from '../middlewares/holidays'
+import { shippingOnWeekends } from '../middlewares/shippingOnWeekends'
 
 const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
@@ -99,6 +100,10 @@ export const resolvers = {
     getHolidays: method({
       GET: [holidays],
     }),
+    shippingOnWeekends: method({
+      GET: [shippingOnWeekends],
+    }),
+  
   },
   Mutation: {
     saveChanges: async (_: any, params: any, ctx: Context) => {

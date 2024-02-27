@@ -581,42 +581,62 @@ class checkoutCustom {
     return holidaysCount
   }
 
-   addBusinessDays(n, days, lang = window.i18n.options.lng) {
-    console.log(`called addBusinessDays(${n}, ${days}, lang = window.i18n.options.lng)`)
+  
+
+   async addBusinessDays(n, days, lang = window.i18n.options.lng) {
     const _this = this
 
     const typeDays = days.replace(/[0-9]/g, '')
+
+    /* try{
+      const slaId = window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].slas[0].deliveryIds[0].courierId
+      console.log('el id del sla seleccionado es: ', slaId)
+      const roothPath =
+      window.__RUNTIME__.rootPath ||
+      window.location.pathname.split(`/checkout`)[0]
+
+
+    const weekendAndHolidays = fetch(`${roothPath}/_v/shippingOnWeekends/${slaId}`, {
+      method: 'GET',
+    })
+      console.log('weekendAndHolidays',weekendAndHolidays)
+    }catch(e){
+      console.log('error: ', e)
+    } */
+  
 
     try {
       let d = new Date()
 
       d = new Date(d.getTime())
       const day = d.getDay()
+      const weekendAndHolidays = await this.getWeekendAndHolidays(window.vtexjs.checkout.orderForm.shippingData.logisticsInfo[0].slas[0].deliveryIds[0].courierId)
 
-      if(typeDays === "d") {
+      if(typeDays === "d" || (weekendAndHolidays.saturday && weekendAndHolidays.sunday && weekendAndHolidays.holiday)) {
         d.setDate(
           d.getDate() + n
         )
-      } else /* if (true) */ { // case: carrier works on saturday
-        d.setDate(
-          d.getDate() +
+      } else { 
+        
+        if (weekendAndHolidays.saturday) { // case: carrier works on saturday
+          d.setDate(
+            d.getDate() +
             n +
             (day === 0 ? 1 : 0) +
             Math.floor((n) / 6)
-        ) 
-        d.setDate(d.getDay() === 0 ? d.getDate() + 1 : d.getDate())
-
+          )
+          d.setDate(d.getDay() === 0 ? d.getDate() + 1 : d.getDate())
+        }else{
+          d.setDate(
+            d.getDate() +
+              n +
+              (day === 6 ? 2 : +!day) +
+              Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
+          )
+        }
 
       }
       
-     /*  else {
-        d.setDate(
-          d.getDate() +
-            n +
-            (day === 6 ? 2 : +!day) +
-            Math.floor((n - 1 + (day % 6 || 1)) / 5) * 2
-        )
-      } */
       
 
       let bdHolidays = 0
@@ -665,8 +685,24 @@ class checkoutCustom {
     }
   }
 
+  async getWeekendAndHolidays(slaId) {
+    try {
+      const roothPath = window.__RUNTIME__.rootPath || window.location.pathname.split(`/checkout`)[0]
+      const response = await fetch(`${roothPath}/_v/shippingOnWeekends/${slaId}`, {
+        method: 'GET',
+      })
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+      return await response.json()
+    } catch (error) {
+      console.error('Error fetching weekend and holidays:', error)
+      return null
+    }
+  }
+
   changeShippingTimeInfo() {
-    console.log('llamado 2.')
+    console.log('llamado 15.')
     const _this = this
 
     $('body').addClass('v-custom-changeShippingTimeInfo')
@@ -742,7 +778,7 @@ class checkoutCustom {
             _delivtext = _this.lang.PickupDateText
           } // check if is pickup. OBS: none of others solutions worked, needs constantly update
 
-          $(this)
+          /* $(this)
             .find(mainSTIelems.join(', '))
             .html(
               `${_delivtext} <strong>${_this.addBusinessDays(
@@ -750,7 +786,20 @@ class checkoutCustom {
                 selectedSlaDays
               )}</strong>`
             )
-            .addClass('v-changeShippingTimeInfo-elem-active')
+            .addClass('v-changeShippingTimeInfo-elem-active') */
+            _this.addBusinessDays(days, selectedSlaDays)
+            .then(result => {
+              $(this)
+                .find(mainSTIelems.join(', '))
+                .html(
+                  `${_delivtext} <strong>${result}</strong>`
+                )
+                .addClass('v-changeShippingTimeInfo-elem-active')
+            })
+            .catch(error => {
+              console.error('Error in addBusinessDays:', error);
+            });
+        
         }
 
         $(this).addClass('v-changeShippingTimeInfo-active')
