@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.18.0] - 2024-02-27
+
 ### Changed
 - Update version to clean possible poisoned cache due to an IO db update
 
