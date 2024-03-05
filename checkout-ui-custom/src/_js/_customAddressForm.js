@@ -446,7 +446,7 @@ class fnsCustomAddressForm {
       // end temporaly workaround for ARG
 
       // temporaly workaround for USA and CAN
-      if (_country === 'USA' || _country === 'CAN') {
+      if (_country === 'USA' || _country === 'ITA' || _country === 'CAN') {
         _number = null
       }
       // end temporaly workaround for USA
