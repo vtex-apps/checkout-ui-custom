@@ -537,7 +537,7 @@ class checkoutCustom {
                 const iiItem = obj[prop]
 
                 $(
-                  `.table.cart-items tbody > tr.product-item[data-sku='${iiItem.id}'][data-parentitemindex='${iiItem.parentItemIndex}']`
+                  `.table.cart-items tbody > tr.product-item[data-sku='${iiItem.id}'][data-parentitemindex='${iiItem.parentItemIndex}'], .table.cart-items tbody > tr.product-item[data-sku='${iiItem.id}'][data-parentitemindex='${iiItem.parentItemIndex}'] + .item-unavailable`
                 )
                   .addClass('v-custom-indexed-item')
                   .clone()
