@@ -2962,25 +2962,29 @@ vtex-tachyons@^3.2.0:
   resolved "https://registry.yarnpkg.com/vtex-tachyons/-/vtex-tachyons-3.2.2.tgz#e9e39d939778ef7d80a92c476cecf7417f79a6e8"
   integrity sha512-4M53uuvV+2XEjplVYiPgpBuaI5dtGksVgz/20NNjbZkXklJM7Lwgod/hOoh3PtIn36+95zZVVgXYfs3e6EU8YA==
 
-"vtex.checkout-ui-custom@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.7.13/public/@types/vtex.checkout-ui-custom":
-  version "0.7.13"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.7.13/public/@types/vtex.checkout-ui-custom#0ee9389eec7df1d50245eee4c080760ef9a8db8f"
+"vtex.checkout-ui-custom@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.18.1/public/@types/vtex.checkout-ui-custom":
+  version "0.18.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-custom@0.18.1/public/@types/vtex.checkout-ui-custom#b550ae32fbdf7c594e4fc77eeccfecfbd9eeb568"
 
-"vtex.checkout-ui-settings-server@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.4/public/_types/react":
+"vtex.checkout-ui-settings-server@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.5.1/public/_types/react":
   version "0.0.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.4.4/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.checkout-ui-settings-server@0.5.1/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
 
-"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.4/public/@types/vtex.render-runtime":
-  version "8.132.4"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.4/public/@types/vtex.render-runtime#66bb41bd4d342e37c9d85172aad5f7eefebfb6dc"
+"vtex.email-checkout-conflict@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.email-checkout-conflict@0.3.0/public/_types/react":
+  version "0.0.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.email-checkout-conflict@0.3.0/public/_types/react#fa7a0347e046eab3dd768998fc9252b2c0dd5aef"
 
-"vtex.store-resources@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.87.0/public/@types/vtex.store-resources":
-  version "0.87.0"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.87.0/public/@types/vtex.store-resources#f5815df145ec4c60066f233a4a31422f939894d7"
+"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.134.2/public/@types/vtex.render-runtime":
+  version "8.134.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.134.2/public/@types/vtex.render-runtime#ae69e2b2a471291c6c6b155e17510150fbfc2d0e"
 
-"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.1/public/@types/vtex.styleguide":
-  version "9.146.1"
-  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.1/public/@types/vtex.styleguide#66db40ca1b78ad77ce4beedabecee320e1ef2ead"
+"vtex.store-resources@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.96.0/public/@types/vtex.store-resources":
+  version "0.96.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-resources@0.96.0/public/@types/vtex.store-resources#6c281dd03ba28beeed38f4538c2068753d824f0d"
+
+"vtex.styleguide@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.9/public/@types/vtex.styleguide":
+  version "9.146.9"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.styleguide@9.146.9/public/@types/vtex.styleguide#d1601fedfb665c6173334753171717da64e670bc"
 
 warning@^4.0.0, warning@^4.0.2, warning@^4.0.3:
   version "4.0.3"
