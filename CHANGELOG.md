@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Set default locale for google address form as GBR
+
+### Added
+
+- Add IRL in locales file
+
 ## [0.18.4] - 2024-05-07
 
 ### Changed

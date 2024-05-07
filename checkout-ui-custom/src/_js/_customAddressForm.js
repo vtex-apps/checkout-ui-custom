@@ -1169,7 +1169,8 @@ class fnsCustomAddressForm {
           _this.lang = _this.orderForm.clientPreferencesData.locale
 
           _this.locale =
-            _locale[_this.orderForm.storePreferencesData.countryCode]
+            _locale[_this.orderForm.storePreferencesData.countryCode] ||
+            _locale.GBR
 
           if (_this.lang === 'es-AR') _this.lang = 'es'
 
