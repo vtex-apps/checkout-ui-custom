@@ -22,7 +22,7 @@ module.exports = {
             loader: 'extract-loader',
           },
           {
-            loader: 'css-loader?-url',
+            loader: 'css-loader?url',
           },
           {
             loader: 'sass-loader',

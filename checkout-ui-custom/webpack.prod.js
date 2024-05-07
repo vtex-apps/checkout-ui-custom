@@ -28,7 +28,7 @@ const defaultConfig = {
             loader: 'extract-loader',
           },
           {
-            loader: 'css-loader?-url',
+            loader: 'css-loader?url',
           },
           {
             loader: 'sass-loader',
@@ -62,7 +62,7 @@ const appConfig = {
             loader: 'extract-loader',
           },
           {
-            loader: 'css-loader?-url',
+            loader: 'css-loader',
           },
           {
             loader: 'sass-loader',
