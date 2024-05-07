@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated version reference to Address-form in order to reflect Malta's locale addition
+
 ## [0.18.3] - 2024-04-30
 
 ## [0.18.2] - 2024-04-29
