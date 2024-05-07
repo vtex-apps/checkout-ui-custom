@@ -2,7 +2,7 @@
   "name": "vtex.checkout-ui-custom",
   "version": "0.18.3",
   "dependencies": {
-    "@vtex/address-form": "^3.27.2",
+    "@vtex/address-form": "^3.35.0",
     "@vtex/api": "6.46.1",
     "co-body": "^6.0.0",
     "ramda": "^0.25.0"
