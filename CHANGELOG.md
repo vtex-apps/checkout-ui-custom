@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.18.4] - 2024-05-06
 - Set default locale for google address form as GBR
 - Add IRL in locales file
+
+## [0.18.4] - 2024-05-07
+
+### Changed
+
+- Updated version reference to Address-form in order to reflect Malta's locale addition
 
 ## [0.18.3] - 2024-04-30
 
