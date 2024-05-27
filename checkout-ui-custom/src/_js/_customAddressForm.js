@@ -4,7 +4,7 @@
 /* eslint-disable func-names */
 /* eslint-disable max-params */
 const { _locale } = require('./_locale-infos.js')
-const { _countries, _cities, _addressPlaceholder } = require('./_countries.js')
+const { _countries,_countriesrules, _cities, _addressPlaceholder } = require('./_countries.js')
 const { getShipStateValue } = require('./_utils')
 
 // temporaly workaorund
@@ -439,21 +439,32 @@ class fnsCustomAddressForm {
 
       geoCoordinates = [parseFloat(lat), parseFloat(lng)]
 
-      // temporaly workaround for ARG
+      // temporaly workaround for ARG_country === 'MLT'
       if (_country === 'ARG' && _city.toUpperCase() === 'CABA') {
         _city = 'Ciudad Autónoma de Buenos Aires'
       }
       // end temporaly workaround for ARG
 
+      // temporaly workaround for MLT
+      if (_country === 'MLT') {
+        _state = null
+        _postalCode = null
+      }
+      // end temporaly workaround for MLT
+
       // temporaly workaround for USA and CAN
-      if (_country === 'USA' || _country === 'ITA' || _country === 'CAN') {
+      if (
+        _country === 'USA' ||
+        _country === 'ITA' ||
+        _country === 'CAN'
+      ) {
         _number = null
       }
       // end temporaly workaround for USA
 
-      if (!_this.addressrules.state) {
-        _state = ''
-      }
+      // if (!_this.addressrules.state) {
+      //   _state = ''
+      // }
     } else {
       geoCoordinates = []
     }
@@ -1111,6 +1122,10 @@ class fnsCustomAddressForm {
       .then(jsonRes => {
         const { data: rules, success } = jsonRes
 
+        if(country=="MLT") {
+          return _countriesrules.MLT
+        }
+
         return success ? rules.geolocation : _this.getCountryRule('default')
       })
       .catch(error => {
@@ -1157,10 +1172,13 @@ class fnsCustomAddressForm {
       $('.vcustom--vtex-omnishipping-1-x-address').length < 1 &&
       orderForm.items.length
     ) {
+
+      const lastCountry = _this.orderForm.shippingData?.address?.country || _this.orderForm.storePreferencesData.countryCode
+
       $('body').addClass(`${this.classOn}`)
       _this.orderForm = orderForm
       _this
-        .getCountryRule(_this.orderForm.storePreferencesData.countryCode)
+        .getCountryRule(lastCountry)
         .then(rules => {
           _this.addressrules = rules
           _this.bind()
