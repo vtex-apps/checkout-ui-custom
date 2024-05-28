@@ -261,10 +261,10 @@
     "@types/mime" "^1"
     "@types/node" "*"
 
-"@vtex/address-form@^3.35.0":
-  version "3.35.0"
-  resolved "https://registry.yarnpkg.com/@vtex/address-form/-/address-form-3.35.0.tgz#f090d71f76865338b39952964d2fc562d729e2fa"
-  integrity sha512-BcFR9f6A2Zcbw5qdhIqqoOgHiyWRfyk8GsLQWl3/jgu4LV+d7k895MN7UzBbCKQIZGMsh2Pd2rqeSoKFe1ZhKA==
+"@vtex/address-form@^3.35.2":
+  version "3.35.2"
+  resolved "https://registry.yarnpkg.com/@vtex/address-form/-/address-form-3.35.2.tgz#77ceb9ad510465a61a8097cf84fc21e094a51186"
+  integrity sha512-S2CEAa5xr+LxGGawuDbyYLPjEbzlPcdTj57tFSt1sq3pDq0xVbRp5yx4tZfH6Pe/WZBACcYlKRyhIwDNGK1n7g==
   dependencies:
     "@vtex/styleguide" "^9.112.28"
     axios "^0.16.2"

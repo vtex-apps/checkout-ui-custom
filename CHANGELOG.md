@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Malta's list of Councils
+
 ## [0.18.5] - 2024-05-07
 
 ### Fixed

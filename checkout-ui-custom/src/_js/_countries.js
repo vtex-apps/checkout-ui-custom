@@ -341,23 +341,34 @@ module.exports._countriesrules = {
     postalCodeLength: 4,
   },
   MLT: {
-    state: {
-      valueIn: 'short_name',
-      types: ['administrative_area_level_1'],
+    state: false,
+    number: false,
+    street: {
+      valueIn: 'long_name',
+      types: ['route'],
+    },
+    neighborhood: {
+      valueIn: 'long_name',
+      types: [
+        'neighborhood',
+        'sublocality_level_1',
+        'sublocality_level_2',
+        'sublocality_level_3',
+        'sublocality_level_4',
+        'sublocality_level_5',
+      ],
     },
     city: {
       valueIn: 'long_name',
-      types: ['locality'],
+      types: ['administrative_area_level_2', 'locality'],
     },
-    number: false,
+    receiverName: {
+      required: true,
+    },
     postalCode: true,
-    postalCodeLength: 2,
   },
   PRT: {
-    state: {
-      valueIn: 'short_name',
-      types: ['administrative_area_level_1'],
-    },
+    state: false,
     city: {
       valueIn: 'long_name',
       types: ['locality'],
@@ -779,148 +790,6 @@ module.exports._countries = [
 
 // _cities.find(i => i.countryShortCode=="US")
 module.exports._cities = [
-  {
-    countryName: 'Afghanistan',
-    countryShortCode: 'AF',
-    regions: [
-      {
-        name: 'Badakhshan',
-        shortCode: 'BDS',
-      },
-      {
-        name: 'Badghis',
-        shortCode: 'BDG',
-      },
-      {
-        name: 'Baghlan',
-        shortCode: 'BGL',
-      },
-      {
-        name: 'Balkh',
-        shortCode: 'BAL',
-      },
-      {
-        name: 'Bamyan',
-        shortCode: 'BAM',
-      },
-      {
-        name: 'Daykundi',
-        shortCode: 'DAY',
-      },
-      {
-        name: 'Farah',
-        shortCode: 'FRA',
-      },
-      {
-        name: 'Faryab',
-        shortCode: 'FYB',
-      },
-      {
-        name: 'Ghazni',
-        shortCode: 'GHA',
-      },
-      {
-        name: 'Ghor',
-        shortCode: 'GHO',
-      },
-      {
-        name: 'Helmand',
-        shortCode: 'HEL',
-      },
-      {
-        name: 'Herat',
-        shortCode: 'HER',
-      },
-      {
-        name: 'Jowzjan',
-        shortCode: 'JOW',
-      },
-      {
-        name: 'Kabul',
-        shortCode: 'KAB',
-      },
-      {
-        name: 'Kandahar',
-        shortCode: 'KAN',
-      },
-      {
-        name: 'Kapisa',
-        shortCode: 'KAP',
-      },
-      {
-        name: 'Khost',
-        shortCode: 'KHO',
-      },
-      {
-        name: 'Kunar',
-        shortCode: 'KNR',
-      },
-      {
-        name: 'Kunduz',
-        shortCode: 'KDZ',
-      },
-      {
-        name: 'Laghman',
-        shortCode: 'LAG',
-      },
-      {
-        name: 'Logar',
-        shortCode: 'LOW',
-      },
-      {
-        name: 'Maidan Wardak',
-        shortCode: 'WAR',
-      },
-      {
-        name: 'Nangarhar',
-        shortCode: 'NAN',
-      },
-      {
-        name: 'Nimruz',
-        shortCode: 'NIM',
-      },
-      {
-        name: 'Nuristan',
-        shortCode: 'NUR',
-      },
-      {
-        name: 'Paktia',
-        shortCode: 'PIA',
-      },
-      {
-        name: 'Paktika',
-        shortCode: 'PKA',
-      },
-      {
-        name: 'Panjshir',
-        shortCode: 'PAN',
-      },
-      {
-        name: 'Parwan',
-        shortCode: 'PAR',
-      },
-      {
-        name: 'Samangan',
-        shortCode: 'SAM',
-      },
-      {
-        name: 'Sar-e Pol',
-        shortCode: 'SAR',
-      },
-      {
-        name: 'Takhar',
-        shortCode: 'TAK',
-      },
-      {
-        name: 'Urozgan',
-        shortCode: 'ORU',
-      },
-      {
-        name: 'Zabul',
-        shortCode: 'ZAB',
-      },
-    ],
-  },
   {
     countryName: 'Albania',
     countryShortCode: 'AL',
@@ -1746,280 +1615,6 @@ module.exports._cities = [
     ],
   },
   {
-    countryName: 'Azerbaijan',
-    countryShortCode: 'AZ',
-    regions: [
-      {
-        name: 'Abşeron',
-        shortCode: 'ABS',
-      },
-      {
-        name: 'Ağcabədi',
-        shortCode: 'AGC',
-      },
-      {
-        name: 'Ağdam',
-        shortCode: 'AGM',
-      },
-      {
-        name: 'Ağdaş',
-        shortCode: 'AGS',
-      },
-      {
-        name: 'Ağstafa',
-        shortCode: 'AGA',
-      },
-      {
-        name: 'Ağsu',
-        shortCode: 'AGU',
-      },
-      {
-        name: 'Astara',
-        shortCode: 'AST',
-      },
-      {
-        name: 'Bakı',
-        shortCode: 'BAK',
-      },
-      {
-        name: 'Babək',
-        shortCode: 'BAB',
-      },
-      {
-        name: 'Balakən',
-        shortCode: 'BAL',
-      },
-      {
-        name: 'Bərdə',
-        shortCode: 'BAR',
-      },
-      {
-        name: 'Beyləqan',
-        shortCode: 'BEY',
-      },
-      {
-        name: 'Biləsuvar',
-        shortCode: 'BIL',
-      },
-      {
-        name: 'Cəbrayıl',
-        shortCode: 'CAB',
-      },
-      {
-        name: 'Cəlilabad',
-        shortCode: 'CAL',
-      },
-      {
-        name: 'Culfa',
-        shortCode: 'CUL',
-      },
-      {
-        name: 'Daşkəsən',
-        shortCode: 'DAS',
-      },
-      {
-        name: 'Füzuli',
-        shortCode: 'FUZ',
-      },
-      {
-        name: 'Gədəbəy',
-        shortCode: 'GAD',
-      },
-      {
-        name: 'Goranboy',
-        shortCode: 'GOR',
-      },
-      {
-        name: 'Göyçay',
-        shortCode: 'GOY',
-      },
-      {
-        name: 'Göygöl',
-        shortCode: 'GYG',
-      },
-      {
-        name: 'Hacıqabul',
-        shortCode: 'HAC',
-      },
-      {
-        name: 'İmişli',
-        shortCode: 'IMI',
-      },
-      {
-        name: 'İsmayıllı',
-        shortCode: 'ISM',
-      },
-      {
-        name: 'Kəlbəcər',
-        shortCode: 'KAL',
-      },
-      {
-        name: 'Kǝngǝrli',
-        shortCode: 'KAN',
-      },
-      {
-        name: 'Kürdəmir',
-        shortCode: 'KUR',
-      },
-      {
-        name: 'Laçın',
-        shortCode: 'LAC',
-      },
-      {
-        name: 'Lənkəran',
-        shortCode: 'LAN',
-      },
-      {
-        name: 'Lerik',
-        shortCode: 'LER',
-      },
-      {
-        name: 'Masallı',
-        shortCode: 'MAS',
-      },
-      {
-        name: 'Neftçala',
-        shortCode: 'NEF',
-      },
-      {
-        name: 'Oğuz',
-        shortCode: 'OGU',
-      },
-      {
-        name: 'Ordubad',
-        shortCode: 'ORD',
-      },
-      {
-        name: 'Qəbələ',
-        shortCode: 'QAB',
-      },
-      {
-        name: 'Qax',
-        shortCode: 'QAX',
-      },
-      {
-        name: 'Qazax',
-        shortCode: 'QAZ',
-      },
-      {
-        name: 'Qobustan',
-        shortCode: 'QOB',
-      },
-      {
-        name: 'Quba',
-        shortCode: 'QBA',
-      },
-      {
-        name: 'Qubadli',
-        shortCode: 'QBI',
-      },
-      {
-        name: 'Qusar',
-        shortCode: 'QUS',
-      },
-      {
-        name: 'Saatlı',
-        shortCode: 'SAT',
-      },
-      {
-        name: 'Sabirabad',
-        shortCode: 'SAB',
-      },
-      {
-        name: 'Şabran',
-        shortCode: 'SBN',
-      },
-      {
-        name: 'Sədərək',
-        shortCode: 'SAD',
-      },
-      {
-        name: 'Şahbuz',
-        shortCode: 'SAH',
-      },
-      {
-        name: 'Şəki',
-        shortCode: 'SAK',
-      },
-      {
-        name: 'Salyan',
-        shortCode: 'SAL',
-      },
-      {
-        name: 'Şamaxı',
-        shortCode: 'SMI',
-      },
-      {
-        name: 'Şəmkir',
-        shortCode: 'SKR',
-      },
-      {
-        name: 'Samux',
-        shortCode: 'SMX',
-      },
-      {
-        name: 'Şərur',
-        shortCode: 'SAR',
-      },
-      {
-        name: 'Siyəzən',
-        shortCode: 'SIY',
-      },
-      {
-        name: 'Şuşa',
-        shortCode: 'SUS',
-      },
-      {
-        name: 'Tərtər',
-        shortCode: 'TAR',
-      },
-      {
-        name: 'Tovuz',
-        shortCode: 'TOV',
-      },
-      {
-        name: 'Ucar',
-        shortCode: 'UCA',
-      },
-      {
-        name: 'Xaçmaz',
-        shortCode: 'XAC',
-      },
-      {
-        name: 'Xızı',
-        shortCode: 'XIZ',
-      },
-      {
-        name: 'Xocalı',
-        shortCode: 'XCI',
-      },
-      {
-        name: 'Xocavənd',
-        shortCode: 'XVD',
-      },
-      {
-        name: 'Yardımlı',
-        shortCode: 'YAR',
-      },
-      {
-        name: 'Yevlax',
-        shortCode: 'YEV',
-      },
-      {
-        name: 'Zəngilan',
-        shortCode: 'ZAN',
-      },
-      {
-        name: 'Zaqatala',
-        shortCode: 'ZAQ',
-      },
-      {
-        name: 'Zərdab',
-        shortCode: 'ZAR',
-      },
-    ],
-  },
-  {
     countryName: 'Bahamas',
     countryShortCode: 'BS',
     regions: [
@@ -2184,44 +1779,6 @@ module.exports._cities = [
       {
         name: 'Ash Shamālīyah',
         shortCode: '17',
-      },
-    ],
-  },
-  {
-    countryName: 'Bangladesh',
-    countryShortCode: 'BD',
-    regions: [
-      {
-        name: 'Barisal',
-        shortCode: 'A',
-      },
-      {
-        name: 'Chittagong',
-        shortCode: 'B',
-      },
-      {
-        name: 'Dhaka',
-        shortCode: 'C',
-      },
-      {
-        name: 'Khulna',
-        shortCode: 'D',
-      },
-      {
-        name: 'Mymensingh',
-        shortCode: 'M',
-      },
-      {
-        name: 'Rajshahi',
-        shortCode: 'E',
-      },
-      {
-        name: 'Rangpur',
-        shortCode: 'F',
-      },
-      {
-        name: 'Sylhet',
-        shortCode: 'G',
       },
     ],
   },
@@ -2460,8 +2017,6 @@ module.exports._cities = [
         shortCode: '11',
       },
     ],
-  },
-  {
     countryName: 'Bhutan',
     countryShortCode: 'BT',
     regions: [
@@ -2590,24 +2145,6 @@ module.exports._cities = [
     ],
   },
   {
-    countryName: 'Bonaire, Sint Eustatius and Saba',
-    countryShortCode: 'BQ',
-    regions: [
-      {
-        name: 'Bonaire',
-        shortCode: 'BO',
-      },
-      {
-        name: 'Saba Isand',
-        shortCode: 'SA',
-      },
-      {
-        name: 'Sint Eustatius',
-        shortCode: 'SE',
-      },
-    ],
-  },
-  {
     countryName: 'Bosnia and Herzegovina',
     countryShortCode: 'BA',
     regions: [
@@ -2622,58 +2159,6 @@ module.exports._cities = [
       {
         name: 'Republika Srpska',
         shortCode: 'SRP',
-      },
-    ],
-  },
-  {
-    countryName: 'Botswana',
-    countryShortCode: 'BW',
-    regions: [
-      {
-        name: 'Central',
-        shortCode: 'CE',
-      },
-      {
-        name: 'Ghanzi',
-        shortCode: 'GH',
-      },
-      {
-        name: 'Kgalagadi',
-        shortCode: 'KG',
-      },
-      {
-        name: 'Kgatleng',
-        shortCode: 'KL',
-      },
-      {
-        name: 'Kweneng',
-        shortCode: 'KW',
-      },
-      {
-        name: 'North West',
-        shortCode: 'NW',
-      },
-      {
-        name: 'North-East',
-        shortCode: 'NE',
-      },
-      {
-        name: 'South East',
-        shortCode: 'SE',
-      },
-      {
-        name: 'Southern',
-        shortCode: 'SO',
-      },
-    ],
-  },
-  {
-    countryName: 'Bouvet Island',
-    countryShortCode: 'BV',
-    regions: [
-      {
-        name: 'Bouvet Island',
-        shortCode: 'BV',
       },
     ],
   },
@@ -2942,266 +2427,6 @@ module.exports._cities = [
     ],
   },
   {
-    countryName: 'Burkina Faso',
-    countryShortCode: 'BF',
-    regions: [
-      {
-        name: 'Balé',
-        shortCode: 'BAL',
-      },
-      {
-        name: 'Bam/Lake Bam',
-        shortCode: 'BAM',
-      },
-      {
-        name: 'Banwa Province',
-        shortCode: 'BAN',
-      },
-      {
-        name: 'Bazèga',
-        shortCode: 'BAZ',
-      },
-      {
-        name: 'Bougouriba',
-        shortCode: 'BGR',
-      },
-      {
-        name: 'Boulgou Province',
-        shortCode: 'BLG',
-      },
-      {
-        name: 'Boulkiemdé',
-        shortCode: 'BLK',
-      },
-      {
-        name: 'Comoé/Komoe',
-        shortCode: 'COM',
-      },
-      {
-        name: 'Ganzourgou Province',
-        shortCode: 'GAN',
-      },
-      {
-        name: 'Gnagna',
-        shortCode: 'GNA',
-      },
-      {
-        name: 'Gourma Province',
-        shortCode: 'GOU',
-      },
-      {
-        name: 'Houet',
-        shortCode: 'HOU',
-      },
-      {
-        name: 'Ioba',
-        shortCode: 'IOB',
-      },
-      {
-        name: 'Kadiogo',
-        shortCode: 'KAD',
-      },
-      {
-        name: 'Kénédougou',
-        shortCode: 'KEN',
-      },
-      {
-        name: 'Komondjari',
-        shortCode: 'KMD',
-      },
-      {
-        name: 'Kompienga',
-        shortCode: 'KMP',
-      },
-      {
-        name: 'Kossi Province',
-        shortCode: 'KOS',
-      },
-      {
-        name: 'Koulpélogo',
-        shortCode: 'KOP',
-      },
-      {
-        name: 'Kouritenga',
-        shortCode: 'KOT',
-      },
-      {
-        name: 'Kourwéogo',
-        shortCode: 'KOW',
-      },
-      {
-        name: 'Léraba',
-        shortCode: 'LER',
-      },
-      {
-        name: 'Loroum',
-        shortCode: 'LOR',
-      },
-      {
-        name: 'Mouhoun',
-        shortCode: 'MOU',
-      },
-      {
-        name: 'Namentenga',
-        shortCode: 'NAM',
-      },
-      {
-        name: 'Naouri/Nahouri',
-        shortCode: 'NAO',
-      },
-      {
-        name: 'Nayala',
-        shortCode: 'NAY',
-      },
-      {
-        name: 'Noumbiel',
-        shortCode: 'NOU',
-      },
-      {
-        name: 'Oubritenga',
-        shortCode: 'OUB',
-      },
-      {
-        name: 'Oudalan',
-        shortCode: 'OUD',
-      },
-      {
-        name: 'Passoré',
-        shortCode: 'PAS',
-      },
-      {
-        name: 'Poni',
-        shortCode: 'PON',
-      },
-      {
-        name: 'Sanguié',
-        shortCode: 'SNG',
-      },
-      {
-        name: 'Sanmatenga',
-        shortCode: 'SMT',
-      },
-      {
-        name: 'Séno',
-        shortCode: 'SEN',
-      },
-      {
-        name: 'Sissili',
-        shortCode: 'SIS',
-      },
-      {
-        name: 'Soum',
-        shortCode: 'SOM',
-      },
-      {
-        name: 'Sourou',
-        shortCode: 'SOR',
-      },
-      {
-        name: 'Tapoa',
-        shortCode: 'TAP',
-      },
-      {
-        name: 'Tui/Tuy',
-        shortCode: 'TUI',
-      },
-      {
-        name: 'Yagha',
-        shortCode: 'YAG',
-      },
-      {
-        name: 'Yatenga',
-        shortCode: 'YAT',
-      },
-      {
-        name: 'Ziro',
-        shortCode: 'ZIR',
-      },
-      {
-        name: 'Zondoma',
-        shortCode: 'ZON',
-      },
-      {
-        name: 'Zoundwéogo',
-        shortCode: 'ZOU',
-      },
-    ],
-  },
-  {
-    countryName: 'Burundi',
-    countryShortCode: 'BI',
-    regions: [
-      {
-        name: 'Bubanza',
-        shortCode: 'BB',
-      },
-      {
-        name: 'Bujumbura Mairie',
-        shortCode: 'BM',
-      },
-      {
-        name: 'Bujumbura Rural',
-        shortCode: 'BL',
-      },
-      {
-        name: 'Bururi',
-        shortCode: 'BR',
-      },
-      {
-        name: 'Cankuzo',
-        shortCode: 'CA',
-      },
-      {
-        name: 'Cibitoke',
-        shortCode: 'CI',
-      },
-      {
-        name: 'Gitega',
-        shortCode: 'GI',
-      },
-      {
-        name: 'Karuzi',
-        shortCode: 'KR',
-      },
-      {
-        name: 'Kayanza',
-        shortCode: 'KY',
-      },
-      {
-        name: 'Kirundo',
-        shortCode: 'KI',
-      },
-      {
-        name: 'Makamba',
-        shortCode: 'MA',
-      },
-      {
-        name: 'Muramvya',
-        shortCode: 'MU',
-      },
-      {
-        name: 'Muyinga',
-        shortCode: 'MY',
-      },
-      {
-        name: 'Mwaro',
-        shortCode: 'MW',
-      },
-      {
-        name: 'Ngozi',
-        shortCode: 'NG',
-      },
-      {
-        name: 'Rutana',
-        shortCode: 'RT',
-      },
-      {
-        name: 'Ruyigi',
-        shortCode: 'RY',
-      },
-    ],
-  },
-  {
     countryName: 'Cambodia',
     countryShortCode: 'KH',
     regions: [
@@ -3304,52 +2529,6 @@ module.exports._cities = [
       {
         name: 'Tbong Khmum',
         shortCode: '25',
-      },
-    ],
-  },
-  {
-    countryName: 'Cameroon',
-    countryShortCode: 'CM',
-    regions: [
-      {
-        name: 'Adamaoua',
-        shortCode: 'AD',
-      },
-      {
-        name: 'Centre',
-        shortCode: 'CE',
-      },
-      {
-        name: 'Est',
-        shortCode: 'ES',
-      },
-      {
-        name: 'Extrême-Nord',
-        shortCode: 'EN',
-      },
-      {
-        name: 'Littoral',
-        shortCode: 'LT',
-      },
-      {
-        name: 'Nord',
-        shortCode: 'NO',
-      },
-      {
-        name: 'Nord-Ouest',
-        shortCode: 'NW',
-      },
-      {
-        name: 'Ouest',
-        shortCode: 'OU',
-      },
-      {
-        name: 'Sud',
-        shortCode: 'SU',
-      },
-      {
-        name: 'Sud-Ouest',
-        shortCode: 'SW',
       },
     ],
   },
@@ -3910,36 +3089,6 @@ module.exports._cities = [
       {
         name: 'Christmas Island',
         shortCode: 'CX',
-      },
-    ],
-  },
-  {
-    countryName: 'Cocos (Keeling) Islands',
-    countryShortCode: 'CC',
-    regions: [
-      {
-        name: 'Direction Island',
-        shortCode: 'DI',
-      },
-      {
-        name: 'Home Island',
-        shortCode: 'HM',
-      },
-      {
-        name: 'Horsburgh Island',
-        shortCode: 'HR',
-      },
-      {
-        name: 'North Keeling Island',
-        shortCode: 'NK',
-      },
-      {
-        name: 'South Island',
-        shortCode: 'SI',
-      },
-      {
-        name: 'West Island',
-        shortCode: 'WI',
       },
     ],
   },
@@ -10202,275 +9351,275 @@ module.exports._cities = [
     regions: [
       {
         name: 'Attard',
-        shortCode: '01',
+        shortCode: 'Attard (Attard)',
       },
       {
         name: 'Balzan',
-        shortCode: '02',
-      },
-      {
-        name: 'Birgu',
-        shortCode: '03',
+        shortCode: 'Balzan (Balzan)',
       },
       {
         name: 'Birkirkara',
-        shortCode: '04',
+        shortCode: 'Birkirkara (Birkirkara)',
       },
       {
         name: 'Birżebbuġa',
-        shortCode: '05',
+        shortCode: 'Birżebbuġa (Birzebbuga)',
       },
       {
-        name: 'Bormla',
-        shortCode: '06',
+        name: 'Cospicua',
+        shortCode: 'Cospicua (Cospicua)',
       },
       {
         name: 'Dingli',
-        shortCode: '07',
+        shortCode: 'Dingli (Dingli)',
       },
       {
         name: 'Fgura',
-        shortCode: '08',
+        shortCode: 'Fgura (Fgura)',
       },
       {
         name: 'Floriana',
-        shortCode: '09',
+        shortCode: 'Floriana (Floriana)',
       },
       {
         name: 'Fontana',
-        shortCode: '10',
-      },
-      {
-        name: 'Guda',
-        shortCode: '11',
-      },
-      {
-        name: 'Gżira',
-        shortCode: '12',
+        shortCode: 'Fontana (Fontana)',
       },
       {
         name: 'Għajnsielem',
-        shortCode: '13',
+        shortCode: 'Għajnsielem (Ghajnsielem)',
       },
       {
         name: 'Għarb',
-        shortCode: '14',
+        shortCode: 'Għarb (Gharb)',
       },
       {
         name: 'Għargħur',
-        shortCode: '15',
+        shortCode: 'Għargħur (Gharghur)',
       },
       {
         name: 'Għasri',
-        shortCode: '16',
+        shortCode: 'Għasri (Ghasri)',
       },
       {
         name: 'Għaxaq',
-        shortCode: '17',
+        shortCode: 'Għaxaq (Ghaxaq)',
+      },
+      {
+        name: 'Gudja',
+        shortCode: 'Gudja (Gudja)',
+      },
+      {
+        name: 'Gżira',
+        shortCode: 'Gżira (Gzira)',
       },
       {
         name: 'Ħamrun',
-        shortCode: '18',
+        shortCode: 'Ħamrun (Hamrun)',
       },
       {
         name: 'Iklin',
-        shortCode: '19',
-      },
-      {
-        name: 'Isla',
-        shortCode: '20',
+        shortCode: 'Iklin (Iklin)',
       },
       {
         name: 'Kalkara',
-        shortCode: '21',
+        shortCode: 'Kalkara (Kalkara)',
       },
       {
-        name: 'Kerċem',
-        shortCode: '22',
+        name: 'Kercem',
+        shortCode: 'Kercem (Kercem)',
       },
       {
         name: 'Kirkop',
-        shortCode: '23',
+        shortCode: 'Kirkop (Kirkop)',
       },
       {
         name: 'Lija',
-        shortCode: '24',
+        shortCode: 'Lija (Lija)',
       },
       {
         name: 'Luqa',
-        shortCode: '25',
+        shortCode: 'Luqa (Luqa)',
       },
       {
         name: 'Marsa',
-        shortCode: '26',
+        shortCode: 'Marsa (Marsa)',
       },
       {
         name: 'Marsaskala',
-        shortCode: '27',
+        shortCode: 'Marsaskala (Marsaskala)',
       },
       {
         name: 'Marsaxlokk',
-        shortCode: '28',
+        shortCode: 'Marsaxlokk (Marsaxlokk)',
       },
       {
         name: 'Mdina',
-        shortCode: '29',
+        shortCode: 'Mdina (Mdina)',
       },
       {
-        name: 'Mellieħa',
-        shortCode: '30',
+        name: 'Mellieha',
+        shortCode: 'Mellieha (Mellieha)',
       },
       {
-        name: 'Mġarr',
-        shortCode: '31',
+        name: 'Mgarr',
+        shortCode: 'Mgarr (Mgarr)',
       },
       {
         name: 'Mosta',
-        shortCode: '32',
+        shortCode: 'Mosta (Mosta)',
       },
       {
         name: 'Mqabba',
-        shortCode: '33',
+        shortCode: 'Mqabba (Mqabba)',
       },
       {
         name: 'Msida',
-        shortCode: '34',
+        shortCode: 'Msida (Msida)',
       },
       {
         name: 'Mtarfa',
-        shortCode: '35',
+        shortCode: 'Mtarfa (Imtarfa)',
       },
       {
         name: 'Munxar',
-        shortCode: '36',
+        shortCode: 'Munxar (Munxar)',
       },
       {
         name: 'Nadur',
-        shortCode: '37',
+        shortCode: 'Nadur (Nadur)',
       },
       {
         name: 'Naxxar',
-        shortCode: '38',
+        shortCode: 'Naxxar (Naxxar)',
       },
       {
         name: 'Paola',
-        shortCode: '39',
+        shortCode: 'Paola (Paola)',
       },
       {
         name: 'Pembroke',
-        shortCode: '40',
+        shortCode: 'Pembroke (Pembroke)',
       },
       {
         name: 'Pietà',
-        shortCode: '41',
+        shortCode: 'Pietà (Pietà)',
       },
       {
         name: 'Qala',
-        shortCode: '42',
+        shortCode: 'Qala (Qala)',
       },
       {
         name: 'Qormi',
-        shortCode: '43',
+        shortCode: 'Qormi (Qormi)',
       },
       {
         name: 'Qrendi',
-        shortCode: '44',
+        shortCode: 'Qrendi (Qrendi)',
       },
       {
-        name: 'Rabat Għawdex',
-        shortCode: '45',
-      },
-      {
-        name: 'Rabat Malta',
-        shortCode: '46',
+        name: 'Rabat',
+        shortCode: 'Rabat (Rabat)',
       },
       {
         name: 'Safi',
-        shortCode: '47',
+        shortCode: 'Safi (Safi)',
       },
       {
-        name: 'San Ġiljan',
-        shortCode: '48',
+        name: "St. Julian's",
+        shortCode: "St. Julian’s (St. Julian's)",
       },
       {
-        name: 'San Ġwann',
-        shortCode: '49',
+        name: 'San Gwann ',
+        shortCode: 'San Gwann (San gwann)',
       },
       {
-        name: 'San Lawrenz',
-        shortCode: '50',
+        name: 'San Lawrenz ',
+        shortCode: 'San Lawrenz (San Lawrenz)',
       },
       {
-        name: 'San Pawl il-Baħar',
-        shortCode: '51',
+        name: 'Senglea',
+        shortCode: 'Senglea (Senglea)',
+      },
+      {
+        name: "St. Paul's Bay",
+        shortCode: "St. Paul’s Bay (St. Paul's Bay)",
       },
       {
         name: 'Sannat',
-        shortCode: '52',
+        shortCode: 'Sannat (Sannat)',
       },
       {
-        name: 'Santa Luċija',
-        shortCode: '53',
+        name: 'Santa Lucija ',
+        shortCode: 'Santa Lucija (Santa Lucija)',
       },
       {
-        name: 'Santa Venera',
-        shortCode: '54',
+        name: 'Santa Venera ',
+        shortCode: 'Santa Venera (Santa Venera)',
       },
       {
-        name: 'Siġġiewi',
-        shortCode: '55',
+        name: 'Siggiewi',
+        shortCode: 'Siggiewi (Siggiewi)',
       },
       {
         name: 'Sliema',
-        shortCode: '56',
+        shortCode: 'Sliema (Sliema)',
       },
       {
         name: 'Swieqi',
-        shortCode: '57',
+        shortCode: 'Swieqi (Swieqi)',
       },
       {
-        name: 'Tai Xbiex',
-        shortCode: '58',
+        name: 'Tarxien',
+        shortCode: 'Tarxien (Tarxien)',
       },
       {
-        name: 'Tarzien',
-        shortCode: '59',
+        name: "Ta' Xbiex",
+        shortCode: "Ta' Xbiex (Ta' Xbiex)",
       },
       {
         name: 'Valletta',
-        shortCode: '60',
+        shortCode: 'Valletta (Valletta)',
       },
       {
-        name: 'Xagħra',
-        shortCode: '61',
+        name: 'Victoria',
+        shortCode: 'Victoria (Victoria-Gozo)',
+      },
+      {
+        name: 'Vittoriosa',
+        shortCode: 'Vittoriosa (Birgu)',
+      },
+      {
+        name: 'Xaghra',
+        shortCode: 'Xaghra (Xaghra)',
       },
       {
         name: 'Xewkija',
-        shortCode: '62',
+        shortCode: 'Xewkija (Xewkija)',
       },
       {
-        name: 'Xgħajra',
-        shortCode: '63',
+        name: 'Xghajra',
+        shortCode: 'Xghajra (Xaghjra)',
       },
       {
-        name: 'Żabbar',
-        shortCode: '64',
+        name: 'Zabbar',
+        shortCode: 'Zabbar (Zabbar)',
       },
       {
-        name: 'Żebbuġ Għawde',
-        shortCode: '65',
+        name: 'Żebbuġ',
+        shortCode: 'Żebbuġ (Zebbug)',
       },
       {
-        name: 'Żebbuġ Malta',
-        shortCode: '66',
+        name: 'Zebbug',
+        shortCode: 'Zebbug (Zebbug-Gozo)',
       },
       {
-        name: 'Żejtun',
-        shortCode: '67',
+        name: 'Zejtun',
+        shortCode: 'Zejtun (Zejtun)',
       },
       {
-        name: 'Żurrieq',
-        shortCode: '68',
+        name: 'Zurrieq',
+        shortCode: 'Zurrieq (Zurrieq)',
       },
     ],
   },
@@ -19442,56 +18591,6 @@ module.exports._cities = [
       {
         name: 'Armed Forces Pacific',
         shortCode: 'AP',
-      },
-    ],
-  },
-  {
-    countryName: 'United States Minor Outlying Islands',
-    countryShortCode: 'UM',
-    regions: [
-      {
-        name: 'Baker Island',
-        shortCode: '81',
-      },
-      {
-        name: 'Howland Island',
-        shortCode: '84',
-      },
-      {
-        name: 'Jarvis Island',
-        shortCode: '86',
-      },
-      {
-        name: 'Johnston Atoll',
-        shortCode: '67',
-      },
-      {
-        name: 'Kingman Reef',
-        shortCode: '89',
-      },
-      {
-        name: 'Midway Islands',
-        shortCode: '71',
-      },
-      {
-        name: 'Navassa Island',
-        shortCode: '76',
-      },
-      {
-        name: 'Palmyra Atoll',
-        shortCode: '95',
-      },
-      {
-        name: 'Wake Island',
-        shortCode: '79',
-      },
-      {
-        name: 'Bajo Nuevo Bank',
-        shortCode: 'BN',
-      },
-      {
-        name: 'Serranilla Bank',
-        shortCode: 'SB',
       },
     ],
   },
