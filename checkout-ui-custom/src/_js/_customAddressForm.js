@@ -430,7 +430,8 @@ class fnsCustomAddressForm {
     _addressQuery,
     _addressId,
     _neighborhood,
-    geoCoordinates
+    geoCoordinates,
+    _contactInformation
   ) {
     const _this = this
 
@@ -493,8 +494,15 @@ class fnsCustomAddressForm {
       clearAddressIfPostalCodeNotFound: false,
     }
 
+    const CLEAR_SHIPPING_DATA = {}
+
+    if (_contactInformation) {
+      shippingInfo.contactInformation = _contactInformation
+      CLEAR_SHIPPING_DATA.contactInformation = _contactInformation
+    }
+
     window.vtexjs.checkout
-      .sendAttachment('shippingData', {})
+      .sendAttachment('shippingData', CLEAR_SHIPPING_DATA)
       .done(function () {
         $(window).trigger('VCUSTOM__ADDRESSFORM__CLEARED')
 
@@ -570,7 +578,7 @@ class fnsCustomAddressForm {
               'js-v-custom-is-loading js-v-custom-is-loadAddress'
             )
             console.error(
-              `Something went wrong: Custom Address Form (sendAddress) --> ${error}`
+              `Something went wrong: Custom Address Form (sendAddress) --> ${error}`, error
             )
           })
       })
@@ -580,7 +588,7 @@ class fnsCustomAddressForm {
           'js-v-custom-is-loading js-v-custom-is-loadAddress'
         )
         console.error(
-          `Something went wrong: Custom Address Form (sendAddress) --> ${error}`
+          `Something went wrong: Custom Address Form (sendAddress) --> ${error}`, error
         )
       })
   }
@@ -892,6 +900,8 @@ class fnsCustomAddressForm {
       '.vcustom--vtex-omnishipping-1-x-address #ship-postalCode'
     ).val()
 
+    const contactInformation = _this && _this.orderForm && _this.orderForm.shippingData && _this.orderForm.shippingData.contactInformation
+
     _this.sendAddress(
       country,
       street,
@@ -903,7 +913,8 @@ class fnsCustomAddressForm {
       _this.address.addressQuery,
       _this.address.addressId,
       neighborhood,
-      geoCoordinates
+      geoCoordinates,
+      contactInformation
     )
   }
 
