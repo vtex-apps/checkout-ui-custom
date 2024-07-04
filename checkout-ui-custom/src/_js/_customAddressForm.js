@@ -900,7 +900,7 @@ class fnsCustomAddressForm {
       '.vcustom--vtex-omnishipping-1-x-address #ship-postalCode'
     ).val()
 
-    const contactInformation = _this && _this.orderForm && _this.orderForm.shippingData && _this.orderForm.shippingData.contactInformation
+    const contactInformation = (_this && _this.orderForm && _this.orderForm.shippingData && _this.orderForm.shippingData.contactInformation && _this.orderForm.shippingData.contactInformation.length && _this.orderForm.shippingData.contactInformation.map(({ id }) => ({ id }))) || []
 
     _this.sendAddress(
       country,
