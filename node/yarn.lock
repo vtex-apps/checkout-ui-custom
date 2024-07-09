@@ -275,10 +275,10 @@
     react-intl "^2.8.0"
     recompose "^0.27.1"
 
-"@vtex/api@6.46.1":
-  version "6.46.1"
-  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.46.1.tgz#55a8755ae48f5400e7f1ed1921cd547950bb7a2a"
-  integrity sha512-geoxVvyWoQpOQ70Zmx3M8SBkRoGOS/bp9Gy26M+iCue63jofVSwmFz1zf66EaHA1PKOJNRgQPFwY+oeDE1U2lQ==
+"@vtex/api@6.47.0":
+  version "6.47.0"
+  resolved "https://registry.yarnpkg.com/@vtex/api/-/api-6.47.0.tgz#6910455d593d8bb76f1f4f2b7660023853fda35e"
+  integrity sha512-t9gt7Q89EMbSj3rLhho+49Fv+/lQgiy8EPVRgtmmXFp1J4v8hIAZF7GPjCPie111KVs4eG0gfZFpmhA5dafKNA==
   dependencies:
     "@types/koa" "^2.11.0"
     "@types/koa-compose" "^3.2.3"
@@ -2672,7 +2672,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
-stats-lite@vtex/node-stats-lite#dist:
+"stats-lite@github:vtex/node-stats-lite#dist":
   version "2.2.0"
   resolved "https://codeload.github.com/vtex/node-stats-lite/tar.gz/1b0d39cc41ef7aaecfd541191f877887a2044797"
   dependencies:

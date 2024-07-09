@@ -603,7 +603,13 @@ class checkoutCustom {
 
       let bdHolidays = 0
 
-      if (_this._holidays) {
+      if (
+        !(
+          _this._holidays &&
+          _this._holidays.name &&
+          _this._holidays.name === 'Error'
+        )
+      ) {
         bdHolidays = _this.holidaysBetweenDates(
           new Date(),
           d,
@@ -611,7 +617,12 @@ class checkoutCustom {
         )
       }
 
-      if (_this._holidays && _this._holidays.name === 'Error') bdHolidays = 0
+      if (
+        _this._holidays &&
+        _this._holidays.name &&
+        _this._holidays.name === 'Error'
+      )
+        bdHolidays = 0
 
       let dhd = new Date()
 
@@ -810,6 +821,10 @@ class checkoutCustom {
       .then(response => response.json())
       .then(function (data) {
         _this._holidays = data
+      })
+      .catch(function (err) {
+        // eslint-disable-next-line no-console
+        console.log(`holidays error`, err)
       })
   }
 
