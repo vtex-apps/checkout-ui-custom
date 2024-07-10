@@ -608,7 +608,8 @@ class checkoutCustom {
           _this._holidays &&
           _this._holidays.name &&
           _this._holidays.name === 'Error'
-        )
+        ) &&
+        _this._holidays
       ) {
         bdHolidays = _this.holidaysBetweenDates(
           new Date(),
