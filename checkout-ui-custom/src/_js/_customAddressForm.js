@@ -4,7 +4,12 @@
 /* eslint-disable func-names */
 /* eslint-disable max-params */
 const { _locale } = require('./_locale-infos.js')
-const { _countries,_countriesrules, _cities, _addressPlaceholder } = require('./_countries.js')
+const {
+  _countries,
+  _countriesrules,
+  _cities,
+  _addressPlaceholder,
+} = require('./_countries.js')
 const { getShipStateValue } = require('./_utils')
 
 // temporaly workaorund
@@ -448,7 +453,6 @@ class fnsCustomAddressForm {
       // temporaly workaround for MLT
       if (_country === 'MLT') {
         _state = null
-        _postalCode = null
       }
       // end temporaly workaround for MLT
 
@@ -456,6 +460,7 @@ class fnsCustomAddressForm {
       if (
         _country === 'USA' ||
         _country === 'ITA' ||
+        _country === 'MLT' ||
         _country === 'CAN'
       ) {
         _number = null
@@ -1122,7 +1127,7 @@ class fnsCustomAddressForm {
       .then(jsonRes => {
         const { data: rules, success } = jsonRes
 
-        if(country=="MLT") {
+        if (country == 'MLT') {
           return _countriesrules.MLT
         }
 
@@ -1172,49 +1177,50 @@ class fnsCustomAddressForm {
       $('.vcustom--vtex-omnishipping-1-x-address').length < 1 &&
       orderForm.items.length
     ) {
-
-      const lastCountry = _this.orderForm.shippingData?.address?.country || _this.orderForm.storePreferencesData.countryCode
+      const lastCountry =
+        (_this.orderForm.shippingData &&
+          _this.orderForm.shippingData.address &&
+          _this.orderForm.shippingData.address.country) ||
+        _this.orderForm.storePreferencesData.countryCode
 
       $('body').addClass(`${this.classOn}`)
       _this.orderForm = orderForm
-      _this
-        .getCountryRule(lastCountry)
-        .then(rules => {
-          _this.addressrules = rules
-          _this.bind()
-          _this.deliveryCountries = window.checkout.deliveryCountries()
-          _this.mainCountry = window.checkout.countryCode()
-          _this.lang = _this.orderForm.clientPreferencesData.locale
+      _this.getCountryRule(lastCountry).then(rules => {
+        _this.addressrules = rules
+        _this.bind()
+        _this.deliveryCountries = window.checkout.deliveryCountries()
+        _this.mainCountry = window.checkout.countryCode()
+        _this.lang = _this.orderForm.clientPreferencesData.locale
 
-          _this.locale =
-            _locale[_this.orderForm.storePreferencesData.countryCode] ||
-            _locale.GBR
+        _this.locale =
+          _locale[_this.orderForm.storePreferencesData.countryCode] ||
+          _locale.GBR
 
-          if (_this.lang === 'es-AR') _this.lang = 'es'
+        if (_this.lang === 'es-AR') _this.lang = 'es'
 
-          if (_this.orderForm && _this.orderForm.shippingData) {
-            const shippingData = _this.orderForm.shippingData.address
+        if (_this.orderForm && _this.orderForm.shippingData) {
+          const shippingData = _this.orderForm.shippingData.address
 
-            if (shippingData) {
-              _this.updateAddress(
-                shippingData.country,
-                shippingData.postalCode,
-                shippingData.city,
-                shippingData.state,
-                shippingData.street,
-                shippingData.number,
-                shippingData.complement,
-                '',
-                shippingData.addressId,
-                shippingData.geoCoordinates
-              )
-            } else {
-              _this.updateAddress('')
-            }
+          if (shippingData) {
+            _this.updateAddress(
+              shippingData.country,
+              shippingData.postalCode,
+              shippingData.city,
+              shippingData.state,
+              shippingData.street,
+              shippingData.number,
+              shippingData.complement,
+              '',
+              shippingData.addressId,
+              shippingData.geoCoordinates
+            )
+          } else {
+            _this.updateAddress('')
           }
+        }
 
-          _this.form(orderForm)
-        })
+        _this.form(orderForm)
+      })
     }
   }
 }

@@ -243,3 +243,7 @@ body.v-custom-fnsCustomAddressForm {
   margin: 30px auto 0 auto;
   text-align: center;
 }
+
+.vtex-omnishipping-1-x-addressSummaryActive .address-summary.address-summary-MLT .postalCode:before {
+  content:" - ";
+}
