@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Italian number when using custom address form
+
 ## [0.18.8] - 2024-07-23
 
 ### Fixed

@@ -459,7 +459,6 @@ class fnsCustomAddressForm {
       // temporaly workaround for USA and CAN
       if (
         _country === 'USA' ||
-        _country === 'ITA' ||
         _country === 'MLT' ||
         _country === 'CAN'
       ) {
@@ -1129,6 +1128,9 @@ class fnsCustomAddressForm {
 
         if (country == 'MLT') {
           return _countriesrules.MLT
+        }
+        if (country == 'ITA') {
+          return _countriesrules.ITA
         }
 
         return success ? rules.geolocation : _this.getCountryRule('default')

@@ -1,15 +1,53 @@
 module.exports._countriesrules = {
   ITA: {
+    postalCode: {
+      valueIn: "long_name",
+      types: [
+        "postal_code"
+      ],
+      required: false
+    },
+    number: {
+      valueIn: "long_name",
+      types: [
+        "street_number"
+      ],
+      required: true,
+      notApplicable: true
+    },
+    street: {
+      valueIn: "long_name",
+      types: [
+        "route"
+      ]
+    },
+    neighborhood: {
+      valueIn: "long_name",
+      types: [
+        "neighborhood",
+        "sublocality_level_1",
+        "sublocality_level_2",
+        "sublocality_level_3",
+        "sublocality_level_4",
+        "sublocality_level_5"
+      ]
+    },
     state: {
-      valueIn: 'short_name',
-      types: ['administrative_area_level_2'],
+      valueIn: "short_name",
+      types: [
+        "administrative_area_level_2"
+      ]
     },
     city: {
-      valueIn: 'long_name',
-      types: ['locality'],
+      valueIn: "long_name",
+      types: [
+        "administrative_area_level_3",
+        "locality"
+      ]
     },
-    number: true,
-    postalCode: true,
+    receiverName: {
+      required: true
+    }
   },
   GBR: {
     state: {
