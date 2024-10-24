@@ -25,6 +25,9 @@
       "name": "vtex.checkout-ui-settings-server:save-build"
     },
     {
+      "name": "vtex.graphql-server:resolve-graphql"
+    },
+    {
       "name": "read-write-any-workspace"
     },
     {

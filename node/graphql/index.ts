@@ -106,6 +106,8 @@ export const resolvers = {
         clients: { masterdata, server },
       } = ctx
 
+      console.log(ctx.headers)
+
       const keys = { ...params.layout, ...params.colors }
       const cssTemplate = await fs.readFile(
         path.join(__dirname, '../templates/checkout6-custom.css'),
@@ -287,3 +289,4 @@ export const resolvers = {
     },
   },
 }
+

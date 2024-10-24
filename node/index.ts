@@ -4,6 +4,9 @@ import { Service, LRUCache } from '@vtex/api'
 import { Clients } from './clients'
 import { resolvers } from './graphql'
 
+import { schemaDirectives } from './directives'
+
+
 const TIMEOUT_MS = 4000
 const defaultClientOptions = {
   retries: 1,
@@ -40,6 +43,8 @@ export default new Service({
       Query: resolvers.Query,
       Mutation: resolvers.Mutation,
     },
+    schemaDirectives,
   },
   routes: resolvers.Routes,
+  
 })
