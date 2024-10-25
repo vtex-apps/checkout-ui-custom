@@ -66,6 +66,13 @@
         "host": "{{account}}.vtexcommercestable.com.br",
         "path": "/api/logistics/pvt/configuration/holidays/"
       }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "portal.vtexcommercestable.com.br",
+        "path": "/api/vtexid/*"
+      }
     }
   ],
   "scripts": {},

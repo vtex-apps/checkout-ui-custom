@@ -2,10 +2,13 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
-import { method } from '@vtex/api'
+import { method, ForbiddenError } from '@vtex/api'
 
 import { getCountryRules } from '../middlewares/getCountryRules'
 import { holidays } from '../middlewares/holidays'
+
+import { validateAdminToken } from './helper'
+
 
 const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
@@ -104,7 +107,41 @@ export const resolvers = {
     saveChanges: async (_: any, params: any, ctx: Context) => {
       const {
         clients: { masterdata, server },
+        vtex: { logger }
       } = ctx
+
+
+      
+
+      const cookie = ctx.headers?.cookie;
+
+
+      const vtexCredentials:any = cookie ? 
+            cookie.split('; ')
+            .find((cookie: string) => cookie.startsWith('VtexIdclientAutCookie='))
+            ?.split('=')[1] ?? ''
+        : '';
+
+      if(!vtexCredentials) {
+
+        logger.warn({
+          message: 'CheckAdminAccess: Invalid token'
+        })
+        throw new ForbiddenError('Unauthorized Access')
+      }
+      
+      if(vtexCredentials) {
+        const permission = await validateAdminToken(ctx, vtexCredentials)
+        if(!permission.hasAdminToken || !permission.hasValidAdminToken || !permission.hasCurrentValidAdminToken) {
+          logger.warn({
+            message: 'CheckAdminAccess: Invalid store token'
+          })
+          throw new ForbiddenError('Unauthorized Access')
+        }
+      }
+
+      
+
 
       const keys = { ...params.layout, ...params.colors }
       const cssTemplate = await fs.readFile(
@@ -287,3 +324,4 @@ export const resolvers = {
     },
   },
 }
+
