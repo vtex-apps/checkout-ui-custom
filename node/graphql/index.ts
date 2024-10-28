@@ -2,12 +2,12 @@
 import { promises as fs } from 'fs'
 import * as path from 'path'
 
-import { method, ForbiddenError } from '@vtex/api'
+import { method } from '@vtex/api'
 
 import { getCountryRules } from '../middlewares/getCountryRules'
 import { holidays } from '../middlewares/holidays'
 
-import { validateAdminToken } from './helper'
+import { authCheck } from './authcheck'
 
 
 const SCHEMA_VERSION = 'v0.1.3'
@@ -107,52 +107,13 @@ export const resolvers = {
     saveChanges: async (_: any, params: any, ctx: Context) => {
       const {
         clients: { masterdata, server },
-        vtex: { logger }
+        vtex: {  }
       } = ctx
 
 
       const app: string = getAppId()
-
-      const version = app.split(`@`)[1];
-
-      const cookie = ctx.headers?.cookie;
-
-      const vtexCredentials:any = cookie ? 
-            cookie.split('; ')
-            .find((cookie: string) => cookie.startsWith('VtexIdclientAutCookie='))
-            ?.split('=')[1] ?? ''
-        : '';
-
-      if(version < `0.18.9`) {
-
-        logger.warn({
-          message: 'Error: Invalid version'
-        })
-        throw new ForbiddenError('Unauthorized version')
-      }
-
-      if(!vtexCredentials) {
-
-        logger.warn({
-          message: 'CheckAdminAccess: Invalid token'
-        })
-        throw new ForbiddenError('Unauthorized Access')
-      }
-      
-      if(vtexCredentials) {
-        const permission = await validateAdminToken(ctx, vtexCredentials)
-
-        console.log(permission)
-        if(!permission.hasAdminToken || !permission.hasValidAdminToken || !permission.hasCurrentValidAdminToken || !permission.hasValidAdminRole) {
-          logger.warn({
-            message: 'CheckAdminAccess: Invalid store token'
-          })
-          throw new ForbiddenError('Unauthorized Access')
-        }
-      }
-
-      
-
+      //authorization check
+      await authCheck(ctx, app)
 
       const keys = { ...params.layout, ...params.colors }
       const cssTemplate = await fs.readFile(
@@ -259,6 +220,10 @@ export const resolvers = {
         clients: { masterdata },
       } = ctx
 
+      const app: string = getAppId()
+      //authorization check
+      await authCheck(ctx, app)
+
       const data = await masterdata.searchDocuments({
         dataEntity: DATA_ENTITY,
         schema: SCHEMA_VERSION,
@@ -276,6 +241,10 @@ export const resolvers = {
       const {
         clients: { masterdata },
       } = ctx
+
+      const app: string = getAppId()
+      //authorization check
+      await authCheck(ctx, app)
 
       const data = await masterdata.getDocument({
         dataEntity: DATA_ENTITY,
@@ -296,6 +265,10 @@ export const resolvers = {
       const {
         clients: { masterdata },
       } = ctx
+
+      const app: string = getAppId()
+      //authorization check
+      await authCheck(ctx, app)
 
       const last = await masterdata
         .searchDocuments({
