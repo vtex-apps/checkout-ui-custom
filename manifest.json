@@ -40,6 +40,9 @@
       "name": "LogisticsViewer"
     },
     {
+      "name": "Get_User_By_Identifier"
+    },
+    {
       "name": "outbound-access",
       "attrs": {
         "host": "platform.io.vtex.com",
@@ -72,6 +75,13 @@
       "attrs": {
         "host": "portal.vtexcommercestable.com.br",
         "path": "/api/vtexid/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/api/license-manager/*"
       }
     }
   ],

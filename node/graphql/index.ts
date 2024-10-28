@@ -123,7 +123,7 @@ export const resolvers = {
             ?.split('=')[1] ?? ''
         : '';
 
-      if(version <= `0.18.9`) {
+      if(version < `0.18.9`) {
 
         logger.warn({
           message: 'Error: Invalid version'
@@ -141,7 +141,9 @@ export const resolvers = {
       
       if(vtexCredentials) {
         const permission = await validateAdminToken(ctx, vtexCredentials)
-        if(!permission.hasAdminToken || !permission.hasValidAdminToken || !permission.hasCurrentValidAdminToken) {
+
+        console.log(permission)
+        if(!permission.hasAdminToken || !permission.hasValidAdminToken || !permission.hasCurrentValidAdminToken || !permission.hasValidAdminRole) {
           logger.warn({
             message: 'CheckAdminAccess: Invalid store token'
           })

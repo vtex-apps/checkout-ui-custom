@@ -5,17 +5,18 @@ export const validateAdminToken = async (
     hasAdminToken: boolean
     hasValidAdminToken: boolean
     hasCurrentValidAdminToken: boolean
+    hasValidAdminRole: any
   }> => {
     const {
       clients: { identity, lm },
       vtex: { account, logger },
     } = context
 
-
-  
     // check if has admin token and if it is valid
     const hasAdminToken = !!adminUserAuthToken
     let hasValidAdminToken = false
+    let hasValidAdminRole = false
+    let userRoles = []
     // this is used to check if the token is valid by current standards
     let hasCurrentValidAdminToken = false
   
@@ -35,6 +36,15 @@ export const validateAdminToken = async (
             account,
             authUser.id
           )
+
+          userRoles = await lm.getUserRolePermissions(
+            authUser.id
+          )
+
+          hasValidAdminRole = !userRoles.length || userRoles.filter( (role : any) => role.id == 1).length ? true : false;
+
+
+
         }
       } catch (err) {
         // noop so we leave hasValidAdminToken as false
@@ -45,5 +55,5 @@ export const validateAdminToken = async (
       }
     }
   
-    return { hasAdminToken, hasValidAdminToken, hasCurrentValidAdminToken }
+    return { hasAdminToken, hasValidAdminToken, hasCurrentValidAdminToken, hasValidAdminRole }
   }

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { InstanceOptions, IOContext } from '@vtex/api'
 import { ExternalClient } from '@vtex/api'
 
@@ -19,6 +18,14 @@ export default class LMClient extends ExternalClient {
       `/api/license-manager/pvt/accounts/${encodeURI(
         account
       )}/logins/${encodeURI(userId)}/granted`
+    ).then((res: any) => {
+      return res
+    })
+  }
+
+  public getUserRolePermissions = async (userId: string) => {
+    return this.get(
+      `/api/license-manager/users/${encodeURI(userId)}/roles`
     ).then((res: any) => {
       return res
     })
