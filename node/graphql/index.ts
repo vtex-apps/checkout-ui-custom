@@ -8,6 +8,7 @@ import { getCountryRules } from '../middlewares/getCountryRules'
 import { holidays } from '../middlewares/holidays'
 
 import { authCheck } from './authcheck'
+import { validateAdminToken } from './helper'
 
 
 const SCHEMA_VERSION = 'v0.1.3'
@@ -236,6 +237,23 @@ export const resolvers = {
       })
 
       return data
+    },
+    getPermissions: async (_: any, __: any, ctx: any) => {
+
+      const cookie = ctx.headers?.cookie
+
+      const vtexCredentials: any = cookie
+        ? cookie
+            .split('; ')
+            .find((cookie: string) => cookie.startsWith('VtexIdclientAutCookie='))
+            ?.split('=')[1] ?? ''
+        : '';
+
+      const permission = await validateAdminToken(ctx, vtexCredentials)
+      
+      return {
+        access: permission.hasValidAdminRole
+      }
     },
     getById: async (_: any, params: any, ctx: any) => {
       const {
