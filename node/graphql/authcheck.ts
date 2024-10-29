@@ -18,7 +18,7 @@ export const authCheck = async (ctx: Context, app: string) => {
       : '';
 
 
-    if (version < `0.18.9`) {
+    if (version <= `0.18.9`) {
       logger.warn({
         message: 'Error: Invalid version',
       })
