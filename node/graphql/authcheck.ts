@@ -6,7 +6,6 @@ export const authCheck = async (ctx: Context, app: string) => {
     vtex: { logger },
   } = ctx
 
-  try {
     const version = app.split(`@`)[1]
 
     const cookie = ctx.headers?.cookie
@@ -16,7 +15,8 @@ export const authCheck = async (ctx: Context, app: string) => {
           .split('; ')
           .find((cookie: string) => cookie.startsWith('VtexIdclientAutCookie='))
           ?.split('=')[1] ?? ''
-      : ''
+      : '';
+
 
     if (version < `0.18.9`) {
       logger.warn({
@@ -25,7 +25,7 @@ export const authCheck = async (ctx: Context, app: string) => {
       throw new ForbiddenError('Unauthorized version')
     }
 
-    if (!vtexCredentials) {
+    if (!vtexCredentials.trim()) {
       logger.warn({
         message: 'CheckAdminAccess: Invalid token',
       })
@@ -34,6 +34,7 @@ export const authCheck = async (ctx: Context, app: string) => {
 
     if (vtexCredentials) {
       const permission = await validateAdminToken(ctx, vtexCredentials)
+
       if (
         !permission.hasAdminToken ||
         !permission.hasValidAdminToken ||
@@ -43,14 +44,8 @@ export const authCheck = async (ctx: Context, app: string) => {
         logger.warn({
           message: 'CheckAdminAccess: Invalid store token',
         })
-        throw new ForbiddenError('Unauthorized Access')
+        throw new ForbiddenError('Unauthorized Access Token')
       }
     }
-  } catch (err) {
-    // noop so we leave hasValidAdminToken as false
-    logger.warn({
-      message: 'Error validating admin token',
-      err,
-    })
-  }
+  
 }

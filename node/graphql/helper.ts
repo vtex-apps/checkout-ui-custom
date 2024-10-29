@@ -38,12 +38,11 @@ export const validateAdminToken = async (
           )
 
           userRoles = await lm.getUserRolePermissions(
+            account,
             authUser.id
           )
 
-          hasValidAdminRole = !userRoles.length || userRoles.filter( (role : any) => role.id == 1).length ? true : false;
-
-
+          hasValidAdminRole = userRoles.filter( (role : any) => role.resourceKey == "SaveOrderFormConfiguration").length ? true : false;
 
         }
       } catch (err) {
