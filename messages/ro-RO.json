@@ -1,6 +1,8 @@
 {
   "admin/checkout-ui.title": "Personalizare Checkout UI",
   "admin/checkout-ui.update-warning": "Această aplicație a fost actualizată. Te rugăm să apeși pe PUBLICĂ pentru a aplica cele mai recente remedieri la finalizarea comenzii tale.",
+  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
+  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
   "admin/checkout-ui.navigation.title": "Personalizare Checkout UI",
   "admin/checkout-ui.tab.layout": "Mod de afișare",
   "admin/checkout-ui.tab.colors": "Culori",
