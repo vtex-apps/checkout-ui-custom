@@ -1,6 +1,8 @@
 {
   "admin/checkout-ui.title": "واجهة المستخدم المخصصة للدفع",
   "admin/checkout-ui.update-warning": "تم تحديث هذا التطبيق. الرجاء النقر فوق \"نشر\" لتطبيق أحدث الإصلاحات على عملية الدفع الخاصة بك.",
+  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
+  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
   "admin/checkout-ui.navigation.title": "واجهة المستخدم المخصصة للدفع",
   "admin/checkout-ui.tab.layout": "التصميم",
   "admin/checkout-ui.tab.colors": "الألوان",

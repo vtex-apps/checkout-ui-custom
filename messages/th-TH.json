@@ -1,6 +1,8 @@
 {
   "admin/checkout-ui.title": "กำหนด UI ใน Checkout",
   "admin/checkout-ui.update-warning": "แอปนี้มีการอัปเดต โปรดคลิก เผยแพร่ เพื่อให้การแก้ไขล่าสุดมีผลใน Checkout ของคุณ",
+  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
+  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
   "admin/checkout-ui.navigation.title": "กำหนด UI ใน Checkout",
   "admin/checkout-ui.tab.layout": "เลย์เอาต์",
   "admin/checkout-ui.tab.colors": "สี",

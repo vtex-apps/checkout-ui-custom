@@ -7,6 +7,10 @@ import { method } from '@vtex/api'
 import { getCountryRules } from '../middlewares/getCountryRules'
 import { holidays } from '../middlewares/holidays'
 
+import { authCheck } from './authcheck'
+import { validateAdminToken } from './helper'
+
+
 const SCHEMA_VERSION = 'v0.1.3'
 const DATA_ENTITY = 'checkoutcustom'
 
@@ -104,7 +108,13 @@ export const resolvers = {
     saveChanges: async (_: any, params: any, ctx: Context) => {
       const {
         clients: { masterdata, server },
+        vtex: {  }
       } = ctx
+
+
+      const app: string = getAppId()
+      //authorization check
+      await authCheck(ctx, app)
 
       const keys = { ...params.layout, ...params.colors }
       const cssTemplate = await fs.readFile(
@@ -211,6 +221,10 @@ export const resolvers = {
         clients: { masterdata },
       } = ctx
 
+      const app: string = getAppId()
+      //authorization check
+      await authCheck(ctx, app)
+
       const data = await masterdata.searchDocuments({
         dataEntity: DATA_ENTITY,
         schema: SCHEMA_VERSION,
@@ -224,10 +238,31 @@ export const resolvers = {
 
       return data
     },
+    getPermissions: async (_: any, __: any, ctx: any) => {
+
+      const cookie = ctx.headers?.cookie
+
+      const vtexCredentials: any = cookie
+        ? cookie
+            .split('; ')
+            .find((cookie: string) => cookie.startsWith('VtexIdclientAutCookie='))
+            ?.split('=')[1] ?? ''
+        : '';
+
+      const permission = await validateAdminToken(ctx, vtexCredentials)
+      
+      return {
+        access: permission.hasValidAdminRole
+      }
+    },
     getById: async (_: any, params: any, ctx: any) => {
       const {
         clients: { masterdata },
       } = ctx
+
+      const app: string = getAppId()
+      //authorization check
+      await authCheck(ctx, app)
 
       const data = await masterdata.getDocument({
         dataEntity: DATA_ENTITY,
@@ -248,6 +283,10 @@ export const resolvers = {
       const {
         clients: { masterdata },
       } = ctx
+
+      const app: string = getAppId()
+      //authorization check
+      await authCheck(ctx, app)
 
       const last = await masterdata
         .searchDocuments({
@@ -287,3 +326,4 @@ export const resolvers = {
     },
   },
 }
+

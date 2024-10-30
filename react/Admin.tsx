@@ -18,6 +18,9 @@ import {
   IconDeny,
   ModalDialog,
   Progress,
+  Tooltip,
+  Tag,
+  IconWarning
 } from 'vtex.styleguide'
 import { useRuntime } from 'vtex.render-runtime'
 import sessionQuery from 'vtex.store-resources/QuerySession'
@@ -30,6 +33,8 @@ import History from './components/History'
 import saveMutation from './mutations/saveConfiguration.gql'
 import GET_LAST from './queries/getLast.gql'
 import GET_CONFIG from './queries/getConfig.gql'
+import getUserPermissions from './queries/getPermissions.gql'
+
 
 const messages = defineMessages({
   title: {
@@ -92,6 +97,9 @@ const Admin: FC<any & WrappedComponentProps> = ({
   config,
 }: any) => {
   const { workspace, production } = useRuntime()
+
+
+  const { data : permission } = useQuery(getUserPermissions)
 
   const [state, setState] = useState<any>({
     ...defaultConfiguration,
@@ -284,7 +292,9 @@ const Admin: FC<any & WrappedComponentProps> = ({
               <div className="ma3">
                 <Button
                   variation="primary"
-                  disabled={loadingLast}
+                  disabled={
+                    permission?.getPermissions?.access ? loadingLast : true
+                  }
                   onClick={() => {
                     handlePublish()
                   }}
@@ -293,6 +303,22 @@ const Admin: FC<any & WrappedComponentProps> = ({
                 </Button>
               </div>
             </div>
+
+            {permission && !permission?.getPermissions?.access && (
+
+              <div className="cb ma3">
+              <Tag type="warning" variation="low">
+                <FormattedMessage id="admin/checkout-ui.permission-warning" />
+                <Tooltip label={<FormattedMessage id="admin/checkout-ui.permission-tooltip" />}>
+                  <span className="ml3 pointer">
+                    <IconWarning />
+                  </span>
+                </Tooltip>
+              </Tag>
+              </div>
+
+            )}
+            
           </span>
         </PageHeader>
       }

@@ -2,6 +2,8 @@
   "admin/checkout-ui.navigation.title": "admin/checkout-ui.navigation.title",
   "admin/checkout-ui.title": "admin/checkout-ui.title",
   "admin/checkout-ui.update-warning": "admin/checkout-ui.update-warning",
+  "admin/checkout-ui.permission-warning": "admin/checkout-ui.permission-warning",
+  "admin/checkout-ui.permission-tooltip": "admin/checkout-ui.permission-tooltip",
   "admin/checkout-ui.tab.layout": "admin/checkout-ui.tab.layout",
   "admin/checkout-ui.tab.colors": "admin/checkout-ui.tab.colors",
   "admin/checkout-ui.tab.javascript": "admin/checkout-ui.tab.javascript",

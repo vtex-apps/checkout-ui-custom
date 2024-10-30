@@ -1,6 +1,8 @@
 {
   "admin/checkout-ui.title": "Checkout UI Benutzerdefiniert",
   "admin/checkout-ui.update-warning": "Diese App wurde aktualisiert. Bitte klicken Sie auf VERÖFFENTLICHEN, um die neuesten Korrekturen auf Ihren Checkout anzuwenden.",
+  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
+  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
   "admin/checkout-ui.navigation.title": "Checkout UI Benutzerdefiniert",
   "admin/checkout-ui.tab.layout": "Layout",
   "admin/checkout-ui.tab.colors": "Farben",

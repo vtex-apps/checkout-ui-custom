@@ -1,6 +1,8 @@
 {
   "admin/checkout-ui.title": "체크아웃 UI 사용자 정의",
   "admin/checkout-ui.update-warning": "이 앱이 업데이트되었습니다. 체크아웃에 최신 수정사항을 적용하려면 [게시;]를 클릭하세요.",
+  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
+  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
   "admin/checkout-ui.navigation.title": "체크아웃 UI 사용자 정의",
   "admin/checkout-ui.tab.layout": "레이아웃",
   "admin/checkout-ui.tab.colors": "색",

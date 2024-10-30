@@ -3,6 +3,7 @@ type Query {
   getHistory: [GetHistoryResponse] @cacheControl(scope: PRIVATE)
   getLast(workspace: String): GetLastResponse @cacheControl(scope: PRIVATE)
   getById(id: String): ConfigResponse @cacheControl(scope: PRIVATE)
+  getPermissions: GetPermissionsResponse @cacheControl(scope: PRIVATE)
 }
 
 type Mutation {
@@ -49,6 +50,9 @@ type GetHistoryResponse {
   appVersion: String
 }
 
+type GetPermissionsResponse {
+  access: Boolean
+}
 type GetSetupConfigResponse {
   adminSetup: AdminSetupResponse
 }
