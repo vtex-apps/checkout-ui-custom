@@ -1,8 +1,8 @@
 {
   "admin/checkout-ui.title": "Interfaccia personalizzata del checkout",
   "admin/checkout-ui.update-warning": "Questa app è stata aggiornata. Clicca su \"PUBBLICA\" per applicare le ultime correzioni al tuo checkout.",
-  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
-  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
+  "admin/checkout-ui.permission-warning":"Non hai l'autorizzazione per pubblicare", 
+  "admin/checkout-ui.permission-tooltip":"Ruolo richiesto: 'SaveOrderFormConfiguration'", 
   "admin/checkout-ui.navigation.title": "Interfaccia personalizzata del checkout",
   "admin/checkout-ui.tab.layout": "Layout",
   "admin/checkout-ui.tab.colors": "Colori",

@@ -1,8 +1,8 @@
 {
   "admin/checkout-ui.title": "Räätälöity kassakäyttöliittymä",
   "admin/checkout-ui.update-warning": "Tämä sovellus on päivitetty. Napsauta JULKAISE lisätäksesi viimeisimmät korjaukset kassalle.",
-  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
-  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
+  "admin/checkout-ui.permission-warning":"Sinulla ei ole oikeutta julkaista", 
+  "admin/checkout-ui.permission-tooltip":"Vaadittu rooli: ”SaveOrderFormConfiguration”", 
   "admin/checkout-ui.navigation.title": "Räätälöity kassakäyttöliittymä",
   "admin/checkout-ui.tab.layout": "Asettelu",
   "admin/checkout-ui.tab.colors": "Värit",

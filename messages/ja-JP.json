@@ -1,8 +1,8 @@
 {
   "admin/checkout-ui.title": "UI カスタムをチェックアウト",
   "admin/checkout-ui.update-warning": "このアプリはアップデートされています。公開をクリックし、チェックアウトに最新の修正を適用してください。",
-  "admin/checkout-ui.permission-warning":"You don't have permission to publish", 
-  "admin/checkout-ui.permission-tooltip":"Required role: 'SaveOrderFormConfiguration'", 
+  "admin/checkout-ui.permission-warning":"公開する権限がありません", 
+  "admin/checkout-ui.permission-tooltip":"必要な役割：「SaveOrderFormConfiguration」", 
   "admin/checkout-ui.navigation.title": "UI カスタムをチェックアウト",
   "admin/checkout-ui.tab.layout": "レイアウト",
   "admin/checkout-ui.tab.colors": "色",
