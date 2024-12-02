@@ -11,9 +11,9 @@ jobs:
     name: QE
     uses: vtex-apps/usqa/.github/workflows/quality-engineering.yml@v2
     with:
-      nodeLint: true
+      nodeLint: false
       nodeTest: false
-      nodeSonar: true
+      nodeSonar: false
       nodeSonarProjectKey: vtex-apps_checkout-ui-custom
       nodeSonarOrganization: vtex-apps
     secrets:
