@@ -1324,7 +1324,7 @@ class checkoutCustom {
     const _this = this
 
     _this.orderForm =
-      window.vtexjs.checkout && window.vtexjs.checkout.orderForm
+      window?.vtexjs?.checkout?.orderForm
         ? window.vtexjs.checkout.orderForm
         : false
     _this.general()
