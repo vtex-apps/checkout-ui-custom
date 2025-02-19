@@ -1114,6 +1114,10 @@
 				button {
 					border-radius:0 !important;
 				}
+
+        &.disabled {
+          pointer-events: none;
+        }
 			}
 		}
 		@media(max-width: 768px) {

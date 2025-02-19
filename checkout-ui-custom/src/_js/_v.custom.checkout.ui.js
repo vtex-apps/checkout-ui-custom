@@ -1399,6 +1399,16 @@ class checkoutCustom {
         }
       })
 
+      $(window).on('addMessage.vtex', function (event, eventData) {
+        if(eventData && eventData.id === 'payment-message-modal') {
+          $('.payment-submit-wrap').addClass('disabled');
+        }
+      })
+
+      $(window).on('removeMessage.vtex', function () {
+          $('.payment-submit-wrap').removeClass('disabled');
+      })
+
       // eslint-disable-next-line no-console
       console.log(`🎉 Yay! You are using the vtex.checkout.ui customization !!`)
     } catch (e) {
