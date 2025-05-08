@@ -6,7 +6,7 @@ body {
   padding: 0;
   background: $base;
   padding-bottom:40px !important;
- 
+
   min-height: 93vh;
   position: relative;
   font-size: $fontSize;
@@ -20,27 +20,56 @@ body {
     }
   }
 
-  @media(max-width: 768px) { 
+  @media(max-width: 768px) {
     padding-bottom:0px !important;
   }
 
-  //short preloader to don't show a empty cart
-  .cart-template.full-cart {
-    > * {
-      opacity: 0;
-      transition-delay:1.2s;
-      transition-property: opacity;
-      -webkit-transition-duration:0.5s;
-    }
-  }
-  &.v-custom-loaded {
-    .cart-template.full-cart {
-      > * {opacity: initial;}
-    }
-  }
-  //end short preloader to don't show a empty cart
+    .checkout-container {
+      .cart-template.full-cart {
+        >* {
+          opacity: initial;
+          transition-delay: 1.2s;
+          transition-property: opacity;
+          -webkit-transition-duration: 0.5s;
+        }
+      }
 
-  &.returningUser.v-custom-addressForm-on.v-custom-step-shipping 
+      &.v-custom-loaded {
+        .cart-template.full-cart {
+          >* {
+            opacity: initial;
+          }
+        }
+      }
+
+      .orderform-template .cart-template.mini-cart .cart .cart-items {
+        max-height: none;
+        overflow: auto;
+
+        &::after,
+        &::before {
+          display: none;
+        }
+
+        li.item {
+          float: none;
+          overflow: auto;
+          opacity: initial;
+
+          &::after,
+          &::before {
+            display: none;
+          }
+
+          &>* {
+            opacity: initial;
+            z-index: 1;
+          }
+        }
+      }
+    }
+
+  &.returningUser.v-custom-addressForm-on.v-custom-step-shipping
   .accordion-inner.shipping-container  {
 
     .vtex-omnishipping-1-x-addressFormPart1.vtex-omnishipping-1-x-geolocation {
@@ -64,9 +93,9 @@ body {
 
 .container-main {
 }
- 
+
 .loading.loading-bg {
-  background:$base; 
+  background:$base;
 }
 
 // containers
@@ -147,13 +176,13 @@ body {
       list-style: none;
       padding: 0;
       margin: 0;
-      
+
       &__item {
         strong {
           &:after {content:":";}
         }
         span, strong {line-height: 14px;}
       }
-    } 
-     
+    }
+
   }
