@@ -4,7 +4,7 @@
 
 > ⚠️ This app is no longer maintained by VTEX. This means support and maintenance are no longer provided.
 
-The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.
+The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin interface.
 
 ![checkout-ui-custom](https://user-images.githubusercontent.com/52087100/91737149-11cc4980-eb85-11ea-9b74-a54721de67bc.png)
 
@@ -20,17 +20,17 @@ The Checkout UI Custom app is responsible for customizing your store's Checkout 
 
 ## Modus Operandi
 
-If you access your VTEX account's admin using a [Development workspace](https://vtex.io/docs/concepts/workspace/) and publish your changes, the configurations performed using the app will only be applied into the workspace you are working in and not in your store Checkout.
+If you access your VTEX account's admin using a [Development workspace](https://vtex.io/docs/concepts/workspace/) and publish your changes, the configurations made in the app will only be applied to the workspace you are working in, not to your store's Checkout.
 
-However, notice the following: **you should not perform any changes in your account's Master workspace to make your Checkout UI configurations publicly available**. Instead, you should use a Development workspace and the **History** tab displayed on the admin app.
+However, note the following: **you should not make any changes to your account's Master workspace to make your Checkout UI configurations publicly available**. Instead, use a Development workspace and the **History** tab in the admin app.
 
-The `History` tab enables you to load app change history and, therefore, helps your checkout UI coding by reusing configurations performed in previous workspaces.
+The `History` tab enables you to load app change history, which helps your checkout UI code by reusing configurations from previous workspaces.
 
-Let's assume you were working in a [Development workspace](https://vtex.io/docs/recipes/development/creating-a-development-workspace) called `testredcolor`, and now want your changes to be public. According to how workspaces work in the platform, your changes first need to be applied in a [Production workspace](https://vtex.io/docs/recipes/development/creating-a-production-workspace) that, in turn, will be [promoted to Master](https://vtex.io/docs/recipes/development/promoting-a-workspace-to-master) later.
+Let's assume you were working in a [Development workspace](https://vtex.io/docs/recipes/development/creating-a-development-workspace) called `testredcolor`, and now want your changes to be public. According to how workspaces work on the platform, your changes first need to be applied in a [Production workspace](https://vtex.io/docs/recipes/development/creating-a-production-workspace) that will then be [promoted to Master](https://vtex.io/docs/recipes/development/promoting-a-workspace-to-master) later.
 
-For this purpose, you can access the `History` tab using the desired Production workspace, load your last changes from `testredcolor` and then click on `Publish`, copying your configurations to the Production workspace you are currently working in.
+For this purpose, you can access the `History` tab using the desired Production workspace, load your last changes from `testredcolor`, and then click on `Publish`, copying your configurations to the Production workspace you are currently working in.
 
-⚠️ _The Header and Footer HTMLs are still configured using the admin's Portal (`/admin/portal/#/sites`). In order to properly use the Checkout UI Custom app, it is strongly recommended to use the HTMLs stated below:_
+⚠️ The Header and Footer HTMLs are still configured using the admin's Portal (`/admin/portal/#/sites`). In order to properly use the Checkout UI Custom app, it is strongly recommended to use the HTMLs stated below:
 
 - **Header HTML:**
 
@@ -53,7 +53,7 @@ For this purpose, you can access the `History` tab using the desired Production 
 </header>
 ```
 
-If you want to insert other contents, make sure of include the class `.v-custom-mhide` to hide it on mobile resolutions. For example:
+If you want to insert other contents, make sure to include the class `.v-custom-mhide` to hide it on mobile resolutions. For example:
 
 ```html
 <header class="main-header"> ... </header>
@@ -74,19 +74,8 @@ If you want to insert other contents, make sure of include the class `.v-custom-
 
 <details>
   <summary>If you are yet using the classic CMS</summary>
-  You can create a workspace and install the app by there. While using the app, you will need apply your changes and copy/paste the content of the files to your portal.
+  You can create a workspace and install the app there. While using the app, you will need to apply your changes and copy and paste the file content into your portal.
 </details>
-
-## For VTEX Developers
-
-When developing a new version of Checkout UI Custom, take care to compile the checkout files prior to opening a PR and/or publishing a new version of the app. This can be done by running `yarn app` in your CLI, inside the app's `/checkout-ui-custom/` subfolder.
-
-During implementation, you will need to run `vtex link` on the root folder and also watch assets by running `yarn watch` in the `/checkout-ui-custom/` subfolder
-
-❗Note that during implementation, avoid publishing changes to the workspace. As this will permanently add the changes to the workspace and any changes to the app will not be shown. 
-
-
-#
 
 <!-- DOCS-IGNORE:start -->
 
