@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: checkout-ui-custom
+  description: The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.
+  annotations:
+    github.com/project-slug: vtex-apps/checkout-ui-custom
+spec:
+  type: fullstack-app
+  lifecycle: production
+  owner: checkout-experience
