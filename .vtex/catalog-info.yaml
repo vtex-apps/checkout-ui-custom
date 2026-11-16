@@ -5,6 +5,7 @@ metadata:
   description: The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.
   annotations:
     github.com/project-slug: vtex-apps/checkout-ui-custom
+    vtex.com/platform-flow-id: Merch#3
 spec:
   type: fullstack-app
   lifecycle: production
