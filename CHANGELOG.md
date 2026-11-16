@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.20.2] - 2026-11-16
+
 ### Fixed
 
 - Block tokens generated from appKey/appToken from saving checkout configuration.
