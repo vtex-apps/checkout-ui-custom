@@ -1,9 +1,8 @@
 # Checkout UI Custom
 
-##  ⚠️ Maintenance ⚠️
-*Starting June 1st 2023, this application will no longer be maintained by VTEX.*
+[<i class="fa-brands fa-github"></i> Source code](https://github.com/vtex-apps/checkout-ui-custom)
 
----
+> ⚠️ This app is no longer maintained by VTEX. This means support and maintenance are no longer provided.
 
 The Checkout UI Custom app is responsible for customizing your store's Checkout UI through the admin's interface.
 
