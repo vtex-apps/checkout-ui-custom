@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated the documentation to replace the maintenance notice with the standard "no longer maintained" callout and added the source code link.
+
 ## [0.20.2] - 2026-11-16
 
 ### Fixed
